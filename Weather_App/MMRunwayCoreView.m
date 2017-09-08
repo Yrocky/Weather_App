@@ -7,18 +7,116 @@
 //
 
 #import "MMRunwayCoreView.h"
-
-
-#define TXScrollLabelFont [UIFont systemFontOfSize:14]
-//#import "TXScrollLabelView.h"
 #import <CoreText/CoreText.h>
 
-static const NSInteger TXScrollDefaultTimeInterval = 2.0;//滚动默认时间
+@interface _MMRunwayViewOperation : NSOperation{
 
-typedef NS_ENUM(NSInteger, TXScrollLabelType) {
-    TXScrollLabelTypeUp = 0,
-    TXScrollLabelTypeDown
-};
+    UIView * _runwayView;
+    NSString * _runwayKey;
+    void(^_finishedHandle)(BOOL,NSInteger);
+}
+
+@property (nonatomic ,strong ,readonly) UIView * runwayView;
+@property (nonatomic,copy ,readonly) NSString * runwayKey;
+
++ (instancetype) operationWithRunwayView:(UIView *)runwayView finishedHandle:(void(^)(BOOL result,NSInteger finishCount))finished;
+
+@end
+
+@implementation _MMRunwayViewOperation
+
+#pragma mark - Thread
+
++ (void)networkRequestThreadEntryPoint:(id)__unused object {
+    @autoreleasepool {
+        [[NSThread currentThread] setName:@"RunwayCoreViewThread"];
+        do {
+            [[NSRunLoop currentRunLoop] run];
+        }
+        while (YES);
+    }
+}
+
+static NSThread *_networkRequestThread = nil;
+
++ (void)endNetworkThread {
+    if (!_networkRequestThread) {
+        return;
+    }
+    
+    if ([NSThread currentThread] == _networkRequestThread) {
+        [NSThread exit];
+    }
+    else {
+        [NSThread performSelector:@selector(exit) onThread:_networkRequestThread withObject:nil waitUntilDone:NO];
+    }
+    
+    _networkRequestThread = nil;
+}
+
++ (BOOL)networkRequestThreadIsAvailable {
+    return (_networkRequestThread != nil);
+}
+
++ (NSThread *)networkRequestThread {
+    if (!_networkRequestThread) {
+        _networkRequestThread = [[NSThread alloc] initWithTarget:self selector:@selector(networkRequestThreadEntryPoint:) object:nil];
+        [_networkRequestThread start];
+    }
+    
+    return _networkRequestThread;
+}
+
++ (instancetype)operationWithRunwayView:(UIView *)runwayView finishedHandle:(void (^)(BOOL, NSInteger))finished{
+
+    return [[self alloc] initWithRunwayView:runwayView finishedHandle:finished];
+}
+
+- (instancetype) initWithRunwayView:(UIView *)runwayView finishedHandle:(void(^)(BOOL,NSInteger))finishedHandle{
+
+    self = [super init];
+    if (self) {
+        
+        _executing = NO;
+        self.finished = NO;
+        
+        NSString * runwayKey = [NSString stringWithFormat:@"%lu",(unsigned long)runwayView.hash];
+        _runwayKey = runwayKey;
+        
+        _runwayView = runwayView;
+        
+        _finishedHandle = [finishedHandle copy];
+    }
+    return self;
+}
+
+- (void)start {
+    
+    if ([self isCancelled]) {
+        self.finished = YES;
+        return;
+    }
+    if ([self isReady]) {
+        [self performSelector:@selector(main) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO];
+    }else{
+        NSLog(@"Error: Cannot start Operation: Operation is not ready to start");
+    }
+}
+
+- (void)main{
+
+    @autoreleasepool {
+        
+        [self willChangeValueForKey:@"isExecuting"];
+        self.executing = YES;
+        [self didChangeValueForKey:@"isExecuting"];
+        
+        
+    }
+}
+
+
+@end
 
 #pragma mark - NSTimer+TXTimerTarget
 
@@ -48,36 +146,19 @@ typedef NS_ENUM(NSInteger, TXScrollLabelType) {
 
 @implementation MMRunwayLabel
 
-- (instancetype)init {
-    if (self = [super init]) {
-        _contentInset = UIEdgeInsetsZero;
-    }
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-        _contentInset = UIEdgeInsetsZero;
-    }
-    return self;
-}
-
-- (void)drawTextInRect:(CGRect)rect {
-    [super drawTextInRect:UIEdgeInsetsInsetRect(rect, _contentInset)];
-}
-
 + (instancetype)label {
     MMRunwayLabel *label = [[MMRunwayLabel alloc]init];
     label.numberOfLines = 0;
-    label.font = TXScrollLabelFont;
+    label.font = [UIFont systemFontOfSize:15];
     label.textColor = [UIColor whiteColor];
     label.lineBreakMode = NSLineBreakByWordWrapping;
-    label.textAlignment = NSTextAlignmentCenter;
     return label;
 }
 
 - (CGSize) configAttributedString:(NSAttributedString *)attString{
 
+    NSAssert(attString, @"请设置有效的 NSAttributedString ");
+    
     [self setAttributedText:attString];
     CGSize size = [attString size];
     NSLog(@"att size :%@",NSStringFromCGSize(size));
@@ -165,13 +246,9 @@ typedef NS_ENUM(NSInteger, TXScrollLabelType) {
 
     NSAssert(customView != nil, @"请添加一个非nil的视图");
     NSAssert(!CGRectIsNull(customView.bounds), @"请确保customView的bounds已经设置好");
+    NSNumber * key = [NSNumber numberWithUnsignedInteger:customView.hash];
     
     [_runwayViews addObject:customView];
-}
-
-- (void)setFrame:(CGRect)frame {
-    [super setFrame:frame];
-    [self setupSubviewsLayout];
 }
 
 #pragma mark - Custom Methods
@@ -241,8 +318,8 @@ typedef NS_ENUM(NSInteger, TXScrollLabelType) {
  @param text scrollText
  @param type scrollLabel type
  */
-- (void)updateLeftRightScrollLabelLayoutWithText:(NSString *)text labelType:(TXScrollLabelType)type {
-    }
+//- (void)updateLeftRightScrollLabelLayoutWithText:(NSString *)text labelType:(TXScrollLabelType)type {
+//    }
 
 //#pragma mark - Scrolling Operation Methods -- Public
 //
@@ -318,13 +395,13 @@ void (*setter)(id, SEL, NSString *, TXScrollLabelType);
 
 - (void)updateTextForScrollViewWithSEL:(SEL)sel {
     
-    if (!self.scrollArray.count) return;
-    
-    /** 更新文本 */
-    [self updateScrollText];
-    /** 执行 SEL */
-    setter = (void (*)(id, SEL, NSString *, TXScrollLabelType))[self methodForSelector:sel];
-    setter(self, sel, self.upLabel.text, TXScrollLabelTypeUp);
+//    if (!self.scrollArray.count) return;
+//    
+//    /** 更新文本 */
+//    [self updateScrollText];
+//    /** 执行 SEL */
+//    setter = (void (*)(id, SEL, NSString *, TXScrollLabelType))[self methodForSelector:sel];
+//    setter(self, sel, self.upLabel.text, TXScrollLabelTypeUp);
 }
 
 - (void)updateScrollText {

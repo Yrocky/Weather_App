@@ -10,8 +10,6 @@
 
 @interface MMRunwayLabel : UILabel
 
-@property (assign, nonatomic) UIEdgeInsets contentInset;
-
 + (instancetype)label;
 
 - (CGSize) configAttributedString:(NSAttributedString *)attString;
