@@ -85,6 +85,8 @@
 
 @property (nonatomic ,strong) MMRunwayProContentView * runwayProView;
 @property (nonatomic ,strong) MMColorView * colorView;
+
+@property (nonatomic ,strong) MMRunwayCoreView * coreView;
 @end
 
 @implementation ViewController
@@ -103,7 +105,7 @@
     self.runwayProView = [[MMRunwayProContentView alloc] init];
     self.runwayProView.frame = CGRectMake(0, 40, self.view.frame.size.width, 46);
     [self.view addSubview:self.runwayProView];
-    
+
     NSTextAttachment * attachment = [[NSTextAttachment alloc] init];
     attachment.image = [UIImage imageNamed:@"red_dot"];
     attachment.bounds = CGRectMake(0, 0, 9, 9);
@@ -179,32 +181,12 @@
     button.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:button];
     
-    /** Step1: 滚动文字 */
-    NSString *scrollTitle = @"恭喜【愤怒的小奴奴】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条";
-    MMRunwayCoreView * coreView = [[MMRunwayCoreView alloc] init];
-    UIView * view = [UIView new];
-    view.frame = CGRectMake(0, 0, 100, 10);
-    [coreView appendCustomView:view];
-    
-    /** Step2: 创建 ScrollLabelView */
-//    MMRunwayCoreView *scrollLabelView = [MMRunwayCoreView scrollWithTitle:scrollTitle
-//                                                                 velocity:0.01
-//                                                                  options:UIViewAnimationOptionCurveLinear];
-//    scrollLabelView.layer.cornerRadius = 10;
-//    scrollLabelView.layer.masksToBounds = YES;
-//    
-//    scrollLabelView.scrollSpace = 30;
-//    /** Step4: 布局(Required) */
-//    scrollLabelView.frame = CGRectMake(50, 100, 300, 30);
-//    [self.view addSubview:scrollLabelView];
-//    
-//    /** Step5: 开始滚动(Start scrolling!) */
-//    [scrollLabelView beginScrolling];
-    
-    MMColorView * colorView = [MMColorView view:[UIColor redColor]];
-    colorView.frame = CGRectMake(0, 300, 50, 50);
-    [self.view addSubview:colorView];
-    self.colorView = colorView;
+    self.coreView = [[MMRunwayCoreView alloc] initWithSpeed:0.5 defaultSpace:30];
+    self.coreView.frame = CGRectMake(20, 300, 300, 40);
+    [self.view addSubview:self.coreView];
+    self.coreView.backgroundColor = [UIColor brownColor];
+//    [coreView appendText:scrollTitle];
+    [self.coreView appendAttributedString:attString];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -218,6 +200,10 @@
 }
 
 - (void) stopWave{
+    
+    NSString *scrollTitle = @"恭喜【愤怒的小奴奴】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条";
+    
+    [self.coreView appendText:scrollTitle];
     
     [self.colorView animation];
     

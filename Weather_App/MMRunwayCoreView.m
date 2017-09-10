@@ -11,19 +11,27 @@
 
 @interface _MMRunwayViewOperation : NSOperation{
 
-    UIView * _runwayView;
-    NSString * _runwayKey;
-    void(^_finishedHandle)(BOOL,NSInteger);
+    __block CGFloat _runwayViewMoveRatio;
 }
 
-@property (nonatomic ,strong ,readonly) UIView * runwayView;
-@property (nonatomic,copy ,readonly) NSString * runwayKey;
+@property (nonatomic ,strong ) UIView * runwayView;
+@property (nonatomic,copy ) NSString * runwayKey;
+@property (nonatomic ,assign) CGFloat speed;// 移动10px需要的时间
+@property (nonatomic ,assign ,readonly) CGFloat runwayViewMoveRatio;
 
-+ (instancetype) operationWithRunwayView:(UIView *)runwayView finishedHandle:(void(^)(BOOL result,NSInteger finishCount))finished;
+@property (nonatomic ,copy) void(^finishedHandle)(BOOL,_MMRunwayViewOperation *);
+
+@property (nonatomic, getter = isFinished)  BOOL finished;
+@property (nonatomic, getter = isExecuting) BOOL executing;
+
++ (instancetype) operationWithRunwayView:(UIView *)runwayView finishedHandle:(void(^)(BOOL result,_MMRunwayViewOperation * operation))finished;
 
 @end
 
 @implementation _MMRunwayViewOperation
+
+@synthesize finished = _finished;
+@synthesize executing = _executing;
 
 #pragma mark - Thread
 
@@ -67,25 +75,29 @@ static NSThread *_networkRequestThread = nil;
     return _networkRequestThread;
 }
 
-+ (instancetype)operationWithRunwayView:(UIView *)runwayView finishedHandle:(void (^)(BOOL, NSInteger))finished{
++ (instancetype)operationWithRunwayView:(UIView *)runwayView finishedHandle:(void (^)(BOOL, _MMRunwayViewOperation *))finished{
 
+    _MMRunwayViewOperation * operation = [[_MMRunwayViewOperation alloc] init];
+    operation.runwayView = runwayView;
+    operation.finishedHandle = finished;
+    return operation;
     return [[self alloc] initWithRunwayView:runwayView finishedHandle:finished];
 }
 
-- (instancetype) initWithRunwayView:(UIView *)runwayView finishedHandle:(void(^)(BOOL,NSInteger))finishedHandle{
+- (instancetype) initWithRunwayView:(UIView *)runwayView finishedHandle:(void(^)(BOOL,_MMRunwayViewOperation *))finishedHandle{
 
     self = [super init];
     if (self) {
         
-        _executing = NO;
-        self.finished = NO;
+        self.executing = NO;
+        self.finished  = NO;
         
         NSString * runwayKey = [NSString stringWithFormat:@"%lu",(unsigned long)runwayView.hash];
         _runwayKey = runwayKey;
         
         _runwayView = runwayView;
         
-        _finishedHandle = [finishedHandle copy];
+        _finishedHandle = finishedHandle;
     }
     return self;
 }
@@ -97,49 +109,51 @@ static NSThread *_networkRequestThread = nil;
         return;
     }
     if ([self isReady]) {
-        [self performSelector:@selector(main) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO];
+        self.executing = YES;
+        [self performSelector:@selector(operationDidStart) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO];
     }else{
         NSLog(@"Error: Cannot start Operation: Operation is not ready to start");
     }
 }
 
-- (void)main{
+- (void)operationDidStart{
 
-    @autoreleasepool {
+    CGRect frame = self.runwayView.frame;
+    CGFloat width = frame.size.width;
+    frame.origin.x = -width;
+    CGFloat duration = width * 0.1 * self.speed;
+    [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        self.runwayView.frame = frame;
+    }completion:^(BOOL finished) {
         
-        [self willChangeValueForKey:@"isExecuting"];
-        self.executing = YES;
-        [self didChangeValueForKey:@"isExecuting"];
+        if (!self.isCancelled) {
+            [self cancel];
+        }
+        self.executing = NO;
+        self.finished = YES;
         
-        
-    }
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            if (_finishedHandle) {
+                _finishedHandle(finished,self);
+            }
+        }];
+    }];
 }
 
-
-@end
-
-#pragma mark - NSTimer+TXTimerTarget
-
-@interface NSTimer (TXTimerTarget)
-
-+ (NSTimer *)tx_scheduledTimerWithTimeInterval:(NSTimeInterval)interval repeat:(BOOL)yesOrNo block:(void(^)(NSTimer *timer))block;
-
-@end
-
-
-@implementation NSTimer (TXTimerTarget)
-
-+ (NSTimer *)tx_scheduledTimerWithTimeInterval:(NSTimeInterval)interval repeat:(BOOL)yesOrNo block:(void (^)(NSTimer *))block{
-    return [self scheduledTimerWithTimeInterval:interval target:self selector:@selector(startTimer:) userInfo:[block copy] repeats:yesOrNo];
+#pragma mark -  手动触发 KVO
+- (void)setExecuting:(BOOL)executing
+{
+    [self willChangeValueForKey:@"isExecuting"];
+    _executing = executing;
+    [self didChangeValueForKey:@"isExecuting"];
 }
 
-+ (void)startTimer:(NSTimer *)timer {
-    void (^block)(NSTimer *timer) = timer.userInfo;
-    if (block) {
-        block(timer);
-    }
+- (void)setFinished:(BOOL)finished
+{
+    [self willChangeValueForKey:@"isFinished"];
+    _finished = finished;
+    [self didChangeValueForKey:@"isFinished"];
 }
-
 @end
 
 #pragma mark - UILabel+TXLabel
@@ -179,7 +193,7 @@ static NSThread *_networkRequestThread = nil;
 
 @interface MMRunwayCoreView ()
 
-@property (assign, nonatomic) UIViewAnimationOptions options;
+@property (nonatomic ,strong) NSOperationQueue * queue;
 
 @property (weak, nonatomic) MMRunwayLabel *upLabel;
 //定时器
@@ -205,6 +219,11 @@ static NSThread *_networkRequestThread = nil;
     if (self) {
         _speed = 1;
         _defaultSpace = 30;
+        
+        _operations = [NSMutableArray array];
+        
+        _queue = [[NSOperationQueue alloc] init];
+        _queue.maxConcurrentOperationCount = 100;
     }
     return self;
 }
@@ -215,6 +234,11 @@ static NSThread *_networkRequestThread = nil;
     if (self) {
         _speed = speed;
         _defaultSpace = defaultSpace;
+        
+        _operations = [NSMutableArray array];
+        
+        _queue = [[NSOperationQueue alloc] init];
+        _queue.maxConcurrentOperationCount = 100;
     }
     return self;
 }
@@ -224,16 +248,16 @@ static NSThread *_networkRequestThread = nil;
     MMRunwayLabel * runwayLabel = [[MMRunwayLabel alloc] init];
     runwayLabel.textColor = [UIColor whiteColor];
     runwayLabel.font = [UIFont systemFontOfSize:16];
-    [runwayLabel configText:text];
-    
+    CGSize size = [runwayLabel configText:text];
+    runwayLabel.frame = (CGRect){CGPointZero,size};
     [self appendRunwayLabel:runwayLabel];
 }
 
 - (void)appendAttributedString:(NSAttributedString *)attString{
 
     MMRunwayLabel * runwayLabel = [[MMRunwayLabel alloc] init];
-    [runwayLabel configAttributedString:attString];
-    
+    CGSize size = [runwayLabel configAttributedString:attString];
+    runwayLabel.frame = (CGRect){CGPointZero,size};
     [self appendRunwayLabel:runwayLabel];
 }
 
@@ -246,9 +270,39 @@ static NSThread *_networkRequestThread = nil;
 
     NSAssert(customView != nil, @"请添加一个非nil的视图");
     NSAssert(!CGRectIsNull(customView.bounds), @"请确保customView的bounds已经设置好");
-    NSNumber * key = [NSNumber numberWithUnsignedInteger:customView.hash];
     
-    [_runwayViews addObject:customView];
+    CGRect frame = self.frame;
+    BOOL overBorder = customView.frame.size.height - frame.size.height > 0;
+    CGFloat y = overBorder ? 0 : (frame.size.height - CGRectGetHeight(customView.frame)) / 2;
+    customView.frame = (CGRect){
+        frame.size.width, y,
+        customView.frame.size
+    };
+    
+    [self addSubview:customView];
+    _MMRunwayViewOperation * operation = [[_MMRunwayViewOperation alloc] initWithRunwayView:customView finishedHandle:^(BOOL result, _MMRunwayViewOperation *_operation) {
+//        NSInteger index = [self.queue.operations indexOfObject:_operation];
+//        if (index < self.queue.operationCount - 1) {
+//            
+//            _MMRunwayViewOperation * nextOperation = self.queue.operations[index + 1];
+//            [nextOperation start];
+//        }
+//        [_operation.runwayView removeFromSuperview];
+        [_operations removeObject:_operation];
+        NSLog(@"count:%lu",(unsigned long)self.queue.operationCount);
+    }];
+    operation.speed = _speed;
+    [_operations addObject:operation];
+    [self.queue addOperation:operation];
+    
+    NSInteger index = [self.queue.operations indexOfObject:operation];
+    if (index > 0) {
+        _MMRunwayViewOperation * perOperation = self.queue.operations[index - 1];
+        [operation addDependency:perOperation];
+    }
+    if (self.queue.operationCount == 1) {
+        [operation start];
+    }
 }
 
 #pragma mark - Custom Methods

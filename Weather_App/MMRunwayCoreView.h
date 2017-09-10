@@ -29,7 +29,7 @@
 
     CGFloat _speed;
     CGFloat _defaultSpace;
-    NSMutableArray * _runwayViews;
+    NSMutableArray * _operations;
 }
 
 /**
