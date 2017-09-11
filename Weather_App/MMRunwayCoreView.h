@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MMRunwayLabel : UILabel
+@interface MMRunwayLabel : UILabel<NSCopying>
 
 + (instancetype)label;
 
@@ -21,7 +21,6 @@
     CGFloat _speed;
     CGFloat _defaultSpace;
 }
-
 /**
  *  初始化跑道视图
  *
@@ -45,5 +44,7 @@
 // 需要customView的bounds
 - (void) appendCustomView:(UIView *)customView;
 
+// 移除所有的跑道视图
+- (void) removeAllRunwayView;
 @end
 

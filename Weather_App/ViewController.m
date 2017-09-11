@@ -94,6 +94,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.coreView = [[MMRunwayCoreView alloc] initWithSpeed:1 defaultSpace:30];
+    self.coreView.frame = CGRectMake(20, 300, 300, 40);
+    [self.view addSubview:self.coreView];
+    self.coreView.backgroundColor = [UIColor brownColor];
+    
     MMRunwayLabel * label = [[MMRunwayLabel alloc] init];
     label.backgroundColor = [UIColor orangeColor];
     label.font = [UIFont systemFontOfSize:12];
@@ -101,6 +106,8 @@
     CGSize size = [label configText:@"恭喜【愤怒的小奴奴】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条"];
     label.frame = (CGRect){10, 400, size};
     [self.view addSubview:label];
+    
+    [self.coreView appendRunwayLabel:label];
     
     self.runwayProView = [[MMRunwayProContentView alloc] init];
     self.runwayProView.frame = CGRectMake(0, 40, self.view.frame.size.width, 46);
@@ -120,7 +127,7 @@
                                                                       NSStrokeWidthAttributeName:@1}]
                                    attributedString];
     self.displayLabel.attributedText = string;
-    
+    [self.coreView appendAttributedString:string];
     
     NSString * display = @"hello = nihao = Hello = 你好 = nihao";
     NSAttributedString * attString = [[[[[[[HLLAttributedBuilder builderWithString:display]
@@ -134,6 +141,7 @@
                                       appendString:@"娃大喜"]
                                       attributedString];
     NSLog(@"size:%@",[NSValue valueWithCGSize:[attString size]]);
+    [self.coreView appendAttributedString:attString];
     
     label = [[MMRunwayLabel alloc] init];
     label.backgroundColor = [UIColor lightGrayColor];
@@ -176,21 +184,27 @@
     //
     UIButton * button = [[UIButton alloc] init];
     [button addTarget:self action:@selector(stopWave) forControlEvents:UIControlEventTouchUpInside];
-    button.frame = CGRectMake(100, 150, 150, 50);
+    button.frame = CGRectMake(50, 150, 150, 50);
     [button setTitle:@"Animation" forState:UIControlStateNormal];
     button.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:button];
     
-    self.coreView = [[MMRunwayCoreView alloc] initWithSpeed:1 defaultSpace:30];
-    self.coreView.frame = CGRectMake(20, 300, 300, 40);
-    [self.view addSubview:self.coreView];
-    self.coreView.backgroundColor = [UIColor brownColor];
-    [self.coreView appendAttributedString:attString];
+    button = [[UIButton alloc] init];
+    [button addTarget:self action:@selector(clearnAllOperation) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = CGRectMake(260, 150, 50, 50);
+    [button setTitle:@"clearn" forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor orangeColor];
+    [self.view addSubview:button];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
+}
+
+- (void) clearnAllOperation{
+
+    [self.coreView removeAllRunwayView];
 }
 
 - (void) actioin:(id)ges{
@@ -199,16 +213,37 @@
 }
 
 - (void) stopWave{
+    {
+        NSString *scrollTitle = @"恭喜【愤怒的小奴奴】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条";
+        
+        UIView * testView = [UIView new];
+        testView.backgroundColor = [UIColor orangeColor];
+        testView.frame = CGRectMake(0, 0, 50, 20);
+        [self.coreView appendCustomView:testView];
+        [self.coreView appendText:scrollTitle];
+        
+        NSTextAttachment * attachment = [[NSTextAttachment alloc] init];
+        attachment.image = [UIImage imageNamed:@"red_dot"];
+        attachment.bounds = CGRectMake(0, 0, 9, 9);
+        NSAttributedString * string = [[[[[[[HLLAttributedBuilder builder]
+                                            appendAttachment:attachment]
+                                           appendString:@"nihao"]
+                                          appendString:@"world" forStyle:@{NSForegroundColorAttributeName:[UIColor greenColor],
+                                                                           NSUnderlineColorAttributeName:[UIColor orangeColor],
+                                                                           NSUnderlineStyleAttributeName:@1}]
+                                         appendAttachment:attachment]
+                                        appendString:@"123456" forStyle:@{NSStrokeColorAttributeName:[UIColor orangeColor],
+                                                                          NSStrokeWidthAttributeName:@1}]
+                                       attributedString];
+        [self.coreView appendAttributedString:string];
+
+    }
+
+    {
+        [self.colorView animation];
+    }
     
-    NSString *scrollTitle = @"恭喜【愤怒的小奴奴】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条";
     
-    [self.coreView appendText:scrollTitle];
-    
-    [self.colorView animation];
-    
-    
-    MMColorView * testView = [MMColorView view:[UIColor redColor]];
-    testView.frame = CGRectMake(0, 0, 1000, 46);
     MMDisplayLabel * label = [[MMDisplayLabel alloc] init];
     label.numberOfLines = 1;
     label.textColor = [UIColor whiteColor];
