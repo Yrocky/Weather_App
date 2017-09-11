@@ -10,13 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "Weather_App/ViewController.m"
-            timestampString = "526472335.921155"
+            timestampString = "526805332.796569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "-stopWave"
-            landmarkType = "7">
+            startingLineNumber = "245"
+            endingLineNumber = "245">
             <Actions>
                <BreakpointActionProxy
                   ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">

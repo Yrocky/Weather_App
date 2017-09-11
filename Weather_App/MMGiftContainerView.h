@@ -8,6 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MMGiftContainerView : UIView
+@interface MMGiftModel : NSObject
+
+@property (nonatomic ,assign) NSUInteger giftId;
+@property (nonatomic ,copy) NSString * giftName;
+@end
+
+@interface MMGiftContainerView : UIView{
+    
+    __block NSMutableArray * _giftViews;
+}
+
+@property (nonatomic ,strong ,readonly) NSArray * giftViews;
+
+- (void) receiveGift:(id)gift;
+@end
+
+@interface MMGiftView : UIView
+
 
 @end
+

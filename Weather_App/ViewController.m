@@ -181,11 +181,10 @@
     button.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:button];
     
-    self.coreView = [[MMRunwayCoreView alloc] initWithSpeed:0.5 defaultSpace:30];
+    self.coreView = [[MMRunwayCoreView alloc] initWithSpeed:1 defaultSpace:30];
     self.coreView.frame = CGRectMake(20, 300, 300, 40);
     [self.view addSubview:self.coreView];
     self.coreView.backgroundColor = [UIColor brownColor];
-//    [coreView appendText:scrollTitle];
     [self.coreView appendAttributedString:attString];
 }
 
