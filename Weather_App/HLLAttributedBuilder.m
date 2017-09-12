@@ -8,6 +8,42 @@
 
 #import "HLLAttributedBuilder.h"
 
+#define RX(pattern) [[NSRegularExpression alloc] initWithPattern:pattern]
+
+@interface NSRegularExpression (RX)
+
+- (id) initWithPattern:(NSString*)pattern;
+- (NSArray*) matches:(NSString*)str;
+@end
+
+@implementation NSRegularExpression (RX)
+
+- (id) initWithPattern:(NSString*)pattern
+{
+    return [self initWithPattern:pattern options:0 error:nil];
+}
+
+- (NSArray<NSTextCheckingResult *>*) matches:(NSString*)str
+{
+    return [self matchesInString:str options:0 range:NSMakeRange(0, str.length)];
+}
+
+- (void) enumMatches:(void(^)(NSTextCheckingResult * result,NSUInteger index))handle inString:(NSString *)string{
+
+    NSArray * results = [self matches:string];
+    if (results && results.count > 1) {
+
+        [results enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (handle) {
+                handle(obj,idx);
+            }
+        }];
+    }
+}
+
+@end
+
+
 @interface _HLLString : NSObject
 
 @property (nonatomic ,strong) NSString * string;
@@ -166,16 +202,12 @@
     
     _HLLString * resultStringObj = self.stringObjs[0];
     NSMutableAttributedString * attributedText = [[NSMutableAttributedString alloc] initWithAttributedString:resultStringObj.attributedString];
-    
-    NSRegularExpression * regularExp = [[NSRegularExpression alloc] initWithPattern:string options:NSRegularExpressionIgnoreMetacharacters error:nil];
-    NSRange originalStringRange = NSMakeRange(0, self.originalString.length);
-    
-    NSArray <NSTextCheckingResult *>* matches = [regularExp matchesInString:self.originalString options:NSMatchingWithTransparentBounds range:originalStringRange];
-    
-    for (NSTextCheckingResult * math in matches) {
-        [attributedText addAttributes:mergeStyle range:math.range];
-    }
-    
+
+    [RX(string) enumMatches:^(NSTextCheckingResult *result, NSUInteger index) {
+        
+        [attributedText addAttributes:mergeStyle range:result.range];
+    } inString:self.originalString];
+
     [self.stringObjs removeAllObjects];
     
     _HLLString * stringObj = [[_HLLString alloc] init];

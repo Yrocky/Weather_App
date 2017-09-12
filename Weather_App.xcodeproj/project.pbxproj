@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */; };
+		7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */; };
 		7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F91F7C81F62991400B20D76 /* MMGiftContainerView.m */; };
 		7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F94A34A1F55120D00DA28EA /* NSArray+Sugar.m */; };
 		7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9CED361F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m */; };
@@ -27,6 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F414F491F67866200EC8E86 /* MMGiftEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGiftEffectViewController.h; sourceTree = "<group>"; };
+		7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGiftEffectViewController.m; sourceTree = "<group>"; };
+		7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGiftEffectOperationMgr.h; sourceTree = "<group>"; };
+		7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGiftEffectOperationMgr.m; sourceTree = "<group>"; };
 		7F91F7C71F62991400B20D76 /* MMGiftContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGiftContainerView.h; sourceTree = "<group>"; };
 		7F91F7C81F62991400B20D76 /* MMGiftContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGiftContainerView.m; sourceTree = "<group>"; };
 		7F94A3491F55120D00DA28EA /* NSArray+Sugar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sugar.h"; sourceTree = "<group>"; };
@@ -124,6 +130,8 @@
 				7FDC6ECC1F46E35A00D94379 /* AppDelegate.m */,
 				7FDC6ECE1F46E35A00D94379 /* ViewController.h */,
 				7FDC6ECF1F46E35A00D94379 /* ViewController.m */,
+				7F414F491F67866200EC8E86 /* MMGiftEffectViewController.h */,
+				7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */,
 				7F9CED3C1F5D1F9D00A64EB5 /* MMRunwayProContentView.h */,
 				7F9CED3D1F5D1F9D00A64EB5 /* MMRunwayProContentView.m */,
 				7F9CED351F57F31C00A64EB5 /* UIView+AutoLayoutSupport.h */,
@@ -136,6 +144,8 @@
 				7F9CED3A1F5CEAA000A64EB5 /* MMRunwayCoreView.m */,
 				7F91F7C71F62991400B20D76 /* MMGiftContainerView.h */,
 				7F91F7C81F62991400B20D76 /* MMGiftContainerView.m */,
+				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
+				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
 				7FED6BA31F5557E2004E3345 /* DataSource */,
 				7FBCF0BF1F4D269E00E2EEC7 /* CustomView */,
 				7FDC6ED11F46E35A00D94379 /* Main.storyboard */,
@@ -300,10 +310,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */,
+				7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */,
 				7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
 				7F9CED3B1F5CEAA000A64EB5 /* MMRunwayCoreView.m in Sources */,
 				7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */,
+				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
 				7FDC6EE11F46E38800D94379 /* HLLWaveView.m in Sources */,
 				7FBCF0C41F4E776B00E2EEC7 /* HLLCircularLoaderView.m in Sources */,
 				7FBCF0BE1F4D269100E2EEC7 /* HLLSegmentView.m in Sources */,

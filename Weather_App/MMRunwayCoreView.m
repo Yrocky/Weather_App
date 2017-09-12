@@ -7,20 +7,19 @@
 //
 
 #import "MMRunwayCoreView.h"
-#import <CoreText/CoreText.h>
 
 @interface _MMRunwayViewOperation : NSObject{
 
     __block CGFloat _runwayViewMoveRatio;
-    UIView * _runwayView;
+    __weak UIView * _runwayView;
     BOOL _finished;
     BOOL _executing;
     CADisplayLink * _link;
 }
 
-@property (nonatomic ,strong ,readonly) UIView * runwayView;
-@property (nonatomic ,assign) CGFloat speed;//
+@property (nonatomic ,weak ,readonly) UIView * runwayView;
 @property (nonatomic ,assign ,readonly) CGFloat runwayViewMoveRatio;
+@property (nonatomic ,assign) CGFloat speed;//
 @property (nonatomic ,assign) BOOL fullyDisplayed;// runwayView是否全部展示出来
 @property (nonatomic ,assign) CGRect originalFrame;
 
@@ -30,7 +29,7 @@
 - (instancetype) initWithRunwayView:(UIView *)runwayView;
 
 - (void) start;
-
+- (void) cancel;
 @end
 
 @implementation _MMRunwayViewOperation
@@ -39,13 +38,13 @@
 {
     NSLog(@"_MMRunwayViewOperation dealloc");
 }
+
 - (instancetype) initWithRunwayView:(UIView *)runwayView{
 
     self = [super init];
     if (self) {
         
         _runwayView = runwayView;
-        
     }
     return self;
 }
@@ -59,6 +58,13 @@
     [self performSelector:@selector(operationDidStart) onThread:[NSThread mainThread] withObject:nil waitUntilDone:NO];
 }
 
+- (void) cancel{
+
+    [self stopWatch];
+}
+
+#pragma mark - Private M
+
 - (void)operationDidStart{
 
     self.originalFrame = _runwayView.frame;
@@ -69,7 +75,7 @@
 - (void)startWatch{
     [self stopWatch];
     _link = [CADisplayLink displayLinkWithTarget:self selector:@selector(track)];
-    [_link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [_link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 }
 
 - (void)track{
@@ -114,11 +120,20 @@
 
 @end
 
+@class _MMRunwayViewQueue;
+@protocol _MMRunwayViewQueueDelegate <NSObject>
+
+@optional
+- (void) runwayViewQueue:(_MMRunwayViewQueue *)queue willStartOperation:(_MMRunwayViewOperation *)operation;
+- (void) runwayViewQueue:(_MMRunwayViewQueue *)queue didFinishOperation:(_MMRunwayViewOperation *)operation;
+- (void) runwayViewQueueDidFinishAllOperation:(_MMRunwayViewQueue *)queue;
+@end
+
 @interface _MMRunwayViewQueue : NSObject{
     
     __block NSMutableArray <_MMRunwayViewOperation *>* _operations;
 }
-
+@property (nonatomic ,weak) id<_MMRunwayViewQueueDelegate> delegate;
 @property (nonatomic ,assign ,readonly) NSUInteger operationCount;
 
 - (void) addOperation:(_MMRunwayViewOperation *)operation;
@@ -127,6 +142,7 @@
 - (_MMRunwayViewOperation *)currentOperation;
 
 - (void) cancelAllOperations;
+
 @end
 
 @implementation _MMRunwayViewQueue
@@ -143,14 +159,29 @@
 - (void)addOperation:(_MMRunwayViewOperation *)operation{
     
     [_operations addObject:operation];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(runwayViewQueue:willStartOperation:)]) {
+        [self.delegate runwayViewQueue:self willStartOperation:operation];
+    }
     [self startOperation:operation];
 }
 
 - (void)startOperation:(_MMRunwayViewOperation *)operation{
     
     operation.finishedHandle = ^(BOOL finished, _MMRunwayViewOperation * _operation) {
+        
+        if (self.delegate &&
+            [self.delegate respondsToSelector:@selector(runwayViewQueue:didFinishOperation:)]) {
+            [self.delegate runwayViewQueue:self didFinishOperation:_operation];
+        }
         [_operation.runwayView removeFromSuperview];
         [_operations removeObject:_operation];
+        
+        if (_operations.count == 0 &&
+            self.delegate &&
+            [self.delegate respondsToSelector:@selector(runwayViewQueueDidFinishAllOperation:)]) {
+            [self.delegate runwayViewQueueDidFinishAllOperation:self];
+        }
     };
     operation.progressHandle = ^(CGFloat progress, BOOL fullDisplay ,_MMRunwayViewOperation * _operation) {
         if (fullDisplay) {
@@ -176,10 +207,12 @@
 }
 
 - (NSUInteger)operationCount{
+    
     return _operations.count;
 }
 
 - (_MMRunwayViewOperation *)lastOperation{
+    
     if (self.operationCount > 0) {
         [_operations lastObject];
     }
@@ -194,17 +227,38 @@
     return nil;
 }
 
-- (void)cancelAllOperations{
+- (void) cancelAllOperations{
+
+    [_operations enumerateObjectsUsingBlock:^(_MMRunwayViewOperation * _Nonnull operation, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        [operation.runwayView removeFromSuperview];
+        [operation cancel];
+    }];
     
     [_operations removeAllObjects];
 }
+
 @end
 
 #pragma mark - UILabel+TXLabel
 
 @implementation MMRunwayLabel
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    MMRunwayLabel *label = [[[self class] alloc] init]; // <== 注意这里
+    if (self.text) {
+        [label configText:self.text];
+    }
+    if (self.attributedText) {
+        [label configAttributedString:self.attributedText];
+    }
+    label.frame = self.frame;
+    return label;
+}
+
 + (instancetype)label {
+    
     MMRunwayLabel *label = [[MMRunwayLabel alloc]init];
     label.numberOfLines = 1;
     label.font = [UIFont systemFontOfSize:15];
@@ -233,7 +287,7 @@
 
 #pragma mark - MMRunwayCoreView
 
-@interface MMRunwayCoreView ()
+@interface MMRunwayCoreView ()<_MMRunwayViewQueueDelegate>
 
 @property (nonatomic ,strong) _MMRunwayViewQueue * queue;
 
@@ -245,11 +299,14 @@
     
     self = [super init];
     if (self) {
+
         _speed = 1;
         _defaultSpace = 30;
         
+        self.hidden = YES;
+        
         _queue = [[_MMRunwayViewQueue alloc] init];
-//        _queue.maxConcurrentOperationCount = 100;
+        _queue.delegate = self;
     }
     return self;
 }
@@ -261,8 +318,10 @@
         _speed = speed;
         _defaultSpace = defaultSpace;
         
+//        self.hidden = YES;
+        
         _queue = [[_MMRunwayViewQueue alloc] init];
-//        _queue.maxConcurrentOperationCount = 100;
+        _queue.delegate = self;
     }
     return self;
 }
@@ -270,7 +329,7 @@
 - (void)appendText:(NSString *)text{
 
     MMRunwayLabel * runwayLabel = [[MMRunwayLabel alloc] init];
-    runwayLabel.textColor = [UIColor whiteColor];
+    runwayLabel.textColor = [UIColor orangeColor];
     runwayLabel.font = [UIFont systemFontOfSize:16];
     CGSize size = [runwayLabel configText:text];
     runwayLabel.frame = (CGRect){CGPointZero,size};
@@ -291,13 +350,19 @@
 }
 
 - (void)appendCustomView:(UIView *)customView{
-
+    
     NSAssert(customView != nil, @"请添加一个非nil的视图");
     NSAssert(!CGRectIsNull(customView.bounds), @"请确保customView的bounds已经设置好");
+
+    UIView * _runwayView = customView;
+    if (customView.superview &&
+        [customView respondsToSelector:@selector(copyWithZone:)]) {
+        _runwayView = [customView copy];
+    }
     
     CGRect frame = self.frame;
-    BOOL overBorder = customView.frame.size.height - frame.size.height > 0;
-    CGFloat y = overBorder ? 0 : (frame.size.height - CGRectGetHeight(customView.frame)) / 2;
+    BOOL overBorder = _runwayView.frame.size.height - frame.size.height > 0;
+    CGFloat y = overBorder ? 0 : (frame.size.height - CGRectGetHeight(_runwayView.frame)) / 2;
     CGFloat x = 0;
     CGFloat selfWidth = frame.size.width;
     if (self.queue.operationCount > 0) {
@@ -306,17 +371,33 @@
     }else{
         x = selfWidth;
     }
-    customView.frame = (CGRect){
+    _runwayView.frame = (CGRect){
         x, y,
-        customView.frame.size
+        _runwayView.frame.size
     };
     
-    [self addSubview:customView];
+    [self addSubview:_runwayView];
     
-    _MMRunwayViewOperation * operation = [[_MMRunwayViewOperation alloc] initWithRunwayView:customView];
+    _MMRunwayViewOperation * operation = [[_MMRunwayViewOperation alloc] initWithRunwayView:_runwayView];
     operation.speed = _speed;
     [_queue addOperation:operation];
 }
 
+- (void)removeAllRunwayView{
+
+    [_queue cancelAllOperations];
+}
+
+#pragma mark - _MMRunwayViewQueueDelegate M
+
+- (void)runwayViewQueue:(_MMRunwayViewQueue *)queue willStartOperation:(_MMRunwayViewOperation *)operation{
+
+//    self.hidden = NO;
+}
+
+- (void)runwayViewQueueDidFinishAllOperation:(_MMRunwayViewQueue *)queue{
+
+//    self.hidden = YES;
+}
 @end
 
