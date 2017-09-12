@@ -56,6 +56,24 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Ulm-lU-rOR">
+            <objects>
+                <viewController id="XWR-jd-oKY" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iH3-eB-xOW"/>
+                        <viewControllerLayoutGuide type="bottom" id="3uB-Le-CkM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I3v-eX-Wab">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aia-kg-eRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="945" y="139"/>
+        </scene>
     </scenes>
     <resources>
         <image name="sunset" width="597" height="369"/>

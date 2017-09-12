@@ -126,6 +126,7 @@
 - (_MMRunwayViewOperation *)lastOperation;
 - (_MMRunwayViewOperation *)currentOperation;
 
+- (void) cancelAllOperations;
 @end
 
 @implementation _MMRunwayViewQueue
@@ -191,6 +192,11 @@
         return [_operations firstObject];
     }
     return nil;
+}
+
+- (void)cancelAllOperations{
+    
+    [_operations removeAllObjects];
 }
 @end
 
