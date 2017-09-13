@@ -38,10 +38,9 @@ attString = [[[[[HLLAttributedBuilder builder]
 ```
 
 <p align="center">
-  <img src="img/normal.png">
+  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/normal.png?raw=true"  align="center">
 </p>
 
-![](img/normal.png)
 
 ### 支持 NSTextAttachment
 
@@ -70,7 +69,10 @@ attachment.bounds = CGRectMake(0, 0, 9, 9);
                  attributedString];
 ```
 
-![](img/attachment.png)
+<p align="center">
+  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/attachment.png?raw=true"  align="center">
+</p>
+
 
 ### 支持查找设置
 
@@ -100,7 +102,9 @@ NSString * display = @"hello = nihao = Hello = 你好 = nihao";
                  attributedString];
 ```
 
-![](img/config.png)
+<p align="center">
+  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/config.png?raw=true"  align="center">
+</p>
 
 
 
