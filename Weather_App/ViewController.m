@@ -101,7 +101,7 @@
     
     NSString * string = @"恭喜【1234554】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条";
     MMRunwayLabel * label = [[MMRunwayLabel alloc] init];
-    label.backgroundColor = [UIColor orangeColor];
+    label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont systemFontOfSize:12];
     label.textColor = [UIColor whiteColor];
     CGSize size = [label configText:string];
@@ -124,12 +124,13 @@
                     appendString:@"world" forStyle:@{NSForegroundColorAttributeName:[UIColor greenColor],
                                                      NSUnderlineColorAttributeName:[UIColor orangeColor],
                                                      NSUnderlineStyleAttributeName:@1}]
-                   appendAttachment:attachment]
-                  appendString:@"123456" forStyle:@{NSStrokeColorAttributeName:[UIColor redColor],
-                                                    NSStrokeWidthAttributeName:@1}]
+                   appendString:@"123456" forStyle:@{NSStrokeColorAttributeName:[UIColor redColor],
+                                                     NSStrokeWidthAttributeName:@1}]
+                  appendAttachment:attachment]
                  attributedString];
     self.displayLabel.attributedText = attString;
     
+    label.attributedText = attString;
 //    [self.coreView appendAttributedString:attString];
     
     NSString * display = @"hello = nihao = Hello = 你好 = nihao";
@@ -154,16 +155,16 @@
     
     
     label = [[MMRunwayLabel alloc] init];
-    label.backgroundColor = [UIColor lightGrayColor];
+    label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont systemFontOfSize:12];
     label.textColor = [UIColor whiteColor];
     size = [label configAttributedString:attString];
     label.frame = (CGRect){0, 0, size};
-    UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 360, size.width - 100, size.height)];
-    scrollView.backgroundColor = [UIColor redColor];
+    UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 360, size.width - 0, size.height)];
+    scrollView.backgroundColor = [UIColor clearColor];
     scrollView.contentSize = CGSizeMake(size.width, size.height);
     [self.view addSubview:scrollView];
-    [scrollView setContentOffset:CGPointMake(40, 0)];
+    [scrollView setContentOffset:CGPointMake(0, 0)];
     [scrollView addSubview:label];
     
     self.displayLabel.attributedText = attString;

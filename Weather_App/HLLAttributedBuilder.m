@@ -8,7 +8,11 @@
 
 #import "HLLAttributedBuilder.h"
 
+#ifndef RX
+
 #define RX(pattern) [[NSRegularExpression alloc] initWithPattern:pattern]
+
+#endif
 
 @interface NSRegularExpression (RX)
 
@@ -31,7 +35,7 @@
 - (void) enumMatches:(void(^)(NSTextCheckingResult * result,NSUInteger index))handle inString:(NSString *)string{
 
     NSArray * results = [self matches:string];
-    if (results && results.count > 1) {
+    if (results && results.count > 0) {
 
         [results enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if (handle) {
@@ -51,6 +55,7 @@
 @property (nonatomic ,assign) NSRange range;
 @property (nonatomic ,strong) NSDictionary * style;
 @end
+
 @implementation _HLLString
 @end
 
@@ -206,6 +211,7 @@
     [RX(string) enumMatches:^(NSTextCheckingResult *result, NSUInteger index) {
         
         [attributedText addAttributes:mergeStyle range:result.range];
+        
     } inString:self.originalString];
 
     [self.stringObjs removeAllObjects];

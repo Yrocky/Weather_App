@@ -15,9 +15,8 @@ int main(int argc, char * argv[]) {
         
         NSString * display = @"hello = nihao = Hello = 你好 = nihao";
         
-        NSAttributedString * atttStr = [[[[HLLAttributedBuilder builderWithString:display]
+        NSAttributedString * atttStr = [[[HLLAttributedBuilder builderWithString:display]
                                           configString:@"H" forStyle:@{NSBackgroundColorAttributeName:[UIColor orangeColor]}]
-                                         configString:@"h" forStyle:@{NSForegroundColorAttributeName:[UIColor redColor]}]
                                         attributedString];
         
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
