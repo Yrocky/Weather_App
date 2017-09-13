@@ -19,9 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString * a = @"a[bc]d(you)A[BCD]1【大家好】2a[gs]34(miss)";
+    self.label.backgroundColor = [UIColor clearColor];
+    NSString * a = @"a[bc]d(you)A[BCD]1【大家好】2a[gs]34(me)";
     NSAttributedString * attS = AttBuilderWith(a).
-    configStringAndStyle(@"(?<=\\【)[^\\】]+",@{NSForegroundColorAttributeName:[UIColor whiteColor]}).
+    configStringAndStyle(@"(?<=\\[)[^\\]]+",@{NSForegroundColorAttributeName:[UIColor orangeColor]}).
     attributedStr();
     self.label.attributedText = attS;
     

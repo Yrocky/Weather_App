@@ -37,9 +37,7 @@ attString = [[[[[HLLAttributedBuilder builder]
                  attributedString];
 ```
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/normal.png?raw=true"  align="center">
-</p>
+<img src="https://github.com/Yrocky/Weather_App/blob/master/img/normal.png?raw=true"  align="center">
 
 
 ### 支持 NSTextAttachment
@@ -69,9 +67,7 @@ attachment.bounds = CGRectMake(0, 0, 9, 9);
                  attributedString];
 ```
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/attachment.png?raw=true"  align="center">
-</p>
+<img src="https://github.com/Yrocky/Weather_App/blob/master/img/attachment.png?raw=true"  align="center">
 
 
 ### 支持查找设置
@@ -102,12 +98,20 @@ NSString * display = @"hello = nihao = Hello = 你好 = nihao";
                  attributedString];
 ```
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/config.png?raw=true"  align="center">
-</p>
+<img src="https://github.com/Yrocky/Weather_App/blob/master/img/config.png?raw=true"  align="center">
 
+使用正则表达式进行属性字符串设置
 
+``` objective-c
+NSString * a = @"a[bc]d(you)A[BCD]1【大家好】2a[gs]34(me)";
+NSAttributedString * attS = AttBuilderWith(a).
+    configStringAndStyle(@"(?<=\\[)[^\\]]+",@{NSForegroundColorAttributeName:[UIColor orangeColor]}).
+    attributedStr();
+```
 
+> 以上的正则中用了**零宽断言**的语法 http://www.ibloger.net/article/31.html
+
+<img src="https://github.com/Yrocky/Weather_App/blob/master/img/rx.png?raw=true"  align="center">
 
 
 
