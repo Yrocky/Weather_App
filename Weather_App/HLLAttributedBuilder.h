@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#ifndef AttBuilder
+
+#define AttBuilder [HLLAttributedBuilder builder]
+
+#endif
+
+#define AttBuilderWith(string) [HLLAttributedBuilder builderWithString:string]
+#define AttBuilderStyle(string,style) [HLLAttributedBuilder builderWithString:string defaultStyle:style]
+
 @interface HLLAttributedBuilder : NSObject
 
 // black 16
@@ -35,9 +44,9 @@
 - (HLLAttributedBuilder *(^)(NSTextAttachment *))appendAttachment;
 @end
 
+// 给定文本，对需要的内容设置对应的属性字符串，并且区分大小写，支持使用正则匹配
 @interface HLLAttributedBuilder (Config)
 
-// 给定文本，对需要的内容设置对应的属性字符串，并且区分大小写
 + (instancetype) builderWithString:(NSString *)originalString;
 + (instancetype) builderWithString:(NSString *)originalString defaultStyle:(NSDictionary *)defaultStyle;
 

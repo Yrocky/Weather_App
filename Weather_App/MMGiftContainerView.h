@@ -7,12 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface MMGiftModel : NSObject
-
-@property (nonatomic ,assign) NSUInteger giftId;
-@property (nonatomic ,copy) NSString * giftName;
-@end
+#import "MMGiftEffectOperationMgr.h"
 
 @interface MMGiftContainerView : UIView{
     
@@ -20,6 +15,9 @@
 }
 
 @property (nonatomic ,strong ,readonly) NSArray * giftViews;
+
+- (void)startTrack;
+- (void)stopTrack;
 
 - (void) receiveGift:(id)gift;
 @end

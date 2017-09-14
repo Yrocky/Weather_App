@@ -43,7 +43,7 @@
     [_contentView removeFromSuperview];
     _contentView = nil;
     
-    NSLog(@"_MMRunwayProBackgroundView dealloc");
+    //NSLog(@"_MMRunwayProBackgroundView dealloc");
 }
 
 - (instancetype) initWithView:(UIView *)view{

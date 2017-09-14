@@ -14,6 +14,7 @@
 #import "DataSourceProtocol.h"
 #import "MMRunwayCoreView.h"
 #import "MMRunwayProContentView.h"
+#import "MMPreviewHUD.h"
 
 @interface MMColorView : UIView<DataSource>
 
@@ -24,16 +25,16 @@
 @implementation MMColorView
 
 + (instancetype)view:(UIColor *)color{
-
+    
     MMColorView * view = [[self alloc] init];
     view.backgroundColor = color;
     return view;
 }
 
 - (void) animation{
-
+    
     [self.layer removeAllAnimations];
-//    self.layer.opacity = 0;
+    //    self.layer.opacity = 0;
     CGPoint position = self.layer.position;
     CAKeyframeAnimation * positionAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     positionAnimation.values = @[[NSValue valueWithCGPoint:CGPointMake(position.x, position.y)],
@@ -62,7 +63,7 @@
 @implementation MMDisplayLabel
 
 - (void)setText:(NSString *)text{
-
+    
     [super setText:text];
     CGSize textSize = [text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, self.frame.size.height)
                                          options:NSStringDrawingUsesLineFragmentOrigin
@@ -87,6 +88,8 @@
 @property (nonatomic ,strong) MMColorView * colorView;
 
 @property (nonatomic ,strong) MMRunwayCoreView * coreView;
+@property (nonatomic ,assign) NSInteger index;
+
 @end
 
 @implementation ViewController
@@ -99,9 +102,9 @@
     [self.view addSubview:self.coreView];
     self.coreView.backgroundColor = [UIColor brownColor];
     
-    NSString * string = @"恭喜【124235】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条";
+    NSString * string = @"恭喜【1234554】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条";
     MMRunwayLabel * label = [[MMRunwayLabel alloc] init];
-    label.backgroundColor = [UIColor orangeColor];
+    label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont systemFontOfSize:12];
     label.textColor = [UIColor whiteColor];
     CGSize size = [label configText:string];
@@ -120,7 +123,7 @@
     self.runwayProView = [[MMRunwayProContentView alloc] init];
     self.runwayProView.frame = CGRectMake(0, 40, self.view.frame.size.width, 46);
     [self.view addSubview:self.runwayProView];
-
+    
     NSTextAttachment * attachment = [[NSTextAttachment alloc] init];
     attachment.image = [UIImage imageNamed:@"red_dot"];
     attachment.bounds = CGRectMake(0, 0, 9, 9);
@@ -136,7 +139,7 @@
                  attributedString];
     self.displayLabel.attributedText = attString;
     [self.coreView appendAttributedString:attString];
-    
+
     NSString * display = @"hello = nihao = Hello = 你好 = nihao";
     attString = [[[[[[[HLLAttributedBuilder builderWithString:display]
                       configString:@"hello" forStyle:@{NSUnderlineColorAttributeName:[UIColor redColor],
@@ -151,17 +154,24 @@
     NSLog(@"size:%@",[NSValue valueWithCGSize:[attString size]]);
     [self.coreView appendAttributedString:attString];
     
+    //
+    [self.coreView appendAttributedString:
+     [[[HLLAttributedBuilder builderWithString:string]
+       configString:@"【.】" forStyle:@{NSUnderlineColorAttributeName:[UIColor orangeColor],
+                                      NSUnderlineStyleAttributeName:@1}] attributedString]];
+    
+    
     label = [[MMRunwayLabel alloc] init];
-    label.backgroundColor = [UIColor lightGrayColor];
+    label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont systemFontOfSize:12];
     label.textColor = [UIColor whiteColor];
     size = [label configAttributedString:attString];
     label.frame = (CGRect){0, 0, size};
-    UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 360, size.width - 100, size.height)];
-    scrollView.backgroundColor = [UIColor redColor];
-    scrollView.contentSize = CGSizeMake(size.width - 80, size.height);
+    UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 360, size.width - 0, size.height)];
+    scrollView.backgroundColor = [UIColor clearColor];
+    scrollView.contentSize = CGSizeMake(size.width, size.height);
     [self.view addSubview:scrollView];
-    [scrollView setContentOffset:CGPointMake(40, 0)];
+    [scrollView setContentOffset:CGPointMake(0, 0)];
     [scrollView addSubview:label];
     
     self.displayLabel.attributedText = attString;
@@ -211,16 +221,33 @@
 }
 
 - (void) clearnAllOperation{
-
+    
     [self.coreView removeAllRunwayView];
 }
 
 - (void) actioin:(id)ges{
-
-    NSLog(@"++++");
+    
+    NSLog(@"+++_+_");
 }
 
 - (void) stopWave{
+    
+    NSString * text = @"<昵称:>消息内容";
+    NSArray * array = @[@"<昵称:>消息内容",
+                        @"<昵称:>消息内容消息内容",
+                        @"<昵称昵称:>消容",
+                        @"<昵称:>消息内容消息内容消息内容内容消息内容消息内容内容消息内容消息内容"];
+    
+    self.index += 1;
+    
+    if (_index >= array.count) {
+        _index = 0;
+    }
+    text = array[_index];
+    
+    [MMPreviewHUD showHUD:text inView:self.view target:self action:@selector(actioin:)];
+    
+    return;
     {
         NSString *scrollTitle = @"恭喜【愤怒的小奴奴】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条";
         
@@ -244,9 +271,9 @@
                                                                           NSStrokeWidthAttributeName:@1}]
                                        attributedString];
         [self.coreView appendAttributedString:string];
-
+        
     }
-
+    
     {
         [self.colorView animation];
     }

@@ -36,8 +36,9 @@
 
 - (void)dealloc
 {
-    NSLog(@"_MMRunwayViewOperation dealloc");
+    //NSLog(@"_MMRunwayViewOperation dealloc");
 }
+
 - (instancetype) initWithRunwayView:(UIView *)runwayView{
 
     self = [super init];
@@ -74,7 +75,7 @@
 - (void)startWatch{
     [self stopWatch];
     _link = [CADisplayLink displayLinkWithTarget:self selector:@selector(track)];
-    [_link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [_link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 }
 
 - (void)track{
@@ -140,7 +141,8 @@
 - (_MMRunwayViewOperation *)lastOperation;
 - (_MMRunwayViewOperation *)currentOperation;
 
-- (void) clearnAllOperation;
+- (void) cancelAllOperations;
+
 @end
 
 @implementation _MMRunwayViewQueue
@@ -225,7 +227,7 @@
     return nil;
 }
 
-- (void) clearnAllOperation{
+- (void) cancelAllOperations{
 
     [_operations enumerateObjectsUsingBlock:^(_MMRunwayViewOperation * _Nonnull operation, NSUInteger idx, BOOL * _Nonnull stop) {
        
@@ -383,7 +385,7 @@
 
 - (void)removeAllRunwayView{
 
-    [_queue clearnAllOperation];
+    [_queue cancelAllOperations];
 }
 
 #pragma mark - _MMRunwayViewQueueDelegate M

@@ -10,4 +10,6 @@
 
 @interface MMPreviewHUD : UIView
 
++ (void) showHUD:(NSString *)text inView:(UIView *)view target:(id)target action:(SEL)action;
++ (void) showHUD:(NSString *)text inViewController:(UIViewController *)v action:(SEL)action;
 @end

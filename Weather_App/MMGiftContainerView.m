@@ -8,11 +8,27 @@
 
 #import "MMGiftContainerView.h"
 
+@interface MMGiftContainerView()
+
+@property (nonatomic ,strong) MMGiftEffectOperationMgr * operationMgr;
+
+@end
+
 @implementation MMGiftContainerView
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.operationMgr = [[MMGiftEffectOperationMgr alloc] init];
+    }
+    return self;
+}
+
 
 - (void)receiveGift:(MMGiftModel *)gift{
 
-    
+    [self.operationMgr appendGiftModel:gift];
 }
 
 - (NSArray *)giftViews{
