@@ -99,15 +99,23 @@
     [self.view addSubview:self.coreView];
     self.coreView.backgroundColor = [UIColor brownColor];
     
+    NSString * string = @"恭喜【124235】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条";
     MMRunwayLabel * label = [[MMRunwayLabel alloc] init];
     label.backgroundColor = [UIColor orangeColor];
     label.font = [UIFont systemFontOfSize:12];
     label.textColor = [UIColor whiteColor];
-    CGSize size = [label configText:@"恭喜【愤怒的小奴奴】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条"];
+    CGSize size = [label configText:string];
     label.frame = (CGRect){10, 400, size};
     [self.view addSubview:label];
-    
     [self.coreView appendRunwayLabel:label];
+    
+    NSAttributedString * attString;
+    attString = [[[HLLAttributedBuilder builderWithString:string]
+                  configString:@"^[0-9]{1,10}$" forStyle:@{NSForegroundColorAttributeName:[UIColor greenColor],
+                                                  NSUnderlineColorAttributeName:[UIColor orangeColor],
+                                                  NSUnderlineStyleAttributeName:@1}]
+                 attributedString];
+    [self.coreView appendAttributedString:attString];
     
     self.runwayProView = [[MMRunwayProContentView alloc] init];
     self.runwayProView.frame = CGRectMake(0, 40, self.view.frame.size.width, 46);
@@ -116,30 +124,30 @@
     NSTextAttachment * attachment = [[NSTextAttachment alloc] init];
     attachment.image = [UIImage imageNamed:@"red_dot"];
     attachment.bounds = CGRectMake(0, 0, 9, 9);
-    NSAttributedString * string = [[[[[[[HLLAttributedBuilder builder]
-                                        appendAttachment:attachment]
-                                       appendString:@"nihao"]
-                                      appendString:@"world" forStyle:@{NSForegroundColorAttributeName:[UIColor greenColor],
-                                                                       NSUnderlineColorAttributeName:[UIColor orangeColor],
-                                                                       NSUnderlineStyleAttributeName:@1}]
-                                     appendAttachment:attachment]
-                                    appendString:@"123456" forStyle:@{NSStrokeColorAttributeName:[UIColor redColor],
-                                                                      NSStrokeWidthAttributeName:@1}]
-                                   attributedString];
-    self.displayLabel.attributedText = string;
-    [self.coreView appendAttributedString:string];
+    attString = [[[[[[[HLLAttributedBuilder builder]
+                      appendAttachment:attachment]
+                     appendString:@"nihao"]
+                    appendString:@"world" forStyle:@{NSForegroundColorAttributeName:[UIColor greenColor],
+                                                     NSUnderlineColorAttributeName:[UIColor orangeColor],
+                                                     NSUnderlineStyleAttributeName:@1}]
+                   appendAttachment:attachment]
+                  appendString:@"123456" forStyle:@{NSStrokeColorAttributeName:[UIColor redColor],
+                                                    NSStrokeWidthAttributeName:@1}]
+                 attributedString];
+    self.displayLabel.attributedText = attString;
+    [self.coreView appendAttributedString:attString];
     
     NSString * display = @"hello = nihao = Hello = 你好 = nihao";
-    NSAttributedString * attString = [[[[[[[HLLAttributedBuilder builderWithString:display]
-                                         configString:@"hello" forStyle:@{NSUnderlineColorAttributeName:[UIColor redColor],
-                                                                          NSUnderlineStyleAttributeName:@1,
-                                                                          NSForegroundColorAttributeName:[UIColor orangeColor]}]
-                                        configString:@"nihao" forStyle:@{NSStrokeColorAttributeName:[UIColor redColor],
-                                                                         NSStrokeWidthAttributeName:@1}]
-                                       configString:@"H" forStyle:@{NSBackgroundColorAttributeName:[UIColor greenColor]}]
-                                      appendAttachment:attachment]
-                                      appendString:@"娃大喜"]
-                                      attributedString];
+    attString = [[[[[[[HLLAttributedBuilder builderWithString:display]
+                      configString:@"hello" forStyle:@{NSUnderlineColorAttributeName:[UIColor redColor],
+                                                       NSUnderlineStyleAttributeName:@1,
+                                                       NSForegroundColorAttributeName:[UIColor orangeColor]}]
+                     configString:@"nihao" forStyle:@{NSStrokeColorAttributeName:[UIColor redColor],
+                                                      NSStrokeWidthAttributeName:@1}]
+                    configString:@"H" forStyle:@{NSBackgroundColorAttributeName:[UIColor greenColor]}]
+                   appendAttachment:attachment]
+                  appendString:@"娃大喜"]
+                 attributedString];
     NSLog(@"size:%@",[NSValue valueWithCGSize:[attString size]]);
     [self.coreView appendAttributedString:attString];
     

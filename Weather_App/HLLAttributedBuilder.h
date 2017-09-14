@@ -43,4 +43,6 @@
 
 - (HLLAttributedBuilder *) configString:(NSString *)string forStyle:(NSDictionary *)style;
 - (HLLAttributedBuilder *(^)(NSString *str ,NSDictionary *style)) configStringAndStyle;
+
+//- (HLLAttributedBuilder *) config forStyle:(NSDictionary *)style;
 @end

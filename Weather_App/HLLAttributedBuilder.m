@@ -167,7 +167,7 @@
     _HLLString * resultStringObj = self.stringObjs[0];
     NSMutableAttributedString * attributedText = [[NSMutableAttributedString alloc] initWithAttributedString:resultStringObj.attributedString];
     
-    NSRegularExpression * regularExp = [[NSRegularExpression alloc] initWithPattern:string options:NSRegularExpressionIgnoreMetacharacters error:nil];
+    NSRegularExpression * regularExp = [[NSRegularExpression alloc] initWithPattern:string options:NSRegularExpressionIgnoreMetacharacters|NSRegularExpressionAnchorsMatchLines error:nil];
     NSRange originalStringRange = NSMakeRange(0, self.originalString.length);
     
     NSArray <NSTextCheckingResult *>* matches = [regularExp matchesInString:self.originalString options:NSMatchingWithTransparentBounds range:originalStringRange];
