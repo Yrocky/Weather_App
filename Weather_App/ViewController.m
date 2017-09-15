@@ -211,6 +211,10 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+    });
 }
 
 - (void) clearnAllOperation{

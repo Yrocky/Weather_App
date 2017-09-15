@@ -42,7 +42,7 @@
     // result : a[#bc#]d(you)A[BCD]12a[#gs#]34(miss) right
     
     
-    // 以上的正则中用了**零宽断言**的语法 http://www.ibloger.net/article/31.html
+    // 以上的正则中用了**零宽断言**的语法 http://www.ibloger.net/article/31.html  https://developer.apple.com/documentation/foundation/nsregularexpression
     
     NSRegularExpression * rx = [NSRegularExpression regularExpressionWithPattern:@"h" options:0 error:nil];
     NSString * string = @"H-h-H-h";
@@ -51,6 +51,10 @@
     NSLog(@"match :%@",match);
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+
+    
+}
 - (IBAction)animation:(id)sender {
     
     [UIView transitionWithView:self.label
