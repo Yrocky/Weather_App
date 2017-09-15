@@ -14,6 +14,7 @@
 #import "DataSourceProtocol.h"
 #import "MMRunwayCoreView.h"
 #import "MMRunwayProContentView.h"
+#import "MMPreviewHUD.h"
 
 @interface MMColorView : UIView<DataSource>
 
@@ -87,6 +88,8 @@
 @property (nonatomic ,strong) MMColorView * colorView;
 
 @property (nonatomic ,strong) MMRunwayCoreView * coreView;
+@property (nonatomic ,assign) NSInteger index;
+
 @end
 
 @implementation ViewController
@@ -107,14 +110,20 @@
     CGSize size = [label configText:string];
     label.frame = (CGRect){10, 400, size};
     [self.view addSubview:label];
-    
     [self.coreView appendRunwayLabel:label];
+    
+    NSAttributedString * attString;
+    attString = [[[HLLAttributedBuilder builderWithString:string]
+                  configString:@"^[0-9]{1,10}$" forStyle:@{NSForegroundColorAttributeName:[UIColor greenColor],
+                                                  NSUnderlineColorAttributeName:[UIColor orangeColor],
+                                                  NSUnderlineStyleAttributeName:@1}]
+                 attributedString];
+    [self.coreView appendAttributedString:attString];
     
     self.runwayProView = [[MMRunwayProContentView alloc] init];
     self.runwayProView.frame = CGRectMake(0, 40, self.view.frame.size.width, 46);
     [self.view addSubview:self.runwayProView];
     
-    NSAttributedString * attString;
     NSTextAttachment * attachment = [[NSTextAttachment alloc] init];
     attachment.image = [UIImage imageNamed:@"red_dot"];
     attachment.bounds = CGRectMake(0, 0, 9, 9);
@@ -124,15 +133,13 @@
                     appendString:@"world" forStyle:@{NSForegroundColorAttributeName:[UIColor greenColor],
                                                      NSUnderlineColorAttributeName:[UIColor orangeColor],
                                                      NSUnderlineStyleAttributeName:@1}]
-                   appendString:@"123456" forStyle:@{NSStrokeColorAttributeName:[UIColor redColor],
-                                                     NSStrokeWidthAttributeName:@1}]
-                  appendAttachment:attachment]
+                   appendAttachment:attachment]
+                  appendString:@"123456" forStyle:@{NSStrokeColorAttributeName:[UIColor redColor],
+                                                    NSStrokeWidthAttributeName:@1}]
                  attributedString];
     self.displayLabel.attributedText = attString;
-    
-    label.attributedText = attString;
-//    [self.coreView appendAttributedString:attString];
-    
+    [self.coreView appendAttributedString:attString];
+
     NSString * display = @"hello = nihao = Hello = 你好 = nihao";
     attString = [[[[[[[HLLAttributedBuilder builderWithString:display]
                       configString:@"hello" forStyle:@{NSUnderlineColorAttributeName:[UIColor redColor],
@@ -224,10 +231,27 @@
 
 - (void) actioin:(id)ges{
     
-    NSLog(@"++++");
+    NSLog(@"+++_+_");
 }
 
 - (void) stopWave{
+    
+    NSString * text = @"<昵称:>消息内容";
+    NSArray * array = @[@"<昵称:>消息内容",
+                        @"<昵称:>消息内容消息内容",
+                        @"<昵称昵称:>消容",
+                        @"<昵称:>消息内容消息内容消息内容内容消息内容消息内容内容消息内容消息内容"];
+    
+    self.index += 1;
+    
+    if (_index >= array.count) {
+        _index = 0;
+    }
+    text = array[_index];
+    
+    [MMPreviewHUD showHUD:text inView:self.view target:self action:@selector(actioin:)];
+    
+    return;
     {
         NSString *scrollTitle = @"恭喜【愤怒的小奴奴】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条";
         

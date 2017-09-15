@@ -207,7 +207,6 @@
     
     _HLLString * resultStringObj = self.stringObjs[0];
     NSMutableAttributedString * attributedText = [[NSMutableAttributedString alloc] initWithAttributedString:resultStringObj.attributedString];
-
     [RX(string) enumMatches:^(NSTextCheckingResult *result, NSUInteger index) {
         
         [attributedText addAttributes:mergeStyle range:result.range];

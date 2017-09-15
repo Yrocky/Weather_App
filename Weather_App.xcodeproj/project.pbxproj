@@ -25,6 +25,7 @@
 		7FDC6ED81F46E35A00D94379 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FDC6ED61F46E35A00D94379 /* LaunchScreen.storyboard */; };
 		7FDC6EE11F46E38800D94379 /* HLLWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6EE01F46E38800D94379 /* HLLWaveView.m */; };
 		7FED6BA61F5557F0004E3345 /* TableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FED6BA51F5557F0004E3345 /* TableViewDataSource.m */; };
+		D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DF33531F6AC9E400771928 /* MMPreviewHUD.m */; };
 		E3CDC4C9DF28E252C8F70DC9 /* libPods-Weather_App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,8 @@
 		8B9A4BC81A12BABD40DE994D /* Pods-Weather_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App.debug.xcconfig"; sourceTree = "<group>"; };
 		AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weather_App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DD493FBDDB77E68B89AA1C /* Pods-Weather_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App.release.xcconfig"; sourceTree = "<group>"; };
+		D7DF33521F6AC9E400771928 /* MMPreviewHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPreviewHUD.h; sourceTree = "<group>"; };
+		D7DF33531F6AC9E400771928 /* MMPreviewHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPreviewHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +147,8 @@
 				7F9CED3A1F5CEAA000A64EB5 /* MMRunwayCoreView.m */,
 				7F91F7C71F62991400B20D76 /* MMGiftContainerView.h */,
 				7F91F7C81F62991400B20D76 /* MMGiftContainerView.m */,
+				D7DF33521F6AC9E400771928 /* MMPreviewHUD.h */,
+				D7DF33531F6AC9E400771928 /* MMPreviewHUD.m */,
 				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
 				7FED6BA31F5557E2004E3345 /* DataSource */,
@@ -323,6 +328,7 @@
 				7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */,
 				7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */,
 				7F9CED3E1F5D1F9D00A64EB5 /* MMRunwayProContentView.m in Sources */,
+				D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */,
 				7FDC6ECA1F46E35A00D94379 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

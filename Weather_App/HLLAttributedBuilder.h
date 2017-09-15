@@ -16,6 +16,7 @@
 #endif
 
 #define AttBuilderWith(string) [HLLAttributedBuilder builderWithString:string]
+#define AttBuilderStyle(string,style) [HLLAttributedBuilder builderWithString:string defaultStyle:style]
 
 @interface HLLAttributedBuilder : NSObject
 
@@ -51,4 +52,6 @@
 
 - (HLLAttributedBuilder *) configString:(NSString *)string forStyle:(NSDictionary *)style;
 - (HLLAttributedBuilder *(^)(NSString *str ,NSDictionary *style)) configStringAndStyle;
+
+//- (HLLAttributedBuilder *) config forStyle:(NSDictionary *)style;
 @end

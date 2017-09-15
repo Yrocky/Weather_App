@@ -36,7 +36,7 @@
 
 - (void)dealloc
 {
-    NSLog(@"_MMRunwayViewOperation dealloc");
+    //NSLog(@"_MMRunwayViewOperation dealloc");
 }
 
 - (instancetype) initWithRunwayView:(UIView *)runwayView{
