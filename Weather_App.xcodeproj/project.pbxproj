@@ -25,6 +25,8 @@
 		7FDC6ED81F46E35A00D94379 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FDC6ED61F46E35A00D94379 /* LaunchScreen.storyboard */; };
 		7FDC6EE11F46E38800D94379 /* HLLWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6EE01F46E38800D94379 /* HLLWaveView.m */; };
 		7FED6BA61F5557F0004E3345 /* TableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FED6BA51F5557F0004E3345 /* TableViewDataSource.m */; };
+		D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */; };
+		D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */; };
 		D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DF33531F6AC9E400771928 /* MMPreviewHUD.m */; };
 		E3CDC4C9DF28E252C8F70DC9 /* libPods-Weather_App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */; };
 /* End PBXBuildFile section */
@@ -70,6 +72,10 @@
 		8B9A4BC81A12BABD40DE994D /* Pods-Weather_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App.debug.xcconfig"; sourceTree = "<group>"; };
 		AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weather_App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DD493FBDDB77E68B89AA1C /* Pods-Weather_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App.release.xcconfig"; sourceTree = "<group>"; };
+		D719742D1F6EFEDA0068F971 /* MM_AutoReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MM_AutoReplyViewController.h; sourceTree = "<group>"; };
+		D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MM_AutoReplyViewController.m; sourceTree = "<group>"; };
+		D71974301F6EFEFC0068F971 /* MM_AutoReplyEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MM_AutoReplyEditViewController.h; sourceTree = "<group>"; };
+		D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MM_AutoReplyEditViewController.m; sourceTree = "<group>"; };
 		D7DF33521F6AC9E400771928 /* MMPreviewHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPreviewHUD.h; sourceTree = "<group>"; };
 		D7DF33531F6AC9E400771928 /* MMPreviewHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPreviewHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +141,10 @@
 				7FDC6ECF1F46E35A00D94379 /* ViewController.m */,
 				7F414F491F67866200EC8E86 /* MMGiftEffectViewController.h */,
 				7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */,
+				D719742D1F6EFEDA0068F971 /* MM_AutoReplyViewController.h */,
+				D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */,
+				D71974301F6EFEFC0068F971 /* MM_AutoReplyEditViewController.h */,
+				D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */,
 				7F9CED3C1F5D1F9D00A64EB5 /* MMRunwayProContentView.h */,
 				7F9CED3D1F5D1F9D00A64EB5 /* MMRunwayProContentView.m */,
 				7F9CED351F57F31C00A64EB5 /* UIView+AutoLayoutSupport.h */,
@@ -314,10 +324,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */,
 				7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */,
 				7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */,
 				7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
+				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
 				7F9CED3B1F5CEAA000A64EB5 /* MMRunwayCoreView.m in Sources */,
 				7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */,
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
