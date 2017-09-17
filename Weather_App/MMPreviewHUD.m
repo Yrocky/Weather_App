@@ -141,7 +141,6 @@ static CGFloat kDelayDismissTime = 5;
 
 - (void) handleMinShowTimer:(NSTimer *)timer{
     
-    //[self removeTimer];
     [self dismiss];
 }
 
@@ -230,6 +229,9 @@ static CGFloat kDelayDismissTime = 5;
     if (target && [target respondsToSelector:action]) {
         [previewHUD addAction:action withTarget:target];
     }
+    
+    
 }
 
 @end
+

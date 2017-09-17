@@ -218,6 +218,11 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
+    
+    MM_UserDefaults.mm_addInt(@"someInt",23);
+    MM_UserDefaults.mm_addBool(@"someBool",YES);
+    MM_UserDefaults.mm_addString(@"someString",@"string");
+    MM_UserDefaults.mm_addObject(@"someObject",@[@"12",@"213"]);
 }
 
 - (void) clearnAllOperation{
@@ -228,9 +233,22 @@
 - (void) actioin:(id)ges{
     
     NSLog(@"+++_+_");
+    
+    MMPreviewHUD * hud = [[MMPreviewHUD alloc] init];
+    //[hud showWhileExecuting:@selector(testAction) onTarget:self withObject:nil];
+}
+
+- (void) testAction{
+
+    NSLog(@"action");
 }
 
 - (void) stopWave{
+    
+    NSLog(@"%ld",(long)MM_UserDefaults.mm_intValue(@"someInt"));
+    NSLog(@"%d",MM_UserDefaults.mm_boolValue(@"someBool"));
+    NSLog(@"%@",MM_UserDefaults.mm_stringValue(@"someString"));
+    NSLog(@"%@",MM_UserDefaults.mm_objectValue(@"someObject"));
     
     NSString * text = @"<昵称:>消息内容";
     NSArray * array = @[@"<昵称:>消息内容",
