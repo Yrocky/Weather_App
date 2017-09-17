@@ -223,6 +223,10 @@
     MM_UserDefaults.mm_addBool(@"someBool",YES);
     MM_UserDefaults.mm_addString(@"someString",@"string");
     MM_UserDefaults.mm_addObject(@"someObject",@[@"12",@"213"]);
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+    });
 }
 
 - (void) clearnAllOperation{

@@ -7,7 +7,8 @@
 
 在使用属性字符串的时候，不需要写大段的样板代码，简化使用方法
 
-### 普通
+
+### 1.普通
 
 根据需要一个一个的添加需要的字符串以及对应的属性
 
@@ -40,7 +41,8 @@ attString = [[[[[HLLAttributedBuilder builder]
   <img src="https://github.com/Yrocky/Weather_App/blob/master/img/normal.png?raw=true"  align="center">
 </p>
 
-### 支持 NSTextAttachment
+
+### 2.支持 NSTextAttachment
 
 属性字符串中除了常规的字符串还可以添加图片，添加图片使用的是NSTextAttachment类，可以结合上面的普通字符串使用。
 
@@ -48,6 +50,7 @@ attString = [[[[[HLLAttributedBuilder builder]
 - (HLLAttributedBuilder *) appendAttachment:(NSTextAttachment *)attachment;
 - (HLLAttributedBuilder *(^)(NSTextAttachment *))appendAttachment;
 ```
+
 例子：
 
 ```objective-c
@@ -66,13 +69,16 @@ attachment.bounds = CGRectMake(0, 0, 9, 9);
                   appendAttachment:attachment]
                  attributedString];
 ```
+
 <p align="center">
   <img src="https://github.com/Yrocky/Weather_App/blob/master/img/attachment.png?raw=true"  align="center">
 </p>
 
-### 支持查找设置
+
+### 3.支持查找设置
 
 一种情形是，已有一个字符串，需要对其中的某一些字符串进行属性字符串设置，支持精确匹配以及正则表达式匹配，并且可以结合上面的`-append..`方法一起使用。
+
 
 ```objective-c
 + (instancetype) builderWithString:(NSString *)originalString;
@@ -97,11 +103,14 @@ NSString * display = @"hello = nihao = Hello = 你好 = nihao";
                   appendString:@"娃大喜"]
                  attributedString];
 ```
+
 <p align="center">
   <img src="https://github.com/Yrocky/Weather_App/blob/master/img/config.png?raw=true"  align="center">
 </p>
 
+
 使用正则表达式进行属性字符串设置
+
 
 ``` objective-c
 NSString * a = @"a[bc]d(you)A[BCD]1【大家好】2a[gs]34(me)";
@@ -111,17 +120,7 @@ NSAttributedString * attS = AttBuilderWith(a).
 ```
 
 > 以上的正则中用了**零宽断言**的语法 http://www.ibloger.net/article/31.html
+
 <p align="center">
   <img src="https://github.com/Yrocky/Weather_App/blob/master/img/rx.png?raw=true"  align="center">
 </p>
-
-
-
-
-
-
-
-
-
-
-
