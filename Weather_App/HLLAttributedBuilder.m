@@ -27,6 +27,11 @@
     return [self initWithPattern:pattern options:0 error:nil];
 }
 
+- (NSTextCheckingResult *) firstMatch:(NSString *)str{
+
+    return [self matches:str].firstObject;
+}
+
 - (NSArray<NSTextCheckingResult *>*) matches:(NSString*)str
 {
     return [self matchesInString:str options:0 range:NSMakeRange(0, str.length)];
@@ -196,23 +201,28 @@
     return [builder appendString:originalString];
 }
 
-- (HLLAttributedBuilder *)configString:(NSString *)string forStyle:(NSDictionary *)style{
+- (HLLAttributedBuilder *) _config:(NSString *)string style:(NSDictionary *)style isFirstMatch:(BOOL)firstMatch{
 
     NSAssert(string.length, @"请输入非nil的字符串");
     
     NSMutableDictionary * mergeStyle = [NSMutableDictionary dictionaryWithDictionary:self.defaultStyle];
     [mergeStyle addEntriesFromDictionary:style];
-
+    
     NSAssert(self.stringObjs.count, @"请使用`builderWithString:`或者`builderWithString:defaultStyle:`初始化 HLLAttributedBuilder ");
     
     _HLLString * resultStringObj = self.stringObjs[0];
     NSMutableAttributedString * attributedText = [[NSMutableAttributedString alloc] initWithAttributedString:resultStringObj.attributedString];
-    [RX(string) enumMatches:^(NSTextCheckingResult *result, NSUInteger index) {
-        
+    if (firstMatch) {
+        NSTextCheckingResult * result = [RX(string) firstMatch:self.originalString];
         [attributedText addAttributes:mergeStyle range:result.range];
-        
-    } inString:self.originalString];
-
+    }else{
+        [RX(string) enumMatches:^(NSTextCheckingResult *result, NSUInteger index) {
+            
+            [attributedText addAttributes:mergeStyle range:result.range];
+            
+        } inString:self.originalString];
+    }
+    
     [self.stringObjs removeAllObjects];
     
     _HLLString * stringObj = [[_HLLString alloc] init];
@@ -220,6 +230,12 @@
     [self.stringObjs addObject:stringObj];
     return self;
 }
+
+- (HLLAttributedBuilder *)configString:(NSString *)string forStyle:(NSDictionary *)style{
+
+    return [self _config:string style:style isFirstMatch:NO];
+}
+
 - (HLLAttributedBuilder *(^)(NSString *str ,NSDictionary *style)) configStringAndStyle{
 
     return ^HLLAttributedBuilder *(NSString *str ,NSDictionary *style){
@@ -227,4 +243,14 @@
     };
 }
 
+- (HLLAttributedBuilder *) firstConfigString:(NSString *)string forStyle:(NSDictionary *)style{
+
+    return [self _config:string style:style isFirstMatch:YES];
+}
+
+- (HLLAttributedBuilder *(^)(NSString *str ,NSDictionary *style)) firstConfigStringAndStyle{
+    return ^HLLAttributedBuilder *(NSString *str ,NSDictionary *style){
+        return [self firstConfigString:str forStyle:style];
+    };
+}
 @end

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "Yes"
             filePath = "Weather_App/ViewController.m"
-            timestampString = "526968864.388653"
+            timestampString = "527321025.895118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
             landmarkName = "-stopWave"
             landmarkType = "7">
             <Actions>

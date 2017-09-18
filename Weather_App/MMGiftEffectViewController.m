@@ -16,16 +16,28 @@
 
 @implementation MMGiftEffectViewController
 
+- (void) mm_debugerTool{
+
+    NSLog(@"mm_debugerTool");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.label.backgroundColor = [UIColor clearColor];
-    NSString * a = @"a[bc]d(you)A[BCD]1【大家好】2《叔》a[gs]34(me)";
+    NSString * a = @"nihao你好_a:[bc]d(yo:u)A[BCD]1【大家好】2《叔》a[gs]34(me)";
     NSAttributedString * attS = AttBuilderWith(a).
-    configStringAndStyle(@"(?<=\\《)[^\\》]+",@{NSForegroundColorAttributeName:[UIColor orangeColor]}).
-    configStringAndStyle(@"[《》]",@{NSForegroundColorAttributeName:[UIColor clearColor]}).
-    attributedStr();
+    firstConfigStringAndStyle(@"([^:：]+)[:：]",@{NSForegroundColorAttributeName:[UIColor orangeColor]}).
+//    configStringAndStyle(@"[《》]",@{NSForegroundColorAttributeName:[UIColor redColor]}).
+    attributedStr();// ([^:：]+)[:：] [a-zA-Z0-9_\u4e00-\u9fa5]+(?=\\:)
     self.label.attributedText = attS;
+    
+    
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    statusBar.backgroundColor = [UIColor orangeColor];
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mm_debugerTool)];
+    tapGesture.numberOfTouchesRequired = 2;
+    [statusBar addGestureRecognizer:tapGesture];
     
     // 匹配中括号内的内容
     // pattern : abcd[you]ABCD1234[miss]
@@ -42,6 +54,9 @@
     // rx : (?<=a\\()[^\\)]+
     // result : a[#bc#]d(you)A[BCD]12a[#gs#]34(miss) right
     
+    // 匹配冒号前的文字
+    // pattern : nihao你好_a:[bc]d(yo:u)A
+    // rx : ([^:：]+)[:：]
     
     // 以上的正则中用了**零宽断言**的语法 http://www.ibloger.net/article/31.html  https://developer.apple.com/documentation/foundation/nsregularexpression
     
