@@ -8,6 +8,7 @@
 
 #import "MMGiftEffectViewController.h"
 #import "HLLAttributedBuilder.h"
+#import "MM_AutoReplyViewController.h"
 
 @interface MMGiftEffectViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *label;
@@ -71,6 +72,13 @@
 
     
 }
+- (IBAction)gotoAutoReplay:(id)sender {
+    
+    MM_AutoReplyViewController * autoReplay = [[MM_AutoReplyViewController alloc] init];
+    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:autoReplay];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
 - (IBAction)animation:(id)sender {
     
     [UIView transitionWithView:self.label
