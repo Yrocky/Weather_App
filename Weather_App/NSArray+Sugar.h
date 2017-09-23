@@ -24,6 +24,7 @@
 - (BOOL (^)(id obj)) have;
 
 - (NSArray *) select:(BOOL (^)(id obj))handle;
+- (NSArray *) filter:(BOOL (^)(id obj))handle;
 
 - (NSArray *) intersect:(NSArray *)other;
 - (NSArray *) union:(NSArray *)other;

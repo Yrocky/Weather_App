@@ -290,6 +290,16 @@
                         @"<昵称:>消息内容消息内容",
                         @"<昵称昵称:>消容",
                         @"<昵称:>消息内容消息内容消息内容内容消息内容消息内容内容消息内容消息内容"];
+    NSStringFromClass([self class]);
+    
+    
+//    objc_msgSend(self, @selector(testAction));
+//    objc_msgSend(self,@selector(testAction));
+
+    
+    [self performSelector:@selector(testAction)];
+//    SEL testFunc = NSSelectorFromString(@"testAction");
+//    ((void(*)(id,SEL))objc_msgSend)(self, testFunc);
     
     NSMutableArray * a = [array mutableCopy];
     while (a.count > 1) {

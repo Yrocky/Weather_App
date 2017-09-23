@@ -13,6 +13,7 @@
 @interface MMGiftEffectViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @end
 
 @implementation MMGiftEffectViewController
@@ -25,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.textView.textContainerInset = UIEdgeInsetsMake(10, 10, 0, 10);
+    self.textView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
     self.label.backgroundColor = [UIColor clearColor];
     NSString * a = @"nihao你好_a:[bc]d(yo:u)A[BCD]1【大家好】2《叔》a[gs]34(me)";
     NSAttributedString * attS = AttBuilderWith(a).

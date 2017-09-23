@@ -77,6 +77,11 @@
     }]];
 }
 
+- (NSArray *) filter:(BOOL (^)(id obj))handle{
+
+    return [self select:handle];
+}
+
 - (NSArray *) compat{
 
     return [self select:^BOOL(id obj) {
