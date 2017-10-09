@@ -73,7 +73,7 @@
     }else{
         self.textLabel.text = cellMoldel.title;
         self.textLabel.textColor = cellMoldel.titleColor;
-             self.textLabel.font = cellMoldel.titleFont;
+        self.textLabel.font = cellMoldel.titleFont;
     }
     self.textLabel.textAlignment = cellMoldel.titileTextAlignment;
     self.imageView.image = cellMoldel.icon;
@@ -86,6 +86,4 @@
     self.arrowHeightContraint.constant = cellMoldel.arrowHeight;
     self.arrowRightContraint.constant = - cellMoldel.controlRightOffset;
 }
-
-
 @end

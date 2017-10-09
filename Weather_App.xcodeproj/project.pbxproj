@@ -18,6 +18,7 @@
 		7FBCF0C41F4E776B00E2EEC7 /* HLLCircularLoaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBCF0C31F4E776B00E2EEC7 /* HLLCircularLoaderView.m */; };
 		7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBCF0C91F4EE12200E2EEC7 /* HLLAttributedBuilder.m */; };
 		7FCF75021F8B1DC100514597 /* HLLAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCF75001F8B1DC000514597 /* HLLAlert.m */; };
+		7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCF75051F8B1EAD00514597 /* TableDemoViewController.m */; };
 		7FDC6ECA1F46E35A00D94379 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6EC91F46E35A00D94379 /* main.m */; };
 		7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6ECC1F46E35A00D94379 /* AppDelegate.m */; };
 		7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6ECF1F46E35A00D94379 /* ViewController.m */; };
@@ -82,6 +83,8 @@
 		7FBCF1281F540CDC00E2EEC7 /* Weather_App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Weather_App-Bridging-Header.h"; sourceTree = "<group>"; };
 		7FCF75001F8B1DC000514597 /* HLLAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLAlert.m; sourceTree = "<group>"; };
 		7FCF75011F8B1DC100514597 /* HLLAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLAlert.h; sourceTree = "<group>"; };
+		7FCF75041F8B1EAD00514597 /* TableDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableDemoViewController.h; sourceTree = "<group>"; };
+		7FCF75051F8B1EAD00514597 /* TableDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableDemoViewController.m; sourceTree = "<group>"; };
 		7FDC6EC51F46E35A00D94379 /* Weather_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDC6EC91F46E35A00D94379 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7FDC6ECB1F46E35A00D94379 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -345,12 +348,12 @@
 		D70629091F8B185100F52FCB /* HSSetTableView */ = {
 			isa = PBXGroup;
 			children = (
-				D706290A1F8B185100F52FCB /* Custom */,
 				D706290D1F8B185100F52FCB /* HSSetTableViewMainController.h */,
 				D706290E1F8B185100F52FCB /* HSSetTableViewMainController.m */,
-				D706290F1F8B185100F52FCB /* Model */,
-				D70629251F8B185100F52FCB /* Tool */,
 				D706292A1F8B185100F52FCB /* View */,
+				D706290F1F8B185100F52FCB /* Model */,
+				D706290A1F8B185100F52FCB /* Custom */,
+				D70629251F8B185100F52FCB /* Tool */,
 			);
 			path = HSSetTableView;
 			sourceTree = "<group>";
@@ -452,6 +455,8 @@
 				7FDC6ECF1F46E35A00D94379 /* ViewController.m */,
 				7F414F491F67866200EC8E86 /* MMGiftEffectViewController.h */,
 				7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */,
+				7FCF75041F8B1EAD00514597 /* TableDemoViewController.h */,
+				7FCF75051F8B1EAD00514597 /* TableDemoViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -614,6 +619,7 @@
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
 				D706293E1F8B185100F52FCB /* HSInputCellModel.m in Sources */,
 				D70629421F8B185100F52FCB /* HSSectionModel.m in Sources */,
+				7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */,
 				7FDC6EE11F46E38800D94379 /* HLLWaveView.m in Sources */,
 				D70629461F8B185100F52FCB /* HSBaseTableViewCell.m in Sources */,
 				7FBCF0C41F4E776B00E2EEC7 /* HLLCircularLoaderView.m in Sources */,

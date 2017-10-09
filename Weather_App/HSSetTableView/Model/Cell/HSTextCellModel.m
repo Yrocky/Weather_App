@@ -18,6 +18,16 @@
 @end
 @implementation HSTextCellModel
 
+- (instancetype)initWithTitle:(NSString *)title actionBlock:(ClickActionBlock)block{
+    
+    if (self = [super initWithTitle:title actionBlock:block]) {
+        self.leftPading = HS_KCellTextLeftPading;
+        self.detailFont = HS_KDetailFont;
+        self.detailColor = HS_KDetailColor;
+    }
+    return self;
+}
+
 - (instancetype)initWithTitle:(NSString *)title detailText:(NSString *)detailText actionBlock:(ClickActionBlock)block
 {
     if(self = [super initWithTitle:title actionBlock:block]){
@@ -148,8 +158,8 @@
         self.heightMore = .0f;
         self.cellHeight = HS_KCellHeight;
     }else{
-        self.heightMore = height;
         self.heightOne = .0f;
+        self.heightMore = height;
         //cell足够大
         self.cellHeight = height + 2 * HS_KCellPading;
     }

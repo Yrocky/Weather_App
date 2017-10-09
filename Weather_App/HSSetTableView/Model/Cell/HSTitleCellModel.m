@@ -61,4 +61,14 @@
 {
     return HSTitleCellModelCellClass;
 }
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@", self.title];
+}
+
+- (NSString *)debugDescription
+{
+    return [NSString stringWithFormat:@"<%@: %p> %@", [self class], self, self.description];
+}
 @end

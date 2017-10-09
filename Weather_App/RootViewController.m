@@ -10,6 +10,7 @@
 #import "HSTitleCellModel.h"
 #import "MM_AutoReplyViewController.h"
 #import "MMGiftEffectViewController.h"
+#import "TableDemoViewController.h"
 
 @interface RootViewController ()
 
@@ -43,6 +44,13 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"自动回复" actionBlock:^(HSBaseCellModel *model) {
             
             MM_AutoReplyViewController * vc = [[MM_AutoReplyViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"模型化TableView" actionBlock:^(HSBaseCellModel *model) {
+            
+            TableDemoViewController * vc = [[TableDemoViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];
