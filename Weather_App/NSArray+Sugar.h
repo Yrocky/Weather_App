@@ -29,4 +29,6 @@
 - (NSArray *) union:(NSArray *)other;
 - (NSArray *) difference:(NSArray *)other;
 - (NSArray *) subtract:(NSArray *)other;
+
+- (NSArray *) intersect:(BOOL(^)(id obj))filter other:(NSArray *)other;
 @end
