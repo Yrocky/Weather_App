@@ -8,6 +8,8 @@
 
 #import "MMPreviewHUD.h"
 #import "HLLAttributedBuilder.h"
+#import <objc/runtime.h>
+
 
 static CGFloat kMaxPreviewWidth = 200;
 static CGFloat kAnimationDuration = 0.45;
@@ -45,6 +47,7 @@ static CGFloat kDelayDismissTime = 5;
 @end
 
 @implementation MMPreviewHUD
+
 
 - (void)dealloc
 {
@@ -229,8 +232,6 @@ static CGFloat kDelayDismissTime = 5;
     if (target && [target respondsToSelector:action]) {
         [previewHUD addAction:action withTarget:target];
     }
-    
-    
 }
 
 @end

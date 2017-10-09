@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#define MM_UserDefaults [NSUserDefaults standardUserDefaults]
+
+
+
 @interface MMPreviewHUD : UIView
 
 + (void) showHUD:(NSString *)text inView:(UIView *)view target:(id)target action:(SEL)action;
 + (void) showHUD:(NSString *)text inViewController:(UIViewController *)v action:(SEL)action;
+
 @end
 
-#define MM_UserDefaults [NSUserDefaults standardUserDefaults]
 
 @interface NSUserDefaults (MM_Common)
 
@@ -29,6 +33,9 @@
 
 - (NSUserDefaults *(^)(NSString *key,id value))mm_addObject;
 - (id(^)(NSString *))mm_objectValue;
+
+
+
 @end
 
 @implementation NSUserDefaults (MM_Common)

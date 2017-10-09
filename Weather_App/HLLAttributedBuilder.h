@@ -50,8 +50,9 @@
 + (instancetype) builderWithString:(NSString *)originalString;
 + (instancetype) builderWithString:(NSString *)originalString defaultStyle:(NSDictionary *)defaultStyle;
 
+- (HLLAttributedBuilder *) firstConfigString:(NSString *)string forStyle:(NSDictionary *)style;
+- (HLLAttributedBuilder *(^)(NSString *str ,NSDictionary *style)) firstConfigStringAndStyle;
+
 - (HLLAttributedBuilder *) configString:(NSString *)string forStyle:(NSDictionary *)style;
 - (HLLAttributedBuilder *(^)(NSString *str ,NSDictionary *style)) configStringAndStyle;
-
-//- (HLLAttributedBuilder *) config forStyle:(NSDictionary *)style;
 @end

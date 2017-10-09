@@ -59,6 +59,22 @@
         return [self includes:obj];
     };
 }
+- (NSArray *) mm_mapWithskip:(id (^)(id obj, BOOL *skip))handle{
+    
+    NSMutableArray * _self = [NSMutableArray arrayWithCapacity:self.count];
+    
+    for( id obj in self ){
+        
+        BOOL skip = NO;
+        
+        id mapObj = handle(obj, &skip);
+        
+        if( !skip ){
+            [_self addObject:mapObj];
+        }
+    }
+    return [_self copy];
+}
 
 - (NSArray *) map:(id (^)(id))handle{
 
@@ -75,6 +91,11 @@
     return [self filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
         return handle(evaluatedObject);
     }]];
+}
+
+- (NSArray *) filter:(BOOL (^)(id obj))handle{
+
+    return [self select:handle];
 }
 
 - (NSArray *) compat{

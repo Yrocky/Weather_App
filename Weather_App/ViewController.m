@@ -94,8 +94,22 @@
 
 @implementation ViewController
 
+- (void)mm_debugerTool{
+
+    NSLog(@"mm_debugerTool");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSString * cmd = NSStringFromSelector(_cmd);
+    cmd = [cmd capitalizedString];
+    
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    statusBar.backgroundColor = [UIColor orangeColor];
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mm_debugerTool)];
+    tapGesture.numberOfTouchesRequired = 2;
+    [statusBar addGestureRecognizer:tapGesture];
     
     self.coreView = [[MMRunwayCoreView alloc] initWithSpeed:1 defaultSpace:30];
     self.coreView.frame = CGRectMake(20, 300, 300, 40);
@@ -219,6 +233,12 @@
     
     [super viewWillAppear:animated];
     
+    NSString * cmd = @"setOpenDebugerToggle:";
+    cmd = [cmd substringFromIndex:3];
+    NSInteger leng = cmd.length;
+    cmd = [cmd substringToIndex:leng - 1];
+    NSString * key = [NSString stringWithFormat:@"MM_%@",cmd];
+    
     MM_UserDefaults.mm_addInt(@"someInt",23);
     MM_UserDefaults.mm_addBool(@"someBool",YES);
     MM_UserDefaults.mm_addString(@"someString",@"string");
@@ -247,7 +267,18 @@
     NSLog(@"action");
 }
 
+- (void) mm_debugerTool2{
+
+    NSLog(@"mm_debugerTool2");
+}
+
 - (void) stopWave{
+    
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    statusBar.backgroundColor = [UIColor orangeColor];
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mm_debugerTool2)];
+    tapGesture.numberOfTouchesRequired = 2;
+    [statusBar addGestureRecognizer:tapGesture];
     
     NSLog(@"%ld",(long)MM_UserDefaults.mm_intValue(@"someInt"));
     NSLog(@"%d",MM_UserDefaults.mm_boolValue(@"someBool"));
@@ -259,7 +290,24 @@
                         @"<昵称:>消息内容消息内容",
                         @"<昵称昵称:>消容",
                         @"<昵称:>消息内容消息内容消息内容内容消息内容消息内容内容消息内容消息内容"];
+    NSStringFromClass([self class]);
     
+    
+//    objc_msgSend(self, @selector(testAction));
+//    objc_msgSend(self,@selector(testAction));
+
+    
+    [self performSelector:@selector(testAction)];
+//    SEL testFunc = NSSelectorFromString(@"testAction");
+//    ((void(*)(id,SEL))objc_msgSend)(self, testFunc);
+    
+    NSMutableArray * a = [array mutableCopy];
+    while (a.count > 1) {
+        [a removeObjectAtIndex:1];
+    }
+    NSLog(@"a:%@",a);
+
+    return;
     self.index += 1;
     
     if (_index >= array.count) {

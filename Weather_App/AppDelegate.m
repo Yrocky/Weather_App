@@ -9,14 +9,26 @@
 #import "AppDelegate.h"
 #import "NSArray+Sugar.h"
 
+//#import <objc/objc-runtime.h>
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+//    id overlayClass = NSClassFromString(@"UIDebuggingInformationOverlay");
+//    if ([overlayClass respondsToSelector:NSSelectorFromString(@"prepareDebuggingOverlay")]) {
+//        [overlayClass performSelector:NSSelectorFromString(@"prepareDebuggingOverlay")];
+//    }
+//    NSArray * ar = [NSArray array];
+//    [ar countByEnumeratingWithState:nil objects:nil count:2];
+//    NSRange range;
+//    [ar isKindOfClass:objc_getClass("dsfds")];
+    
+//    NSString * s = @"";
+//    [s substringToIndex:range.location];
     
     NSArray * array = @[@"12",@"34",@"45",@"56"];
     NSLog(@"have %d",array.have(@"12"));
