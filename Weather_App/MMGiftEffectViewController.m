@@ -34,6 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     NSString * s = @"wxid_nixe0l418pg522,luoqi983272765,333,";
     s = [s substringToIndex:s.length - 1];
     NSArray * a_ = [s componentsSeparatedByString:@","];
@@ -125,7 +127,6 @@
     textLabel.layer.mask = self.rLayer;
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
     [self.view addGestureRecognizer:tap];
-    
 }
 
 - (void) move:(UITapGestureRecognizer *)gesture{

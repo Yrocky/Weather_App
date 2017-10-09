@@ -15,6 +15,7 @@
 #import "MMRunwayCoreView.h"
 #import "MMRunwayProContentView.h"
 #import "MMPreviewHUD.h"
+#import "NSUserDefaults+MM_Common.h"
 
 @interface MMColorView : UIView<DataSource>
 
