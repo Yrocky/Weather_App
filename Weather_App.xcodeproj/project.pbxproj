@@ -17,6 +17,7 @@
 		7FBCF0BE1F4D269100E2EEC7 /* HLLSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBCF0BD1F4D269100E2EEC7 /* HLLSegmentView.m */; };
 		7FBCF0C41F4E776B00E2EEC7 /* HLLCircularLoaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBCF0C31F4E776B00E2EEC7 /* HLLCircularLoaderView.m */; };
 		7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBCF0C91F4EE12200E2EEC7 /* HLLAttributedBuilder.m */; };
+		7FCF75021F8B1DC100514597 /* HLLAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCF75001F8B1DC000514597 /* HLLAlert.m */; };
 		7FDC6ECA1F46E35A00D94379 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6EC91F46E35A00D94379 /* main.m */; };
 		7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6ECC1F46E35A00D94379 /* AppDelegate.m */; };
 		7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6ECF1F46E35A00D94379 /* ViewController.m */; };
@@ -79,6 +80,8 @@
 		7FBCF0C81F4EE12200E2EEC7 /* HLLAttributedBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLAttributedBuilder.h; sourceTree = "<group>"; };
 		7FBCF0C91F4EE12200E2EEC7 /* HLLAttributedBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLAttributedBuilder.m; sourceTree = "<group>"; };
 		7FBCF1281F540CDC00E2EEC7 /* Weather_App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Weather_App-Bridging-Header.h"; sourceTree = "<group>"; };
+		7FCF75001F8B1DC000514597 /* HLLAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLAlert.m; sourceTree = "<group>"; };
+		7FCF75011F8B1DC100514597 /* HLLAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLAlert.h; sourceTree = "<group>"; };
 		7FDC6EC51F46E35A00D94379 /* Weather_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDC6EC91F46E35A00D94379 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7FDC6ECB1F46E35A00D94379 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -190,6 +193,15 @@
 			name = CustomView;
 			sourceTree = "<group>";
 		};
+		7FCF75031F8B1DC600514597 /* Alert封装 */ = {
+			isa = PBXGroup;
+			children = (
+				7FCF75011F8B1DC100514597 /* HLLAlert.h */,
+				7FCF75001F8B1DC000514597 /* HLLAlert.m */,
+			);
+			name = "Alert封装";
+			sourceTree = "<group>";
+		};
 		7FDC6EBC1F46E35A00D94379 = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +233,7 @@
 				D70629031F8B138800F52FCB /* 消息预览HUD */,
 				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
+				7FCF75031F8B1DC600514597 /* Alert封装 */,
 				D70629071F8B14F800F52FCB /* picker视图 */,
 				7FED6BA31F5557E2004E3345 /* DataSource */,
 				7FBCF0BF1F4D269E00E2EEC7 /* CustomView */,
@@ -582,6 +595,7 @@
 				D70629551F8B191C00F52FCB /* UIView+MHCommon.m in Sources */,
 				D706293B1F8B185100F52FCB /* HSBaseCellModel.m in Sources */,
 				7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */,
+				7FCF75021F8B1DC100514597 /* HLLAlert.m in Sources */,
 				7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */,
 				7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */,
 				D706294A1F8B185100F52FCB /* HSSwitchTableViewCell.m in Sources */,
