@@ -8,6 +8,9 @@
 
 #import "MMPickerView.h"
 
+#define kToolBarHeight  44
+#define kPickerViewHeight  250
+
 @interface MMPickerViewConfig ()
 
 @property (nonatomic ,copy) NSUInteger (^defaultSelect)(NSUInteger);
@@ -68,11 +71,16 @@
 }
 @end
 
+@implementation MMDatePickerViewConfig
+
+
+@end
 @interface MMPickerView ()<UIPickerViewDelegate,UIPickerViewDataSource,CAAnimationDelegate>
 
 @property (nonatomic ,strong) UIView * bgView;
 @property (nonatomic ,strong) UIToolbar * toolBar;
 @property (strong, nonatomic) IBOutlet UIPickerView *commonPickerView;
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePickerView;
 
 @property (nonatomic ,strong ,readwrite) MMPickerViewConfig * config;
 
@@ -84,12 +92,10 @@
     
     NSLog(@"MMSportRulePickView dealloc");
 }
-- (instancetype)initWithConfig:(MMPickerViewConfig *)config{
-    
+- (instancetype)init
+{
     self = [super init];
     if (self) {
-        
-        self.config = config;
         CGRect frame = [UIScreen mainScreen].bounds;
         self.frame = frame;
         
@@ -101,13 +107,10 @@
         self.bgView.backgroundColor = [UIColor clearColor];
         [self addSubview:self.bgView];
         
-        CGFloat toolBarHeight = 44;
-        CGFloat pickViewHeight = 250;
-        
         //
         self.toolBar = [[UIToolbar alloc] initWithFrame:(CGRect){
-            0,frame.size.height - toolBarHeight - pickViewHeight,
-            frame.size.width,toolBarHeight
+            0,frame.size.height - kToolBarHeight - kPickerViewHeight,
+            frame.size.width,kToolBarHeight
         }];
         self.toolBar.barStyle = UIBarStyleDefault;
         [self addSubview:self.toolBar];
@@ -116,11 +119,21 @@
         UIBarButtonItem * done = [[UIBarButtonItem alloc] initWithTitle:@"确定    " style:UIBarButtonItemStylePlain target:self action:@selector(sureButtonHandle)];
         UIBarButtonItem * flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         self.toolBar.items = @[cancel,flexible,done];
+    }
+    return self;
+}
+- (instancetype)initWithConfig:(MMPickerViewConfig *)config{
+    
+    self = [self init];
+    if (self) {
+        
+        self.config = config;
+        
         
         //
         self.commonPickerView = [[UIPickerView alloc] initWithFrame:(CGRect){
             0,CGRectGetMaxY(self.toolBar.frame),
-            CGRectGetWidth(self.toolBar.frame),pickViewHeight
+            CGRectGetWidth(self.toolBar.frame),kPickerViewHeight
         }];
         self.commonPickerView.backgroundColor = [UIColor whiteColor];
         self.commonPickerView.delegate = self;
@@ -130,28 +143,26 @@
     return self;
 }
 
-- (void) configFrame{
+- (instancetype)initWithDatePickerConfig:(MMDatePickerViewConfig *)config{
     
-    CGRect sf = self.superview.frame;
-    CGFloat height = 300;
-    self.frame = (CGRect){
-        0, CGRectGetHeight(sf) - height,
-        sf.size.width,height
-    };
-    
-    self.toolBar.frame = (CGRect){
+    self = [self init];
+    if (self) {
         
-        CGPointZero,
-        self.frame.size.width,44
-    };
-    
-    self.commonPickerView.frame = (CGRect){
+        self.config = config;
         
-        0,
-        CGRectGetMaxY(self.toolBar.frame),
-        CGRectGetWidth(self.toolBar.frame),
-        CGRectGetHeight(self.frame) - CGRectGetHeight(self.toolBar.frame)
-    };
+        //
+        self.datePickerView = [[UIDatePicker alloc] initWithFrame:(CGRect){
+            0,CGRectGetMaxY(self.toolBar.frame),
+            CGRectGetWidth(self.toolBar.frame),kPickerViewHeight
+        }];
+        self.datePickerView.backgroundColor = [UIColor whiteColor];
+        self.datePickerView.datePickerMode = config.datePickerMode;
+        self.datePickerView.date = config.date ? config.date : [NSDate date];
+        self.datePickerView.minimumDate = config.minimumDate;
+        self.datePickerView.maximumDate = config.maximumDate;
+        [self addSubview:self.datePickerView];
+    }
+    return self;
 }
 
 #pragma mark - UIPickerViewDelegate,UIPickerViewDataSource
@@ -173,7 +184,9 @@
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     
-    self.config.updateData(component, row, self.config.origRowDataAtColumn(component)[row]);
+    if (self.config.updateData && self.config.origRowDataAtColumn) {
+        self.config.updateData(component, row, self.config.origRowDataAtColumn(component)[row]);
+    }
 }
 
 - (UIView *) pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
@@ -195,6 +208,9 @@
 - (void) cancelButtonHandle{
     
     [self dismiss];
+    if ([self.config isKindOfClass:[MMDatePickerViewConfig class]]) {
+        ((MMDatePickerViewConfig *)self.config).date = self.datePickerView.date;
+    }
     if (self.bCancelAction) {
         self.bCancelAction(self);
     }
@@ -203,6 +219,9 @@
 - (void) sureButtonHandle{
     
     [self dismiss];
+    if ([self.config isKindOfClass:[MMDatePickerViewConfig class]]) {
+        ((MMDatePickerViewConfig *)self.config).date = self.datePickerView.date;
+    }
     if (self.bDoneAction) {
         self.bDoneAction(self);
     }
@@ -228,7 +247,9 @@
     for (NSUInteger column = 0; column < self.config.columns; column ++) {
         NSUInteger row = self.config.defaultSelect(column);
         [self.commonPickerView selectRow:row inComponent:column animated:YES];
-        self.config.updateData(column, row, self.config.origRowDataAtColumn(column)[row]);
+        if (self.config.updateData && self.config.origRowDataAtColumn) {
+            self.config.updateData(column, row, self.config.origRowDataAtColumn(column)[row]);
+        }
     }
 }
 

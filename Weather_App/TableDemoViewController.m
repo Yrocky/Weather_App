@@ -13,6 +13,7 @@
 #import "HSSwitchCellModel.h"
 #import "HSInputCellModel.h"
 #import "MMAssetsCellModel.h"
+#import "MMPickerView.h"
 
 @interface TableDemoViewController ()
 
@@ -32,10 +33,21 @@
         
         HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"Title" actionBlock:^(HSBaseCellModel *model) {
             NSLog(@"model:%@",model);
+            MMDatePickerViewConfig * dateConfig = [[MMDatePickerViewConfig alloc] init];
+            dateConfig.datePickerMode = UIDatePickerModeDateAndTime;
+            MMPickerView * pickerView = [[MMPickerView alloc] initWithDatePickerConfig:dateConfig];
+            [pickerView show];
         }];
         [s addCellModel:c];
         c = [[HSTitleCellModel alloc] initWithTitle:@"Title - again" actionBlock:^(HSBaseCellModel *model) {
             NSLog(@"model:%@",model);
+            MMPickerViewConfig * dateConfig = [[MMPickerViewConfig alloc] init];
+            dateConfig.columns = 2;
+            [dateConfig configRowAt:^NSArray<NSString *> * _Nullable(NSUInteger cloumn) {
+                return @[@"1",@"2",@"3",@"4"];
+            }];
+            MMPickerView * pickerView = [[MMPickerView alloc] initWithConfig:dateConfig];
+            [pickerView show];
         }];
         c.showArrow = NO;
         [s addCellModel:c];
