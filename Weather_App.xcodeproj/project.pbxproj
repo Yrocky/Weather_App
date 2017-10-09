@@ -52,6 +52,7 @@
 		D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */ = {isa = PBXBuildFile; fileRef = D70629511F8B18F300F52FCB /* NSString+Exten.m */; };
 		D70629551F8B191C00F52FCB /* UIView+MHCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D70629531F8B191B00F52FCB /* UIView+MHCommon.m */; };
 		D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70629571F8B19AF00F52FCB /* RootViewController.m */; };
+		D706295C1F8B860B00F52FCB /* PCCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = D706295B1F8B860B00F52FCB /* PCCustomView.m */; };
 		D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */; };
 		D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */; };
 		D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DF33531F6AC9E400771928 /* MMPreviewHUD.m */; };
@@ -153,6 +154,8 @@
 		D70629541F8B191C00F52FCB /* UIView+MHCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MHCommon.h"; sourceTree = "<group>"; };
 		D70629561F8B19AF00F52FCB /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		D70629571F8B19AF00F52FCB /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		D706295A1F8B860B00F52FCB /* PCCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCustomView.h; sourceTree = "<group>"; };
+		D706295B1F8B860B00F52FCB /* PCCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCustomView.m; sourceTree = "<group>"; };
 		D719742D1F6EFEDA0068F971 /* MM_AutoReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MM_AutoReplyViewController.h; sourceTree = "<group>"; };
 		D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MM_AutoReplyViewController.m; sourceTree = "<group>"; };
 		D71974301F6EFEFC0068F971 /* MM_AutoReplyEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MM_AutoReplyEditViewController.h; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 		7FBCF0BF1F4D269E00E2EEC7 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				D706295A1F8B860B00F52FCB /* PCCustomView.h */,
+				D706295B1F8B860B00F52FCB /* PCCustomView.m */,
 				D70629091F8B185100F52FCB /* HSSetTableView */,
 				7FBCF0BC1F4D269100E2EEC7 /* HLLSegmentView.h */,
 				7FBCF0BD1F4D269100E2EEC7 /* HLLSegmentView.m */,
@@ -637,6 +642,7 @@
 				D70629451F8B185100F52FCB /* HSSetTableViewControllerConst.m in Sources */,
 				7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */,
 				7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */,
+				D706295C1F8B860B00F52FCB /* PCCustomView.m in Sources */,
 				7F9CED3E1F5D1F9D00A64EB5 /* MMRunwayProContentView.m in Sources */,
 				D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */,
 				7FDC6ECA1F46E35A00D94379 /* main.m in Sources */,
