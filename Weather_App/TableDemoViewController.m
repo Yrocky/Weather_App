@@ -31,7 +31,7 @@
         HSSectionModel * s = [[HSSectionModel alloc] init];
         s.heightForHeader = 0;
         
-        HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"Title" actionBlock:^(HSBaseCellModel *model) {
+        HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"Title - 月-日-时间" actionBlock:^(HSBaseCellModel *model) {
             NSLog(@"model:%@",model);
             MMDatePickerViewConfig * dateConfig = [[MMDatePickerViewConfig alloc] init];
             dateConfig.datePickerMode = UIDatePickerModeDateAndTime;
@@ -39,26 +39,74 @@
             [pickerView show];
         }];
         [s addCellModel:c];
-        c = [[HSTitleCellModel alloc] initWithTitle:@"Title - again" actionBlock:^(HSBaseCellModel *model) {
+        
+        NSArray * citys = @[@"sh",@"bj"];
+        __block NSArray * co ;
+        NSArray * sh = @[@"hk",@"pd",@"bs",@"xh"];
+        NSArray * bj = @[@"dc",@"xc",@"cy"];
+        co = sh;
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Title - 联动" actionBlock:^(HSBaseCellModel *model) {
             NSLog(@"model:%@",model);
-            MMPickerViewConfig * dateConfig = [[MMPickerViewConfig alloc] init];
-            dateConfig.columns = 2;
-            [dateConfig configRowAt:^NSArray<NSString *> * _Nullable(NSUInteger cloumn) {
-                return @[@"1",@"2",@"3",@"4"];
+            MMPickerViewConfig * config = [[MMPickerViewConfig alloc] init];
+            config.columns = 2;
+            [config configRowAt:^NSArray<NSString *> * _Nullable(NSUInteger cloumn) {
+                return cloumn == 0 ? citys : co;
             }];
-            MMPickerView * pickerView = [[MMPickerView alloc] initWithConfig:dateConfig];
+            [config monitorSelect:^(NSUInteger column, NSUInteger row, id  _Nullable data) {
+                if (column == 0) {
+                    if (row == 0) {
+                        co  = sh;
+                    }else{
+                        co = bj;
+                    }
+                    [config.pickerView updateColumn:1];
+                }
+            }];
+            MMPickerView * pickerView = [[MMPickerView alloc] initWithConfig:config];
             [pickerView show];
         }];
         c.showArrow = NO;
         [s addCellModel:c];
         
-        c = [[HSTextCellModel alloc] initWithTitle:@"Text" actionBlock:^(HSBaseCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Title - 固定" actionBlock:^(HSBaseCellModel *model) {
             NSLog(@"model:%@",model);
+            MMPickerViewConfig * config = [[MMPickerViewConfig alloc] init];
+            config.columns = 2;
+            [config configRowAt:^NSArray<NSString *> * _Nullable(NSUInteger cloumn) {
+                return cloumn == 0 ? citys : co;
+            }];
+            MMPickerView * pickerView = [[MMPickerView alloc] initWithConfig:config];
+            [pickerView show];
         }];
         [s addCellModel:c];
         
-        c = [[HSTextCellModel alloc] initWithTitle:@"Text - again" actionBlock:^(HSBaseCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Title - 倒计时" actionBlock:^(HSBaseCellModel *model) {
             NSLog(@"model:%@",model);
+            MMDatePickerViewConfig * dateConfig = [[MMDatePickerViewConfig alloc] init];
+            dateConfig.datePickerMode = UIDatePickerModeCountDownTimer;
+            dateConfig.countDownDuration = 66;
+            MMPickerView * pickerView = [[MMPickerView alloc] initWithDatePickerConfig:dateConfig];
+            [pickerView show];
+        }];
+        c.showArrow = NO;
+        [s addCellModel:c];
+        
+        c = [[HSTextCellModel alloc] initWithTitle:@"Text - 月-日" actionBlock:^(HSBaseCellModel *model) {
+            NSLog(@"model:%@",model);
+            MMDatePickerViewConfig * dateConfig = [[MMDatePickerViewConfig alloc] init];
+            dateConfig.datePickerMode = UIDatePickerModeDate;
+            MMPickerView * pickerView = [[MMPickerView alloc] initWithDatePickerConfig:dateConfig];
+            [pickerView show];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTextCellModel alloc] initWithTitle:@"Text - 时间" actionBlock:^(HSBaseCellModel *model) {
+            NSLog(@"model:%@",model);
+            MMDatePickerViewConfig * dateConfig = [[MMDatePickerViewConfig alloc] init];
+            dateConfig.datePickerMode = UIDatePickerModeTime;
+            MMPickerView * pickerView = [[MMPickerView alloc] initWithDatePickerConfig:dateConfig];
+            [pickerView show];
         }];
         ((HSTextCellModel *)c).detailText = @"detail";
         ((HSTextCellModel *)c).detailColor = [UIColor lightGrayColor];

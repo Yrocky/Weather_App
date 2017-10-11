@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class MMPickerView;
+
+// config
 @interface MMPickerViewConfig : NSObject
+
+@property (nonatomic ,weak) MMPickerView * _Nullable pickerView;
 
 @property (nonatomic ,assign) NSUInteger columns;
 
@@ -31,19 +36,45 @@
 @property (nonatomic, strong) NSDate * _Nullable date;
 @property (nullable, nonatomic, strong) NSDate *minimumDate;
 @property (nullable, nonatomic, strong) NSDate *maximumDate;
+@property (nonatomic) NSTimeInterval countDownDuration;// 仅针对于 UIDatePickerModeCountDownTimer ，其他类型忽略
 @end
 
+// interface
+@interface MMPickerViewInterface : NSObject
+
++ (instancetype _Nullable ) interface;
+
+@property (nonatomic ,strong) UIColor * _Nullable bgColor;// default is clear
+
+@property (nonatomic ,strong) NSString * _Nonnull title;// default is nil
+@property (nonatomic ,strong) UIColor * _Nullable titleColor;// default is gray
+@property (nonatomic ,strong) UIFont * _Nonnull titleFont;// default is 14
+
+@property (nonatomic ,strong) NSString * _Nonnull cancelText;// default is "取消"
+@property (nonatomic ,strong) UIColor * _Nullable cancelTextColor;// default is black
+@property (nonatomic ,strong) UIFont * _Nonnull cancelTextFont;// default is 15
+
+@property (nonatomic ,strong) NSString * _Nonnull doneText;// default is "确定"
+@property (nonatomic ,strong) UIColor * _Nullable doneTextColor;// default is black
+@property (nonatomic ,strong) UIFont * _Nonnull doneTextFont;// default is 15
+
+@end
+
+// view
 @interface MMPickerView : UIView
 
-@property (nonatomic ,strong ,readonly) MMPickerViewConfig *  _Nullable config;
+@property (nonatomic ,strong ,readonly) __kindof MMPickerViewConfig *  _Nullable config;
 
 @property (nonatomic ,copy) void (^ _Nullable bCancelAction)(MMPickerView *_Nullable);
 @property (nonatomic ,copy) void (^ _Nonnull bDoneAction)(MMPickerView *_Nullable);
 
 - (instancetype _Nullable ) initWithConfig:(MMPickerViewConfig *_Nonnull)config;
-
 - (instancetype _Nullable ) initWithDatePickerConfig:(MMDatePickerViewConfig *_Nullable)config;
 
+- (void) setupInterface:(MMPickerViewInterface *_Nonnull)interface;
+
+- (void) update;
+- (void) updateColumn:(NSUInteger)column;
 - (void) show;
 - (void) dismiss;
 @end

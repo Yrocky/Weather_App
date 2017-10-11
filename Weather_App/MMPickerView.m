@@ -72,9 +72,80 @@
 @end
 
 @implementation MMDatePickerViewConfig
+@end
 
+@implementation MMPickerViewInterface
+
++ (instancetype _Nullable ) interface{
+    
+    MMPickerViewInterface * i = [[MMPickerViewInterface alloc] init];
+    i.bgColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+    i.title = @"";
+    i.titleFont = [UIFont systemFontOfSize:14];
+    i.titleColor = [UIColor grayColor];
+    i.cancelText = @"取消";
+    i.cancelTextColor = [UIColor blackColor];
+    i.cancelTextFont = [UIFont systemFontOfSize:15];
+    i.doneText = @"确定";
+    i.doneTextColor = [UIColor blackColor];
+    i.doneTextFont = [UIFont systemFontOfSize:15];
+    return i;
+}
+@end
+
+@interface _MMPickerViewToolBar : UIView
+
+@property (nonatomic ,strong) UIView * lineView;
+@property (nonatomic ,strong) UILabel * titleLabel;
+@property (nonatomic ,strong) UIButton * cancelButton;
+@property (nonatomic ,strong) UIButton * doneButton;
+@end
+
+@implementation _MMPickerViewToolBar
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        self.backgroundColor = [UIColor whiteColor];
+        
+        self.lineView = [UIView new];
+        self.lineView.backgroundColor = [UIColor lightGrayColor];
+        [self addSubview:self.lineView];
+        
+        self.titleLabel = [[UILabel alloc] init];
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        self.titleLabel.font = [UIFont systemFontOfSize:14];
+        self.titleLabel.textColor = [UIColor grayColor];
+        [self addSubview:self.titleLabel];
+        
+        self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.cancelButton.titleLabel.font = [UIFont systemFontOfSize:15];
+        [self.cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self addSubview:self.cancelButton];
+        
+        self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.doneButton.titleLabel.font = [UIFont systemFontOfSize:15];
+        [self.doneButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self addSubview:self.doneButton];
+        
+        [self _setupAutoLayout];
+    }
+    return self;
+}
+
+- (void) _setupAutoLayout{
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.lineView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.lineView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.lineView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.lineView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:1/[UIScreen mainScreen].scale]];
+    
+}
 
 @end
+
 @interface MMPickerView ()<UIPickerViewDelegate,UIPickerViewDataSource,CAAnimationDelegate>
 
 @property (nonatomic ,strong) UIView * bgView;
@@ -127,8 +198,8 @@
     self = [self init];
     if (self) {
         
+        config.pickerView = self;
         self.config = config;
-        
         
         //
         self.commonPickerView = [[UIPickerView alloc] initWithFrame:(CGRect){
@@ -148,6 +219,7 @@
     self = [self init];
     if (self) {
         
+        config.pickerView = self;
         self.config = config;
         
         //
@@ -157,9 +229,10 @@
         }];
         self.datePickerView.backgroundColor = [UIColor whiteColor];
         self.datePickerView.datePickerMode = config.datePickerMode;
+        self.datePickerView.countDownDuration = config.countDownDuration;
         self.datePickerView.date = config.date ? config.date : [NSDate date];
-        self.datePickerView.minimumDate = config.minimumDate;
-        self.datePickerView.maximumDate = config.maximumDate;
+        self.datePickerView.minimumDate = config.minimumDate ;
+        self.datePickerView.maximumDate = config.maximumDate ;
         [self addSubview:self.datePickerView];
     }
     return self;
@@ -228,6 +301,22 @@
 }
 
 #pragma mark - API M
+
+- (void)setupInterface:(MMPickerViewInterface *)interface{
+    
+    
+}
+
+- (void)update{
+    
+    [self.commonPickerView reloadAllComponents];
+}
+
+- (void) updateColumn:(NSUInteger)column{
+    
+    [self.commonPickerView reloadComponent:column];
+    [self.commonPickerView selectRow:0 inComponent:column animated:YES];
+}
 
 - (void)show{
     
