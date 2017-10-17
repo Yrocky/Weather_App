@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */; };
 		7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */; };
+		7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B6C011F95ECBB00F3A6E3 /* MMSearchViewController.m */; };
+		7F8B6C071F95ED6F00F3A6E3 /* MMSearchDefaultCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B6C031F95ED6D00F3A6E3 /* MMSearchDefaultCollectionView.m */; };
+		7F8B6C081F95ED6F00F3A6E3 /* MMSearchReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B6C051F95ED6E00F3A6E3 /* MMSearchReusableView.m */; };
 		7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F91F7C81F62991400B20D76 /* MMGiftContainerView.m */; };
 		7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F94A34A1F55120D00DA28EA /* NSArray+Sugar.m */; };
 		7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9CED361F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m */; };
@@ -64,6 +67,12 @@
 		7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGiftEffectViewController.m; sourceTree = "<group>"; };
 		7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGiftEffectOperationMgr.h; sourceTree = "<group>"; };
 		7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGiftEffectOperationMgr.m; sourceTree = "<group>"; };
+		7F8B6C001F95ECBB00F3A6E3 /* MMSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSearchViewController.h; sourceTree = "<group>"; };
+		7F8B6C011F95ECBB00F3A6E3 /* MMSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSearchViewController.m; sourceTree = "<group>"; };
+		7F8B6C031F95ED6D00F3A6E3 /* MMSearchDefaultCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSearchDefaultCollectionView.m; sourceTree = "<group>"; };
+		7F8B6C041F95ED6E00F3A6E3 /* MMSearchDefaultCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSearchDefaultCollectionView.h; sourceTree = "<group>"; };
+		7F8B6C051F95ED6E00F3A6E3 /* MMSearchReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSearchReusableView.m; sourceTree = "<group>"; };
+		7F8B6C061F95ED6E00F3A6E3 /* MMSearchReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSearchReusableView.h; sourceTree = "<group>"; };
 		7F91F7C71F62991400B20D76 /* MMGiftContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGiftContainerView.h; sourceTree = "<group>"; };
 		7F91F7C81F62991400B20D76 /* MMGiftContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGiftContainerView.m; sourceTree = "<group>"; };
 		7F94A3491F55120D00DA28EA /* NSArray+Sugar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sugar.h"; sourceTree = "<group>"; };
@@ -185,6 +194,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7F8B6C091F95EEA900F3A6E3 /* 搜索的CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				7F8B6C041F95ED6E00F3A6E3 /* MMSearchDefaultCollectionView.h */,
+				7F8B6C031F95ED6D00F3A6E3 /* MMSearchDefaultCollectionView.m */,
+				7F8B6C061F95ED6E00F3A6E3 /* MMSearchReusableView.h */,
+				7F8B6C051F95ED6E00F3A6E3 /* MMSearchReusableView.m */,
+			);
+			name = "搜索的CollectionView";
+			sourceTree = "<group>";
+		};
 		7FBCF0BF1F4D269E00E2EEC7 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +262,7 @@
 				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
 				7FCF75031F8B1DC600514597 /* Alert封装 */,
+				7F8B6C091F95EEA900F3A6E3 /* 搜索的CollectionView */,
 				D70629071F8B14F800F52FCB /* picker视图 */,
 				7FED6BA31F5557E2004E3345 /* DataSource */,
 				7FBCF0BF1F4D269E00E2EEC7 /* CustomView */,
@@ -375,9 +396,9 @@
 		D706290F1F8B185100F52FCB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D70629101F8B185100F52FCB /* Cell */,
-				D706291F1F8B185100F52FCB /* Section */,
 				D70629221F8B185100F52FCB /* TableView */,
+				D706291F1F8B185100F52FCB /* Section */,
+				D70629101F8B185100F52FCB /* Cell */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -462,6 +483,8 @@
 				7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */,
 				7FCF75041F8B1EAD00514597 /* TableDemoViewController.h */,
 				7FCF75051F8B1EAD00514597 /* TableDemoViewController.m */,
+				7F8B6C001F95ECBB00F3A6E3 /* MMSearchViewController.h */,
+				7F8B6C011F95ECBB00F3A6E3 /* MMSearchViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -606,6 +629,7 @@
 				D706293B1F8B185100F52FCB /* HSBaseCellModel.m in Sources */,
 				7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */,
 				7FCF75021F8B1DC100514597 /* HLLAlert.m in Sources */,
+				7F8B6C071F95ED6F00F3A6E3 /* MMSearchDefaultCollectionView.m in Sources */,
 				7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */,
 				7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */,
 				D706294A1F8B185100F52FCB /* HSSwitchTableViewCell.m in Sources */,
@@ -638,12 +662,14 @@
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
 				D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */,
 				D70629391F8B185100F52FCB /* MMAssetsCellModel.m in Sources */,
+				7F8B6C081F95ED6F00F3A6E3 /* MMSearchReusableView.m in Sources */,
 				D706294C1F8B185100F52FCB /* HSTitleTableViewCell.m in Sources */,
 				D70629451F8B185100F52FCB /* HSSetTableViewControllerConst.m in Sources */,
 				7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */,
 				7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */,
 				D706295C1F8B860B00F52FCB /* PCCustomView.m in Sources */,
 				7F9CED3E1F5D1F9D00A64EB5 /* MMRunwayProContentView.m in Sources */,
+				7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */,
 				D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */,
 				7FDC6ECA1F46E35A00D94379 /* main.m in Sources */,
 			);

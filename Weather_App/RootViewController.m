@@ -11,6 +11,7 @@
 #import "MM_AutoReplyViewController.h"
 #import "MMGiftEffectViewController.h"
 #import "TableDemoViewController.h"
+#import "MMSearchViewController.h"
 
 @interface RootViewController ()
 
@@ -51,6 +52,13 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"模型化TableView" actionBlock:^(HSBaseCellModel *model) {
             
             TableDemoViewController * vc = [[TableDemoViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"CollectionView折叠" actionBlock:^(HSBaseCellModel *model) {
+            
+            MMSearchViewController * vc = [[MMSearchViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];
