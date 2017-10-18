@@ -17,6 +17,7 @@
 		7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9CED361F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m */; };
 		7F9CED3B1F5CEAA000A64EB5 /* MMRunwayCoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9CED3A1F5CEAA000A64EB5 /* MMRunwayCoreView.m */; };
 		7F9CED3E1F5D1F9D00A64EB5 /* MMRunwayProContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9CED3D1F5D1F9D00A64EB5 /* MMRunwayProContentView.m */; };
+		7FBC5FB71F97454C00DCF3E9 /* ANYMethodLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC5FB61F97454B00DCF3E9 /* ANYMethodLog.m */; };
 		7FBCF0BE1F4D269100E2EEC7 /* HLLSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBCF0BD1F4D269100E2EEC7 /* HLLSegmentView.m */; };
 		7FBCF0C41F4E776B00E2EEC7 /* HLLCircularLoaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBCF0C31F4E776B00E2EEC7 /* HLLCircularLoaderView.m */; };
 		7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBCF0C91F4EE12200E2EEC7 /* HLLAttributedBuilder.m */; };
@@ -84,6 +85,8 @@
 		7F9CED3A1F5CEAA000A64EB5 /* MMRunwayCoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRunwayCoreView.m; sourceTree = "<group>"; };
 		7F9CED3C1F5D1F9D00A64EB5 /* MMRunwayProContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRunwayProContentView.h; sourceTree = "<group>"; };
 		7F9CED3D1F5D1F9D00A64EB5 /* MMRunwayProContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMRunwayProContentView.m; sourceTree = "<group>"; };
+		7FBC5FB51F97454B00DCF3E9 /* ANYMethodLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANYMethodLog.h; sourceTree = "<group>"; };
+		7FBC5FB61F97454B00DCF3E9 /* ANYMethodLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANYMethodLog.m; sourceTree = "<group>"; };
 		7FBCF0BC1F4D269100E2EEC7 /* HLLSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLSegmentView.h; sourceTree = "<group>"; };
 		7FBCF0BD1F4D269100E2EEC7 /* HLLSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLSegmentView.m; sourceTree = "<group>"; };
 		7FBCF0C21F4E776B00E2EEC7 /* HLLCircularLoaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLCircularLoaderView.h; sourceTree = "<group>"; };
@@ -205,6 +208,15 @@
 			name = "搜索的CollectionView";
 			sourceTree = "<group>";
 		};
+		7FBC5FB41F97454B00DCF3E9 /* ANYMethodLog */ = {
+			isa = PBXGroup;
+			children = (
+				7FBC5FB51F97454B00DCF3E9 /* ANYMethodLog.h */,
+				7FBC5FB61F97454B00DCF3E9 /* ANYMethodLog.m */,
+			);
+			path = ANYMethodLog;
+			sourceTree = "<group>";
+		};
 		7FBCF0BF1F4D269E00E2EEC7 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +278,7 @@
 				D70629071F8B14F800F52FCB /* picker视图 */,
 				7FED6BA31F5557E2004E3345 /* DataSource */,
 				7FBCF0BF1F4D269E00E2EEC7 /* CustomView */,
+				7FBC5FB41F97454B00DCF3E9 /* ANYMethodLog */,
 				7FDC6ED11F46E35A00D94379 /* Main.storyboard */,
 				7FDC6ED41F46E35A00D94379 /* Assets.xcassets */,
 				7FDC6ED61F46E35A00D94379 /* LaunchScreen.storyboard */,
@@ -669,6 +682,7 @@
 				7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */,
 				D706295C1F8B860B00F52FCB /* PCCustomView.m in Sources */,
 				7F9CED3E1F5D1F9D00A64EB5 /* MMRunwayProContentView.m in Sources */,
+				7FBC5FB71F97454C00DCF3E9 /* ANYMethodLog.m in Sources */,
 				7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */,
 				D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */,
 				7FDC6ECA1F46E35A00D94379 /* main.m in Sources */,

@@ -80,7 +80,6 @@ extern NSString * const kSearchHistoryDatasIdentifier;
 
 @interface UICollectionViewLeftAlignedLayout : UICollectionViewFlowLayout
 
-@property (nonatomic) BOOL isFold;
 @end
 
 /**
