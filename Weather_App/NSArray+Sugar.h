@@ -18,6 +18,7 @@
 
 - (NSArray *) map:(id (^)(id obj))handle;
 - (NSArray *) mm_mapWithskip:(id (^)(id obj, BOOL *skip))handle;
+- (NSArray *) mm_mapWithIndex:(id (^)(id obj,NSUInteger index))handle;
 
 - (void) each:(void(^)(id obj))handle;
 - (void) eachWithIndex:(void(^)(id obj,NSInteger index))handle;

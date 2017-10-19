@@ -10,6 +10,12 @@
 #import "MMSearchDefaultCollectionView.h"
 #import <Masonry/Masonry.h>
 
+@interface MM_testObj : NSObject
+@property (nonatomic ,copy) void (^cb)(NSString *text);
+@end
+@implementation MM_testObj
+@end
+
 @interface MMSearchViewController ()<MMSearchDefaultCollectionViewDelegate>
 
 @property (nonatomic ,strong) MM_SearchDefaultCollectionView * defaultView;
@@ -21,6 +27,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"搜索";
+    
+    MM_testObj * obj = [[MM_testObj alloc] init];
+    obj.cb = ^(NSString *text) {
+        
+    };
     
     UICollectionViewLeftAlignedLayout *flowLayout = [[UICollectionViewLeftAlignedLayout alloc] init];
     flowLayout.minimumLineSpacing = 8;

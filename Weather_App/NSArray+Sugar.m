@@ -86,6 +86,17 @@
     return [_self copy];
 }
 
+- (NSArray *) mm_mapWithIndex:(id (^)(id,NSUInteger))handle{
+    
+    NSMutableArray * _self = [NSMutableArray arrayWithCapacity:self.count];
+    
+    NSUInteger index = 0;
+    for (id obj in self) {
+        [_self addObject:handle(obj,index) ? : [NSNull null]];
+        index ++;
+    }
+    return [_self copy];
+}
 - (NSArray *) select:(BOOL (^)(id obj))handle{
 
     return [self filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {

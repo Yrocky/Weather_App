@@ -80,7 +80,6 @@ NSString * const kSearchHistoryDatasIdentifier = @"kSearchHistoryDatasIdentifier
         sectionAttribute.insetForSection = UIEdgeInsetsMake(12, 12, 12, 12);
         [self.layoutDelegate addSectionAttribute:sectionAttribute];
         
-        
         self.dataSource = self;
         self.delegate = self.layoutDelegate;
         
@@ -308,17 +307,86 @@ NSString * const kSearchHistoryDatasIdentifier = @"kSearchHistoryDatasIdentifier
     
     NSMutableArray * temp = [NSMutableArray array];
     
-    for (id data in array) {
-        
+    // init array
+    [temp addObjectsFromArray:[array map:^id(id data) {
         MM_SearchDefaultRowLayoutAttribute * rowAttribute = [[MM_SearchDefaultRowLayoutAttribute alloc] init];
         rowAttribute.rowData = data;
         rowAttribute.regularSizeForItem = self.regularSizeForItem;
         rowAttribute.insetForSection = self.insetForSection;
-        [temp addObject:rowAttribute];
-    }
+        return rowAttribute;
+    }]];
+    
+    // config array
+    [temp eachWithIndex:^(MM_SearchDefaultRowLayoutAttribute * rowAttribute, NSInteger index) {
+       
+        BOOL isFirstItemInSection = index == 0;
+        CGFloat layoutWidth = self.sizeForHeader.width - self.insetForSection.left - self.insetForSection.right;
+        if (isFirstItemInSection) {
+            rowAttribute.linenumber = 1;
+        }else{
+            NSUInteger previousIndex = index - 1;
+            MM_SearchDefaultRowLayoutAttribute * previousRowAttribute = temp[previousIndex];
+            
+            BOOL isFirstItemInRow = YES;
+            rowAttribute.linenumber = previousRowAttribute.linenumber + isFirstItemInRow;
+            
+            //    CGRect previousFrame = [self layoutAttributesForItemAtIndexPath:previousIndexPath].frame;
+            //    CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width;
+            //    CGRect currentFrame = currentItemAttributes.frame;
+            //    CGRect strecthedCurrentFrame = CGRectMake(sectionInset.left,
+            //                                              currentFrame.origin.y,
+            //                                              layoutWidth,
+            //                                              currentFrame.size.height);
+            //    // if the current frame, once left aligned to the left and stretched to the full collection view
+            //    // widht intersects the previous frame then they are on the same line
+            //    BOOL isFirstItemInRow = !CGRectIntersectsRect(previousFrame, strecthedCurrentFrame);
+            
+        }
+    }];
     
     [_defaultRowAttributes addObjectsFromArray:temp];
     _allRowAttributes = [temp copy];
+    
+    
+//    BOOL isFirstItemInSection = indexPath.item == 0;
+//    CGFloat layoutWidth = CGRectGetWidth(self.collectionView.frame) - sectionInset.left - sectionInset.right;
+//    
+//    if (isFirstItemInSection) {
+//        indexPath.linenumber = 1;
+//        currentItemAttributes.indexPath = indexPath;
+//        [currentItemAttributes leftAlignFrameWithSectionInset:sectionInset];
+//        return currentItemAttributes;
+//    }
+//    
+//    NSIndexPath* previousIndexPath = [NSIndexPath indexPathForItem:indexPath.item-1 inSection:indexPath.section];
+//    CGRect previousFrame = [self layoutAttributesForItemAtIndexPath:previousIndexPath].frame;
+//    CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width;
+//    CGRect currentFrame = currentItemAttributes.frame;
+//    CGRect strecthedCurrentFrame = CGRectMake(sectionInset.left,
+//                                              currentFrame.origin.y,
+//                                              layoutWidth,
+//                                              currentFrame.size.height);
+//    // if the current frame, once left aligned to the left and stretched to the full collection view
+//    // widht intersects the previous frame then they are on the same line
+//    BOOL isFirstItemInRow = !CGRectIntersectsRect(previousFrame, strecthedCurrentFrame);
+//    
+//    indexPath.linenumber = previousIndexPath.linenumber;
+//    
+//    if (isFirstItemInRow) {
+//        indexPath.linenumber = previousIndexPath.linenumber + 1;
+//        // make sure the first item on a line is left aligned
+//        
+////        [currentItemAttributes leftAlignFrameWithSectionInset:sectionInset];
+////        currentItemAttributes.indexPath = indexPath;
+//        return currentItemAttributes;
+//    }
+//    
+//    CGRect frame = currentItemAttributes.frame;
+////    frame.origin.x = previousFrameRightPoint + [self evaluatedMinimumInteritemSpacingForSectionAtIndex:indexPath.section];
+////    currentItemAttributes.frame = frame;
+//    currentItemAttributes.indexPath = indexPath;
+//    return currentItemAttributes;
+    
 }
 
 - (NSArray<MM_SearchDefaultRowLayoutAttribute *> *)rowAttributes{
@@ -544,6 +612,7 @@ NSString * const kSearchHistoryDatasIdentifier = @"kSearchHistoryDatasIdentifier
                                               currentFrame.size.height);
     // if the current frame, once left aligned to the left and stretched to the full collection view
     // widht intersects the previous frame then they are on the same line
+    // 如果当前 att 的frame
     BOOL isFirstItemInRow = !CGRectIntersectsRect(previousFrame, strecthedCurrentFrame);
     
     indexPath.linenumber = previousIndexPath.linenumber;
