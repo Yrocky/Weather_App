@@ -169,9 +169,9 @@
 
                 [sectionObj replaceCellModelAtIndex:row withCellModel:cellModel];
                 //更新cell
-                NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:section];
                 [self.hs_tableView beginUpdates];
-                [self.hs_tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:animation];
+                [self.hs_tableView reloadRowsAtIndexPaths:@[NSIndexPathWith(section, row)]
+                                         withRowAnimation:animation];
                 [self.hs_tableView endUpdates];
                 *stop = YES;
                 return;
