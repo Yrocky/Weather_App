@@ -12,6 +12,7 @@
 #import "MMGiftEffectViewController.h"
 #import "TableDemoViewController.h"
 #import "MMSearchViewController.h"
+#import "ANYMethodLog.h"
 
 @interface RootViewController ()
 
@@ -23,6 +24,15 @@
     [super viewDidLoad];
     
     self.title = @"Root";
+    
+    [ANYMethodLog logMethodWithClass:[HSTableViewModel class] condition:^BOOL(SEL sel) {
+        
+        return [NSStringFromSelector(sel) isEqualToString:@"addSection:"];
+    } before:^(id target, SEL sel, NSArray *args, int deep) {
+        NSLog(@" before target:%@ sel:%@",target,NSStringFromSelector(sel));
+    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
+        
+    }];
     
     [self.tableViewModel addSection:({
         

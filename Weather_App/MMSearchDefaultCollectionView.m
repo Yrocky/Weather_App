@@ -540,10 +540,8 @@ NSString * const kSearchHistoryDatasIdentifier = @"kSearchHistoryDatasIdentifier
 
 @end
 
-
 @interface UICollectionViewLayoutAttributes (LeftAligned)
 
-@property (nonatomic ,assign) NSUInteger linenumber;
 - (void)leftAlignFrameWithSectionInset:(UIEdgeInsets)sectionInset;
 
 @end
@@ -555,16 +553,6 @@ NSString * const kSearchHistoryDatasIdentifier = @"kSearchHistoryDatasIdentifier
     CGRect frame = self.frame;
     frame.origin.x = sectionInset.left;
     self.frame = frame;
-}
-
--(NSUInteger)linenumber{
-    NSNumber *t = objc_getAssociatedObject(self, _cmd);
-    return [t integerValue];
-}
-
-- (void)setLinenumber:(NSUInteger)linenumber{
-    NSNumber *t = @(linenumber);
-    objc_setAssociatedObject(self, @selector(linenumber), t, OBJC_ASSOCIATION_ASSIGN);
 }
 
 @end

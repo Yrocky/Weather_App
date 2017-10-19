@@ -9,6 +9,7 @@
 #import "HSInputTableViewCell.h"
 #import "HSInputCellModel.h"
 #import "HSSetTableViewControllerConst.h"
+#import "HLLPlaceholderTextView.h"
 
 @interface HSInputTableViewCell ()<UITextFieldDelegate>
 @property (nonatomic ,strong) UITextField * inputTextField;
@@ -104,7 +105,7 @@
 @end
 
 @interface HSInputTextTableViewCell ()<UITextViewDelegate>
-@property (nonatomic ,strong) UITextView * inputTextView;
+@property (nonatomic ,strong) UILimitTextView * inputTextView;
 @property (nonatomic, weak)NSLayoutConstraint *inputRightConstaint;  ///<
 @property (nonatomic, weak)NSLayoutConstraint *inputLeftConstaint;  ///<
 @end
@@ -127,7 +128,7 @@
 {
     [super setupUI];
     //添加输入框控件
-    UITextView *inputTextView = [[UITextView alloc] initWithFrame:CGRectZero];
+    UILimitTextView *inputTextView = [[UILimitTextView alloc] initWithFrame:CGRectZero];
     inputTextView.delegate = self;
     inputTextView.translatesAutoresizingMaskIntoConstraints = NO;
     inputTextView.returnKeyType = UIReturnKeyDone;
@@ -169,6 +170,8 @@
     self.inputTextView.font = inputModel.inputTextFont;
     self.inputTextView.textColor = inputModel.inputTextColor;
     self.inputTextView.layer.cornerRadius = inputModel.inputTextCornerRadius;
+    self.inputTextView.placeholder = inputModel.placeholder;
+    self.inputTextView.placeholderColor = inputModel.placeholderColor;
     
     if (inputModel.haveBorder) {
         self.inputTextView.layer.borderColor = inputModel.inputTextBorderColor.CGColor;

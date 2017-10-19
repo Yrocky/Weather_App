@@ -45,6 +45,7 @@
         self.inputTextCornerRadius = 5;
         self.haveBorder = NO;
         self.inputTextBorderColor = [UIColor colorWithHexString:@"#8F8E94"];
+        self.placeholderColor = [UIColor lightGrayColor];
     }
     return self;
 }

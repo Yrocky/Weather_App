@@ -29,6 +29,8 @@ typedef void(^bInputBlock)(HSBaseCellModel *model,NSString * text);
 
 @interface HSInputTextCellModel : HSInputCellModel
 
+@property (nonatomic, strong) UIColor *placeholderColor;  ///<占位文字的颜色
+
 @property (nonatomic ,assign) BOOL haveBorder;///< 文本框是否需要边框
 @property (nonatomic ,assign) CGFloat inputTextCornerRadius;///< 文本框的圆角度数
 @property (nonatomic, strong) UIColor *inputTextBorderColor;  ///<文本框边框颜色
