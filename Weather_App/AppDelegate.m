@@ -30,34 +30,34 @@
 //    NSString * s = @"";
 //    [s substringToIndex:range.location];
     
-    NSArray * array = @[@"12",@"34",@"45",@"56"];
-    NSLog(@"have %d",array.have(@"12"));
-    NSLog(@"sample %@",array.sample);
-    
-    [array each:^(id obj) {
-        NSLog(@"obj:%@",obj);
-    }];
-    
-    [array eachWithIndex:^(id obj, NSInteger index) {
-        NSLog(@"obj:%@ at index:%ld",obj,(long)index);
-    }];
-    
-    NSLog(@"map:%@",[array map:^id(id obj) {
-        return [NSString stringWithFormat:@"<map-%@>",obj];
-    }]);
-    
-    NSLog(@"select:%@",[array select:^BOOL(id obj) {
-        
-        return [obj isEqual: @"12"];
-    }]);
-    
-    NSArray * other = @[@"12",@"56",@"67",@"78"];
-    
-    NSLog(@"union:%@",[array union:other]);// 12 34 45 56 67 78
-    NSLog(@"intersect:%@",[array intersect:other]);// 12 56
-    NSLog(@"difference:%@",[array difference:other]);// 34 45 67 78
-    NSLog(@"array-subtract-other:%@",[array subtract:other]);// 34 45
-    NSLog(@"other-subtract-array:%@",[other subtract:array]);// 67 78
+//    NSArray * array = @[@"12",@"34",@"45",@"56"];
+//    NSLog(@"have %d",array.have(@"12"));
+//    NSLog(@"sample %@",array.sample);
+//    
+//    [array each:^(id obj) {
+//        NSLog(@"obj:%@",obj);
+//    }];
+//    
+//    [array eachWithIndex:^(id obj, NSInteger index) {
+//        NSLog(@"obj:%@ at index:%ld",obj,(long)index);
+//    }];
+//    
+//    NSLog(@"map:%@",[array map:^id(id obj) {
+//        return [NSString stringWithFormat:@"<map-%@>",obj];
+//    }]);
+//    
+//    NSLog(@"select:%@",[array select:^BOOL(id obj) {
+//        
+//        return [obj isEqual: @"12"];
+//    }]);
+//    
+//    NSArray * other = @[@"12",@"56",@"67",@"78"];
+//    
+//    NSLog(@"union:%@",[array union:other]);// 12 34 45 56 67 78
+//    NSLog(@"intersect:%@",[array intersect:other]);// 12 56
+//    NSLog(@"difference:%@",[array difference:other]);// 34 45 67 78
+//    NSLog(@"array-subtract-other:%@",[array subtract:other]);// 34 45
+//    NSLog(@"other-subtract-array:%@",[other subtract:array]);// 67 78
     
     return YES;
 }

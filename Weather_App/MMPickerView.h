@@ -13,6 +13,8 @@
 // config
 @interface MMPickerViewConfig : NSObject
 
++ (instancetype _Nullable ) config;
+
 @property (nonatomic ,weak) MMPickerView * _Nullable pickerView;
 
 @property (nonatomic ,assign) NSUInteger columns;
@@ -48,14 +50,14 @@
 
 @property (nonatomic ,strong) NSString * _Nonnull title;// default is nil
 @property (nonatomic ,strong) UIColor * _Nullable titleColor;// default is gray
-@property (nonatomic ,strong) UIFont * _Nonnull titleFont;// default is 14
+@property (nonatomic ,strong) UIFont * _Nonnull titleFont;// default is 13
 
 @property (nonatomic ,strong) NSString * _Nonnull cancelText;// default is "取消"
-@property (nonatomic ,strong) UIColor * _Nullable cancelTextColor;// default is black
+@property (nonatomic ,strong) UIColor * _Nullable cancelTextColor;// default is blueColor
 @property (nonatomic ,strong) UIFont * _Nonnull cancelTextFont;// default is 15
 
 @property (nonatomic ,strong) NSString * _Nonnull doneText;// default is "确定"
-@property (nonatomic ,strong) UIColor * _Nullable doneTextColor;// default is black
+@property (nonatomic ,strong) UIColor * _Nullable doneTextColor;// default is blueColor
 @property (nonatomic ,strong) UIFont * _Nonnull doneTextFont;// default is 15
 
 @end
@@ -75,6 +77,8 @@
 
 - (void) update;
 - (void) updateColumn:(NSUInteger)column;
+
+- (void) showIn:(UIView *)view;
 - (void) show;
 - (void) dismiss;
 @end

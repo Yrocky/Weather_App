@@ -103,9 +103,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString * cmd = NSStringFromSelector(_cmd);
-    cmd = [cmd capitalizedString];
-    
     UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
     statusBar.backgroundColor = [UIColor orangeColor];
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mm_debugerTool)];

@@ -31,9 +31,11 @@
         HSSectionModel * s = [[HSSectionModel alloc] init];
         s.heightForHeader = 0;
         
+        __weak typeof(self) weakSelf = self;
+        
         HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"Title - 月-日-时间" actionBlock:^(HSBaseCellModel *model) {
             NSLog(@"model:%@",model);
-            MMDatePickerViewConfig * dateConfig = [[MMDatePickerViewConfig alloc] init];
+            MMDatePickerViewConfig * dateConfig = [MMDatePickerViewConfig config];
             dateConfig.datePickerMode = UIDatePickerModeDateAndTime;
             MMPickerView * pickerView = [[MMPickerView alloc] initWithDatePickerConfig:dateConfig];
             [pickerView show];
@@ -48,7 +50,7 @@
         
         c = [[HSTitleCellModel alloc] initWithTitle:@"Title - 联动" actionBlock:^(HSBaseCellModel *model) {
             NSLog(@"model:%@",model);
-            MMPickerViewConfig * config = [[MMPickerViewConfig alloc] init];
+            MMPickerViewConfig * config = [MMPickerViewConfig config];
             config.columns = 2;
             [config configRowAt:^NSArray<NSString *> * _Nullable(NSUInteger cloumn) {
                 return cloumn == 0 ? citys : co;
@@ -71,13 +73,20 @@
         
         c = [[HSTitleCellModel alloc] initWithTitle:@"Title - 固定" actionBlock:^(HSBaseCellModel *model) {
             NSLog(@"model:%@",model);
-            MMPickerViewConfig * config = [[MMPickerViewConfig alloc] init];
+            
+            MMPickerViewInterface * interface = [MMPickerViewInterface interface];
+            interface.bgColor = [UIColor whiteColor];
+            
+            MMPickerViewConfig * config = [MMPickerViewConfig config];
             config.columns = 2;
             [config configRowAt:^NSArray<NSString *> * _Nullable(NSUInteger cloumn) {
                 return cloumn == 0 ? citys : co;
             }];
             MMPickerView * pickerView = [[MMPickerView alloc] initWithConfig:config];
-            [pickerView show];
+            [pickerView setupInterface:interface];
+            
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            [pickerView showIn:strongSelf.view];
         }];
         [s addCellModel:c];
         
@@ -94,7 +103,7 @@
         
         c = [[HSTextCellModel alloc] initWithTitle:@"Text - 月-日" actionBlock:^(HSBaseCellModel *model) {
             NSLog(@"model:%@",model);
-            MMDatePickerViewConfig * dateConfig = [[MMDatePickerViewConfig alloc] init];
+            MMDatePickerViewConfig * dateConfig = [MMDatePickerViewConfig config];
             dateConfig.datePickerMode = UIDatePickerModeDate;
             MMPickerView * pickerView = [[MMPickerView alloc] initWithDatePickerConfig:dateConfig];
             [pickerView show];
@@ -103,7 +112,7 @@
         
         c = [[HSTextCellModel alloc] initWithTitle:@"Text - 时间" actionBlock:^(HSBaseCellModel *model) {
             NSLog(@"model:%@",model);
-            MMDatePickerViewConfig * dateConfig = [[MMDatePickerViewConfig alloc] init];
+            MMDatePickerViewConfig * dateConfig = [MMDatePickerViewConfig config];
             dateConfig.datePickerMode = UIDatePickerModeTime;
             MMPickerView * pickerView = [[MMPickerView alloc] initWithDatePickerConfig:dateConfig];
             [pickerView show];
