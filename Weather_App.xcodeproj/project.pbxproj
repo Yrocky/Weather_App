@@ -23,6 +23,8 @@
 		7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBCF0C91F4EE12200E2EEC7 /* HLLAttributedBuilder.m */; };
 		7FCF75021F8B1DC100514597 /* HLLAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCF75001F8B1DC000514597 /* HLLAlert.m */; };
 		7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCF75051F8B1EAD00514597 /* TableDemoViewController.m */; };
+		7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8CC251F984A3F005DC9FF /* HLLPlaceholderTextView.m */; };
+		7FD8CC291F984A8D005DC9FF /* UILabel+ContentSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8CC281F984A8D005DC9FF /* UILabel+ContentSize.m */; };
 		7FDC6ECA1F46E35A00D94379 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6EC91F46E35A00D94379 /* main.m */; };
 		7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6ECC1F46E35A00D94379 /* AppDelegate.m */; };
 		7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6ECF1F46E35A00D94379 /* ViewController.m */; };
@@ -98,6 +100,10 @@
 		7FCF75011F8B1DC100514597 /* HLLAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLAlert.h; sourceTree = "<group>"; };
 		7FCF75041F8B1EAD00514597 /* TableDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableDemoViewController.h; sourceTree = "<group>"; };
 		7FCF75051F8B1EAD00514597 /* TableDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableDemoViewController.m; sourceTree = "<group>"; };
+		7FD8CC241F984A3E005DC9FF /* HLLPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLPlaceholderTextView.h; sourceTree = "<group>"; };
+		7FD8CC251F984A3F005DC9FF /* HLLPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLPlaceholderTextView.m; sourceTree = "<group>"; };
+		7FD8CC271F984A8D005DC9FF /* UILabel+ContentSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+ContentSize.h"; sourceTree = "<group>"; };
+		7FD8CC281F984A8D005DC9FF /* UILabel+ContentSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ContentSize.m"; sourceTree = "<group>"; };
 		7FDC6EC51F46E35A00D94379 /* Weather_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDC6EC91F46E35A00D94379 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7FDC6ECB1F46E35A00D94379 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -220,6 +226,8 @@
 		7FBCF0BF1F4D269E00E2EEC7 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				7FD8CC241F984A3E005DC9FF /* HLLPlaceholderTextView.h */,
+				7FD8CC251F984A3F005DC9FF /* HLLPlaceholderTextView.m */,
 				D706295A1F8B860B00F52FCB /* PCCustomView.h */,
 				D706295B1F8B860B00F52FCB /* PCCustomView.m */,
 				D70629091F8B185100F52FCB /* HSSetTableView */,
@@ -351,6 +359,8 @@
 				7F94A34A1F55120D00DA28EA /* NSArray+Sugar.m */,
 				D70629001F8B132E00F52FCB /* NSUserDefaults+MM_Common.h */,
 				D70629011F8B132E00F52FCB /* NSUserDefaults+MM_Common.m */,
+				7FD8CC271F984A8D005DC9FF /* UILabel+ContentSize.h */,
+				7FD8CC281F984A8D005DC9FF /* UILabel+ContentSize.m */,
 			);
 			name = "分类";
 			sourceTree = "<group>";
@@ -660,12 +670,14 @@
 				D70629401F8B185100F52FCB /* HSTextCellModel.m in Sources */,
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
 				D706293E1F8B185100F52FCB /* HSInputCellModel.m in Sources */,
+				7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */,
 				D70629421F8B185100F52FCB /* HSSectionModel.m in Sources */,
 				7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */,
 				7FDC6EE11F46E38800D94379 /* HLLWaveView.m in Sources */,
 				D70629461F8B185100F52FCB /* HSBaseTableViewCell.m in Sources */,
 				7FBCF0C41F4E776B00E2EEC7 /* HLLCircularLoaderView.m in Sources */,
 				D706294B1F8B185100F52FCB /* HSTextTableViewCell.m in Sources */,
+				7FD8CC291F984A8D005DC9FF /* UILabel+ContentSize.m in Sources */,
 				D70629431F8B185100F52FCB /* HSTableViewModel.m in Sources */,
 				7FBCF0BE1F4D269100E2EEC7 /* HLLSegmentView.m in Sources */,
 				D70629411F8B185100F52FCB /* HSTitleCellModel.m in Sources */,

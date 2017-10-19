@@ -33,7 +33,6 @@
     tableView.backgroundView = nil;
     tableView.delegate = self;
     tableView.dataSource = self;
-//    tableView.separatorInset = UIEdgeInsetsMake(0, HS_KCellMargin, 0, HS_KCellMargin);
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     tableView.showsVerticalScrollIndicator = NO;

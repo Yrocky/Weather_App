@@ -126,6 +126,9 @@
         c = [[HSInputTextCellModel alloc] initWithTitle:@"TextView" inputText:@"text" doneInput:^(HSBaseCellModel *model, NSString *text) {
             NSLog(@"model:%@",model);
         }];
+        ((HSInputTextCellModel *)c).placeholder = @"placeholder - text view";
+        ((HSInputTextCellModel *)c).placeholderColor = [UIColor redColor];
+
         [s addCellModel:c];
         
         s;
