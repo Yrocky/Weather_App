@@ -20,6 +20,11 @@
 @end
 @implementation MMPickerViewConfig
 
++ (instancetype _Nullable ) config{
+    
+    return [[[self class] alloc] init];
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -81,69 +86,16 @@
     MMPickerViewInterface * i = [[MMPickerViewInterface alloc] init];
     i.bgColor = [UIColor colorWithWhite:0.5 alpha:0.5];
     i.title = @"";
-    i.titleFont = [UIFont systemFontOfSize:14];
+    i.titleFont = [UIFont systemFontOfSize:13];
     i.titleColor = [UIColor grayColor];
     i.cancelText = @"取消";
-    i.cancelTextColor = [UIColor blackColor];
+    i.cancelTextColor = [UIColor blueColor];
     i.cancelTextFont = [UIFont systemFontOfSize:15];
     i.doneText = @"确定";
-    i.doneTextColor = [UIColor blackColor];
+    i.doneTextColor = [UIColor blueColor];
     i.doneTextFont = [UIFont systemFontOfSize:15];
     return i;
 }
-@end
-
-@interface _MMPickerViewToolBar : UIView
-
-@property (nonatomic ,strong) UIView * lineView;
-@property (nonatomic ,strong) UILabel * titleLabel;
-@property (nonatomic ,strong) UIButton * cancelButton;
-@property (nonatomic ,strong) UIButton * doneButton;
-@end
-
-@implementation _MMPickerViewToolBar
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        
-        self.backgroundColor = [UIColor whiteColor];
-        
-        self.lineView = [UIView new];
-        self.lineView.backgroundColor = [UIColor lightGrayColor];
-        [self addSubview:self.lineView];
-        
-        self.titleLabel = [[UILabel alloc] init];
-        self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        self.titleLabel.font = [UIFont systemFontOfSize:14];
-        self.titleLabel.textColor = [UIColor grayColor];
-        [self addSubview:self.titleLabel];
-        
-        self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.cancelButton.titleLabel.font = [UIFont systemFontOfSize:15];
-        [self.cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self addSubview:self.cancelButton];
-        
-        self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.doneButton.titleLabel.font = [UIFont systemFontOfSize:15];
-        [self.doneButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self addSubview:self.doneButton];
-        
-        [self _setupAutoLayout];
-    }
-    return self;
-}
-
-- (void) _setupAutoLayout{
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.lineView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.lineView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.lineView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.lineView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:1/[UIScreen mainScreen].scale]];
-    
-}
-
 @end
 
 @interface MMPickerView ()<UIPickerViewDelegate,UIPickerViewDataSource,CAAnimationDelegate>
@@ -161,8 +113,9 @@
 
 - (void)dealloc{
     
-    NSLog(@"MMSportRulePickView dealloc");
+    NSLog(@"MMPickerView dealloc");
 }
+
 - (instancetype)init
 {
     self = [super init];
@@ -186,12 +139,37 @@
         self.toolBar.barStyle = UIBarStyleDefault;
         [self addSubview:self.toolBar];
         
-        UIBarButtonItem * cancel = [[UIBarButtonItem alloc] initWithTitle:@"    取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonHandle)];
-        UIBarButtonItem * done = [[UIBarButtonItem alloc] initWithTitle:@"确定    " style:UIBarButtonItemStylePlain target:self action:@selector(sureButtonHandle)];
+        UIBarButtonItem * cancel = [[UIBarButtonItem alloc] initWithCustomView:[self buttonView:@"    取消" action:@selector(cancelButtonHandle)]];
+        
+        UIBarButtonItem * done = [[UIBarButtonItem alloc] initWithCustomView:[self buttonView:@"确定    " action:@selector(sureButtonHandle)]];
+        
+        UIBarButtonItem * title = [[UIBarButtonItem alloc] initWithCustomView:[self titleView:@""]];
+        
         UIBarButtonItem * flexible = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        self.toolBar.items = @[cancel,flexible,done];
+        
+        self.toolBar.items = @[cancel,flexible,title,flexible,done];
     }
     return self;
+}
+
+- (UIView *) titleView:(NSString *)text{
+    
+    UILabel * l = [UILabel new];
+    l.textColor = [UIColor lightGrayColor];
+    l.font = [UIFont systemFontOfSize:13];
+    l.textAlignment = NSTextAlignmentCenter;
+    l.text = text;
+    return l;
+}
+- (UIView *) buttonView:(NSString *)text action:(SEL)action{
+    
+    UIButton * b = [UIButton buttonWithType:UIButtonTypeCustom];
+    [b setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    b.titleLabel.font = [UIFont systemFontOfSize:15];
+    [b setTitle:text forState:UIControlStateNormal];
+    [b addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
+    [b setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    return b;
 }
 - (instancetype)initWithConfig:(MMPickerViewConfig *)config{
     
@@ -280,31 +258,49 @@
 
 - (void) cancelButtonHandle{
     
-    [self dismiss];
     if ([self.config isKindOfClass:[MMDatePickerViewConfig class]]) {
         ((MMDatePickerViewConfig *)self.config).date = self.datePickerView.date;
     }
+    __weak typeof(self) weakSelf = self;
     if (self.bCancelAction) {
-        self.bCancelAction(self);
+        self.bCancelAction(weakSelf);
     }
+    [self dismiss];
 }
 
 - (void) sureButtonHandle{
     
-    [self dismiss];
     if ([self.config isKindOfClass:[MMDatePickerViewConfig class]]) {
         ((MMDatePickerViewConfig *)self.config).date = self.datePickerView.date;
     }
+    __weak typeof(self) weakSelf = self;
     if (self.bDoneAction) {
-        self.bDoneAction(self);
+        self.bDoneAction(weakSelf);
     }
+    [self dismiss];
 }
 
 #pragma mark - API M
 
 - (void)setupInterface:(MMPickerViewInterface *)interface{
     
+    self.toolBar.backgroundColor = interface.bgColor;
     
+    UIButton * cancel = self.toolBar.items[0].customView;
+    UILabel * title = self.toolBar.items[2].customView;
+    UIButton * done = self.toolBar.items[4].customView;
+    
+    [cancel setTitle:[NSString stringWithFormat:@"    %@",interface.cancelText] forState:UIControlStateNormal];
+    [cancel setTitleColor:interface.cancelTextColor forState:UIControlStateNormal];
+    cancel.titleLabel.font = interface.cancelTextFont;
+    
+    [done setTitle:[NSString stringWithFormat:@"%@    ",interface.doneText] forState:UIControlStateNormal];
+    [done setTitleColor:interface.doneTextColor forState:UIControlStateNormal];
+    done.titleLabel.font = interface.doneTextFont;
+    
+    title.text = interface.title;
+    title.textColor = interface.titleColor;
+    title.font = interface.titleFont;
 }
 
 - (void)update{
@@ -318,9 +314,9 @@
     [self.commonPickerView selectRow:0 inComponent:column animated:YES];
 }
 
-- (void)show{
+- (void)showIn:(UIView *)view{
     
-    [[UIApplication sharedApplication].keyWindow addSubview:self];
+    [view addSubview:self];
     
     CABasicAnimation * positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
     positionAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.center.x, CGRectGetMaxY(self.superview.frame))];
@@ -340,6 +336,10 @@
             self.config.updateData(column, row, self.config.origRowDataAtColumn(column)[row]);
         }
     }
+}
+- (void)show{
+
+    [self showIn:[UIApplication sharedApplication].keyWindow];
 }
 
 - (void)dismiss{
@@ -362,5 +362,6 @@
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     
     [self removeFromSuperview];
+    
 }
 @end

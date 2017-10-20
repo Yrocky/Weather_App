@@ -48,7 +48,6 @@ static CGFloat kDelayDismissTime = 5;
 
 @implementation MMPreviewHUD
 
-
 - (void)dealloc
 {
     NSLog(@"MMPreviewHUD dealloc");

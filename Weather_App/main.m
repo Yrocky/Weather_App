@@ -13,12 +13,6 @@
 int main(int argc, char * argv[]) {
     @autoreleasepool {
         
-        NSString * display = @"hello = nihao = Hello = 你好 = nihao";
-        
-        NSAttributedString * atttStr = [[[HLLAttributedBuilder builderWithString:display]
-                                          configString:@"H" forStyle:@{NSBackgroundColorAttributeName:[UIColor orangeColor]}]
-                                        attributedString];
-        
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
