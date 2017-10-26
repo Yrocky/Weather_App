@@ -14,7 +14,7 @@
 - (instancetype)initWithTitle:(NSString *)title switchType:(BOOL)on switchBlock:(switchBlock)block
 {
     if(self = [super initWithTitle:title actionBlock:nil]){
-        self.switchBlock = block;
+        self.switchBlock = [block copy];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.showArrow = NO;
         self.on = on;

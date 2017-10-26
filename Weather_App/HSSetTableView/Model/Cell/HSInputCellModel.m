@@ -25,7 +25,7 @@
         self.inputTextColor = [UIColor blackColor];
         self.inputText = inputText;
         self.keyboardType = UIKeyboardTypeDefault;
-        self.doneBlock = block;
+        self.doneBlock = [block copy];
     }
     return self;
 }

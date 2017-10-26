@@ -61,6 +61,8 @@
 		D706295C1F8B860B00F52FCB /* PCCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = D706295B1F8B860B00F52FCB /* PCCustomView.m */; };
 		D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */; };
 		D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */; };
+		D7DE014E1F98C1EF008682DE /* NSInvocation+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DE014B1F98C1EF008682DE /* NSInvocation+AHKAdditions.m */; };
+		D7DE014F1F98C1EF008682DE /* NSObject+AHKBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DE014D1F98C1EF008682DE /* NSObject+AHKBuilder.m */; };
 		D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DF33531F6AC9E400771928 /* MMPreviewHUD.m */; };
 		E3CDC4C9DF28E252C8F70DC9 /* libPods-Weather_App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */; };
 /* End PBXBuildFile section */
@@ -178,6 +180,11 @@
 		D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MM_AutoReplyViewController.m; sourceTree = "<group>"; };
 		D71974301F6EFEFC0068F971 /* MM_AutoReplyEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MM_AutoReplyEditViewController.h; sourceTree = "<group>"; };
 		D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MM_AutoReplyEditViewController.m; sourceTree = "<group>"; };
+		D7DE01491F98C1EF008682DE /* AHKBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHKBuilder.h; sourceTree = "<group>"; };
+		D7DE014A1F98C1EF008682DE /* NSInvocation+AHKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+AHKAdditions.h"; sourceTree = "<group>"; };
+		D7DE014B1F98C1EF008682DE /* NSInvocation+AHKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+AHKAdditions.m"; sourceTree = "<group>"; };
+		D7DE014C1F98C1EF008682DE /* NSObject+AHKBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AHKBuilder.h"; sourceTree = "<group>"; };
+		D7DE014D1F98C1EF008682DE /* NSObject+AHKBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AHKBuilder.m"; sourceTree = "<group>"; };
 		D7DF33521F6AC9E400771928 /* MMPreviewHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPreviewHUD.h; sourceTree = "<group>"; };
 		D7DF33531F6AC9E400771928 /* MMPreviewHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPreviewHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,6 +288,7 @@
 				D70629031F8B138800F52FCB /* 消息预览HUD */,
 				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
+				D7DE01481F98C1EF008682DE /* AHKBuilder */,
 				7FCF75031F8B1DC600514597 /* Alert封装 */,
 				7F8B6C091F95EEA900F3A6E3 /* 搜索的CollectionView */,
 				D70629071F8B14F800F52FCB /* picker视图 */,
@@ -513,6 +521,18 @@
 			name = "控制器";
 			sourceTree = "<group>";
 		};
+		D7DE01481F98C1EF008682DE /* AHKBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				D7DE01491F98C1EF008682DE /* AHKBuilder.h */,
+				D7DE014A1F98C1EF008682DE /* NSInvocation+AHKAdditions.h */,
+				D7DE014B1F98C1EF008682DE /* NSInvocation+AHKAdditions.m */,
+				D7DE014C1F98C1EF008682DE /* NSObject+AHKBuilder.h */,
+				D7DE014D1F98C1EF008682DE /* NSObject+AHKBuilder.m */,
+			);
+			path = AHKBuilder;
+			sourceTree = "<group>";
+		};
 		E487AB39E2CE10CFE9CB0233 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,6 +668,7 @@
 			files = (
 				D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */,
 				D706293F1F8B185100F52FCB /* HSSwitchCellModel.m in Sources */,
+				D7DE014F1F98C1EF008682DE /* NSObject+AHKBuilder.m in Sources */,
 				D70629551F8B191C00F52FCB /* UIView+MHCommon.m in Sources */,
 				D706293B1F8B185100F52FCB /* HSBaseCellModel.m in Sources */,
 				7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */,
@@ -674,6 +695,7 @@
 				D70629421F8B185100F52FCB /* HSSectionModel.m in Sources */,
 				7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */,
 				7FDC6EE11F46E38800D94379 /* HLLWaveView.m in Sources */,
+				D7DE014E1F98C1EF008682DE /* NSInvocation+AHKAdditions.m in Sources */,
 				D70629461F8B185100F52FCB /* HSBaseTableViewCell.m in Sources */,
 				7FBCF0C41F4E776B00E2EEC7 /* HLLCircularLoaderView.m in Sources */,
 				D706294B1F8B185100F52FCB /* HSTextTableViewCell.m in Sources */,

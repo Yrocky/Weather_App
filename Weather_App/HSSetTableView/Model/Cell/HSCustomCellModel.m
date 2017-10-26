@@ -22,7 +22,7 @@
 {
     if(self = [super init]){
         self.cellHeight = HS_KCellHeight;
-        self.actionBlock = block;
+        self.actionBlock = [block copy];
         self.selectionStyle = UITableViewCellSelectionStyleDefault;
         self.separatorInset = UIEdgeInsetsMake(0, HS_KCellMargin, 0, HS_KCellMargin);
         self.separateColor = HS_KSeparateColor;

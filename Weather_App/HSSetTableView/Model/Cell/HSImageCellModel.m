@@ -15,7 +15,7 @@
     if(self = [super initWithTitle:title actionBlock:actionblock]){
         self.placeHoderImage = placeholderImage;
         self.imageUrl = imageUrl;
-        self.imageBlock = imageBlock;
+        self.imageBlock = [imageBlock copy];
         self.imageSize = CGSizeMake(HS_KImageWidth, HS_KImageHeight);
         self.cornerRadius = .0f;
         self.cellHeight  = HS_KImageCellHeight;
