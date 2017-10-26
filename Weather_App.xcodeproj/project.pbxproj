@@ -25,6 +25,7 @@
 		7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCF75051F8B1EAD00514597 /* TableDemoViewController.m */; };
 		7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8CC251F984A3F005DC9FF /* HLLPlaceholderTextView.m */; };
 		7FD8CC291F984A8D005DC9FF /* UILabel+ContentSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8CC281F984A8D005DC9FF /* UILabel+ContentSize.m */; };
+		7FD8CC351F98A995005DC9FF /* NSObject+CodableProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8CC341F98A995005DC9FF /* NSObject+CodableProperties.m */; };
 		7FDC6ECA1F46E35A00D94379 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6EC91F46E35A00D94379 /* main.m */; };
 		7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6ECC1F46E35A00D94379 /* AppDelegate.m */; };
 		7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6ECF1F46E35A00D94379 /* ViewController.m */; };
@@ -106,6 +107,8 @@
 		7FD8CC251F984A3F005DC9FF /* HLLPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLPlaceholderTextView.m; sourceTree = "<group>"; };
 		7FD8CC271F984A8D005DC9FF /* UILabel+ContentSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+ContentSize.h"; sourceTree = "<group>"; };
 		7FD8CC281F984A8D005DC9FF /* UILabel+ContentSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ContentSize.m"; sourceTree = "<group>"; };
+		7FD8CC331F98A995005DC9FF /* NSObject+CodableProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+CodableProperties.h"; sourceTree = "<group>"; };
+		7FD8CC341F98A995005DC9FF /* NSObject+CodableProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CodableProperties.m"; sourceTree = "<group>"; };
 		7FDC6EC51F46E35A00D94379 /* Weather_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FDC6EC91F46E35A00D94379 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7FDC6ECB1F46E35A00D94379 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -369,6 +372,8 @@
 				D70629011F8B132E00F52FCB /* NSUserDefaults+MM_Common.m */,
 				7FD8CC271F984A8D005DC9FF /* UILabel+ContentSize.h */,
 				7FD8CC281F984A8D005DC9FF /* UILabel+ContentSize.m */,
+				7FD8CC331F98A995005DC9FF /* NSObject+CodableProperties.h */,
+				7FD8CC341F98A995005DC9FF /* NSObject+CodableProperties.m */,
 			);
 			name = "分类";
 			sourceTree = "<group>";
@@ -679,6 +684,7 @@
 				D706294A1F8B185100F52FCB /* HSSwitchTableViewCell.m in Sources */,
 				D70629471F8B185100F52FCB /* HSCustomTableViewCell.m in Sources */,
 				D706294F1F8B189C00F52FCB /* UIColor+Common.m in Sources */,
+				7FD8CC351F98A995005DC9FF /* NSObject+CodableProperties.m in Sources */,
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,

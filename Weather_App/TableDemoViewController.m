@@ -14,6 +14,7 @@
 #import "HSInputCellModel.h"
 #import "MMAssetsCellModel.h"
 #import "MMPickerView.h"
+#import "HLLAlert.h"
 
 @interface TableDemoViewController ()
 
@@ -25,6 +26,12 @@
     [super viewDidLoad];
 
     self.title = @"Demo";
+    
+    MMDatePickerViewConfig * dateConfig = [[MMDatePickerViewConfig alloc] init];
+    dateConfig.datePickerMode = UIDatePickerModeCountDownTimer;
+    dateConfig.countDownDuration = 66;
+    MMPickerView * pickerView = [[MMPickerView alloc] initWithDatePickerConfig:dateConfig];
+    [pickerView show];
     
     [self.tableViewModel addSection:({
         
@@ -123,6 +130,10 @@
         
         c = [[HSSwitchCellModel alloc] initWithTitle:@"Switch" switchType:NO switchBlock:^(HSBaseCellModel *model, BOOL on) {
             NSLog(@"model:%@",model);
+            id<HLLAlertActionSheetProtocol> alert = [[HLLAlertUtil message:@"show some msg for u"]showIn:self];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [alert dismiss];
+            });
         }];
         [s addCellModel:c];
         
