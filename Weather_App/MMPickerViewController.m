@@ -1,104 +1,17 @@
 //
-//  MMPickerView.m
+//  MMPickerViewController.m
 //  Weather_App
 //
-//  Created by Rocky Young on 2017/10/9.
+//  Created by user1 on 2017/10/20.
 //  Copyright © 2017年 Yrocky. All rights reserved.
 //
 
-#import "MMPickerView.h"
+#import "MMPickerViewController.h"
 
 #define kToolBarHeight  44
 #define kPickerViewHeight  250
 
-@interface MMPickerViewConfig ()
-
-@property (nonatomic ,copy) NSUInteger (^defaultSelect)(NSUInteger);
-@property (nonatomic ,copy) NSArray * (^rowDataAtColumn)(NSUInteger);
-@property (nonatomic ,copy) void (^updateData)(NSUInteger, NSUInteger, id);
-@property (nonatomic ,copy) NSArray * (^origRowDataAtColumn)(NSUInteger);
-@end
-@implementation MMPickerViewConfig
-
-+ (instancetype _Nullable ) config{
-    
-    return [[[self class] alloc] init];
-}
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        NSUInteger (^defaultCallback)(NSUInteger) = ^ NSUInteger (NSUInteger column){
-            return 0;
-        };
-        self.defaultSelect = defaultCallback;
-    }
-    return self;
-}
-- (void)defaultSelect:(NSUInteger (^)(NSUInteger))callback{
-    
-    if (callback) {
-        self.defaultSelect = callback;
-    }
-}
-
-- (void) configRowAt:(NSArray <NSString *>*(^)(NSUInteger))callBack{
-    
-    if (callBack) {
-        [self configRowAt:callBack displayText:nil];
-    }
-}
-
-- (void) configRowAt:(NSArray <id>*(^)(NSUInteger))callBack displayText:(NSString *(^)(id,NSUInteger))callBack2{
-    
-    NSArray * (^rowDataAtColumn)(NSUInteger) = ^ NSArray *(NSUInteger column){
-        
-        NSArray * columnDataArray = callBack(column);
-        NSMutableArray * datas = [NSMutableArray arrayWithCapacity:columnDataArray.count];
-        [columnDataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSString * displayText = callBack2(obj,column);
-            if (displayText) {
-                [datas addObject:displayText];
-            }
-        }];
-        return [datas copy];
-    };
-    self.rowDataAtColumn = callBack2 ? rowDataAtColumn : callBack;
-    self.origRowDataAtColumn = callBack;
-}
-
-- (void)monitorSelect:(void (^)(NSUInteger, NSUInteger, id))callback{
-    
-    if (callback) {
-        self.updateData = callback;
-    }
-}
-@end
-
-@implementation MMDatePickerViewConfig
-@end
-
-@implementation MMPickerViewInterface
-
-+ (instancetype _Nullable ) interface{
-    
-    MMPickerViewInterface * i = [[MMPickerViewInterface alloc] init];
-    i.bgColor = [UIColor colorWithWhite:0.5 alpha:0.5];
-    i.title = @"";
-    i.titleFont = [UIFont systemFontOfSize:13];
-    i.titleColor = [UIColor grayColor];
-    i.cancelText = @"取消";
-    i.cancelTextColor = [UIColor blueColor];
-    i.cancelTextFont = [UIFont systemFontOfSize:15];
-    i.doneText = @"确定";
-    i.doneTextColor = [UIColor blueColor];
-    i.doneTextFont = [UIFont systemFontOfSize:15];
-    return i;
-}
-@end
-
-@interface MMPickerView ()<UIPickerViewDelegate,UIPickerViewDataSource,CAAnimationDelegate>
+@interface MMPickerViewController ()<UIPickerViewDelegate,UIPickerViewDataSource,CAAnimationDelegate>
 
 @property (nonatomic ,strong) UIView * bgView;
 @property (nonatomic ,strong) UIToolbar * toolBar;
@@ -107,9 +20,10 @@
 
 @property (nonatomic ,strong ,readwrite) MMPickerViewConfig * config;
 
+
 @end
 
-@implementation MMPickerView
+@implementation MMPickerViewController
 
 - (void)dealloc{
     
@@ -121,15 +35,15 @@
     self = [super init];
     if (self) {
         CGRect frame = [UIScreen mainScreen].bounds;
-        self.frame = frame;
+//        self.frame = frame;
         
         //
         self.bgView = [[UIView alloc] initWithFrame:frame];
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelButtonHandle)];
         tap.numberOfTapsRequired = 1;
-        [self.bgView addGestureRecognizer:tap];
-        self.bgView.backgroundColor = [UIColor clearColor];
-        [self addSubview:self.bgView];
+        [self.view addGestureRecognizer:tap];
+        self.view.backgroundColor = [UIColor clearColor];
+//        [self.view addSubview:self.bgView];
         
         //
         self.toolBar = [[UIToolbar alloc] initWithFrame:(CGRect){
@@ -137,7 +51,7 @@
             frame.size.width,kToolBarHeight
         }];
         self.toolBar.barStyle = UIBarStyleDefault;
-        [self addSubview:self.toolBar];
+        [self.view addSubview:self.toolBar];
         
         UIBarButtonItem * cancel = [[UIBarButtonItem alloc] initWithCustomView:[self buttonView:@"    取消" action:@selector(cancelButtonHandle)]];
         
@@ -176,7 +90,7 @@
     self = [self init];
     if (self) {
         
-        config.pickerView = self;
+//        config.pickerView = self;
         self.config = config;
         
         //
@@ -187,7 +101,7 @@
         self.commonPickerView.backgroundColor = [UIColor whiteColor];
         self.commonPickerView.delegate = self;
         self.commonPickerView.dataSource = self;
-        [self addSubview:self.commonPickerView];
+        [self.view addSubview:self.commonPickerView];
     }
     return self;
 }
@@ -214,6 +128,11 @@
         [self addSubview:self.datePickerView];
     }
     return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
 }
 
 #pragma mark - UIPickerViewDelegate,UIPickerViewDataSource
@@ -338,41 +257,37 @@
     }
 }
 - (void)show{
-
+    
     [self showIn:[UIApplication sharedApplication].keyWindow];
 }
 
 - (void)dismiss{
     
-    [UIView animateWithDuration:0.45 animations:^{
-        self.center = CGPointMake(self.center.x, CGRectGetMaxY(self.superview.frame));
-    } completion:^(BOOL finished) {
-        [self removeFromSuperview];
-    }];
-    // 使用CoreAnimation进行动画竟然内存泄露了，改用UIView的block动画就没有内存泄露
-//    CABasicAnimation * positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
-//    positionAnimation.fromValue = [NSValue valueWithCGPoint:self.center];
-//    positionAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(self.center.x, CGRectGetMaxY(self.superview.frame))];
-//
-//    CAAnimationGroup * animation = [CAAnimationGroup animation];
-//    animation.duration = 0.45;
-//    animation.animations = @[positionAnimation];
-//    animation.fillMode = kCAFillModeForwards;
-//    animation.removedOnCompletion = NO;
-//    animation.delegate = self;
-//    [self.layer addAnimation:animation forKey:@"dismissAnimation"];
+    CABasicAnimation * positionAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+    positionAnimation.fromValue = [NSValue valueWithCGPoint:self.center];
+    positionAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(self.center.x, CGRectGetMaxY(self.superview.frame))];
+    
+    CAAnimationGroup * animation = [CAAnimationGroup animation];
+    animation.duration = 0.45;
+    animation.animations = @[positionAnimation];
+    animation.fillMode = kCAFillModeForwards;
+    animation.removedOnCompletion = NO;
+    animation.delegate = self;
+    [self.layer addAnimation:animation forKey:@"dismissAnimation"];
 }
 
 #pragma mark - CAAnimationDelegate M
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-
-    // 01.回到main也不行
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//
-//        [self removeFromSuperview];
-//    });
-    // 02.直接remove不行
-    //[self removeFromSuperview];
+    
+    [self removeFromSuperview];
+    
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
 @end

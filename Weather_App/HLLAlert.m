@@ -25,6 +25,10 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
 
 @implementation HLLAlertActionSheetModel
 
+- (void)dealloc
+{
+    NSLog(@"%@ dealloc",self);
+}
 - (instancetype)init
 {
     self = [super init];
@@ -52,6 +56,10 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
 
 @implementation HLLAlert
 
+- (void)dealloc
+{
+    NSLog(@"%@ dealloc",self);
+}
 - (instancetype)init
 {
     self = [super init];
@@ -156,7 +164,15 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
     [vc presentViewController:self.aModel.alertVC animated:YES completion:nil];
     return self;
 }
+- (void)dismiss{
+    
+    [self dismiss:nil];
+}
 
+- (void) dismiss:(void (^ __nullable)(void))completion{
+    
+    [self.aModel.alertVC dismissViewControllerAnimated:YES completion:completion];
+}
 @end
 
 
@@ -173,6 +189,10 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
 
 @implementation HLLActionSheet
 
+- (void)dealloc
+{
+    NSLog(@"%@ dealloc",self);
+}
 - (instancetype)init
 {
     self = [super init];
@@ -283,6 +303,15 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
     return self;
 }
 
+- (void)dismiss{
+    
+    [self dismiss:nil];
+}
+
+- (void) dismiss:(void (^ __nullable)(void))completion{
+
+    [self.aModel.alertVC dismissViewControllerAnimated:YES completion:completion];
+}
 @end
 
 @implementation HLLAlertActionSheet
@@ -301,6 +330,7 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
 
 + (__kindof UIViewController *)getPresentedViewController
 {
+    // bug here
     UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     UIViewController *topVC = appRootVC;
     do {

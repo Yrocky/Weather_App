@@ -78,7 +78,9 @@
 - (void) update;
 - (void) updateColumn:(NSUInteger)column;
 
-- (void) showIn:(UIView *)view;
+- (void) showIn:(UIView *_Nonnull)view;
 - (void) show;
+
 - (void) dismiss;
+//- (void) dismiss:(void (^ __nullable)(void))completion;
 @end

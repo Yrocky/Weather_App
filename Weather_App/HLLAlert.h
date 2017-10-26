@@ -41,6 +41,10 @@
 - (id<HLLAlertActionSheetProtocol>) show;
 - (id<HLLAlertActionSheetProtocol>) showIn:(__kindof UIViewController *)vc;
 
+#pragma mark - dismiss
+
+- (void) dismiss;
+- (void) dismiss:(void (^ __nullable)(void))completion;
 @end
 
 /**

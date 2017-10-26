@@ -149,7 +149,7 @@
     
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.inputTextView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
     
-    NSLayoutConstraint *inputLeftConstaint = [NSLayoutConstraint constraintWithItem:self.inputTextView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:HS_KCellMargin];
+    NSLayoutConstraint *inputLeftConstaint = [NSLayoutConstraint constraintWithItem:self.inputTextView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:HS_KCellMargin - 5];
     [self.contentView addConstraint:inputLeftConstaint];
     self.inputLeftConstaint = inputLeftConstaint;
     
@@ -182,7 +182,7 @@
     self.inputRightConstaint.constant = rightMargin;
     
     CGFloat leftMargin = [inputModel.title sizeWithAttributes:@{NSFontAttributeName:inputModel.titleFont}].width + HS_KCellMargin + 12;
-    self.inputLeftConstaint.constant = inputModel.title == nil ? HS_KCellMargin : leftMargin;
+    self.inputLeftConstaint.constant = (inputModel.title == nil ? HS_KCellMargin : leftMargin) - 5;
 }
 
 - (void)layoutSubviews{
