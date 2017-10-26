@@ -29,8 +29,12 @@
     
     MMDatePickerViewConfig * dateConfig = [[MMDatePickerViewConfig alloc] init];
     dateConfig.datePickerMode = UIDatePickerModeCountDownTimer;
-    dateConfig.countDownDuration = 66;
+//    dateConfig.countDownDuration = 66;
     MMPickerView * pickerView = [[MMPickerView alloc] initWithDatePickerConfig:dateConfig];
+    pickerView.bDoneAction = ^(MMPickerView * _Nullable _pickerView) {
+        MMDatePickerViewConfig * _dateConfig = _pickerView.config;
+        NSLog(@"date:%@",_dateConfig.date);
+    };
     [pickerView show];
     
     [self.tableViewModel addSection:({
@@ -153,6 +157,32 @@
         
         s;
     })];
+    
+    [self dateList];
 }
 
+- (void) dateList{
+    
+    NSDate * min = [NSDate dateWithTimeIntervalSinceNow:- 60 * 60 * 24 * 2];// 2天前
+    NSDate * max = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24];// 1天后
+    
+    NSMutableArray * dates = [NSMutableArray array];
+    NSDateComponents * dateComponents = [[NSDateComponents alloc] init];
+    
+    NSCalendar * calendar = [NSCalendar currentCalendar];
+    calendar.timeZone = [NSTimeZone systemTimeZone];
+    
+    NSInteger dayCount = 0;
+    
+    do {
+        dateComponents.day = dayCount;
+        dayCount ++;
+        NSDate * date = [calendar dateByAddingComponents:dateComponents toDate:min options:NSCalendarMatchStrictly];
+        if ([date compare:max] == NSOrderedDescending) {
+            break;
+        }
+        [dates addObject:date];
+    } while (true);
+    
+}
 @end

@@ -12,7 +12,7 @@
 /**
  主控制器
  */
-@interface HSSetTableViewMainController : UIViewController
+@interface HSSetTableViewMainController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, weak ,readonly)UITableView *hs_tableView;  ///<tableView
 

@@ -13,7 +13,7 @@
 #import "HSTextCellModel.h"
 #import "UIView+MHCommon.h"
 
-@interface HSSetTableViewMainController ()<UITableViewDataSource,UITableViewDelegate>
+@interface HSSetTableViewMainController ()
 
 @property (readwrite)UITableView *hs_tableView;  ///<tableView
 @property (nonatomic ,strong ,readwrite) HSTableViewModel * tableViewModel;
@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithHexString:@"#757C90"];
+    self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.96 blue:0.98 alpha:1.00];
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     tableView.translatesAutoresizingMaskIntoConstraints = NO;

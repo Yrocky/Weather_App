@@ -67,8 +67,8 @@
 
 @property (nonatomic ,strong ,readonly) __kindof MMPickerViewConfig *  _Nullable config;
 
-@property (nonatomic ,copy) void (^ _Nullable bCancelAction)(MMPickerView *_Nullable);
-@property (nonatomic ,copy) void (^ _Nonnull bDoneAction)(MMPickerView *_Nullable);
+@property (nonatomic ,copy) void (^ _Nullable bCancelAction)(MMPickerView *_Nullable _pickerView);
+@property (nonatomic ,copy) void (^ _Nonnull bDoneAction)(MMPickerView *_Nullable _pickerView);
 
 - (instancetype _Nullable ) initWithConfig:(MMPickerViewConfig *_Nonnull)config;
 - (instancetype _Nullable ) initWithDatePickerConfig:(MMDatePickerViewConfig *_Nullable)config;

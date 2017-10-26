@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F32E0AF1FA1BC70002D57FB /* HLLStickIndicator.m */; };
+		7F32E0B41FA1CB74002D57FB /* HLLIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F32E0B31FA1CB74002D57FB /* HLLIndicatorViewController.m */; };
 		7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */; };
 		7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */; };
 		7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B6C011F95ECBB00F3A6E3 /* MMSearchViewController.m */; };
@@ -69,6 +71,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F32E0AE1FA1BC70002D57FB /* HLLStickIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLLStickIndicator.h; sourceTree = "<group>"; };
+		7F32E0AF1FA1BC70002D57FB /* HLLStickIndicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLLStickIndicator.m; sourceTree = "<group>"; };
+		7F32E0B21FA1CB74002D57FB /* HLLIndicatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLLIndicatorViewController.h; sourceTree = "<group>"; };
+		7F32E0B31FA1CB74002D57FB /* HLLIndicatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLLIndicatorViewController.m; sourceTree = "<group>"; };
 		7F414F491F67866200EC8E86 /* MMGiftEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGiftEffectViewController.h; sourceTree = "<group>"; };
 		7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGiftEffectViewController.m; sourceTree = "<group>"; };
 		7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGiftEffectOperationMgr.h; sourceTree = "<group>"; };
@@ -213,6 +219,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7F32E0B11FA1BC78002D57FB /* 指示器 */ = {
+			isa = PBXGroup;
+			children = (
+				7F32E0AE1FA1BC70002D57FB /* HLLStickIndicator.h */,
+				7F32E0AF1FA1BC70002D57FB /* HLLStickIndicator.m */,
+			);
+			name = "指示器";
+			sourceTree = "<group>";
+		};
 		7F8B6C091F95EEA900F3A6E3 /* 搜索的CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +306,7 @@
 				D70629031F8B138800F52FCB /* 消息预览HUD */,
 				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
+				7F32E0B11FA1BC78002D57FB /* 指示器 */,
 				D7DE01481F98C1EF008682DE /* AHKBuilder */,
 				7FCF75031F8B1DC600514597 /* Alert封装 */,
 				7F8B6C091F95EEA900F3A6E3 /* 搜索的CollectionView */,
@@ -521,6 +537,8 @@
 				7FCF75051F8B1EAD00514597 /* TableDemoViewController.m */,
 				7F8B6C001F95ECBB00F3A6E3 /* MMSearchViewController.h */,
 				7F8B6C011F95ECBB00F3A6E3 /* MMSearchViewController.m */,
+				7F32E0B21FA1CB74002D57FB /* HLLIndicatorViewController.h */,
+				7F32E0B31FA1CB74002D57FB /* HLLIndicatorViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -581,7 +599,7 @@
 				TargetAttributes = {
 					7FDC6EC41F46E35A00D94379 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = LL7GM42E2F;
+						DevelopmentTeam = ZKEWNK6EPU;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -673,6 +691,7 @@
 			files = (
 				D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */,
 				D706293F1F8B185100F52FCB /* HSSwitchCellModel.m in Sources */,
+				7F32E0B41FA1CB74002D57FB /* HLLIndicatorViewController.m in Sources */,
 				D7DE014F1F98C1EF008682DE /* NSObject+AHKBuilder.m in Sources */,
 				D70629551F8B191C00F52FCB /* UIView+MHCommon.m in Sources */,
 				D706293B1F8B185100F52FCB /* HSBaseCellModel.m in Sources */,
@@ -688,6 +707,7 @@
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
+				7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */,
 				D706293D1F8B185100F52FCB /* HSImageCellModel.m in Sources */,
 				7F9CED3B1F5CEAA000A64EB5 /* MMRunwayCoreView.m in Sources */,
 				7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */,
@@ -849,11 +869,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = LL7GM42E2F;
+				DEVELOPMENT_TEAM = ZKEWNK6EPU;
 				INFOPLIST_FILE = Weather_App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.weather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.weathe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Weather_App/Weather_App-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -867,11 +887,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = LL7GM42E2F;
+				DEVELOPMENT_TEAM = ZKEWNK6EPU;
 				INFOPLIST_FILE = Weather_App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.weather;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.weathe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Weather_App/Weather_App-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

@@ -12,6 +12,7 @@
 #import "MMGiftEffectViewController.h"
 #import "TableDemoViewController.h"
 #import "MMSearchViewController.h"
+#import "HLLIndicatorViewController.h"
 #import "ANYMethodLog.h"
 
 @interface RootViewController ()
@@ -69,6 +70,13 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"CollectionView折叠" actionBlock:^(HSBaseCellModel *model) {
             
             MMSearchViewController * vc = [[MMSearchViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"粘性指引视图" actionBlock:^(HSBaseCellModel *model) {
+            
+            HLLIndicatorViewController * vc = [[HLLIndicatorViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];
