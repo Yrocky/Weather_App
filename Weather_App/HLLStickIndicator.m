@@ -9,6 +9,14 @@
 #import "HLLStickIndicator.h"
 #import "Masonry.h"
 
+@interface HLLDirectionView : UIView<HLLIndicatorProtocol>{
+    
+    CAShapeLayer * _directionLayer;
+    HLLStickIndicatorDirection _direction;
+}
+- (void) configDirenction:(HLLStickIndicatorDirection)direction;
+@end
+
 @implementation HLLDirectionView
 
 + (Class)layerClass{
@@ -121,7 +129,12 @@
 
 @end
 
-@implementation HLLStickIndicatorView
+@implementation HLLStickIndicatorView{
+    
+    UILabel * _indicatorInfoLabel;
+    HLLDirectionView * _indicatorDirectionView;
+    HLLStickIndicatorDirection _direction;
+}
 
 - (instancetype) initWithDirection:(HLLStickIndicatorDirection)direction frame:(CGRect)frame{
     
@@ -225,7 +238,7 @@
 
 - (void)update:(CGFloat)percent{
     
-//    _indicatorInfoLabel.alpha = percent;
+    _indicatorInfoLabel.alpha = percent;
     [_indicatorDirectionView update:percent];
 }
 

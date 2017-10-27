@@ -20,22 +20,10 @@ typedef NS_ENUM(NSUInteger ,HLLStickIndicatorDirection) {
     HLLStickIndicatorBottom
 };
 
-@interface HLLDirectionView : UIView<HLLIndicatorProtocol>{
-    
-    CAShapeLayer * _directionLayer;
-    HLLStickIndicatorDirection _direction;
-}
-- (void) configDirenction:(HLLStickIndicatorDirection)direction;
-@end
-
-@interface HLLStickIndicatorView : UIView<HLLIndicatorProtocol>{
-    
-    UILabel * _indicatorInfoLabel;
-    HLLDirectionView * _indicatorDirectionView;
-    HLLStickIndicatorDirection _direction;
-}
+@interface HLLStickIndicatorView : UIView<HLLIndicatorProtocol>
 
 - (instancetype) initWithDirection:(HLLStickIndicatorDirection)direction frame:(CGRect)frame;
+
 - (void) configIndicatorInfo:(NSString *)indicatorInfo;
 - (void) configIndicatorInfoAttributesString:(NSAttributedString *)indicatorInfo;
 @end

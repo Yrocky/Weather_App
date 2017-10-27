@@ -28,10 +28,16 @@
     
     self.automaticallyAdjustsScrollViewInsets = YES;
     
+    UILabel * label = [[UILabel alloc] initWithFrame:(CGRect){
+        CGPointZero,
+        self.view.bounds.size.width,20
+    }];
+    [self.view addSubview:label];
+    
     self.scrollView = [[UIScrollView alloc] initWithFrame:(CGRect){
-        0,-64,
+        0,0,
         self.view.bounds.size.width,
-        self.view.bounds.size.height - 64
+        self.view.bounds.size.height
     }];
     [self.view addSubview:self.scrollView];
     self.scrollView.backgroundColor = [UIColor colorWithRed:0.95 green:0.96 blue:0.98 alpha:1.00];
@@ -93,16 +99,17 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
-    CGFloat percent = (-scrollView.contentOffset.y) / 120;
-    [self.topIndicatorView update:percent];
+    NSLog(@"scrollView.contentOffset.y : %f",scrollView.contentOffset.y);
+    CGFloat percent = fabs(-scrollView.contentOffset.y) / 120;
+//    [self.topIndicatorView update:percent];
 //
-    percent = (-scrollView.contentOffset.x) / 40;
-    [self.leftIndicatorView update:percent];
-//
-    percent = (scrollView.contentOffset.x) / 40;
-    [self.rightIndicatorView update:percent];
+//    percent = fabs(-scrollView.contentOffset.x) / 40;
+//    [self.leftIndicatorView update:percent];
+////
+//    percent = fabs(scrollView.contentOffset.x) / 40;
+//    [self.rightIndicatorView update:percent];
     
-    percent = (-scrollView.contentOffset.y) / 60;
+    percent = fabs(-scrollView.contentOffset.y) / 60;
     [self.bottomIndicatorView update:percent];
 }
 
