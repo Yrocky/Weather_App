@@ -102,7 +102,7 @@
 }
 
 - (void)update:(CGFloat)percent{
-//    NSLog(@"percent :  %f",percent);
+    NSLog(@"percent :  %f",percent);
     if (percent <= 0) {
         
         _directionLayer.path      = [self createPathWithHeight:0];

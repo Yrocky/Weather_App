@@ -25,4 +25,6 @@
 - (void) collectionView:(FDCollectionView *)collectionView didMoveToUpContentOffset:(CGFloat)offset;
 // 向下移动
 - (void) collectionView:(FDCollectionView *)collectionView didMoveToDownContentOffset:(CGFloat)offset;
+
+- (void) collectionViewDidEndMove:(FDCollectionView *)collectionView;
 @end

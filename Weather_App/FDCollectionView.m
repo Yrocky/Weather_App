@@ -69,7 +69,7 @@ typedef NS_ENUM(NSUInteger ,FDCollectionViewMoveDirection) {
 - (void) fd_handlePan:(UIPanGestureRecognizer *)gesture{
     
     CGPoint gestureMoveContentOffset = [gesture translationInView:self];
-    NSLog(@"gestureMoveContentOffset : %@",NSStringFromCGPoint(gestureMoveContentOffset));
+//    NSLog(@"gestureMoveContentOffset : %@",NSStringFromCGPoint(gestureMoveContentOffset));
     
     // 在向右/左滑动的时候 gestureMoveContentOffset 的 y 在前几个数据是不变的，只有 x>0 来表示向右 ，x<0来表示向左
     // 上/下滑动的时候， 同理，x 在前几个数据中不变，y>0来表示向上 ，y<0来表示向下
@@ -79,12 +79,17 @@ typedef NS_ENUM(NSUInteger ,FDCollectionViewMoveDirection) {
         case UIGestureRecognizerStatePossible:
             self.alwaysBounceHorizontal = YES;
             _gestureHandlePanBeginPoint = gestureMoveContentOffset;
-            NSLog(@"++++++++++++++++begin : %@",NSStringFromCGPoint(gestureMoveContentOffset));
+//            NSLog(@"++++++++++++++++begin : %@",NSStringFromCGPoint(gestureMoveContentOffset));
             break;
         case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateFailed:
-            NSLog(@"--------finish");
+//            NSLog(@"--------finish");
+//            self.alwaysBounceHorizontal = YES;
+            
+            if (self.fd_delegate && [self.fd_delegate respondsToSelector:@selector(collectionViewDidEndMove:)]) {
+                [self.fd_delegate collectionViewDidEndMove:self];
+            }
             break;
         case UIGestureRecognizerStateChanged:
             _gestureHandlePanChangePoint = gestureMoveContentOffset;

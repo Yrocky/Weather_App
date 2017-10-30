@@ -31,8 +31,12 @@
 
 // stickIndicator
 @property (nonatomic ,strong) HLLStickIndicatorView * topIndicatorView;
+
 @property (nonatomic ,strong) HLLStickIndicatorView * leftIndicatorView;
+@property (nonatomic ,strong) MASConstraint * leftIndicatorViewRightConstraint;
+
 @property (nonatomic ,strong) HLLStickIndicatorView * rightIndicatorView;
+@property (nonatomic ,strong) MASConstraint * rightIndicatorViewLeftConstraint;
 
 // change 
 @property (nonatomic ,strong) UIPanGestureRecognizer * listViewPanGesture;
@@ -124,7 +128,7 @@
     [self.leftIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(60, 200));
         make.centerY.mas_equalTo(_collectionView);
-        make.right.mas_equalTo(_collectionView.mas_left).mas_offset(0);
+        self.leftIndicatorViewRightConstraint = make.right.mas_equalTo(_collectionView.mas_left).mas_offset(0);
     }];
     
     
@@ -135,7 +139,7 @@
     [self.rightIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(self.leftIndicatorView);
         make.centerY.mas_equalTo(self.leftIndicatorView);
-        make.left.mas_equalTo(self.headerView.mas_right).mas_offset(0);
+        self.rightIndicatorViewLeftConstraint = make.left.mas_equalTo(self.headerView.mas_right).mas_offset(0);
     }];
 }
 
@@ -152,7 +156,6 @@
         handle(_collectionView);
     }
 }
-
 #pragma mark - FDCollectionViewMoveDirectionDelegate
 // 向右移动
 - (void) collectionView:(FDCollectionView *)collectionView didMoveToLeftContentOffset:(CGFloat)offset{
@@ -161,6 +164,9 @@
 //    collectionView.alwaysBounceVertical = NO;
     CGPoint contentOffset = collectionView.contentOffset;
     [collectionView setContentOffset:CGPointMake(offset, contentOffset.y)];
+//    NSLog(@"fabs(offset) : %f",fabs(offset));
+    [self.leftIndicatorView update:fabs(offset) / 60];
+    self.leftIndicatorViewRightConstraint.mas_equalTo(fabs(offset));
 }
 
 // 向左移动
@@ -169,12 +175,15 @@
 //    collectionView.alwaysBounceVertical = NO;
     CGPoint contentOffset = collectionView.contentOffset;
     [collectionView setContentOffset:CGPointMake(offset, contentOffset.y)];
+    
+    [self.rightIndicatorView update:fabs(offset) / 60];
+    self.rightIndicatorViewLeftConstraint.mas_equalTo(-offset);
 }
 
 // 向上移动
 - (void) collectionView:(FDCollectionView *)collectionView didMoveToUpContentOffset:(CGFloat)offset{
     
-    NSLog(@"向上滑动:%f",offset);
+//    NSLog(@"向上滑动:%f",offset);
     collectionView.alwaysBounceVertical = YES;
     collectionView.alwaysBounceHorizontal = NO;
     
@@ -186,7 +195,7 @@
 // 向下移动
 - (void) collectionView:(FDCollectionView *)collectionView didMoveToDownContentOffset:(CGFloat)offset{
     
-    NSLog(@"向下滑动:%f",offset);
+//    NSLog(@"向下滑动:%f",offset);
     collectionView.alwaysBounceVertical = YES;
     collectionView.alwaysBounceHorizontal = NO;
     
@@ -194,6 +203,18 @@
 //    [collectionView setContentOffset:CGPointMake(contentOffset.x, offset)];
 }
 
+- (void)collectionViewDidEndMove:(FDCollectionView *)collectionView{
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        collectionView.alwaysBounceHorizontal = YES;
+    });
+
+    [self.leftIndicatorView update:0];
+    [self.rightIndicatorView update:0];
+    
+    self.rightIndicatorViewLeftConstraint.mas_equalTo(0);
+    self.leftIndicatorViewRightConstraint.mas_equalTo(0);
+}
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
