@@ -40,6 +40,9 @@
 
 // change 
 @property (nonatomic ,strong) UIPanGestureRecognizer * listViewPanGesture;
+
+@property (nonatomic ,strong) UIView * snapshotView;
+@property (nonatomic ,strong) MASConstraint * snapshotViewLeftConstraint;
 @end
 
 @implementation FDContentView
@@ -56,13 +59,14 @@
 
 - (void) fd_addSubviews{
     
-    self.backgroundColor = [UIColor orangeColor];
+    self.backgroundColor = [UIColor clearColor];
     
     // content View
     self.contentView = [[UIScrollView alloc] init];
     self.contentView.delegate = self;
+    self.contentView.restorationIdentifier = @"contentView";
     [self addSubview:self.contentView];
-    self.contentView.backgroundColor = [UIColor purpleColor];
+    self.contentView.backgroundColor = [UIColor clearColor];
     self.contentView.alwaysBounceVertical = YES;
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self);
@@ -72,7 +76,8 @@
     
     // contnet background View
     self.contentBackgroundView = [UIView new];
-    self.contentBackgroundView.backgroundColor = [UIColor whiteColor];
+    self.contentBackgroundView.restorationIdentifier = @"contentBackgroundView";
+    self.contentBackgroundView.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:self.contentBackgroundView];
     
     [self.contentBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -85,6 +90,7 @@
     
     // header View
     self.headerView = [UIView new];
+    self.headerView.restorationIdentifier = @"headerView";
     self.headerView.backgroundColor = [UIColor redColor];
     [self.contentBackgroundView addSubview:self.headerView];
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -98,9 +104,10 @@
     self.layout.stickyHeader = YES;
     _collectionView = [[FDCollectionView alloc] initWithFrame:CGRectZero
                                          collectionViewLayout:self.layout];
-    _collectionView.backgroundColor = [UIColor brownColor];
+    _collectionView.backgroundColor = [UIColor clearColor];
     _collectionView.showsVerticalScrollIndicator = YES;
     _collectionView.fd_delegate = self;
+    self.collectionView.restorationIdentifier = @"collectionView";
     self.collectionView.alwaysBounceHorizontal = YES;
     [self.contentBackgroundView addSubview:_collectionView];
     [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -141,8 +148,54 @@
         make.centerY.mas_equalTo(self.leftIndicatorView);
         self.rightIndicatorViewLeftConstraint = make.left.mas_equalTo(self.headerView.mas_right).mas_offset(0);
     }];
+    
+    // snapshot View
+    self.snapshotView = [[UIView alloc] init];
+    self.snapshotView.restorationIdentifier = @"snapshotView";
+    self.snapshotView.userInteractionEnabled = NO;
+    self.snapshotView.alpha = 1;
+    self.snapshotView.backgroundColor = [UIColor clearColor];
+    [self.contentBackgroundView addSubview:self.snapshotView];
+    [self.snapshotView mas_makeConstraints:^(MASConstraintMaker *make) {
+        self.snapshotViewLeftConstraint = make.left.mas_equalTo(0);
+        make.top.and.right.and.bottom.mas_equalTo(self.collectionView);
+    }];
 }
 
+- (void) previousAnimation{
+
+    [self _animation:YES];
+}
+
+- (void) behindAnimation{
+ 
+    [self _animation:NO];
+}
+
+- (void) _animation:(BOOL)isPrevious{
+    
+    CGRect collectionViewFrame = self.collectionView.frame;
+    CGFloat offset = (isPrevious ? 2 : -2 ) * collectionViewFrame.size.width;
+    self.collectionView.alpha = 0;
+    self.collectionViewLeftConstraint.mas_equalTo(offset);
+    
+    self.snapshotView.alpha = 0;
+    CGRect snapshotViewFrame = self.snapshotView.frame;
+    
+    [UIView animateWithDuration:1.25 animations:^{
+        
+        self.collectionView.alpha = 1;
+        self.snapshotView.alpha = 0;
+        [self layoutIfNeeded];
+        self.collectionViewLeftConstraint.mas_equalTo(0);
+        self.snapshotViewLeftConstraint.mas_equalTo(-snapshotViewFrame.size.width);
+    } completion:^(BOOL finished) {
+        self.snapshotViewLeftConstraint.mas_equalTo(0);
+        [self.snapshotView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [obj removeFromSuperview];
+        }];
+    }];
+}
 #pragma mark - API
 
 - (void) modifContentViewHeight:(CGFloat)height{
@@ -166,7 +219,8 @@
     [collectionView setContentOffset:CGPointMake(offset, contentOffset.y)];
 //    NSLog(@"fabs(offset) : %f",fabs(offset));
     [self.leftIndicatorView update:fabs(offset) / 60];
-    self.leftIndicatorViewRightConstraint.mas_equalTo(fabs(offset));
+    self.leftIndicatorView.canContinues = fabs(offset) >= 60;
+    self.leftIndicatorViewRightConstraint.mas_equalTo(self.leftIndicatorView.canContinues ? 60 : fabs(offset));
 }
 
 // 向左移动
@@ -177,7 +231,8 @@
     [collectionView setContentOffset:CGPointMake(offset, contentOffset.y)];
     
     [self.rightIndicatorView update:fabs(offset) / 60];
-    self.rightIndicatorViewLeftConstraint.mas_equalTo(-offset);
+    self.rightIndicatorView.canContinues = -offset <= -60;
+    self.rightIndicatorViewLeftConstraint.mas_equalTo(self.rightIndicatorView.canContinues ? -60 : -offset);
 }
 
 // 向上移动
@@ -203,7 +258,24 @@
 //    [collectionView setContentOffset:CGPointMake(contentOffset.x, offset)];
 }
 
+// 结束移动
 - (void)collectionViewDidEndMove:(FDCollectionView *)collectionView{
+    
+    [self.snapshotView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj removeFromSuperview];
+    }];
+    UIView * snapshotView = [collectionView snapshotViewAfterScreenUpdates:YES];
+    [self.snapshotView addSubview:snapshotView];
+    
+    if (collectionView.moveDirection == FDCollectionViewMoveRight &&
+        self.leftIndicatorView.canContinues) {
+        [self previousAnimation];
+    }else if (collectionView.moveDirection == FDCollectionViewMoveLeft &&
+              self.rightIndicatorView.canContinues){
+        [self behindAnimation];
+    }else{
+        self.snapshotView.alpha = 0;
+    }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         collectionView.alwaysBounceHorizontal = YES;
@@ -221,12 +293,7 @@
     
     CGFloat percent = (fabs(-scrollView.contentOffset.y) - 20.0) / 30;
     [self.topIndicatorView update:percent];
-    
-//    percent = fabs(-scrollView.contentOffset.x) / 40;
-//    [self.leftIndicatorView update:percent];
-//    //
-//    percent = fabs(scrollView.contentOffset.x) / 40;
-//    [self.rightIndicatorView update:percent];
+    self.topIndicatorView.canContinues = percent >= 1;
     
     self.contentViewNextPointY = scrollView.contentOffset.y;
     

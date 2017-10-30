@@ -102,7 +102,7 @@
 }
 
 - (void)update:(CGFloat)percent{
-    NSLog(@"percent :  %f",percent);
+//    NSLog(@"percent :  %f",percent);
     if (percent <= 0) {
         
         _directionLayer.path      = [self createPathWithHeight:0];
@@ -146,7 +146,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
     
         _direction = direction;
         

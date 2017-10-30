@@ -8,6 +8,7 @@
 
 #import "FDCollectionView.h"
 #import <objc/runtime.h>
+#import "Masonry.h"
 
 @interface FDCollectionView (FDSwizzing)
 
@@ -50,13 +51,9 @@
 }
 @end
 
-typedef NS_ENUM(NSUInteger ,FDCollectionViewMoveDirection) {
-    FDCollectionViewMoveNone        = 0,
-    FDCollectionViewMoveUp         = 1 << 0,
-    FDCollectionViewMoveLeft        = 1 << 1,
-    FDCollectionViewMoveDown      = 1 << 2,
-    FDCollectionViewMoveRight      = 1 << 3,
-};
+@interface FDCollectionView()
+
+@end
 
 @implementation FDCollectionView{
     
@@ -65,6 +62,15 @@ typedef NS_ENUM(NSUInteger ,FDCollectionViewMoveDirection) {
     FDCollectionViewMoveDirection _moveDirection;
 }
 
+- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
+    
+    self = [super initWithFrame:frame collectionViewLayout:layout];
+    if (self) {
+        
+        
+    }
+    return self;
+}
 // UIScrollViewPanGestureRecognizer
 - (void) fd_handlePan:(UIPanGestureRecognizer *)gesture{
     
@@ -139,5 +145,10 @@ typedef NS_ENUM(NSUInteger ,FDCollectionViewMoveDirection) {
             break;
     }
     [self fd_handlePan:gesture];
+}
+
+- (void) changeAnimatoin{
+    
+    
 }
 @end

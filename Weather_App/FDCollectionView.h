@@ -8,11 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger ,FDCollectionViewMoveDirection) {
+    FDCollectionViewMoveNone        = 0,
+    FDCollectionViewMoveUp         = 1 << 0,
+    FDCollectionViewMoveLeft        = 1 << 1,
+    FDCollectionViewMoveDown      = 1 << 2,
+    FDCollectionViewMoveRight      = 1 << 3,
+};
+
 @protocol FDCollectionViewMoveDirectionDelegate;
+
 @interface FDCollectionView : UICollectionView
 
+@property (nonatomic ,assign ,readonly) FDCollectionViewMoveDirection moveDirection;
 @property (nonatomic ,weak) id<FDCollectionViewMoveDirectionDelegate>fd_delegate;
+
+- (void) changeAnimatoin;
 @end
+
 
 @protocol FDCollectionViewMoveDirectionDelegate <NSObject>
 
