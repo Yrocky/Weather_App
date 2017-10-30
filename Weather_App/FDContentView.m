@@ -21,39 +21,48 @@
 //}
 //@end
 
-@interface FDContentView (FD_Swizz)
-+ (void)fd_exchangeInstanceMethod1:(SEL)method1 method2:(SEL)method2;
-+ (void)fd_exchangeClassMethod1:(SEL)method1 method2:(SEL)method2;
+@interface FDContentView (FD_Swizzling)
 @end;
 
-@implementation FDContentView (FD_Swizz)
+@implementation FDContentView (FD_Swizzling)
 
-+ (void)fd_exchangeInstanceMethod1:(SEL)method1 method2:(SEL)method2
-{
-//    bool isFDContentView = [NSStringFromClass([self class]) isEqualToString:@"FDContentView"];
-//    if (isFDContentView) {
-//
-//        method_exchangeImplementations(class_getInstanceMethod([self class], method1), class_getInstanceMethod([self class], method2));
-//    }
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = [self class];
+
+        SEL originalSelector = NSSelectorFromString(@"handlePan:");
+        SEL swizzledSelector = NSSelectorFromString(@"fd_handlePan:");
+        
+        Method originalMethod = class_getInstanceMethod(class, originalSelector);
+        Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
+        
+        // When swizzling a class method, use the following:
+        // Class class = object_getClass((id)self);
+        // ...
+        // Method originalMethod = class_getClassMethod(class, originalSelector);
+        // Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
+        
+        BOOL didAddMethod =
+        class_addMethod(class,
+                        originalSelector,
+                        method_getImplementation(swizzledMethod),
+                        method_getTypeEncoding(swizzledMethod));
+        
+        if (didAddMethod) {
+            class_replaceMethod(class,
+                                swizzledSelector,
+                                method_getImplementation(originalMethod),
+                                method_getTypeEncoding(originalMethod));
+        } else {
+            method_exchangeImplementations(originalMethod, swizzledMethod);
+        }
+    });
 }
 
-+ (void)fd_exchangeClassMethod1:(SEL)method1 method2:(SEL)method2
-{
-//    bool isFDContentView = [NSStringFromClass([self class]) isEqualToString:@"FDContentView"];
-//    if (isFDContentView) {
-//
-//        method_exchangeImplementations(class_getClassMethod([self class], method1), class_getClassMethod([self class], method2));
-//    }
-}
 @end
 
 @implementation FDContentView
-
-+ (void)load{
-    
-    SEL handlePan = NSSelectorFromString(@"handlePan:");
-    [self fd_exchangeInstanceMethod1:handlePan method2:@selector(fd_handlePan:)];
-}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

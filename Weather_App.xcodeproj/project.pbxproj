@@ -225,6 +225,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7F243E3B1FA6D9AF00AE4134 /* 咸鱼 */ = {
+			isa = PBXGroup;
+			children = (
+				D715E6A11FA64ECF00CFBFF4 /* FDContentView.h */,
+				D715E6A21FA64ECF00CFBFF4 /* FDContentView.m */,
+			);
+			name = "咸鱼";
+			sourceTree = "<group>";
+		};
 		7F32E0B11FA1BC78002D57FB /* 指示器 */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,8 +313,7 @@
 			children = (
 				7FDC6ECB1F46E35A00D94379 /* AppDelegate.h */,
 				7FDC6ECC1F46E35A00D94379 /* AppDelegate.m */,
-				D715E6A11FA64ECF00CFBFF4 /* FDContentView.h */,
-				D715E6A21FA64ECF00CFBFF4 /* FDContentView.m */,
+				7F243E3B1FA6D9AF00AE4134 /* 咸鱼 */,
 				D70629591F8B1C0A00F52FCB /* 控制器 */,
 				D70628FC1F8B11F300F52FCB /* 跑道 */,
 				D70628FF1F8B130600F52FCB /* 分类 */,
