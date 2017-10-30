@@ -62,12 +62,20 @@
 
 @end
 
+@interface FDContentView()<UIScrollViewDelegate>
+
+@property (nonatomic ,assign) CGFloat contentViewBeginPointY;
+
+@property (nonatomic ,assign) CGFloat contentViewNextPointY;
+
+@end
 @implementation FDContentView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.delegate = self;
 //        [ANYMethodLog logMethodWithClass:[FDContentView class] condition:^BOOL(SEL sel) {
 //
 //            return [NSStringFromSelector(sel) isEqualToString:@"handlePan:"];
@@ -89,6 +97,7 @@
     self = [super init];
     if (self) {
         
+        self.delegate = self;
         // 只能是 @implementation 里面的方法
 //        [ANYMethodLog logMethodWithClass:[FDContentView class] condition:^BOOL(SEL sel) {
 //
@@ -117,14 +126,14 @@
             contentViewCanBounceVertical = self.contentOffset.y <= -20;
         }
         if (contentViewCanBounceVertical) {
-            [self fd_handlePan:gesture];
+//            [self fd_handlePan:gesture];
         }
-        self.alwaysBounceVertical = contentViewCanBounceVertical;
-        NSLog(@"changed contentOffset.y : %f \n %d",self.contentOffset.y,contentViewCanBounceVertical);
+//        self.alwaysBounceVertical = contentViewCanBounceVertical;
+//        NSLog(@"changed contentOffset.y : %f \n %d",self.contentOffset.y,contentViewCanBounceVertical);
     }else{
-        self.alwaysBounceVertical = YES;
-        [self fd_handlePan:gesture];
+//        self.alwaysBounceVertical = YES;
     }
+    [self fd_handlePan:gesture];
 }
 //
 //- (void) handlePan:(UIPanGestureRecognizer *)gesture{
@@ -139,4 +148,40 @@
 //
 //    [super handlePan:gesture];
 //}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    self.contentViewNextPointY = scrollView.contentOffset.y;
+//    NSLog(@"scrollViewDidScroll - %f",self.contentViewNextPointY);
+    
+    bool contentViewCanBounceVertical = NO;
+    CGFloat zeroContentOffsetY = 0;
+    
+    if (@available(iOS 11.0, *)) {
+        zeroContentOffsetY = 0;
+    } else {
+        zeroContentOffsetY = -20;
+    }
+    
+    contentViewCanBounceVertical = self.contentOffset.y <= zeroContentOffsetY;
+    
+    CGPoint zeroContentOffset = (CGPoint){
+        0,zeroContentOffsetY
+    };
+    if (contentViewCanBounceVertical) {
+        //            [self fd_handlePan:gesture];
+    }
+    
+    bool contentViewScrollDirectionDown = NO;// 是否向下拉
+    contentViewScrollDirectionDown = self.contentViewBeginPointY >= self.contentViewNextPointY;
+    if (!contentViewScrollDirectionDown) {
+        [self setContentOffset:zeroContentOffset animated:NO];
+    }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    
+    self.contentViewBeginPointY = scrollView.contentOffset.y;
+}
+
 @end

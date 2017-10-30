@@ -52,7 +52,7 @@
 //    UICollectionViewLayout * layout = [[UICollectionViewLayout alloc] init];
 //    self.contentView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     self.contentView = [[FDContentView alloc] init];
-    self.contentView.delegate = self;
+//    self.contentView.delegate = self;
 //    self.contentView = [[UITableView alloc] init];
 //    self.contentView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.contentView];
