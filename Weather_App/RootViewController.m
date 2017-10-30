@@ -14,6 +14,7 @@
 #import "MMSearchViewController.h"
 #import "HLLIndicatorViewController.h"
 #import "ANYMethodLog.h"
+#import "FDViewController.h"
 
 @interface RootViewController ()
 
@@ -81,9 +82,19 @@
         }];
         [s addCellModel:c];
         
+        c = [[HSTitleCellModel alloc] initWithTitle:@"咸鱼首页" actionBlock:^(HSBaseCellModel *model) {
+            
+            FDViewController * vc = [[FDViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
         s;
     })];
 }
 
+- (BOOL)prefersStatusBarHidden{
+    
+    return NO;
+}
 
 @end

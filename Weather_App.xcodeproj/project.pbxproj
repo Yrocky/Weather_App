@@ -62,6 +62,8 @@
 		D70629551F8B191C00F52FCB /* UIView+MHCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D70629531F8B191B00F52FCB /* UIView+MHCommon.m */; };
 		D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70629571F8B19AF00F52FCB /* RootViewController.m */; };
 		D706295C1F8B860B00F52FCB /* PCCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = D706295B1F8B860B00F52FCB /* PCCustomView.m */; };
+		D715E6A01FA627D500CFBFF4 /* FDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E69F1FA627D500CFBFF4 /* FDViewController.m */; };
+		D715E6A31FA64ECF00CFBFF4 /* FDContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E6A21FA64ECF00CFBFF4 /* FDContentView.m */; };
 		D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */; };
 		D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */; };
 		D7DE014E1F98C1EF008682DE /* NSInvocation+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DE014B1F98C1EF008682DE /* NSInvocation+AHKAdditions.m */; };
@@ -185,6 +187,10 @@
 		D70629571F8B19AF00F52FCB /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		D706295A1F8B860B00F52FCB /* PCCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCustomView.h; sourceTree = "<group>"; };
 		D706295B1F8B860B00F52FCB /* PCCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCustomView.m; sourceTree = "<group>"; };
+		D715E69E1FA627D500CFBFF4 /* FDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDViewController.h; sourceTree = "<group>"; };
+		D715E69F1FA627D500CFBFF4 /* FDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDViewController.m; sourceTree = "<group>"; };
+		D715E6A11FA64ECF00CFBFF4 /* FDContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDContentView.h; sourceTree = "<group>"; };
+		D715E6A21FA64ECF00CFBFF4 /* FDContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDContentView.m; sourceTree = "<group>"; };
 		D719742D1F6EFEDA0068F971 /* MM_AutoReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MM_AutoReplyViewController.h; sourceTree = "<group>"; };
 		D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MM_AutoReplyViewController.m; sourceTree = "<group>"; };
 		D71974301F6EFEFC0068F971 /* MM_AutoReplyEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MM_AutoReplyEditViewController.h; sourceTree = "<group>"; };
@@ -298,6 +304,8 @@
 			children = (
 				7FDC6ECB1F46E35A00D94379 /* AppDelegate.h */,
 				7FDC6ECC1F46E35A00D94379 /* AppDelegate.m */,
+				D715E6A11FA64ECF00CFBFF4 /* FDContentView.h */,
+				D715E6A21FA64ECF00CFBFF4 /* FDContentView.m */,
 				D70629591F8B1C0A00F52FCB /* 控制器 */,
 				D70628FC1F8B11F300F52FCB /* 跑道 */,
 				D70628FF1F8B130600F52FCB /* 分类 */,
@@ -537,6 +545,8 @@
 				7FCF75051F8B1EAD00514597 /* TableDemoViewController.m */,
 				7F8B6C001F95ECBB00F3A6E3 /* MMSearchViewController.h */,
 				7F8B6C011F95ECBB00F3A6E3 /* MMSearchViewController.m */,
+				D715E69E1FA627D500CFBFF4 /* FDViewController.h */,
+				D715E69F1FA627D500CFBFF4 /* FDViewController.m */,
 				7F32E0B21FA1CB74002D57FB /* HLLIndicatorViewController.h */,
 				7F32E0B31FA1CB74002D57FB /* HLLIndicatorViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
@@ -599,7 +609,7 @@
 				TargetAttributes = {
 					7FDC6EC41F46E35A00D94379 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = ZKEWNK6EPU;
+						DevelopmentTeam = LL7GM42E2F;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -697,6 +707,7 @@
 				D706293B1F8B185100F52FCB /* HSBaseCellModel.m in Sources */,
 				7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */,
 				7FCF75021F8B1DC100514597 /* HLLAlert.m in Sources */,
+				D715E6A31FA64ECF00CFBFF4 /* FDContentView.m in Sources */,
 				7F8B6C071F95ED6F00F3A6E3 /* MMSearchDefaultCollectionView.m in Sources */,
 				7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */,
 				7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */,
@@ -745,6 +756,7 @@
 				7FBC5FB71F97454C00DCF3E9 /* ANYMethodLog.m in Sources */,
 				7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */,
 				D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */,
+				D715E6A01FA627D500CFBFF4 /* FDViewController.m in Sources */,
 				7FDC6ECA1F46E35A00D94379 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -869,11 +881,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = ZKEWNK6EPU;
+				DEVELOPMENT_TEAM = LL7GM42E2F;
 				INFOPLIST_FILE = Weather_App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.weathe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Weather_App/Weather_App-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -887,11 +899,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = ZKEWNK6EPU;
+				DEVELOPMENT_TEAM = LL7GM42E2F;
 				INFOPLIST_FILE = Weather_App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.weathe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Weather_App/Weather_App-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
