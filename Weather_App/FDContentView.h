@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FDContentView : UIScrollView
+@interface FDContentView : UIView
 
+// 设置内容视图的高度
+- (void) modifContentViewHeight:(CGFloat)height;
+
+// 为CollectionView设置数据源和代理
+- (void) configCollectionView:(void(^)(UICollectionView *collectionView))handle;
 @end

@@ -102,20 +102,20 @@
 }
 
 - (void)update:(CGFloat)percent{
-    NSLog(@"percent :  %f",percent);
-    if (percent < 0) {
+//    NSLog(@"percent :  %f",percent);
+    if (percent <= 0) {
         
         _directionLayer.path      = [self createPathWithHeight:0];
         _directionLayer.opacity   = 0;
         
-    } else if (percent >= 0 && percent <= 0.533333f) { // [0, 0.5]
+    } else if (percent > 0 && percent <= 0.5f) { // [0, 0.5]
         
         _directionLayer.path      = [self createPathWithHeight:0];
         _directionLayer.opacity   = percent * 2.f;
         
     } else if (percent <= 1.f) { // (0.5, 1]
         
-        CGFloat currentPercent = percent - 0.533333f;
+        CGFloat currentPercent = percent - 0.5f;
         CGFloat height = (_direction == HLLStickIndicatorLeft || _direction == HLLStickIndicatorRight)?self.frame.size.width : self.frame.size.height;
         _directionLayer.path      = [self createPathWithHeight:currentPercent * height * 2];
         _directionLayer.opacity   = 1.f;
@@ -134,6 +134,11 @@
     UILabel * _indicatorInfoLabel;
     HLLDirectionView * _indicatorDirectionView;
     HLLStickIndicatorDirection _direction;
+}
+
+- (instancetype) initWithDirection:(HLLStickIndicatorDirection)direction{
+    
+    return [self initWithDirection:direction frame:CGRectZero];
 }
 
 - (instancetype) initWithDirection:(HLLStickIndicatorDirection)direction frame:(CGRect)frame{

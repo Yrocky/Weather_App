@@ -22,6 +22,7 @@ typedef NS_ENUM(NSUInteger ,HLLStickIndicatorDirection) {
 
 @interface HLLStickIndicatorView : UIView<HLLIndicatorProtocol>
 
+- (instancetype) initWithDirection:(HLLStickIndicatorDirection)direction;
 - (instancetype) initWithDirection:(HLLStickIndicatorDirection)direction frame:(CGRect)frame;
 
 - (void) configIndicatorInfo:(NSString *)indicatorInfo;

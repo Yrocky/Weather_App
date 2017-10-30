@@ -1,14 +1,15 @@
 //
 //  UILabel+ContentSize.m
-//  Weather_App
+//  CategoryDemo
 //
-//  Created by user1 on 2017/10/19.
-//  Copyright © 2017年 Yrocky. All rights reserved.
+//  Created by Rocky Young on 16/8/9.
+//  Copyright © 2016年 Young Rocky. All rights reserved.
 //
 
 #import "UILabel+ContentSize.h"
 
 @implementation UILabel (ContentSize)
+
 
 - (CGSize)contentSize
 {
@@ -34,5 +35,4 @@
     contentSize = CGSizeMake((int)contentSize.width + 1, (int)contentSize.height + 1);
     return contentSize;
 }
-
 @end
