@@ -22,8 +22,6 @@ typedef NS_ENUM(NSUInteger ,FDCollectionViewMoveDirection) {
 
 @property (nonatomic ,assign ,readonly) FDCollectionViewMoveDirection moveDirection;
 @property (nonatomic ,weak) id<FDCollectionViewMoveDirectionDelegate>fd_delegate;
-
-- (void) changeAnimatoin;
 @end
 
 

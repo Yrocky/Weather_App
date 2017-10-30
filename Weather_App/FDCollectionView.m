@@ -62,20 +62,10 @@
     FDCollectionViewMoveDirection _moveDirection;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
-    
-    self = [super initWithFrame:frame collectionViewLayout:layout];
-    if (self) {
-        
-        
-    }
-    return self;
-}
 // UIScrollViewPanGestureRecognizer
 - (void) fd_handlePan:(UIPanGestureRecognizer *)gesture{
     
     CGPoint gestureMoveContentOffset = [gesture translationInView:self];
-//    NSLog(@"gestureMoveContentOffset : %@",NSStringFromCGPoint(gestureMoveContentOffset));
     
     // 在向右/左滑动的时候 gestureMoveContentOffset 的 y 在前几个数据是不变的，只有 x>0 来表示向右 ，x<0来表示向左
     // 上/下滑动的时候， 同理，x 在前几个数据中不变，y>0来表示向上 ，y<0来表示向下
@@ -83,23 +73,21 @@
     switch (gesture.state) {
         case UIGestureRecognizerStateBegan:
         case UIGestureRecognizerStatePossible:
+            
             self.alwaysBounceHorizontal = YES;
             _gestureHandlePanBeginPoint = gestureMoveContentOffset;
-//            NSLog(@"++++++++++++++++begin : %@",NSStringFromCGPoint(gestureMoveContentOffset));
             break;
         case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateFailed:
-//            NSLog(@"--------finish");
-//            self.alwaysBounceHorizontal = YES;
             
             if (self.fd_delegate && [self.fd_delegate respondsToSelector:@selector(collectionViewDidEndMove:)]) {
                 [self.fd_delegate collectionViewDidEndMove:self];
             }
             break;
         case UIGestureRecognizerStateChanged:
+            
             _gestureHandlePanChangePoint = gestureMoveContentOffset;
-//            NSLog(@"gestureMoveContentOffset : %@",NSStringFromCGPoint(gestureMoveContentOffset));
             /// 上下移动
             if (_gestureHandlePanChangePoint.x == _gestureHandlePanBeginPoint.x || _gestureHandlePanBeginPoint.x == 0) {// 上下移动
                 
@@ -147,8 +135,4 @@
     [self fd_handlePan:gesture];
 }
 
-- (void) changeAnimatoin{
-    
-    
-}
 @end
