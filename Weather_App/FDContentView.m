@@ -214,10 +214,8 @@
 - (void) collectionView:(FDCollectionView *)collectionView didMoveToLeftContentOffset:(CGFloat)offset{
     
     collectionView.alwaysBounceHorizontal = YES;
-//    collectionView.alwaysBounceVertical = NO;
     CGPoint contentOffset = collectionView.contentOffset;
     [collectionView setContentOffset:CGPointMake(offset, contentOffset.y)];
-//    NSLog(@"fabs(offset) : %f",fabs(offset));
     [self.leftIndicatorView update:fabs(offset) / 60];
     self.leftIndicatorView.canContinues = fabs(offset) >= 60;
     self.leftIndicatorViewRightConstraint.mas_equalTo(self.leftIndicatorView.canContinues ? 60 : fabs(offset));
@@ -226,7 +224,6 @@
 // 向左移动
 - (void) collectionView:(FDCollectionView *)collectionView didMoveToRightContentOffset:(CGFloat)offset{
     collectionView.alwaysBounceHorizontal = YES;
-//    collectionView.alwaysBounceVertical = NO;
     CGPoint contentOffset = collectionView.contentOffset;
     [collectionView setContentOffset:CGPointMake(offset, contentOffset.y)];
     
@@ -238,24 +235,14 @@
 // 向上移动
 - (void) collectionView:(FDCollectionView *)collectionView didMoveToUpContentOffset:(CGFloat)offset{
     
-//    NSLog(@"向上滑动:%f",offset);
     collectionView.alwaysBounceVertical = YES;
     collectionView.alwaysBounceHorizontal = NO;
-    
-    
-//    CGPoint contentOffset = collectionView.contentOffset;
-//    [collectionView setContentOffset:CGPointMake(contentOffset.x, offset)];
-    
 }
 // 向下移动
 - (void) collectionView:(FDCollectionView *)collectionView didMoveToDownContentOffset:(CGFloat)offset{
     
-//    NSLog(@"向下滑动:%f",offset);
     collectionView.alwaysBounceVertical = YES;
     collectionView.alwaysBounceHorizontal = NO;
-    
-//    CGPoint contentOffset = collectionView.contentOffset;
-//    [collectionView setContentOffset:CGPointMake(contentOffset.x, offset)];
 }
 
 // 结束移动
