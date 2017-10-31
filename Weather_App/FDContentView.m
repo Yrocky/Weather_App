@@ -293,7 +293,6 @@
     }else{
         self.snapshotView.alpha = 0;
     }
-    
 }
 
 #pragma mark - UIScrollViewDelegate
