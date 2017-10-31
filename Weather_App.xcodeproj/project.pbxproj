@@ -65,6 +65,10 @@
 		D70F5DD71FA74B26007FBD43 /* UIView+Glow.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DD61FA74B25007FBD43 /* UIView+Glow.m */; };
 		D70F5DDA1FA74BCB007FBD43 /* FDCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DD91FA74BCB007FBD43 /* FDCustomView.m */; };
 		D70F5DDD1FA74FFB007FBD43 /* FDCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DDC1FA74FFB007FBD43 /* FDCollectionView.m */; };
+		D70F5DE01FA81D02007FBD43 /* FDPresentingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DDF1FA81D02007FBD43 /* FDPresentingAnimator.m */; };
+		D70F5DE31FA81D69007FBD43 /* FDDismissingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DE21FA81D69007FBD43 /* FDDismissingAnimator.m */; };
+		D70F5DEA1FA81EED007FBD43 /* Easing.c in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DE61FA81EED007FBD43 /* Easing.c */; };
+		D70F5DEB1FA81EED007FBD43 /* YXEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DE91FA81EED007FBD43 /* YXEasing.m */; };
 		D715E6A01FA627D500CFBFF4 /* FDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E69F1FA627D500CFBFF4 /* FDViewController.m */; };
 		D715E6A31FA64ECF00CFBFF4 /* FDContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E6A21FA64ECF00CFBFF4 /* FDContentView.m */; };
 		D715E6A61FA7152100CFBFF4 /* CLTStickyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E6A51FA7152000CFBFF4 /* CLTStickyLayout.m */; };
@@ -197,6 +201,14 @@
 		D70F5DD91FA74BCB007FBD43 /* FDCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDCustomView.m; sourceTree = "<group>"; };
 		D70F5DDB1FA74FFB007FBD43 /* FDCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDCollectionView.h; sourceTree = "<group>"; };
 		D70F5DDC1FA74FFB007FBD43 /* FDCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDCollectionView.m; sourceTree = "<group>"; };
+		D70F5DDE1FA81D02007FBD43 /* FDPresentingAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDPresentingAnimator.h; sourceTree = "<group>"; };
+		D70F5DDF1FA81D02007FBD43 /* FDPresentingAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDPresentingAnimator.m; sourceTree = "<group>"; };
+		D70F5DE11FA81D69007FBD43 /* FDDismissingAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDDismissingAnimator.h; sourceTree = "<group>"; };
+		D70F5DE21FA81D69007FBD43 /* FDDismissingAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDDismissingAnimator.m; sourceTree = "<group>"; };
+		D70F5DE61FA81EED007FBD43 /* Easing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Easing.c; sourceTree = "<group>"; };
+		D70F5DE71FA81EED007FBD43 /* Easing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Easing.h; sourceTree = "<group>"; };
+		D70F5DE81FA81EED007FBD43 /* YXEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXEasing.h; sourceTree = "<group>"; };
+		D70F5DE91FA81EED007FBD43 /* YXEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXEasing.m; sourceTree = "<group>"; };
 		D715E69E1FA627D500CFBFF4 /* FDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDViewController.h; sourceTree = "<group>"; };
 		D715E69F1FA627D500CFBFF4 /* FDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDViewController.m; sourceTree = "<group>"; };
 		D715E6A11FA64ECF00CFBFF4 /* FDContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDContentView.h; sourceTree = "<group>"; };
@@ -337,6 +349,8 @@
 				D70629031F8B138800F52FCB /* 消息预览HUD */,
 				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
+				D70F5DE51FA81EED007FBD43 /* YXEasing */,
+				D70F5DE41FA81DC9007FBD43 /* Animator */,
 				D715E6A71FA7152600CFBFF4 /* CLTStickyLayout */,
 				7F243E3B1FA6D9AF00AE4134 /* 咸鱼 */,
 				7F32E0B11FA1BC78002D57FB /* 指示器 */,
@@ -581,6 +595,28 @@
 			name = "控制器";
 			sourceTree = "<group>";
 		};
+		D70F5DE41FA81DC9007FBD43 /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+				D70F5DDE1FA81D02007FBD43 /* FDPresentingAnimator.h */,
+				D70F5DDF1FA81D02007FBD43 /* FDPresentingAnimator.m */,
+				D70F5DE11FA81D69007FBD43 /* FDDismissingAnimator.h */,
+				D70F5DE21FA81D69007FBD43 /* FDDismissingAnimator.m */,
+			);
+			name = Animator;
+			sourceTree = "<group>";
+		};
+		D70F5DE51FA81EED007FBD43 /* YXEasing */ = {
+			isa = PBXGroup;
+			children = (
+				D70F5DE61FA81EED007FBD43 /* Easing.c */,
+				D70F5DE71FA81EED007FBD43 /* Easing.h */,
+				D70F5DE81FA81EED007FBD43 /* YXEasing.h */,
+				D70F5DE91FA81EED007FBD43 /* YXEasing.m */,
+			);
+			path = YXEasing;
+			sourceTree = "<group>";
+		};
 		D715E6A71FA7152600CFBFF4 /* CLTStickyLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -756,6 +792,8 @@
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
 				7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */,
 				D706293D1F8B185100F52FCB /* HSImageCellModel.m in Sources */,
+				D70F5DE01FA81D02007FBD43 /* FDPresentingAnimator.m in Sources */,
+				D70F5DEA1FA81EED007FBD43 /* Easing.c in Sources */,
 				7F9CED3B1F5CEAA000A64EB5 /* MMRunwayCoreView.m in Sources */,
 				7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */,
 				D70629061F8B143D00F52FCB /* MMPickerView.m in Sources */,
@@ -764,6 +802,7 @@
 				D70629401F8B185100F52FCB /* HSTextCellModel.m in Sources */,
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
 				D706293E1F8B185100F52FCB /* HSInputCellModel.m in Sources */,
+				D70F5DE31FA81D69007FBD43 /* FDDismissingAnimator.m in Sources */,
 				7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */,
 				D70629421F8B185100F52FCB /* HSSectionModel.m in Sources */,
 				7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */,
@@ -784,6 +823,7 @@
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
 				D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */,
 				D70629391F8B185100F52FCB /* MMAssetsCellModel.m in Sources */,
+				D70F5DEB1FA81EED007FBD43 /* YXEasing.m in Sources */,
 				7F8B6C081F95ED6F00F3A6E3 /* MMSearchReusableView.m in Sources */,
 				D706294C1F8B185100F52FCB /* HSTitleTableViewCell.m in Sources */,
 				D70629451F8B185100F52FCB /* HSSetTableViewControllerConst.m in Sources */,

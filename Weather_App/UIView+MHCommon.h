@@ -14,71 +14,29 @@
 @interface UIView (MHCommon)
 
 /**
- *  获取左上角横坐标
- *
- *  @return 坐标值
- */
-- (CGFloat)left;
-
-/**
- *  获取左上角纵坐标
- *
- *  @return 坐标值
- */
-- (CGFloat)top;
-
-/**
- *  获取视图右下角横坐标
- *
- *  @return 坐标值
- */
-- (CGFloat)right;
-
-/**
- *  获取视图右下角纵坐标
- *
- *  @return 坐标值
- */
-- (CGFloat)bottom;
-
-/**
- *  获取视图宽度
- *
- *  @return 宽度值（像素）
- */
-- (CGFloat)width;
-
-/**
- *  获取视图高度
- *
- *  @return 高度值（像素）
- */
-- (CGFloat)height;
-
-/**
  *	@brief	删除所有子对象
  */
 - (void)removeAllSubviews;
 
-// By DQ
-// 左上横坐标
-@property (assign,nonatomic) CGFloat left;
+@property (nonatomic) CGPoint viewOrigin;
+@property (nonatomic) CGSize  viewSize;
 
-// 左上纵坐标
-@property (assign,nonatomic) CGFloat top;
+@property (nonatomic) CGFloat x;
+@property (nonatomic) CGFloat y;
+@property (nonatomic) CGFloat width;
+@property (nonatomic) CGFloat height;
 
-// 视图宽度
-@property (assign,nonatomic) CGFloat width;
+@property (nonatomic) CGFloat top;
+@property (nonatomic) CGFloat bottom;
+@property (nonatomic) CGFloat left;
+@property (nonatomic) CGFloat right;
 
-// 视图高度
-@property (assign,nonatomic) CGFloat height;
+@property (nonatomic) CGFloat centerX;
+@property (nonatomic) CGFloat centerY;
 
-// 视图中心X坐标
-@property (assign,nonatomic) CGFloat centerX;
-
-// 视图中心Y坐标
-@property (assign,nonatomic) CGFloat centerY;
-
+@property (nonatomic, readonly) CGFloat middleX;
+@property (nonatomic, readonly) CGFloat middleY;
+@property (nonatomic, readonly) CGPoint middlePoint;
 
 // 添加子视图在最上层
 - (void)addSubviewOrBringToFront:(UIView *)subview;
