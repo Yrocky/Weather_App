@@ -13,6 +13,7 @@
 #import "CLTStickyLayout.h"
 #import "HLLStickIndicator.h"
 #import "FDCollectionView.h"
+#import "HLLAttributedBuilder.h"
 
 @interface FDContentView()<UIScrollViewDelegate,FDCollectionViewMoveDirectionDelegate>
 
@@ -118,8 +119,18 @@
     }];
     [self.layout invalidateLayoutCache];
     
+    NSAttributedString * topIndicatorViewText;
+    NSDictionary * normalStyle =@{NSFontAttributeName:[UIFont systemFontOfSize:13],
+                                  NSForegroundColorAttributeName:[UIColor lightGrayColor]
+                                  };
+    NSDictionary * _normalStyle =@{NSFontAttributeName:[UIFont boldSystemFontOfSize:16],
+                                  NSForegroundColorAttributeName:[UIColor redColor]
+                                  };
+    topIndicatorViewText = [[[HLLAttributedBuilder builderWithString:@"下拉切换" defaultStyle:normalStyle] appendString:@"日视图" forStyle:_normalStyle] attributedString];
     // 1.topIndicator View
     self.topIndicatorView = [[HLLStickIndicatorView alloc] initWithDirection:HLLStickIndicatorTop];
+    self.topIndicatorView.restorationIdentifier = @"topIndicatorView";
+    [self.topIndicatorView configIndicatorInfoAttributesString:topIndicatorViewText];
     [self.contentView addSubview:self.topIndicatorView];
     [self.topIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(60);
@@ -130,6 +141,7 @@
     
     // 2.leftIndicator View
     self.leftIndicatorView = [[HLLStickIndicatorView alloc] initWithDirection:HLLStickIndicatorLeft];
+    self.leftIndicatorView.restorationIdentifier = @"leftIndicatorView";
     [self.leftIndicatorView configIndicatorInfo:@"加载\n前一篇"];
     [self.contentBackgroundView addSubview:self.leftIndicatorView];
     [self.leftIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -141,6 +153,7 @@
     
     // 3.rightIndicator View
     self.rightIndicatorView = [[HLLStickIndicatorView alloc] initWithDirection:HLLStickIndicatorRight];
+    self.rightIndicatorView.restorationIdentifier = @"rightIndicatorView";
     [self.rightIndicatorView configIndicatorInfo:@"加载\n下一篇"];
     [self.contentBackgroundView addSubview:self.rightIndicatorView];
     [self.rightIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -213,9 +226,9 @@
 // 向右移动
 - (void) collectionView:(FDCollectionView *)collectionView didMoveToLeftContentOffset:(CGFloat)offset{
     
-    collectionView.alwaysBounceHorizontal = YES;
     CGPoint contentOffset = collectionView.contentOffset;
     [collectionView setContentOffset:CGPointMake(offset, contentOffset.y)];
+    
     [self.leftIndicatorView update:fabs(offset) / 60];
     self.leftIndicatorView.canContinues = fabs(offset) >= 60;
     self.leftIndicatorViewRightConstraint.mas_equalTo(self.leftIndicatorView.canContinues ? 60 : fabs(offset));
@@ -223,7 +236,7 @@
 
 // 向左移动
 - (void) collectionView:(FDCollectionView *)collectionView didMoveToRightContentOffset:(CGFloat)offset{
-    collectionView.alwaysBounceHorizontal = YES;
+
     CGPoint contentOffset = collectionView.contentOffset;
     [collectionView setContentOffset:CGPointMake(offset, contentOffset.y)];
     
@@ -248,31 +261,40 @@
 // 结束移动
 - (void)collectionViewDidEndMove:(FDCollectionView *)collectionView{
     
+    // 快照
     [self.snapshotView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj removeFromSuperview];
     }];
     UIView * snapshotView = [collectionView snapshotViewAfterScreenUpdates:YES];
     [self.snapshotView addSubview:snapshotView];
     
+    // 指示视图
+    void (^indicatorViewHandle)() = ^void(){
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            collectionView.alwaysBounceHorizontal = YES;
+        });
+        
+        [self.leftIndicatorView update:0];
+        [self.rightIndicatorView update:0];
+        
+        self.rightIndicatorViewLeftConstraint.mas_equalTo(0);
+        self.leftIndicatorViewRightConstraint.mas_equalTo(0);
+    };
+    
+    indicatorViewHandle();
+    // 动画
     if (collectionView.moveDirection == FDCollectionViewMoveRight &&
         self.leftIndicatorView.canContinues) {
         [self previousAnimation];
     }else if (collectionView.moveDirection == FDCollectionViewMoveLeft &&
               self.rightIndicatorView.canContinues){
+//        indicatorViewHandle();
         [self behindAnimation];
     }else{
         self.snapshotView.alpha = 0;
     }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        collectionView.alwaysBounceHorizontal = YES;
-    });
-
-    [self.leftIndicatorView update:0];
-    [self.rightIndicatorView update:0];
-    
-    self.rightIndicatorViewLeftConstraint.mas_equalTo(0);
-    self.leftIndicatorViewRightConstraint.mas_equalTo(0);
 }
 #pragma mark - UIScrollViewDelegate
 

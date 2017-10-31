@@ -33,6 +33,11 @@
     tableView.backgroundView = nil;
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.estimatedRowHeight = 0;
+    tableView.sectionHeaderHeight = 0;
+    tableView.sectionFooterHeight = 0;
+    tableView.estimatedSectionFooterHeight = 0;
+    tableView.estimatedSectionHeaderHeight = 0;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     tableView.showsVerticalScrollIndicator = NO;

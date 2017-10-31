@@ -35,6 +35,7 @@
         MMDatePickerViewConfig * _dateConfig = _pickerView.config;
         NSLog(@"date:%@",_dateConfig.date);
     };
+    [pickerView setupInterface:[MMPickerViewInterface interface]];
     [pickerView show];
     
     [self.tableViewModel addSection:({
