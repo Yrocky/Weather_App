@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F243E3E1FA81E7A00AE4134 /* MMGCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F243E3D1FA81E7A00AE4134 /* MMGCD.m */; };
 		7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F32E0AF1FA1BC70002D57FB /* HLLStickIndicator.m */; };
 		7F32E0B41FA1CB74002D57FB /* HLLIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F32E0B31FA1CB74002D57FB /* HLLIndicatorViewController.m */; };
 		7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */; };
@@ -81,6 +82,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F243E3C1FA81E7A00AE4134 /* MMGCD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMGCD.h; sourceTree = "<group>"; };
+		7F243E3D1FA81E7A00AE4134 /* MMGCD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMGCD.m; sourceTree = "<group>"; };
 		7F32E0AE1FA1BC70002D57FB /* HLLStickIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLLStickIndicator.h; sourceTree = "<group>"; };
 		7F32E0AF1FA1BC70002D57FB /* HLLStickIndicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLLStickIndicator.m; sourceTree = "<group>"; };
 		7F32E0B21FA1CB74002D57FB /* HLLIndicatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLLIndicatorViewController.h; sourceTree = "<group>"; };
@@ -262,6 +265,15 @@
 			name = "咸鱼";
 			sourceTree = "<group>";
 		};
+		7F243E3F1FA81EB100AE4134 /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				7F243E3C1FA81E7A00AE4134 /* MMGCD.h */,
+				7F243E3D1FA81E7A00AE4134 /* MMGCD.m */,
+			);
+			name = GCD;
+			sourceTree = "<group>";
+		};
 		7F32E0B11FA1BC78002D57FB /* 指示器 */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +353,7 @@
 			children = (
 				7FDC6ECB1F46E35A00D94379 /* AppDelegate.h */,
 				7FDC6ECC1F46E35A00D94379 /* AppDelegate.m */,
+				7F243E3F1FA81EB100AE4134 /* GCD */,
 				D70629591F8B1C0A00F52FCB /* 控制器 */,
 				D70628FC1F8B11F300F52FCB /* 跑道 */,
 				D70628FF1F8B130600F52FCB /* 分类 */,
@@ -781,6 +794,7 @@
 				7FCF75021F8B1DC100514597 /* HLLAlert.m in Sources */,
 				D715E6A31FA64ECF00CFBFF4 /* FDContentView.m in Sources */,
 				7F8B6C071F95ED6F00F3A6E3 /* MMSearchDefaultCollectionView.m in Sources */,
+				7F243E3E1FA81E7A00AE4134 /* MMGCD.m in Sources */,
 				7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */,
 				7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */,
 				D706294A1F8B185100F52FCB /* HSSwitchTableViewCell.m in Sources */,
