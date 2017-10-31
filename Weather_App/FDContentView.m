@@ -119,10 +119,10 @@
         if (contentViewCanBounceVertical) {
             [self fd_handlePan:gesture];
         }
-        self.alwaysBounceVertical = contentViewCanBounceVertical;
+//        self.alwaysBounceVertical = contentViewCanBounceVertical;
         NSLog(@"changed contentOffset.y : %f \n %d",self.contentOffset.y,contentViewCanBounceVertical);
     }else{
-        self.alwaysBounceVertical = YES;
+//        self.alwaysBounceVertical = YES;
         [self fd_handlePan:gesture];
     }
 }
@@ -139,4 +139,18 @@
 //
 //    [super handlePan:gesture];
 //}
+
+//1、只要view有滚动（不管是拖、拉、放大、缩小等导致）都会执行此函数
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+}
+//2、将要开始拖拽，手指已经放在view上并准备拖动的那一刻
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    
+    
+}
+//3、将要结束拖拽，手指已拖动过view并准备离开手指的那一刻，注意：当属性pagingEnabled为YES时，此函数不被调用
+-(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+    
+}
 @end
