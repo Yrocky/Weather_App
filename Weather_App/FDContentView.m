@@ -9,57 +9,41 @@
 #import "FDContentView.h"
 #import "ANYMethodLog.h"
 #import <objc/runtime.h>
+#import "Masonry.h"
+#import "CLTStickyLayout.h"
+#import "HLLStickIndicator.h"
+#import "FDCollectionView.h"
+#import "HLLAttributedBuilder.h"
 
-//@interface UIScrollView (handlePan)
-//- (void) fd_handlePan:(UIPanGestureRecognizer *)gesture;
-//@end;
-//
-//@implementation UIScrollView (handlePan)
-//- (void) fd_handlePan:(UIPanGestureRecognizer *)gesture{
-//
-////    [self fd_handlePan:gesture];
-//}
-//@end
+@interface FDContentView()<UIScrollViewDelegate,FDCollectionViewMoveDirectionDelegate>
 
-@interface FDContentView (FD_Swizzling)
-@end;
+@property (nonatomic ,assign) CGFloat contentViewBeginPointY;
+@property (nonatomic ,assign) CGFloat contentViewNextPointY;
 
-@implementation FDContentView (FD_Swizzling)
+@property (nonatomic ,strong) UIScrollView * contentView;
+@property (nonatomic ,strong) UIView * contentBackgroundView;
+@property (nonatomic ,strong) MASConstraint * bgViewHeightConstraint;
 
-+ (void)load {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        Class class = [self class];
+@property (nonatomic ,strong) UIView * headerView;
 
-        SEL originalSelector = NSSelectorFromString(@"handlePan:");
-        SEL swizzledSelector = NSSelectorFromString(@"fd_handlePan:");
-        
-        Method originalMethod = class_getInstanceMethod(class, originalSelector);
-        Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
-        
-        // When swizzling a class method, use the following:
-        // Class class = object_getClass((id)self);
-        // ...
-        // Method originalMethod = class_getClassMethod(class, originalSelector);
-        // Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
-        
-        BOOL didAddMethod =
-        class_addMethod(class,
-                        originalSelector,
-                        method_getImplementation(swizzledMethod),
-                        method_getTypeEncoding(swizzledMethod));
-        
-        if (didAddMethod) {
-            class_replaceMethod(class,
-                                swizzledSelector,
-                                method_getImplementation(originalMethod),
-                                method_getTypeEncoding(originalMethod));
-        } else {
-            method_exchangeImplementations(originalMethod, swizzledMethod);
-        }
-    });
-}
+@property (nonatomic ,strong) CLTStickyLayout * layout;
+@property (nonatomic ,strong) FDCollectionView * collectionView;
+@property (nonatomic ,strong) MASConstraint * collectionViewLeftConstraint;
 
+// stickIndicator
+@property (nonatomic ,strong) HLLStickIndicatorView * topIndicatorView;
+
+@property (nonatomic ,strong) HLLStickIndicatorView * leftIndicatorView;
+@property (nonatomic ,strong) MASConstraint * leftIndicatorViewRightConstraint;
+
+@property (nonatomic ,strong) HLLStickIndicatorView * rightIndicatorView;
+@property (nonatomic ,strong) MASConstraint * rightIndicatorViewLeftConstraint;
+
+// change 
+@property (nonatomic ,strong) UIPanGestureRecognizer * listViewPanGesture;
+
+@property (nonatomic ,strong) UIView * snapshotView;
+@property (nonatomic ,strong) MASConstraint * snapshotViewLeftConstraint;
 @end
 
 @implementation FDContentView
@@ -68,89 +52,282 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-//        [ANYMethodLog logMethodWithClass:[FDContentView class] condition:^BOOL(SEL sel) {
-//
-//            return [NSStringFromSelector(sel) isEqualToString:@"handlePan:"];
-//        } before:^(id target, SEL sel, NSArray *args, int deep) {
-//
-//            NSLog(@" before target:%@ sel:%@",target,NSStringFromSelector(sel));
-//
-//            [target fd_handlePan:args[0]];
-//
-//        } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
-//
-//        }];
+        
+        [self fd_addSubviews];
     }
     return self;
 }
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        
-        // 只能是 @implementation 里面的方法
-//        [ANYMethodLog logMethodWithClass:[FDContentView class] condition:^BOOL(SEL sel) {
-//
-//            return [NSStringFromSelector(sel) isEqualToString:@"handlePan:"];
-//        } before:^(id target, SEL sel, NSArray *args, int deep) {
-//
-////            NSLog(@" before target:%@ sel:%@",target,NSStringFromSelector(sel));
-//
-//            [target fd_handlePan:args[0]];
-//
-//        } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
-//
-//        }];
-    }
-    return self;
+- (void) fd_addSubviews{
+    
+    self.backgroundColor = [UIColor clearColor];
+    
+    // content View
+    self.contentView = [[UIScrollView alloc] init];
+    self.contentView.delegate = self;
+    self.contentView.restorationIdentifier = @"contentView";
+    [self addSubview:self.contentView];
+    self.contentView.backgroundColor = [UIColor clearColor];
+    self.contentView.alwaysBounceVertical = YES;
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.mas_equalTo(self);
+        make.top.mas_equalTo(self.mas_top);
+        make.bottom.mas_equalTo(self.mas_bottom);
+    }];
+    
+    // contnet background View
+    self.contentBackgroundView = [UIView new];
+    self.contentBackgroundView.restorationIdentifier = @"contentBackgroundView";
+    self.contentBackgroundView.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:self.contentBackgroundView];
+    
+    [self.contentBackgroundView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(self.contentView);
+        self.bgViewHeightConstraint = make.height.mas_equalTo(20);
+        make.left.mas_equalTo(self.contentView);
+        make.top.mas_equalTo(self.contentView);
+        make.bottom.mas_equalTo(self.contentView);
+    }];
+    
+    // header View
+    self.headerView = [UIView new];
+    self.headerView.restorationIdentifier = @"headerView";
+    self.headerView.backgroundColor = [UIColor redColor];
+    [self.contentBackgroundView addSubview:self.headerView];
+    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(100);
+        make.top.and.right.and.left.mas_equalTo(self.contentBackgroundView);
+    }];
+    
+    // collection View
+    self.layout = [[CLTStickyLayout alloc] init];
+    self.layout.itemSize = CGSizeMake(50, 30);
+    self.layout.stickyHeader = YES;
+    _collectionView = [[FDCollectionView alloc] initWithFrame:CGRectZero
+                                         collectionViewLayout:self.layout];
+    _collectionView.backgroundColor = [UIColor clearColor];
+    _collectionView.showsVerticalScrollIndicator = YES;
+    _collectionView.fd_delegate = self;
+    self.collectionView.restorationIdentifier = @"collectionView";
+    self.collectionView.alwaysBounceHorizontal = YES;
+    [self.contentBackgroundView addSubview:_collectionView];
+    [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        self.collectionViewLeftConstraint = make.left.mas_equalTo(0);
+        make.right.mas_equalTo(self.headerView);
+        make.top.mas_equalTo(self.headerView.mas_bottom);
+        make.bottom.mas_equalTo(self.contentBackgroundView.mas_bottom);
+    }];
+    [self.layout invalidateLayoutCache];
+    
+    NSAttributedString * topIndicatorViewText;
+    NSDictionary * normalStyle =@{NSFontAttributeName:[UIFont systemFontOfSize:13],
+                                  NSForegroundColorAttributeName:[UIColor lightGrayColor]
+                                  };
+    NSDictionary * _normalStyle =@{NSFontAttributeName:[UIFont boldSystemFontOfSize:16],
+                                  NSForegroundColorAttributeName:[UIColor redColor]
+                                  };
+    topIndicatorViewText = [[[HLLAttributedBuilder builderWithString:@"下拉切换" defaultStyle:normalStyle] appendString:@"日视图" forStyle:_normalStyle] attributedString];
+    // 1.topIndicator View
+    self.topIndicatorView = [[HLLStickIndicatorView alloc] initWithDirection:HLLStickIndicatorTop];
+    self.topIndicatorView.restorationIdentifier = @"topIndicatorView";
+    [self.topIndicatorView configIndicatorInfoAttributesString:topIndicatorViewText];
+    [self.contentView addSubview:self.topIndicatorView];
+    [self.topIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(60);
+        make.centerX.mas_equalTo(self.contentView);
+        make.width.mas_equalTo(self.contentView);
+        make.bottom.mas_equalTo(self.contentView.mas_top);
+    }];
+    
+    // 2.leftIndicator View
+    self.leftIndicatorView = [[HLLStickIndicatorView alloc] initWithDirection:HLLStickIndicatorLeft];
+    self.leftIndicatorView.restorationIdentifier = @"leftIndicatorView";
+    [self.leftIndicatorView configIndicatorInfo:@"加载\n前一篇"];
+    [self.contentBackgroundView addSubview:self.leftIndicatorView];
+    [self.leftIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(60, 200));
+        make.centerY.mas_equalTo(_collectionView);
+        self.leftIndicatorViewRightConstraint = make.right.mas_equalTo(_collectionView.mas_left).mas_offset(0);
+    }];
+    
+    
+    // 3.rightIndicator View
+    self.rightIndicatorView = [[HLLStickIndicatorView alloc] initWithDirection:HLLStickIndicatorRight];
+    self.rightIndicatorView.restorationIdentifier = @"rightIndicatorView";
+    [self.rightIndicatorView configIndicatorInfo:@"加载\n下一篇"];
+    [self.contentBackgroundView addSubview:self.rightIndicatorView];
+    [self.rightIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(self.leftIndicatorView);
+        make.centerY.mas_equalTo(self.leftIndicatorView);
+        self.rightIndicatorViewLeftConstraint = make.left.mas_equalTo(self.headerView.mas_right).mas_offset(0);
+    }];
+    
+    // snapshot View
+    self.snapshotView = [[UIView alloc] init];
+    self.snapshotView.restorationIdentifier = @"snapshotView";
+    self.snapshotView.userInteractionEnabled = NO;
+    self.snapshotView.alpha = 1;
+    self.snapshotView.backgroundColor = [UIColor clearColor];
+    [self.contentBackgroundView addSubview:self.snapshotView];
+    [self.snapshotView mas_makeConstraints:^(MASConstraintMaker *make) {
+        self.snapshotViewLeftConstraint = make.left.mas_equalTo(0);
+        make.top.and.right.and.bottom.mas_equalTo(self.collectionView);
+    }];
 }
 
-- (void) fd_handlePan:(UIPanGestureRecognizer *)gesture{
+- (void) previousAnimation{
 
-    if (gesture.state == UIGestureRecognizerStateChanged) {
+    [self _animation:YES];
+}
+
+- (void) behindAnimation{
+ 
+    [self _animation:NO];
+}
+
+- (void) _animation:(BOOL)isPrevious{
+    
+    CGRect collectionViewFrame = self.collectionView.frame;
+    CGFloat offset = (isPrevious ? 2 : -2 ) * collectionViewFrame.size.width;
+    self.collectionView.alpha = 0;
+    self.collectionViewLeftConstraint.mas_equalTo(offset);
+    
+    self.snapshotView.alpha = 0;
+    CGRect snapshotViewFrame = self.snapshotView.frame;
+    
+    [UIView animateWithDuration:1.25 animations:^{
         
-        bool contentViewCanBounceVertical = NO;
-        if (@available(iOS 11.0, *)) {
-            contentViewCanBounceVertical = self.contentOffset.y <= 0;
-        } else {
-            contentViewCanBounceVertical = self.contentOffset.y <= -20;
-        }
-        if (contentViewCanBounceVertical) {
-            [self fd_handlePan:gesture];
-        }
-//        self.alwaysBounceVertical = contentViewCanBounceVertical;
-        NSLog(@"changed contentOffset.y : %f \n %d",self.contentOffset.y,contentViewCanBounceVertical);
+        self.collectionView.alpha = 1;
+        self.snapshotView.alpha = 0;
+        [self layoutIfNeeded];
+        self.collectionViewLeftConstraint.mas_equalTo(0);
+        self.snapshotViewLeftConstraint.mas_equalTo(-snapshotViewFrame.size.width);
+    } completion:^(BOOL finished) {
+        self.snapshotViewLeftConstraint.mas_equalTo(0);
+        [self.snapshotView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [obj removeFromSuperview];
+        }];
+    }];
+}
+#pragma mark - API
+
+- (void) modifContentViewHeight:(CGFloat)height{
+    
+    self.bgViewHeightConstraint.mas_equalTo(height);
+}
+
+- (void) configCollectionView:(void (^)(UICollectionView *))handle{
+    
+    if (handle) {
+        handle(_collectionView);
+    }
+}
+#pragma mark - FDCollectionViewMoveDirectionDelegate
+// 向右移动
+- (void) collectionView:(FDCollectionView *)collectionView didMoveToLeftContentOffset:(CGFloat)offset{
+    
+    CGPoint contentOffset = collectionView.contentOffset;
+    [collectionView setContentOffset:CGPointMake(offset, contentOffset.y)];
+    
+    [self.leftIndicatorView update:fabs(offset) / 60];
+    self.leftIndicatorView.canContinues = fabs(offset) >= 60;
+    self.leftIndicatorViewRightConstraint.mas_equalTo(self.leftIndicatorView.canContinues ? 60 : fabs(offset));
+}
+
+// 向左移动
+- (void) collectionView:(FDCollectionView *)collectionView didMoveToRightContentOffset:(CGFloat)offset{
+
+    CGPoint contentOffset = collectionView.contentOffset;
+    [collectionView setContentOffset:CGPointMake(offset, contentOffset.y)];
+    
+    [self.rightIndicatorView update:fabs(offset) / 60];
+    self.rightIndicatorView.canContinues = -offset <= -60;
+    self.rightIndicatorViewLeftConstraint.mas_equalTo(self.rightIndicatorView.canContinues ? -60 : -offset);
+}
+
+// 向上移动
+- (void) collectionView:(FDCollectionView *)collectionView didMoveToUpContentOffset:(CGFloat)offset{
+    
+    collectionView.alwaysBounceVertical = YES;
+    collectionView.alwaysBounceHorizontal = NO;
+}
+// 向下移动
+- (void) collectionView:(FDCollectionView *)collectionView didMoveToDownContentOffset:(CGFloat)offset{
+    
+    collectionView.alwaysBounceVertical = YES;
+    collectionView.alwaysBounceHorizontal = NO;
+}
+
+// 结束移动
+- (void)collectionViewDidEndMove:(FDCollectionView *)collectionView{
+    
+    // 快照
+    [self.snapshotView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj removeFromSuperview];
+    }];
+    UIView * snapshotView = [collectionView snapshotViewAfterScreenUpdates:YES];
+    [self.snapshotView addSubview:snapshotView];
+    
+    // 指示视图
+    void (^indicatorViewHandle)() = ^void(){
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            collectionView.alwaysBounceHorizontal = YES;
+        });
+        
+        [self.leftIndicatorView update:0];
+        [self.rightIndicatorView update:0];
+        
+        self.rightIndicatorViewLeftConstraint.mas_equalTo(0);
+        self.leftIndicatorViewRightConstraint.mas_equalTo(0);
+    };
+    
+    indicatorViewHandle();
+    // 动画
+    if (collectionView.moveDirection == FDCollectionViewMoveRight &&
+        self.leftIndicatorView.canContinues) {
+        [self previousAnimation];
+    }else if (collectionView.moveDirection == FDCollectionViewMoveLeft &&
+              self.rightIndicatorView.canContinues){
+        [self behindAnimation];
     }else{
-//        self.alwaysBounceVertical = YES;
-        [self fd_handlePan:gesture];
+        self.snapshotView.alpha = 0;
+    }
+    
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    CGFloat percent = (fabs(-scrollView.contentOffset.y) - 20.0) / 30;
+    [self.topIndicatorView update:percent];
+    self.topIndicatorView.canContinues = percent >= 1;
+    
+    self.contentViewNextPointY = scrollView.contentOffset.y;
+    
+    CGFloat zeroContentOffsetY = 0;
+    
+    if (@available(iOS 11.0, *)) {
+        zeroContentOffsetY = 0;
+    } else {
+        zeroContentOffsetY = -20;
+    }
+
+    CGPoint zeroContentOffset = (CGPoint){
+        0,zeroContentOffsetY
+    };
+    
+    bool contentViewScrollDirectionDown = NO;// 是否向下拉
+    contentViewScrollDirectionDown = self.contentViewBeginPointY >= self.contentViewNextPointY;
+    if (!contentViewScrollDirectionDown) {
+        [self.contentView setContentOffset:zeroContentOffset animated:NO];
     }
 }
-//
-//- (void) handlePan:(UIPanGestureRecognizer *)gesture{
-//
-//    NSLog(@"------ %@ ",gesture);
-//    if (gesture.state == UIGestureRecognizerStateBegan) {
-//        NSLog(@"began contentOffset.y : %f",self.contentOffset.y);
-//    }
-//    if (gesture.state == UIGestureRecognizerStateChanged) {
-//        NSLog(@"changed contentOffset.y : %f",self.contentOffset.y);
-//    }
-//
-//    [super handlePan:gesture];
-//}
 
-//1、只要view有滚动（不管是拖、拉、放大、缩小等导致）都会执行此函数
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     
+    self.contentViewBeginPointY = scrollView.contentOffset.y;
 }
-//2、将要开始拖拽，手指已经放在view上并准备拖动的那一刻
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    
-    
-}
-//3、将要结束拖拽，手指已拖动过view并准备离开手指的那一刻，注意：当属性pagingEnabled为YES时，此函数不被调用
--(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
-    
-}
+
 @end

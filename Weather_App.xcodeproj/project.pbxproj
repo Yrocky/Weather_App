@@ -62,8 +62,12 @@
 		D70629551F8B191C00F52FCB /* UIView+MHCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = D70629531F8B191B00F52FCB /* UIView+MHCommon.m */; };
 		D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D70629571F8B19AF00F52FCB /* RootViewController.m */; };
 		D706295C1F8B860B00F52FCB /* PCCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = D706295B1F8B860B00F52FCB /* PCCustomView.m */; };
+		D70F5DD71FA74B26007FBD43 /* UIView+Glow.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DD61FA74B25007FBD43 /* UIView+Glow.m */; };
+		D70F5DDA1FA74BCB007FBD43 /* FDCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DD91FA74BCB007FBD43 /* FDCustomView.m */; };
+		D70F5DDD1FA74FFB007FBD43 /* FDCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DDC1FA74FFB007FBD43 /* FDCollectionView.m */; };
 		D715E6A01FA627D500CFBFF4 /* FDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E69F1FA627D500CFBFF4 /* FDViewController.m */; };
 		D715E6A31FA64ECF00CFBFF4 /* FDContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E6A21FA64ECF00CFBFF4 /* FDContentView.m */; };
+		D715E6A61FA7152100CFBFF4 /* CLTStickyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E6A51FA7152000CFBFF4 /* CLTStickyLayout.m */; };
 		D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */; };
 		D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */; };
 		D7DE014E1F98C1EF008682DE /* NSInvocation+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DE014B1F98C1EF008682DE /* NSInvocation+AHKAdditions.m */; };
@@ -187,10 +191,18 @@
 		D70629571F8B19AF00F52FCB /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		D706295A1F8B860B00F52FCB /* PCCustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCCustomView.h; sourceTree = "<group>"; };
 		D706295B1F8B860B00F52FCB /* PCCustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCCustomView.m; sourceTree = "<group>"; };
+		D70F5DD51FA74B25007FBD43 /* UIView+Glow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Glow.h"; sourceTree = "<group>"; };
+		D70F5DD61FA74B25007FBD43 /* UIView+Glow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Glow.m"; sourceTree = "<group>"; };
+		D70F5DD81FA74BCB007FBD43 /* FDCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDCustomView.h; sourceTree = "<group>"; };
+		D70F5DD91FA74BCB007FBD43 /* FDCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDCustomView.m; sourceTree = "<group>"; };
+		D70F5DDB1FA74FFB007FBD43 /* FDCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDCollectionView.h; sourceTree = "<group>"; };
+		D70F5DDC1FA74FFB007FBD43 /* FDCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDCollectionView.m; sourceTree = "<group>"; };
 		D715E69E1FA627D500CFBFF4 /* FDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDViewController.h; sourceTree = "<group>"; };
 		D715E69F1FA627D500CFBFF4 /* FDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDViewController.m; sourceTree = "<group>"; };
 		D715E6A11FA64ECF00CFBFF4 /* FDContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDContentView.h; sourceTree = "<group>"; };
 		D715E6A21FA64ECF00CFBFF4 /* FDContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDContentView.m; sourceTree = "<group>"; };
+		D715E6A41FA7152000CFBFF4 /* CLTStickyLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTStickyLayout.h; sourceTree = "<group>"; };
+		D715E6A51FA7152000CFBFF4 /* CLTStickyLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTStickyLayout.m; sourceTree = "<group>"; };
 		D719742D1F6EFEDA0068F971 /* MM_AutoReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MM_AutoReplyViewController.h; sourceTree = "<group>"; };
 		D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MM_AutoReplyViewController.m; sourceTree = "<group>"; };
 		D71974301F6EFEFC0068F971 /* MM_AutoReplyEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MM_AutoReplyEditViewController.h; sourceTree = "<group>"; };
@@ -230,6 +242,10 @@
 			children = (
 				D715E6A11FA64ECF00CFBFF4 /* FDContentView.h */,
 				D715E6A21FA64ECF00CFBFF4 /* FDContentView.m */,
+				D70F5DDB1FA74FFB007FBD43 /* FDCollectionView.h */,
+				D70F5DDC1FA74FFB007FBD43 /* FDCollectionView.m */,
+				D70F5DD81FA74BCB007FBD43 /* FDCustomView.h */,
+				D70F5DD91FA74BCB007FBD43 /* FDCustomView.m */,
 			);
 			name = "咸鱼";
 			sourceTree = "<group>";
@@ -313,7 +329,6 @@
 			children = (
 				7FDC6ECB1F46E35A00D94379 /* AppDelegate.h */,
 				7FDC6ECC1F46E35A00D94379 /* AppDelegate.m */,
-				7F243E3B1FA6D9AF00AE4134 /* 咸鱼 */,
 				D70629591F8B1C0A00F52FCB /* 控制器 */,
 				D70628FC1F8B11F300F52FCB /* 跑道 */,
 				D70628FF1F8B130600F52FCB /* 分类 */,
@@ -322,6 +337,8 @@
 				D70629031F8B138800F52FCB /* 消息预览HUD */,
 				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
+				D715E6A71FA7152600CFBFF4 /* CLTStickyLayout */,
+				7F243E3B1FA6D9AF00AE4134 /* 咸鱼 */,
 				7F32E0B11FA1BC78002D57FB /* 指示器 */,
 				D7DE01481F98C1EF008682DE /* AHKBuilder */,
 				7FCF75031F8B1DC600514597 /* Alert封装 */,
@@ -390,6 +407,8 @@
 		D70628FF1F8B130600F52FCB /* 分类 */ = {
 			isa = PBXGroup;
 			children = (
+				D70F5DD51FA74B25007FBD43 /* UIView+Glow.h */,
+				D70F5DD61FA74B25007FBD43 /* UIView+Glow.m */,
 				D70629541F8B191C00F52FCB /* UIView+MHCommon.h */,
 				D70629531F8B191B00F52FCB /* UIView+MHCommon.m */,
 				D70629501F8B18F300F52FCB /* NSString+Exten.h */,
@@ -560,6 +579,15 @@
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
+			sourceTree = "<group>";
+		};
+		D715E6A71FA7152600CFBFF4 /* CLTStickyLayout */ = {
+			isa = PBXGroup;
+			children = (
+				D715E6A41FA7152000CFBFF4 /* CLTStickyLayout.h */,
+				D715E6A51FA7152000CFBFF4 /* CLTStickyLayout.m */,
+			);
+			name = CLTStickyLayout;
 			sourceTree = "<group>";
 		};
 		D7DE01481F98C1EF008682DE /* AHKBuilder */ = {
@@ -739,6 +767,7 @@
 				7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */,
 				D70629421F8B185100F52FCB /* HSSectionModel.m in Sources */,
 				7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */,
+				D715E6A61FA7152100CFBFF4 /* CLTStickyLayout.m in Sources */,
 				7FDC6EE11F46E38800D94379 /* HLLWaveView.m in Sources */,
 				D7DE014E1F98C1EF008682DE /* NSInvocation+AHKAdditions.m in Sources */,
 				D70629461F8B185100F52FCB /* HSBaseTableViewCell.m in Sources */,
@@ -749,6 +778,7 @@
 				7FBCF0BE1F4D269100E2EEC7 /* HLLSegmentView.m in Sources */,
 				D70629411F8B185100F52FCB /* HSTitleCellModel.m in Sources */,
 				7FED6BA61F5557F0004E3345 /* TableViewDataSource.m in Sources */,
+				D70F5DD71FA74B26007FBD43 /* UIView+Glow.m in Sources */,
 				D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */,
 				D706293A1F8B185100F52FCB /* HSSetTableViewMainController.m in Sources */,
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
@@ -758,8 +788,10 @@
 				D706294C1F8B185100F52FCB /* HSTitleTableViewCell.m in Sources */,
 				D70629451F8B185100F52FCB /* HSSetTableViewControllerConst.m in Sources */,
 				7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */,
+				D70F5DDA1FA74BCB007FBD43 /* FDCustomView.m in Sources */,
 				7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */,
 				D706295C1F8B860B00F52FCB /* PCCustomView.m in Sources */,
+				D70F5DDD1FA74FFB007FBD43 /* FDCollectionView.m in Sources */,
 				7F9CED3E1F5D1F9D00A64EB5 /* MMRunwayProContentView.m in Sources */,
 				7FBC5FB71F97454C00DCF3E9 /* ANYMethodLog.m in Sources */,
 				7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */,

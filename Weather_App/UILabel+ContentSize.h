@@ -1,9 +1,9 @@
 //
 //  UILabel+ContentSize.h
-//  Weather_App
+//  CategoryDemo
 //
-//  Created by user1 on 2017/10/19.
-//  Copyright © 2017年 Yrocky. All rights reserved.
+//  Created by Rocky Young on 16/8/9.
+//  Copyright © 2016年 Young Rocky. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -14,4 +14,3 @@
 
 - (CGSize)textSizeIn:(CGSize)size;
 @end
-

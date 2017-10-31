@@ -139,9 +139,9 @@
         self.toolBar.barStyle = UIBarStyleDefault;
         [self addSubview:self.toolBar];
         
-        UIBarButtonItem * cancel = [[UIBarButtonItem alloc] initWithCustomView:[self buttonView:@"    取消" action:@selector(cancelButtonHandle)]];
+        UIBarButtonItem * cancel = [[UIBarButtonItem alloc] initWithCustomView:[self buttonView:@"取消" action:@selector(cancelButtonHandle)]];
         
-        UIBarButtonItem * done = [[UIBarButtonItem alloc] initWithCustomView:[self buttonView:@"确定    " action:@selector(sureButtonHandle)]];
+        UIBarButtonItem * done = [[UIBarButtonItem alloc] initWithCustomView:[self buttonView:@"确定" action:@selector(sureButtonHandle)]];
         
         UIBarButtonItem * title = [[UIBarButtonItem alloc] initWithCustomView:[self titleView:@""]];
         
@@ -157,6 +157,7 @@
     UILabel * l = [UILabel new];
     l.textColor = [UIColor lightGrayColor];
     l.font = [UIFont systemFontOfSize:13];
+    l.bounds = (CGRect){CGPointZero,100,30};
     l.textAlignment = NSTextAlignmentCenter;
     l.text = text;
     return l;
@@ -164,6 +165,7 @@
 - (UIView *) buttonView:(NSString *)text action:(SEL)action{
     
     UIButton * b = [UIButton buttonWithType:UIButtonTypeCustom];
+    b.bounds = (CGRect){CGPointZero,60,40};
     [b setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     b.titleLabel.font = [UIFont systemFontOfSize:15];
     [b setTitle:text forState:UIControlStateNormal];
@@ -290,11 +292,11 @@
     UILabel * title = self.toolBar.items[2].customView;
     UIButton * done = self.toolBar.items[4].customView;
     
-    [cancel setTitle:[NSString stringWithFormat:@"    %@",interface.cancelText] forState:UIControlStateNormal];
+    [cancel setTitle:[NSString stringWithFormat:@"%@",interface.cancelText] forState:UIControlStateNormal];
     [cancel setTitleColor:interface.cancelTextColor forState:UIControlStateNormal];
     cancel.titleLabel.font = interface.cancelTextFont;
     
-    [done setTitle:[NSString stringWithFormat:@"%@    ",interface.doneText] forState:UIControlStateNormal];
+    [done setTitle:[NSString stringWithFormat:@"%@",interface.doneText] forState:UIControlStateNormal];
     [done setTitleColor:interface.doneTextColor forState:UIControlStateNormal];
     done.titleLabel.font = interface.doneTextFont;
     
