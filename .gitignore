@@ -24,6 +24,16 @@ xcuserdata/
 *.xcuserstate
 *.xcbkptlist
 *.xcuserstate
+.svn
+.svnignore
+*.svn-base
+.DS_Store
+*.xcworkspace
+!default.xcworkspace
+profile
+.idea/
+**/xcuserdata/**
+
 
 ## Obj-C/Swift specific
 *.hmap
