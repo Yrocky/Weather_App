@@ -15,8 +15,10 @@
 #import "HLLIndicatorViewController.h"
 #import "ANYMethodLog.h"
 #import "FDViewController.h"
+#import "FDPresentingAnimator.h"
+#import "FDDismissingAnimator.h"
 
-@interface RootViewController ()
+@interface RootViewController ()<UIViewControllerTransitioningDelegate>
 
 @end
 
@@ -84,8 +86,12 @@
         
         c = [[HSTitleCellModel alloc] initWithTitle:@"咸鱼首页" actionBlock:^(HSBaseCellModel *model) {
             
+            
             FDViewController * vc = [[FDViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
+            vc.transitioningDelegate  = self;
+            vc.modalPresentationStyle = UIModalPresentationCustom;
+//            UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            [self presentViewController:vc animated:YES completion:nil];
         }];
         [s addCellModel:c];
         s;
@@ -95,6 +101,19 @@
 - (BOOL)prefersStatusBarHidden{
     
     return NO;
+}
+
+#pragma mark - 定制转场动画
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source {
+    
+    return [FDPresentingAnimator new];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    
+    return [FDDismissingAnimator new];
 }
 
 @end

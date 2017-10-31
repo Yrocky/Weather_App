@@ -9,11 +9,10 @@
 #import "FDViewController.h"
 #import "Masonry.h"
 #import "UIColor+Common.h"
-#import "HLLStickIndicator.h"
 #import "FDContentView.h"
 #import "CLTStickyLayout.h"
 
-@interface FDViewController ()<UICollectionViewDataSource,CLTStickyLayoutDelegate>
+@interface FDViewController ()<UICollectionViewDataSource,CLTStickyLayoutDelegate,FDContentViewDelegate>
 
 @property (nonatomic ,strong) FDContentView * contentView;
 @end
@@ -27,6 +26,7 @@
     
     self.contentView = [[FDContentView alloc] init];
     [self.view addSubview:self.contentView];
+    self.contentView.delegate = self;
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(0);
         make.top.mas_equalTo(self.view.mas_topMargin);
@@ -56,7 +56,7 @@
     if (@available(iOS 11.0, *)) {
         height = self.view.bounds.size.height - self.view.safeAreaInsets.top - self.view.safeAreaInsets.bottom;
     } else {
-        height = self.view.bounds.size.height - 20;
+        height = self.view.bounds.size.height - 0;
     }
     [self.contentView modifContentViewHeight:height];
 }
@@ -106,5 +106,21 @@
 - (CGSize)  CLT_stickyLayoutItemSize{
 
     return CGSizeMake(1000, 70);
+}
+
+#pragma mark - FDContentViewDelegate
+
+- (void)contentViewDidExecuteChangeDisplayType:(FDContentView *)contentView{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)contentViewDidExecuteChangePrevious:(FDContentView *)contentView{
+    
+}
+
+- (void)contentViewDidExecuteChangeBehind:(FDContentView *)contentView{
+    
+    
 }
 @end

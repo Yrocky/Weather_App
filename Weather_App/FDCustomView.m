@@ -10,13 +10,18 @@
 #import "UIColor+Common.h"
 #import "Masonry.h"
 
-@implementation FDCustomView{
-    UIView * _topSeparatorView;
-    UIView * _leftSeparatorView;
-    UIView * _bottomSeparatorView;
-    UIView * _rightSeparatorView;
-}
+NSString * const FDDidShowAlertViewNotification = @"FDDidShowAlertViewNotification";
+NSString * const FDDidDismissAlertViewNotification = @"FDDidDismissAlertViewNotification";
 
+@implementation FDCustomView
+
+- (void)dealloc{
+    
+    NSLog(@"%@ did dealloc",self);
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:FDDidShowAlertViewNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:FDDidDismissAlertViewNotification object:nil];
+}
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -37,59 +42,23 @@
 
 - (void) _config{
     
-    self.backgroundColor = [UIColor whiteColor];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onShowAlertViewGrayThemeAction) name:FDDidShowAlertViewNotification object:nil];
     
-    UIView *(^separatorView)(void) = ^UIView *(){
-        UIView * separatorView = [UIView new];
-        separatorView.hidden = YES;
-        separatorView.backgroundColor = [self customSeparatorColor];
-        [self addSubview:separatorView];
-        return separatorView;
-    };
-    _topSeparatorView = separatorView();
-    _leftSeparatorView = separatorView();
-    _bottomSeparatorView = separatorView();
-    _rightSeparatorView = separatorView();
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDismissAlertViewGreenThemeAction) name:FDDidDismissAlertViewNotification object:nil];
 }
 
-- (UIColor *) customSeparatorColor{
-    
-    return [UIColor colorWithHexString:@"CAC9CF"];
+- (void) onShowAlertViewGrayThemeAction{
 }
 
-- (void)layoutSubviews{
-    
-    [super layoutSubviews];
-    
-    CGFloat h = 1/[UIScreen mainScreen].scale;
-    
-    [_topSeparatorView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.top.mas_equalTo(self);
-        make.right.mas_equalTo(self.mas_right);
-        make.height.mas_equalTo(h);
-    }];
-    
-    [_leftSeparatorView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.and.top.and.left.mas_equalTo(self);
-        make.width.mas_equalTo(h);
-    }];
-    
-    [_bottomSeparatorView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.and.bottom.mas_equalTo(self);
-        make.height.mas_equalTo(_topSeparatorView);
-    }];
-    
-    [_rightSeparatorView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.and.right.and.bottom.mas_equalTo(self);
-        make.width.mas_equalTo(h);
-    }];
+- (void) onDismissAlertViewGreenThemeAction{
 }
 
-- (void) showSeparatorView:(FDCustomViewSeparator)type{
-    
-    _topSeparatorView.hidden = !(type & (FDCustomViewSeparatorTop | FDCustomViewSeparatorAll));
-    _leftSeparatorView.hidden = !(type & (FDCustomViewSeparatorLeft | FDCustomViewSeparatorAll));
-    _bottomSeparatorView.hidden = !(type & (FDCustomViewSeparatorBottom | FDCustomViewSeparatorAll));
-    _rightSeparatorView.hidden = !(type & (FDCustomViewSeparatorRight | FDCustomViewSeparatorAll));
+- (UIColor *) themeColor{
+    return [UIColor colorWithHexString:@"1EBE99"];
 }
+
+- (UIColor *) grayColor{
+    return [UIColor colorWithHexString:@"6F7376"];
+}
+
 @end

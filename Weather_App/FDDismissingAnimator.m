@@ -7,12 +7,15 @@
 //
 
 #import "FDDismissingAnimator.h"
+#import "YXEasing.h"
+#import "MMGCD.h"
+#import "UIView+MHCommon.h"
 
 @implementation FDDismissingAnimator
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
     
-    return 0.5f;
+    return .5f;
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
@@ -26,7 +29,7 @@
     // 开始点 + 结束点
     CGPoint startPoint = fromView.center;
     CGPoint endPoint   = CGPointMake(fromView.middleX,
-                                     fromView.middleY + Height);
+                                     fromView.middleY + kScreenHeight);
     
     // 关键帧动画
     CAKeyframeAnimation *keyAnimation = [CAKeyframeAnimation animation];
@@ -39,7 +42,7 @@
     fromView.center                   = endPoint;
     [fromView.layer addAnimation:keyAnimation forKey:nil];
     
-    [GCDQueue executeInMainQueue:^{
+    [[MMGCDQueue mainQueue] execute:^{
         
         [transitionContext completeTransition:YES];
         

@@ -8,19 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_OPTIONS(NSUInteger ,FDCustomViewSeparator) {
-    FDCustomViewSeparatorNone        = 0,
-    FDCustomViewSeparatorTop         = 1 << 0,
-    FDCustomViewSeparatorLeft        = 1 << 1,
-    FDCustomViewSeparatorBottom      = 1 << 2,
-    FDCustomViewSeparatorRight       = 1 << 3,
-    FDCustomViewSeparatorAll         = 1 << 4,
-};
+extern NSString * const FDDidShowAlertViewNotification;
+extern NSString * const FDDidDismissAlertViewNotification;
+
 @interface FDCustomView : UIView
 
-- (void) showSeparatorView:(FDCustomViewSeparator)type;
+// 子类重写，对颜色进行修改
+- (UIColor *) themeColor;// themeColor，绿色
+- (UIColor *) grayColor;// 在弹出AlertView的时候替换themeColor的颜色
 
-// 子类可以重写修改分割线颜色
-- (UIColor *) customSeparatorColor;
+// 子类重写，在AlertView弹出来的时候不显示绿色，改为灰色
+- (void) onShowAlertViewGrayThemeAction;
+
+// 子类重写，在AlertView弹出来的时候显示绿色
+- (void) onDismissAlertViewGreenThemeAction;
 @end
 

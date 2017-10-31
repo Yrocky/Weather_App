@@ -39,9 +39,6 @@
 @property (nonatomic ,strong) HLLStickIndicatorView * rightIndicatorView;
 @property (nonatomic ,strong) MASConstraint * rightIndicatorViewLeftConstraint;
 
-// change 
-@property (nonatomic ,strong) UIPanGestureRecognizer * listViewPanGesture;
-
 @property (nonatomic ,strong) UIView * snapshotView;
 @property (nonatomic ,strong) MASConstraint * snapshotViewLeftConstraint;
 @end
@@ -113,7 +110,7 @@
     [self.contentBackgroundView addSubview:_collectionView];
     [_collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         self.collectionViewLeftConstraint = make.left.mas_equalTo(0);
-        make.right.mas_equalTo(self.headerView);
+        make.right.mas_equalTo(self.contentBackgroundView.mas_right);
         make.top.mas_equalTo(self.headerView.mas_bottom);
         make.bottom.mas_equalTo(self.contentBackgroundView.mas_bottom);
     }];
@@ -275,20 +272,31 @@
             collectionView.alwaysBounceHorizontal = YES;
         });
         
-        [self.leftIndicatorView update:0];
-        [self.rightIndicatorView update:0];
-        
-        self.rightIndicatorViewLeftConstraint.mas_equalTo(0);
-        self.leftIndicatorViewRightConstraint.mas_equalTo(0);
+        [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            
+            [self.leftIndicatorView update:0];
+            [self.rightIndicatorView update:0];
+            
+            [self layoutIfNeeded];
+            self.rightIndicatorViewLeftConstraint.mas_equalTo(0);
+            self.leftIndicatorViewRightConstraint.mas_equalTo(0);
+        } completion:nil];
     };
     
     indicatorViewHandle();
     // 动画
     if (collectionView.moveDirection == FDCollectionViewMoveRight &&
         self.leftIndicatorView.canContinues) {
+        if (self.delegate) {
+            [self.delegate contentViewDidExecuteChangePrevious:self];
+        }
         [self previousAnimation];
     }else if (collectionView.moveDirection == FDCollectionViewMoveLeft &&
               self.rightIndicatorView.canContinues){
+        if (self.delegate) {
+            [self.delegate contentViewDidExecuteChangeBehind:self];
+        }
+
         [self behindAnimation];
     }else{
         self.snapshotView.alpha = 0;
@@ -299,7 +307,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
-    CGFloat percent = (fabs(-scrollView.contentOffset.y) - 20.0) / 30;
+    CGFloat percent = (fabs(scrollView.contentOffset.y) - 0.0) / 60;
     [self.topIndicatorView update:percent];
     self.topIndicatorView.canContinues = percent >= 1;
     
@@ -310,7 +318,7 @@
     if (@available(iOS 11.0, *)) {
         zeroContentOffsetY = 0;
     } else {
-        zeroContentOffsetY = -20;
+        zeroContentOffsetY = 0;
     }
 
     CGPoint zeroContentOffset = (CGPoint){
@@ -329,4 +337,12 @@
     self.contentViewBeginPointY = scrollView.contentOffset.y;
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+
+    if (self.topIndicatorView.canContinues) {
+        if (self.delegate) {
+            [self.delegate contentViewDidExecuteChangeDisplayType:self];
+        }
+    }
+}
 @end

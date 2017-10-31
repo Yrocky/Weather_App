@@ -8,6 +8,8 @@
 
 #import "FDPresentingAnimator.h"
 #import "YXEasing.h"
+#import "UIView+MHCommon.h"
+#import "MMGCD.h"
 
 @implementation FDPresentingAnimator
 
@@ -21,7 +23,7 @@
     
     // 另一个view
     UIView *toView   = [transitionContext viewForKey:UITransitionContextToViewKey];
-    toView.y         = Height;
+    toView.y         = kScreenHeight;
     
     // 管理容器
     UIView *container = [transitionContext containerView];
@@ -47,7 +49,7 @@
     toView.center                     = container.center;
     [toView.layer addAnimation:keyAnimation forKey:nil];
     
-    [GCDQueue executeInMainQueue:^{
+    [[MMGCDQueue mainQueue] execute:^{
         
         [transitionContext completeTransition:YES];
         

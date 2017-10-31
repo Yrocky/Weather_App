@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 
 /**
+ *  UIScreen width.
+ */
+#define  kScreenWidth   [UIScreen mainScreen].bounds.size.width
+
+/**
+ *  UIScreen height.
+ */
+#define  kScreenHeight  [UIScreen mainScreen].bounds.size.height
+
+/**
  *  UIView 通用Category
  */
 @interface UIView (MHCommon)
