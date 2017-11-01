@@ -12,6 +12,14 @@
 		7F32E0B41FA1CB74002D57FB /* HLLIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F32E0B31FA1CB74002D57FB /* HLLIndicatorViewController.m */; };
 		7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */; };
 		7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */; };
+		7F590D791FA9A5D4006F7BF0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F590D691FA9A5D4006F7BF0 /* Info.plist */; };
+		7F590D7A1FA9A5D4006F7BF0 /* STPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D6C1FA9A5D4006F7BF0 /* STPopupController.m */; };
+		7F590D7B1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D6E1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m */; };
+		7F590D7C1FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D701FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.m */; };
+		7F590D7D1FA9A5D4006F7BF0 /* STPopupLeftBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D721FA9A5D4006F7BF0 /* STPopupLeftBarItem.m */; };
+		7F590D7E1FA9A5D4006F7BF0 /* STPopupNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D741FA9A5D4006F7BF0 /* STPopupNavigationBar.m */; };
+		7F590D7F1FA9A5D4006F7BF0 /* UIResponder+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D761FA9A5D4006F7BF0 /* UIResponder+STPopup.m */; };
+		7F590D801FA9A5D4006F7BF0 /* UIViewController+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D781FA9A5D4006F7BF0 /* UIViewController+STPopup.m */; };
 		7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B6C011F95ECBB00F3A6E3 /* MMSearchViewController.m */; };
 		7F8B6C071F95ED6F00F3A6E3 /* MMSearchDefaultCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B6C031F95ED6D00F3A6E3 /* MMSearchDefaultCollectionView.m */; };
 		7F8B6C081F95ED6F00F3A6E3 /* MMSearchReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B6C051F95ED6E00F3A6E3 /* MMSearchReusableView.m */; };
@@ -92,6 +100,22 @@
 		7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGiftEffectViewController.m; sourceTree = "<group>"; };
 		7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGiftEffectOperationMgr.h; sourceTree = "<group>"; };
 		7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGiftEffectOperationMgr.m; sourceTree = "<group>"; };
+		7F590D691FA9A5D4006F7BF0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F590D6A1FA9A5D4006F7BF0 /* STPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPopup.h; sourceTree = "<group>"; };
+		7F590D6B1FA9A5D4006F7BF0 /* STPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPopupController.h; sourceTree = "<group>"; };
+		7F590D6C1FA9A5D4006F7BF0 /* STPopupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPopupController.m; sourceTree = "<group>"; };
+		7F590D6D1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPopupControllerTransitioningFade.h; sourceTree = "<group>"; };
+		7F590D6E1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPopupControllerTransitioningFade.m; sourceTree = "<group>"; };
+		7F590D6F1FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPopupControllerTransitioningSlideVertical.h; sourceTree = "<group>"; };
+		7F590D701FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPopupControllerTransitioningSlideVertical.m; sourceTree = "<group>"; };
+		7F590D711FA9A5D4006F7BF0 /* STPopupLeftBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPopupLeftBarItem.h; sourceTree = "<group>"; };
+		7F590D721FA9A5D4006F7BF0 /* STPopupLeftBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPopupLeftBarItem.m; sourceTree = "<group>"; };
+		7F590D731FA9A5D4006F7BF0 /* STPopupNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPopupNavigationBar.h; sourceTree = "<group>"; };
+		7F590D741FA9A5D4006F7BF0 /* STPopupNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPopupNavigationBar.m; sourceTree = "<group>"; };
+		7F590D751FA9A5D4006F7BF0 /* UIResponder+STPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+STPopup.h"; sourceTree = "<group>"; };
+		7F590D761FA9A5D4006F7BF0 /* UIResponder+STPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+STPopup.m"; sourceTree = "<group>"; };
+		7F590D771FA9A5D4006F7BF0 /* UIViewController+STPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+STPopup.h"; sourceTree = "<group>"; };
+		7F590D781FA9A5D4006F7BF0 /* UIViewController+STPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+STPopup.m"; sourceTree = "<group>"; };
 		7F8B6C001F95ECBB00F3A6E3 /* MMSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSearchViewController.h; sourceTree = "<group>"; };
 		7F8B6C011F95ECBB00F3A6E3 /* MMSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSearchViewController.m; sourceTree = "<group>"; };
 		7F8B6C031F95ED6D00F3A6E3 /* MMSearchDefaultCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSearchDefaultCollectionView.m; sourceTree = "<group>"; };
@@ -283,6 +307,29 @@
 			name = "指示器";
 			sourceTree = "<group>";
 		};
+		7F590D681FA9A5D4006F7BF0 /* STPopup */ = {
+			isa = PBXGroup;
+			children = (
+				7F590D691FA9A5D4006F7BF0 /* Info.plist */,
+				7F590D6A1FA9A5D4006F7BF0 /* STPopup.h */,
+				7F590D6B1FA9A5D4006F7BF0 /* STPopupController.h */,
+				7F590D6C1FA9A5D4006F7BF0 /* STPopupController.m */,
+				7F590D6D1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.h */,
+				7F590D6E1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m */,
+				7F590D6F1FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.h */,
+				7F590D701FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.m */,
+				7F590D711FA9A5D4006F7BF0 /* STPopupLeftBarItem.h */,
+				7F590D721FA9A5D4006F7BF0 /* STPopupLeftBarItem.m */,
+				7F590D731FA9A5D4006F7BF0 /* STPopupNavigationBar.h */,
+				7F590D741FA9A5D4006F7BF0 /* STPopupNavigationBar.m */,
+				7F590D751FA9A5D4006F7BF0 /* UIResponder+STPopup.h */,
+				7F590D761FA9A5D4006F7BF0 /* UIResponder+STPopup.m */,
+				7F590D771FA9A5D4006F7BF0 /* UIViewController+STPopup.h */,
+				7F590D781FA9A5D4006F7BF0 /* UIViewController+STPopup.m */,
+			);
+			path = STPopup;
+			sourceTree = "<group>";
+		};
 		7F8B6C091F95EEA900F3A6E3 /* 搜索的CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +408,7 @@
 				D70629031F8B138800F52FCB /* 消息预览HUD */,
 				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
+				7F590D681FA9A5D4006F7BF0 /* STPopup */,
 				7F243E3F1FA81EB100AE4134 /* GCD */,
 				D70F5DE51FA81EED007FBD43 /* YXEasing */,
 				D70F5DE41FA81DC9007FBD43 /* Animator */,
@@ -723,6 +771,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F590D791FA9A5D4006F7BF0 /* Info.plist in Resources */,
 				7FDC6ED81F46E35A00D94379 /* LaunchScreen.storyboard in Resources */,
 				7FDC6ED51F46E35A00D94379 /* Assets.xcassets in Resources */,
 				7FDC6ED31F46E35A00D94379 /* Main.storyboard in Resources */,
@@ -789,6 +838,7 @@
 				7F32E0B41FA1CB74002D57FB /* HLLIndicatorViewController.m in Sources */,
 				D7DE014F1F98C1EF008682DE /* NSObject+AHKBuilder.m in Sources */,
 				D70629551F8B191C00F52FCB /* UIView+MHCommon.m in Sources */,
+				7F590D7C1FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.m in Sources */,
 				D706293B1F8B185100F52FCB /* HSBaseCellModel.m in Sources */,
 				7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */,
 				7FCF75021F8B1DC100514597 /* HLLAlert.m in Sources */,
@@ -799,12 +849,16 @@
 				7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */,
 				D706294A1F8B185100F52FCB /* HSSwitchTableViewCell.m in Sources */,
 				D70629471F8B185100F52FCB /* HSCustomTableViewCell.m in Sources */,
+				7F590D7F1FA9A5D4006F7BF0 /* UIResponder+STPopup.m in Sources */,
 				D706294F1F8B189C00F52FCB /* UIColor+Common.m in Sources */,
+				7F590D7D1FA9A5D4006F7BF0 /* STPopupLeftBarItem.m in Sources */,
 				7FD8CC351F98A995005DC9FF /* NSObject+CodableProperties.m in Sources */,
+				7F590D801FA9A5D4006F7BF0 /* UIViewController+STPopup.m in Sources */,
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
 				7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */,
+				7F590D7B1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m in Sources */,
 				D706293D1F8B185100F52FCB /* HSImageCellModel.m in Sources */,
 				D70F5DE01FA81D02007FBD43 /* FDPresentingAnimator.m in Sources */,
 				D70F5DEA1FA81EED007FBD43 /* Easing.c in Sources */,
@@ -837,6 +891,7 @@
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
 				D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */,
 				D70629391F8B185100F52FCB /* MMAssetsCellModel.m in Sources */,
+				7F590D7A1FA9A5D4006F7BF0 /* STPopupController.m in Sources */,
 				D70F5DEB1FA81EED007FBD43 /* YXEasing.m in Sources */,
 				7F8B6C081F95ED6F00F3A6E3 /* MMSearchReusableView.m in Sources */,
 				D706294C1F8B185100F52FCB /* HSTitleTableViewCell.m in Sources */,
@@ -849,6 +904,7 @@
 				7F9CED3E1F5D1F9D00A64EB5 /* MMRunwayProContentView.m in Sources */,
 				7FBC5FB71F97454C00DCF3E9 /* ANYMethodLog.m in Sources */,
 				7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */,
+				7F590D7E1FA9A5D4006F7BF0 /* STPopupNavigationBar.m in Sources */,
 				D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */,
 				D715E6A01FA627D500CFBFF4 /* FDViewController.m in Sources */,
 				7FDC6ECA1F46E35A00D94379 /* main.m in Sources */,
