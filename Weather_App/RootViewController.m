@@ -17,6 +17,7 @@
 #import "FDViewController.h"
 #import "FDPresentingAnimator.h"
 #import "FDDismissingAnimator.h"
+#import "CreatePDFViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 
@@ -94,6 +95,14 @@
             [self presentViewController:vc animated:YES completion:nil];
         }];
         [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"生成PDF" actionBlock:^(HSBaseCellModel *model) {
+            
+            CreatePDFViewController * vc = [[CreatePDFViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
         s;
     })];
 }

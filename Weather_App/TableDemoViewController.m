@@ -27,6 +27,26 @@
 
     self.title = @"Demo";
     
+    
+    
+    UILabel * label = [UILabel new];
+    label.text = @"Cancel";
+    label.textColor = [UIColor orangeColor];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:label];
+    
+//    self.navigationItem.rightBarButtonItem = nil;
+//
+//    if (self.navigationItem.rightBarButtonItem != nil) {
+//        self.navigationItem.rightBarButtonItem = nil;
+//    }
+
+    UIView * customView =self.navigationItem.rightBarButtonItem.customView;
+    customView.hidden = YES;
+    
+    
+    
+    
+    
     MMDatePickerViewConfig * dateConfig = [[MMDatePickerViewConfig alloc] init];
     dateConfig.datePickerMode = UIDatePickerModeCountDownTimer;
 //    dateConfig.countDownDuration = 66;
