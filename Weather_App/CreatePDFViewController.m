@@ -33,17 +33,21 @@
     [self.view addSubview:self.webView];
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.top.right.mas_equalTo(self.view);
-        make.bottom.mas_equalTo(self.view.mas_bottomMargin);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
     }];
     
     NSMutableArray * arr = [NSMutableArray array];
-    for (NSInteger index = 0; index < 10; index ++) {
-        [arr addObject:[NSString stringWithFormat:@"This is %ld",(long)index]];
+    for (NSInteger index = 0; index < 50; index ++) {
+        if (index % 2) {
+            [arr addObject:[NSString stringWithFormat:@"This is This is This is This is This is This is This is This is This is This is This is This is This is This is This is This is This is This is This is %ld",(long)index]];
+        }else{
+            [arr addObject:[NSString stringWithFormat:@"This is %ld",(long)index]];
+        }
     }
     
     //
     self.renderComposer = [[FDHTMLRenderComposer alloc] init];
-    [self.renderComposer renderHTML:@"2017.10.31" items:arr cb:^(NSString *html) {
+    [self.renderComposer renderHTML:@"2017年" items:arr cb:^(NSString *html) {
         [self.webView loadHTMLString:html baseURL:nil];
     }];
     

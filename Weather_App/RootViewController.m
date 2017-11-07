@@ -18,6 +18,8 @@
 #import "FDPresentingAnimator.h"
 #import "FDDismissingAnimator.h"
 #import "CreatePDFViewController.h"
+#import "MarkdownRenderHTMLViewController.h"
+#import "MM_FindFriendEntryViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 
@@ -99,6 +101,20 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"生成PDF" actionBlock:^(HSBaseCellModel *model) {
             
             CreatePDFViewController * vc = [[CreatePDFViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"渲染HTML" actionBlock:^(HSBaseCellModel *model) {
+            
+            MarkdownRenderHTMLViewController * vc = [[MarkdownRenderHTMLViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"发现界面" actionBlock:^(HSBaseCellModel *model) {
+            
+            MM_FindFriendEntryViewController * vc = [[MM_FindFriendEntryViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];

@@ -18,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    [UINavigationBar appearance].backItem.leftItemsSupplementBackButton = YES;
+    [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"back"];
+    
 //    id overlayClass = NSClassFromString(@"UIDebuggingInformationOverlay");
 //    if ([overlayClass respondsToSelector:NSSelectorFromString(@"prepareDebuggingOverlay")]) {
 //        [overlayClass performSelector:NSSelectorFromString(@"prepareDebuggingOverlay")];

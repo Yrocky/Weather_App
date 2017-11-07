@@ -45,6 +45,7 @@
 		7FDC6ED81F46E35A00D94379 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FDC6ED61F46E35A00D94379 /* LaunchScreen.storyboard */; };
 		7FDC6EE11F46E38800D94379 /* HLLWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6EE01F46E38800D94379 /* HLLWaveView.m */; };
 		7FED6BA61F5557F0004E3345 /* TableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FED6BA51F5557F0004E3345 /* TableViewDataSource.m */; };
+		D7008DDC1FB180B500BD6EA0 /* MMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7008DDB1FB180B500BD6EA0 /* MMNavigationController.m */; };
 		D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */ = {isa = PBXBuildFile; fileRef = D70629011F8B132E00F52FCB /* NSUserDefaults+MM_Common.m */; };
 		D70629061F8B143D00F52FCB /* MMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D70629051F8B143D00F52FCB /* MMPickerView.m */; };
 		D70629391F8B185100F52FCB /* MMAssetsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D706290C1F8B185100F52FCB /* MMAssetsCellModel.m */; };
@@ -87,6 +88,9 @@
 		D7A595BB1FAAC743000C59FE /* FDHTMLRenderComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A595BA1FAAC743000C59FE /* FDHTMLRenderComposer.m */; };
 		D7A595BF1FAACFED000C59FE /* rootTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = D7A595BD1FAACFED000C59FE /* rootTemplate.html */; };
 		D7A595C01FAACFED000C59FE /* singleItemTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = D7A595BE1FAACFED000C59FE /* singleItemTemplate.html */; };
+		D7A73E1D1FAC16E800818CF5 /* MarkdownRenderHTMLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A73E1C1FAC16E800818CF5 /* MarkdownRenderHTMLViewController.m */; };
+		D7A73E201FB04B2B00818CF5 /* MM_FindFriendEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A73E1F1FB04B2B00818CF5 /* MM_FindFriendEntryViewController.m */; };
+		D7A73E231FB04F4800818CF5 /* MM_FindFriendEntryItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A73E221FB04F4800818CF5 /* MM_FindFriendEntryItemView.m */; };
 		D7DE014E1F98C1EF008682DE /* NSInvocation+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DE014B1F98C1EF008682DE /* NSInvocation+AHKAdditions.m */; };
 		D7DE014F1F98C1EF008682DE /* NSObject+AHKBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DE014D1F98C1EF008682DE /* NSObject+AHKBuilder.m */; };
 		D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DF33531F6AC9E400771928 /* MMPreviewHUD.m */; };
@@ -174,6 +178,8 @@
 		8B9A4BC81A12BABD40DE994D /* Pods-Weather_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App.debug.xcconfig"; sourceTree = "<group>"; };
 		AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weather_App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DD493FBDDB77E68B89AA1C /* Pods-Weather_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App.release.xcconfig"; sourceTree = "<group>"; };
+		D7008DDA1FB180B500BD6EA0 /* MMNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMNavigationController.h; sourceTree = "<group>"; };
+		D7008DDB1FB180B500BD6EA0 /* MMNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMNavigationController.m; sourceTree = "<group>"; };
 		D70629001F8B132E00F52FCB /* NSUserDefaults+MM_Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+MM_Common.h"; sourceTree = "<group>"; };
 		D70629011F8B132E00F52FCB /* NSUserDefaults+MM_Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+MM_Common.m"; sourceTree = "<group>"; };
 		D70629041F8B143D00F52FCB /* MMPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMPickerView.h; sourceTree = "<group>"; };
@@ -256,6 +262,12 @@
 		D7A595BA1FAAC743000C59FE /* FDHTMLRenderComposer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDHTMLRenderComposer.m; sourceTree = "<group>"; };
 		D7A595BD1FAACFED000C59FE /* rootTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = rootTemplate.html; sourceTree = "<group>"; };
 		D7A595BE1FAACFED000C59FE /* singleItemTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = singleItemTemplate.html; sourceTree = "<group>"; };
+		D7A73E1B1FAC16E800818CF5 /* MarkdownRenderHTMLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarkdownRenderHTMLViewController.h; sourceTree = "<group>"; };
+		D7A73E1C1FAC16E800818CF5 /* MarkdownRenderHTMLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarkdownRenderHTMLViewController.m; sourceTree = "<group>"; };
+		D7A73E1E1FB04B2B00818CF5 /* MM_FindFriendEntryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MM_FindFriendEntryViewController.h; sourceTree = "<group>"; };
+		D7A73E1F1FB04B2B00818CF5 /* MM_FindFriendEntryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MM_FindFriendEntryViewController.m; sourceTree = "<group>"; };
+		D7A73E211FB04F4800818CF5 /* MM_FindFriendEntryItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MM_FindFriendEntryItemView.h; sourceTree = "<group>"; };
+		D7A73E221FB04F4800818CF5 /* MM_FindFriendEntryItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MM_FindFriendEntryItemView.m; sourceTree = "<group>"; };
 		D7DE01491F98C1EF008682DE /* AHKBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHKBuilder.h; sourceTree = "<group>"; };
 		D7DE014A1F98C1EF008682DE /* NSInvocation+AHKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+AHKAdditions.h"; sourceTree = "<group>"; };
 		D7DE014B1F98C1EF008682DE /* NSInvocation+AHKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+AHKAdditions.m"; sourceTree = "<group>"; };
@@ -418,6 +430,7 @@
 				D70629031F8B138800F52FCB /* 消息预览HUD */,
 				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
+				D7A73E241FB04F5B00818CF5 /* 发现界面 */,
 				D7A595BC1FAACE36000C59FE /* 渲染 */,
 				7F590D681FA9A5D4006F7BF0 /* STPopup */,
 				7F243E3F1FA81EB100AE4134 /* GCD */,
@@ -648,6 +661,8 @@
 		D70629591F8B1C0A00F52FCB /* 控制器 */ = {
 			isa = PBXGroup;
 			children = (
+				D7008DDA1FB180B500BD6EA0 /* MMNavigationController.h */,
+				D7008DDB1FB180B500BD6EA0 /* MMNavigationController.m */,
 				D70629561F8B19AF00F52FCB /* RootViewController.h */,
 				D70629571F8B19AF00F52FCB /* RootViewController.m */,
 				7FDC6ECE1F46E35A00D94379 /* ViewController.h */,
@@ -664,6 +679,10 @@
 				7F32E0B31FA1CB74002D57FB /* HLLIndicatorViewController.m */,
 				D7A595B61FAAC156000C59FE /* CreatePDFViewController.h */,
 				D7A595B71FAAC156000C59FE /* CreatePDFViewController.m */,
+				D7A73E1B1FAC16E800818CF5 /* MarkdownRenderHTMLViewController.h */,
+				D7A73E1C1FAC16E800818CF5 /* MarkdownRenderHTMLViewController.m */,
+				D7A73E1E1FB04B2B00818CF5 /* MM_FindFriendEntryViewController.h */,
+				D7A73E1F1FB04B2B00818CF5 /* MM_FindFriendEntryViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -709,6 +728,15 @@
 				D7A595BA1FAAC743000C59FE /* FDHTMLRenderComposer.m */,
 			);
 			name = "渲染";
+			sourceTree = "<group>";
+		};
+		D7A73E241FB04F5B00818CF5 /* 发现界面 */ = {
+			isa = PBXGroup;
+			children = (
+				D7A73E211FB04F4800818CF5 /* MM_FindFriendEntryItemView.h */,
+				D7A73E221FB04F4800818CF5 /* MM_FindFriendEntryItemView.m */,
+			);
+			name = "发现界面";
 			sourceTree = "<group>";
 		};
 		D7DE01481F98C1EF008682DE /* AHKBuilder */ = {
@@ -834,7 +862,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B8ACD983C8A776B1E1D573D8 /* [CP] Copy Pods Resources */ = {
@@ -880,6 +908,7 @@
 				7F590D7D1FA9A5D4006F7BF0 /* STPopupLeftBarItem.m in Sources */,
 				7FD8CC351F98A995005DC9FF /* NSObject+CodableProperties.m in Sources */,
 				7F590D801FA9A5D4006F7BF0 /* UIViewController+STPopup.m in Sources */,
+				D7A73E231FB04F4800818CF5 /* MM_FindFriendEntryItemView.m in Sources */,
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
@@ -915,10 +944,12 @@
 				D70F5DD71FA74B26007FBD43 /* UIView+Glow.m in Sources */,
 				D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */,
 				D706293A1F8B185100F52FCB /* HSSetTableViewMainController.m in Sources */,
+				D7008DDC1FB180B500BD6EA0 /* MMNavigationController.m in Sources */,
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
 				D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */,
 				D70629391F8B185100F52FCB /* MMAssetsCellModel.m in Sources */,
 				7F590D7A1FA9A5D4006F7BF0 /* STPopupController.m in Sources */,
+				D7A73E201FB04B2B00818CF5 /* MM_FindFriendEntryViewController.m in Sources */,
 				D70F5DEB1FA81EED007FBD43 /* YXEasing.m in Sources */,
 				7F8B6C081F95ED6F00F3A6E3 /* MMSearchReusableView.m in Sources */,
 				D706294C1F8B185100F52FCB /* HSTitleTableViewCell.m in Sources */,
@@ -929,6 +960,7 @@
 				D706295C1F8B860B00F52FCB /* PCCustomView.m in Sources */,
 				D70F5DDD1FA74FFB007FBD43 /* FDCollectionView.m in Sources */,
 				7F9CED3E1F5D1F9D00A64EB5 /* MMRunwayProContentView.m in Sources */,
+				D7A73E1D1FAC16E800818CF5 /* MarkdownRenderHTMLViewController.m in Sources */,
 				D7A595BB1FAAC743000C59FE /* FDHTMLRenderComposer.m in Sources */,
 				7FBC5FB71F97454C00DCF3E9 /* ANYMethodLog.m in Sources */,
 				7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */,

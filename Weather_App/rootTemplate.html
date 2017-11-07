@@ -2,7 +2,6 @@
 <html>
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="content-type">
-            <title>A simple, clean, and responsive HTML invoice template</title>
             <style>
                 body{
                     margin: 0px;
@@ -10,16 +9,14 @@
                     background: #F2F5F5;
                 }
             .invoice-box{
-                max-width:800px;
+                width:100%;
                 margin:auto;
-                padding:30px;
-                /*border:1px solid #eee;*/
-                /*box-shadow:0 0 10px rgba(0, 0, 0, .15); */
+                padding:30px 5px 30px 5px;
                 font-size:16px;
                 line-height:24px;
                 font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
                 color:#555;
-                background: green;
+                background: #F2F5F5;
             }
             
             .invoice-box table{
@@ -33,51 +30,11 @@
                 vertical-align:top;
             }
             
-            .invoice-box table tr td:nth-child(2){
-                text-align:right;
-            }
-            
-            .invoice-box table tr.top table td{
-                padding-bottom:20px;
-            }
-            
-            .invoice-box table tr.top table td.title{
-                font-size:45px;
-                line-height:45px;
-                color:#333;
-            }
-            
-            .invoice-box table tr.information table td{
-                padding-bottom:40px;
-            }
-            
-            .invoice-box table tr.heading td{
-                background:#eee;
-                /*border-bottom:1px solid #ddd;*/
-                font-weight:bold;
-            }
-            
-            .invoice-box table tr.details td{
-                padding-bottom:20px;
-            }
-            
-            .invoice-box table tr.item td{
-                /*border-bottom:1px solid #eee;*/
-            }
-            
-            .invoice-box table tr.item.last td{
-                border-bottom:none;
-            }
-            
-            .invoice-box table tr.total td:nth-child(2){
-                border-top:2px solid #eee;
-                font-weight:bold;
-            }
-            
             .invoice-box h1{
                 color: orange;
                 font-weight:bold;
             }
+            
             @media only screen and (max-width: 600px) {
                 .invoice-box table tr.top table td{
                     width:100%;
@@ -91,32 +48,77 @@
                     text-align:center;
                 }
             }
-            div.fish-daily-dot{
+            .fish-daily-header{
                 display: inline-block;
-                width: 5px;
-                height: 5px;
-                /*background:red;*/
-                margin-left: 10px;
-                border-radius: 10px;
-                border-color: red;
-                border-width: 2px;
-                border-style: solid;
+                width: 100%;
+                padding-left: 10px;
+                padding-right: 10px;
             }
-            div.fish-daily-item-content{
+            .header-left {
                 display: inline-block;
-                /*width:80%;*/
-                margin-right: 10px;
+                
+            }
+            .header-right {
+                display: inline-block;
+                float: right;
+                height: 100%;
+                padding-right: 30px;
+            }
+            .fish-daily-header p {
+                margin: 0;
+            }
+            p.top {
+                font-size: 25px;
+            }
+            p.bottom {
+                font-size: 14px;
+                text-align: center;
+            }
+            .header-right p{
+                font-size: 35px;
+            }
+            .fish-daily-content {
+                overflow: hidden;
+                zoom: 1;
+            }
+            .fish-daily-dot{
+                display: inline-block;
+                width: 4px;
+                height: 4px;
+                margin: 15px 5px 0px 5px;
+                border: 2px solid red;
+                border-radius: 10px;
+                float: left;
+            }
+            .fish-daily-item-content{
+                display: inline-block;
+                width:94%;
                 background:white;
                 border-radius: 10px;
             }
-            div.fish-daily-item-content p{
-                margin: 5px;
+            .fish-daily-item-content p{
+                margin: 5px 10px 5px 10px;
+                font-size: 16px;
             }
             </style>
-            </head>
+        </head>
     <body>
         <div class="invoice-box">
-            <h1>#FISHDAILY_MONTH#</h1>
+            <div class="fish-daily-header">
+                <div class="header-left">
+                    <p class="top">
+                    10月
+                    </p>
+                    <p class="bottom">
+                    #FISHDAILY_MONTH#
+                    </p>
+                </div>
+                <div class="header-right">
+                    <p>
+                    咸鱼月刊
+                    </p>
+                </div>
+            </div>
             <table cellpadding="0" cellspacing="0">
                 <tbody>
                     #FISHDAILY_ITEMS#
