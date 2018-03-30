@@ -11,6 +11,18 @@
 
 @implementation UIView (AsyncDrawImage)
 
++ (UIImage *) imageWithColor: (UIColor *) color
+{
+    CGRect rect = CGRectMake(0.0f,0.0f,1.0f,1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context =UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *myImage =UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return myImage;
+}
+
 + (CGColorSpaceRef) asyncColorSpaceForImageRef:(CGImageRef)imageRef {
     // current
     CGColorSpaceModel imageColorSpaceModel = CGColorSpaceGetModel(CGImageGetColorSpace(imageRef));
@@ -27,38 +39,24 @@
     return colorspaceRef;
 }
 
-+ (UIImage *) imageWithColor: (UIColor *) color
-{
-    CGRect rect = CGRectMake(0.0f,0.0f,1.0f,1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context =UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    UIImage *myImage =UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return myImage;
-}
-
 - (void) _asyncDrawImage:(UIImage *(^)())handle withSize:(CGSize)size result:(void(^)(UIImage *))result{
     
-    NSOperationQueue * queue = [[NSOperationQueue alloc] init];
-    [queue addOperationWithBlock:^{
-        NSLog(@"current - 1:%@",[NSThread currentThread]);
+    CGFloat selfWidth = self.bounds.size.width;
+    CGFloat selfHeight = self.bounds.size.height;
+    //    NSLog(@"size:%@",NSStringFromCGSize(size));
+    //    NSLog(@"self.bounds:%@",NSStringFromCGRect(self.bounds));
+    
+    // 1.使用SDWebImage内的图片解压算法进行图片的加载
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
         void (^mainQueueResult)(UIImage *image) = ^(UIImage *image){
             if (result) {
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    NSLog(@"current - 2:%@",[NSThread currentThread]);
+                dispatch_async(dispatch_get_main_queue(), ^{
                     result(image);
-                }];
-                //                dispatch_async(dispatch_get_main_queue(), ^{
-                //                });
+                });
             }
         };
-        
-        UIGraphicsBeginImageContextWithOptions(size, NO, 0);// 获取画板的尺寸
-        
         UIImage * image = handle();
-        
         @autoreleasepool{
             
             CGImageRef imageRef = image.CGImage;
@@ -112,37 +110,57 @@
                 }
             }
         }
-        
-//        CGSize imageSize = size;
-//        NSLog(@"image:%@",image);
-//        NSLog(@"imageSize:%@",NSStringFromCGSize(imageSize));
-//
-//        if (image.size.width == 1 && image.size.height == 1) {
-//            // 使用颜色创建的图片，当然也有可能真的有{1，1}的图片，暂时先不考虑
-//
-//        }
-//        else if (image.size.width != imageSize.width ||
-//                 image.size.height != imageSize.height) {
-////            imageSize = image.size;
-//        }
-//        NSLog(@"imageSize:%@",NSStringFromCGSize(imageSize));
-//        if (!image) {
-//            mainQueueResult(image);
-//        }else{
-//            CGRect bounds = (CGRect){
-//                (selfWidth - imageSize.width) / 2,
-//                (selfHeight - imageSize.height) / 2,
-//                imageSize
-//            };
-//            [image drawInRect:bounds];
-//            UIImage *temp = UIGraphicsGetImageFromCurrentImageContext();
-//            UIGraphicsEndImageContext();
-//            mainQueueResult(temp);
-//        }
-        //    });
-    }];
-    //    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    });
     
+    return;
+    
+    // 2.采用最简单的异步绘制图片的方法，内部需要计算图片的位置，耦合控件的class，不是很好
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        void (^mainQueueResult)(UIImage *image) = ^(UIImage *image){
+            if (result) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    result(image);
+                });
+            }
+        };
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0);// 获取画板的尺寸
+        UIImage * image = handle();
+        CGSize imageSize = size;
+        
+        if (image.size.width == 1 && image.size.height == 1) {
+            // 使用颜色创建的图片，当然也有可能真的有{1，1}的图片，暂时先不考虑
+            // note 针对于实际上是{1，1}的图片，可能会有bug
+        }
+        else if (image.size.width != imageSize.width ||
+                 image.size.height != imageSize.height) {
+            
+            // magic here
+            if ([self isKindOfClass:[UIImageView class]]) {
+                // imageView设置image的时候会涉及到拉伸的效果，如果image的size小于imageView的size，就会显示为拉伸
+                // 当然，如果image的size和imageView的size一样，则是正常显示
+                // note 可能会在设置一些图片的时候有显示bug
+            }else if ([self isKindOfClass:[UIButton class]]){
+                // button有可能是设置image，image的size有可能小于imageView的size，因此这里将draw的size设置为图片的size
+                imageSize = image.size;
+            }
+        }
+        if (!image) {
+            mainQueueResult(image);
+        }else{
+            CGRect bounds = (CGRect){
+                (selfWidth - imageSize.width) / 2,
+                (selfHeight - imageSize.height) / 2,
+                imageSize
+            };
+            NSLog(@"self.bounds:%@",NSStringFromCGRect(bounds));
+            
+            [image drawInRect:bounds];
+            UIImage *temp = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            mainQueueResult(temp);
+        }
+    });
 }
 
 - (void) asyncDrawImage:(NSString *)imageName result:(void(^)(UIImage *))result{
@@ -158,7 +176,7 @@
     }
     
     [self _asyncDrawImage:^UIImage *{
-        return [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imageName ofType:@"png"]];
+        return [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:imageName]];
     } withSize:size result:result];
 }
 
@@ -182,46 +200,72 @@
 
 @end
 
+@implementation UIImageView (AsyncDrawImage)
+
+- (void) asyncDrawImage:(NSString *)imageName{
+    [self asyncDrawImage:imageName withSize:self.bounds.size];
+}
+- (void) asyncDrawImage:(NSString *)imageName withSize:(CGSize)size{
+    [self asyncDrawImage:imageName withSize:size result:^(UIImage *image) {
+        self.image = image;
+    }];
+}
+
+- (void) asyncDrawImageWithColor:(UIColor *)color{
+    [self asyncDrawImageWithColor:color withSize:self.bounds.size];
+}
+- (void) asyncDrawImageWithColor:(UIColor *)color withSize:(CGSize)size{
+    [self asyncDrawImageWithColor:color withSize:size result:^(UIImage *image) {
+        self.image = image;
+    }];
+}
+
+- (void) asyncDrawHighlightImage:(NSString *)imageName{
+    [self asyncDrawHighlightImage:imageName withSize:self.bounds.size];
+}
+- (void) asyncDrawHighlightImage:(NSString *)imageName withSize:(CGSize)size{
+    [self asyncDrawImage:imageName withSize:size result:^(UIImage *image) {
+        self.highlightedImage = image;
+    }];
+}
+
+- (void) asyncDrawHighlightImageWithColor:(UIColor *)color{
+    [self asyncDrawHighlightImageWithColor:color withSize:self.bounds.size];
+}
+- (void) asyncDrawHighlightImageWithColor:(UIColor *)color withSize:(CGSize)size{
+    [self asyncDrawImageWithColor:color withSize:size result:^(UIImage *image) {
+        self.highlightedImage = image;
+    }];
+}
+@end
 
 @implementation UIButton (AsyncDrawImage)
 
 - (void) asyncDrawImage:(NSString *)imageName forState:(UIControlState)state{
-    
-    [self asyncDrawImage:imageName result:^(UIImage *image) {
-        [self setImage:image forState:state];
-    }];
+    [self asyncDrawImage:imageName withSize:self.bounds.size forState:state];
 }
 
 - (void) asyncDrawImage:(NSString *)imageName withSize:(CGSize)size forState:(UIControlState)state{
-    
     [self asyncDrawImage:imageName withSize:size result:^(UIImage *image) {
         [self setImage:image forState:state];
     }];
 }
 
 - (void) asyncDrawBackgroundImage:(NSString *)imageName forState:(UIControlState)state{
-    
-    [self asyncDrawImage:imageName result:^(UIImage *image) {
-        [self setBackgroundImage:image forState:state];
-    }];
+    [self asyncDrawImage:imageName withSize:self.bounds.size forState:state];
 }
 
 - (void) asyncDrawBackgroundImage:(NSString *)imageName withSize:(CGSize)size forState:(UIControlState)state{
-    
     [self asyncDrawImage:imageName withSize:size result:^(UIImage *image) {
         [self setBackgroundImage:image forState:state];
     }];
 }
 
 - (void) asyncDrawImageWithColor:(UIColor *)color forState:(UIControlState)state{
-    
-    [self asyncDrawImageWithColor:color result:^(UIImage *image) {
-        [self setImage:image forState:state];
-    }];
+    [self asyncDrawImageWithColor:color withSize:self.bounds.size forState:state];
 }
 
 - (void) asyncDrawImageWithColor:(UIColor *)color withSize:(CGSize)size forState:(UIControlState)state{
-    
     [self asyncDrawImageWithColor:color withSize:size result:^(UIImage *image) {
         [self setImage:image forState:state];
     }];
@@ -229,14 +273,10 @@
 
 // async set background image with color for state
 - (void) asyncDrawBackgroundImageWithColor:(UIColor *)color forState:(UIControlState)state{
-    
-    [self asyncDrawImageWithColor:color result:^(UIImage *image) {
-        [self setBackgroundImage:image forState:state];
-    }];
+    [self asyncDrawBackgroundImageWithColor:color withSize:self.bounds.size forState:state];
 }
 
 - (void) asyncDrawBackgroundImageWithColor:(UIColor *)color withSize:(CGSize)size forState:(UIControlState)state{
-    
     [self asyncDrawImageWithColor:color withSize:size result:^(UIImage *image) {
         [self setBackgroundImage:image forState:state];
     }];
