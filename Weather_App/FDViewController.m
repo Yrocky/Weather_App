@@ -29,8 +29,8 @@
     self.contentView.delegate = self;
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(0);
-        make.top.mas_equalTo(self.view.mas_topMargin);
-        make.bottom.mas_equalTo(self.view.mas_bottomMargin);
+        make.top.mas_equalTo(self.view.mas_top);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
     }];
     [self.contentView configCollectionView:^(UICollectionView *collectionView) {
         
