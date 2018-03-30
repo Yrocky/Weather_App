@@ -31,8 +31,26 @@
 
     NSLog(@"asfhsduhfukshd");
 }
+static inline NSString * mm_replaceInBracket(NSString *str,NSString * full){
+    
+    NSString * pattern = @"(?<=\\（)[^\\）]+";
+    NSRegularExpression * rx = [[NSRegularExpression alloc] initWithPattern:pattern options:0 error:nil];
+    NSTextCheckingResult * result = [rx matchesInString:full options:0 range:NSMakeRange(0, full.length)].firstObject;
+    NSRange range = result.range;
+    range = NSMakeRange(range.location - 1, range.length + 2);
+    
+    return [full stringByReplacingCharactersInRange:range withString:str];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSString * full = @"贵宾推荐位（60分钟/次）";
+    
+    NSString * pattern = mm_replaceInBracket(@"xxx", full);
+    
+    
+    
     
     self.view.backgroundColor = [UIColor whiteColor];
     

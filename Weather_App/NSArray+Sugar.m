@@ -9,7 +9,13 @@
 #import "NSArray+Sugar.h"
 
 @implementation NSArray (Sugar)
-
+- (NSArray *)mm_subarray:(NSInteger)count{
+    
+    if (count <= self.count) {
+        return [self subarrayWithRange:NSMakeRange(0, count)];
+    }
+    return self;
+}
 - (id)first{
 
     return [self firstObject];
@@ -146,4 +152,31 @@
     
     return [self filteredArrayUsingPredicate:pred];
 }
+
+- (NSArray *) mm_sort:(NSComparisonResult (^)(id, id))handle{
+    
+    return [self sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        if (handle) {
+            return handle(obj1,obj2);
+        }
+        return NSOrderedAscending;
+    }];
+}
+- (NSArray *) mm_select:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber{
+    
+    if (pageSize > self.count) {
+        return nil;
+    }
+    if (pageSize * (pageNumber - 1) >= self.count) {
+        return nil;
+    }
+    NSRange range;
+    if (pageSize * pageNumber >= self.count) {
+        range = NSMakeRange(pageSize * (pageNumber - 1), self.count - pageSize * (pageNumber - 1));
+    }else{
+        range = NSMakeRange(pageSize * (pageNumber - 1), pageSize);
+    }
+    return [self subarrayWithRange:range];
+}
+
 @end

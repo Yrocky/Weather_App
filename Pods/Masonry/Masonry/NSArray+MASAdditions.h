@@ -15,6 +15,13 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
     MASAxisTypeVertical
 };
 
+typedef NS_ENUM(NSUInteger, MASViewsAlignment) {
+    MASViewsAlignmentLeft,
+    MASViewsAlignmentCenter,
+    MASViewsAlignmentRight
+};
+
+
 @interface NSArray (MASAdditions)
 
 /**
@@ -25,7 +32,7 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
  *
  *  @return Array of created MASConstraints
  */
-- (NSArray *)mas_makeConstraints:(void (^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_makeConstraints:(void (NS_NOESCAPE ^)(MASConstraintMaker *make))block;
 
 /**
  *  Creates a MASConstraintMaker with each view in the callee.
@@ -36,7 +43,7 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
  *
  *  @return Array of created/updated MASConstraints
  */
-- (NSArray *)mas_updateConstraints:(void (^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_updateConstraints:(void (NS_NOESCAPE ^)(MASConstraintMaker *make))block;
 
 /**
  *  Creates a MASConstraintMaker with each view in the callee.
@@ -47,7 +54,7 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
  *
  *  @return Array of created/updated MASConstraints
  */
-- (NSArray *)mas_remakeConstraints:(void (^)(MASConstraintMaker *make))block;
+- (NSArray *)mas_remakeConstraints:(void (NS_NOESCAPE ^)(MASConstraintMaker *make))block;
 
 /**
  *  distribute with fixed spacing
@@ -68,5 +75,7 @@ typedef NS_ENUM(NSUInteger, MASAxisType) {
  *  @param tailSpacing     the spacing after the last item and the container
  */
 - (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)fixedItemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing;
+
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withViewsAlignment:(MASViewsAlignment)viewsAlignment fixedItemLength:(CGFloat)fixedItemLength fixedSpacing:(CGFloat)fixedSpacing;
 
 @end

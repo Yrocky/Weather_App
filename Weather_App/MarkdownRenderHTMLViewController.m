@@ -26,19 +26,19 @@
     
     self.title = @"Render HTML";
     
-    
     self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.96 blue:0.98 alpha:1.00];
     
     self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithTitle:@"Render" style:UIBarButtonItemStylePlain target:self action:@selector(renderHTML)]];
     
-    
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    
-    
     self.textView = [[UIPlaceholderTextView alloc] init];
     self.textView.font = [UIFont systemFontOfSize:16];
     self.textView.layer.borderWidth = 1;
+    if (@available(iOS 11.0, *)) {
+        self.textView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        // Fallback on earlier versions
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     self.textView.layer.borderColor = [UIColor redColor].CGColor;
     self.textView.placeholder = @"Input here";
     [self.view addSubview:self.textView];
@@ -57,7 +57,7 @@
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self.textView);
         make.top.mas_equalTo(self.textView.mas_bottom);
-        make.bottom.mas_equalTo(self.view.mas_bottom);
+        make.bottom.mas_equalTo(self.view.mas_bottomMargin);
     }];
     
     

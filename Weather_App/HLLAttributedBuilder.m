@@ -52,10 +52,9 @@
 
 @end
 
-
 @interface _HLLString : NSObject
 
-@property (nonatomic ,strong) NSString * string;
+@property (nonatomic ,copy) NSString * string;
 @property (nonatomic ,strong) NSAttributedString * attributedString;
 @property (nonatomic ,assign) NSRange range;
 @property (nonatomic ,strong) NSDictionary * style;
@@ -110,22 +109,24 @@
 - (HLLAttributedBuilder *)appendString:(NSString *)string forStyle:(NSDictionary *)style{
 
     NSAssert(string.length, @"请输入非nil的字符串");
-    
-    NSMutableDictionary * mergeStyle = [NSMutableDictionary dictionaryWithDictionary:self.defaultStyle];
-    [mergeStyle addEntriesFromDictionary:style];
-    
-    [_originalString appendString:string];
-    
-    NSRange range = [_originalString rangeOfString:string];
-    
-    NSAttributedString * attString = [[NSAttributedString alloc] initWithString:string attributes:mergeStyle];
-    
-    _HLLString * stringObj = [[_HLLString alloc] init];
-    stringObj.string = string;
-    stringObj.attributedString = attString;
-    stringObj.range = range;
-    stringObj.style = mergeStyle;
-    [_stringObjs addObject:stringObj];
+    @autoreleasepool {
+        
+        NSMutableDictionary * mergeStyle = [NSMutableDictionary dictionaryWithDictionary:self.defaultStyle];
+        [mergeStyle addEntriesFromDictionary:style];
+        
+        [_originalString appendString:string];
+        
+        NSRange range = [_originalString rangeOfString:string];
+        
+        NSAttributedString * attString = [[NSAttributedString alloc] initWithString:string attributes:mergeStyle];
+        
+        _HLLString * stringObj = [[_HLLString alloc] init];
+        stringObj.string = string;
+        stringObj.attributedString = attString;
+        stringObj.range = range;
+        stringObj.style = mergeStyle;
+        [_stringObjs addObject:stringObj];
+    }
     return self;
 }
 

@@ -16,6 +16,8 @@
 #import "MMRunwayProContentView.h"
 #import "MMPreviewHUD.h"
 #import "NSUserDefaults+MM_Common.h"
+#import "MMOBJ.h"
+#import <SDWebImage/UIImage+GIF.h>
 
 @interface MMColorView : UIView<DataSource>
 
@@ -90,6 +92,7 @@
 
 @property (nonatomic ,strong) MMRunwayCoreView * coreView;
 @property (nonatomic ,assign) NSInteger index;
+@property (nonatomic ,strong) MMOBJ * obj;
 
 @end
 
@@ -100,8 +103,44 @@
     NSLog(@"mm_debugerTool");
 }
 
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    
+    NSLog(@"change:%@",change);
+}
+- (MMOBJ *)obj{
+
+    if (!_obj){
+        _obj = [[MMOBJ alloc] init];
+    }
+    return _obj;
+}
+
+- (id) someInstanceVariable:(NSString *)name{
+    
+    return name == nil ? name : [self valueForKeyPath:name];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    UIImageView * imageView = [[UIImageView alloc] init];
+    imageView.image = [UIImage sd_animatedGIFNamed:@"img_user_level_8"];
+    imageView.frame = CGRectMake(20, 100, 28, 12);
+    [self.view addSubview:imageView];
+    
+//    NSLog(@"obj:%@",[self valueForKeyPath:@"obj"]);// 内部相当于调用了 self.obj
+    NSLog(@"obj:%@",[self valueForKeyPath:@"_obj"]);
+//    self.obj;
+    NSLog(@"obj:%@",[self valueForKeyPath:@"_obj"]);
+    NSLog(@"obj:%@",[self valueForKeyPath:@"obj"]);
+    
+//    self.obj = [[MMOBJ alloc] init];
+//    [self.obj addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew context:nil];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.obj setValue:@"rocky" forKeyPath:@"name"];
+//        self.obj.name = @"yrocky";
+//        _obj.name = @"yyrocky";
+//    });
     
     UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
     statusBar.backgroundColor = [UIColor orangeColor];
@@ -109,11 +148,13 @@
     tapGesture.numberOfTouchesRequired = 2;
     [statusBar addGestureRecognizer:tapGesture];
     
+    ////////////// 创建跑道视图
     self.coreView = [[MMRunwayCoreView alloc] initWithSpeed:1 defaultSpace:30];
     self.coreView.frame = CGRectMake(20, 300, 300, 40);
-    [self.view addSubview:self.coreView];
     self.coreView.backgroundColor = [UIColor brownColor];
+    [self.view addSubview:self.coreView];
     
+    ////////////// 添加一个UILabel类型的跑道视图
     NSString * string = @"恭喜【1234554】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条";
     MMRunwayLabel * label = [[MMRunwayLabel alloc] init];
     label.backgroundColor = [UIColor clearColor];
@@ -121,24 +162,27 @@
     label.textColor = [UIColor whiteColor];
     CGSize size = [label configText:string];
     label.frame = (CGRect){10, 400, size};
-    [self.view addSubview:label];
     [self.coreView appendRunwayLabel:label];
     
+    
+//    NSString * a = @"a[bc]d(you)A[BCD]1【大家好】2a[gs]34(me)";
+//    NSAttributedString * attS = AttBuilderWith(a).
+//    configStringAndStyle(@"(?<=\\【)[^\\】]+",@{NSForegroundColorAttributeName:[UIColor orangeColor]}).
+//    attributedStr();
+    
+    ////////////// 根据属性字符串添加一个UILabel跑道视图
     NSAttributedString * attString;
     attString = [[[HLLAttributedBuilder builderWithString:string]
-                  configString:@"^[0-9]{1,10}$" forStyle:@{NSForegroundColorAttributeName:[UIColor greenColor],
+                  configString:@"(?<=\\【)[^\\】]+" forStyle:@{NSForegroundColorAttributeName:[UIColor greenColor],
                                                   NSUnderlineColorAttributeName:[UIColor orangeColor],
                                                   NSUnderlineStyleAttributeName:@1}]
                  attributedString];
     [self.coreView appendAttributedString:attString];
     
-    self.runwayProView = [[MMRunwayProContentView alloc] init];
-    self.runwayProView.frame = CGRectMake(0, 40, self.view.frame.size.width, 46);
-    [self.view addSubview:self.runwayProView];
-    
+    ////////////// 根据属性字符串添加跑道视图
     NSTextAttachment * attachment = [[NSTextAttachment alloc] init];
-    attachment.image = [UIImage imageNamed:@"red_dot"];
-    attachment.bounds = CGRectMake(0, 0, 9, 9);
+    attachment.image = [UIImage sd_animatedGIFNamed:@"img_user_level_8"];
+    attachment.bounds = CGRectMake(0, 0, 28, 12);
     attString = [[[[[[[HLLAttributedBuilder builder]
                       appendAttachment:attachment]
                      appendString:@"nihao"]
@@ -152,6 +196,7 @@
     self.displayLabel.attributedText = attString;
     [self.coreView appendAttributedString:attString];
 
+    ////////////// 根据属性字符串添加跑道视图
     NSString * display = @"hello = nihao = Hello = 你好 = nihao";
     attString = [[[[[[[HLLAttributedBuilder builderWithString:display]
                       configString:@"hello" forStyle:@{NSUnderlineColorAttributeName:[UIColor redColor],
@@ -166,12 +211,22 @@
     NSLog(@"size:%@",[NSValue valueWithCGSize:[attString size]]);
     [self.coreView appendAttributedString:attString];
     
-    //
+    ////////////// 根据属性字符串添加跑道视图
     [self.coreView appendAttributedString:
      [[[HLLAttributedBuilder builderWithString:string]
        configString:@"【.】" forStyle:@{NSUnderlineColorAttributeName:[UIColor orangeColor],
                                       NSUnderlineStyleAttributeName:@1}] attributedString]];
     
+    
+    
+    
+    
+    return;
+    
+    
+    self.runwayProView = [[MMRunwayProContentView alloc] init];
+    self.runwayProView.frame = CGRectMake(0, 40, self.view.frame.size.width, 46);
+    [self.view addSubview:self.runwayProView];
     
     label = [[MMRunwayLabel alloc] init];
     label.backgroundColor = [UIColor clearColor];
@@ -180,7 +235,7 @@
     size = [label configAttributedString:attString];
     label.frame = (CGRect){0, 0, size};
     UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 360, size.width - 0, size.height)];
-    scrollView.backgroundColor = [UIColor clearColor];
+    scrollView.backgroundColor = [UIColor redColor];
     scrollView.contentSize = CGSizeMake(size.width, size.height);
     [self.view addSubview:scrollView];
     [scrollView setContentOffset:CGPointMake(0, 0)];
@@ -230,6 +285,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
+   
     
     NSString * cmd = @"setOpenDebugerToggle:";
     cmd = [cmd substringFromIndex:3];
@@ -247,6 +303,13 @@
     });
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:animated];
+    
+//    [self.obj setValue:@"rocky" forKeyPath:@"name"];
+//    self.obj.name = @"hll";
+}
 - (void) clearnAllOperation{
     
     [self.coreView removeAllRunwayView];

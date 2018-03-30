@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class MMRunwayCoreView;
 @interface MMRunwayLabel : UILabel<NSCopying>
 
 + (instancetype)label;
@@ -16,11 +17,22 @@
 - (CGSize) configText:(NSString *)text;
 @end
 
-@interface MMRunwayCoreView : UIScrollView{
+@protocol MMRunwayCoreViewDelegate <NSObject>
+
+@optional;
+- (void) runwayCoreView:(MMRunwayCoreView *)runwayCoreView willStartDisplayItemView:(UIView *)itemView;
+- (void) runwayCoreView:(MMRunwayCoreView *)runwayCoreView didFinishDisplayItemView:(UIView *)itemView;
+- (void) runwayCoreViewDidFinishDisplayAllItemView:(MMRunwayCoreView *)runwayCoreView;
+@end
+
+@interface MMRunwayCoreView : UIView{
 
     CGFloat _speed;
     CGFloat _defaultSpace;
 }
+
+@property (nonatomic ,weak) id<MMRunwayCoreViewDelegate>delegate;
+
 /**
  *  初始化跑道容器视图
  *
@@ -32,16 +44,16 @@
 - (instancetype) initWithSpeed:(CGFloat)speed
                   defaultSpace:(CGFloat)defauleSpace;
 
-// 添加一个使用内建的MMRunwayLabel构建的跑道视图
+// 根据字符串添加一个使用内建的MMRunwayLabel构建的跑道视图
 - (void) appendText:(NSString *)text;
 
-// 添加一个使用内建的MMRunwayLabel构建的跑道视图
+// 根据属性字符串添加一个使用内建的MMRunwayLabel构建的跑道视图
 - (void) appendAttributedString:(NSAttributedString *)attString;
 
 // 添加一个使用自定义的MMRunwayLabel构建的跑道视图
 - (void) appendRunwayLabel:(MMRunwayLabel *)runwayLabel;
 
-// 添加一个自定义的视图作为跑道，需要customView的bounds
+// 添加一个自定义的视图作为跑道，需要提前设置好customView的size
 - (void) appendCustomView:(UIView *)customView;
 
 // 移除所有的跑道视图

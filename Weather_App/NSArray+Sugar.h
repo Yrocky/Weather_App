@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSArray (Sugar)
-
+- (NSArray *)mm_subarray:(NSInteger)count;
 - (id) first;
 
 - (id) last;
@@ -26,6 +26,7 @@
 - (BOOL (^)(id obj)) have;
 
 - (NSArray *) select:(BOOL (^)(id obj))handle;
+- (NSArray *) mm_select:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber;
 - (NSArray *) filter:(BOOL (^)(id obj))handle;
 
 - (NSArray *) intersect:(NSArray *)other;
@@ -34,4 +35,6 @@
 - (NSArray *) subtract:(NSArray *)other;
 
 - (NSArray *) intersect:(BOOL(^)(id obj))filter other:(NSArray *)other;
+
+- (NSArray *) mm_sort:(NSComparisonResult (^)(id, id))handle;
 @end

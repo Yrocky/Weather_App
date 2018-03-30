@@ -21,4 +21,5 @@
  */
 - (BOOL)isGIF;
 
++ (UIImage *)sd_animatedGIFNamed:(NSString *)name;
 @end

@@ -87,6 +87,59 @@
     }
 }
 
+- (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withViewsAlignment:(MASViewsAlignment)viewsAlignment fixedItemLength:(CGFloat)fixedItemLength fixedSpacing:(CGFloat)fixedSpacing{
+    
+    if (self.count < 2) {
+        NSAssert(self.count>1,@"views to distribute need to bigger than one");
+        return;
+    }
+    
+    MAS_VIEW *tempSuperView = [self mas_commonSuperviewOfViews];
+    if (axisType == MASAxisTypeHorizontal) {
+        
+        if (viewsAlignment == MASViewsAlignmentLeft) {
+            [self enumerateObjectsUsingBlock:^(UIView *  _Nonnull v, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                [v mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.width.equalTo(@(fixedItemLength));
+                    make.left.mas_equalTo(tempSuperView).offset((fixedItemLength + fixedSpacing) * idx);
+                }];
+            }];
+        }else if (viewsAlignment == MASViewsAlignmentRight){
+            [self enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(UIView *  _Nonnull v, NSUInteger idx, BOOL * _Nonnull stop) {
+
+                [v mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.width.equalTo(@(fixedItemLength));
+                    make.right.mas_equalTo(tempSuperView).offset(-(fixedItemLength + fixedSpacing) * (self.count - 1 - idx));
+                }];
+            }];
+        }else{
+            
+            BOOL isOdd = self.count/2.0 != self.count/2;// 是奇数
+            
+            if (isOdd) {
+                MAS_VIEW * midView = self[self.count/2];
+                NSInteger midIndex = self.count/2;
+                [self enumerateObjectsUsingBlock:^(UIView *  _Nonnull v, NSUInteger idx, BOOL * _Nonnull stop) {
+                    
+                    [v mas_makeConstraints:^(MASConstraintMaker *make) {
+                        make.width.equalTo(@(fixedItemLength));
+                        if (idx < midIndex) {
+                            make.right.mas_equalTo(midView.mas_left).mas_offset(fixedItemLength - (midIndex - idx) * (fixedItemLength + fixedSpacing));
+                        }else if (idx == midIndex){
+                            make.centerX.mas_equalTo(tempSuperView);
+                        }else{
+                            make.left.mas_equalTo(midView.mas_right).mas_offset((idx - midIndex) * (fixedItemLength + fixedSpacing) - fixedItemLength);
+                        }
+                    }];
+                }];
+            }else{
+                
+            }
+        }
+    }
+}
+
 - (void)mas_distributeViewsAlongAxis:(MASAxisType)axisType withFixedItemLength:(CGFloat)fixedItemLength leadSpacing:(CGFloat)leadSpacing tailSpacing:(CGFloat)tailSpacing {
     if (self.count < 2) {
         NSAssert(self.count>1,@"views to distribute need to bigger than one");

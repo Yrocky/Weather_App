@@ -20,6 +20,14 @@
 #import "CreatePDFViewController.h"
 #import "MarkdownRenderHTMLViewController.h"
 #import "MM_FindFriendEntryViewController.h"
+#import "LayoutViewController.h"
+#import "MMCollectionViewController.h"
+#import "MMXibViewController.h"
+#import "MMCardViewController.h"
+#import "MMAnimationViewController.h"
+#import "AsyncDrawViewController.h"
+#import "RunwayViewController.h"
+#import "HomeViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 
@@ -27,11 +35,17 @@
 
 @implementation RootViewController
 
+- (void) printSome{
+
+    NSLog(@"+_+_+_+");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Root";
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(printSome) name:@"noti_mm_custom" object:nil];
     [ANYMethodLog logMethodWithClass:[HSTableViewModel class] condition:^BOOL(SEL sel) {
         
         return [NSStringFromSelector(sel) isEqualToString:@"addSection:"];
@@ -49,6 +63,20 @@
         HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"原来的Main控制器" actionBlock:^(HSBaseCellModel *model) {
             
             [self performSegueWithIdentifier:@"RootToMain" sender:nil];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"记账-首页" actionBlock:^(HSBaseCellModel *model) {
+            
+            HomeViewController * vc = [[HomeViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Runway" actionBlock:^(HSBaseCellModel *model) {
+            
+            RunwayViewController * vc = [[RunwayViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];
         
@@ -115,6 +143,56 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"发现界面" actionBlock:^(HSBaseCellModel *model) {
             
             MM_FindFriendEntryViewController * vc = [[MM_FindFriendEntryViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"布局" actionBlock:^(HSBaseCellModel *model) {
+            
+            LayoutViewController * vc = [[LayoutViewController alloc] init];
+            vc.title = @"布局";
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Collection" actionBlock:^(HSBaseCellModel *model) {
+            
+            MMCollectionViewController * vc = [[MMCollectionViewController alloc] init];
+            vc.title = @"Collection";
+            UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            [self.navigationController presentViewController:nav animated: 1 completion:nil];
+        }];
+        [s addCellModel:c];
+        
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Xib" actionBlock:^(HSBaseCellModel *model) {
+            
+            MMXibViewController * vc = [[MMXibViewController alloc] init];
+            vc.title = @"Xib";
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Card" actionBlock:^(HSBaseCellModel *model) {
+            
+            MMCardViewController * vc = [[MMCardViewController alloc] init];
+            vc.title = @"Card";
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Animation" actionBlock:^(HSBaseCellModel *model) {
+            
+            MMAnimationViewController * vc = [[MMAnimationViewController alloc] init];
+            vc.title = @"Animation";
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Async" actionBlock:^(HSBaseCellModel *model) {
+            
+            AsyncDrawViewController * vc = [[AsyncDrawViewController alloc] init];
+            vc.title = @"Async";
             [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];

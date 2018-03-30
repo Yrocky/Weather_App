@@ -14,6 +14,41 @@
 
 @implementation UIImage (GIF)
 
++ (UIImage *)sd_animatedGIFNamed:(NSString *)name {
+    CGFloat scale = [UIScreen mainScreen].scale;
+    
+    if (scale > 1.0f) {
+        NSString *retinaPath = [[NSBundle mainBundle] pathForResource:[name stringByAppendingString:@"@2x"] ofType:@"gif"];
+        
+        NSData *data = [NSData dataWithContentsOfFile:retinaPath];
+        
+        if (data) {
+            return [UIImage sd_animatedGIFWithData:data];
+        }
+        
+        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"gif"];
+        
+        data = [NSData dataWithContentsOfFile:path];
+        
+        if (data) {
+            return [UIImage sd_animatedGIFWithData:data];
+        }
+        
+        return [UIImage imageNamed:name];
+    }
+    else {
+        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"gif"];
+        
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        
+        if (data) {
+            return [UIImage sd_animatedGIFWithData:data];
+        }
+        
+        return [UIImage imageNamed:name];
+    }
+}
+
 + (UIImage *)sd_animatedGIFWithData:(NSData *)data {
     if (!data) {
         return nil;
@@ -21,7 +56,7 @@
     
 #if SD_MAC
     return [[UIImage alloc] initWithData:data];
-#endif
+#else
 
     CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
 
@@ -53,6 +88,7 @@
     CFRelease(source);
 
     return staticImage;
+#endif
 }
 
 - (BOOL)isGIF {
