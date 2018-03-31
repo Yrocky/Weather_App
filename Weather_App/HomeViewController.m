@@ -11,6 +11,8 @@
 
 @interface HomeViewController ()
 @property (nonatomic ,strong) HomeBillContainerView * containerView;
+
+@property (nonatomic ,strong) UIView * contentView;
 @end
 
 @implementation HomeViewController
@@ -24,7 +26,12 @@
     self.containerView = [[HomeBillContainerView alloc] init];
     self.containerView.frame = CGRectMake(0, 0, self.view.frame.size.width, 300);
     [self.view addSubview:self.containerView];
+    
+    UIView * weakContentView = [UIView new];
+    weakContentView.backgroundColor = [UIColor purpleColor];
+    self.contentView = weakContentView;
+    
+    [self.containerView configBillContentView:self.containerView];
 }
-
 
 @end

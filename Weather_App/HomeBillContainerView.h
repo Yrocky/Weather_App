@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol HomeBillContainerViewDelegate <NSObject>
+
+
+@end
+
 @interface HomeBillContainerView : UIView
 
+@property (nonatomic ,weak) id<HomeBillContainerViewDelegate>delegate;
+
+- (void) configBillContentView:(__kindof UIView *)contentView;
 
 @end
