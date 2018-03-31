@@ -8,14 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+@class HomeBillContainerView;
 @protocol HomeBillContainerViewDelegate <NSObject>
 
+// 请求 contentView 当前日期的前一日的数据
+- (void) billContainerViewNeedUpdatePreContentView:(HomeBillContainerView *)containerView;
 
+// 请求 contentView 当前日期的后一日的数据
+- (void) billContainerViewNeedUpdateNextContentView:(HomeBillContainerView *)containerView;
 @end
 
 @interface HomeBillContainerView : UIView
 
 @property (nonatomic ,weak) id<HomeBillContainerViewDelegate>delegate;
+@property (nonatomic ,readonly ,weak) UIView * contentView;
 
 - (void) configBillContentView:(__kindof UIView *)contentView;
 
