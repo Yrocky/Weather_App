@@ -11,6 +11,12 @@
 @class HomeBillContainerView;
 @protocol HomeBillContainerViewDelegate <NSObject>
 
+// 用来设置可加载日期区间的最小值
+- (BOOL) allowBillContainerViewLoadPreContentView:(HomeBillContainerView *)containterView;
+
+// 用来设置可加载日期区间的最大值
+- (BOOL) allowBillContainerViewLoadNextContentView:(HomeBillContainerView *)containterView;
+
 // 请求 contentView 当前日期的前一日的数据
 - (void) billContainerViewNeedUpdatePreContentView:(HomeBillContainerView *)containerView;
 

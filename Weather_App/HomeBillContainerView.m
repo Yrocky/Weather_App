@@ -119,16 +119,20 @@
 }
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     
-    [self syncSnapshot:^(UIImage *image) {
-        self.snapshotView.image = image;
-    }];
-    self.snapshotView.alpha = 1;
-    self.contentView.hidden = 1;
+    if ([self canLoadNextContentView] || [self canLoadPreContentView]) {
+        
+        [self syncSnapshot:^(UIImage *image) {
+            self.snapshotView.image = image;
+        }];
+        self.snapshotView.alpha = 1;
+        self.contentView.hidden = 1;
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     
-    if (self.direction == HLLStickIndicatorLeft) {
+    if (self.direction == HLLStickIndicatorLeft && [self canLoadPreContentView]) {
+        
         self.tag --;//debug
 //        NSLog(@"contentView需要更新👈前一天的数据");
         if (self.delegate && [self.delegate respondsToSelector:@selector(billContainerViewNeedUpdatePreContentView:)]) {
@@ -147,7 +151,8 @@
             self.snapshotViewLeftConstraint.mas_equalTo(0);
         }];
     }
-    if (self.direction == HLLStickIndicatorRight) {
+    if (self.direction == HLLStickIndicatorRight && [self canLoadNextContentView]) {
+        
         self.tag ++;//debug
 //        NSLog(@"contentView需要更新👉后一天的数据");
         if (self.delegate && [self.delegate respondsToSelector:@selector(billContainerViewNeedUpdateNextContentView:)]) {
@@ -169,26 +174,29 @@
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
     
-    CGFloat distance = MAX(fabs(scrollView.contentOffset.x),fabs(targetContentOffset->x)) - MIN(fabs(scrollView.contentOffset.x),fabs(targetContentOffset->x));
-    CGFloat duration = distance * 0.46 / 50;// 这个时间是个估算值，不是系统scrollView滚动到offset为0的动画时间
-    
-    void (^bContentViewAndSnapshotViewMoveToOriginWithAnimation)() = ^{
+    if ([self canLoadPreContentView] || [self canLoadNextContentView]) {
         
-        [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionPreferredFramesPerSecond60 animations:^{
-            self.contentViewLeftConstraint.mas_equalTo(0);
-            self.snapshotViewLeftConstraint.mas_equalTo(0);
-            [self layoutIfNeeded];// 一定要调用这个，不然没有动画效果
-        }completion:^(BOOL finished) {
-            self.contentView.hidden = NO;
-            self.snapshotView.alpha = 0;
-        }];
-    };
-    
-    if (self.direction == HLLStickIndicatorTop) {
-        bContentViewAndSnapshotViewMoveToOriginWithAnimation();
-    }
-    if (self.direction == HLLStickIndicatorBottom) {
-        bContentViewAndSnapshotViewMoveToOriginWithAnimation();
+        CGFloat distance = MAX(fabs(scrollView.contentOffset.x),fabs(targetContentOffset->x)) - MIN(fabs(scrollView.contentOffset.x),fabs(targetContentOffset->x));
+        CGFloat duration = distance * 0.46 / 50;// 这个时间是个估算值，不是系统scrollView滚动到offset为0的动画时间
+        
+        void (^bContentViewAndSnapshotViewMoveToOriginWithAnimation)() = ^{
+            
+            [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionPreferredFramesPerSecond60 animations:^{
+                self.contentViewLeftConstraint.mas_equalTo(0);
+                self.snapshotViewLeftConstraint.mas_equalTo(0);
+                [self layoutIfNeeded];// 一定要调用这个，不然没有动画效果
+            }completion:^(BOOL finished) {
+                self.contentView.hidden = NO;
+                self.snapshotView.alpha = 0;
+            }];
+        };
+        
+        if (self.direction == HLLStickIndicatorTop) {
+            bContentViewAndSnapshotViewMoveToOriginWithAnimation();
+        }
+        if (self.direction == HLLStickIndicatorBottom) {
+            bContentViewAndSnapshotViewMoveToOriginWithAnimation();
+        }
     }
 }
 
@@ -198,6 +206,8 @@
     [self syncSnapshot:^(UIImage *image) {
         self.snapshotView.image = image;
     }];
+    // 防止没有完全归位导致的显示差异
+    self.contentViewLeftConstraint.mas_equalTo(0);
 }
 
 #pragma mark - update location
@@ -218,9 +228,10 @@
     }else{
         self.direction = HLLStickIndicatorTop;
     }
-    
-    if (self.scrollView.isDragging) {
 
+    if (![self canLoadPreContentView]) {
+        self.contentViewLeftConstraint.mas_equalTo(offset);
+    }else if (self.scrollView.isDragging){
         [self moveSnapshotViewToRightWith:offset];
         [self moveContentViewToLeftHandSide];
     }
@@ -244,8 +255,9 @@
         self.direction = HLLStickIndicatorBottom;
     }
     
-    if (self.scrollView.isDragging) {
-        
+    if (![self canLoadNextContentView]) {
+        self.contentViewLeftConstraint.mas_equalTo(-offset);
+    }else if (self.scrollView.isDragging){
         [self moveSnapshotViewToLeftWith:offset];
         [self moveContentViewToRightHandSide];
     }
@@ -271,6 +283,23 @@
 // snapshotView 向左移动
 - (void) moveSnapshotViewToLeftWith:(CGFloat)offset{
     self.snapshotViewLeftConstraint.mas_equalTo(-offset);
+}
+
+#pragma mark - edges
+- (BOOL) canLoadPreContentView{
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(allowBillContainerViewLoadPreContentView:)]) {
+        return [self.delegate allowBillContainerViewLoadPreContentView:self];
+    }
+    return 1;
+}
+
+- (BOOL) canLoadNextContentView{
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(allowBillContainerViewLoadNextContentView:)]) {
+        return [self.delegate allowBillContainerViewLoadNextContentView:self];
+    }
+    return 1;
 }
 
 - (void) syncSnapshot:(void(^)(UIImage *image))result{
