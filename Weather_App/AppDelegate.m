@@ -17,7 +17,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    
     [UINavigationBar appearance].backItem.leftItemsSupplementBackButton = YES;
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"back"];
     

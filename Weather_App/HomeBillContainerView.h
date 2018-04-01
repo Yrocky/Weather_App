@@ -27,7 +27,6 @@
 @interface HomeBillContainerView : UIView
 
 @property (nonatomic ,weak) id<HomeBillContainerViewDelegate>delegate;
-@property (nonatomic ,readonly ,weak) UIView * contentView;
 
 - (void) configBillContentView:(__kindof UIView *)contentView;
 

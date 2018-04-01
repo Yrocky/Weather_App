@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "HomeBillContainerView.h"
+#import "HomeBillContentView.h"
 #import "UIColor+Common.h"
 #import "Masonry.h"
 
@@ -15,7 +16,7 @@
 
 @property (nonatomic ,strong) HomeBillContainerView * containerView;
 
-@property (nonatomic ,strong) UIView * contentView;
+@property (nonatomic ,strong) HomeBillContentView * contentView;
 @end
 
 @implementation HomeViewController
@@ -43,7 +44,7 @@
         }
         make.width.mas_equalTo(self.view);
     }];
-    UIView * contentView = [UIView new];
+    HomeBillContentView * contentView = [HomeBillContentView new];
     contentView.backgroundColor = [UIColor purpleColor];
     self.contentView = contentView;
     
@@ -54,23 +55,24 @@
 
 - (void) billContainerViewNeedUpdatePreContentView:(HomeBillContainerView *)containerView{
 
-    containerView.contentView.backgroundColor = [UIColor randomColor];
-    NSLog(@"pre:%ld",(long)containerView.tag);
+    [self.contentView updateContentViewWithPreDate];
+    self.contentView.backgroundColor = [UIColor randomColor];
 }
 
 - (void) billContainerViewNeedUpdateNextContentView:(HomeBillContainerView *)containerView{
-    containerView.contentView.backgroundColor = [UIColor randomColor];
-    NSLog(@"next:%ld",(long)containerView.tag);
+    
+    [self.contentView updateContentViewWithNextDate];
+    self.contentView.backgroundColor = [UIColor randomColor];
 }
 
 - (BOOL)allowBillContainerViewLoadPreContentView:(HomeBillContainerView *)containterView{
     
     // 在这里根据contentView的日期判断是否可以加载
-    return YES;
+    return [self.contentView currentDateIsMinDate];
 }
 
 - (BOOL)allowBillContainerViewLoadNextContentView:(HomeBillContainerView *)containterView{
-    return YES;
+    return [self.contentView currentDateIsMaxDate];
 }
 
 @end

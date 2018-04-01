@@ -119,6 +119,9 @@
 		D7DE014E1F98C1EF008682DE /* NSInvocation+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DE014B1F98C1EF008682DE /* NSInvocation+AHKAdditions.m */; };
 		D7DE014F1F98C1EF008682DE /* NSObject+AHKBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DE014D1F98C1EF008682DE /* NSObject+AHKBuilder.m */; };
 		D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DF33531F6AC9E400771928 /* MMPreviewHUD.m */; };
+		D7F1F8032070F9FB000478C2 /* HomeBillContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8022070F9FB000478C2 /* HomeBillContentView.m */; };
+		D7F1F8062070FEA3000478C2 /* HomeBillContentDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8052070FEA3000478C2 /* HomeBillContentDateView.m */; };
+		D7F1F8092070FEDF000478C2 /* HomeBillContentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */; };
 		E3CDC4C9DF28E252C8F70DC9 /* libPods-Weather_App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */; };
 /* End PBXBuildFile section */
 
@@ -348,6 +351,12 @@
 		D7DE014D1F98C1EF008682DE /* NSObject+AHKBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AHKBuilder.m"; sourceTree = "<group>"; };
 		D7DF33521F6AC9E400771928 /* MMPreviewHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPreviewHUD.h; sourceTree = "<group>"; };
 		D7DF33531F6AC9E400771928 /* MMPreviewHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPreviewHUD.m; sourceTree = "<group>"; };
+		D7F1F8012070F9FB000478C2 /* HomeBillContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBillContentView.h; sourceTree = "<group>"; };
+		D7F1F8022070F9FB000478C2 /* HomeBillContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContentView.m; sourceTree = "<group>"; };
+		D7F1F8042070FEA3000478C2 /* HomeBillContentDateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBillContentDateView.h; sourceTree = "<group>"; };
+		D7F1F8052070FEA3000478C2 /* HomeBillContentDateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContentDateView.m; sourceTree = "<group>"; };
+		D7F1F8072070FEDF000478C2 /* HomeBillContentListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBillContentListView.h; sourceTree = "<group>"; };
+		D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContentListView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -439,6 +448,12 @@
 			children = (
 				7F63BBB6206E25340084ABC8 /* HomeBillContainerView.h */,
 				7F63BBB7206E25340084ABC8 /* HomeBillContainerView.m */,
+				D7F1F8012070F9FB000478C2 /* HomeBillContentView.h */,
+				D7F1F8022070F9FB000478C2 /* HomeBillContentView.m */,
+				D7F1F8042070FEA3000478C2 /* HomeBillContentDateView.h */,
+				D7F1F8052070FEA3000478C2 /* HomeBillContentDateView.m */,
+				D7F1F8072070FEDF000478C2 /* HomeBillContentListView.h */,
+				D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */,
 			);
 			name = bill;
 			sourceTree = "<group>";
@@ -1077,6 +1092,7 @@
 				D70F5DE01FA81D02007FBD43 /* FDPresentingAnimator.m in Sources */,
 				D70F5DEA1FA81EED007FBD43 /* Easing.c in Sources */,
 				7F9CED3B1F5CEAA000A64EB5 /* MMRunwayCoreView.m in Sources */,
+				D7F1F8062070FEA3000478C2 /* HomeBillContentDateView.m in Sources */,
 				7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */,
 				D70629061F8B143D00F52FCB /* MMPickerView.m in Sources */,
 				7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */,
@@ -1085,10 +1101,12 @@
 				D70629491F8B185100F52FCB /* HSInputTableViewCell.m in Sources */,
 				D70629401F8B185100F52FCB /* HSTextCellModel.m in Sources */,
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
+				D7F1F8032070F9FB000478C2 /* HomeBillContentView.m in Sources */,
 				D706293E1F8B185100F52FCB /* HSInputCellModel.m in Sources */,
 				D7A595B81FAAC156000C59FE /* CreatePDFViewController.m in Sources */,
 				7FA726181FFB896400C0F6F2 /* MMCardViewController.m in Sources */,
 				7F14A78E2064AE00006EC133 /* UIView+AsyncDrawImage.m in Sources */,
+				D7F1F8092070FEDF000478C2 /* HomeBillContentListView.m in Sources */,
 				D70F5DE31FA81D69007FBD43 /* FDDismissingAnimator.m in Sources */,
 				7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */,
 				D70629421F8B185100F52FCB /* HSSectionModel.m in Sources */,
