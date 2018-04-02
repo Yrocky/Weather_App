@@ -36,7 +36,7 @@
         
         _calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
         
-        NSDateComponents *components = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour fromDate:[NSDate date]];
+        NSDateComponents *components = [self dateComponents:[NSDate date]];
         components.hour = 0;
         _currentDate = [self.calendar dateFromComponents:components];
         _maxDate = [self tomorrowOf:[self tomorrowOf:self.currentDate]];// 设置当前日期的下下一天为最大日期
@@ -100,7 +100,7 @@
     // 更新日期下的bill-list-view
     // 根据日期去数据库查询数据，交给listView
     /*debug*/
-    BOOL isToday = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour fromDate:self.currentDate].day == [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour fromDate:[NSDate date]].day;
+    BOOL isToday = [self dateComponents:self.currentDate].day == [self dateComponents:[NSDate date]].day;
     if (isToday) {// 模拟查询到当日没有记账数据
         self.billListView.hidden = YES;
         self.defaultView.hidden = NO;
@@ -119,24 +119,63 @@
     return [self.currentDate compare:self.maxDate];
 }
 
+- (NSComparisonResult) currentDateCompare:(NSDate *)date{
+    
+    NSDateComponents * currentDateComponents = [self dateComponents:self.currentDate];
+    NSDateComponents * todayDateComponents = [self dateComponents:date];
+    
+    if (currentDateComponents.year == todayDateComponents.year &&
+    currentDateComponents.month == todayDateComponents.month &&
+        currentDateComponents.day == todayDateComponents.day){
+        return NSOrderedSame;
+    }
+    return [self.currentDate compare:[NSDate date]];
+}
+
+- (BOOL) currentDateIsToday{
+    
+    return [self currentDateCompare:[NSDate date]] == NSOrderedSame;
+}
+
+- (BOOL) currentDateIsPreOfToday{
+    return [[NSDate date] compare:self.currentDate];// 当前日期是今天的👉后面
+}
+
+- (BOOL) currentDateIsNextOfToday{
+    return [self.currentDate compare:[NSDate date]];// 当前日期是今天的👉后面
+}
+
+- (void) updateContentViewForToday{
+    
+    [self updateContentViewFor:[NSDate date]];
+}
+
+- (void) updateContentViewFor:(NSDate *)date{
+    
+    if ([self currentDateIsToday]) {
+        return;
+    }
+    
+    self.currentDate = date;
+    [self updateDateViewAndBillListView];
+}
+
 #pragma mark - tools
 
 - (NSDictionary *) dateData{
     
-    NSDateComponents * comps = [[NSDateComponents alloc] init];
-    NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday;
-    comps = [self.calendar components:unitFlags fromDate:self.currentDate];
+    NSDateComponents * components = [self dateComponents:self.currentDate];
     
-    return @{@"year":@(comps.year),
-             @"month":@(comps.month),
-             @"day":@(comps.day),
-             @"week":@(comps.weekday)
+    return @{@"year":@(components.year),
+             @"month":@(components.month),
+             @"day":@(components.day),
+             @"week":@(components.weekday)
              };
 }
 
 - (NSDate *) tomorrowOf:(NSDate *)date{
     
-    NSDateComponents *components = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour fromDate:date];
+    NSDateComponents * components = [self dateComponents:date];
     components.day++;
     components.hour = 0;
     return [self.calendar dateFromComponents:components];
@@ -144,9 +183,14 @@
 
 - (NSDate *) yesterdayOf:(NSDate *)date{
     
-    NSDateComponents *components = [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour fromDate:date];
+    NSDateComponents * components = [self dateComponents:date];
     components.day--;
     components.hour = 0;
     return [self.calendar dateFromComponents:components];
+}
+
+- (NSDateComponents *) dateComponents:(NSDate *)date{
+    
+    return [self.calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitWeekday|NSCalendarUnitDay|NSCalendarUnitHour fromDate:date];
 }
 @end

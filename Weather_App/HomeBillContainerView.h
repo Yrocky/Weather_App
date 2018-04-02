@@ -30,4 +30,6 @@
 
 - (void) configBillContentView:(__kindof UIView *)contentView;
 
+- (void) moveContentViewFromLeftSide;
+- (void) moveContentViewFromRightSide;
 @end

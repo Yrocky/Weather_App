@@ -54,6 +54,7 @@
     self.addBillButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.addBillButton setTitle:@"记一笔" forState:UIControlStateNormal];
     self.addBillButton.backgroundColor = [UIColor redColor];
+    [self.addBillButton addTarget:self action:@selector(onAddBillAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.addBillButton];
     [self.addBillButton mas_makeConstraints:^(MASConstraintMaker *make) {
         if (@available(iOS 11.0, *)) {
@@ -91,4 +92,12 @@
     return [self.contentView currentDateIsMaxDate];
 }
 
+- (void) onAddBillAction{
+
+    NSCalendar * cal = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents * comp = [cal components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitWeekday|NSCalendarUnitDay|NSCalendarUnitHour fromDate:[NSDate date]];
+    comp.day = comp.day - 3;
+    NSDate * debugDate = [cal dateFromComponents:comp];
+    [self.contentView updateContentViewForToday];
+}
 @end

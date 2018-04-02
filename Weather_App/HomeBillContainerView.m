@@ -100,6 +100,33 @@
     }
 }
 
+- (void) moveContentViewFromLeftSide{
+    
+    self.snapshotView.alpha = 1;
+    [self moveContentViewFromLeftSide];
+    [UIView animateWithDuration:0.85 animations:^{
+        
+        self.snapshotViewLeftConstraint.mas_equalTo(self.frame.size.width);
+        self.contentViewLeftConstraint.mas_offset(0);
+        self.snapshotView.alpha = 0;
+        [self layoutIfNeeded];
+    }completion:^(BOOL finished) {
+    }];
+}
+
+- (void) moveContentViewFromRightSide{
+    
+    self.snapshotView.alpha = 1;
+    [self moveContentViewToRightHandSide];
+    [UIView animateWithDuration:0.85 animations:^{
+        self.snapshotViewLeftConstraint.mas_equalTo(-self.frame.size.width);
+        self.contentViewLeftConstraint.mas_offset(0);
+        self.snapshotView.alpha = 0;
+        [self layoutIfNeeded];
+    }completion:^(BOOL finished) {
+    }];
+}
+
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -115,6 +142,7 @@
         self.leftIndicatorView.hidden = self.rightIndicatorView.hidden = YES;
     }
 }
+
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     
     if ((self.direction == HLLStickIndicatorTop && ![self canLoadNextContentView])||
