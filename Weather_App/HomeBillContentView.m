@@ -129,7 +129,7 @@
         currentDateComponents.day == todayDateComponents.day){
         return NSOrderedSame;
     }
-    return [self.currentDate compare:[NSDate date]];
+    return [self.currentDate compare:date];
 }
 
 - (BOOL) currentDateIsToday{
@@ -152,11 +152,11 @@
 
 - (void) updateContentViewFor:(NSDate *)date{
     
+    self.currentDate = date;
     if ([self currentDateIsToday]) {
-        return;
+//        return;
     }
     
-    self.currentDate = date;
     [self updateDateViewAndBillListView];
 }
 

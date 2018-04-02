@@ -101,29 +101,40 @@
 }
 
 - (void) moveContentViewFromLeftSide{
-    
+    // 以前
+    [self syncSnapshot:^(UIImage *image) {
+        self.snapshotView.image = image;
+    }];
     self.snapshotView.alpha = 1;
-    [self moveContentViewFromLeftSide];
-    [UIView animateWithDuration:0.85 animations:^{
+    [self moveContentViewToLeftHandSide];
+    [self layoutIfNeeded];
+    
+    [UIView animateWithDuration:0.85 delay:0 options:UIViewAnimationOptionPreferredFramesPerSecond60 animations:^{
         
         self.snapshotViewLeftConstraint.mas_equalTo(self.frame.size.width);
-        self.contentViewLeftConstraint.mas_offset(0);
+        self.contentViewLeftConstraint.mas_equalTo(0);
         self.snapshotView.alpha = 0;
         [self layoutIfNeeded];
     }completion:^(BOOL finished) {
+        self.snapshotViewLeftConstraint.mas_equalTo(0);
     }];
 }
 
 - (void) moveContentViewFromRightSide{
     
+    [self syncSnapshot:^(UIImage *image) {
+        self.snapshotView.image = image;
+    }];
     self.snapshotView.alpha = 1;
     [self moveContentViewToRightHandSide];
-    [UIView animateWithDuration:0.85 animations:^{
+    [self layoutIfNeeded];
+    [UIView animateWithDuration:.85 delay:0 options:UIViewAnimationOptionPreferredFramesPerSecond60 animations:^{
         self.snapshotViewLeftConstraint.mas_equalTo(-self.frame.size.width);
-        self.contentViewLeftConstraint.mas_offset(0);
+        self.contentViewLeftConstraint.mas_equalTo(0);
         self.snapshotView.alpha = 0;
         [self layoutIfNeeded];
     }completion:^(BOOL finished) {
+        self.snapshotViewLeftConstraint.mas_equalTo(0);
     }];
 }
 

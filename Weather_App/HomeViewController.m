@@ -96,8 +96,28 @@
 
     NSCalendar * cal = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents * comp = [cal components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitWeekday|NSCalendarUnitDay|NSCalendarUnitHour fromDate:[NSDate date]];
-    comp.day = comp.day - 3;
+    comp.day = 30;
+    comp.month = 3;// 2018-3-30
     NSDate * debugDate = [cal dateFromComponents:comp];
-    [self.contentView updateContentViewForToday];
+    debugDate = [NSDate date];
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyy-MM-dd";
+    NSLog(@"debugDate:%@",[formatter stringFromDate:debugDate]);
+    NSLog(@"currentDate:%@",[formatter stringFromDate:self.contentView.currentDate]);
+    
+    // 模拟根据一些日期进行跳转
+    if ([self.contentView currentDateCompare:debugDate] == NSOrderedDescending) {// -1
+        NSLog(@"debugDate is currentDate 以前");
+        [self.containerView moveContentViewFromLeftSide];
+        [self.contentView updateContentViewFor:debugDate];
+    }
+    else if ([self.contentView currentDateCompare:debugDate] == NSOrderedAscending){// 1
+        NSLog(@"debugDate is currentDate 以后");
+        [self.containerView moveContentViewFromRightSide];
+        [self.contentView updateContentViewFor:debugDate];
+    }
+    else if ([self.contentView currentDateCompare:debugDate] == NSOrderedSame){
+        NSLog(@"debugDate is currentDate");
+    }
 }
 @end
