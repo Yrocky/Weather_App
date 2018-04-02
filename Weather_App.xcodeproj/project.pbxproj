@@ -30,6 +30,7 @@
 		7F63BBB1206E220D0084ABC8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBB0206E220D0084ABC8 /* HomeViewController.m */; };
 		7F63BBB8206E25340084ABC8 /* HomeBillContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBB7206E25340084ABC8 /* HomeBillContainerView.m */; };
 		7F63BBBC2071EC650084ABC8 /* HomeBillContentDefaultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBBB2071EC650084ABC8 /* HomeBillContentDefaultView.m */; };
+		7F63BBC02072036F0084ABC8 /* LunarCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBBE2072036E0084ABC8 /* LunarCore.m */; };
 		7F8593551FDE54AA00E6AFFC /* MMXibViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8593541FDE54AA00E6AFFC /* MMXibViewController.m */; };
 		7F8593581FDE54DC00E6AFFC /* MMXibCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8593571FDE54DC00E6AFFC /* MMXibCustomView.m */; };
 		7F85935A1FDE54E500E6AFFC /* MMXibCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F8593591FDE54E500E6AFFC /* MMXibCustomView.xib */; };
@@ -173,6 +174,8 @@
 		7F63BBB7206E25340084ABC8 /* HomeBillContainerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContainerView.m; sourceTree = "<group>"; };
 		7F63BBBA2071EC650084ABC8 /* HomeBillContentDefaultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBillContentDefaultView.h; sourceTree = "<group>"; };
 		7F63BBBB2071EC650084ABC8 /* HomeBillContentDefaultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContentDefaultView.m; sourceTree = "<group>"; };
+		7F63BBBE2072036E0084ABC8 /* LunarCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunarCore.m; sourceTree = "<group>"; };
+		7F63BBBF2072036E0084ABC8 /* LunarCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunarCore.h; sourceTree = "<group>"; };
 		7F8593531FDE54AA00E6AFFC /* MMXibViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMXibViewController.h; sourceTree = "<group>"; };
 		7F8593541FDE54AA00E6AFFC /* MMXibViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMXibViewController.m; sourceTree = "<group>"; };
 		7F8593561FDE54DC00E6AFFC /* MMXibCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMXibCustomView.h; sourceTree = "<group>"; };
@@ -463,6 +466,15 @@
 			name = bill;
 			sourceTree = "<group>";
 		};
+		7F63BBBD2072036E0084ABC8 /* LunarCore */ = {
+			isa = PBXGroup;
+			children = (
+				7F63BBBF2072036E0084ABC8 /* LunarCore.h */,
+				7F63BBBE2072036E0084ABC8 /* LunarCore.m */,
+			);
+			path = LunarCore;
+			sourceTree = "<group>";
+		};
 		7F8B6C091F95EEA900F3A6E3 /* 搜索的CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,6 +569,7 @@
 				D70629031F8B138800F52FCB /* 消息预览HUD */,
 				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
+				7F63BBBD2072036E0084ABC8 /* LunarCore */,
 				7F63BBB9206E25470084ABC8 /* bill */,
 				7F0501832011EAE80033E83C /* YALPreloaderCircleView */,
 				7FA726211FFCCD3800C0F6F2 /* Toolbar */,
@@ -1136,6 +1149,7 @@
 				D706293A1F8B185100F52FCB /* HSSetTableViewMainController.m in Sources */,
 				7FA726151FFB7A2800C0F6F2 /* NSNumber+Sugar.m in Sources */,
 				D7008DDC1FB180B500BD6EA0 /* MMNavigationController.m in Sources */,
+				7F63BBC02072036F0084ABC8 /* LunarCore.m in Sources */,
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
 				D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */,
 				D70629391F8B185100F52FCB /* MMAssetsCellModel.m in Sources */,

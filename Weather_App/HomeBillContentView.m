@@ -43,7 +43,6 @@
         _minDate = [self yesterdayOf:self.currentDate];// 模拟当前日期的前一天为最小日期，正常开发中是根据所有的记账日期中最早的日期为最小日期
         
         _dateView = [HomeBillContentDateView new];
-        [self.dateView updateDateViewWith:[self dateData]];
         [self addSubview:self.dateView];
         
         self.billListView = [HomeBillContentListView new];

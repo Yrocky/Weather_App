@@ -9,13 +9,14 @@
 #import "HomeBillContentDateView.h"
 #import "UIColor+Common.h"
 #import "Masonry.h"
+#import "LunarCore.h"
 
 @interface HomeBillContentDateView()
 
 @property (nonatomic ,strong) UILabel * yearMonthLabel;
 @property (nonatomic ,strong) UILabel * dayLabel;
 @property (nonatomic ,strong) UILabel * weekLabel;
-@property (nonatomic ,strong) UIImageView * restImageView;
+@property (nonatomic ,strong) UILabel * restLabel;
 @end
 
 @implementation HomeBillContentDateView
@@ -43,9 +44,15 @@
         self.weekLabel.textColor = [UIColor colorWithHexString:@"9B9B9B"];
         [self addSubview:self.weekLabel];
         
-        self.restImageView = [UIImageView new];
-        self.restImageView.backgroundColor = [UIColor orangeColor];
-        [self addSubview:self.restImageView];
+        self.restLabel = [UILabel new];
+        self.restLabel.textColor = [UIColor whiteColor];
+        self.restLabel.textAlignment = NSTextAlignmentCenter;
+        self.restLabel.text = @"休";
+        self.restLabel.font = [UIFont systemFontOfSize:13 weight:UIFontWeightThin];
+        self.restLabel.layer.masksToBounds = YES;
+        self.restLabel.layer.cornerRadius = 5;
+        self.restLabel.backgroundColor = [UIColor colorWithHexString:@"e84357"];
+        [self addSubview:self.restLabel];
         
         [self.yearMonthLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self);
@@ -60,7 +67,7 @@
             make.height.mas_equalTo(74);
         }];
         
-        [self.restImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.restLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.height.mas_equalTo(20);
             make.left.mas_equalTo(self.dayLabel.mas_right);
             make.bottom.mas_equalTo(self.dayLabel);
@@ -81,10 +88,39 @@
     // 内部根据https://github.com/cyanzhong/LunarCore/blob/master/LunarCore/LunarCore.h进行节假日的获取
     self.yearMonthLabel.text = [NSString stringWithFormat:@"%@.%@",date[@"year"],date[@"month"]];
     self.dayLabel.text = [NSString stringWithFormat:@"%@",date[@"day"]];
-    self.weekLabel.text = weekDay(date[@"week"]);
+    NSString * weekDay = __weekDay(date[@"week"]);
+    
+    NSDictionary * calendarData = solarToLunar([date[@"year"] intValue],[date[@"month"] intValue],[date[@"day"] intValue]);
+    
+    // rest-view
+    int worktime = [calendarData[@"worktime"] intValue];
+    int week = [date[@"week"] intValue];
+    BOOL isRest = NO;
+    if (worktime == 0) {// 无特殊安排
+        isRest = (week == 1 || week == 7);
+    }else if(worktime == 2){// 放假
+        isRest = YES;
+    }
+    self.restLabel.hidden = !isRest;
+    
+    // week-view
+    NSString * solarFestival = calendarData[@"solarFestival"];
+    NSString * lunarFestival = calendarData[@"lunarFestival"];
+    NSString * term = calendarData[@"term"];
+    
+    if (lunarFestival.length > 0) {
+        weekDay = [weekDay stringByAppendingString:__addPrefix(@"·", [lunarFestival componentsSeparatedByString:@" "][0])];
+    }
+    else if(term.length > 0){
+        weekDay = [weekDay stringByAppendingString:__addPrefix(@"·", term)];
+    }
+    else if (solarFestival.length > 0) {
+        weekDay = [weekDay stringByAppendingString:__addPrefix(@"·", [solarFestival componentsSeparatedByString:@" "][0])];
+    }
+    self.weekLabel.text = weekDay;
 }
 
-static inline NSString * weekDay(NSNumber * week){
+static inline NSString * __weekDay(NSNumber * week){
     
     NSString * weekDay;
     switch ([week integerValue]) {
@@ -113,5 +149,13 @@ static inline NSString * weekDay(NSNumber * week){
             break;
     }
     return weekDay;
+}
+
+static inline NSString * __addPrefix(NSString *prefix,NSString *string){
+
+    if ([string hasPrefix:@"*"]) {
+        string = [string substringFromIndex:1];
+    }
+    return [NSString stringWithFormat:@"%@%@",prefix,string];
 }
 @end

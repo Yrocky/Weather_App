@@ -84,7 +84,7 @@
 - (BOOL)allowBillContainerViewLoadPreContentView:(HomeBillContainerView *)containterView{
     
     // 在这里根据contentView的日期判断是否可以加载
-    return [self.contentView currentDateIsMinDate];
+    return 1;//[self.contentView currentDateIsMinDate];
 }
 
 - (BOOL)allowBillContainerViewLoadNextContentView:(HomeBillContainerView *)containterView{
