@@ -132,19 +132,6 @@
     return [self.currentDate compare:date];
 }
 
-- (BOOL) currentDateIsToday{
-    
-    return [self currentDateCompare:[NSDate date]] == NSOrderedSame;
-}
-
-- (BOOL) currentDateIsPreOfToday{
-    return [[NSDate date] compare:self.currentDate];// 当前日期是今天的👉后面
-}
-
-- (BOOL) currentDateIsNextOfToday{
-    return [self.currentDate compare:[NSDate date]];// 当前日期是今天的👉后面
-}
-
 - (void) updateContentViewForToday{
     
     [self updateContentViewFor:[NSDate date]];
@@ -153,7 +140,7 @@
 - (void) updateContentViewFor:(NSDate *)date{
     
     self.currentDate = date;
-    if ([self currentDateIsToday]) {
+    if ([self currentDateCompare:date] == NSOrderedSame) {
 //        return;
     }
     

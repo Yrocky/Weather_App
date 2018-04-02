@@ -19,10 +19,6 @@
 - (BOOL) currentDateIsMinDate;
 - (BOOL) currentDateIsMaxDate;
 
-- (BOOL) currentDateIsToday;
-- (BOOL) currentDateIsPreOfToday;// 当前日期是今天的前面
-- (BOOL) currentDateIsNextOfToday;// 当前日期是今天的后面
-
 - (NSComparisonResult) currentDateCompare:(NSDate *)date;
 
 // 处理外部点击展示今天的数据

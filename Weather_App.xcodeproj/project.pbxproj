@@ -106,6 +106,8 @@
 		D70F5DE31FA81D69007FBD43 /* FDDismissingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DE21FA81D69007FBD43 /* FDDismissingAnimator.m */; };
 		D70F5DEA1FA81EED007FBD43 /* Easing.c in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DE61FA81EED007FBD43 /* Easing.c */; };
 		D70F5DEB1FA81EED007FBD43 /* YXEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DE91FA81EED007FBD43 /* YXEasing.m */; };
+		D713B8B320727F0700D388F2 /* BillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D713B8B220727F0700D388F2 /* BillViewController.m */; };
+		D713B8B6207280C900D388F2 /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D713B8B5207280C900D388F2 /* CustomNavigationBar.m */; };
 		D715E6A01FA627D500CFBFF4 /* FDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E69F1FA627D500CFBFF4 /* FDViewController.m */; };
 		D715E6A31FA64ECF00CFBFF4 /* FDContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E6A21FA64ECF00CFBFF4 /* FDContentView.m */; };
 		D715E6A61FA7152100CFBFF4 /* CLTStickyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E6A51FA7152000CFBFF4 /* CLTStickyLayout.m */; };
@@ -328,6 +330,10 @@
 		D70F5DE71FA81EED007FBD43 /* Easing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Easing.h; sourceTree = "<group>"; };
 		D70F5DE81FA81EED007FBD43 /* YXEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXEasing.h; sourceTree = "<group>"; };
 		D70F5DE91FA81EED007FBD43 /* YXEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YXEasing.m; sourceTree = "<group>"; };
+		D713B8B120727F0700D388F2 /* BillViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillViewController.h; sourceTree = "<group>"; };
+		D713B8B220727F0700D388F2 /* BillViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillViewController.m; sourceTree = "<group>"; };
+		D713B8B4207280C900D388F2 /* CustomNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomNavigationBar.h; sourceTree = "<group>"; };
+		D713B8B5207280C900D388F2 /* CustomNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationBar.m; sourceTree = "<group>"; };
 		D715E69E1FA627D500CFBFF4 /* FDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDViewController.h; sourceTree = "<group>"; };
 		D715E69F1FA627D500CFBFF4 /* FDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDViewController.m; sourceTree = "<group>"; };
 		D715E6A11FA64ECF00CFBFF4 /* FDContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDContentView.h; sourceTree = "<group>"; };
@@ -569,6 +575,8 @@
 				D70629031F8B138800F52FCB /* 消息预览HUD */,
 				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
+				D713B8B4207280C900D388F2 /* CustomNavigationBar.h */,
+				D713B8B5207280C900D388F2 /* CustomNavigationBar.m */,
 				7F63BBBD2072036E0084ABC8 /* LunarCore */,
 				7F63BBB9206E25470084ABC8 /* bill */,
 				7F0501832011EAE80033E83C /* YALPreloaderCircleView */,
@@ -869,6 +877,8 @@
 				7F14A7D8206B29F2006EC133 /* RunwayViewController.m */,
 				7F63BBAF206E220D0084ABC8 /* HomeViewController.h */,
 				7F63BBB0206E220D0084ABC8 /* HomeViewController.m */,
+				D713B8B120727F0700D388F2 /* BillViewController.h */,
+				D713B8B220727F0700D388F2 /* BillViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -1138,6 +1148,7 @@
 				D706294B1F8B185100F52FCB /* HSTextTableViewCell.m in Sources */,
 				7FD8CC291F984A8D005DC9FF /* UILabel+ContentSize.m in Sources */,
 				7F14A7D9206B29F2006EC133 /* RunwayViewController.m in Sources */,
+				D713B8B6207280C900D388F2 /* CustomNavigationBar.m in Sources */,
 				7F63BBB1206E220D0084ABC8 /* HomeViewController.m in Sources */,
 				D70629431F8B185100F52FCB /* HSTableViewModel.m in Sources */,
 				7FE705BE1FBD8CFC009FF3A7 /* MMCollectionViewController.m in Sources */,
@@ -1169,6 +1180,7 @@
 				7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */,
 				D70F5DDA1FA74BCB007FBD43 /* FDCustomView.m in Sources */,
 				7F63BBBC2071EC650084ABC8 /* HomeBillContentDefaultView.m in Sources */,
+				D713B8B320727F0700D388F2 /* BillViewController.m in Sources */,
 				7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */,
 				7F8593551FDE54AA00E6AFFC /* MMXibViewController.m in Sources */,
 				D706295C1F8B860B00F52FCB /* PCCustomView.m in Sources */,

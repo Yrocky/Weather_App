@@ -11,6 +11,9 @@
 #import "HomeBillContentView.h"
 #import "UIColor+Common.h"
 #import "Masonry.h"
+#import "FDPresentingAnimator.h"
+#import "FDDismissingAnimator.h"
+#import "BillViewController.h"
 
 @interface HomeViewController ()<HomeBillContainerViewDelegate>
 
@@ -29,6 +32,8 @@
     self.title = @"Bill";
     self.view.backgroundColor = [UIColor whiteColor];
     
+    UIBarButtonItem * right = [[UIBarButtonItem alloc] initWithTitle:@"Today" style:UIBarButtonItemStyleDone target:self action:@selector(onGotoToday)];
+    self.navigationItem.rightBarButtonItem = right;
     self.containerView = [[HomeBillContainerView alloc] init];
     self.containerView.tag = 0;
     self.containerView.delegate = self;
@@ -68,32 +73,8 @@
     }];
 }
 
-#pragma mark - HomeBillContainerViewDelegate
-
-- (void) billContainerViewNeedUpdatePreContentView:(HomeBillContainerView *)containerView{
-
-    [self.contentView updateContentViewWithPreDate];
-//    self.contentView.backgroundColor = [UIColor randomColor];
-}
-
-- (void) billContainerViewNeedUpdateNextContentView:(HomeBillContainerView *)containerView{
+- (void) onGotoToday{
     
-    [self.contentView updateContentViewWithNextDate];
-//    self.contentView.backgroundColor = [UIColor randomColor];
-}
-
-- (BOOL)allowBillContainerViewLoadPreContentView:(HomeBillContainerView *)containterView{
-    
-    // 在这里根据contentView的日期判断是否可以加载
-    return 1;//[self.contentView currentDateIsMinDate];
-}
-
-- (BOOL)allowBillContainerViewLoadNextContentView:(HomeBillContainerView *)containterView{
-    return [self.contentView currentDateIsMaxDate];
-}
-
-- (void) onAddBillAction{
-
     NSCalendar * cal = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents * comp = [cal components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitWeekday|NSCalendarUnitDay|NSCalendarUnitHour fromDate:[NSDate date]];
     comp.day = 30;
@@ -120,4 +101,47 @@
         NSLog(@"debugDate is currentDate");
     }
 }
+#pragma mark - HomeBillContainerViewDelegate
+
+- (void) billContainerViewNeedUpdatePreContentView:(HomeBillContainerView *)containerView{
+
+    [self.contentView updateContentViewWithPreDate];
+//    self.contentView.backgroundColor = [UIColor randomColor];
+}
+
+- (void) billContainerViewNeedUpdateNextContentView:(HomeBillContainerView *)containerView{
+    
+    [self.contentView updateContentViewWithNextDate];
+//    self.contentView.backgroundColor = [UIColor randomColor];
+}
+
+- (BOOL)allowBillContainerViewLoadPreContentView:(HomeBillContainerView *)containterView{
+    
+    // 在这里根据contentView的日期判断是否可以加载
+    return 1;//[self.contentView currentDateIsMinDate];
+}
+
+- (BOOL)allowBillContainerViewLoadNextContentView:(HomeBillContainerView *)containterView{
+    return [self.contentView currentDateIsMaxDate];
+}
+
+- (void) onAddBillAction{
+
+    BillViewController * bill = [[BillViewController alloc] init];
+    [self presentViewController:bill animated:YES completion:nil];
+}
+
+#pragma mark - 定制转场动画
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source {
+    
+    return [FDPresentingAnimator new];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    
+    return [FDDismissingAnimator new];
+}
+
 @end
