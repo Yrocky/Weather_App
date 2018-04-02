@@ -10,4 +10,6 @@
 
 @interface HomeBillContentListView : UIView
 
+// 外部根据日期获取到对应日期下的记账数据：列表、汇总
+- (void) updateBillListViewWith:(id)data;
 @end

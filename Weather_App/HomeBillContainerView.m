@@ -74,7 +74,7 @@
         
         self.snapshotView = [[UIImageView alloc] init];
         self.snapshotView.restorationIdentifier = @"snapshotView";
-        self.snapshotView.backgroundColor = [UIColor lightGrayColor];
+        self.snapshotView.backgroundColor = [UIColor clearColor];
         self.snapshotView.alpha = 0;
         [self addSubview:self.snapshotView];
         [self.snapshotView mas_makeConstraints:^(MASConstraintMaker *make) {

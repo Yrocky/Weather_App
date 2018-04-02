@@ -29,6 +29,7 @@
 		7F590D801FA9A5D4006F7BF0 /* UIViewController+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D781FA9A5D4006F7BF0 /* UIViewController+STPopup.m */; };
 		7F63BBB1206E220D0084ABC8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBB0206E220D0084ABC8 /* HomeViewController.m */; };
 		7F63BBB8206E25340084ABC8 /* HomeBillContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBB7206E25340084ABC8 /* HomeBillContainerView.m */; };
+		7F63BBBC2071EC650084ABC8 /* HomeBillContentDefaultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBBB2071EC650084ABC8 /* HomeBillContentDefaultView.m */; };
 		7F8593551FDE54AA00E6AFFC /* MMXibViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8593541FDE54AA00E6AFFC /* MMXibViewController.m */; };
 		7F8593581FDE54DC00E6AFFC /* MMXibCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8593571FDE54DC00E6AFFC /* MMXibCustomView.m */; };
 		7F85935A1FDE54E500E6AFFC /* MMXibCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F8593591FDE54E500E6AFFC /* MMXibCustomView.xib */; };
@@ -170,6 +171,8 @@
 		7F63BBB0206E220D0084ABC8 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7F63BBB6206E25340084ABC8 /* HomeBillContainerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBillContainerView.h; sourceTree = "<group>"; };
 		7F63BBB7206E25340084ABC8 /* HomeBillContainerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContainerView.m; sourceTree = "<group>"; };
+		7F63BBBA2071EC650084ABC8 /* HomeBillContentDefaultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBillContentDefaultView.h; sourceTree = "<group>"; };
+		7F63BBBB2071EC650084ABC8 /* HomeBillContentDefaultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContentDefaultView.m; sourceTree = "<group>"; };
 		7F8593531FDE54AA00E6AFFC /* MMXibViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMXibViewController.h; sourceTree = "<group>"; };
 		7F8593541FDE54AA00E6AFFC /* MMXibViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMXibViewController.m; sourceTree = "<group>"; };
 		7F8593561FDE54DC00E6AFFC /* MMXibCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMXibCustomView.h; sourceTree = "<group>"; };
@@ -452,6 +455,8 @@
 				D7F1F8022070F9FB000478C2 /* HomeBillContentView.m */,
 				D7F1F8042070FEA3000478C2 /* HomeBillContentDateView.h */,
 				D7F1F8052070FEA3000478C2 /* HomeBillContentDateView.m */,
+				7F63BBBA2071EC650084ABC8 /* HomeBillContentDefaultView.h */,
+				7F63BBBB2071EC650084ABC8 /* HomeBillContentDefaultView.m */,
 				D7F1F8072070FEDF000478C2 /* HomeBillContentListView.h */,
 				D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */,
 			);
@@ -1149,6 +1154,7 @@
 				7F63BBB8206E25340084ABC8 /* HomeBillContainerView.m in Sources */,
 				7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */,
 				D70F5DDA1FA74BCB007FBD43 /* FDCustomView.m in Sources */,
+				7F63BBBC2071EC650084ABC8 /* HomeBillContentDefaultView.m in Sources */,
 				7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */,
 				7F8593551FDE54AA00E6AFFC /* MMXibViewController.m in Sources */,
 				D706295C1F8B860B00F52FCB /* PCCustomView.m in Sources */,
