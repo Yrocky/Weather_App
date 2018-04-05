@@ -10,4 +10,6 @@
 
 @interface BillInputView : UIView
 
+- (void) updateInputCategoryWith:(id)category;
+- (void) updateInputAmountViewWith:(NSString *)amount;
 @end

@@ -14,7 +14,7 @@
 #import "Masonry.h"
 #import "UIColor+Common.h"
 
-@interface BillExtensionView ()<UIScrollViewDelegate>
+@interface BillExtensionView ()
 
 @property (strong, nonatomic) UIScrollView * extensionContentView;
 
@@ -47,16 +47,15 @@
         
         NSArray * enters = @[calendar,location,image,remarks];
         [enters mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(60, 60));
+            make.size.mas_equalTo(CGSizeMake(50, 50));
             make.top.mas_equalTo(self.mas_top).mas_offset(10);
         }];
         CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-        CGFloat spacing = (screenWidth - enters.count * 60) / (enters.count + 1);
-        [enters mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:60 leadSpacing:spacing tailSpacing:spacing];
+        CGFloat spacing = (screenWidth - enters.count * 50) / (enters.count + 1);
+        [enters mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:50 leadSpacing:spacing tailSpacing:spacing];
         
         self.extensionContentView = [[UIScrollView alloc] init];
         self.extensionContentView.showsHorizontalScrollIndicator = NO;
-        self.extensionContentView.delegate = self;
         self.extensionContentView.scrollEnabled = NO;
         self.extensionContentView.pagingEnabled = YES;
         self.extensionContentView.contentSize = (CGSize){
@@ -105,7 +104,6 @@
             make.bottom.mas_equalTo(self.imageView.mas_bottom);
             make.width.mas_equalTo(self.imageView.mas_width);
         }];
-        
     }
     
     return self;
@@ -136,18 +134,6 @@
         offsetY
     };
     [self.extensionContentView setContentOffset:contentOffset animated:YES];
-}
-
-#pragma mark - UIScrollViewDelegate
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
- 
-    CGFloat contentOffsetX = scrollView.contentOffset.x;
-    NSLog(@"offset:%f",contentOffsetX);
-    
-    if (contentOffsetX == 0) {
-        
-    }
 }
 
 @end

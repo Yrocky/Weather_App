@@ -37,4 +37,8 @@
     
     self.datePickerView.date = date;
 }
+
+- (NSDate *)billDate{
+    return self.datePickerView.date;
+}
 @end

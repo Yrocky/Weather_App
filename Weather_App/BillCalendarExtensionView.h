@@ -10,5 +10,7 @@
 
 @interface BillCalendarExtensionView : UIView
 
+@property (nonatomic ,strong ,readonly) NSDate * billDate;
+
 - (void) configCalendarWithDate:(NSDate *)date;
 @end
