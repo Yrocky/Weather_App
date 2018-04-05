@@ -108,6 +108,14 @@
 		D70F5DEB1FA81EED007FBD43 /* YXEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = D70F5DE91FA81EED007FBD43 /* YXEasing.m */; };
 		D713B8B320727F0700D388F2 /* BillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D713B8B220727F0700D388F2 /* BillViewController.m */; };
 		D713B8B6207280C900D388F2 /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D713B8B5207280C900D388F2 /* CustomNavigationBar.m */; };
+		D713B8B92075FEC700D388F2 /* ExtensionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D713B8B82075FEC700D388F2 /* ExtensionViewController.m */; };
+		D713B8BC2076003C00D388F2 /* BillInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D713B8BB2076003C00D388F2 /* BillInputView.m */; };
+		D713B8BF207601A500D388F2 /* BillIndicateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D713B8BE207601A500D388F2 /* BillIndicateView.m */; };
+		D713B8C2207601C100D388F2 /* BillExtensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D713B8C1207601C100D388F2 /* BillExtensionView.m */; };
+		D713B8C5207602EA00D388F2 /* BillCalendarExtensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D713B8C4207602EA00D388F2 /* BillCalendarExtensionView.m */; };
+		D713B8C8207602FF00D388F2 /* BillLocationExtensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D713B8C7207602FF00D388F2 /* BillLocationExtensionView.m */; };
+		D713B8CB2076030D00D388F2 /* BillImageExtensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D713B8CA2076030D00D388F2 /* BillImageExtensionView.m */; };
+		D713B8CE2076033800D388F2 /* BillRemarksExtensionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D713B8CD2076033800D388F2 /* BillRemarksExtensionView.m */; };
 		D715E6A01FA627D500CFBFF4 /* FDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E69F1FA627D500CFBFF4 /* FDViewController.m */; };
 		D715E6A31FA64ECF00CFBFF4 /* FDContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E6A21FA64ECF00CFBFF4 /* FDContentView.m */; };
 		D715E6A61FA7152100CFBFF4 /* CLTStickyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E6A51FA7152000CFBFF4 /* CLTStickyLayout.m */; };
@@ -334,6 +342,22 @@
 		D713B8B220727F0700D388F2 /* BillViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillViewController.m; sourceTree = "<group>"; };
 		D713B8B4207280C900D388F2 /* CustomNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomNavigationBar.h; sourceTree = "<group>"; };
 		D713B8B5207280C900D388F2 /* CustomNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationBar.m; sourceTree = "<group>"; };
+		D713B8B72075FEC700D388F2 /* ExtensionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionViewController.h; sourceTree = "<group>"; };
+		D713B8B82075FEC700D388F2 /* ExtensionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionViewController.m; sourceTree = "<group>"; };
+		D713B8BA2076003C00D388F2 /* BillInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillInputView.h; sourceTree = "<group>"; };
+		D713B8BB2076003C00D388F2 /* BillInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillInputView.m; sourceTree = "<group>"; };
+		D713B8BD207601A500D388F2 /* BillIndicateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillIndicateView.h; sourceTree = "<group>"; };
+		D713B8BE207601A500D388F2 /* BillIndicateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillIndicateView.m; sourceTree = "<group>"; };
+		D713B8C0207601C100D388F2 /* BillExtensionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillExtensionView.h; sourceTree = "<group>"; };
+		D713B8C1207601C100D388F2 /* BillExtensionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillExtensionView.m; sourceTree = "<group>"; };
+		D713B8C3207602EA00D388F2 /* BillCalendarExtensionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillCalendarExtensionView.h; sourceTree = "<group>"; };
+		D713B8C4207602EA00D388F2 /* BillCalendarExtensionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillCalendarExtensionView.m; sourceTree = "<group>"; };
+		D713B8C6207602FF00D388F2 /* BillLocationExtensionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillLocationExtensionView.h; sourceTree = "<group>"; };
+		D713B8C7207602FF00D388F2 /* BillLocationExtensionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillLocationExtensionView.m; sourceTree = "<group>"; };
+		D713B8C92076030D00D388F2 /* BillImageExtensionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillImageExtensionView.h; sourceTree = "<group>"; };
+		D713B8CA2076030D00D388F2 /* BillImageExtensionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillImageExtensionView.m; sourceTree = "<group>"; };
+		D713B8CC2076033800D388F2 /* BillRemarksExtensionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillRemarksExtensionView.h; sourceTree = "<group>"; };
+		D713B8CD2076033800D388F2 /* BillRemarksExtensionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillRemarksExtensionView.m; sourceTree = "<group>"; };
 		D715E69E1FA627D500CFBFF4 /* FDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDViewController.h; sourceTree = "<group>"; };
 		D715E69F1FA627D500CFBFF4 /* FDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDViewController.m; sourceTree = "<group>"; };
 		D715E6A11FA64ECF00CFBFF4 /* FDContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDContentView.h; sourceTree = "<group>"; };
@@ -455,7 +479,7 @@
 			path = STPopup;
 			sourceTree = "<group>";
 		};
-		7F63BBB9206E25470084ABC8 /* bill */ = {
+		7F63BBB9206E25470084ABC8 /* bill-home */ = {
 			isa = PBXGroup;
 			children = (
 				7F63BBB6206E25340084ABC8 /* HomeBillContainerView.h */,
@@ -469,7 +493,7 @@
 				D7F1F8072070FEDF000478C2 /* HomeBillContentListView.h */,
 				D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */,
 			);
-			name = bill;
+			name = "bill-home";
 			sourceTree = "<group>";
 		};
 		7F63BBBD2072036E0084ABC8 /* LunarCore */ = {
@@ -575,10 +599,11 @@
 				D70629031F8B138800F52FCB /* 消息预览HUD */,
 				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
+				D713B8CF2076034900D388F2 /* bill-input */,
 				D713B8B4207280C900D388F2 /* CustomNavigationBar.h */,
 				D713B8B5207280C900D388F2 /* CustomNavigationBar.m */,
 				7F63BBBD2072036E0084ABC8 /* LunarCore */,
-				7F63BBB9206E25470084ABC8 /* bill */,
+				7F63BBB9206E25470084ABC8 /* bill-home */,
 				7F0501832011EAE80033E83C /* YALPreloaderCircleView */,
 				7FA726211FFCCD3800C0F6F2 /* Toolbar */,
 				7F8593561FDE54DC00E6AFFC /* MMXibCustomView.h */,
@@ -879,6 +904,8 @@
 				7F63BBB0206E220D0084ABC8 /* HomeViewController.m */,
 				D713B8B120727F0700D388F2 /* BillViewController.h */,
 				D713B8B220727F0700D388F2 /* BillViewController.m */,
+				D713B8B72075FEC700D388F2 /* ExtensionViewController.h */,
+				D713B8B82075FEC700D388F2 /* ExtensionViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -904,6 +931,27 @@
 				D70F5DE91FA81EED007FBD43 /* YXEasing.m */,
 			);
 			path = YXEasing;
+			sourceTree = "<group>";
+		};
+		D713B8CF2076034900D388F2 /* bill-input */ = {
+			isa = PBXGroup;
+			children = (
+				D713B8BA2076003C00D388F2 /* BillInputView.h */,
+				D713B8BB2076003C00D388F2 /* BillInputView.m */,
+				D713B8BD207601A500D388F2 /* BillIndicateView.h */,
+				D713B8BE207601A500D388F2 /* BillIndicateView.m */,
+				D713B8C0207601C100D388F2 /* BillExtensionView.h */,
+				D713B8C1207601C100D388F2 /* BillExtensionView.m */,
+				D713B8C3207602EA00D388F2 /* BillCalendarExtensionView.h */,
+				D713B8C4207602EA00D388F2 /* BillCalendarExtensionView.m */,
+				D713B8C6207602FF00D388F2 /* BillLocationExtensionView.h */,
+				D713B8C7207602FF00D388F2 /* BillLocationExtensionView.m */,
+				D713B8C92076030D00D388F2 /* BillImageExtensionView.h */,
+				D713B8CA2076030D00D388F2 /* BillImageExtensionView.m */,
+				D713B8CC2076033800D388F2 /* BillRemarksExtensionView.h */,
+				D713B8CD2076033800D388F2 /* BillRemarksExtensionView.m */,
+			);
+			name = "bill-input";
 			sourceTree = "<group>";
 		};
 		D715E6A71FA7152600CFBFF4 /* CLTStickyLayout */ = {
@@ -1103,6 +1151,7 @@
 				D706294A1F8B185100F52FCB /* HSSwitchTableViewCell.m in Sources */,
 				D70629471F8B185100F52FCB /* HSCustomTableViewCell.m in Sources */,
 				7F590D7F1FA9A5D4006F7BF0 /* UIResponder+STPopup.m in Sources */,
+				D713B8C2207601C100D388F2 /* BillExtensionView.m in Sources */,
 				D706294F1F8B189C00F52FCB /* UIColor+Common.m in Sources */,
 				7F590D7D1FA9A5D4006F7BF0 /* STPopupLeftBarItem.m in Sources */,
 				7FD8CC351F98A995005DC9FF /* NSObject+CodableProperties.m in Sources */,
@@ -1122,10 +1171,13 @@
 				7F9CED3B1F5CEAA000A64EB5 /* MMRunwayCoreView.m in Sources */,
 				D7F1F8062070FEA3000478C2 /* HomeBillContentDateView.m in Sources */,
 				7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */,
+				D713B8CE2076033800D388F2 /* BillRemarksExtensionView.m in Sources */,
 				D70629061F8B143D00F52FCB /* MMPickerView.m in Sources */,
 				7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */,
+				D713B8CB2076030D00D388F2 /* BillImageExtensionView.m in Sources */,
 				D70629481F8B185100F52FCB /* HSImageTableViewCell.m in Sources */,
 				7F0501822011EAD00033E83C /* MMAnimationViewController.m in Sources */,
+				D713B8BC2076003C00D388F2 /* BillInputView.m in Sources */,
 				D70629491F8B185100F52FCB /* HSInputTableViewCell.m in Sources */,
 				D70629401F8B185100F52FCB /* HSTextCellModel.m in Sources */,
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
@@ -1150,10 +1202,12 @@
 				7F14A7D9206B29F2006EC133 /* RunwayViewController.m in Sources */,
 				D713B8B6207280C900D388F2 /* CustomNavigationBar.m in Sources */,
 				7F63BBB1206E220D0084ABC8 /* HomeViewController.m in Sources */,
+				D713B8B92075FEC700D388F2 /* ExtensionViewController.m in Sources */,
 				D70629431F8B185100F52FCB /* HSTableViewModel.m in Sources */,
 				7FE705BE1FBD8CFC009FF3A7 /* MMCollectionViewController.m in Sources */,
 				7FBCF0BE1F4D269100E2EEC7 /* HLLSegmentView.m in Sources */,
 				D70629411F8B185100F52FCB /* HSTitleCellModel.m in Sources */,
+				D713B8BF207601A500D388F2 /* BillIndicateView.m in Sources */,
 				7FED6BA61F5557F0004E3345 /* TableViewDataSource.m in Sources */,
 				D70F5DD71FA74B26007FBD43 /* UIView+Glow.m in Sources */,
 				D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */,
@@ -1172,10 +1226,12 @@
 				7FA726241FFCD28500C0F6F2 /* MMContent.m in Sources */,
 				7F14A7D02064B1A1006EC133 /* AsyncDrawViewController.m in Sources */,
 				7F8B6C081F95ED6F00F3A6E3 /* MMSearchReusableView.m in Sources */,
+				D713B8C8207602FF00D388F2 /* BillLocationExtensionView.m in Sources */,
 				D706294C1F8B185100F52FCB /* HSTitleTableViewCell.m in Sources */,
 				7F8593581FDE54DC00E6AFFC /* MMXibCustomView.m in Sources */,
 				D70629451F8B185100F52FCB /* HSSetTableViewControllerConst.m in Sources */,
 				7FEC5C532060C18000FAE1D1 /* MMOBJ.m in Sources */,
+				D713B8C5207602EA00D388F2 /* BillCalendarExtensionView.m in Sources */,
 				7F63BBB8206E25340084ABC8 /* HomeBillContainerView.m in Sources */,
 				7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */,
 				D70F5DDA1FA74BCB007FBD43 /* FDCustomView.m in Sources */,

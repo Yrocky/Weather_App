@@ -17,6 +17,9 @@
 
 @implementation HSBaseCellModel
 
+- (void)dealloc{
+    NSLog(@"%@:<%@> dealloc",[self class],self);
+}
 
 - (instancetype)init
 {

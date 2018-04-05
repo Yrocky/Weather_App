@@ -28,6 +28,7 @@
 #import "AsyncDrawViewController.h"
 #import "RunwayViewController.h"
 #import "HomeViewController.h"
+#import "ExtensionViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 
@@ -39,7 +40,6 @@
 
     NSLog(@"+_+_+_+");
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -63,6 +63,13 @@
         HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"原来的Main控制器" actionBlock:^(HSBaseCellModel *model) {
             
             [self performSegueWithIdentifier:@"RootToMain" sender:nil];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"记账-拓展功能" actionBlock:^(HSBaseCellModel *model) {
+            
+            ExtensionViewController * vc = [[ExtensionViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];
         

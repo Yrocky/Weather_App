@@ -71,7 +71,7 @@
         [self.defaultView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self);
             make.width.mas_equalTo(self);
-            make.height.mas_equalTo(200);
+            make.height.mas_equalTo(210);
             make.bottom.mas_equalTo(self.mas_bottom).mas_offset(-130);
         }];
     }

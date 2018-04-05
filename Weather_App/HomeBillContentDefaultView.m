@@ -24,7 +24,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         _defaultImageView = [[UIImageView alloc] init];
-        self.defaultImageView.backgroundColor = [UIColor orangeColor];
+        self.defaultImageView.backgroundColor = [UIColor clearColor];
+        self.defaultImageView.image = [UIImage imageNamed:@"home_bill_list_empty"];
         [self addSubview:self.defaultImageView];
         
         _defaultTitleLabel = [UILabel new];
@@ -44,20 +45,20 @@
         [self.defaultImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self);
             make.centerX.mas_equalTo(self);
-            make.width.mas_equalTo(150);
-            make.height.mas_equalTo(145);
+            make.width.mas_equalTo(154);
+            make.height.mas_equalTo(152);
         }];
         
         [self.defaultTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.width.mas_equalTo(self);
-            make.top.mas_equalTo(self.defaultImageView.mas_bottom).mas_offset(6);
+            make.top.mas_equalTo(self.defaultImageView.mas_bottom).mas_offset(7);
             make.height.mas_equalTo(24);
         }];
         
         [self.defaultDetailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self);
             make.width.mas_equalTo(self);
-            make.top.mas_equalTo(self.defaultTitleLabel.mas_bottom).mas_offset(5);
+            make.top.mas_equalTo(self.defaultTitleLabel.mas_bottom).mas_offset(7);
             make.height.mas_equalTo(20);
         }];
     }

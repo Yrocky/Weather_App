@@ -8,22 +8,62 @@
 
 #import <UIKit/UIKit.h>
 
-extern CGFloat const MMLargeTitleExtraViewHeight;
+typedef NS_ENUM(NSUInteger ,CustomNavigationBarState) {
+    
+    CustomNavigationBarNormalState = 1001,// 正常状态
+    CustomNavigationBarLargeTitleState,// 大标题
+    CustomNavigationBarNormalToLargeTitleState,// 正常状态到大标题过渡
+    CustomNavigationBarLargeTitleToNormalState// 大标题到正常状态过渡
+};
 
 @interface CustomNavigationBar : UIView
 
 @property (nonatomic, strong) NSString *title; //设置导航标题
 @property (nonatomic, strong) NSString *backButtonTitle;//设置导航返回名称
 
+@property (nonatomic ,assign) CustomNavigationBarState barState;
+
 @property (nonatomic, assign) CGFloat maxOffsetY;
 //设置最大拉伸模式后，大标题显示最多只能拉伸至`maxOffsetY`像素，相应的UIScrollView也需要限制最大偏移量
 @property (nonatomic, assign) BOOL maxStretchMode;
+
+@property (nonatomic ,strong) UIButton * leftBarButton;
+@property (nonatomic ,strong) UIButton * rightBarButton;
+
+@property (nonatomic ,strong ,readonly) UIView * customTitleView;
+@property (nonatomic ,strong) UILabel * titleLabel;
+
+@property (nonatomic ,assign) CGFloat navigationBarHeight;
+@property (nonatomic ,assign ,readonly) CGFloat navigationBarBottom;
+
+//+ (instancetype) normalNavigationBar;
+//+ (instancetype) largeTitleNavigationBar;
+
+- (void) configBottomLine:(UIColor *)lineColor lineHeight:(CGFloat)lineHeight;
+
+/**
+ 可以手动设置使用默认 通用正常导航
+ */
+- (void) handleDefaultNormalNavigationBar;
+
+/**
+ 在滚代理方法里面获取偏移量
+ 根据变化偏移量设置导航UI效果animation
+ 
+ @param yOffset 变化偏移量
+ */
+- (void) dynamicNavViewAnimationWithYoffset:(CGFloat)yOffset;
+
 
 @end
 
 @interface UIViewController (LargeTitleNavigationBar)
 
 @property (nonatomic ,strong ,readonly) CustomNavigationBar * largeTitleNavigationBar;
+
+//- (void) fixed
+- (void) addNormalNavigationBar;
+- (void) addLargeTitleNavigationBar;
 
 /**
  为了位移的流畅性，内部需要将scrollView进行contentOffset以及contentInset进行修改
