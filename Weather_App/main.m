@@ -51,8 +51,6 @@ int main(int argc, char * argv[]) {
         //
         NSLog(@"compera:%d",[other compare:date]);
         
-        
-        
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }

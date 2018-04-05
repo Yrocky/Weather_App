@@ -10,4 +10,5 @@
 
 @interface BillCalendarExtensionView : UIView
 
+- (void) configCalendarWithDate:(NSDate *)date;
 @end

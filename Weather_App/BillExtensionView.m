@@ -16,7 +16,6 @@
 
 @interface BillExtensionView ()<UIScrollViewDelegate>
 
-//@property (nonatomic ,strong) NSArray * extensionsEnter;
 @property (strong, nonatomic) UIScrollView * extensionContentView;
 
 @property (strong, nonatomic) BillCalendarExtensionView * calendarView;
@@ -31,6 +30,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        self.backgroundColor = [UIColor randomColor];
+        
         UIButton * calendar = [self createButton:nil selectedImage:nil tag:10];
         [self addSubview:calendar];
         
@@ -43,27 +45,74 @@
         UIButton * remarks = [self createButton:nil selectedImage:nil tag:13];
         [self addSubview:remarks];
         
+        NSArray * enters = @[calendar,location,image,remarks];
+        [enters mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(60, 60));
+            make.top.mas_equalTo(self.mas_top).mas_offset(10);
+        }];
+        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+        CGFloat spacing = (screenWidth - enters.count * 60) / (enters.count + 1);
+        [enters mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:60 leadSpacing:spacing tailSpacing:spacing];
+        
         self.extensionContentView = [[UIScrollView alloc] init];
         self.extensionContentView.showsHorizontalScrollIndicator = NO;
         self.extensionContentView.delegate = self;
+        self.extensionContentView.scrollEnabled = NO;
         self.extensionContentView.pagingEnabled = YES;
+        self.extensionContentView.contentSize = (CGSize){
+            enters.count * screenWidth,
+            20
+        };
         [self addSubview:self.extensionContentView];
+        [self.extensionContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self);
+            make.width.mas_equalTo(self);
+            make.bottom.mas_equalTo(self);
+            make.top.mas_equalTo(calendar.mas_bottom).mas_offset(10);
+        }];
         
         self.calendarView = [[BillCalendarExtensionView alloc] init];
         [self.extensionContentView addSubview:self.calendarView];
+        [self.calendarView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.mas_equalTo(self.extensionContentView);
+            make.height.mas_equalTo(self.extensionContentView.mas_height);
+            make.width.mas_equalTo(self.extensionContentView.mas_width);
+        }];
         
         self.locationView = [[BillLocationExtensionView alloc] init];
         [self.extensionContentView addSubview:self.locationView];
+        [self.locationView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.calendarView);
+            make.left.mas_equalTo(self.calendarView.mas_right);
+            make.bottom.mas_equalTo(self.calendarView.mas_bottom);
+            make.width.mas_equalTo(self.calendarView.mas_width);
+        }];
         
         self.imageView = [[BillImageExtensionView alloc] init];
         [self.extensionContentView addSubview:self.imageView];
+        [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.locationView);
+            make.left.mas_equalTo(self.locationView.mas_right);
+            make.bottom.mas_equalTo(self.locationView.mas_bottom);
+            make.width.mas_equalTo(self.locationView.mas_width);
+        }];
         
         self.remarksView = [[BillRemarksExtensionView alloc] init];
         [self.extensionContentView addSubview:self.remarksView];
+        [self.remarksView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.imageView);
+            make.left.mas_equalTo(self.imageView.mas_right);
+            make.bottom.mas_equalTo(self.imageView.mas_bottom);
+            make.width.mas_equalTo(self.imageView.mas_width);
+        }];
         
     }
     
     return self;
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
 }
 
 - (UIButton *) createButton:(UIImage *)normalImage selectedImage:(UIImage *)selectedImage tag:(NSInteger)tag{
@@ -72,6 +121,7 @@
     button.backgroundColor = [UIColor randomColor];
     [button setImage:normalImage forState:UIControlStateNormal];
     [button setImage:selectedImage forState:UIControlStateSelected];
+    [button addTarget:self action:@selector(onExtensionEnterAction:) forControlEvents:UIControlEventTouchUpInside];
     button.tag = tag;
     return button;
 }
@@ -79,14 +129,25 @@
 - (void) onExtensionEnterAction:(UIButton *)button{
 
     NSLog(@"tag:%ld",(long)button.tag);
-    
+    CGFloat offsetY = self.extensionContentView.contentOffset.y;
+
+    CGPoint contentOffset = (CGPoint){
+        (button.tag - 10) * [UIScreen mainScreen].bounds.size.width,
+        offsetY
+    };
+    [self.extensionContentView setContentOffset:contentOffset animated:YES];
 }
 
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
  
-    NSLog(@"offset:%f",scrollView.contentOffset.x);
+    CGFloat contentOffsetX = scrollView.contentOffset.x;
+    NSLog(@"offset:%f",contentOffsetX);
+    
+    if (contentOffsetX == 0) {
+        
+    }
 }
 
 @end

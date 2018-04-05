@@ -10,4 +10,5 @@
 
 @interface BillIndicateView : UIView
 
+- (void) updateIndicateViewWithOffset:(CGFloat)offset;
 @end

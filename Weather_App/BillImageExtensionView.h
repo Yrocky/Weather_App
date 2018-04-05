@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BillImageExtensionView : UIView
+@interface BillImageExtensionView : UIScrollView
 
+@property (nonatomic ,strong ,readonly) NSMutableArray * images;
+
+- (void) configImages:(NSArray *)images;
 @end

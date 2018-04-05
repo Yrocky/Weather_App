@@ -333,14 +333,14 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
     // bug here
     UIViewController *appRootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     UIViewController *topVC = appRootVC;
-    do {
+    while (topVC.presentedViewController){
         NSLog(@"topVC-start:%@",topVC);
         NSLog(@"topVC.presentedViewController-start:%@",topVC.presentedViewController);
         topVC = topVC.presentedViewController;
         NSLog(@"topVC-end:%@",topVC);
         NSLog(@"topVC.presentedViewController-end:%@",topVC.presentedViewController);
         NSLog(@"+++++++++++++");
-    } while (topVC.presentedViewController);
+    }
     
     return topVC;
 }

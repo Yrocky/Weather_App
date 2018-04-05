@@ -22,6 +22,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor grayColor];
         self.remarksView = [[UIPlaceholderTextView alloc] init];
         self.remarksView.placeholder = @"点击添加记账备注";
         self.remarksView.placeholderColor = [UIColor lightGrayColor];

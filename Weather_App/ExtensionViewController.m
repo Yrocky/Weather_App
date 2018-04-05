@@ -9,12 +9,14 @@
 #import "ExtensionViewController.h"
 #import "Masonry.h"
 #import "UIColor+Common.h"
+#import "BillExtensionView.h"
+#import "HLLAlert.h"
 
-@interface ExtensionViewController ()
+@interface ExtensionViewController ()<BillExtensionViewDelegate>
 
 @property (nonatomic ,strong) UIView * keyboardView;
 @property (nonatomic ,strong) MASConstraint * keyboardViewBottomConstraint;
-
+@property (nonatomic ,strong) BillExtensionView * extensionView;
 @end
 
 @implementation ExtensionViewController
@@ -36,6 +38,17 @@
             self.keyboardViewBottomConstraint = make.bottom.mas_equalTo(self.view.mas_bottom);
         }
     }];
+    
+    BillExtensionView * extensionView = [[BillExtensionView alloc] init];
+    extensionView.delegate = self;
+    [self.view addSubview:extensionView];
+    [extensionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view);
+        make.right.mas_equalTo(self.view);
+        make.height.mas_equalTo(300);
+        make.bottom.mas_equalTo(self.view);
+    }];
+    self.extensionView = extensionView;
     // Do any additional setup after loading the view.
 }
 
@@ -44,14 +57,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+    
 
 @end

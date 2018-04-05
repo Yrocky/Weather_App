@@ -7,15 +7,34 @@
 //
 
 #import "BillCalendarExtensionView.h"
+#import "Masonry.h"
+
+@interface BillCalendarExtensionView ()
+
+@property (strong, nonatomic) UIDatePicker * datePickerView;
+@end
 
 @implementation BillCalendarExtensionView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor redColor];
+        self.datePickerView = [[UIDatePicker alloc] init];
+        self.datePickerView.date = [NSDate date];
+        self.datePickerView.maximumDate = [NSDate date];
+        self.datePickerView.datePickerMode = UIDatePickerModeDateAndTime;
+        [self addSubview:self.datePickerView];
+        [self.datePickerView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(self);
+        }];
+    }
+    return self;
 }
-*/
 
+- (void) configCalendarWithDate:(NSDate *)date{
+    
+    self.datePickerView.date = date;
+}
 @end
