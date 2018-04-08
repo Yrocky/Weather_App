@@ -12,11 +12,12 @@
 #import "BillExtensionView.h"
 #import "HLLAlert.h"
 #import "BillInputView.h"
+#import "BillKeyboardView.h"
 
 @interface ExtensionViewController ()<BillExtensionViewDelegate>
 
 @property (nonatomic ,strong) BillInputView * inputView;
-@property (nonatomic ,strong) UIView * keyboardView;
+@property (nonatomic ,strong) BillKeyboardView * keyboardView;
 @property (nonatomic ,strong) MASConstraint * keyboardViewBottomConstraint;
 @property (nonatomic ,strong) BillExtensionView * extensionView;
 @end
@@ -34,8 +35,7 @@
     self.inputView = [[BillInputView alloc] init];
     [self.view addSubview:self.inputView];
     
-    self.keyboardView = [UIView new];
-    self.keyboardView.backgroundColor = [UIColor randomColor];
+    self.keyboardView = [[BillKeyboardView alloc] init];
     [self.view addSubview:self.keyboardView];
     [self.keyboardView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.view);
@@ -46,7 +46,7 @@
             self.keyboardViewBottomConstraint = make.bottom.mas_equalTo(self.view.mas_bottom);
         }
     }];
-
+    return;
     [self.inputView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.view);
         make.height.mas_equalTo(50);

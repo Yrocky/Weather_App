@@ -121,6 +121,7 @@
 		D715E6A61FA7152100CFBFF4 /* CLTStickyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E6A51FA7152000CFBFF4 /* CLTStickyLayout.m */; };
 		D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */; };
 		D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */; };
+		D7A325E420772DD700B2F8AB /* BillKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A325E320772DD700B2F8AB /* BillKeyboardView.m */; };
 		D7A595B81FAAC156000C59FE /* CreatePDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A595B71FAAC156000C59FE /* CreatePDFViewController.m */; };
 		D7A595BB1FAAC743000C59FE /* FDHTMLRenderComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A595BA1FAAC743000C59FE /* FDHTMLRenderComposer.m */; };
 		D7A595BF1FAACFED000C59FE /* rootTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = D7A595BD1FAACFED000C59FE /* rootTemplate.html */; };
@@ -368,6 +369,8 @@
 		D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MM_AutoReplyViewController.m; sourceTree = "<group>"; };
 		D71974301F6EFEFC0068F971 /* MM_AutoReplyEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MM_AutoReplyEditViewController.h; sourceTree = "<group>"; };
 		D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MM_AutoReplyEditViewController.m; sourceTree = "<group>"; };
+		D7A325E220772DD700B2F8AB /* BillKeyboardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillKeyboardView.h; sourceTree = "<group>"; };
+		D7A325E320772DD700B2F8AB /* BillKeyboardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillKeyboardView.m; sourceTree = "<group>"; };
 		D7A595B61FAAC156000C59FE /* CreatePDFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatePDFViewController.h; sourceTree = "<group>"; };
 		D7A595B71FAAC156000C59FE /* CreatePDFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreatePDFViewController.m; sourceTree = "<group>"; };
 		D7A595B91FAAC743000C59FE /* FDHTMLRenderComposer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDHTMLRenderComposer.h; sourceTree = "<group>"; };
@@ -599,6 +602,8 @@
 				D70629031F8B138800F52FCB /* 消息预览HUD */,
 				7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */,
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
+				D7A325E220772DD700B2F8AB /* BillKeyboardView.h */,
+				D7A325E320772DD700B2F8AB /* BillKeyboardView.m */,
 				D713B8CF2076034900D388F2 /* bill-input */,
 				D713B8B4207280C900D388F2 /* CustomNavigationBar.h */,
 				D713B8B5207280C900D388F2 /* CustomNavigationBar.m */,
@@ -1139,6 +1144,7 @@
 				7F32E0B41FA1CB74002D57FB /* HLLIndicatorViewController.m in Sources */,
 				D7DE014F1F98C1EF008682DE /* NSObject+AHKBuilder.m in Sources */,
 				D70629551F8B191C00F52FCB /* UIView+MHCommon.m in Sources */,
+				D7A325E420772DD700B2F8AB /* BillKeyboardView.m in Sources */,
 				7F590D7C1FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.m in Sources */,
 				D706293B1F8B185100F52FCB /* HSBaseCellModel.m in Sources */,
 				7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */,
