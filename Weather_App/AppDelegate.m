@@ -14,12 +14,30 @@
 
 @end
 
+void addBlockToArray(NSMutableArray *arr){
+
+    char a = 'a';
+    [arr addObject:^{
+        printf("a:%c",a);
+    }];
+    
+}
+void example_A(){
+    NSMutableArray * arr = [NSMutableArray array];
+
+    addBlockToArray(arr);
+    void (^block)() = arr[0];
+    block();
+}
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [UINavigationBar appearance].backItem.leftItemsSupplementBackButton = YES;
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"back"];
+    
+    example_A();
     
 //    id overlayClass = NSClassFromString(@"UIDebuggingInformationOverlay");
 //    if ([overlayClass respondsToSelector:NSSelectorFromString(@"prepareDebuggingOverlay")]) {

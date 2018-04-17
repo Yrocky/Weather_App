@@ -11,6 +11,10 @@
 
 @implementation HSTitleCellModel
 
++ (void)initialize{
+    NSLog(@"+initialize HSTitleCellModel");
+}
+
 - (instancetype)initWithTitle:(NSString *)title actionBlock:(ClickActionBlock)block;
 {
     if(self = [super init]){

@@ -17,6 +17,11 @@
 
 @implementation HSBaseCellModel
 
+
++ (void)initialize{
+    NSLog(@"+initialize HSBaseCellModel");
+}
+
 - (void)dealloc{
     NSLog(@"%@:<%@> dealloc",[self class],self);
 }

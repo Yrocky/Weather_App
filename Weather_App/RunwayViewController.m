@@ -20,6 +20,7 @@
 @property (nonatomic ,strong) MMRunwayCoreView * proRunwayCoreView;
 @property (nonatomic ,strong) UITableView * tableView;
 @property (nonatomic ,strong) NSMutableArray * datas;
+@property (nonatomic ,assign) NSInteger runwayTag;
 @end
 
 @implementation RunwayViewController
@@ -28,6 +29,7 @@
 
     self.datas = [NSMutableArray array];
     
+    self.runwayTag = 1;
     self.view.backgroundColor = [UIColor whiteColor];
     socket = @[@"恭喜【1234554】获得【真情七夕活动】中的特别奖品 鹊桥项链 一条",
                @"神奇宝贝阿瓦里对薇恩的直播间进行了推荐",
@@ -58,13 +60,13 @@
         [self.view addSubview:button];
     }
     
-    self.normalRunwayCoreView = [[MMRunwayCoreView alloc] initWithSpeed:1 defaultSpace:30];
+    self.normalRunwayCoreView = [[MMRunwayCoreView alloc] init];
     self.normalRunwayCoreView.frame = CGRectMake(20, 150, 300, 40);
     self.normalRunwayCoreView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
     self.normalRunwayCoreView.delegate = self;
     [self.view addSubview:self.normalRunwayCoreView];
     
-    self.proRunwayCoreView = [[MMRunwayCoreView alloc] initWithSpeed:1 defaultSpace:30];
+    self.proRunwayCoreView = [[MMRunwayCoreView alloc] init];
     self.proRunwayCoreView.frame = CGRectMake(20, 200, 300, 40);
     self.proRunwayCoreView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.8];
     self.proRunwayCoreView.delegate = self;
@@ -89,6 +91,8 @@
         label.textColor = [UIColor whiteColor];
         CGSize size = [label configText:json];
         label.frame = (CGRect){10, 400, size};
+//        label.tag = self.runwayTag;
+//        self.runwayTag ++;
         return label;
     };
     [MMRunwayManager runwayManager].bRunwayGenerateProSingleLineView = ^UIView *(id json) {

@@ -13,6 +13,10 @@
 @implementation UIView (Glow)
 
 
++ (void)load{
+    NSLog(@"+load UIView(Glow)");
+}
+
 #pragma mark -
 #pragma mark Runtime
 

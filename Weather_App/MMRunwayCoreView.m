@@ -8,14 +8,13 @@
 
 #import "MMRunwayCoreView.h"
 
-////////////// 封装具体的跑道视图的类，内部主要进行跑道视图的位移操作，每一个跑道视图都拥有一个计时器
+////////////// 封装具体的跑道视图的类，内部主要进行跑道视图的位移操作
 @interface _MMRunwayViewOperation : NSObject{
 
     __block CGFloat _runwayViewMoveRatio;
     __weak UIView * _runwayView;
     BOOL _finished;
     BOOL _executing;
-    CADisplayLink * _link;
 }
 
 @property (nonatomic ,weak ,readonly) UIView * runwayView;
@@ -30,7 +29,6 @@
 - (instancetype) initWithRunwayView:(UIView *)runwayView;
 
 - (void) start;
-- (void) cancel;
 @end
 
 @implementation _MMRunwayViewOperation
@@ -38,7 +36,6 @@
 - (void)dealloc
 {
     NSLog(@"_MMRunwayViewOperation dealloc");
-    _link = nil;
     _runwayView = nil;
 }
 
@@ -46,60 +43,31 @@
 
     self = [super init];
     if (self) {
-        
         _runwayView = runwayView;
+        self.originalFrame = (CGRect){
+            runwayView.frame.origin,
+            runwayView.frame.size
+        };
     }
     return self;
 }
-////////////// 1.外部通过start函数的调用，开始在主线程中进行计时器操作
-- (void)start {
+
+- (void)start{
     
-    if (_finished || _executing) {
-        return;
-    }
+    _finished = NO;
     _executing = YES;
-    [self operationDidStart];
-//    [self performSelector:@selector(operationDidStart) onThread:[NSThread mainThread] withObject:nil waitUntilDone:NO];
-}
-
-- (void) cancel{
-
-    [self stopWatch];
-}
-
-#pragma mark - Private M
-
-- (void)operationDidStart{
-
-    self.originalFrame = _runwayView.frame;
     
-    [self startWatch];
-}
-////////////// 2.内部通过CADisplayLLink作为计时器，结合runloop，runwayView进行位移操作，并对位移操作做记录，通过block传递出去
-- (void)startWatch{
-    [self stopWatch];
-    _link = [CADisplayLink displayLinkWithTarget:self selector:@selector(track)];
-    [_link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-}
-
-- (void)track{
     CGRect frame = _runwayView.frame;
     frame.origin.x -= self.speed;
+    
     _runwayView.frame = frame;
     
-    CALayer *presentationLayer = _runwayView.layer.presentationLayer;
-    [self handleMaskViewWithMyViewFrame:presentationLayer.frame];
+    [self handleMaskViewWithMyViewFrame:_runwayView.frame];
 }
-////////////// 3.当监控到view已经完全移动出去之后从runloop中移除，并停止计时器
-- (void)stopWatch{
-    [_link removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-    [_link invalidate];
-    _link = nil;
-}
+
 ////////////// 具体的runwayView计算位移方法
 - (void)handleMaskViewWithMyViewFrame:(CGRect)frame{
     
-    [_runwayView setNeedsDisplay];
     CGFloat x = frame.origin.x;
     CGFloat originalX = self.originalFrame.origin.x;
     CGFloat runwayViewSuperViewWidth = _runwayView.superview.frame.size.width;
@@ -114,14 +82,12 @@
     if (_runwayViewMoveRatio >= 1) {
         _finished = YES;
         _executing = NO;
-        [self stopWatch];
         
         if (self.finishedHandle) {
             self.finishedHandle(YES, self);
         }
     }
 }
-
 @end
 
 @class _MMRunwayViewQueue;
@@ -136,6 +102,8 @@
 @interface _MMRunwayViewQueue : NSObject{
     
     __block NSMutableArray <_MMRunwayViewOperation *>* _operations;
+    
+    CADisplayLink * _link;
 }
 @property (nonatomic ,weak) id<_MMRunwayViewQueueDelegate> delegate;
 @property (nonatomic ,assign ,readonly) NSUInteger operationCount;
@@ -159,7 +127,7 @@
     }
     return self;
 }
-////////////// 1.添加一个operation
+////////////// 1.添加一个operation到数组中
 - (void)addOperation:(_MMRunwayViewOperation *)operation{
     
     [_operations addObject:operation];
@@ -167,12 +135,16 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(runwayViewQueue:willStartOperation:)]) {
         [self.delegate runwayViewQueue:self willStartOperation:operation];
     }
-    [self startOperation:operation];
+    
+    [self prepareStartOperation:operation];
+    
+    if (!_link) {
+        _link = [CADisplayLink displayLinkWithTarget:self selector:@selector(queueTrack)];
+        [_link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    }
 }
-////////////// 2.判断数组中的operation数量
-////////////// 如果只有一个就直接开始operation中的计时器操作
-////////////// 如果有在执行中的operation，先加入到数组中，然后通过前一个operation的finishBlock开启下一个operation，依次类推
-- (void)startOperation:(_MMRunwayViewOperation *)operation{
+////////////// 2.为operation做一些block的回调操作
+- (void)prepareStartOperation:(_MMRunwayViewOperation *)operation{
     
     operation.finishedHandle = ^(BOOL finished, _MMRunwayViewOperation * _operation) {
         
@@ -183,33 +155,38 @@
         [_operation.runwayView removeFromSuperview];
         [_operations removeObject:_operation];
         
-        if (_operations.count == 0 &&
-            self.delegate &&
-            [self.delegate respondsToSelector:@selector(runwayViewQueueDidFinishAllOperation:)]) {
-            [self.delegate runwayViewQueueDidFinishAllOperation:self];
+        if (_operations.count == 0 ){
+            if(self.delegate &&
+               [self.delegate respondsToSelector:@selector(runwayViewQueueDidFinishAllOperation:)]) {
+                [self.delegate runwayViewQueueDidFinishAllOperation:self];
+            }
+            [self allOperationDidFinished];
         }
     };
     operation.progressHandle = ^(CGFloat progress, BOOL fullDisplay ,_MMRunwayViewOperation * _operation) {
         if (fullDisplay) {
-            NSInteger index = [_operations indexOfObject:_operation];
-            if (_operations.count > 0 && index < _operations.count - 1) {
+            
+            NSInteger currentOperationIndex = [_operations indexOfObject:_operation];
+            if (currentOperationIndex + 1 < _operations.count) {
                 
-                _MMRunwayViewOperation * nextOperation = _operations[index + 1];
+                _MMRunwayViewOperation * nextOperation = _operations[currentOperationIndex + 1];
                 [nextOperation start];
             }
         }
     };
-    
-    if (self.operationCount == 1) {
-        [operation start];
-    }
-    else if(self.operationCount > 1) {
-        NSInteger index = [_operations indexOfObject:operation];
-        _MMRunwayViewOperation * perOperation = _operations[index - 1];
-        if (perOperation.fullyDisplayed) {
-            [operation start];
-        }
-    }
+}
+
+////////////// 3.开始计时器操作，内部交给operation对runwayView的视图进行位移
+- (void) queueTrack{
+
+    _MMRunwayViewOperation * operation = [self currentOperation];
+    [operation start];
+}
+
+- (void) allOperationDidFinished{
+    [_link removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    [_link invalidate];
+    _link = nil;
 }
 
 - (NSUInteger)operationCount{
@@ -220,7 +197,7 @@
 - (_MMRunwayViewOperation *)lastOperation{
     
     if (self.operationCount > 0) {
-        [_operations lastObject];
+        return [_operations lastObject];
     }
     return nil;
 }
@@ -238,7 +215,6 @@
     [_operations enumerateObjectsUsingBlock:^(_MMRunwayViewOperation * _Nonnull operation, NSUInteger idx, BOOL * _Nonnull stop) {
        
         [operation.runwayView removeFromSuperview];
-        [operation cancel];
     }];
     
     [_operations removeAllObjects];
@@ -317,9 +293,11 @@
     CGFloat y = overBorder ? 0 : (frame.size.height - CGRectGetHeight(_runwayView.frame)) / 2;
     CGFloat x = 0;
     CGFloat selfWidth = frame.size.width;
+    
+    // 这里会出现bug导致跑道显示重合
     if (self.queue.operationCount > 0) {
         _MMRunwayViewOperation * lastOperation = [self.queue lastOperation];
-        x = lastOperation.fullyDisplayed ? selfWidth : selfWidth + _defaultSpace;
+        x = lastOperation.fullyDisplayed && lastOperation.runwayViewMoveRatio == 0 ? selfWidth : selfWidth + _defaultSpace;
     }else{
         x = selfWidth;
     }
@@ -327,12 +305,10 @@
         x, y,
         _runwayView.frame.size
     };
-    
     [self addSubview:_runwayView];
     
     _MMRunwayViewOperation * operation = [[_MMRunwayViewOperation alloc] initWithRunwayView:_runwayView];
     operation.speed = _speed;
-
     [_queue addOperation:operation];
 }
 
