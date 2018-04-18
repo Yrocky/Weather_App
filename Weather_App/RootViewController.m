@@ -29,45 +29,7 @@
 #import "RunwayViewController.h"
 #import "HomeViewController.h"
 #import "ExtensionViewController.h"
-
-@interface MMProxyA : NSProxy
-@property (nonatomic, strong) id target;
-- (nullable id)valueForKey:(NSString *)key;
-@end
-@implementation MMProxyA
-- (id)initWithObject:(id)object {
-    self.target = object;
-    return self;
-}
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)selector {
-    return [self.target methodSignatureForSelector:selector];
-}
-- (void)forwardInvocation:(NSInvocation *)invocation {
-    [invocation invokeWithTarget:self.target];
-}
-- (nullable id)valueForKey:(NSString *)key{
-    return [self.target valueForKey:key];
-}
-@end
-
-@interface MMProxyB : NSObject
-@property (nonatomic, strong) id target;
-@end
-@implementation MMProxyB
-- (id)initWithObject:(id)object {
-    self = [super init];
-    if (self) {
-        self.target = object;
-    }
-    return self;
-}
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)selector {
-    return [self.target methodSignatureForSelector:selector];
-}
-- (void)forwardInvocation:(NSInvocation *)invocation {
-    [invocation invokeWithTarget:self.target];
-}
-@end
+#import "ProxyViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic ,strong) NSString * str;
@@ -84,18 +46,6 @@
     
     self.title = @"Root";
     self.str = @"123";
-    
-    MMProxyA * proxy = [[MMProxyA alloc] initWithObject:self.str];
-    MMProxyB * object = [[MMProxyB alloc] initWithObject:self.str];
-    
-    NSLog(@"proxy.responds.lenght:%d",[proxy respondsToSelector:@selector(length)]);
-    NSLog(@"object.responds.lenght:%d",[object respondsToSelector:@selector(length)]);
-    
-    NSLog(@"proxy.kind.class:%d",[proxy isKindOfClass:[NSString class]]);
-    NSLog(@"object.kind.class:%d",[object isKindOfClass:[NSString class]]);
-    
-    NSLog(@"proxy.length:%@",[proxy valueForKey:@"length"]);
-    NSLog(@"object.length:%@",[object valueForKey:@"length"]);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(printSome) name:@"noti_mm_custom" object:nil];
     [ANYMethodLog logMethodWithClass:[HSTableViewModel class] condition:^BOOL(SEL sel) {
@@ -118,6 +68,13 @@
         }];
         [s addCellModel:c];
 
+        c = [[HSTitleCellModel alloc] initWithTitle:@"NSProxy" actionBlock:^(HSBaseCellModel *model) {
+            
+            ProxyViewController * vc = [[ProxyViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
         c = [[HSTitleCellModel alloc] initWithTitle:@"记账-拓展功能" actionBlock:^(HSBaseCellModel *model) {
             
             ExtensionViewController * vc = [[ExtensionViewController alloc] init];

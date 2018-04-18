@@ -13,6 +13,7 @@
 		7F14A7D02064B1A1006EC133 /* AsyncDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F14A7CF2064B1A1006EC133 /* AsyncDrawViewController.m */; };
 		7F14A7D9206B29F2006EC133 /* RunwayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F14A7D8206B29F2006EC133 /* RunwayViewController.m */; };
 		7F14A7DC206B2A54006EC133 /* MMRunwayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F14A7DB206B2A54006EC133 /* MMRunwayManager.m */; };
+		7F1D9A92208714C000E822B7 /* ProxyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F1D9A91208714C000E822B7 /* ProxyViewController.m */; };
 		7F243E3E1FA81E7A00AE4134 /* MMGCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F243E3D1FA81E7A00AE4134 /* MMGCD.m */; };
 		7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F32E0AF1FA1BC70002D57FB /* HLLStickIndicator.m */; };
 		7F32E0B41FA1CB74002D57FB /* HLLIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F32E0B31FA1CB74002D57FB /* HLLIndicatorViewController.m */; };
@@ -151,6 +152,8 @@
 		7F14A7D8206B29F2006EC133 /* RunwayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunwayViewController.m; sourceTree = "<group>"; };
 		7F14A7DA206B2A54006EC133 /* MMRunwayManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMRunwayManager.h; sourceTree = "<group>"; };
 		7F14A7DB206B2A54006EC133 /* MMRunwayManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMRunwayManager.m; sourceTree = "<group>"; };
+		7F1D9A90208714C000E822B7 /* ProxyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProxyViewController.h; sourceTree = "<group>"; };
+		7F1D9A91208714C000E822B7 /* ProxyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProxyViewController.m; sourceTree = "<group>"; };
 		7F243E3C1FA81E7A00AE4134 /* MMGCD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMGCD.h; sourceTree = "<group>"; };
 		7F243E3D1FA81E7A00AE4134 /* MMGCD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMGCD.m; sourceTree = "<group>"; };
 		7F32E0AE1FA1BC70002D57FB /* HLLStickIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLLStickIndicator.h; sourceTree = "<group>"; };
@@ -911,6 +914,8 @@
 				D713B8B220727F0700D388F2 /* BillViewController.m */,
 				D713B8B72075FEC700D388F2 /* ExtensionViewController.h */,
 				D713B8B82075FEC700D388F2 /* ExtensionViewController.m */,
+				7F1D9A90208714C000E822B7 /* ProxyViewController.h */,
+				7F1D9A91208714C000E822B7 /* ProxyViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -1212,6 +1217,7 @@
 				D70629431F8B185100F52FCB /* HSTableViewModel.m in Sources */,
 				7FE705BE1FBD8CFC009FF3A7 /* MMCollectionViewController.m in Sources */,
 				7FBCF0BE1F4D269100E2EEC7 /* HLLSegmentView.m in Sources */,
+				7F1D9A92208714C000E822B7 /* ProxyViewController.m in Sources */,
 				D70629411F8B185100F52FCB /* HSTitleCellModel.m in Sources */,
 				D713B8BF207601A500D388F2 /* BillIndicateView.m in Sources */,
 				7FED6BA61F5557F0004E3345 /* TableViewDataSource.m in Sources */,
