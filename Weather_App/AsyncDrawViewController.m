@@ -9,12 +9,60 @@
 #import "AsyncDrawViewController.h"
 #import "UIView+AsyncDrawImage.h"
 #import "HLLAttributedBuilder.h"
+#import <malloc/malloc.h>
+#import "HLLAlert.h"
+#import <objc/runtime.h>
 
+@interface MMObject : NSProxy{
+//    int age;// 4字节
+//    NSString * name;// 8字节
+}
+- (void) foo;
++ (void) mock;
+@end
+@implementation MMObject
+- (void) foo{}
++ (void) mock{}
+@end
+
+@interface MMString : NSString
+
+@end
+@implementation MMString
+
+- (instancetype)init{
+
+    id result = [super init];
+    if (result == self) {
+        NSLog(@"result:%@\nself:%@",result,self);
+    }
+    return result;
+}
+@end
 @interface AsyncDrawViewController ()
 
 @end
 
 @implementation AsyncDrawViewController
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
+    
+    MMString * string = [[MMString alloc] init];
+    
+    for (int i = 0; i < 1; i ++) {
+        
+        MMObject * obj = [MMObject alloc];
+//        [obj methodForSelector:nil];
+        NSString * msg = [NSString stringWithFormat:@"Size of MMObject: %zd bytes", malloc_size((__bridge const void *) obj)];
+        [[[[[HLLAlertActionSheet alert]
+           title:@"Size"]
+          message:msg]
+         buttons:@[@"cancel"]]
+         showIn:self];
+            NSLog(@"%@", msg);
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

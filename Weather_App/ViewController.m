@@ -94,6 +94,11 @@
 @property (nonatomic ,assign) NSInteger index;
 @property (nonatomic ,strong) MMOBJ * obj;
 
+@property (nonatomic ,strong) NSString * str1;
+@property (nonatomic ,copy) NSString * str2;
+
+@property (nonatomic ,strong) NSArray * arr1;
+@property (nonatomic ,copy) NSArray * arr2;
 @end
 
 @implementation ViewController
@@ -123,6 +128,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
     UIImageView * imageView = [[UIImageView alloc] init];
     imageView.image = [UIImage sd_animatedGIFNamed:@"img_user_level_8"];
     imageView.frame = CGRectMake(20, 100, 28, 12);
@@ -286,6 +292,7 @@
     
     [super viewWillAppear:animated];
    
+    NSString * str3 = @"123";
     
     NSString * cmd = @"setOpenDebugerToggle:";
     cmd = [cmd substringFromIndex:3];

@@ -41,6 +41,108 @@
 
 @end
 
+@protocol MMPersonBuilder <NSObject>
+
+@property (nonatomic ,retain ,readwrite) NSString * name;
+@property (nonatomic ,assign ,readwrite) NSInteger age;
+@property (nonatomic ,retain ,readwrite) NSString * address;
+
+- (void) logInfo;
+- (void) crash;
+@end
+
+@class MMPersonBuilder;
+
+@interface MMPerson : NSObject
+@property (nonatomic ,retain ,readonly) NSString * name;
+@property (nonatomic ,assign ,readonly) NSInteger age;
+@property (nonatomic ,retain ,readonly) NSString * address;
+
+- (instancetype) initWithBuilder:(MMPersonBuilder *)builder;
+- (instancetype) initWithBuilderProtocol:(void(^)(id<MMPersonBuilder>builder))buildHandle;
+
+@end
+@implementation MMPerson
+
+- (instancetype) initWithName:(NSString *)name age:(NSInteger)age address:(NSString *)address{
+    
+    if (self == [super init]) {
+        _name = name;
+        _age = age;
+        _address = address;
+    }
+    return self;
+}
+
+- (instancetype) initWithBuilderProtocol:(void(^)(id<MMPersonBuilder>builder))buildHandle{
+
+    if (self == [super init]) {
+        if (buildHandle) {
+            id<MMPersonBuilder> _builder;// 初始化
+            buildHandle(_builder);
+            _name = _builder.name;
+            _age = _builder.age;
+            _address = _builder.address;
+        }
+    }
+    return self;
+}
+
++ (instancetype) personWith:(void(^)(MMPersonBuilder *builder))buildHandle{
+    
+//    if (buildHandle) {
+//        MMPersonBuilder * builder = [[MMPersonBuilder alloc] init];
+//        buildHandle(builder);
+//        return [builder build];
+//    }
+    return nil;
+}
+- (void) logInfo{
+    NSLog(@"this is some log");
+}
+@end
+
+@interface MMPersonBuilder : NSObject<MMPersonBuilder>
+
+- (MMPerson *) build;
+
+- (MMPersonBuilder *(^)(NSString *name))configName;
+- (MMPersonBuilder *(^)(NSInteger age))configAge;
+- (MMPersonBuilder *(^)(NSString *address))configAddress;
+@end
+@implementation MMPersonBuilder
+@synthesize address;
+@synthesize age;
+@synthesize name;
+
+- (MMPerson *) build{
+    return [[MMPerson alloc] initWithName:self.name
+                                      age:self.age
+                                  address:self.address];
+}
+- (MMPersonBuilder *(^)(NSString *name))configName{
+    return ^MMPersonBuilder *(NSString *name ){
+        self.name = name;
+        return self;
+    };
+}
+- (MMPersonBuilder *(^)(NSInteger age))configAge{
+    return ^MMPersonBuilder *(NSInteger age){
+        self.age = age;
+        return self;
+    };
+}
+- (MMPersonBuilder *(^)(NSString *address))configAddress{
+    return ^MMPersonBuilder *(NSString *address ){
+        self.address = address;
+        return self;
+    };
+}
+
+@end
+
+
+
 @interface MMSearchViewController ()<MMSearchDefaultCollectionViewDelegate>
 
 @property (nonatomic ,strong) MM_SearchDefaultCollectionView * defaultView;
@@ -52,6 +154,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"搜索";
+    
+    
+    MMPerson * p1 = [[MMPerson alloc] initWithName:@"name" age:20 address:@"shanghai"];
+
+    MMPersonBuilder * p3Builder = [[MMPersonBuilder alloc] init];
+    p3Builder.name = @"name";
+    p3Builder.age = 20;
+    p3Builder.address = @"shanghai";
+    MMPerson * p3 = [p3Builder build];
+    
+    MMPerson * p4 = [MMPerson personWith:^(MMPersonBuilder *builder) {
+        builder.name = @"name";
+        builder.age = 20;
+        builder.address = @"shanghai";
+    }];
+    
+    MMPerson * p5 = [MMPersonBuilder new].configName(@"name").configAge(20).configAddress(@"shanghai").build;
+    
+    MMPerson * p2 = [[MMPerson alloc] initWithBuilderProtocol:^(id<MMPersonBuilder> builder) {
+        builder.name = @"name";
+        builder.age = 20;
+        builder.address = @"shanghai";
+    }];
+    
+    MMPerson * p6 = [[MMPerson alloc] initWithBuilder_ahk:^(id<MMPersonBuilder>builder) {
+        builder.name = @"name";
+//        builder.age = 20;
+//        builder.address = @"shanghai";
+//        [builder logInfo];
+//        [builder crash];// 打开这个代码， 运行会崩溃，因为 MMPerson 类没有实现对应的方法
+    }];
+    
     
     MM_Config * config = [[MM_Config alloc] init];
     config.address = @"10.0.1.181";
