@@ -11,7 +11,7 @@
 @implementation UILabel (ContentSize)
 
 + (void)load{
-    NSLog(@"+load UILabel(ContentSize)");
+//    NSLog(@"+load UILabel(ContentSize)");
 }
 
 - (CGSize)contentSize

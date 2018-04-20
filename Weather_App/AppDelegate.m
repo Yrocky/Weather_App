@@ -29,10 +29,15 @@ void example_A(){
     void (^block)() = arr[0];
     block();
 }
+extern CFAbsoluteTime StartTime;
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"Launched in %f sec", CFAbsoluteTimeGetCurrent() - StartTime);
+    });
     
     [UINavigationBar appearance].backItem.leftItemsSupplementBackButton = YES;
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"back"];
@@ -109,6 +114,8 @@ void example_A(){
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application{
+    NSLog(@"AppDelegate warning");
+}
 
 @end

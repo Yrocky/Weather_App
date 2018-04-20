@@ -26,8 +26,24 @@
 //    block();
 //}
 
+NSArray * getBlockFromArray(){
+    
+    NSArray * arr = [NSArray arrayWithObjects:^{NSLog(@"blk-1");}, ^{NSLog(@"blk-2");},nil];
+    NSLog(@"blk:%@",arr[0]);
+    return arr;
+}
+
+CFAbsoluteTime StartTime;
 int main(int argc, char * argv[]) {
     @autoreleasepool {
+        
+        StartTime = CFAbsoluteTimeGetCurrent();
+        
+        typedef void (^BlockType)();
+        NSLog(@"load main-func");
+        BlockType blk = getBlockFromArray()[0];
+        
+        blk();
         
         NSDate * date = [NSDate new]; // to
         

@@ -215,6 +215,15 @@
         
         s;
     })];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mm_didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+}
+
+- (void) mm_didReceiveMemoryWarning{
+    NSLog(@"RootViewController warning");
+}
+
+- (void)didReceiveMemoryWarning{
+    NSLog(@"RootViewController override warning");
 }
 
 - (BOOL)prefersStatusBarHidden{
