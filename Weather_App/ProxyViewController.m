@@ -266,6 +266,16 @@ static void PrintDescription(NSString *name, id obj)
 //}
 @end
 
+@interface MyObject:NSObject
++ (instancetype) factoryMethod_1;
++ (id) factoryMethod_2;
+@end
+
+@implementation MyObject
++ (instancetype) factoryMethod_1 {return [[[self class] alloc] init]; }
++ (id) factoryMethod_2 {return [[[self class] alloc] init]; }
+@end
+
 @interface ProxyViewController ()
 @property (nonatomic ,strong) MMTarget * targetObject;
 @property (nonatomic ,strong) CADisplayLink * link;
@@ -278,6 +288,7 @@ static void PrintDescription(NSString *name, id obj)
 @property (nonatomic ,strong) NSMutableArray * array;
 
 @end
+
 
 @implementation ProxyViewController
 
@@ -297,8 +308,29 @@ static void PrintDescription(NSString *name, id obj)
     
     self.title = @"Proxy";
     self.view.backgroundColor = [UIColor whiteColor];
-    
+
     self.array = [[NSMutableArray alloc] init];
+    
+    id obj_1 = [NSArray alloc];
+    id obj_2 = [obj_1 init];
+    
+    id obj_3 = [NSMutableArray alloc];
+    id obj_4 = [obj_3 init];
+
+    
+    
+    
+    
+    id obj_5 = [MyObject alloc];
+    id obj_6 = [obj_5 init];
+    
+    
+    
+    
+//    NSInteger * a,b;
+//    a = [[MyObject factoryMethod_1] count];
+//    b = [[MyObject factoryMethod_2] count];
+    
     
 //    [self perfromSelectorInMainThread];
 //    self.thread1 = [[NSThread alloc] initWithTarget:self selector:@selector(perfromSelectorInUnMainThread) object:nil];
