@@ -304,12 +304,42 @@ static void PrintDescription(NSString *name, id obj)
 //    self.thread1 = [[NSThread alloc] initWithTarget:self selector:@selector(perfromSelectorInUnMainThread) object:nil];
 //    [self.thread1 start];
 //    [self timer];
+    [self backgroundTimer];
     [self loadAndInitialize];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mm_didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+    NSLog(@"ProxyViewController %s",__func__);
+}
+- (void) backgroundTimer{
+    NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addObjectToArray) userInfo:nil repeats:YES];
+    self.timer2 = timer;
+}
+- (void) addObjectToArray{
+    for (int i = 1000000; i > 0; i --) {
+        [self.array addObject:[MMSuperClass new]];
+    }
+    NSLog(@"aray.count:%d",self.array.count);
+}
+- (void) viewDidUnload{
+    
+    [super viewDidUnload];
+    NSLog(@"ProxyViewController %s",__func__);
 }
 
-- (void)didReceiveMemoryWarning{
+- (void) loadView{
+    [super loadView];
+    NSLog(@"ProxyViewController %s",__func__);
+}
 
-    NSLog(@"Proxy override warning");
+
+- (void) mm_didReceiveMemoryWarning{
+    [self.array removeAllObjects];
+    NSLog(@"ProxyViewController warning");
+}
+
+
+- (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
+    NSLog(@"ProxyViewController override warning");
 }
 
 - (void) loadAndInitialize{
