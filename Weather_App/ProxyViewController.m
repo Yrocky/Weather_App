@@ -9,6 +9,7 @@
 #import "ProxyViewController.h"
 #import <objc/runtime.h>
 #import "YYWeakProxy.h"
+#import "MMLinkedList.h"
 
 @interface MMProxyA : NSProxy
 @property (nonatomic, strong) id target;
@@ -326,6 +327,16 @@ static void PrintDescription(NSString *name, id obj)
     
     
     
+    MMLinkedList * list = [MMLinkedList linkedListWithHead:@0];
+    for (NSInteger index = 1; index < 5; index ++) {
+//        [list addToBack:@(index)];
+        [list addToFront:@(index)];
+    }
+    [list printList];
+    
+//    [list reverseList];
+    [list insertValue:@(20) atIndex:3];
+    [list printList];
     
 //    NSInteger * a,b;
 //    a = [[MyObject factoryMethod_1] count];
@@ -336,10 +347,10 @@ static void PrintDescription(NSString *name, id obj)
 //    self.thread1 = [[NSThread alloc] initWithTarget:self selector:@selector(perfromSelectorInUnMainThread) object:nil];
 //    [self.thread1 start];
 //    [self timer];
-    [self backgroundTimer];
-    [self loadAndInitialize];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mm_didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
-    NSLog(@"ProxyViewController %s",__func__);
+//    [self backgroundTimer];
+//    [self loadAndInitialize];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mm_didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+//    NSLog(@"ProxyViewController %s",__func__);
 }
 - (void) backgroundTimer{
     NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addObjectToArray) userInfo:nil repeats:YES];
