@@ -34,6 +34,7 @@
 		7F63BBC02072036F0084ABC8 /* LunarCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBBE2072036E0084ABC8 /* LunarCore.m */; };
 		7F7BA142208DE2E90085E045 /* MMLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F7BA141208DE2E90085E045 /* MMLinkedList.m */; };
 		7F7BA146208DE3000085E045 /* MMNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F7BA145208DE3000085E045 /* MMNode.m */; };
+		7F7BA149208EDB240085E045 /* MMSinglyLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F7BA148208EDB240085E045 /* MMSinglyLinkedList.m */; };
 		7F8593551FDE54AA00E6AFFC /* MMXibViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8593541FDE54AA00E6AFFC /* MMXibViewController.m */; };
 		7F8593581FDE54DC00E6AFFC /* MMXibCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8593571FDE54DC00E6AFFC /* MMXibCustomView.m */; };
 		7F85935A1FDE54E500E6AFFC /* MMXibCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F8593591FDE54E500E6AFFC /* MMXibCustomView.xib */; };
@@ -197,6 +198,8 @@
 		7F7BA141208DE2E90085E045 /* MMLinkedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMLinkedList.m; sourceTree = "<group>"; };
 		7F7BA144208DE3000085E045 /* MMNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMNode.h; sourceTree = "<group>"; };
 		7F7BA145208DE3000085E045 /* MMNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMNode.m; sourceTree = "<group>"; };
+		7F7BA147208EDB240085E045 /* MMSinglyLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSinglyLinkedList.h; sourceTree = "<group>"; };
+		7F7BA148208EDB240085E045 /* MMSinglyLinkedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSinglyLinkedList.m; sourceTree = "<group>"; };
 		7F8593531FDE54AA00E6AFFC /* MMXibViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMXibViewController.h; sourceTree = "<group>"; };
 		7F8593541FDE54AA00E6AFFC /* MMXibViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMXibViewController.m; sourceTree = "<group>"; };
 		7F8593561FDE54DC00E6AFFC /* MMXibCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMXibCustomView.h; sourceTree = "<group>"; };
@@ -523,6 +526,8 @@
 		7F7BA143208DE2EF0085E045 /* 链表 */ = {
 			isa = PBXGroup;
 			children = (
+				7F7BA147208EDB240085E045 /* MMSinglyLinkedList.h */,
+				7F7BA148208EDB240085E045 /* MMSinglyLinkedList.m */,
 				7F7BA140208DE2E90085E045 /* MMLinkedList.h */,
 				7F7BA141208DE2E90085E045 /* MMLinkedList.m */,
 				7F7BA144208DE3000085E045 /* MMNode.h */,
@@ -1201,6 +1206,7 @@
 				D7A73E231FB04F4800818CF5 /* MM_FindFriendEntryItemView.m in Sources */,
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
+				7F7BA149208EDB240085E045 /* MMSinglyLinkedList.m in Sources */,
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
 				7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */,
 				7F590D7B1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m in Sources */,

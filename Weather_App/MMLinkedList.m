@@ -127,8 +127,9 @@
 // O(n)
 - (id) valueAtIndex:(NSInteger)index{
     
+    // 这里由于是取的node.next，可能为nil，所以不用考虑是否index越界
     MMNode * currentNode = self.head;
-    for (int i = 1; i < index; i ++) {
+    for (int i = 0; i < index; i ++) {
         currentNode = currentNode.next;
     }
     return currentNode.value;
@@ -136,6 +137,44 @@
 
 - (NSInteger) count{
     return _count;
+}
+
+- (NSArray *)findValue:(id)value{
+    
+    if (value) {
+        MMNode * currentNode = self.head;
+        NSMutableArray * result = [@[] mutableCopy];
+        while (nil != currentNode.next) {
+            
+            if ([currentNode.value isEqual:value]) {
+                [result addObject:currentNode];
+            }
+            currentNode = currentNode.next;
+        }
+        return result;
+    }
+    return nil;
+}
+
+- (BOOL)removeValueAtIndex:(NSInteger)index{
+    
+    if (index < 1 || index > [self count]) {
+        NSLog(@"index <%ld> didn't in the range of list",(long)index);
+        return NO;
+    }
+    MMNode * currentNode = self.head;
+    
+    for (NSInteger i = 1; i < index; i ++) {
+        if (currentNode.next == nil) {// 链表中只有一个node的时候
+            return NO;
+        }
+        currentNode = currentNode.next;// 向下遍历，直到便利到index所在的node
+    }
+    // 将index所在的node的next指向node.next.next
+    currentNode.next = currentNode.next.next;
+    _count --;
+    
+    return YES;
 }
 
 - (void)printList{
@@ -171,5 +210,15 @@
     
     // for debug
     [self printList];
+}
+
+- (NSString *)description
+{
+    NSMutableString * string = [@"" mutableCopy];
+    for (NSInteger index = 0; index < [self count]; index ++) {
+        NSLog(@"index<%d> : value<%@>",index,[self valueAtIndex:index]);
+        [string appendFormat:@"%@ -- ",[self valueAtIndex:index]];
+    }
+    return [NSString stringWithFormat:@"%@", string];
 }
 @end

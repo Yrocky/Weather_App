@@ -318,20 +318,23 @@ static void PrintDescription(NSString *name, id obj)
     
     
     
-    MMLinkedList * list = [MMLinkedList linkedListWithHead:@0];
+    MMLinkedList<NSNumber *> * list = [MMLinkedList linkedListWithHead:@0];
     for (NSInteger index = 1; index < 5; index ++) {
 //        [list addToBack:@(index)];
         [list addToFront:@(index)];
     }
     [list printList];
-//    NSData * data;
-//    [data writeToFile:@"" atomically:YES];
-//    [@"" writeToFile:@"" atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
 //    [list reverseList];
-    [list insertValue:@(20) atIndex:3];
+    [list insertValue:@(4) atIndex:3];
     [list printList];
+    NSLog(@"find:%@",[list findValue:@(4)]);
+    id value = [list valueAtIndex:0];
+    value = list[3];// NSFastEnumeration
     
+    for (NSInteger index = 0; index < [list count]; index ++) {
+        NSLog(@"value:%@",[list valueAtIndex:index]);
+    }
 //    NSInteger * a,b;
 //    a = [[MyObject factoryMethod_1] count];
 //    b = [[MyObject factoryMethod_2] count];
