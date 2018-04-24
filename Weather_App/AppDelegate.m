@@ -94,7 +94,8 @@ extern CFAbsoluteTime StartTime;
 //    NSLog(@"difference:%@",[array difference:other]);// 34 45 67 78
 //    NSLog(@"array-subtract-other:%@",[array subtract:other]);// 34 45
 //    NSLog(@"other-subtract-array:%@",[other subtract:array]);// 67 78
-    
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSLog(@"docPath:%@",docPath);
     return YES;
 }
 

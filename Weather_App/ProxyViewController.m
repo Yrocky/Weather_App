@@ -79,10 +79,13 @@
 - (void) watch:(NSString *)movie;
 @end
 
-@interface MMMiaoMovie : NSObject<MMMiaoMovie>
+@interface MMMiaoMovie : NSObject<MMMiaoMovie,NSCopying>
 @end
 
 @implementation MMMiaoMovie
+- (id)copyWithZone:(NSZone *)zone{
+    return [[[self class] allocWithZone:zone] init];
+}
 - (void) watch:(NSString *)movie{
     NSLog(@"use MiaoMovie watch %@",movie);
 }
@@ -312,18 +315,6 @@ static void PrintDescription(NSString *name, id obj)
 
     self.array = [[NSMutableArray alloc] init];
     
-    id obj_1 = [NSArray alloc];
-    id obj_2 = [obj_1 init];
-    
-    id obj_3 = [NSMutableArray alloc];
-    id obj_4 = [obj_3 init];
-
-    
-    
-    
-    
-    id obj_5 = [MyObject alloc];
-    id obj_6 = [obj_5 init];
     
     
     
@@ -333,6 +324,9 @@ static void PrintDescription(NSString *name, id obj)
         [list addToFront:@(index)];
     }
     [list printList];
+//    NSData * data;
+//    [data writeToFile:@"" atomically:YES];
+//    [@"" writeToFile:@"" atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
 //    [list reverseList];
     [list insertValue:@(20) atIndex:3];
@@ -351,6 +345,38 @@ static void PrintDescription(NSString *name, id obj)
 //    [self loadAndInitialize];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mm_didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
 //    NSLog(@"ProxyViewController %s",__func__);
+    
+    [self funcWithCopy];
+}
+
+- (void) funcWithCopy{
+    
+    NSArray * array = [NSArray arrayWithObjects:[MMMiaoMovie new],[MMMiaoMovie new],[MMMiaoMovie new], nil];
+    
+    NSMutableArray * mutableArray = [array mutableCopy];
+    
+    NSArray * array_1 = [mutableArray copy];
+    
+    NSMutableArray * mutableArray_1 = [[NSMutableArray alloc] initWithArray:array copyItems:YES];
+    
+    NSArray * array_2 = [array copy];
+    
+    NSMutableArray * array_3 = [mutableArray mutableCopy];
+    
+
+}
+- (void) testAlloc{
+    
+    id obj_1 = [NSArray alloc];
+    id obj_2 = [obj_1 init];
+    
+    id obj_3 = [NSMutableArray alloc];
+    id obj_4 = [obj_3 init];
+    
+    
+    
+    id obj_5 = [MyObject alloc];
+    id obj_6 = [obj_5 init];
 }
 - (void) backgroundTimer{
     NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addObjectToArray) userInfo:nil repeats:YES];

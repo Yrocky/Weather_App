@@ -347,7 +347,7 @@
 
 - (id)copyWithZone:(NSZone *)zone
 {
-    MMRunwayLabel *label = [[[self class] alloc] init]; // <== 注意这里
+    MMRunwayLabel *label = [[[self class] allocWithZone:zone] init]; // <== 注意这里
     if (self.text) {
         [label configText:self.text];
     }
