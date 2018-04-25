@@ -17,7 +17,8 @@
 // https://www.jianshu.com/p/2ec49d525871
 
 // 但是什么情况下才会去使用链表呢？为什么不使用NSArray呢？
-// 在知乎上看到一个答案，还是比较合理的：https://www.zhihu.com/question/31082722?sort=created
+// 在知乎上看到一些答案，还是比较合理的：https://www.zhihu.com/question/31082722?sort=created
+// 在so上的一个答案：https://stackoverflow.com/questions/166884/array-versus-linked-list
 // 链表的优点除了「插入删除不需要移动其他元素」之外，还在于它是一个局部化结构。就是说当你拿到链表的一个 node 之后，不需要太多其它数据，就可以完成插入，删除的操作。
 // 而其它的数据结构不行。比如说 array，你只拿到一个 item 是断不敢做插入删除的。
 
