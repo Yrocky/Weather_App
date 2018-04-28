@@ -23,9 +23,11 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
+// 定义一个红色的关键字，和系统的@interface、@implementation类似
 // For a magic reserved keyword color, use @defs(your_protocol_name)
 #define defs _pk_extension
 
+// 定义这个关键字的接口，接受什么参数
 // Interface
 #define _pk_extension($protocol) _pk_extension_imp($protocol, _pk_get_container_class($protocol))
 

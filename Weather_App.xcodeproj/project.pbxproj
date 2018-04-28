@@ -32,6 +32,14 @@
 		7F63BBB8206E25340084ABC8 /* HomeBillContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBB7206E25340084ABC8 /* HomeBillContainerView.m */; };
 		7F63BBBC2071EC650084ABC8 /* HomeBillContentDefaultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBBB2071EC650084ABC8 /* HomeBillContentDefaultView.m */; };
 		7F63BBC02072036F0084ABC8 /* LunarCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBBE2072036E0084ABC8 /* LunarCore.m */; };
+		7F6FF9B72091DC6100A84A81 /* MMCoreTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6FF9B62091DC6000A84A81 /* MMCoreTextViewController.m */; };
+		7F6FFB8C209458E100A84A81 /* ZPAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6FFB7C209458E000A84A81 /* ZPAttributedLabel.m */; };
+		7F6FFB8D209458E100A84A81 /* NSAttributedString+ZPAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6FFB7F209458E000A84A81 /* NSAttributedString+ZPAttributedString.m */; };
+		7F6FFB8E209458E100A84A81 /* ZPTextDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6FFB83209458E000A84A81 /* ZPTextDrawer.m */; };
+		7F6FFB8F209458E100A84A81 /* ZPTextMeasurement.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6FFB84209458E000A84A81 /* ZPTextMeasurement.m */; };
+		7F6FFB90209458E100A84A81 /* ZPTextLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6FFB86209458E000A84A81 /* ZPTextLayout.m */; };
+		7F6FFB91209458E100A84A81 /* ZPLabelLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6FFB87209458E000A84A81 /* ZPLabelLayer.m */; };
+		7F6FFB92209458E100A84A81 /* ZPTextRunDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6FFB89209458E000A84A81 /* ZPTextRunDelegate.m */; };
 		7F7BA142208DE2E90085E045 /* MMLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F7BA141208DE2E90085E045 /* MMLinkedList.m */; };
 		7F7BA146208DE3000085E045 /* MMNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F7BA145208DE3000085E045 /* MMNode.m */; };
 		7F7BA149208EDB240085E045 /* MMSinglyLinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F7BA148208EDB240085E045 /* MMSinglyLinkedList.m */; };
@@ -195,6 +203,22 @@
 		7F63BBBB2071EC650084ABC8 /* HomeBillContentDefaultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContentDefaultView.m; sourceTree = "<group>"; };
 		7F63BBBE2072036E0084ABC8 /* LunarCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunarCore.m; sourceTree = "<group>"; };
 		7F63BBBF2072036E0084ABC8 /* LunarCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunarCore.h; sourceTree = "<group>"; };
+		7F6FF9B52091DC6000A84A81 /* MMCoreTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMCoreTextViewController.h; sourceTree = "<group>"; };
+		7F6FF9B62091DC6000A84A81 /* MMCoreTextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMCoreTextViewController.m; sourceTree = "<group>"; };
+		7F6FFB7B209458E000A84A81 /* ZPAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPAttributedLabel.h; sourceTree = "<group>"; };
+		7F6FFB7C209458E000A84A81 /* ZPAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPAttributedLabel.m; sourceTree = "<group>"; };
+		7F6FFB7F209458E000A84A81 /* NSAttributedString+ZPAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+ZPAttributedString.m"; sourceTree = "<group>"; };
+		7F6FFB80209458E000A84A81 /* NSAttributedString+ZPAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+ZPAttributedString.h"; sourceTree = "<group>"; };
+		7F6FFB82209458E000A84A81 /* ZPLabelLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPLabelLayer.h; sourceTree = "<group>"; };
+		7F6FFB83209458E000A84A81 /* ZPTextDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPTextDrawer.m; sourceTree = "<group>"; };
+		7F6FFB84209458E000A84A81 /* ZPTextMeasurement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPTextMeasurement.m; sourceTree = "<group>"; };
+		7F6FFB85209458E000A84A81 /* ZPTextRunDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPTextRunDelegate.h; sourceTree = "<group>"; };
+		7F6FFB86209458E000A84A81 /* ZPTextLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPTextLayout.m; sourceTree = "<group>"; };
+		7F6FFB87209458E000A84A81 /* ZPLabelLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPLabelLayer.m; sourceTree = "<group>"; };
+		7F6FFB88209458E000A84A81 /* ZPTextDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPTextDrawer.h; sourceTree = "<group>"; };
+		7F6FFB89209458E000A84A81 /* ZPTextRunDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZPTextRunDelegate.m; sourceTree = "<group>"; };
+		7F6FFB8A209458E000A84A81 /* ZPTextLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPTextLayout.h; sourceTree = "<group>"; };
+		7F6FFB8B209458E000A84A81 /* ZPTextMeasurement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPTextMeasurement.h; sourceTree = "<group>"; };
 		7F7BA140208DE2E90085E045 /* MMLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMLinkedList.h; sourceTree = "<group>"; };
 		7F7BA141208DE2E90085E045 /* MMLinkedList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMLinkedList.m; sourceTree = "<group>"; };
 		7F7BA144208DE3000085E045 /* MMNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMNode.h; sourceTree = "<group>"; };
@@ -526,6 +550,51 @@
 			path = LunarCore;
 			sourceTree = "<group>";
 		};
+		7F6FFB7A209458E000A84A81 /* ZPLabel */ = {
+			isa = PBXGroup;
+			children = (
+				7F6FFB7B209458E000A84A81 /* ZPAttributedLabel.h */,
+				7F6FFB7C209458E000A84A81 /* ZPAttributedLabel.m */,
+				7F6FFB7D209458E000A84A81 /* Utility */,
+			);
+			path = ZPLabel;
+			sourceTree = "<group>";
+		};
+		7F6FFB7D209458E000A84A81 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				7F6FFB7E209458E000A84A81 /* Category */,
+				7F6FFB81209458E000A84A81 /* ZPText */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		7F6FFB7E209458E000A84A81 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				7F6FFB7F209458E000A84A81 /* NSAttributedString+ZPAttributedString.m */,
+				7F6FFB80209458E000A84A81 /* NSAttributedString+ZPAttributedString.h */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		7F6FFB81209458E000A84A81 /* ZPText */ = {
+			isa = PBXGroup;
+			children = (
+				7F6FFB82209458E000A84A81 /* ZPLabelLayer.h */,
+				7F6FFB83209458E000A84A81 /* ZPTextDrawer.m */,
+				7F6FFB84209458E000A84A81 /* ZPTextMeasurement.m */,
+				7F6FFB85209458E000A84A81 /* ZPTextRunDelegate.h */,
+				7F6FFB86209458E000A84A81 /* ZPTextLayout.m */,
+				7F6FFB87209458E000A84A81 /* ZPLabelLayer.m */,
+				7F6FFB88209458E000A84A81 /* ZPTextDrawer.h */,
+				7F6FFB89209458E000A84A81 /* ZPTextRunDelegate.m */,
+				7F6FFB8A209458E000A84A81 /* ZPTextLayout.h */,
+				7F6FFB8B209458E000A84A81 /* ZPTextMeasurement.h */,
+			);
+			path = ZPText;
+			sourceTree = "<group>";
+		};
 		7F7BA143208DE2EF0085E045 /* 链表 */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +713,7 @@
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
 				D7A325E220772DD700B2F8AB /* BillKeyboardView.h */,
 				D7A325E320772DD700B2F8AB /* BillKeyboardView.m */,
+				7F6FFB7A209458E000A84A81 /* ZPLabel */,
 				D713B8CF2076034900D388F2 /* bill-input */,
 				D713B8B4207280C900D388F2 /* CustomNavigationBar.h */,
 				D713B8B5207280C900D388F2 /* CustomNavigationBar.m */,
@@ -957,6 +1027,8 @@
 				D713B8B82075FEC700D388F2 /* ExtensionViewController.m */,
 				7F1D9A90208714C000E822B7 /* ProxyViewController.h */,
 				7F1D9A91208714C000E822B7 /* ProxyViewController.m */,
+				7F6FF9B52091DC6000A84A81 /* MMCoreTextViewController.h */,
+				7F6FF9B62091DC6000A84A81 /* MMCoreTextViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -1202,8 +1274,11 @@
 				7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */,
 				D706294A1F8B185100F52FCB /* HSSwitchTableViewCell.m in Sources */,
 				D70629471F8B185100F52FCB /* HSCustomTableViewCell.m in Sources */,
+				7F6FFB92209458E100A84A81 /* ZPTextRunDelegate.m in Sources */,
+				7F6FFB8E209458E100A84A81 /* ZPTextDrawer.m in Sources */,
 				7F590D7F1FA9A5D4006F7BF0 /* UIResponder+STPopup.m in Sources */,
 				D713B8C2207601C100D388F2 /* BillExtensionView.m in Sources */,
+				7F6FFB91209458E100A84A81 /* ZPLabelLayer.m in Sources */,
 				D706294F1F8B189C00F52FCB /* UIColor+Common.m in Sources */,
 				7F590D7D1FA9A5D4006F7BF0 /* STPopupLeftBarItem.m in Sources */,
 				7FD8CC351F98A995005DC9FF /* NSObject+CodableProperties.m in Sources */,
@@ -1217,10 +1292,12 @@
 				7F590D7B1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m in Sources */,
 				7F3E0A211FB93BF200F8C258 /* BottomFollowView.m in Sources */,
 				7FE705C11FBD9AAB009FF3A7 /* MMLabel.m in Sources */,
+				7F6FFB8C209458E100A84A81 /* ZPAttributedLabel.m in Sources */,
 				D706293D1F8B185100F52FCB /* HSImageCellModel.m in Sources */,
 				7F7BA142208DE2E90085E045 /* MMLinkedList.m in Sources */,
 				7FE705B81FBD6A52009FF3A7 /* SomeCustomView.m in Sources */,
 				D70F5DE01FA81D02007FBD43 /* FDPresentingAnimator.m in Sources */,
+				7F6FF9B72091DC6100A84A81 /* MMCoreTextViewController.m in Sources */,
 				D70F5DEA1FA81EED007FBD43 /* Easing.c in Sources */,
 				7F9CED3B1F5CEAA000A64EB5 /* MMRunwayCoreView.m in Sources */,
 				7F7BA146208DE3000085E045 /* MMNode.m in Sources */,
@@ -1269,6 +1346,7 @@
 				D70F5DD71FA74B26007FBD43 /* UIView+Glow.m in Sources */,
 				D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */,
 				7FA274CF20876366001B9FD2 /* YYWeakProxy.m in Sources */,
+				7F6FFB8D209458E100A84A81 /* NSAttributedString+ZPAttributedString.m in Sources */,
 				D706293A1F8B185100F52FCB /* HSSetTableViewMainController.m in Sources */,
 				7FA726151FFB7A2800C0F6F2 /* NSNumber+Sugar.m in Sources */,
 				D7008DDC1FB180B500BD6EA0 /* MMNavigationController.m in Sources */,
@@ -1277,7 +1355,9 @@
 				D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */,
 				D70629391F8B185100F52FCB /* MMAssetsCellModel.m in Sources */,
 				7F590D7A1FA9A5D4006F7BF0 /* STPopupController.m in Sources */,
+				7F6FFB90209458E100A84A81 /* ZPTextLayout.m in Sources */,
 				D7A73E201FB04B2B00818CF5 /* MM_FindFriendEntryViewController.m in Sources */,
+				7F6FFB8F209458E100A84A81 /* ZPTextMeasurement.m in Sources */,
 				D70F5DEB1FA81EED007FBD43 /* YXEasing.m in Sources */,
 				7F14A7DC206B2A54006EC133 /* MMRunwayManager.m in Sources */,
 				7FA7262E1FFCE40E00C0F6F2 /* MMBackground.m in Sources */,

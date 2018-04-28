@@ -9,9 +9,92 @@
 #import "MMXibViewController.h"
 #import "MMXibCustomView.h"
 #import "Masonry.h"
+#import "PKProtocolExtension.h"
+
+@protocol MMMoveable <NSObject>
+@optional
+- (void) move;
+@required
+- (NSString *) name;
+@end
+
+@defs(MMMoveable)
+
+- (void) move{
+    NSLog(@"%@ can moveable",self.name);
+}
+- (NSString *) name{
+    return @"default name";
+}
+@end
+
+@interface MMRocky : NSObject<MMMoveable>
+
+@end
+
+@implementation MMRocky
+
+- (NSString *)name{
+    return @"rocky";
+}
+@end
+
+@interface MMRunloopObserver : NSObject
+{
+    int timeoutCount;
+    CFRunLoopObserverRef observer;
+    
+@public
+    dispatch_semaphore_t semaphore;
+    CFRunLoopActivity activity;
+}
+@end
+
+@implementation MMRunloopObserver
+
+- (void)dealloc{
+    [self stop];
+}
+
+- (void) stop{
+    if (observer) {
+        CFRunLoopRemoveObserver(CFRunLoopGetMain(), observer, kCFRunLoopCommonModes);
+        CFRelease(observer);
+        observer = NULL;
+    }
+}
+static void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info)
+{
+    NSLog(@"%@",(__bridge MMRunloopObserver*)info);
+    
+//    PerformanceMonitor *moniotr = (__bridge PerformanceMonitor*)info;
+    
+//    moniotr->activity = activity;
+    
+//    dispatch_semaphore_t semaphore = moniotr->semaphore;
+//    dispatch_semaphore_signal(semaphore);
+}
+/*
+typedef struct {
+    CFIndex    version;
+    void *    info;
+    const void *(*retain)(const void *info);
+    void    (*release)(const void *info);
+    CFStringRef    (*copyDescription)(const void *info);
+} CFRunLoopObserverContext;
+*/
+- (void) start{
+    
+    // context 用来在runloop中进行传递的数据
+    // 这里对 CFRunLoopObserverContext 结构体进行创建，将 MMRunloopObserver 的实例传递过去
+    CFRunLoopObserverContext context = {0,(__bridge void*)self,NULL,NULL};
+    observer = CFRunLoopObserverCreate(kCFAllocatorDefault, kCFRunLoopBeforeWaiting, true, 0, &runLoopObserverCallBack, &context);
+    CFRunLoopAddObserver(CFRunLoopGetMain(), observer, kCFRunLoopCommonModes);
+}
+@end
 
 @interface MMXibViewController ()
-
+@property (nonatomic ,strong) MMRunloopObserver * observer;
 @end
 
 @implementation MMXibViewController
@@ -50,6 +133,12 @@
         make.right.mas_equalTo(oneView);
         make.height.mas_equalTo(oneView);
     }];
+    
+    MMRocky * rocky = [MMRocky new];
+    [rocky move];
+    
+    self.observer = [MMRunloopObserver new];
+    [self.observer start];
 }
 
 - (void)didReceiveMemoryWarning {

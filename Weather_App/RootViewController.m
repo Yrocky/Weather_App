@@ -30,6 +30,7 @@
 #import "HomeViewController.h"
 #import "ExtensionViewController.h"
 #import "ProxyViewController.h"
+#import "MMCoreTextViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic ,strong) NSString * str;
@@ -74,6 +75,13 @@
             [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Core Text" actionBlock:^(HSBaseCellModel *model) {
+            
+            MMCoreTextViewController * vc = [[MMCoreTextViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
         
         c = [[HSTitleCellModel alloc] initWithTitle:@"记账-拓展功能" actionBlock:^(HSBaseCellModel *model) {
             
@@ -89,137 +97,133 @@
         }];
         [s addCellModel:c];
         
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"Runway" actionBlock:^(HSBaseCellModel *model) {
-//
-//            RunwayViewController * vc = [[RunwayViewController alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"礼物效果" actionBlock:^(HSBaseCellModel *model) {
-//
-//            MMGiftEffectViewController * vc = [[MMGiftEffectViewController alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"自动回复" actionBlock:^(HSBaseCellModel *model) {
-//
-//            MM_AutoReplyViewController * vc = [[MM_AutoReplyViewController alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"模型化TableView" actionBlock:^(HSBaseCellModel *model) {
-//
-//            TableDemoViewController * vc = [[TableDemoViewController alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"CollectionView折叠" actionBlock:^(HSBaseCellModel *model) {
-//
-//            MMSearchViewController * vc = [[MMSearchViewController alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"粘性指引视图" actionBlock:^(HSBaseCellModel *model) {
-//
-//            HLLIndicatorViewController * vc = [[HLLIndicatorViewController alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"咸鱼首页" actionBlock:^(HSBaseCellModel *model) {
-//
-//
-//            FDViewController * vc = [[FDViewController alloc] init];
-//            vc.transitioningDelegate  = self;
-//            vc.modalPresentationStyle = UIModalPresentationCustom;
-////            UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//            [self presentViewController:vc animated:YES completion:nil];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"生成PDF" actionBlock:^(HSBaseCellModel *model) {
-//
-//            CreatePDFViewController * vc = [[CreatePDFViewController alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"渲染HTML" actionBlock:^(HSBaseCellModel *model) {
-//
-//            MarkdownRenderHTMLViewController * vc = [[MarkdownRenderHTMLViewController alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"发现界面" actionBlock:^(HSBaseCellModel *model) {
-//
-//            MM_FindFriendEntryViewController * vc = [[MM_FindFriendEntryViewController alloc] init];
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"布局" actionBlock:^(HSBaseCellModel *model) {
-//
-//            LayoutViewController * vc = [[LayoutViewController alloc] init];
-//            vc.title = @"布局";
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"Collection" actionBlock:^(HSBaseCellModel *model) {
-//
-//            MMCollectionViewController * vc = [[MMCollectionViewController alloc] init];
-//            vc.title = @"Collection";
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Runway" actionBlock:^(HSBaseCellModel *model) {
+
+            RunwayViewController * vc = [[RunwayViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"礼物效果" actionBlock:^(HSBaseCellModel *model) {
+
+            MMGiftEffectViewController * vc = [[MMGiftEffectViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"自动回复" actionBlock:^(HSBaseCellModel *model) {
+
+            MM_AutoReplyViewController * vc = [[MM_AutoReplyViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"模型化TableView" actionBlock:^(HSBaseCellModel *model) {
+
+            TableDemoViewController * vc = [[TableDemoViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"CollectionView折叠" actionBlock:^(HSBaseCellModel *model) {
+
+            MMSearchViewController * vc = [[MMSearchViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"粘性指引视图" actionBlock:^(HSBaseCellModel *model) {
+
+            HLLIndicatorViewController * vc = [[HLLIndicatorViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"咸鱼首页" actionBlock:^(HSBaseCellModel *model) {
+
+
+            FDViewController * vc = [[FDViewController alloc] init];
+            vc.transitioningDelegate  = self;
+            vc.modalPresentationStyle = UIModalPresentationCustom;
 //            UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//            [self.navigationController presentViewController:nav animated: 1 completion:nil];
-//        }];
-//        [s addCellModel:c];
-//
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"Xib" actionBlock:^(HSBaseCellModel *model) {
-//
-//            MMXibViewController * vc = [[MMXibViewController alloc] init];
-//            vc.title = @"Xib";
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"Card" actionBlock:^(HSBaseCellModel *model) {
-//
-//            MMCardViewController * vc = [[MMCardViewController alloc] init];
-//            vc.title = @"Card";
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"Animation" actionBlock:^(HSBaseCellModel *model) {
-//
-//            MMAnimationViewController * vc = [[MMAnimationViewController alloc] init];
-//            vc.title = @"Animation";
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
-//
-//        c = [[HSTitleCellModel alloc] initWithTitle:@"Async" actionBlock:^(HSBaseCellModel *model) {
-//
-//            AsyncDrawViewController * vc = [[AsyncDrawViewController alloc] init];
-//            vc.title = @"Async";
-//            [self.navigationController pushViewController:vc animated:YES];
-//        }];
-//        [s addCellModel:c];
+            [self presentViewController:vc animated:YES completion:nil];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"生成PDF" actionBlock:^(HSBaseCellModel *model) {
+
+            CreatePDFViewController * vc = [[CreatePDFViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"渲染HTML" actionBlock:^(HSBaseCellModel *model) {
+
+            MarkdownRenderHTMLViewController * vc = [[MarkdownRenderHTMLViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"发现界面" actionBlock:^(HSBaseCellModel *model) {
+
+            MM_FindFriendEntryViewController * vc = [[MM_FindFriendEntryViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"布局" actionBlock:^(HSBaseCellModel *model) {
+
+            LayoutViewController * vc = [[LayoutViewController alloc] init];
+            vc.title = @"布局";
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Collection" actionBlock:^(HSBaseCellModel *model) {
+
+            MMCollectionViewController * vc = [[MMCollectionViewController alloc] init];
+            vc.title = @"Collection";
+            UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            [self.navigationController presentViewController:nav animated: 1 completion:nil];
+        }];
+        [s addCellModel:c];
+
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Xib" actionBlock:^(HSBaseCellModel *model) {
+
+            MMXibViewController * vc = [[MMXibViewController alloc] init];
+            vc.title = @"Xib";
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Card" actionBlock:^(HSBaseCellModel *model) {
+
+            MMCardViewController * vc = [[MMCardViewController alloc] init];
+            vc.title = @"Card";
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Animation" actionBlock:^(HSBaseCellModel *model) {
+
+            MMAnimationViewController * vc = [[MMAnimationViewController alloc] init];
+            vc.title = @"Animation";
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Async" actionBlock:^(HSBaseCellModel *model) {
+
+            AsyncDrawViewController * vc = [[AsyncDrawViewController alloc] init];
+            vc.title = @"Async";
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
         
         s;
     })];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mm_didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
-    
-    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mm_didReceiveMemoryWarning)];
-    tap.numberOfTapsRequired = 1;
-    [self.view addGestureRecognizer:tap];
 }
 
 - (void) mm_didReceiveMemoryWarning{

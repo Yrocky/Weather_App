@@ -24,6 +24,7 @@
 #import "PKProtocolExtension.h"
 #import <pthread.h>
 
+// 声明一个结构体，里面有协议、实例方法、实例方法的个数、类方法、类方法个数
 typedef struct {
     Protocol *__unsafe_unretained protocol;
     Method *instanceMethods;
@@ -32,6 +33,7 @@ typedef struct {
     unsigned classMethodCount;
 } PKExtendedProtocol;
 
+// 三个全局静态变量
 static PKExtendedProtocol *allExtendedProtocols = NULL;
 static pthread_mutex_t protocolsLoadingLock = PTHREAD_MUTEX_INITIALIZER;
 static size_t extendedProtcolCount = 0, extendedProtcolCapacity = 0;
