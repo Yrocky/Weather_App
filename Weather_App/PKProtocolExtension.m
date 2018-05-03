@@ -34,7 +34,7 @@ typedef struct {
 } PKExtendedProtocol;
 
 // 三个全局静态变量
-static PKExtendedProtocol *allExtendedProtocols = NULL;
+static PKExtendedProtocol *allExtendedProtocols = NULL;// 用来保存工程中所有的使用了@defs的协议
 static pthread_mutex_t protocolsLoadingLock = PTHREAD_MUTEX_INITIALIZER;
 static size_t extendedProtcolCount = 0, extendedProtcolCapacity = 0;
 
@@ -49,7 +49,7 @@ Method *_pk_extension_create_merged(Method *existMethods, unsigned existMethodCo
     memcpy(mergedMethods + existMethodCount, appendingMethods, appendingMethodCount * sizeof(Method));
     return mergedMethods;
 }
-
+// 向类追加实例方法和类方法
 void _pk_extension_merge(PKExtendedProtocol *extendedProtocol, Class containerClass) {
     
     // Instance methods
@@ -75,9 +75,10 @@ void _pk_extension_merge(PKExtendedProtocol *extendedProtocol, Class containerCl
     extendedProtocol->classMethodCount += appendingClassMethodCount;
 }
 
+// 重写 新生成的类的 load 方法，内部只有一个方法 _pk_extension_load ，
 void _pk_extension_load(Protocol *protocol, Class containerClass) {
     
-    pthread_mutex_lock(&protocolsLoadingLock);
+    pthread_mutex_lock(&protocolsLoadingLock);// 加锁
     
     if (extendedProtcolCount >= extendedProtcolCapacity) {
         size_t newCapacity = 0;
@@ -148,6 +149,7 @@ static void _pk_extension_inject_class(Class targetClass, PKExtendedProtocol ext
     }
 }
 
+// 这个 _pk_extension_inject_entry 方法
 __attribute__((constructor)) static void _pk_extension_inject_entry(void) {
     
     pthread_mutex_lock(&protocolsLoadingLock);
