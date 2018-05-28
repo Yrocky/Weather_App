@@ -7,7 +7,7 @@
 //
 
 #import "MMCoreTextViewController.h"
-
+#import "NSArray+Algorithms.h"
 
 #if __clang__
 
@@ -58,6 +58,16 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    UIButton * buton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [buton setImage:[UIImage imageNamed:@"red_dot"] forState:UIControlStateNormal];
+    [buton setImage:nil forState:UIControlStateSelected];
+    [buton setTitle:@"normal" forState:UIControlStateNormal];
+    [buton setTitle:@"selected" forState:UIControlStateSelected];
+    //    [buton setImage:[UIImage imageNamed:@"cell_arrow_right"] forState:UIControlStateHighlighted];
+    //    [buton setTitle:@"high" forState:UIControlStateHighlighted];
+    [buton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:buton];
+    buton.frame = CGRectMake(0, 200, 90, 50);
     int a = MM_Mod(10,3);
     int c = MM_Mod(34,2);
     int d = MM_Int(8,5);
@@ -70,21 +80,26 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor orangeColor];
     
+    [self countingSort];
+    [self naiveBubbleSort];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)buttonAction:(UIButton *)button{
+    button.selected = !button.isSelected;
+//    [button setImage:button.isSelected?nil:[UIImage imageNamed:@"red_dot"] forState:UIControlStateNormal];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) naiveBubbleSort{
+    
+    NSMutableArray * a = [@[@(4),@(8),@(0),@(2),@(11),@(7),@(3)] mutableCopy];
+    [[a naiveBubbleSort] debugPrint];
 }
-*/
 
+- (void) countingSort{
+    
+    // 0-9之间的数字
+    NSArray * a = @[@(4),@(8),@(5),@(2),@(4),@(8),@(3)];
+    [a debugPrint];
+    [[a countingSortWithRange:NSMakeRange(1, 9)] debugPrint];
+}
 @end
