@@ -31,6 +31,7 @@
 #import "ExtensionViewController.h"
 #import "ProxyViewController.h"
 #import "MMCoreTextViewController.h"
+#import "RoundCornerViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic ,strong) NSString * str;
@@ -72,6 +73,13 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"NSProxy" actionBlock:^(HSBaseCellModel *model) {
             
             ProxyViewController * vc = [[ProxyViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"圆角问题" actionBlock:^(HSBaseCellModel *model) {
+            
+            RoundCornerViewController * vc = [[RoundCornerViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];

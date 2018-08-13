@@ -80,8 +80,28 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor orangeColor];
     
-    [self countingSort];
-    [self naiveBubbleSort];
+//    [self countingSort];
+//    [self naiveBubbleSort];
+    
+    NSArray * lts = @[NSLinguisticTagSchemeLanguage];
+    NSLinguisticTagger * lt = [[NSLinguisticTagger alloc] initWithTagSchemes:lts
+                                                                     options:0];
+    lt.string = @"孙打开方式打开方式";
+    // zh-Hans 简体中文
+    NSString * language = [lt tagAtIndex:0 scheme:NSLinguisticTagSchemeLanguage  tokenRange:nil sentenceRange:nil];
+    
+    [lt enumerateTagsInRange:NSMakeRange(0, lt.string.length - 1) scheme:NSLinguisticTagSchemeNameTypeOrLexicalClass options:NSLinguisticTaggerJoinNames | NSLinguisticTaggerOmitWhitespace usingBlock:^(NSLinguisticTag  _Nullable tag, NSRange tokenRange, NSRange sentenceRange, BOOL * _Nonnull stop) {
+        NSString * token = [lt.string substringWithRange:tokenRange];
+        NSString * sentence = [lt.string substringWithRange:sentenceRange];
+        NSLog(@"token:%@ - sentence:%@ - tag:%@",token,sentence,tag);
+    }];
+    
+    UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(50, 200, 200, 50)];
+    imageView.image = [MMCoreTextViewController mm_imageWithColor:[UIColor redColor]
+                                                        imageSize:CGSizeMake(200, 50)
+                                                     cornerRadius:CGSizeMake(5, 5)
+                                                           corner:UIRectCornerTopLeft|UIRectCornerTopRight];
+    [self.view addSubview:imageView];
 }
 
 - (void)buttonAction:(UIButton *)button{
@@ -102,4 +122,21 @@
     [a debugPrint];
     [[a countingSortWithRange:NSMakeRange(1, 9)] debugPrint];
 }
+
++ (UIImage *)mm_imageWithColor:(UIColor *)color imageSize:(CGSize)imageSize cornerRadius:(CGSize)size corner:(UIRectCorner)corner{
+    CGRect rect = (CGRect){
+        CGPointZero,
+        imageSize
+    };
+    UIGraphicsBeginImageContext(rect.size);
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect byRoundingCorners:corner cornerRadii:size];
+    [path addClip];
+    [color setFill];
+    [path fill];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
 @end
+

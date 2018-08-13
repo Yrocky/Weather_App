@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import "YYWeakProxy.h"
 #import "MMLinkedList.h"
+#import "MMDelegateService.h"
 
 @interface MMProxyA : NSProxy
 @property (nonatomic, strong) id target;
@@ -280,6 +281,58 @@ static void PrintDescription(NSString *name, id obj)
 + (id) factoryMethod_2 {return [[[self class] alloc] init]; }
 @end
 
+@protocol MMDelegateProtocol <NSObject>
+
+- (void) protocolNoneReturnMethod;
+- (NSInteger) protocolReturnMethod;
+@end
+
+@interface MMTableViewObjective : NSObject
+
+@property (nonatomic ,assign) NSUInteger count;
+@property (nonatomic ,weak) id<MMDelegateProtocol>delegate;
+- (void) noneReturnMethodInvok;
+- (void) returnMethodInvok;
+@end
+
+@implementation MMTableViewObjective
+
+- (void) noneReturnMethodInvok{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(protocolNoneReturnMethod)]){
+        [self.delegate protocolNoneReturnMethod];
+    }
+}
+- (void) returnMethodInvok{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(protocolReturnMethod)]){
+        self.count = [self.delegate protocolReturnMethod];
+    }
+}
+
+@end
+
+@interface MMDelegateA : NSObject<MMDelegateProtocol>
+@end
+@implementation MMDelegateA
+
+- (void)protocolNoneReturnMethod{
+    NSLog(@"delegate - a invok");
+}
+- (NSInteger) protocolReturnMethod{
+    return 11;
+}
+@end
+@interface MMDelegateB : NSObject<MMDelegateProtocol>
+@end
+@implementation MMDelegateB
+
+- (void)protocolNoneReturnMethod{
+    NSLog(@"delegate - b invok");
+}
+- (NSInteger) protocolReturnMethod{
+    return 22;
+}
+@end
+
 @interface ProxyViewController ()
 @property (nonatomic ,strong) MMTarget * targetObject;
 @property (nonatomic ,strong) CADisplayLink * link;
@@ -290,7 +343,10 @@ static void PrintDescription(NSString *name, id obj)
 
 @property (nonatomic ,strong) NSThread * thread1;
 @property (nonatomic ,strong) NSMutableArray * array;
-
+@property (nonatomic ,strong) MMTableViewObjective * obj;
+@property (nonatomic ,strong) MMDelegateService * delegateSercive;
+@property (nonatomic ,strong) MMDelegateA * a;
+@property (nonatomic ,strong) MMDelegateB * b;
 @end
 
 
@@ -315,26 +371,25 @@ static void PrintDescription(NSString *name, id obj)
 
     self.array = [[NSMutableArray alloc] init];
     
-    
-    
-    
-    MMLinkedList<NSNumber *> * list = [MMLinkedList linkedListWithHead:@0];
-    for (NSInteger index = 1; index < 5; index ++) {
-//        [list addToBack:@(index)];
-        [list addToFront:@(index)];
-    }
-    [list printList];
-    
-//    [list reverseList];
-    [list insertValue:@(4) atIndex:3];
-    [list printList];
-    NSLog(@"find:%@",[list findValue:@(4)]);
-    id value = [list valueAtIndex:0];
-    value = list[3];// NSFastEnumeration
-    
-    for (NSInteger index = 0; index < [list count]; index ++) {
-        NSLog(@"value:%@",[list valueAtIndex:index]);
-    }
+    [self mutableDelegate];
+//
+//    MMLinkedList<NSNumber *> * list = [MMLinkedList linkedListWithHead:@0];
+//    for (NSInteger index = 1; index < 5; index ++) {
+////        [list addToBack:@(index)];
+//        [list addToFront:@(index)];
+//    }
+//    [list printList];
+//
+////    [list reverseList];
+//    [list insertValue:@(4) atIndex:3];
+//    [list printList];
+//    NSLog(@"find:%@",[list findValue:@(4)]);
+//    id value = [list valueAtIndex:0];
+//    value = list[3];// NSFastEnumeration
+//
+//    for (NSInteger index = 0; index < [list count]; index ++) {
+//        NSLog(@"value:%@",[list valueAtIndex:index]);
+//    }
 //    NSInteger * a,b;
 //    a = [[MyObject factoryMethod_1] count];
 //    b = [[MyObject factoryMethod_2] count];
@@ -350,6 +405,23 @@ static void PrintDescription(NSString *name, id obj)
 //    NSLog(@"ProxyViewController %s",__func__);
     
     [self funcWithCopy];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.obj noneReturnMethodInvok];
+    [self.obj returnMethodInvok];
+    NSLog(@"obj.count:%ld",self.obj.count);
+}
+
+- (void) mutableDelegate{
+
+    self.a = [MMDelegateA new];
+    self.b = [MMDelegateB new];
+    self.delegateSercive = [[MMDelegateService alloc] initWithDelegates:@[self.a,self.b]];
+    
+    self.obj = [[MMTableViewObjective alloc] init];
+    self.obj.delegate = self.delegateSercive;
 }
 
 - (void) funcWithCopy{

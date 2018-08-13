@@ -28,6 +28,7 @@
 		7F590D7E1FA9A5D4006F7BF0 /* STPopupNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D741FA9A5D4006F7BF0 /* STPopupNavigationBar.m */; };
 		7F590D7F1FA9A5D4006F7BF0 /* UIResponder+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D761FA9A5D4006F7BF0 /* UIResponder+STPopup.m */; };
 		7F590D801FA9A5D4006F7BF0 /* UIViewController+STPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D781FA9A5D4006F7BF0 /* UIViewController+STPopup.m */; };
+		7F5FD9932115898D00DB70F8 /* MM24GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F5FD9922115898D00DB70F8 /* MM24GameManager.m */; };
 		7F63BBB1206E220D0084ABC8 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBB0206E220D0084ABC8 /* HomeViewController.m */; };
 		7F63BBB8206E25340084ABC8 /* HomeBillContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBB7206E25340084ABC8 /* HomeBillContainerView.m */; };
 		7F63BBBC2071EC650084ABC8 /* HomeBillContentDefaultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBBB2071EC650084ABC8 /* HomeBillContentDefaultView.m */; };
@@ -53,6 +54,8 @@
 		7F8B6C081F95ED6F00F3A6E3 /* MMSearchReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F8B6C051F95ED6E00F3A6E3 /* MMSearchReusableView.m */; };
 		7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F91F7C81F62991400B20D76 /* MMGiftContainerView.m */; };
 		7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F94A34A1F55120D00DA28EA /* NSArray+Sugar.m */; };
+		7F981011211C6BE90004C638 /* UIView+RoundCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F981010211C6BE90004C638 /* UIView+RoundCorner.m */; };
+		7F9810142121889B0004C638 /* MMDelegateService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9810132121889B0004C638 /* MMDelegateService.m */; };
 		7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9CED361F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m */; };
 		7F9CED3B1F5CEAA000A64EB5 /* MMRunwayCoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9CED3A1F5CEAA000A64EB5 /* MMRunwayCoreView.m */; };
 		7F9CED3E1F5D1F9D00A64EB5 /* MMRunwayProContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9CED3D1F5D1F9D00A64EB5 /* MMRunwayProContentView.m */; };
@@ -68,6 +71,7 @@
 		7FBCF0BE1F4D269100E2EEC7 /* HLLSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBCF0BD1F4D269100E2EEC7 /* HLLSegmentView.m */; };
 		7FBCF0C41F4E776B00E2EEC7 /* HLLCircularLoaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBCF0C31F4E776B00E2EEC7 /* HLLCircularLoaderView.m */; };
 		7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FBCF0C91F4EE12200E2EEC7 /* HLLAttributedBuilder.m */; };
+		7FCA92192111A77F00DB7EFD /* RoundCornerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCA92182111A77F00DB7EFD /* RoundCornerViewController.m */; };
 		7FCF75021F8B1DC100514597 /* HLLAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCF75001F8B1DC000514597 /* HLLAlert.m */; };
 		7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FCF75051F8B1EAD00514597 /* TableDemoViewController.m */; };
 		7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8CC251F984A3F005DC9FF /* HLLPlaceholderTextView.m */; };
@@ -88,6 +92,8 @@
 		7FEC5C532060C18000FAE1D1 /* MMOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC5C522060C18000FAE1D1 /* MMOBJ.m */; };
 		7FED6BA61F5557F0004E3345 /* TableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FED6BA51F5557F0004E3345 /* TableViewDataSource.m */; };
 		7FF4FC091FB55D980097CB3D /* LayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FF4FC081FB55D980097CB3D /* LayoutViewController.m */; };
+		7FFAB83E210AC38A00CA6671 /* MMAObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFAB83D210AC38A00CA6671 /* MMAObject.m */; };
+		7FFAB841210AC39500CA6671 /* MMBObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFAB840210AC39500CA6671 /* MMBObject.m */; };
 		D7008DDC1FB180B500BD6EA0 /* MMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7008DDB1FB180B500BD6EA0 /* MMNavigationController.m */; };
 		D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */ = {isa = PBXBuildFile; fileRef = D70629011F8B132E00F52FCB /* NSUserDefaults+MM_Common.m */; };
 		D70629061F8B143D00F52FCB /* MMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D70629051F8B143D00F52FCB /* MMPickerView.m */; };
@@ -197,6 +203,8 @@
 		7F590D761FA9A5D4006F7BF0 /* UIResponder+STPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+STPopup.m"; sourceTree = "<group>"; };
 		7F590D771FA9A5D4006F7BF0 /* UIViewController+STPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+STPopup.h"; sourceTree = "<group>"; };
 		7F590D781FA9A5D4006F7BF0 /* UIViewController+STPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+STPopup.m"; sourceTree = "<group>"; };
+		7F5FD9912115898C00DB70F8 /* MM24GameManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MM24GameManager.h; sourceTree = "<group>"; };
+		7F5FD9922115898D00DB70F8 /* MM24GameManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MM24GameManager.m; sourceTree = "<group>"; };
 		7F63BBAF206E220D0084ABC8 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		7F63BBB0206E220D0084ABC8 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7F63BBB6206E25340084ABC8 /* HomeBillContainerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBillContainerView.h; sourceTree = "<group>"; };
@@ -247,6 +255,10 @@
 		7F94A3491F55120D00DA28EA /* NSArray+Sugar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sugar.h"; sourceTree = "<group>"; };
 		7F94A34A1F55120D00DA28EA /* NSArray+Sugar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sugar.m"; sourceTree = "<group>"; };
 		7F94A34E1F5519D800DA28EA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		7F98100F211C6BE90004C638 /* UIView+RoundCorner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+RoundCorner.h"; sourceTree = "<group>"; };
+		7F981010211C6BE90004C638 /* UIView+RoundCorner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+RoundCorner.m"; sourceTree = "<group>"; };
+		7F9810122121889B0004C638 /* MMDelegateService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMDelegateService.h; sourceTree = "<group>"; };
+		7F9810132121889B0004C638 /* MMDelegateService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMDelegateService.m; sourceTree = "<group>"; };
 		7F9CED351F57F31C00A64EB5 /* UIView+AutoLayoutSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayoutSupport.h"; sourceTree = "<group>"; };
 		7F9CED361F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayoutSupport.m"; sourceTree = "<group>"; };
 		7F9CED391F5CEAA000A64EB5 /* MMRunwayCoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRunwayCoreView.h; sourceTree = "<group>"; };
@@ -279,6 +291,8 @@
 		7FBCF0C81F4EE12200E2EEC7 /* HLLAttributedBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLAttributedBuilder.h; sourceTree = "<group>"; };
 		7FBCF0C91F4EE12200E2EEC7 /* HLLAttributedBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLAttributedBuilder.m; sourceTree = "<group>"; };
 		7FBCF1281F540CDC00E2EEC7 /* Weather_App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Weather_App-Bridging-Header.h"; sourceTree = "<group>"; };
+		7FCA92172111A77F00DB7EFD /* RoundCornerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoundCornerViewController.h; sourceTree = "<group>"; };
+		7FCA92182111A77F00DB7EFD /* RoundCornerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoundCornerViewController.m; sourceTree = "<group>"; };
 		7FCF75001F8B1DC000514597 /* HLLAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLLAlert.m; sourceTree = "<group>"; };
 		7FCF75011F8B1DC100514597 /* HLLAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLLAlert.h; sourceTree = "<group>"; };
 		7FCF75041F8B1EAD00514597 /* TableDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableDemoViewController.h; sourceTree = "<group>"; };
@@ -316,6 +330,10 @@
 		7FED6BA51F5557F0004E3345 /* TableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewDataSource.m; sourceTree = "<group>"; };
 		7FF4FC071FB55D980097CB3D /* LayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayoutViewController.h; sourceTree = "<group>"; };
 		7FF4FC081FB55D980097CB3D /* LayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayoutViewController.m; sourceTree = "<group>"; };
+		7FFAB83C210AC38A00CA6671 /* MMAObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAObject.h; sourceTree = "<group>"; };
+		7FFAB83D210AC38A00CA6671 /* MMAObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAObject.m; sourceTree = "<group>"; };
+		7FFAB83F210AC39500CA6671 /* MMBObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMBObject.h; sourceTree = "<group>"; };
+		7FFAB840210AC39500CA6671 /* MMBObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMBObject.m; sourceTree = "<group>"; };
 		8B9A4BC81A12BABD40DE994D /* Pods-Weather_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App.debug.xcconfig"; sourceTree = "<group>"; };
 		AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weather_App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DD493FBDDB77E68B89AA1C /* Pods-Weather_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App.release.xcconfig"; sourceTree = "<group>"; };
@@ -733,6 +751,14 @@
 				D713B8CF2076034900D388F2 /* bill-input */,
 				D713B8B4207280C900D388F2 /* CustomNavigationBar.h */,
 				D713B8B5207280C900D388F2 /* CustomNavigationBar.m */,
+				7F5FD9912115898C00DB70F8 /* MM24GameManager.h */,
+				7F5FD9922115898D00DB70F8 /* MM24GameManager.m */,
+				7FFAB83C210AC38A00CA6671 /* MMAObject.h */,
+				7FFAB83D210AC38A00CA6671 /* MMAObject.m */,
+				7FFAB83F210AC39500CA6671 /* MMBObject.h */,
+				7FFAB840210AC39500CA6671 /* MMBObject.m */,
+				7F9810122121889B0004C638 /* MMDelegateService.h */,
+				7F9810132121889B0004C638 /* MMDelegateService.m */,
 				7F7BA14A2090799C0085E045 /* PKProtocolExtension.h */,
 				7F7BA14B2090799C0085E045 /* PKProtocolExtension.m */,
 				7F7BA143208DE2EF0085E045 /* 链表 */,
@@ -864,6 +890,8 @@
 				7F14A78D2064AE00006EC133 /* UIView+AsyncDrawImage.m */,
 				7FA36CE820B4082A0027B61E /* NSArray+Algorithms.h */,
 				7FA36CE920B4082B0027B61E /* NSArray+Algorithms.m */,
+				7F98100F211C6BE90004C638 /* UIView+RoundCorner.h */,
+				7F981010211C6BE90004C638 /* UIView+RoundCorner.m */,
 			);
 			name = "分类";
 			sourceTree = "<group>";
@@ -1047,6 +1075,8 @@
 				7F1D9A91208714C000E822B7 /* ProxyViewController.m */,
 				7F6FF9B52091DC6000A84A81 /* MMCoreTextViewController.h */,
 				7F6FF9B62091DC6000A84A81 /* MMCoreTextViewController.m */,
+				7FCA92172111A77F00DB7EFD /* RoundCornerViewController.h */,
+				7FCA92182111A77F00DB7EFD /* RoundCornerViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -1277,8 +1307,11 @@
 			files = (
 				D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */,
 				D706293F1F8B185100F52FCB /* HSSwitchCellModel.m in Sources */,
+				7FFAB83E210AC38A00CA6671 /* MMAObject.m in Sources */,
+				7FFAB841210AC39500CA6671 /* MMBObject.m in Sources */,
 				7F32E0B41FA1CB74002D57FB /* HLLIndicatorViewController.m in Sources */,
 				D7DE014F1F98C1EF008682DE /* NSObject+AHKBuilder.m in Sources */,
+				7FCA92192111A77F00DB7EFD /* RoundCornerViewController.m in Sources */,
 				D70629551F8B191C00F52FCB /* UIView+MHCommon.m in Sources */,
 				D7A325E420772DD700B2F8AB /* BillKeyboardView.m in Sources */,
 				7F590D7C1FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.m in Sources */,
@@ -1300,6 +1333,7 @@
 				D706294F1F8B189C00F52FCB /* UIColor+Common.m in Sources */,
 				7F590D7D1FA9A5D4006F7BF0 /* STPopupLeftBarItem.m in Sources */,
 				7FD8CC351F98A995005DC9FF /* NSObject+CodableProperties.m in Sources */,
+				7F9810142121889B0004C638 /* MMDelegateService.m in Sources */,
 				7F590D801FA9A5D4006F7BF0 /* UIViewController+STPopup.m in Sources */,
 				D7A73E231FB04F4800818CF5 /* MM_FindFriendEntryItemView.m in Sources */,
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
@@ -1307,6 +1341,7 @@
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
 				7F7BA149208EDB240085E045 /* MMSinglyLinkedList.m in Sources */,
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
+				7F981011211C6BE90004C638 /* UIView+RoundCorner.m in Sources */,
 				7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */,
 				7F590D7B1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m in Sources */,
 				7F3E0A211FB93BF200F8C258 /* BottomFollowView.m in Sources */,
@@ -1343,6 +1378,7 @@
 				7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */,
 				D70629421F8B185100F52FCB /* HSSectionModel.m in Sources */,
 				7FF4FC091FB55D980097CB3D /* LayoutViewController.m in Sources */,
+				7F5FD9932115898D00DB70F8 /* MM24GameManager.m in Sources */,
 				7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */,
 				D715E6A61FA7152100CFBFF4 /* CLTStickyLayout.m in Sources */,
 				7FDC6EE11F46E38800D94379 /* HLLWaveView.m in Sources */,
@@ -1537,9 +1573,22 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZKEWNK6EPU;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/QQSDK",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/Required",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/Optional",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformConnector",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK",
+				);
 				INFOPLIST_FILE = Weather_App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/WeChatSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.HFLifeLiving.ap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1559,9 +1608,22 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZKEWNK6EPU;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/QQSDK",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/Required",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/Optional",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformConnector",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK",
+				);
 				INFOPLIST_FILE = Weather_App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
+					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/WeChatSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.HFLifeLiving.ap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

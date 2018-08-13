@@ -12,6 +12,7 @@
 #import <malloc/malloc.h>
 #import "HLLAlert.h"
 #import <objc/runtime.h>
+#import "UIView+RoundCorner.h"
 
 @interface MMObject : NSProxy{
 //    int age;// 4字节
@@ -47,7 +48,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [super touchesBegan:touches withEvent:event];
-    
+    return;
     MMString * string = [[MMString alloc] init];
     
     for (int i = 0; i < 1; i ++) {
@@ -69,7 +70,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
    
     [self comAtt];
-    return;
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         UIImage * image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"故障线@2x" ofType:@"png"]];
@@ -94,9 +95,28 @@
     
     
 //    [self loadImageWithAsyncContents];
-    [self loadImageWithAsync];
-    [self loadImageWithImageFilePath];
-    [self loadImageWithImageName];
+//    [self loadImageWithAsync];
+//    [self loadImageWithImageFilePath];
+//    [self loadImageWithImageName];
+    
+    [self loadAsyncImage];
+}
+
+- (void) loadAsyncImage{
+    UIImageView * view = [[UIImageView alloc] init];
+    view.image = [UIImage imageNamed:@"sunset"];
+    view.frame = CGRectMake(100, 50, 150, 100);
+    [self.view addSubview:view];
+//    [UIImage asyncImageWith:[UIColor redColor] size:CGSizeMake(56, 24) cornerRadius:CGSizeMake(3, 3) corner:UIRectCornerAllCorners result:^(UIImage *img) {
+//        view.image = img;
+//    }];
+//    [view xw_roundedCornerWithCornerRadii:CGSizeMake(10, 10) cornerColor:[UIColor whiteColor] corners:UIRectCornerAllCorners borderColor:[UIColor orangeColor] borderWidth:2];
+    [view mm_makeRoundCorner:^(MM_RoundCorner *make) {
+        make.outerColor([UIColor whiteColor]);
+        make.radius(CGSizeMake(10, 10)).corners(UIRectCornerAllCorners);
+        make.borderWidth(2).borderColor([UIColor orangeColor]);
+//        make.shadowColor([UIColor colorWithWhite:0.5 alpha:0.2]).shadowOffset(CGSizeMake(5, -10));
+    }];
 }
 
 - (void) loadImageWithAsyncContents{

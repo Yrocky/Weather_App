@@ -124,7 +124,7 @@
     NSString * socketTime = [NSString stringWithFormat:@"%@",[NSDate date]];
     [mgr normalRunwayReceiveSocketAction:socketTime];
     
-    self.l.text = [NSString stringWithFormat:@"%@",mgr.queueAndCacheInfo];
+//    self.l.text = [NSString stringWithFormat:@"%@",mgr.queueAndCacheInfo];
 }
 
 - (void)runwayManager:(MMRunwayManager *)mgr didSendNormalSingleLineView:(id)singleLineView{
@@ -137,7 +137,7 @@
     NSString * socketTime = [NSString stringWithFormat:@"%@",[NSDate date]];
     [mgr proRunwayReceiveSocketAction:socketTime];
     
-    self.l.text = [NSString stringWithFormat:@"%@",mgr.queueAndCacheInfo];
+//    self.l.text = [NSString stringWithFormat:@"%@",mgr.queueAndCacheInfo];
 }
 - (void)runwayManager:(MMRunwayManager *)mgr didSendProSingleLineView:(id)singleLineView{
     [self.proRunwayCoreView appendCustomView:singleLineView];
@@ -155,7 +155,7 @@
         [mgr proRunwayCompletedOneSingleLineViewDisplay];
     }
     
-    self.l.text = [NSString stringWithFormat:@"%@",mgr.queueAndCacheInfo];
+//    self.l.text = [NSString stringWithFormat:@"%@",mgr.queueAndCacheInfo];
 }
 
 - (void) onAddItem{

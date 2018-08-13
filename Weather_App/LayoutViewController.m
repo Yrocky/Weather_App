@@ -12,6 +12,9 @@
 #import "BottomFollowView.h"
 #import "SomeCustomView.h"
 #import "MMLabel.h"
+#import "MMAObject.h"
+//#import "MMBObject.h"
+
 
 @interface UIView (Color)
 
@@ -48,6 +51,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+//    id bObject = [MMBObject new];
+//    [bObject doSomthing:100];
+    
+    id aObject = [[MMOtherObject new] getBObject];
+    [aObject doSomthing:100];
+    
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIView * orangeView = [UIView redView];
