@@ -19,7 +19,7 @@
 
 @property (nonatomic ,assign) NSUInteger columns;
 
-// 默认选中 - todo
+// 默认选中
 - (void) defaultSelect:(NSUInteger (^_Nullable)(NSUInteger column))callback;
 
 // 装有字符串的数组
@@ -78,7 +78,6 @@
 - (void) update;
 - (void) updateColumn:(NSUInteger)column;
 
-- (void) showIn:(UIView *_Nonnull)view;
 - (void) show;
 
 - (void) dismiss;

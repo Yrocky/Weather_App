@@ -32,6 +32,7 @@
 #import "ProxyViewController.h"
 #import "MMCoreTextViewController.h"
 #import "RoundCornerViewController.h"
+#import "GiftEffectViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic ,strong) NSString * str;
@@ -67,6 +68,13 @@
         HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"原来的Main控制器" actionBlock:^(HSBaseCellModel *model) {
             
             [self performSegueWithIdentifier:@"RootToMain" sender:nil];
+        }];
+        [s addCellModel:c];
+
+        c = [[HSTitleCellModel alloc] initWithTitle:@"礼物特效" actionBlock:^(HSBaseCellModel *model) {
+            
+            GiftEffectViewController * vc = [[GiftEffectViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];
 
@@ -148,7 +156,6 @@
         [s addCellModel:c];
 
         c = [[HSTitleCellModel alloc] initWithTitle:@"咸鱼首页" actionBlock:^(HSBaseCellModel *model) {
-
 
             FDViewController * vc = [[FDViewController alloc] init];
             vc.transitioningDelegate  = self;

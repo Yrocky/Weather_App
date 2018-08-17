@@ -320,6 +320,10 @@ static void PrintDescription(NSString *name, id obj)
 - (NSInteger) protocolReturnMethod{
     return 11;
 }
+- (NSUInteger) a:(NSInteger)a addB:(NSInteger)b addC:(NSInteger)c{
+    return a + b + c;
+}
+
 @end
 @interface MMDelegateB : NSObject<MMDelegateProtocol>
 @end
@@ -371,7 +375,7 @@ static void PrintDescription(NSString *name, id obj)
 
     self.array = [[NSMutableArray alloc] init];
     
-    [self mutableDelegate];
+//    [self mutableDelegate];
 //
 //    MMLinkedList<NSNumber *> * list = [MMLinkedList linkedListWithHead:@0];
 //    for (NSInteger index = 1; index < 5; index ++) {
@@ -404,16 +408,71 @@ static void PrintDescription(NSString *name, id obj)
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mm_didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
 //    NSLog(@"ProxyViewController %s",__func__);
     
-    [self funcWithCopy];
+//    [self funcWithCopy];
+    [self invocationFunc];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.obj noneReturnMethodInvok];
-    [self.obj returnMethodInvok];
+//    [self.obj noneReturnMethodInvok];
+//    [self.obj returnMethodInvok];
     NSLog(@"obj.count:%ld",self.obj.count);
 }
 
+- (void) invocationFunc{
+    int a = 1;
+    int b = 2;
+    int c = 3;
+    SEL myMethod = @selector(myLog:param:parm:);
+    SEL myMethod2 = @selector(myLog);
+    
+    self.a = [MMDelegateA new];
+    SEL methodForDelegateA = @selector(protocolNoneReturnMethod);
+    SEL methodForDelegateASum = @selector(a:addB:addC:);
+    if(0){
+        // 创建一个函数签名，这个签名可以是任意的，但需要注意，签名函数的参数数量要和调用的一致。
+        NSMethodSignature *sig = [self.a methodSignatureForSelector:methodForDelegateA];
+        // 通过签名初始化
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
+        [invocation setTarget:self.a];
+        [invocation setSelector:methodForDelegateA];
+        [invocation invoke];
+    }
+    // 创建一个函数签名，这个签名可以是任意的，但需要注意，签名函数的参数数量要和调用的一致。
+    NSMethodSignature *sig = [self.a methodSignatureForSelector:methodForDelegateASum];
+    // 通过签名初始化
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:sig];
+    [invocation setTarget:self.a];// argument index is 0
+    [invocation setSelector:methodForDelegateASum];// argument index is 1
+    [invocation setArgument:&a atIndex:2];
+    [invocation setArgument:&b atIndex:3];
+    [invocation setArgument:&c atIndex:4];
+    [invocation invoke];
+    NSUInteger d;
+    // 取这个返回值
+    [invocation getReturnValue:&d];
+    NSLog(@"return value :%lu",(unsigned long)d);
+    
+    return;
+    // 2.FirstViewController *view = self;
+    // 2.[invocation setArgument:&view atIndex:0];
+    // 2.[invocation setArgument:&myMethod2 atIndex:1];
+    // 设置target
+    // 1.[invocation setTarget:self];
+    // 设置selector
+    [invocation setSelector:myMethod];
+    // 注意：1、这里设置参数的Index 需要从2开始，因为前两个被selector和target占用。
+    [invocation setArgument:&a atIndex:2];
+    [invocation setArgument:&b atIndex:3];
+    [invocation setArgument:&c atIndex:4];
+    // [invocation retainArguments];
+    // 我们将c的值设置为返回值
+    [invocation setReturnValue:&c];
+//    int d;
+    // 取这个返回值
+    [invocation getReturnValue:&d];
+    NSLog(@"d:%d", d);
+}
 - (void) mutableDelegate{
 
     self.a = [MMDelegateA new];

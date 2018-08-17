@@ -90,6 +90,16 @@
             [config configRowAt:^NSArray<NSString *> * _Nullable(NSUInteger cloumn) {
                 return cloumn == 0 ? citys : co;
             }];
+            // 默认选中bj-cy
+            [config defaultSelect:^NSUInteger(NSUInteger column) {
+                if (column == 0){
+                    return 1;
+                }
+                else if(column == 1){
+                    return 2;
+                }
+                return 0;
+            }];
             [config monitorSelect:^(NSUInteger column, NSUInteger row, id  _Nullable data) {
                 if (column == 0) {
                     if (row == 0) {
@@ -120,8 +130,7 @@
             MMPickerView * pickerView = [[MMPickerView alloc] initWithConfig:config];
             [pickerView setupInterface:interface];
             
-            __strong typeof(weakSelf) strongSelf = weakSelf;
-            [pickerView showIn:strongSelf.view];
+            [pickerView show];
         }];
         [s addCellModel:c];
         

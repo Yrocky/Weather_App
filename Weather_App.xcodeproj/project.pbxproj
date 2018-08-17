@@ -17,9 +17,20 @@
 		7F243E3E1FA81E7A00AE4134 /* MMGCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F243E3D1FA81E7A00AE4134 /* MMGCD.m */; };
 		7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F32E0AF1FA1BC70002D57FB /* HLLStickIndicator.m */; };
 		7F32E0B41FA1CB74002D57FB /* HLLIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F32E0B31FA1CB74002D57FB /* HLLIndicatorViewController.m */; };
+		7F3815892126CA68006016E9 /* GiftEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3815882126CA68006016E9 /* GiftEffectViewController.m */; };
 		7F3E0A211FB93BF200F8C258 /* BottomFollowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E0A201FB93BF200F8C258 /* BottomFollowView.m */; };
 		7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */; };
 		7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */; };
+		7F53C0EC2126740600567D74 /* smile_face.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0E02126740500567D74 /* smile_face.xml */; };
+		7F53C0ED2126740600567D74 /* v1314.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0E12126740500567D74 /* v1314.xml */; };
+		7F53C0EE2126740600567D74 /* heart.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0E42126740500567D74 /* heart.xml */; };
+		7F53C0EF2126740600567D74 /* v3344.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0E52126740500567D74 /* v3344.xml */; };
+		7F53C0F02126740600567D74 /* GiftShapeEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F53C0E62126740500567D74 /* GiftShapeEffectView.m */; };
+		7F53C0F12126740600567D74 /* double_heart.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0E72126740500567D74 /* double_heart.xml */; };
+		7F53C0F22126740600567D74 /* v.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0E82126740500567D74 /* v.xml */; };
+		7F53C0F32126740600567D74 /* v520.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0E92126740500567D74 /* v520.xml */; };
+		7F53C0F42126740600567D74 /* love.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0EA2126740500567D74 /* love.xml */; };
+		7F53C0F52126740600567D74 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F53C0EB2126740500567D74 /* XMLReader.m */; };
 		7F590D791FA9A5D4006F7BF0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F590D691FA9A5D4006F7BF0 /* Info.plist */; };
 		7F590D7A1FA9A5D4006F7BF0 /* STPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D6C1FA9A5D4006F7BF0 /* STPopupController.m */; };
 		7F590D7B1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D6E1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m */; };
@@ -56,6 +67,7 @@
 		7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F94A34A1F55120D00DA28EA /* NSArray+Sugar.m */; };
 		7F981011211C6BE90004C638 /* UIView+RoundCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F981010211C6BE90004C638 /* UIView+RoundCorner.m */; };
 		7F9810142121889B0004C638 /* MMDelegateService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9810132121889B0004C638 /* MMDelegateService.m */; };
+		7F9810172122AE7C0004C638 /* MMSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9810162122AE7B0004C638 /* MMSingleton.m */; };
 		7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9CED361F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m */; };
 		7F9CED3B1F5CEAA000A64EB5 /* MMRunwayCoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9CED3A1F5CEAA000A64EB5 /* MMRunwayCoreView.m */; };
 		7F9CED3E1F5D1F9D00A64EB5 /* MMRunwayProContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9CED3D1F5D1F9D00A64EB5 /* MMRunwayProContentView.m */; };
@@ -181,12 +193,26 @@
 		7F32E0AF1FA1BC70002D57FB /* HLLStickIndicator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLLStickIndicator.m; sourceTree = "<group>"; };
 		7F32E0B21FA1CB74002D57FB /* HLLIndicatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLLIndicatorViewController.h; sourceTree = "<group>"; };
 		7F32E0B31FA1CB74002D57FB /* HLLIndicatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLLIndicatorViewController.m; sourceTree = "<group>"; };
+		7F3815872126CA68006016E9 /* GiftEffectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftEffectViewController.h; sourceTree = "<group>"; };
+		7F3815882126CA68006016E9 /* GiftEffectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftEffectViewController.m; sourceTree = "<group>"; };
 		7F3E0A1F1FB93BF200F8C258 /* BottomFollowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomFollowView.h; sourceTree = "<group>"; };
 		7F3E0A201FB93BF200F8C258 /* BottomFollowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomFollowView.m; sourceTree = "<group>"; };
 		7F414F491F67866200EC8E86 /* MMGiftEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGiftEffectViewController.h; sourceTree = "<group>"; };
 		7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGiftEffectViewController.m; sourceTree = "<group>"; };
 		7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGiftEffectOperationMgr.h; sourceTree = "<group>"; };
 		7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGiftEffectOperationMgr.m; sourceTree = "<group>"; };
+		7F53C0E02126740500567D74 /* smile_face.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = smile_face.xml; sourceTree = "<group>"; };
+		7F53C0E12126740500567D74 /* v1314.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = v1314.xml; sourceTree = "<group>"; };
+		7F53C0E22126740500567D74 /* GiftShapeEffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftShapeEffectView.h; sourceTree = "<group>"; };
+		7F53C0E32126740500567D74 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		7F53C0E42126740500567D74 /* heart.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = heart.xml; sourceTree = "<group>"; };
+		7F53C0E52126740500567D74 /* v3344.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = v3344.xml; sourceTree = "<group>"; };
+		7F53C0E62126740500567D74 /* GiftShapeEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftShapeEffectView.m; sourceTree = "<group>"; };
+		7F53C0E72126740500567D74 /* double_heart.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = double_heart.xml; sourceTree = "<group>"; };
+		7F53C0E82126740500567D74 /* v.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = v.xml; sourceTree = "<group>"; };
+		7F53C0E92126740500567D74 /* v520.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = v520.xml; sourceTree = "<group>"; };
+		7F53C0EA2126740500567D74 /* love.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = love.xml; sourceTree = "<group>"; };
+		7F53C0EB2126740500567D74 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		7F590D691FA9A5D4006F7BF0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F590D6A1FA9A5D4006F7BF0 /* STPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPopup.h; sourceTree = "<group>"; };
 		7F590D6B1FA9A5D4006F7BF0 /* STPopupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPopupController.h; sourceTree = "<group>"; };
@@ -259,6 +285,8 @@
 		7F981010211C6BE90004C638 /* UIView+RoundCorner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+RoundCorner.m"; sourceTree = "<group>"; };
 		7F9810122121889B0004C638 /* MMDelegateService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMDelegateService.h; sourceTree = "<group>"; };
 		7F9810132121889B0004C638 /* MMDelegateService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMDelegateService.m; sourceTree = "<group>"; };
+		7F9810152122AE7A0004C638 /* MMSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSingleton.h; sourceTree = "<group>"; };
+		7F9810162122AE7B0004C638 /* MMSingleton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSingleton.m; sourceTree = "<group>"; };
 		7F9CED351F57F31C00A64EB5 /* UIView+AutoLayoutSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayoutSupport.h"; sourceTree = "<group>"; };
 		7F9CED361F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayoutSupport.m"; sourceTree = "<group>"; };
 		7F9CED391F5CEAA000A64EB5 /* MMRunwayCoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRunwayCoreView.h; sourceTree = "<group>"; };
@@ -525,6 +553,33 @@
 			name = "指示器";
 			sourceTree = "<group>";
 		};
+		7F53C0DE2126740500567D74 /* GIftEffectView */ = {
+			isa = PBXGroup;
+			children = (
+				7F53C0DF2126740500567D74 /* GiftEffect */,
+			);
+			path = GIftEffectView;
+			sourceTree = "<group>";
+		};
+		7F53C0DF2126740500567D74 /* GiftEffect */ = {
+			isa = PBXGroup;
+			children = (
+				7F53C0E22126740500567D74 /* GiftShapeEffectView.h */,
+				7F53C0E62126740500567D74 /* GiftShapeEffectView.m */,
+				7F53C0E32126740500567D74 /* XMLReader.h */,
+				7F53C0EB2126740500567D74 /* XMLReader.m */,
+				7F53C0E02126740500567D74 /* smile_face.xml */,
+				7F53C0E12126740500567D74 /* v1314.xml */,
+				7F53C0E42126740500567D74 /* heart.xml */,
+				7F53C0E52126740500567D74 /* v3344.xml */,
+				7F53C0E72126740500567D74 /* double_heart.xml */,
+				7F53C0E82126740500567D74 /* v.xml */,
+				7F53C0E92126740500567D74 /* v520.xml */,
+				7F53C0EA2126740500567D74 /* love.xml */,
+			);
+			path = GiftEffect;
+			sourceTree = "<group>";
+		};
 		7F590D681FA9A5D4006F7BF0 /* STPopup */ = {
 			isa = PBXGroup;
 			children = (
@@ -753,12 +808,15 @@
 				D713B8B5207280C900D388F2 /* CustomNavigationBar.m */,
 				7F5FD9912115898C00DB70F8 /* MM24GameManager.h */,
 				7F5FD9922115898D00DB70F8 /* MM24GameManager.m */,
+				7F53C0DE2126740500567D74 /* GIftEffectView */,
 				7FFAB83C210AC38A00CA6671 /* MMAObject.h */,
 				7FFAB83D210AC38A00CA6671 /* MMAObject.m */,
 				7FFAB83F210AC39500CA6671 /* MMBObject.h */,
 				7FFAB840210AC39500CA6671 /* MMBObject.m */,
 				7F9810122121889B0004C638 /* MMDelegateService.h */,
 				7F9810132121889B0004C638 /* MMDelegateService.m */,
+				7F9810152122AE7A0004C638 /* MMSingleton.h */,
+				7F9810162122AE7B0004C638 /* MMSingleton.m */,
 				7F7BA14A2090799C0085E045 /* PKProtocolExtension.h */,
 				7F7BA14B2090799C0085E045 /* PKProtocolExtension.m */,
 				7F7BA143208DE2EF0085E045 /* 链表 */,
@@ -1077,6 +1135,8 @@
 				7F6FF9B62091DC6000A84A81 /* MMCoreTextViewController.m */,
 				7FCA92172111A77F00DB7EFD /* RoundCornerViewController.h */,
 				7FCA92182111A77F00DB7EFD /* RoundCornerViewController.m */,
+				7F3815872126CA68006016E9 /* GiftEffectViewController.h */,
+				7F3815882126CA68006016E9 /* GiftEffectViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -1239,14 +1299,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7A595BF1FAACFED000C59FE /* rootTemplate.html in Resources */,
+				7F53C0EC2126740600567D74 /* smile_face.xml in Resources */,
 				7F590D791FA9A5D4006F7BF0 /* Info.plist in Resources */,
 				7FE705BB1FBD6A75009FF3A7 /* SomeCustomView.xib in Resources */,
+				7F53C0F32126740600567D74 /* v520.xml in Resources */,
+				7F53C0EE2126740600567D74 /* heart.xml in Resources */,
+				7F53C0EF2126740600567D74 /* v3344.xml in Resources */,
+				7F53C0F22126740600567D74 /* v.xml in Resources */,
 				7F85935A1FDE54E500E6AFFC /* MMXibCustomView.xib in Resources */,
 				7FDC6ED81F46E35A00D94379 /* LaunchScreen.storyboard in Resources */,
+				7F53C0ED2126740600567D74 /* v1314.xml in Resources */,
 				7FDC6ED51F46E35A00D94379 /* Assets.xcassets in Resources */,
+				7F53C0F42126740600567D74 /* love.xml in Resources */,
 				7FDC6ED31F46E35A00D94379 /* Main.storyboard in Resources */,
 				7FE705C31FBE8DB5009FF3A7 /* MMLabel.xib in Resources */,
 				D7A595C01FAACFED000C59FE /* singleItemTemplate.html in Resources */,
+				7F53C0F12126740600567D74 /* double_heart.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1332,6 +1400,7 @@
 				7F6FFB91209458E100A84A81 /* ZPLabelLayer.m in Sources */,
 				D706294F1F8B189C00F52FCB /* UIColor+Common.m in Sources */,
 				7F590D7D1FA9A5D4006F7BF0 /* STPopupLeftBarItem.m in Sources */,
+				7F53C0F02126740600567D74 /* GiftShapeEffectView.m in Sources */,
 				7FD8CC351F98A995005DC9FF /* NSObject+CodableProperties.m in Sources */,
 				7F9810142121889B0004C638 /* MMDelegateService.m in Sources */,
 				7F590D801FA9A5D4006F7BF0 /* UIViewController+STPopup.m in Sources */,
@@ -1339,6 +1408,7 @@
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FA36CEA20B4082B0027B61E /* NSArray+Algorithms.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
+				7F3815892126CA68006016E9 /* GiftEffectViewController.m in Sources */,
 				7F7BA149208EDB240085E045 /* MMSinglyLinkedList.m in Sources */,
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
 				7F981011211C6BE90004C638 /* UIView+RoundCorner.m in Sources */,
@@ -1406,9 +1476,11 @@
 				D706293A1F8B185100F52FCB /* HSSetTableViewMainController.m in Sources */,
 				7FA726151FFB7A2800C0F6F2 /* NSNumber+Sugar.m in Sources */,
 				D7008DDC1FB180B500BD6EA0 /* MMNavigationController.m in Sources */,
+				7F9810172122AE7C0004C638 /* MMSingleton.m in Sources */,
 				7F63BBC02072036F0084ABC8 /* LunarCore.m in Sources */,
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
 				D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */,
+				7F53C0F52126740600567D74 /* XMLReader.m in Sources */,
 				D70629391F8B185100F52FCB /* MMAssetsCellModel.m in Sources */,
 				7F590D7A1FA9A5D4006F7BF0 /* STPopupController.m in Sources */,
 				7F6FFB90209458E100A84A81 /* ZPTextLayout.m in Sources */,
@@ -1589,6 +1661,7 @@
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HFLifeLiving.ap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

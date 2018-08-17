@@ -122,7 +122,7 @@
     if (self) {
         CGRect frame = [UIScreen mainScreen].bounds;
         self.frame = frame;
-        
+
         //
         self.bgView = [[UIView alloc] initWithFrame:frame];
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelButtonHandle)];
@@ -329,6 +329,7 @@
     animation.animations = @[positionAnimation];
     animation.fillMode = kCAFillModeForwards;
     animation.removedOnCompletion = YES;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [self.layer addAnimation:animation forKey:@"showAnimation"];
     
     for (NSUInteger column = 0; column < self.config.columns; column ++) {
@@ -346,7 +347,7 @@
 
 - (void)dismiss{
     
-    [UIView animateWithDuration:0.45 animations:^{
+    [UIView animateWithDuration:0.45 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.center = CGPointMake(self.center.x, CGRectGetMaxY(self.superview.frame));
     } completion:^(BOOL finished) {
         [self removeFromSuperview];

@@ -74,6 +74,8 @@ The fast enumeration protocol (supporting the for..in statement) will yield NULL
 
 #pragma mark - NSProxy
 
+// `-forwardInvocation:`
+// `-performSelector:withObject:`
 - (void)forwardInvocation:(NSInvocation *)invocation
 {
     // If the invoked method return void I can safely call all the delegates
@@ -93,6 +95,9 @@ The fast enumeration protocol (supporting the for..in statement) will yield NULL
     }
 }
 
+// 记录方法的`返回值`和`参数的类型`信息
+// 如果一个类中有3个方法，那么他就会有三个方法签名，通过方法(SEL)就可以得到对应的签名(Signature)
+// `-methodSignatureForSelector:`
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)sel
 {
     id firstResponder = [self p_firstResponderToSelector:sel];

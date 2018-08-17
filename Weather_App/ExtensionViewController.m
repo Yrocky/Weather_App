@@ -13,6 +13,7 @@
 #import "HLLAlert.h"
 #import "BillInputView.h"
 #import "BillKeyboardView.h"
+#import "MMSingleton.h"
 
 @interface ExtensionViewController ()<BillExtensionViewDelegate>
 
@@ -28,6 +29,38 @@
     [super viewDidLoad];
     self.title = @"拓展功能";
     self.view.backgroundColor = [UIColor whiteColor];
+    [self singleton];
+    // Do any additional setup after loading the view.
+}
+
+- (void) singleton{
+    MMSingleton * mgr = [MMSingleton mgr];
+    NSLog(@"mgr:%@",mgr);
+    
+//    MMSingleton * allocInit = [[MMSingleton alloc] init];
+//    NSLog(@"allocInit:%@",allocInit);
+    
+    MMSingleton * copyMgr = [mgr copy];
+    NSLog(@"copyMgr:%@",copyMgr);
+    
+    MMSingleton * mutableCopyMgr = [mgr mutableCopy];
+    NSLog(@"mutableCopyMgr:%@",mutableCopyMgr);
+    
+    MMSubSingleton * subMgr = [MMSubSingleton mgr];
+    subMgr.name = @"subMgr";
+    NSLog(@"subMgr:%@",subMgr);
+    
+    MMSubSingleton * subAllocInitMgr = [[MMSubSingleton alloc] init];
+    NSLog(@"subAllocInitMgr:%@",subAllocInitMgr);
+    
+    NSThread * thread = [[NSThread alloc] initWithBlock:^{
+        MMSingleton * threadMgr = [MMSingleton mgr];
+        NSLog(@"threadMgr:%@",threadMgr);
+    }];
+    [thread start];
+}
+
+- (void) bill{
     
     CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
     CGFloat keyboardHeight = (screenWidth - 3)/1.68 + 3;
@@ -63,9 +96,7 @@
         make.bottom.mas_equalTo(self.keyboardView.mas_bottom).mas_offset(-40);
     }];
     self.extensionView = extensionView;
-    // Do any additional setup after loading the view.
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
