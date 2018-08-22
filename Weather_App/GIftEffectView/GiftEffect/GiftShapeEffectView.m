@@ -8,6 +8,8 @@
 
 #import "GiftShapeEffectView.h"
 #import "XMLReader.h"
+#import "MMGCDTimerManager.h"
+#import "MMSingleton.h"
 
 #define DEFAULT_FPS 4
 #define ORIGIN_WIDTH 720
@@ -41,14 +43,6 @@ static NSString * const kAnimationDelayDismissKey = @"kAnimationDelayDismissKey"
 
 @implementation GiftShapeEffectView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 
 -(void)initPoints:(EFFECT_TYPE)type{
     self.shapeList = [[NSMutableArray alloc] init];
@@ -56,14 +50,15 @@ static NSString * const kAnimationDelayDismissKey = @"kAnimationDelayDismissKey"
     __block BOOL hasExist = NO;
     NSString *keyStr = keyArr[type];
     
-//    [self.dataManager.dictMShape enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSMutableArray *obj, BOOL * _Nonnull stop) {
-//        if ([key isEqualToString:keyStr]) {
-//            [self.shapeList addObjectsFromArray:obj];
-//            hasExist = YES;
-//            *stop = hasExist;
-//        }
-//    }];
+    [[MMSingleton mgr].dictMShape enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSMutableArray *obj, BOOL * _Nonnull stop) {
+        if ([key isEqualToString:keyStr]) {
+            [self.shapeList addObjectsFromArray:obj];
+            hasExist = YES;
+            *stop = hasExist;
+        }
+    }];
     
+    // 如果视图的类型数组中没有过该类型的，从xml中获取，并存储在类型数组中
     if (!hasExist) {
         NSString *name = [self.effectMap objectForKey:[NSNumber numberWithInt:type]];
         NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"xml"];
@@ -134,7 +129,8 @@ static NSString * const kAnimationDelayDismissKey = @"kAnimationDelayDismissKey"
                 shape.currentY = viewCenter.y;
             }
         }
-//        [self.dataManager.dictMShape setObject:self.shapeList.copy forKey:keyStr];
+        // 然后将类型数组存储在单例里面，下次可以直接获取里面的元素，
+        [[MMSingleton mgr].dictMShape setObject:self.shapeList.copy forKey:keyStr];
     }
 }
 
@@ -159,12 +155,14 @@ static NSString * const kAnimationDelayDismissKey = @"kAnimationDelayDismissKey"
 -(void)start:(EFFECT_TYPE)type image:(UIImage *)image {
     
     CGPoint viewCenter = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
-//    [[MMGCDTimerManager sharedInstance] cancelTimerWithName:kAnimationDelayDismissKey];
-    [self stop:viewCenter image:image];
+    [[MMGCDTimerManager sharedInstance] cancelTimerWithName:kAnimationDelayDismissKey];
+    [self stop:viewCenter image:image];// 将正在动画的视图停止，归位到中心点
     [self initPoints:type];
     if (!self.viewList) {
         self.viewList = [NSMutableArray array];
     }
+    // 根据旧类型数组、新的类型
+    // 如果新的类型数量比老的多，就创建缺少的视图个数，如果少，就直接从老的里面使用
     if (self.viewList.count < self.shapeList.count) {
         NSInteger newImgViewCount = self.shapeList.count - self.viewList.count;
         @autoreleasepool{
@@ -185,7 +183,8 @@ static NSString * const kAnimationDelayDismissKey = @"kAnimationDelayDismissKey"
             view.alpha = 1.f;
             Shape *shape = self.shapeList[i];
             CGPoint point = CGPointMake(shape.endX, shape.endY);
-            CGFloat des = 23;//sqrt((view.centerX - point.x) * (view.centerX - point.x) + (view.centerY - point.y) * (view.centerY - point.y))/60.0;
+            
+            CGFloat des = sqrt((CGRectGetMinX(view.frame) - point.x) * (CGRectGetMinX(view.frame) - point.x) + (CGRectGetMinY(view.frame) - point.y) * (CGRectGetMinY(view.frame) - point.y))/60.0;
             
             CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
             animation.duration = des;
@@ -199,22 +198,22 @@ static NSString * const kAnimationDelayDismissKey = @"kAnimationDelayDismissKey"
         }
     }
     
-//    [[MMGCDTimerManager sharedInstance] scheduledDispatchTimerWithName:kAnimationDelayDismissKey timeInterval:(lastTime + 1.f) queue:nil repeats:AbandonPreviousAction actionOption:AbandonPreviousAction action:^{
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            @autoreleasepool{
-//                for (int i = 0; i < self.viewList.count; i++) {
-//                    UIImageView *view = self.viewList[i];
-//                    if (i < self.shapeList.count) {
-//                        [UIView animateWithDuration:2.f animations:^{
-//                            view.alpha = 0.0f;
-//                        }];
-//                    }else{
-//                        view.alpha = 0.0f;
-//                    }
-//                }
-//            }
-//        });
-//    }];
+    [[MMGCDTimerManager sharedInstance] scheduledDispatchTimerWithName:kAnimationDelayDismissKey timeInterval:(lastTime + 1.f) queue:nil repeats:AbandonPreviousAction actionOption:AbandonPreviousAction action:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @autoreleasepool{
+                for (int i = 0; i < self.viewList.count; i++) {
+                    UIImageView *view = self.viewList[i];
+                    if (i < self.shapeList.count) {
+                        [UIView animateWithDuration:2.f animations:^{
+                            view.alpha = 0.0f;
+                        }];
+                    }else{
+                        view.alpha = 0.0f;
+                    }
+                }
+            }
+        });
+    }];
 }
 
 -(void)stop:(CGPoint)center image:(UIImage *)image{

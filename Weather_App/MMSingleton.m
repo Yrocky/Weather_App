@@ -14,6 +14,7 @@ static MMSingleton * instance = nil;
 
 - (instancetype)initInstance {
     self.name = @"MMSingleton-initInstance";
+    self.dictMShape = [NSMutableDictionary dictionary];
     return [super init];
 }
 

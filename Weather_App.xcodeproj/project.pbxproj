@@ -18,6 +18,8 @@
 		7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F32E0AF1FA1BC70002D57FB /* HLLStickIndicator.m */; };
 		7F32E0B41FA1CB74002D57FB /* HLLIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F32E0B31FA1CB74002D57FB /* HLLIndicatorViewController.m */; };
 		7F3815892126CA68006016E9 /* GiftEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3815882126CA68006016E9 /* GiftEffectViewController.m */; };
+		7F3815B52129460F006016E9 /* MMGCDTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3815B32129460E006016E9 /* MMGCDTimerManager.m */; };
+		7F3815B821294F60006016E9 /* MM_GiftEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3815B721294F60006016E9 /* MM_GiftEffectView.m */; };
 		7F3E0A211FB93BF200F8C258 /* BottomFollowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E0A201FB93BF200F8C258 /* BottomFollowView.m */; };
 		7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */; };
 		7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */; };
@@ -195,6 +197,10 @@
 		7F32E0B31FA1CB74002D57FB /* HLLIndicatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLLIndicatorViewController.m; sourceTree = "<group>"; };
 		7F3815872126CA68006016E9 /* GiftEffectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftEffectViewController.h; sourceTree = "<group>"; };
 		7F3815882126CA68006016E9 /* GiftEffectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftEffectViewController.m; sourceTree = "<group>"; };
+		7F3815B32129460E006016E9 /* MMGCDTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGCDTimerManager.m; sourceTree = "<group>"; };
+		7F3815B42129460F006016E9 /* MMGCDTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGCDTimerManager.h; sourceTree = "<group>"; };
+		7F3815B621294F60006016E9 /* MM_GiftEffectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MM_GiftEffectView.h; sourceTree = "<group>"; };
+		7F3815B721294F60006016E9 /* MM_GiftEffectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MM_GiftEffectView.m; sourceTree = "<group>"; };
 		7F3E0A1F1FB93BF200F8C258 /* BottomFollowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomFollowView.h; sourceTree = "<group>"; };
 		7F3E0A201FB93BF200F8C258 /* BottomFollowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomFollowView.m; sourceTree = "<group>"; };
 		7F414F491F67866200EC8E86 /* MMGiftEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGiftEffectViewController.h; sourceTree = "<group>"; };
@@ -556,6 +562,10 @@
 		7F53C0DE2126740500567D74 /* GIftEffectView */ = {
 			isa = PBXGroup;
 			children = (
+				7F3815B42129460F006016E9 /* MMGCDTimerManager.h */,
+				7F3815B32129460E006016E9 /* MMGCDTimerManager.m */,
+				7F3815B621294F60006016E9 /* MM_GiftEffectView.h */,
+				7F3815B721294F60006016E9 /* MM_GiftEffectView.m */,
 				7F53C0DF2126740500567D74 /* GiftEffect */,
 			);
 			path = GIftEffectView;
@@ -1408,6 +1418,7 @@
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FA36CEA20B4082B0027B61E /* NSArray+Algorithms.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
+				7F3815B821294F60006016E9 /* MM_GiftEffectView.m in Sources */,
 				7F3815892126CA68006016E9 /* GiftEffectViewController.m in Sources */,
 				7F7BA149208EDB240085E045 /* MMSinglyLinkedList.m in Sources */,
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
@@ -1437,6 +1448,7 @@
 				D70629491F8B185100F52FCB /* HSInputTableViewCell.m in Sources */,
 				D70629401F8B185100F52FCB /* HSTextCellModel.m in Sources */,
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
+				7F3815B52129460F006016E9 /* MMGCDTimerManager.m in Sources */,
 				D7F1F8032070F9FB000478C2 /* HomeBillContentView.m in Sources */,
 				D706293E1F8B185100F52FCB /* HSInputCellModel.m in Sources */,
 				D7A595B81FAAC156000C59FE /* CreatePDFViewController.m in Sources */,

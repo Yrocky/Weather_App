@@ -11,7 +11,7 @@
 @interface MMSingleton : NSObject
 
 @property (nonatomic ,copy) NSString * name;
-
+@property (nonatomic ,strong) NSMutableDictionary *dictMShape;
 + (instancetype)mgr;
 @end
 
