@@ -11,6 +11,39 @@
 #import "MMRunwayManager.h"
 #import "UIView+AsyncDrawImage.h"
 
+@interface MMRunwayCell : UITableViewCell
+
+@end
+
+@implementation MMRunwayCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.contentView.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor clearColor];
+    }
+    return self;
+}
+
+- (void)setFrame:(CGRect)frame{
+    
+    [super setFrame:frame];
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    NSLog(@"setFrame:%@",NSStringFromCGRect(self.frame));
+    CGRect oFrame = self.frame;
+    oFrame = (CGRect){
+        {10,5},
+        oFrame.size.width - 20,
+        oFrame.size.height - 10
+    };
+    self.contentView.frame = oFrame;
+}
+@end
+
 @interface RunwayViewController ()<MMRunwayManagerDelegate,MMRunwayCoreViewDelegate,UITableViewDataSource>{
     
     NSArray * socket;
@@ -113,7 +146,7 @@
 //    scrollView.alwaysBounceHorizontal = YES;
     scrollView.frame = CGRectMake(0, 250, self.view.bounds.size.width, 350);
     [self.view addSubview:scrollView];
-    [scrollView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    [scrollView registerClass:[MMRunwayCell class] forCellReuseIdentifier:@"cell"];
     scrollView.dataSource = self;
     self.tableView = scrollView;
     
@@ -170,9 +203,18 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    MMRunwayCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     cell.textLabel.text = self.datas[indexPath.row];
     return cell;
 }
 
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleDelete;
+}
+- (nullable NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return @"Delete";
+}
 @end
