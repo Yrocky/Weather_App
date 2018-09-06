@@ -75,6 +75,7 @@
 - (UIButton *) addLeftHandleButton:(NSString *)text{
     
     if (_leftHandleButton) {
+        [_leftHandleButton removeFromSuperview];
         _leftHandleButton = nil;
     }
     _canLeftSwipeHandle = YES;
@@ -95,6 +96,7 @@
 - (UIButton *) addRightHandleButton:(NSString *)text{
     
     if (_rightHandleButton) {
+        [_rightHandleButton removeFromSuperview];
         _rightHandleButton = nil;
     }
     _canRightSwipeHandle = YES;

@@ -28,4 +28,6 @@
 
 - (NSInteger) todoCount;
 - (NSInteger) finishedTodoCount;
+- (NSUInteger) numberOfRowsInSection:(NSUInteger)section;
+- (NSString *) titleForHeaderInSection:(NSUInteger)section;
 @end

@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MMSignal<ObjectType> : NSObject
+#define MMSignalWith(_object_) ([[MMSignal alloc] initWithValue:_object_])
+#define MMEmptySignal ([[MMSignal alloc] initWithValue:nil])
+
+@interface MMSignal<ObjectType> : NSObject{
+    NSMutableDictionary <NSNumber *,void(^)(ObjectType value)>* _subscribers;
+}
 
 @property (nonatomic ,strong ,readonly) ObjectType value;
 @property (nonatomic ,strong) dispatch_queue_t queue;
-@property (nonatomic ,strong) NSMutableDictionary <NSNumber *,void(^)(ObjectType value)>* subscribers;
+@property (nonatomic ,strong ,readonly) NSMutableDictionary <NSNumber *,void(^)(ObjectType value)>* subscribers;
 
 - (instancetype)initWithValue:(ObjectType)value;
 

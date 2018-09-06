@@ -21,13 +21,28 @@ static NSMutableArray<MMTodoItem *> * items;
 {
     self = [super init];
     if (self) {
-        self.todos = [[MMSignal alloc] initWithValue:@[]];
-        self.finisheds = [[MMSignal alloc] initWithValue:@[]];
+        self.todos = MMSignalWith(@[]);
+        self.finisheds = MMSignalWith(@[]);
+        self.showIndicator = MMSignalWith(@(NO));
+        
         items = [NSMutableArray array];
         [self addTodo:@"default" complete:nil];
     }
     return self;
 }
+- (NSString *) titleForHeaderInSection:(NSUInteger)section{
+    return section == 0 ? @"未完成" : @"已完成";
+}
+
+- (NSUInteger) numberOfRowsInSection:(NSUInteger)section{
+    if (section == 0) {
+        return self.todoCount;
+    }else if (section == 1){
+        return self.finishedTodoCount;
+    }
+    return 0;
+}
+
 - (NSInteger) todoCount{
     return self.todos.peek.count;
 }
@@ -38,9 +53,12 @@ static NSMutableArray<MMTodoItem *> * items;
 
 - (void) updateTodo{
     
+    [self.showIndicator update:@(YES)];
     // 模拟网络请求，1秒后更新数据
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
+        [self.showIndicator update:@(NO)];
+        
         [self.todos update:[items filter:^BOOL(MMTodoItem *obj) {
             return NO == obj.isFinished.peek.boolValue;
         }]];
@@ -53,11 +71,8 @@ static NSMutableArray<MMTodoItem *> * items;
 
 - (void)addTodo:(NSString *)name complete:(void (^)(BOOL))cb{
     
-    // 模拟网络请求，1秒后更新数据
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [items addObject:[MMTodoItem item:NO name:name]];
-        [self updateTodo];
-    });
+    [items addObject:[MMTodoItem item:NO name:name]];
+    [self updateTodo];
 }
 
 - (void) checkTodo:(NSUInteger)index finished:(BOOL)finished{
@@ -75,9 +90,7 @@ static NSMutableArray<MMTodoItem *> * items;
     [changedStatusItem.isFinished update:@(finished)];
     
     // 模拟网络请求
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self updateTodo];
-    });
+    [self updateTodo];
 }
 
 - (void) deleteTodo:(NSUInteger)index{

@@ -8,6 +8,10 @@
 
 #import "MMSignal.h"
 
+@interface MMSignal ()
+
+@end
+
 @implementation MMSignal
 
 - (void)dealloc{
@@ -53,8 +57,8 @@
 }
 
 - (NSInteger) bind:(MMSignal<id> *)signal{
-    return [self subscriber:^(id value) {
-        [signal update:value];
+    return [signal subscriber:^(id value) {
+        [self update:value];
     }];
 }
 
@@ -88,7 +92,7 @@
 
 - (MMSignal<id>*) filter:(BOOL(^)(id value))f{
     if (f(self.value)) {
-        return self.value;
+        return self;
     }
     return nil;
 }

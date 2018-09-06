@@ -35,9 +35,12 @@
 }
 @end
 
-@interface SignalViewController ()<UITableViewDataSource,UITableViewDelegate,MMSwipeCellProtocol>
+@interface SignalViewController ()<UITableViewDataSource,UITableViewDelegate,MMSwipeCellProtocol>{
+    MMSignal<NSNumber *> * bindSignal;
+}
 @property (nonatomic ,strong) UITableView * tableView;
 @property (nonatomic ,strong) MMViewModel * todoViewModel;
+
 @end
 
 @implementation SignalViewController
@@ -54,21 +57,40 @@
     
     __weak typeof(self) weakSelf = self;
     self.todoViewModel = [[MMViewModel alloc] init];
+    
     [self.todoViewModel.todos subscriber:^(NSArray<MMTodoItem *> *value) {
         [weakSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:0]
                           withRowAnimation:UITableViewRowAnimationAutomatic];
     }];
-    NSUInteger token = [self.todoViewModel.finisheds subscriber:^(NSArray<MMTodoItem *> *value) {
+    
+    [self.todoViewModel.finisheds subscriber:^(NSArray<MMTodoItem *> *value) {
         [weakSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:1]
                           withRowAnimation:UITableViewRowAnimationAutomatic];
     }];
 //    [self.todoViewModel.finisheds unscrible:token];
-    [[self.todoViewModel.todos map:^id(NSArray<MMTodoItem *> *value) {
-        return @"one";
-    }] subscriber:^(id value) {
-        NSLog(@"%@",value);
+    
+    [self.todoViewModel.showIndicator subscriber:^(NSNumber *value) {
+        weakSelf.title = value.boolValue ? @"加载数据中..." : @"信号";
     }];
-    [self.todoViewModel updateTodo];
+    
+    bindSignal = MMEmptySignal;
+    [bindSignal bind:self.todoViewModel.showIndicator];
+    [bindSignal subscriber:^(NSNumber *value) {
+        NSLog(@"value:%@",value);
+    }];
+    
+//    [[self.todoViewModel.todos map:^id(NSArray<MMTodoItem *> *value) {
+//        return @"one";
+//    }] subscriber:^(id value) {
+//        NSLog(@"%@",value);
+//    }];
+//    [self.todoViewModel updateTodo];
+//
+//    [[self.todoViewModel.todos filter:^BOOL(NSArray<MMTodoItem *> *value) {
+//        return value.count == 2;
+//    }] subscriber:^(NSArray<MMTodoItem *> *value) {
+//        NSLog(@"value count is two:%@",value);
+//    }];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.tableView.delegate = self;
@@ -77,6 +99,7 @@
            forCellReuseIdentifier:[FDTodoCell cellIdentifier]];
     [self.view addSubview:self.tableView];
 }
+// 添加一项
 - (void) addOneTodoAction{
     NSString * news = [NSString stringWithFormat:@"%@",[NSDate date]];
     [self.todoViewModel addTodo:news complete:^(BOOL finished) {
@@ -94,34 +117,36 @@
     
     FDTodoCell * cell = [tableView dequeueReusableCellWithIdentifier:[FDTodoCell cellIdentifier]
                                                          forIndexPath:indexPath];
-    [cell addRightHandleButton:@"完成"];
     [cell addLeftHandleButton:@"删除"];
     cell.swipeDelegate = self;
     MMTodoItem * item;
     if (indexPath.section == 0) {
+        
         item = self.todoViewModel.todos.peek[indexPath.row];
+        
+        [cell addRightHandleButton:@"完成"];
     }
     if (indexPath.section == 1) {
+        
         item = self.todoViewModel.finisheds.peek[indexPath.row];
+        
+        [cell addRightHandleButton:@"未完成"];
     }
+    
     [item.name bindTo:cell.nameLabel forKeyPath:@"text"];
     return cell;
 }
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return section == 0 ? @"未完成" : @"已完成";
+    return [self.todoViewModel titleForHeaderInSection:section];
 }
+
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
-        return self.todoViewModel.todoCount;
-    }else if (section == 1){
-        return self.todoViewModel.finishedTodoCount;
-    }
-    return 0;
+    return [self.todoViewModel numberOfRowsInSection:section];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
