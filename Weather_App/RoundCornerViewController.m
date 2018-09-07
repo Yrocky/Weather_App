@@ -48,7 +48,7 @@
     UILabel * label = [UILabel new];
     label.text = @"    this is a text label    ";
     label.textColor = [UIColor greenColor];
-    label.backgroundColor = [UIColor redColor];
+    label.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.roundView.mas_right).mas_offset(40);
