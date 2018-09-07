@@ -165,6 +165,10 @@
 		D7A73E1D1FAC16E800818CF5 /* MarkdownRenderHTMLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A73E1C1FAC16E800818CF5 /* MarkdownRenderHTMLViewController.m */; };
 		D7A73E201FB04B2B00818CF5 /* MM_FindFriendEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A73E1F1FB04B2B00818CF5 /* MM_FindFriendEntryViewController.m */; };
 		D7A73E231FB04F4800818CF5 /* MM_FindFriendEntryItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A73E221FB04F4800818CF5 /* MM_FindFriendEntryItemView.m */; };
+		D7A77D72213451F200E0E435 /* MMSignal.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A77D6E213451F100E0E435 /* MMSignal.m */; };
+		D7A77D73213451F200E0E435 /* MMViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A77D6F213451F200E0E435 /* MMViewModel.m */; };
+		D7A77D772134526900E0E435 /* SignalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A77D762134526900E0E435 /* SignalViewController.m */; };
+		D7A77D7A2134668E00E0E435 /* MMSwipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A77D792134668E00E0E435 /* MMSwipeCell.m */; };
 		D7DE014E1F98C1EF008682DE /* NSInvocation+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DE014B1F98C1EF008682DE /* NSInvocation+AHKAdditions.m */; };
 		D7DE014F1F98C1EF008682DE /* NSObject+AHKBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DE014D1F98C1EF008682DE /* NSObject+AHKBuilder.m */; };
 		D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DF33531F6AC9E400771928 /* MMPreviewHUD.m */; };
@@ -483,6 +487,14 @@
 		D7A73E1F1FB04B2B00818CF5 /* MM_FindFriendEntryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MM_FindFriendEntryViewController.m; sourceTree = "<group>"; };
 		D7A73E211FB04F4800818CF5 /* MM_FindFriendEntryItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MM_FindFriendEntryItemView.h; sourceTree = "<group>"; };
 		D7A73E221FB04F4800818CF5 /* MM_FindFriendEntryItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MM_FindFriendEntryItemView.m; sourceTree = "<group>"; };
+		D7A77D6E213451F100E0E435 /* MMSignal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMSignal.m; sourceTree = "<group>"; };
+		D7A77D6F213451F200E0E435 /* MMViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMViewModel.m; sourceTree = "<group>"; };
+		D7A77D70213451F200E0E435 /* MMViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMViewModel.h; sourceTree = "<group>"; };
+		D7A77D71213451F200E0E435 /* MMSignal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMSignal.h; sourceTree = "<group>"; };
+		D7A77D752134526900E0E435 /* SignalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignalViewController.h; sourceTree = "<group>"; };
+		D7A77D762134526900E0E435 /* SignalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignalViewController.m; sourceTree = "<group>"; };
+		D7A77D782134668E00E0E435 /* MMSwipeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSwipeCell.h; sourceTree = "<group>"; };
+		D7A77D792134668E00E0E435 /* MMSwipeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSwipeCell.m; sourceTree = "<group>"; };
 		D7DE01491F98C1EF008682DE /* AHKBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHKBuilder.h; sourceTree = "<group>"; };
 		D7DE014A1F98C1EF008682DE /* NSInvocation+AHKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+AHKAdditions.h"; sourceTree = "<group>"; };
 		D7DE014B1F98C1EF008682DE /* NSInvocation+AHKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+AHKAdditions.m"; sourceTree = "<group>"; };
@@ -811,6 +823,8 @@
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
 				D7A325E220772DD700B2F8AB /* BillKeyboardView.h */,
 				D7A325E320772DD700B2F8AB /* BillKeyboardView.m */,
+				D7A77D782134668E00E0E435 /* MMSwipeCell.h */,
+				D7A77D792134668E00E0E435 /* MMSwipeCell.m */,
 				7F8AE0DA20B7BBFD009D378A /* TappableLabel */,
 				7F6FFB7A209458E000A84A81 /* ZPLabel */,
 				D713B8CF2076034900D388F2 /* bill-input */,
@@ -823,6 +837,7 @@
 				7FFAB83D210AC38A00CA6671 /* MMAObject.m */,
 				7FFAB83F210AC39500CA6671 /* MMBObject.h */,
 				7FFAB840210AC39500CA6671 /* MMBObject.m */,
+				D7A77D74213451FA00E0E435 /* Signal */,
 				7F9810122121889B0004C638 /* MMDelegateService.h */,
 				7F9810132121889B0004C638 /* MMDelegateService.m */,
 				7F9810152122AE7A0004C638 /* MMSingleton.h */,
@@ -1147,6 +1162,8 @@
 				7FCA92182111A77F00DB7EFD /* RoundCornerViewController.m */,
 				7F3815872126CA68006016E9 /* GiftEffectViewController.h */,
 				7F3815882126CA68006016E9 /* GiftEffectViewController.m */,
+				D7A77D752134526900E0E435 /* SignalViewController.h */,
+				D7A77D762134526900E0E435 /* SignalViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -1222,6 +1239,17 @@
 				D7A73E221FB04F4800818CF5 /* MM_FindFriendEntryItemView.m */,
 			);
 			name = "发现界面";
+			sourceTree = "<group>";
+		};
+		D7A77D74213451FA00E0E435 /* Signal */ = {
+			isa = PBXGroup;
+			children = (
+				D7A77D71213451F200E0E435 /* MMSignal.h */,
+				D7A77D6E213451F100E0E435 /* MMSignal.m */,
+				D7A77D70213451F200E0E435 /* MMViewModel.h */,
+				D7A77D6F213451F200E0E435 /* MMViewModel.m */,
+			);
+			name = Signal;
 			sourceTree = "<group>";
 		};
 		D7DE01481F98C1EF008682DE /* AHKBuilder */ = {
@@ -1395,6 +1423,8 @@
 				7F590D7C1FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.m in Sources */,
 				D706293B1F8B185100F52FCB /* HSBaseCellModel.m in Sources */,
 				7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */,
+				D7A77D73213451F200E0E435 /* MMViewModel.m in Sources */,
+				D7A77D7A2134668E00E0E435 /* MMSwipeCell.m in Sources */,
 				7FCF75021F8B1DC100514597 /* HLLAlert.m in Sources */,
 				D715E6A31FA64ECF00CFBFF4 /* FDContentView.m in Sources */,
 				7F8B6C071F95ED6F00F3A6E3 /* MMSearchDefaultCollectionView.m in Sources */,
@@ -1452,6 +1482,7 @@
 				D7F1F8032070F9FB000478C2 /* HomeBillContentView.m in Sources */,
 				D706293E1F8B185100F52FCB /* HSInputCellModel.m in Sources */,
 				D7A595B81FAAC156000C59FE /* CreatePDFViewController.m in Sources */,
+				D7A77D772134526900E0E435 /* SignalViewController.m in Sources */,
 				7FA726181FFB896400C0F6F2 /* MMCardViewController.m in Sources */,
 				7F7BA14C2090799D0085E045 /* PKProtocolExtension.m in Sources */,
 				7F14A78E2064AE00006EC133 /* UIView+AsyncDrawImage.m in Sources */,
@@ -1472,6 +1503,7 @@
 				7F14A7D9206B29F2006EC133 /* RunwayViewController.m in Sources */,
 				D713B8B6207280C900D388F2 /* CustomNavigationBar.m in Sources */,
 				7F63BBB1206E220D0084ABC8 /* HomeViewController.m in Sources */,
+				D7A77D72213451F200E0E435 /* MMSignal.m in Sources */,
 				D713B8B92075FEC700D388F2 /* ExtensionViewController.m in Sources */,
 				D70629431F8B185100F52FCB /* HSTableViewModel.m in Sources */,
 				7FE705BE1FBD8CFC009FF3A7 /* MMCollectionViewController.m in Sources */,
