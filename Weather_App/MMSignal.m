@@ -12,6 +12,8 @@
 
 @end
 
+static NSInteger nuber;
+
 @implementation MMSignal
 
 - (void)dealloc{
@@ -20,6 +22,12 @@
 - (instancetype)initWithValue:(id)value{
     self = [super init];
     if (self) {
+        
+        nuber = &array[2];
+        
+        NSLog(@"array:%d",&array[2]);
+//        nuber = array[2];
+        NSLog(@"nuber:%ld",(long)nuber);
         _value = value;
         _queue = dispatch_queue_create("com.swift.let.token", NULL);
         _subscribers = [NSMutableDictionary dictionary];
@@ -28,6 +36,7 @@
 }
 
 - (NSInteger) subscriber:(void (^)(id value))subscriber{
+    
     return [self subscribeNext:NO subscriber:subscriber];
 }
 
