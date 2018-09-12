@@ -55,7 +55,7 @@ int main(int argc, char * argv[]) {
         d = nil;
         NSLog(@"%d",[d[@"key"] boolValue]);
         NSLog(@"value:%@",[d objectForKey:@"key1"]);
-        
+    
 //        e();
         
 //        NSData* jsonData = [d dataUsingEncoding:NSUTF8StringEncoding];
