@@ -68,6 +68,19 @@ int main(int argc, char * argv[]) {
         NSLog(@"compera:%d",[other compare:date]);
         
         
+        NSArray * a =  @[@2,@3,@4,@5,@6,@7];
+        
+        int i = 0;
+        for (NSUInteger index = 0 ; index < 30 ; index ++) {
+            
+            NSLog(@"%@",[a subarrayWithRange:NSMakeRange(i * 2, 2)]);
+            i ++;
+            
+            if (i >= a.count/2){
+                i = 0;
+            }
+        }
+        NSLog(@"...");
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
