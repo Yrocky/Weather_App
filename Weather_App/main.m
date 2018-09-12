@@ -67,7 +67,7 @@ int main(int argc, char * argv[]) {
         //
         NSLog(@"compera:%d",[other compare:date]);
         
-        
+        NSLog(@"...b...");
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
