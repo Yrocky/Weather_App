@@ -10,6 +10,8 @@
 #import "YALPreloaderCircleView.h"
 #import "Masonry.h"
 
+#import "MMAnimator.h"
+
 @interface MMAnimationViewController ()
 
 @property (nonatomic ,strong) UIView * superView;
@@ -21,7 +23,9 @@
 @end
 
 @implementation MMAnimationViewController
-
+- (void)dealloc{
+    NSLog(@"MMAnimationViewController dealloc");
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,7 +48,19 @@
         make.width.mas_equalTo(300);
     }];
     
+    self.view.backgroundColor = [UIColor redColor];
+    [[[UIView.animator.duration(2.0f) animations:^{
+        self.view.backgroundColor = [UIColor orangeColor];
+    }] completion:^(BOOL finished) {
+        NSLog(@"animator completion");
+    }] animate];
     
+    [[[UIView.springAnimator.dampingRatio(10).velocity(20)
+       .duration(2.0f).delay(4.25f) animations:^{
+           self.superView.backgroundColor = [UIColor purpleColor];
+       }] completion:^(BOOL finished) {
+           NSLog(@"springAnimator completion");
+       }] animate];
     self.itemView1 = [UIView new];
     self.itemView1.backgroundColor = [UIColor redColor];
     [self.superView addSubview:self.itemView1];
@@ -56,6 +72,11 @@
     self.itemView3 = [UIView new];
     self.itemView3.backgroundColor = [UIColor redColor];
     [self.superView addSubview:self.itemView3];
+    
+    [[UIView.keyframeAnimator.keyFrameOptions(UIViewKeyframeAnimationOptionCalculationModeCubic)
+      .duration(2.0f) animations:^{
+          self.itemView3.backgroundColor = [UIColor orangeColor];
+      }] animate];
     
     NSArray * itemViews = @[self.itemView1,self.itemView2,self.itemView3];
     [itemViews mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -71,9 +92,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
-//    [self.circleView animateToRect:[self destinationCircleRect]
-//                        completion:^{
-//                        }];
+    [self.circleView animateToRect:[self destinationCircleRect]
+                        completion:^{
+                        }];
 }
 
 - (CGRect)initialCircleRect {
