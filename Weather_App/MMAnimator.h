@@ -12,8 +12,10 @@
 typedef void(^MMAnimatorNormalBlock)();
 typedef void(^MMAnimatorBoolValueBlock)(BOOL finished);
 
-@class MMAnimator ,MMSpringAnimator ,MMKeyframeAnimator;
+//typedef id<MMAnimator> (^MMAnimatorDouble)(double d);
+//#define MMAnimatorDouble(d) ^id<MMAnimator> (double d)
 
+@class MMAnimator ,MMSpringAnimator ,MMKeyframeAnimator;
 @protocol MMAnimator <NSObject>
 @optional
 - (id<MMAnimator>(^)(NSTimeInterval)) duration;
@@ -39,7 +41,6 @@ typedef void(^MMAnimatorBoolValueBlock)(BOOL finished);
     NSTimeInterval _delay;
     UIViewAnimationOptions _options;
 }
-
 + (instancetype) animator;
 @end
 

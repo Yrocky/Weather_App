@@ -55,12 +55,35 @@
         NSLog(@"animator completion");
     }] animate];
     
+    // 有一个缺点，在设置完动画相关的属性之后还需要主动调用`animate`方法来启动动画，如何做到自动开启动画呢，
+    // 期望的效果如下所示
+    /**
+    [[UIView.springAnimator.dampingRatio(10).velocity(20)
+       .duration(2.0f).delay(4.25f) animations:^{
+           self.superView.backgroundColor = [UIColor purpleColor];
+       }] completion:^(BOOL finished) {
+           NSLog(@"springAnimator completion");
+       }];
+    **/
+    // 还有一个缺点，如果是对一个视图进行组合动画，就又回到了以前的书写效果上了，在一个animation的completion里面开始另一个animation
+    /**
+    [[[UIView.animator.duration(2.0f) animations:^{
+        self.view.backgroundColor = [UIColor orangeColor];
+    }] completion:^(BOOL finished) {
+        [[UIView.animator.duration(1) animations:^{
+            self.view.backgroundColor = [UIColor whiteColor];
+        }] animate];
+    }] animate];
+    **/
+    // 第三个缺点，没有对接口进行友好的提示，当设置`duration`的时候，block接收的参数不知道是什么类型的
+    
     [[[UIView.springAnimator.dampingRatio(10).velocity(20)
        .duration(2.0f).delay(4.25f) animations:^{
            self.superView.backgroundColor = [UIColor purpleColor];
        }] completion:^(BOOL finished) {
            NSLog(@"springAnimator completion");
        }] animate];
+    
     self.itemView1 = [UIView new];
     self.itemView1.backgroundColor = [UIColor redColor];
     [self.superView addSubview:self.itemView1];
