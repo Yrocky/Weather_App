@@ -169,6 +169,7 @@
 		D7A77D73213451F200E0E435 /* MMViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A77D6F213451F200E0E435 /* MMViewModel.m */; };
 		D7A77D772134526900E0E435 /* SignalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A77D762134526900E0E435 /* SignalViewController.m */; };
 		D7A77D7A2134668E00E0E435 /* MMSwipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A77D792134668E00E0E435 /* MMSwipeCell.m */; };
+		D7A78FBD218752240021313B /* MMDirectionGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A78FBC218752240021313B /* MMDirectionGestureRecognizer.m */; };
 		D7DE014E1F98C1EF008682DE /* NSInvocation+AHKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DE014B1F98C1EF008682DE /* NSInvocation+AHKAdditions.m */; };
 		D7DE014F1F98C1EF008682DE /* NSObject+AHKBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DE014D1F98C1EF008682DE /* NSObject+AHKBuilder.m */; };
 		D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DF33531F6AC9E400771928 /* MMPreviewHUD.m */; };
@@ -495,6 +496,8 @@
 		D7A77D762134526900E0E435 /* SignalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignalViewController.m; sourceTree = "<group>"; };
 		D7A77D782134668E00E0E435 /* MMSwipeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSwipeCell.h; sourceTree = "<group>"; };
 		D7A77D792134668E00E0E435 /* MMSwipeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSwipeCell.m; sourceTree = "<group>"; };
+		D7A78FBB218752240021313B /* MMDirectionGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMDirectionGestureRecognizer.h; sourceTree = "<group>"; };
+		D7A78FBC218752240021313B /* MMDirectionGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMDirectionGestureRecognizer.m; sourceTree = "<group>"; };
 		D7DE01491F98C1EF008682DE /* AHKBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHKBuilder.h; sourceTree = "<group>"; };
 		D7DE014A1F98C1EF008682DE /* NSInvocation+AHKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+AHKAdditions.h"; sourceTree = "<group>"; };
 		D7DE014B1F98C1EF008682DE /* NSInvocation+AHKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+AHKAdditions.m"; sourceTree = "<group>"; };
@@ -842,6 +845,8 @@
 				7F9810132121889B0004C638 /* MMDelegateService.m */,
 				7F9810152122AE7A0004C638 /* MMSingleton.h */,
 				7F9810162122AE7B0004C638 /* MMSingleton.m */,
+				D7A78FBB218752240021313B /* MMDirectionGestureRecognizer.h */,
+				D7A78FBC218752240021313B /* MMDirectionGestureRecognizer.m */,
 				7F7BA14A2090799C0085E045 /* PKProtocolExtension.h */,
 				7F7BA14B2090799C0085E045 /* PKProtocolExtension.m */,
 				7F7BA143208DE2EF0085E045 /* 链表 */,
@@ -1494,6 +1499,7 @@
 				7F5FD9932115898D00DB70F8 /* MM24GameManager.m in Sources */,
 				7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */,
 				D715E6A61FA7152100CFBFF4 /* CLTStickyLayout.m in Sources */,
+				D7A78FBD218752240021313B /* MMDirectionGestureRecognizer.m in Sources */,
 				7FDC6EE11F46E38800D94379 /* HLLWaveView.m in Sources */,
 				D7DE014E1F98C1EF008682DE /* NSInvocation+AHKAdditions.m in Sources */,
 				D70629461F8B185100F52FCB /* HSBaseTableViewCell.m in Sources */,
