@@ -18,3 +18,17 @@
 - (id) getBObject;
 @end
 
+@interface MM_Number : NSObject{
+    NSUInteger _number;
+}
+@property (nonatomic ,assign ,readonly) NSUInteger number;
+
++ (instancetype) number:(NSUInteger)number;
+- (MM_Number *(^)(NSUInteger number))add;
++ (MM_Number *(^)(NSUInteger number))number;
+@end
+
+@interface NSNumber (MM_Math)
+- (NSNumber *(^)(NSUInteger number))add;
+- (NSNumber *(^)(NSUInteger number))minus;
+@end

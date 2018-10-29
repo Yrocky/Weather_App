@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "GIftEffectView/GiftEffect/GiftShapeEffectView.h"
 #import "MMDirectionGestureRecognizer.h"
+#import "MMAObject.h"
 
 @interface GiftEffectViewController ()
 @property (nonatomic ,strong) GiftShapeEffectView * effectView;
@@ -106,6 +107,11 @@
             make.bottom.mas_equalTo(self.view.mas_bottom);
         }
     }];
+    
+    MM_Number * five = [MM_Number number:5];
+    five.add(4);// 9
+    MM_Number.number(3).add(4);// 7
+//    @(2).add(3).minus(4).integerValue;
 }
 
 

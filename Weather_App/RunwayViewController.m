@@ -28,23 +28,31 @@
 
 - (void)setFrame:(CGRect)frame{
     
-    [super setFrame:frame];
+    CGRect oFrame = frame;
+    oFrame = (CGRect){
+//        {10,5},
+        oFrame.origin.x - 10,
+        oFrame.origin.y - 5,
+        oFrame.size.width - 20,
+        oFrame.size.height - 10
+    };
+    [super setFrame:oFrame];
 }
 
 - (void)layoutSubviews{
     [super layoutSubviews];
     NSLog(@"setFrame:%@",NSStringFromCGRect(self.frame));
-    CGRect oFrame = self.frame;
-    oFrame = (CGRect){
-        {10,5},
-        oFrame.size.width - 20,
-        oFrame.size.height - 10
-    };
-    self.contentView.frame = oFrame;
+//    CGRect oFrame = self.frame;
+//    oFrame = (CGRect){
+//        {10,5},
+//        oFrame.size.width - 20,
+//        oFrame.size.height - 10
+//    };
+//    self.contentView.frame = oFrame;
 }
 @end
 
-@interface RunwayViewController ()<MMRunwayManagerDelegate,MMRunwayCoreViewDelegate,UITableViewDataSource>{
+@interface RunwayViewController ()<MMRunwayManagerDelegate,MMRunwayCoreViewDelegate,UITableViewDataSource,UITableViewDelegate>{
     
     NSArray * socket;
 }
@@ -148,6 +156,7 @@
     [self.view addSubview:scrollView];
     [scrollView registerClass:[MMRunwayCell class] forCellReuseIdentifier:@"cell"];
     scrollView.dataSource = self;
+    scrollView.delegate = self;
     self.tableView = scrollView;
     
 }
@@ -207,14 +216,21 @@
     cell.textLabel.text = self.datas[indexPath.row];
     return cell;
 }
+//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return YES;
+//}
+//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return UITableViewCellEditingStyleDelete;
+//}
+//
+//- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return @"删除";
+//}
 
-- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    return YES;
-}
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return UITableViewCellEditingStyleDelete;
-}
-- (nullable NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return @"Delete";
+- (nullable UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    return [UISwipeActionsConfiguration configurationWithActions:@[[UIContextualAction contextualActionWithStyle:UISystemAnimationDelete title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+        NSLog(@"perform delete");
+    }]]];
 }
 @end

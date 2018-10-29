@@ -23,3 +23,45 @@
     return [MMBObject new];
 }
 @end
+@implementation MM_Number
+
++ (instancetype) number:(NSUInteger)number{
+    return [[self alloc] initWithNumber:number];
+}
+
+- (instancetype) initWithNumber:(NSUInteger)number{
+    self = [super init];
+    if (self) {
+        _number = number;
+    }
+    return self;
+}
++ (MM_Number *(^)(NSUInteger number))number{
+    return ^MM_Number*(NSUInteger number){
+        MM_Number * numberObj = [MM_Number number:number];
+        return numberObj;
+    };
+}
+- (MM_Number *(^)(NSUInteger number))add{
+    return ^MM_Number*(NSUInteger number){
+        _number =+ number;
+        return self;
+    };
+}
+
+@end
+
+@implementation NSNumber (MM_Math)
+
+- (NSNumber *(^)(NSUInteger number))add{
+    return ^NSNumber*(NSUInteger number){
+        return @(self.integerValue + number);
+    };
+}
+- (NSNumber *(^)(NSUInteger number))minus{
+    return ^NSNumber*(NSUInteger number){
+        return @(self.integerValue - number);
+    };
+}
+
+@end

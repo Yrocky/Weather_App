@@ -34,3 +34,6 @@
 - (MMSignal *) map:(id(^)(ObjectType value))m;
 - (MMSignal<ObjectType> *) filter:(BOOL(^)(ObjectType value))f;
 @end
+static int *arr = NULL;
+static int *array[178] = {2};
+
