@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7F0501822011EAD00033E83C /* MMAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501812011EAD00033E83C /* MMAnimationViewController.m */; };
 		7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501842011EAE80033E83C /* YALPreloaderCircleView.m */; };
+		7F0C0EC5214B5288000C55C6 /* UIButton+MMCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0EC4214B5288000C55C6 /* UIButton+MMCustom.m */; };
 		7F14A78E2064AE00006EC133 /* UIView+AsyncDrawImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F14A78D2064AE00006EC133 /* UIView+AsyncDrawImage.m */; };
 		7F14A7D02064B1A1006EC133 /* AsyncDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F14A7CF2064B1A1006EC133 /* AsyncDrawViewController.m */; };
 		7F14A7D9206B29F2006EC133 /* RunwayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F14A7D8206B29F2006EC133 /* RunwayViewController.m */; };
@@ -20,6 +21,7 @@
 		7F3815892126CA68006016E9 /* GiftEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3815882126CA68006016E9 /* GiftEffectViewController.m */; };
 		7F3815B52129460F006016E9 /* MMGCDTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3815B32129460E006016E9 /* MMGCDTimerManager.m */; };
 		7F3815B821294F60006016E9 /* MM_GiftEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3815B721294F60006016E9 /* MM_GiftEffectView.m */; };
+		7F39ED06214FC3B7006CE72F /* MMAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F39ED05214FC3B7006CE72F /* MMAnimator.m */; };
 		7F3E0A211FB93BF200F8C258 /* BottomFollowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E0A201FB93BF200F8C258 /* BottomFollowView.m */; };
 		7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */; };
 		7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */; };
@@ -33,7 +35,6 @@
 		7F53C0F32126740600567D74 /* v520.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0E92126740500567D74 /* v520.xml */; };
 		7F53C0F42126740600567D74 /* love.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0EA2126740500567D74 /* love.xml */; };
 		7F53C0F52126740600567D74 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F53C0EB2126740500567D74 /* XMLReader.m */; };
-		7F590D791FA9A5D4006F7BF0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F590D691FA9A5D4006F7BF0 /* Info.plist */; };
 		7F590D7A1FA9A5D4006F7BF0 /* STPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D6C1FA9A5D4006F7BF0 /* STPopupController.m */; };
 		7F590D7B1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D6E1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m */; };
 		7F590D7C1FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D701FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.m */; };
@@ -184,6 +185,8 @@
 		7F0501812011EAD00033E83C /* MMAnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationViewController.m; sourceTree = "<group>"; };
 		7F0501842011EAE80033E83C /* YALPreloaderCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALPreloaderCircleView.m; sourceTree = "<group>"; };
 		7F0501852011EAE80033E83C /* YALPreloaderCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALPreloaderCircleView.h; sourceTree = "<group>"; };
+		7F0C0EC3214B5288000C55C6 /* UIButton+MMCustom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+MMCustom.h"; sourceTree = "<group>"; };
+		7F0C0EC4214B5288000C55C6 /* UIButton+MMCustom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+MMCustom.m"; sourceTree = "<group>"; };
 		7F14A78C2064AE00006EC133 /* UIView+AsyncDrawImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+AsyncDrawImage.h"; sourceTree = "<group>"; };
 		7F14A78D2064AE00006EC133 /* UIView+AsyncDrawImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+AsyncDrawImage.m"; sourceTree = "<group>"; };
 		7F14A7CE2064B1A1006EC133 /* AsyncDrawViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncDrawViewController.h; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 		7F3815B42129460F006016E9 /* MMGCDTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGCDTimerManager.h; sourceTree = "<group>"; };
 		7F3815B621294F60006016E9 /* MM_GiftEffectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MM_GiftEffectView.h; sourceTree = "<group>"; };
 		7F3815B721294F60006016E9 /* MM_GiftEffectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MM_GiftEffectView.m; sourceTree = "<group>"; };
+		7F39ED04214FC3B7006CE72F /* MMAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimator.h; sourceTree = "<group>"; };
+		7F39ED05214FC3B7006CE72F /* MMAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimator.m; sourceTree = "<group>"; };
 		7F3E0A1F1FB93BF200F8C258 /* BottomFollowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomFollowView.h; sourceTree = "<group>"; };
 		7F3E0A201FB93BF200F8C258 /* BottomFollowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomFollowView.m; sourceTree = "<group>"; };
 		7F414F491F67866200EC8E86 /* MMGiftEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGiftEffectViewController.h; sourceTree = "<group>"; };
@@ -826,6 +831,8 @@
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
 				D7A325E220772DD700B2F8AB /* BillKeyboardView.h */,
 				D7A325E320772DD700B2F8AB /* BillKeyboardView.m */,
+				7F39ED04214FC3B7006CE72F /* MMAnimator.h */,
+				7F39ED05214FC3B7006CE72F /* MMAnimator.m */,
 				D7A77D782134668E00E0E435 /* MMSwipeCell.h */,
 				D7A77D792134668E00E0E435 /* MMSwipeCell.m */,
 				7F8AE0DA20B7BBFD009D378A /* TappableLabel */,
@@ -980,6 +987,8 @@
 				7FA36CE920B4082B0027B61E /* NSArray+Algorithms.m */,
 				7F98100F211C6BE90004C638 /* UIView+RoundCorner.h */,
 				7F981010211C6BE90004C638 /* UIView+RoundCorner.m */,
+				7F0C0EC3214B5288000C55C6 /* UIButton+MMCustom.h */,
+				7F0C0EC4214B5288000C55C6 /* UIButton+MMCustom.m */,
 			);
 			name = "分类";
 			sourceTree = "<group>";
@@ -1343,7 +1352,6 @@
 			files = (
 				D7A595BF1FAACFED000C59FE /* rootTemplate.html in Resources */,
 				7F53C0EC2126740600567D74 /* smile_face.xml in Resources */,
-				7F590D791FA9A5D4006F7BF0 /* Info.plist in Resources */,
 				7FE705BB1FBD6A75009FF3A7 /* SomeCustomView.xib in Resources */,
 				7F53C0F32126740600567D74 /* v520.xml in Resources */,
 				7F53C0EE2126740600567D74 /* heart.xml in Resources */,
@@ -1488,6 +1496,7 @@
 				D706293E1F8B185100F52FCB /* HSInputCellModel.m in Sources */,
 				D7A595B81FAAC156000C59FE /* CreatePDFViewController.m in Sources */,
 				D7A77D772134526900E0E435 /* SignalViewController.m in Sources */,
+				7F0C0EC5214B5288000C55C6 /* UIButton+MMCustom.m in Sources */,
 				7FA726181FFB896400C0F6F2 /* MMCardViewController.m in Sources */,
 				7F7BA14C2090799D0085E045 /* PKProtocolExtension.m in Sources */,
 				7F14A78E2064AE00006EC133 /* UIView+AsyncDrawImage.m in Sources */,
@@ -1523,6 +1532,7 @@
 				D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */,
 				7FA274CF20876366001B9FD2 /* YYWeakProxy.m in Sources */,
 				7F6FFB8D209458E100A84A81 /* NSAttributedString+ZPAttributedString.m in Sources */,
+				7F39ED06214FC3B7006CE72F /* MMAnimator.m in Sources */,
 				D706293A1F8B185100F52FCB /* HSSetTableViewMainController.m in Sources */,
 				7FA726151FFB7A2800C0F6F2 /* NSNumber+Sugar.m in Sources */,
 				D7008DDC1FB180B500BD6EA0 /* MMNavigationController.m in Sources */,
