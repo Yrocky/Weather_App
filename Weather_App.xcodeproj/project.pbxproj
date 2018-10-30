@@ -35,7 +35,6 @@
 		7F53C0F32126740600567D74 /* v520.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0E92126740500567D74 /* v520.xml */; };
 		7F53C0F42126740600567D74 /* love.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0EA2126740500567D74 /* love.xml */; };
 		7F53C0F52126740600567D74 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F53C0EB2126740500567D74 /* XMLReader.m */; };
-		7F590D791FA9A5D4006F7BF0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F590D691FA9A5D4006F7BF0 /* Info.plist */; };
 		7F590D7A1FA9A5D4006F7BF0 /* STPopupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D6C1FA9A5D4006F7BF0 /* STPopupController.m */; };
 		7F590D7B1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D6E1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m */; };
 		7F590D7C1FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F590D701FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.m */; };
@@ -1348,7 +1347,6 @@
 			files = (
 				D7A595BF1FAACFED000C59FE /* rootTemplate.html in Resources */,
 				7F53C0EC2126740600567D74 /* smile_face.xml in Resources */,
-				7F590D791FA9A5D4006F7BF0 /* Info.plist in Resources */,
 				7FE705BB1FBD6A75009FF3A7 /* SomeCustomView.xib in Resources */,
 				7F53C0F32126740600567D74 /* v520.xml in Resources */,
 				7F53C0EE2126740600567D74 /* heart.xml in Resources */,

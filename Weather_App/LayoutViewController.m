@@ -215,7 +215,80 @@
         make.left.mas_equalTo(label.mas_left);
         make.top.mas_equalTo(label.mas_bottom).mas_offset(10);
     }];
+    
+    [self addDependentView];
 }
 
+- (void) addDependentView{
+    
+    UIView * baseView = [UIView new];
+    baseView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:baseView];
+    [baseView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(300, 100));
+        if (@available(iOS 11.0, *)) {
+            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).mas_offset(-50);
+        } else {
+            // Fallback on earlier versions
+        }
+        make.centerX.equalTo(self.view);
+    }];
+    {// 右边居中
+        UIView * redView = [UIView redView];
+        [self.view addSubview:redView];
+        [redView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(20, 20));
+            //
+            make.centerY.mas_equalTo(baseView);
+            make.centerX.mas_equalTo(baseView.mas_trailing);
+        }];
+    }
+    {// 左上角
+        UIView * redView = [UIView greenView];
+        [self.view addSubview:redView];
+        [redView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(20, 20));
+            make.centerY.mas_equalTo(baseView.mas_top);
+            make.centerX.mas_equalTo(baseView.mas_leading);
+        }];
+    }
+    {// 左下角
+        UIView * redView = [UIView greenView];
+        [self.view addSubview:redView];
+        [redView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(20, 20));
+            make.centerY.mas_equalTo(baseView.mas_bottom);
+            make.centerX.mas_equalTo(baseView.mas_leading);
+        }];
+    }
+    {// 右上角
+        UIView * redView = [UIView greenView];
+        [self.view addSubview:redView];
+        [redView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(20, 20));
+            make.centerY.mas_equalTo(baseView.mas_top);
+            make.centerX.mas_equalTo(baseView.mas_trailing);
+        }];
+    }
+    {// 右下角
+        UIView * redView = [UIView greenView];
+        [self.view addSubview:redView];
+        [redView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(20, 20));
+            make.centerY.mas_equalTo(baseView.mas_bottom);
+            make.centerX.mas_equalTo(baseView.mas_trailing);
+        }];
+    }
+    {// 下面居中
+        UIView * redView = [UIView greenView];
+        [self.view addSubview:redView];
+        [redView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(20, 20));
+            make.centerY.mas_equalTo(baseView.mas_bottom);
+            make.centerX.mas_equalTo(baseView);
+            //            make.centerX.mas_equalTo(baseView.mas_top);
+        }];
+    }
+}
 
 @end
