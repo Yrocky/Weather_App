@@ -101,9 +101,9 @@ NSString * const kSearchHistoryDatasIdentifier = @"kSearchHistoryDatasIdentifier
     
     [super reloadData];
     
-    [self.layoutDelegate.layoutAttributes eachWithIndex:^(MM_SearchDefaultSectionLayoutAttribute * s_att, NSInteger s) {
+    [self.layoutDelegate.layoutAttributes mm_eachWithIndex:^(MM_SearchDefaultSectionLayoutAttribute * s_att, NSInteger s) {
         
-        [s_att.rowAttributes eachWithIndex:^(MM_SearchDefaultRowLayoutAttribute * r_att, NSInteger r) {
+        [s_att.rowAttributes mm_eachWithIndex:^(MM_SearchDefaultRowLayoutAttribute * r_att, NSInteger r) {
             
             NSIndexPath * indexPath = [NSIndexPath indexPathForItem:r inSection:s];
             UICollectionViewLayoutAttributes * att = [self layoutAttributesForItemAtIndexPath:indexPath];
@@ -115,7 +115,7 @@ NSString * const kSearchHistoryDatasIdentifier = @"kSearchHistoryDatasIdentifier
 
 - (void)reloadSections:(NSIndexSet *)sections{
     
-    [self.layoutDelegate.layoutAttributes each:^(MM_SearchDefaultSectionLayoutAttribute * s_att) {
+    [self.layoutDelegate.layoutAttributes mm_each:^(MM_SearchDefaultSectionLayoutAttribute * s_att) {
         [s_att modifySectionLayoutAttributesBeforeReloadData];
     }];
     [super reloadSections:sections];
@@ -308,7 +308,7 @@ NSString * const kSearchHistoryDatasIdentifier = @"kSearchHistoryDatasIdentifier
     NSMutableArray * temp = [NSMutableArray array];
     
     // init array
-    [temp addObjectsFromArray:[array map:^id(id data) {
+    [temp addObjectsFromArray:[array mm_map:^id(id data) {
         MM_SearchDefaultRowLayoutAttribute * rowAttribute = [[MM_SearchDefaultRowLayoutAttribute alloc] init];
         rowAttribute.rowData = data;
         rowAttribute.regularSizeForItem = self.regularSizeForItem;
@@ -317,7 +317,7 @@ NSString * const kSearchHistoryDatasIdentifier = @"kSearchHistoryDatasIdentifier
     }]];
     
     // config array
-    [temp eachWithIndex:^(MM_SearchDefaultRowLayoutAttribute * rowAttribute, NSInteger index) {
+    [temp mm_eachWithIndex:^(MM_SearchDefaultRowLayoutAttribute * rowAttribute, NSInteger index) {
        
         BOOL isFirstItemInSection = index == 0;
         CGFloat layoutWidth = self.sizeForHeader.width - self.insetForSection.left - self.insetForSection.right;

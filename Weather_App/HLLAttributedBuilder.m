@@ -8,18 +8,6 @@
 
 #import "HLLAttributedBuilder.h"
 
-#ifndef RX
-
-#define RX(pattern) [[NSRegularExpression alloc] initWithPattern:pattern]
-
-#endif
-
-@interface NSRegularExpression (RX)
-
-- (id) initWithPattern:(NSString*)pattern;
-- (NSArray*) matches:(NSString*)str;
-@end
-
 @implementation NSRegularExpression (RX)
 
 - (id) initWithPattern:(NSString*)pattern

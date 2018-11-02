@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @class HSBaseCellModel;
-typedef void(^ClickActionBlock)(HSBaseCellModel *model);
+typedef void(^ClickActionBlock)(__kindof HSBaseCellModel *model);
 
 @interface HSBaseCellModel : NSObject
 

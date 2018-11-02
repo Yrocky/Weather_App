@@ -8,33 +8,65 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (Sugar)
+@interface NSArray<T> (Sugar)
+
+- (T) mm_first;
+
+- (T) mm_last;
+
+- (T) mm_sample;
+
+- (NSArray *) mm_map:(id (^)(T obj))handle;
+- (NSArray *) mm_mapWithskip:(id (^)(T obj, BOOL *skip))handle;
+- (NSArray *) mm_mapWithIndex:(id (^)(T obj,NSUInteger index))handle;
+- (NSArray *) mm_mapWithSkipIndex:(id (^)(T obj, BOOL *skip, NSUInteger idnex))handle;
+
+- (void) mm_each:(void(^)(T obj))handle;
+- (void) mm_eachWithOptions:(void (^)(T))handle options:(NSEnumerationOptions)options;
+- (void) mm_eachWithIndex:(void(^)(T obj,NSInteger index))handle;
+
+- (BOOL (^)(T obj)) mm_have;
+
+- (NSArray<T> *) mm_select:(BOOL (^)(T obj))handle;
+- (NSArray<T> *) mm_filter:(BOOL (^)(T obj))handle;
+- (NSArray<T> *) mm_select:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber;
+
+///< same as addFromArray:
+- (NSArray<T> *) mm_merge:(NSArray<T> *)other;
+//- (NSArray *) mm_special:(NSString *(^)(id obj))handle1 merge:(NSArray *)other special:(NSString * (^)(id obj))handle;
+
+#pragma mark - 布尔运算
+///< self:[1,2,3,4] oher:[1,4,6,7,8] result:[1,4]
+- (NSArray<T> *) mm_intersect:(NSArray<T> *)other;
+
+///< self:[1,2,3,4] oher:[1,4,6,7,8] result:[1,2,3,4,6,7,8]
+- (NSArray<T> *) mm_union:(NSArray<T> *)other;
+
+///< self:[1,2,3,4] oher:[1,4,6,7,8] result:[2,3,6,7,8]
+- (NSArray<T> *) mm_difference:(NSArray<T> *)other;
+
+///< self:[1,2,3,4] oher:[1,4,6,7,8] result:[2,3]
+- (NSArray<T> *) mm_subtract:(NSArray<T> *)other;
+
+///< mm_intersect:函数的变形，可以选取哪些成员参与到布尔运算中
+- (NSArray<T> *) mm_intersect:(BOOL(^)(T obj))filter other:(NSArray<T> *)other;
+
+#pragma mark - 排序
+///< 排序
+- (NSArray<T> *) mm_sort:(NSComparisonResult (^)(T obj1, T obj2))handle;
+
+- (NSString *) mm_join;
+- (NSString *) mm_join:(NSString *)separator;
+@end
+
+@interface NSNumber (Sugar)
+
+- (void) mm_enumerate:(void(^)(NSInteger index))action;
+@end
+
+@interface NSArray (MM_Safe)
+
 - (NSArray *)mm_subarray:(NSInteger)count;
-- (id) first;
-
-- (id) last;
-
-- (id) sample;
-
-- (NSArray *) map:(id (^)(id obj))handle;
-- (NSArray *) mm_mapWithskip:(id (^)(id obj, BOOL *skip))handle;
-- (NSArray *) mm_mapWithIndex:(id (^)(id obj,NSUInteger index))handle;
-
-- (void) each:(void(^)(id obj))handle;
-- (void) eachWithIndex:(void(^)(id obj,NSInteger index))handle;
-
-- (BOOL (^)(id obj)) have;
-
-- (NSArray *) select:(BOOL (^)(id obj))handle;
-- (NSArray *) mm_select:(NSInteger)pageSize pageNumber:(NSInteger)pageNumber;
-- (NSArray *) filter:(BOOL (^)(id obj))handle;
-
-- (NSArray *) intersect:(NSArray *)other;
-- (NSArray *) union:(NSArray *)other;
-- (NSArray *) difference:(NSArray *)other;
-- (NSArray *) subtract:(NSArray *)other;
-
-- (NSArray *) intersect:(BOOL(^)(id obj))filter other:(NSArray *)other;
-
-- (NSArray *) mm_sort:(NSComparisonResult (^)(id, id))handle;
+// @[].count = 34 ,offset = 10 ,result is @[@[0-9],@[10-19],@[20-29],@[30-33]]
+- (NSArray<NSArray *> *) mm_sliceSubarray:(NSInteger)offset;
 @end

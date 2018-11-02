@@ -35,6 +35,7 @@
 #import "GiftEffectViewController.h"
 #import "SignalViewController.h"
 #import "MMGradientViewController.h"
+#import "EmojiViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic ,strong) NSString * str;
@@ -70,6 +71,14 @@
         HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"原来的Main控制器" actionBlock:^(HSBaseCellModel *model) {
             
             [self performSegueWithIdentifier:@"RootToMain" sender:nil];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"🙈Emoji🙉" actionBlock:^(HSTitleCellModel *model) {
+            
+            EmojiViewController * vc = [[EmojiViewController alloc] init];
+            vc.title = model.title;
+            [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];
         

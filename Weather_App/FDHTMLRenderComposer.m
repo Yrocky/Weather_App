@@ -47,7 +47,7 @@
         
         //
         NSMutableString * itemsContentString = [[NSMutableString alloc] init];
-        [items each:^(id item) {
+        [items mm_each:^(id item) {
             
             [itemsContentString appendString:({
                 NSString * s = [itemsContent stringByReplacingOccurrencesOfString:@"#FISHDAILY_ITEM#" withString:item];

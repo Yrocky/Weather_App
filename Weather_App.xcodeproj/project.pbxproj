@@ -25,6 +25,10 @@
 		7F3E0A211FB93BF200F8C258 /* BottomFollowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3E0A201FB93BF200F8C258 /* BottomFollowView.m */; };
 		7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */; };
 		7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */; };
+		7F472922218C6B50007A10FB /* MMLiveChatEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F47291E218C6B50007A10FB /* MMLiveChatEmojiView.m */; };
+		7F472923218C6B50007A10FB /* MMLiveEmojiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F472921218C6B50007A10FB /* MMLiveEmojiManager.m */; };
+		7F472929218C6F07007A10FB /* EmojiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F472928218C6F07007A10FB /* EmojiViewController.m */; };
+		7F47292B218C6FBF007A10FB /* MMEmojiText.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F47292A218C6FBF007A10FB /* MMEmojiText.plist */; };
 		7F53C0EC2126740600567D74 /* smile_face.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0E02126740500567D74 /* smile_face.xml */; };
 		7F53C0ED2126740600567D74 /* v1314.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0E12126740500567D74 /* v1314.xml */; };
 		7F53C0EE2126740600567D74 /* heart.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7F53C0E42126740500567D74 /* heart.xml */; };
@@ -219,6 +223,13 @@
 		7F414F4A1F67866200EC8E86 /* MMGiftEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGiftEffectViewController.m; sourceTree = "<group>"; };
 		7F414F4C1F67871A00EC8E86 /* MMGiftEffectOperationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGiftEffectOperationMgr.h; sourceTree = "<group>"; };
 		7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGiftEffectOperationMgr.m; sourceTree = "<group>"; };
+		7F47291E218C6B50007A10FB /* MMLiveChatEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLiveChatEmojiView.m; sourceTree = "<group>"; };
+		7F47291F218C6B50007A10FB /* MMLiveChatEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLiveChatEmojiView.h; sourceTree = "<group>"; };
+		7F472920218C6B50007A10FB /* MMLiveEmojiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLiveEmojiManager.h; sourceTree = "<group>"; };
+		7F472921218C6B50007A10FB /* MMLiveEmojiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLiveEmojiManager.m; sourceTree = "<group>"; };
+		7F472927218C6F07007A10FB /* EmojiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmojiViewController.h; sourceTree = "<group>"; };
+		7F472928218C6F07007A10FB /* EmojiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmojiViewController.m; sourceTree = "<group>"; };
+		7F47292A218C6FBF007A10FB /* MMEmojiText.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MMEmojiText.plist; sourceTree = "<group>"; };
 		7F53C0E02126740500567D74 /* smile_face.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = smile_face.xml; sourceTree = "<group>"; };
 		7F53C0E12126740500567D74 /* v1314.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = v1314.xml; sourceTree = "<group>"; };
 		7F53C0E22126740500567D74 /* GiftShapeEffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftShapeEffectView.h; sourceTree = "<group>"; };
@@ -585,6 +596,36 @@
 			name = "指示器";
 			sourceTree = "<group>";
 		};
+		7F472924218C6B58007A10FB /* MMLiveChatEmojiView */ = {
+			isa = PBXGroup;
+			children = (
+				7F47291F218C6B50007A10FB /* MMLiveChatEmojiView.h */,
+				7F47291E218C6B50007A10FB /* MMLiveChatEmojiView.m */,
+				7F472920218C6B50007A10FB /* MMLiveEmojiManager.h */,
+				7F472921218C6B50007A10FB /* MMLiveEmojiManager.m */,
+				7F47292A218C6FBF007A10FB /* MMEmojiText.plist */,
+			);
+			name = MMLiveChatEmojiView;
+			sourceTree = "<group>";
+		};
+		7F472925218C6B61007A10FB /* MMSwipeCell */ = {
+			isa = PBXGroup;
+			children = (
+				D7A77D782134668E00E0E435 /* MMSwipeCell.h */,
+				D7A77D792134668E00E0E435 /* MMSwipeCell.m */,
+			);
+			name = MMSwipeCell;
+			sourceTree = "<group>";
+		};
+		7F472926218C6B7C007A10FB /* MMAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				7F39ED04214FC3B7006CE72F /* MMAnimator.h */,
+				7F39ED05214FC3B7006CE72F /* MMAnimator.m */,
+			);
+			name = MMAnimator;
+			sourceTree = "<group>";
+		};
 		7F53C0DE2126740500567D74 /* GIftEffectView */ = {
 			isa = PBXGroup;
 			children = (
@@ -855,10 +896,9 @@
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
 				D7A325E220772DD700B2F8AB /* BillKeyboardView.h */,
 				D7A325E320772DD700B2F8AB /* BillKeyboardView.m */,
-				7F39ED04214FC3B7006CE72F /* MMAnimator.h */,
-				7F39ED05214FC3B7006CE72F /* MMAnimator.m */,
-				D7A77D782134668E00E0E435 /* MMSwipeCell.h */,
-				D7A77D792134668E00E0E435 /* MMSwipeCell.m */,
+				7F472926218C6B7C007A10FB /* MMAnimator */,
+				7F472924218C6B58007A10FB /* MMLiveChatEmojiView */,
+				7F472925218C6B61007A10FB /* MMSwipeCell */,
 				7F8AE0DA20B7BBFD009D378A /* TappableLabel */,
 				7F6FFB7A209458E000A84A81 /* ZPLabel */,
 				D713B8CF2076034900D388F2 /* bill-input */,
@@ -1204,6 +1244,8 @@
 				D7A77D762134526900E0E435 /* SignalViewController.m */,
 				7F677F39218C1157009851B6 /* MMGradientViewController.h */,
 				7F677F3A218C1157009851B6 /* MMGradientViewController.m */,
+				7F472927218C6F07007A10FB /* EmojiViewController.h */,
+				7F472928218C6F07007A10FB /* EmojiViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -1388,6 +1430,7 @@
 				7F53C0ED2126740600567D74 /* v1314.xml in Resources */,
 				7FDC6ED51F46E35A00D94379 /* Assets.xcassets in Resources */,
 				7F53C0F42126740600567D74 /* love.xml in Resources */,
+				7F47292B218C6FBF007A10FB /* MMEmojiText.plist in Resources */,
 				7FDC6ED31F46E35A00D94379 /* Main.storyboard in Resources */,
 				7FE705C31FBE8DB5009FF3A7 /* MMLabel.xib in Resources */,
 				D7A595C01FAACFED000C59FE /* singleItemTemplate.html in Resources */,
@@ -1470,6 +1513,7 @@
 				7F243E3E1FA81E7A00AE4134 /* MMGCD.m in Sources */,
 				7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */,
 				7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */,
+				7F472923218C6B50007A10FB /* MMLiveEmojiManager.m in Sources */,
 				D706294A1F8B185100F52FCB /* HSSwitchTableViewCell.m in Sources */,
 				D70629471F8B185100F52FCB /* HSCustomTableViewCell.m in Sources */,
 				7F6FFB92209458E100A84A81 /* ZPTextRunDelegate.m in Sources */,
@@ -1533,6 +1577,7 @@
 				D70629421F8B185100F52FCB /* HSSectionModel.m in Sources */,
 				7FF4FC091FB55D980097CB3D /* LayoutViewController.m in Sources */,
 				7F5FD9932115898D00DB70F8 /* MM24GameManager.m in Sources */,
+				7F472922218C6B50007A10FB /* MMLiveChatEmojiView.m in Sources */,
 				7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */,
 				D715E6A61FA7152100CFBFF4 /* CLTStickyLayout.m in Sources */,
 				D7A78FBD218752240021313B /* MMDirectionGestureRecognizer.m in Sources */,
@@ -1580,6 +1625,7 @@
 				7F14A7D02064B1A1006EC133 /* AsyncDrawViewController.m in Sources */,
 				7F8B6C081F95ED6F00F3A6E3 /* MMSearchReusableView.m in Sources */,
 				D713B8C8207602FF00D388F2 /* BillLocationExtensionView.m in Sources */,
+				7F472929218C6F07007A10FB /* EmojiViewController.m in Sources */,
 				D706294C1F8B185100F52FCB /* HSTitleTableViewCell.m in Sources */,
 				7F8593581FDE54DC00E6AFFC /* MMXibCustomView.m in Sources */,
 				D70629451F8B185100F52FCB /* HSSetTableViewControllerConst.m in Sources */,
