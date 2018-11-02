@@ -47,6 +47,8 @@
 		7F63BBB8206E25340084ABC8 /* HomeBillContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBB7206E25340084ABC8 /* HomeBillContainerView.m */; };
 		7F63BBBC2071EC650084ABC8 /* HomeBillContentDefaultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBBB2071EC650084ABC8 /* HomeBillContentDefaultView.m */; };
 		7F63BBC02072036F0084ABC8 /* LunarCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F63BBBE2072036E0084ABC8 /* LunarCore.m */; };
+		7F677F36218C1128009851B6 /* MMGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F677F34218C1127009851B6 /* MMGradientView.m */; };
+		7F677F3B218C1157009851B6 /* MMGradientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F677F3A218C1157009851B6 /* MMGradientViewController.m */; };
 		7F6FF9B72091DC6100A84A81 /* MMCoreTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6FF9B62091DC6000A84A81 /* MMCoreTextViewController.m */; };
 		7F6FFB8C209458E100A84A81 /* ZPAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6FFB7C209458E000A84A81 /* ZPAttributedLabel.m */; };
 		7F6FFB8D209458E100A84A81 /* NSAttributedString+ZPAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6FFB7F209458E000A84A81 /* NSAttributedString+ZPAttributedString.m */; };
@@ -255,6 +257,10 @@
 		7F63BBBB2071EC650084ABC8 /* HomeBillContentDefaultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContentDefaultView.m; sourceTree = "<group>"; };
 		7F63BBBE2072036E0084ABC8 /* LunarCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LunarCore.m; sourceTree = "<group>"; };
 		7F63BBBF2072036E0084ABC8 /* LunarCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LunarCore.h; sourceTree = "<group>"; };
+		7F677F34218C1127009851B6 /* MMGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMGradientView.m; sourceTree = "<group>"; };
+		7F677F35218C1127009851B6 /* MMGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMGradientView.h; sourceTree = "<group>"; };
+		7F677F39218C1157009851B6 /* MMGradientViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMGradientViewController.h; sourceTree = "<group>"; };
+		7F677F3A218C1157009851B6 /* MMGradientViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMGradientViewController.m; sourceTree = "<group>"; };
 		7F6FF9B52091DC6000A84A81 /* MMCoreTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMCoreTextViewController.h; sourceTree = "<group>"; };
 		7F6FF9B62091DC6000A84A81 /* MMCoreTextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMCoreTextViewController.m; sourceTree = "<group>"; };
 		7F6FFB7B209458E000A84A81 /* ZPAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZPAttributedLabel.h; sourceTree = "<group>"; };
@@ -659,6 +665,24 @@
 			path = LunarCore;
 			sourceTree = "<group>";
 		};
+		7F677F37218C1130009851B6 /* MMDirectionGestureRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				D7A78FBB218752240021313B /* MMDirectionGestureRecognizer.h */,
+				D7A78FBC218752240021313B /* MMDirectionGestureRecognizer.m */,
+			);
+			name = MMDirectionGestureRecognizer;
+			sourceTree = "<group>";
+		};
+		7F677F38218C1139009851B6 /* MMGradientView */ = {
+			isa = PBXGroup;
+			children = (
+				7F677F35218C1127009851B6 /* MMGradientView.h */,
+				7F677F34218C1127009851B6 /* MMGradientView.m */,
+			);
+			name = MMGradientView;
+			sourceTree = "<group>";
+		};
 		7F6FFB7A209458E000A84A81 /* ZPLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -852,8 +876,8 @@
 				7F9810132121889B0004C638 /* MMDelegateService.m */,
 				7F9810152122AE7A0004C638 /* MMSingleton.h */,
 				7F9810162122AE7B0004C638 /* MMSingleton.m */,
-				D7A78FBB218752240021313B /* MMDirectionGestureRecognizer.h */,
-				D7A78FBC218752240021313B /* MMDirectionGestureRecognizer.m */,
+				7F677F37218C1130009851B6 /* MMDirectionGestureRecognizer */,
+				7F677F38218C1139009851B6 /* MMGradientView */,
 				7F7BA14A2090799C0085E045 /* PKProtocolExtension.h */,
 				7F7BA14B2090799C0085E045 /* PKProtocolExtension.m */,
 				7F7BA143208DE2EF0085E045 /* 链表 */,
@@ -1178,6 +1202,8 @@
 				7F3815882126CA68006016E9 /* GiftEffectViewController.m */,
 				D7A77D752134526900E0E435 /* SignalViewController.h */,
 				D7A77D762134526900E0E435 /* SignalViewController.m */,
+				7F677F39218C1157009851B6 /* MMGradientViewController.h */,
+				7F677F3A218C1157009851B6 /* MMGradientViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -1488,6 +1514,7 @@
 				D70629481F8B185100F52FCB /* HSImageTableViewCell.m in Sources */,
 				7F0501822011EAD00033E83C /* MMAnimationViewController.m in Sources */,
 				D713B8BC2076003C00D388F2 /* BillInputView.m in Sources */,
+				7F677F3B218C1157009851B6 /* MMGradientViewController.m in Sources */,
 				D70629491F8B185100F52FCB /* HSInputTableViewCell.m in Sources */,
 				D70629401F8B185100F52FCB /* HSTextCellModel.m in Sources */,
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
@@ -1573,6 +1600,7 @@
 				7FBC5FB71F97454C00DCF3E9 /* ANYMethodLog.m in Sources */,
 				7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */,
 				7FA726271FFCD51300C0F6F2 /* MMText.m in Sources */,
+				7F677F36218C1128009851B6 /* MMGradientView.m in Sources */,
 				7F590D7E1FA9A5D4006F7BF0 /* STPopupNavigationBar.m in Sources */,
 				D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */,
 				D715E6A01FA627D500CFBFF4 /* FDViewController.m in Sources */,

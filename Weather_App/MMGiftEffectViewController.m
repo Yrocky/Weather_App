@@ -145,6 +145,8 @@ static inline NSString * mm_replaceInBracket(NSString *str,NSString * full){
     textLabel.layer.mask = self.rLayer;
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
     [self.view addGestureRecognizer:tap];
+    
+    NSCache *  cache = [NSCache new];
 }
 
 - (void) move:(UITapGestureRecognizer *)gesture{

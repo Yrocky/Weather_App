@@ -49,7 +49,18 @@
         }];
     }
 }
-
+- (NSString *) replaceMatchedStringsWith:(NSString *(^)(NSString *matchedString))replace inString:(NSString *)string{
+    
+    __block NSMutableString * replacedString = [NSMutableString stringWithString:string];
+    [self enumMatches:^(NSTextCheckingResult * _Nonnull result, NSUInteger index) {
+        
+        NSString * template = replace ? replace([replacedString substringWithRange:result.range]) : @"";
+        // NSMatchingReportCompletion : 找到任何一个匹配串后都回调一次block
+        [self replaceMatchesInString:replacedString options:NSMatchingReportCompletion
+                               range:result.range withTemplate:template];
+    } inString:string];
+    return replacedString.copy;
+}
 @end
 
 @interface _HLLString : NSObject
