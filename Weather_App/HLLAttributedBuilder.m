@@ -60,6 +60,9 @@
 @end
 
 @implementation _HLLString
+- (void)dealloc {
+    NSLog(@"_HLLString:%@/%@ dealloc",self.string,self.attributedString);
+}
 @end
 
 @interface HLLAttributedBuilder (){
@@ -75,6 +78,10 @@
 @end
 
 @implementation HLLAttributedBuilder
+
+- (void)dealloc {
+    NSLog(@"HLLAttributedBuilder:%@ dealloc",self.originalString);
+}
 
 + (instancetype)builder{
 
@@ -113,9 +120,9 @@
         NSMutableDictionary * mergeStyle = [NSMutableDictionary dictionaryWithDictionary:self.defaultStyle];
         [mergeStyle addEntriesFromDictionary:style];
         
+        NSRange range = NSMakeRange(_originalString.length - 1, string.length);
+
         [_originalString appendString:string];
-        
-        NSRange range = [_originalString rangeOfString:string];
         
         NSAttributedString * attString = [[NSAttributedString alloc] initWithString:string attributes:mergeStyle];
         

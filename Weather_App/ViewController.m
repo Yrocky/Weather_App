@@ -223,8 +223,12 @@
        configString:@"【.】" forStyle:@{NSUnderlineColorAttributeName:[UIColor orangeColor],
                                       NSUnderlineStyleAttributeName:@1}] attributedString]];
     
-    
-    
+    [self.coreView appendAttributedString:
+    [[[HLLAttributedBuilder builderWithString:@"nihao"]
+      appendString:@"nihao" forStyle:@{NSUnderlineColorAttributeName:[UIColor orangeColor],
+                                       NSUnderlineStyleAttributeName:@1}]
+     appendString:@"nihao" forStyle:@{NSUnderlineColorAttributeName:[UIColor redColor],
+                                      NSUnderlineStyleAttributeName:@2}].attributedString];
     
     
     return;

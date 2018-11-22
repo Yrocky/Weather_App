@@ -11,7 +11,7 @@
 @class MMPickerView;
 
 // config
-@interface MMPickerViewConfig : NSObject
+@interface MMPickerViewConfig<T> : NSObject
 
 + (instancetype _Nullable ) config;
 
@@ -26,7 +26,8 @@
 - (void) configRowAt:(NSArray <NSString *>*_Nullable(^_Nullable)(NSUInteger cloumn))callBack;
 
 // 装有对象的数组，可以根据callBack2进行对应的属性获取
-- (void) configRowAt:(NSArray <id>*_Nullable(^_Nullable)(NSUInteger cloumn))callback displayText:(NSString *_Nullable(^_Nullable)(id _Nullable data,NSUInteger column))callback2;
+- (void) configRowAt:(NSArray <T>*_Nullable(^_Nullable)(NSUInteger cloumn))callback
+         displayText:(NSString *_Nullable(^_Nullable)(T _Nullable data,NSUInteger column))callback2;
 
 // pickerView选中的事件回调
 - (void) monitorSelect:(void(^_Nullable)(NSUInteger column,NSUInteger row,id _Nullable data))callback;

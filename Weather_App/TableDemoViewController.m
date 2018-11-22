@@ -169,7 +169,9 @@
             NSLog(@"model:%@",model);
             id<HLLAlertActionSheetProtocol> alert = [[HLLAlertUtil message:@"show some msg for u"]showIn:self];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [alert dismiss];
+                [alert dismiss:^{
+                    NSLog(@"延时alert已经消失");
+                }];
             });
         }];
         [s addCellModel:c];
