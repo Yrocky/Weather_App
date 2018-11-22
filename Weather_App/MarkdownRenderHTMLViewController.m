@@ -45,7 +45,7 @@
     
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.view.mas_left);
-        make.top.mas_equalTo(self.view.mas_topMargin);
+        make.top.mas_equalTo(self.view.mas_top);
         make.right.mas_equalTo(self.view);
         make.height.mas_equalTo(200);
     }];
@@ -57,7 +57,7 @@
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.mas_equalTo(self.textView);
         make.top.mas_equalTo(self.textView.mas_bottom);
-        make.bottom.mas_equalTo(self.view.mas_bottomMargin);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
     }];
     
     
@@ -67,18 +67,24 @@
 
 - (void)renderHTML {
 
-    NSError * error;
-    NSString * HTMLContent = [MMMarkdown HTMLStringWithMarkdown:self.textView.text
-                                                     extensions:MMMarkdownExtensionsGitHubFlavored
-                                                          error:&error];
-    if (!error) {
-        [self.webView loadHTMLString:HTMLContent baseURL:nil];
-    }else{
-        id<HLLAlertActionSheetProtocol> alert = [[HLLAlertUtil message:error.localizedDescription] showIn:self];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [alert dismiss];
-        });
-    }
+    __weak typeof(self) weakSelf = self;
+
+    [[[[HLLAlertUtil title:@"确认渲染？"] buttons:@[@"Done"]]
+      fetchClick:^(NSInteger index) {
+          NSLog(@"index");
+          NSError * error;
+          NSString * HTMLContent = [MMMarkdown HTMLStringWithMarkdown:weakSelf.textView.text
+                                                           extensions:MMMarkdownExtensionsGitHubFlavored
+                                                                error:&error];
+          if (!error) {
+              [weakSelf.webView loadHTMLString:HTMLContent baseURL:nil];
+          }else{
+              id<HLLAlertActionSheetProtocol> alert = [[HLLAlertUtil message:error.localizedDescription] showIn:self];
+              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                  [alert dismiss];
+              });
+          }
+      }] showIn:self];
 }
 
 /*

@@ -13,7 +13,7 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
 
 @interface HLLAlertActionSheetModel : NSObject
 
-@property (strong, nonatomic) UIAlertController * alertVC;
+@property (weak, nonatomic) UIAlertController * alertVC;
 
 @property (strong, nonatomic) NSString *title; // 标题
 @property (strong, nonatomic) NSString *message; // 内容
