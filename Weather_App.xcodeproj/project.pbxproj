@@ -164,6 +164,7 @@
 		D715E6A61FA7152100CFBFF4 /* CLTStickyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E6A51FA7152000CFBFF4 /* CLTStickyLayout.m */; };
 		D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */; };
 		D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */; };
+		D759BB03218CA1B500A06FE0 /* MMAnimatableProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = D759BB02218CA1B500A06FE0 /* MMAnimatableProperty.m */; };
 		D7A325E420772DD700B2F8AB /* BillKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A325E320772DD700B2F8AB /* BillKeyboardView.m */; };
 		D7A595B81FAAC156000C59FE /* CreatePDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A595B71FAAC156000C59FE /* CreatePDFViewController.m */; };
 		D7A595BB1FAAC743000C59FE /* FDHTMLRenderComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A595BA1FAAC743000C59FE /* FDHTMLRenderComposer.m */; };
@@ -496,6 +497,9 @@
 		D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MM_AutoReplyViewController.m; sourceTree = "<group>"; };
 		D71974301F6EFEFC0068F971 /* MM_AutoReplyEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MM_AutoReplyEditViewController.h; sourceTree = "<group>"; };
 		D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MM_AutoReplyEditViewController.m; sourceTree = "<group>"; };
+		D759BB00218C891F00A06FE0 /* MMCGUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMCGUtils.h; sourceTree = "<group>"; };
+		D759BB01218CA1B500A06FE0 /* MMAnimatableProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimatableProperty.h; sourceTree = "<group>"; };
+		D759BB02218CA1B500A06FE0 /* MMAnimatableProperty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimatableProperty.m; sourceTree = "<group>"; };
 		D7A325E220772DD700B2F8AB /* BillKeyboardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillKeyboardView.h; sourceTree = "<group>"; };
 		D7A325E320772DD700B2F8AB /* BillKeyboardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillKeyboardView.m; sourceTree = "<group>"; };
 		D7A595B61FAAC156000C59FE /* CreatePDFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatePDFViewController.h; sourceTree = "<group>"; };
@@ -916,6 +920,9 @@
 				7F9810132121889B0004C638 /* MMDelegateService.m */,
 				7F9810152122AE7A0004C638 /* MMSingleton.h */,
 				7F9810162122AE7B0004C638 /* MMSingleton.m */,
+				D759BB00218C891F00A06FE0 /* MMCGUtils.h */,
+				D759BB01218CA1B500A06FE0 /* MMAnimatableProperty.h */,
+				D759BB02218CA1B500A06FE0 /* MMAnimatableProperty.m */,
 				7F677F37218C1130009851B6 /* MMDirectionGestureRecognizer */,
 				7F677F38218C1139009851B6 /* MMGradientView */,
 				7F7BA14A2090799C0085E045 /* PKProtocolExtension.h */,
@@ -1523,6 +1530,7 @@
 				7F6FFB91209458E100A84A81 /* ZPLabelLayer.m in Sources */,
 				D706294F1F8B189C00F52FCB /* UIColor+Common.m in Sources */,
 				7F590D7D1FA9A5D4006F7BF0 /* STPopupLeftBarItem.m in Sources */,
+				D759BB03218CA1B500A06FE0 /* MMAnimatableProperty.m in Sources */,
 				7F53C0F02126740600567D74 /* GiftShapeEffectView.m in Sources */,
 				7FD8CC351F98A995005DC9FF /* NSObject+CodableProperties.m in Sources */,
 				7F9810142121889B0004C638 /* MMDelegateService.m in Sources */,

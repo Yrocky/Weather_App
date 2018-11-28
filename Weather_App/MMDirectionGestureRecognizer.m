@@ -110,6 +110,7 @@
         self.state = UIGestureRecognizerStateFailed;
     }
     self.startPoint = [touches.anyObject locationInView:self.view];
+    NSLog(@"startPoint:%@",NSStringFromCGPoint(self.startPoint));
     self.state = UIGestureRecognizerStateBegan;
 }
 
@@ -127,9 +128,17 @@
 
         if (![self locationInHysteresisRange:location]) {// 没有在滞后区内部，开始进行方向的判断
             
-            if (_direction == MMDirectionGestureRecognizerUnknown) {// 还没有设置方向
+            if (self.direction == MMDirectionGestureRecognizerUnknown) {// 还没有设置方向
                 _direction = [self gestureDirection:location];
                 self.state = UIGestureRecognizerStateChanged;
+            }
+            if (self.direction == MMDirectionGestureRecognizerUp ||// 向上滑动
+                self.direction == MMDirectionGestureRecognizerDown) {// 向下滑动
+                _offset = location.y - _startPoint.y;
+            }
+            if (self.direction == MMDirectionGestureRecognizerLeft ||// 向左移动
+                self.direction == MMDirectionGestureRecognizerRight) {// 向右移动
+                _offset = location.x - _startPoint.x;
             }
         }
     }

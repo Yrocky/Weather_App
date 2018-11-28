@@ -13,6 +13,9 @@
 #import "MMAObject.h"
 
 @interface GiftEffectViewController ()
+
+@property (nonatomic ,strong) UIView * redView;
+
 @property (nonatomic ,strong) GiftShapeEffectView * effectView;
 
 @property (nonatomic ,strong) UILabel * directionLabel;
@@ -30,20 +33,36 @@
     }
     else if (gesture.state == UIGestureRecognizerStateChanged) {
         
+        CGFloat offset = gesture.offset;
+        offset = offset > 0 ? pow(offset, 0.6) : -pow(-offset, 0.6);
+        
         NSString * direction = @"";
         if (gesture.direction == MMDirectionGestureRecognizerUp) {
             direction = @"up";
+            self.redView.transform = CGAffineTransformMakeTranslation(0, offset);
         }
         if (gesture.direction == MMDirectionGestureRecognizerDown) {
             direction = @"down";
+            self.redView.transform = CGAffineTransformMakeTranslation(0, offset);
         }
         if (gesture.direction == MMDirectionGestureRecognizerLeft) {
             direction = @"left";
+            self.redView.transform = CGAffineTransformMakeTranslation(offset, 0);
         }
         if (gesture.direction == MMDirectionGestureRecognizerRight) {
             direction = @"right";
+            self.redView.transform = CGAffineTransformMakeTranslation(offset, 0);
         }
         self.directionLabel.text = direction;
+    }else if(gesture.state == UIGestureRecognizerStateEnded ||
+             gesture.state == UIGestureRecognizerStateFailed){
+        
+        UISpringTimingParameters * timingParameters = [[UISpringTimingParameters alloc] initWithDampingRatio:0.6 initialVelocity:CGVectorMake(0.3, 0.3)];
+        UIViewPropertyAnimator * animator = [[UIViewPropertyAnimator alloc] initWithDuration:0.25 timingParameters:timingParameters];
+        [animator addAnimations:^{
+            self.redView.transform = CGAffineTransformIdentity;
+        }];
+        [animator startAnimation];
     }else{
         self.circleView.hidden = YES;
     }
@@ -53,6 +72,13 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.redView = [UIView new];
+    self.redView.backgroundColor = [UIColor redColor];
+    self.redView.layer.cornerRadius = 10.0f;
+    self.redView.layer.masksToBounds = YES;
+    self.redView.frame = CGRectMake(100, 100, 100, 100);
+    [self.view addSubview:self.redView];
     
     self.directionLabel = [UILabel new];
     self.directionLabel.textAlignment = NSTextAlignmentCenter;
@@ -64,7 +90,7 @@
     }];
     
     MMDirectionGestureRecognizer * gesture = [[MMDirectionGestureRecognizer alloc] initWithTarget:self action:@selector(onDirectoinGesture:)];
-    gesture.hysteresisOffset = 40;
+    gesture.hysteresisOffset = 2;
     [self.view addGestureRecognizer:gesture];
     
     self.circleView = [UIView new];
@@ -75,6 +101,8 @@
     self.circleView.layer.masksToBounds = YES;
     self.circleView.hidden = YES;
     [self.view addSubview:self.circleView];
+    
+//    UIViewPropertyAnimator * animator = [UIViewPropertyAnimator new];
     
     return;
     self.effectView = [[GiftShapeEffectView alloc] init];

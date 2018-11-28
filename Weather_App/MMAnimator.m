@@ -10,8 +10,8 @@
 
 @interface MMAnimator()
 
-@property (nonatomic ,copy) MMAnimatorNormalBlock animations;
-@property (nonatomic ,copy) MMAnimatorBoolValueBlock completion;
+@property (nonatomic ,copy) MMAnimatorAnimationBlock animations;
+@property (nonatomic ,copy) MMAnimatorCompletionBlock completion;
 
 @end
 @implementation MMAnimator
@@ -52,12 +52,12 @@
     };
 }
 
-- (id<MMAnimator>) animations:(MMAnimatorNormalBlock)animations{
+- (id<MMAnimator>) animations:(MMAnimatorAnimationBlock)animations{
     self.animations = animations;
     return self;
 }
 
-- (id<MMAnimator>) completion:(MMAnimatorBoolValueBlock)completion{
+- (id<MMAnimator>) completion:(MMAnimatorCompletionBlock)completion{
     self.completion = completion;
     return self;
 }

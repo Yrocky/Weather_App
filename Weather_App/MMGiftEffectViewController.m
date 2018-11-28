@@ -97,7 +97,7 @@ static inline NSString * mm_replaceInBracket(NSString *str,NSString * full){
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mm_debugerTool)];
     tapGesture.numberOfTouchesRequired = 2;
     [statusBar addGestureRecognizer:tapGesture];
-    
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
     // 匹配中括号内的内容
     // pattern : abcd[you]ABCD1234[miss]
     // rx: \\[.*\\]

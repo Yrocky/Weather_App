@@ -52,6 +52,8 @@
     
     self.title = @"Root";
     self.str = @"123";
+    self.navigationController.navigationBar.prefersLargeTitles = YES;
+    self.navigationController.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAlways;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(printSome) name:@"noti_mm_custom" object:nil];
     [ANYMethodLog logMethodWithClass:[HSTableViewModel class] condition:^BOOL(SEL sel) {

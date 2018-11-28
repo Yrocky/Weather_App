@@ -22,4 +22,6 @@ typedef NS_ENUM(NSUInteger , MMDirectionGestureRecognizerDirection) {
 
 @property (nonatomic ,assign) CGFloat hysteresisOffset;///<滞后的距离，默认为10pt
 @property (nonatomic ,assign ,readonly) MMDirectionGestureRecognizerDirection direction;
+@property (nonatomic ,assign ,readonly) CGFloat offset;///<在当前方向上移动的距离
+
 @end

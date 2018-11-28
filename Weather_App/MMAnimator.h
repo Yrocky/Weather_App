@@ -9,11 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef void(^MMAnimatorNormalBlock)();
-typedef void(^MMAnimatorBoolValueBlock)(BOOL finished);
+typedef void(^MMAnimatorAnimationBlock)();
+typedef void(^MMAnimatorCompletionBlock)(BOOL finished);
 
-//typedef id<MMAnimator> (^MMAnimatorDouble)(double d);
-//#define MMAnimatorDouble(d) ^id<MMAnimator> (double d)
 
 @class MMAnimator ,MMSpringAnimator ,MMKeyframeAnimator;
 @protocol MMAnimator <NSObject>
@@ -21,8 +19,8 @@ typedef void(^MMAnimatorBoolValueBlock)(BOOL finished);
 - (id<MMAnimator>(^)(NSTimeInterval)) duration;
 - (id<MMAnimator>(^)(NSTimeInterval)) delay;
 - (id<MMAnimator>(^)(UIViewAnimationOptions)) options;
-- (id<MMAnimator>) animations:(MMAnimatorNormalBlock)animations;
-- (id<MMAnimator>) completion:(MMAnimatorBoolValueBlock)completion;
+- (id<MMAnimator>) animations:(MMAnimatorAnimationBlock)animations;
+- (id<MMAnimator>) completion:(MMAnimatorCompletionBlock)completion;
 
 - (void) animate;
 @end
