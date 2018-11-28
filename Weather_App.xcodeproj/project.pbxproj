@@ -184,6 +184,12 @@
 		D7F1F8062070FEA3000478C2 /* HomeBillContentDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8052070FEA3000478C2 /* HomeBillContentDateView.m */; };
 		D7F1F8092070FEDF000478C2 /* HomeBillContentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */; };
 		E3CDC4C9DF28E252C8F70DC9 /* libPods-Weather_App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */; };
+		F77231C021AE581600DA019B /* MMAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231BF21AE581600DA019B /* MMAnimation.m */; };
+		F77231C321AE5FEB00DA019B /* MMAnimationConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231C221AE5FEB00DA019B /* MMAnimationConfiguration.m */; };
+		F77231C621AE607400DA019B /* MMAnimationPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231C521AE607400DA019B /* MMAnimationPromise.m */; };
+		F77231C921AE629C00DA019B /* MMAnimatable.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231C821AE629C00DA019B /* MMAnimatable.m */; };
+		F77231CC21AE6A8A00DA019B /* MMAnimationType.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231CB21AE6A8A00DA019B /* MMAnimationType.m */; };
+		F77231CF21AE8A5300DA019B /* MMAnimationTimingFunctionType.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231CE21AE8A5300DA019B /* MMAnimationTimingFunctionType.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -533,6 +539,18 @@
 		D7F1F8052070FEA3000478C2 /* HomeBillContentDateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContentDateView.m; sourceTree = "<group>"; };
 		D7F1F8072070FEDF000478C2 /* HomeBillContentListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBillContentListView.h; sourceTree = "<group>"; };
 		D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContentListView.m; sourceTree = "<group>"; };
+		F77231BE21AE581600DA019B /* MMAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimation.h; sourceTree = "<group>"; };
+		F77231BF21AE581600DA019B /* MMAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimation.m; sourceTree = "<group>"; };
+		F77231C121AE5FEB00DA019B /* MMAnimationConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationConfiguration.h; sourceTree = "<group>"; };
+		F77231C221AE5FEB00DA019B /* MMAnimationConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationConfiguration.m; sourceTree = "<group>"; };
+		F77231C421AE607400DA019B /* MMAnimationPromise.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationPromise.h; sourceTree = "<group>"; };
+		F77231C521AE607400DA019B /* MMAnimationPromise.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationPromise.m; sourceTree = "<group>"; };
+		F77231C721AE60C700DA019B /* MMAnimatable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimatable.h; sourceTree = "<group>"; };
+		F77231C821AE629C00DA019B /* MMAnimatable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimatable.m; sourceTree = "<group>"; };
+		F77231CA21AE6A8A00DA019B /* MMAnimationType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationType.h; sourceTree = "<group>"; };
+		F77231CB21AE6A8A00DA019B /* MMAnimationType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationType.m; sourceTree = "<group>"; };
+		F77231CD21AE8A5300DA019B /* MMAnimationTimingFunctionType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationTimingFunctionType.h; sourceTree = "<group>"; };
+		F77231CE21AE8A5300DA019B /* MMAnimationTimingFunctionType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationTimingFunctionType.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -622,6 +640,18 @@
 			children = (
 				7F39ED04214FC3B7006CE72F /* MMAnimator.h */,
 				7F39ED05214FC3B7006CE72F /* MMAnimator.m */,
+				F77231C721AE60C700DA019B /* MMAnimatable.h */,
+				F77231C821AE629C00DA019B /* MMAnimatable.m */,
+				F77231BE21AE581600DA019B /* MMAnimation.h */,
+				F77231BF21AE581600DA019B /* MMAnimation.m */,
+				F77231CA21AE6A8A00DA019B /* MMAnimationType.h */,
+				F77231CB21AE6A8A00DA019B /* MMAnimationType.m */,
+				F77231CD21AE8A5300DA019B /* MMAnimationTimingFunctionType.h */,
+				F77231CE21AE8A5300DA019B /* MMAnimationTimingFunctionType.m */,
+				F77231C121AE5FEB00DA019B /* MMAnimationConfiguration.h */,
+				F77231C221AE5FEB00DA019B /* MMAnimationConfiguration.m */,
+				F77231C421AE607400DA019B /* MMAnimationPromise.h */,
+				F77231C521AE607400DA019B /* MMAnimationPromise.m */,
 			);
 			name = MMAnimator;
 			sourceTree = "<group>";
@@ -1496,6 +1526,7 @@
 				D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */,
 				D706293F1F8B185100F52FCB /* HSSwitchCellModel.m in Sources */,
 				7FFAB83E210AC38A00CA6671 /* MMAObject.m in Sources */,
+				F77231C921AE629C00DA019B /* MMAnimatable.m in Sources */,
 				7FFAB841210AC39500CA6671 /* MMBObject.m in Sources */,
 				7F32E0B41FA1CB74002D57FB /* HLLIndicatorViewController.m in Sources */,
 				D7DE014F1F98C1EF008682DE /* NSObject+AHKBuilder.m in Sources */,
@@ -1531,6 +1562,7 @@
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FA36CEA20B4082B0027B61E /* NSArray+Algorithms.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
+				F77231C621AE607400DA019B /* MMAnimationPromise.m in Sources */,
 				7F3815B821294F60006016E9 /* MM_GiftEffectView.m in Sources */,
 				7F3815892126CA68006016E9 /* GiftEffectViewController.m in Sources */,
 				7F7BA149208EDB240085E045 /* MMSinglyLinkedList.m in Sources */,
@@ -1538,6 +1570,7 @@
 				7F981011211C6BE90004C638 /* UIView+RoundCorner.m in Sources */,
 				7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */,
 				7F590D7B1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m in Sources */,
+				F77231C321AE5FEB00DA019B /* MMAnimationConfiguration.m in Sources */,
 				7F3E0A211FB93BF200F8C258 /* BottomFollowView.m in Sources */,
 				7FE705C11FBD9AAB009FF3A7 /* MMLabel.m in Sources */,
 				7F6FFB8C209458E100A84A81 /* ZPAttributedLabel.m in Sources */,
@@ -1562,10 +1595,12 @@
 				D70629491F8B185100F52FCB /* HSInputTableViewCell.m in Sources */,
 				D70629401F8B185100F52FCB /* HSTextCellModel.m in Sources */,
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
+				F77231CF21AE8A5300DA019B /* MMAnimationTimingFunctionType.m in Sources */,
 				7F3815B52129460F006016E9 /* MMGCDTimerManager.m in Sources */,
 				D7F1F8032070F9FB000478C2 /* HomeBillContentView.m in Sources */,
 				D706293E1F8B185100F52FCB /* HSInputCellModel.m in Sources */,
 				D7A595B81FAAC156000C59FE /* CreatePDFViewController.m in Sources */,
+				F77231CC21AE6A8A00DA019B /* MMAnimationType.m in Sources */,
 				D7A77D772134526900E0E435 /* SignalViewController.m in Sources */,
 				7F0C0EC5214B5288000C55C6 /* UIButton+MMCustom.m in Sources */,
 				7FA726181FFB896400C0F6F2 /* MMCardViewController.m in Sources */,
@@ -1623,6 +1658,7 @@
 				7FA7262E1FFCE40E00C0F6F2 /* MMBackground.m in Sources */,
 				7FA726241FFCD28500C0F6F2 /* MMContent.m in Sources */,
 				7F14A7D02064B1A1006EC133 /* AsyncDrawViewController.m in Sources */,
+				F77231C021AE581600DA019B /* MMAnimation.m in Sources */,
 				7F8B6C081F95ED6F00F3A6E3 /* MMSearchReusableView.m in Sources */,
 				D713B8C8207602FF00D388F2 /* BillLocationExtensionView.m in Sources */,
 				7F472929218C6F07007A10FB /* EmojiViewController.m in Sources */,

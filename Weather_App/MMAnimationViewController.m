@@ -77,6 +77,9 @@
     **/
     // 第三个缺点，没有对接口进行友好的提示，当设置`duration`的时候，block接收的参数不知道是什么类型的
     
+    // 第四个缺点，如果先设置springAnimator的delay，然后再设置dampingRatio、velocity会报错，
+    // 因为delay返回的是 MMAnimator 协议，而 dampingRatio 是 MMSpringAnimator 协议的
+    
     [[[UIView.springAnimator.dampingRatio(10).velocity(20)
        .duration(2.0f).delay(4.25f) animations:^{
            self.superView.backgroundColor = [UIColor purpleColor];
