@@ -640,10 +640,10 @@
 			children = (
 				7F39ED04214FC3B7006CE72F /* MMAnimator.h */,
 				7F39ED05214FC3B7006CE72F /* MMAnimator.m */,
-				F77231C721AE60C700DA019B /* MMAnimatable.h */,
-				F77231C821AE629C00DA019B /* MMAnimatable.m */,
 				F77231BE21AE581600DA019B /* MMAnimation.h */,
 				F77231BF21AE581600DA019B /* MMAnimation.m */,
+				F77231C721AE60C700DA019B /* MMAnimatable.h */,
+				F77231C821AE629C00DA019B /* MMAnimatable.m */,
 				F77231CA21AE6A8A00DA019B /* MMAnimationType.h */,
 				F77231CB21AE6A8A00DA019B /* MMAnimationType.m */,
 				F77231CD21AE8A5300DA019B /* MMAnimationTimingFunctionType.h */,

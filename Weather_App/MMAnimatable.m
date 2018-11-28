@@ -11,6 +11,7 @@
 #import "MMAnimationConfiguration.h"
 #import "MMAnimationPromise.h"
 #import "MMAnimator.h"
+#import "MMAnimationType.h"
 
 @defs(MMAnimatable)
 
@@ -56,7 +57,11 @@
         self.autoRun = NO;
     }
 }
+@end
 
+@interface CALayer (MMAnimatable)
++ (void) animation:(MMAnimatableExecution)animation completion:(MMAnimatableCompletion)completion;
+- (CFTimeInterval) currentMediaTime;
 @end
 
 @implementation UIView (MMAnimatable)
@@ -65,6 +70,12 @@
        configuration:(MMAnimationConfiguration *)config
           completion:(MMAnimatableCompletion)completion{
     
+    if (animationType.type == MMAnimationTypeSlide) {
+        [self _slideWithWay:animationType.way
+                  direction:animationType.direction
+              configuration:config
+                 completion:completion];
+    }
     /*
      switch animation {
      case let .slide(way, direction):
@@ -144,48 +155,257 @@
      */
 }
 
-//func computeValues(way: AnimationType.Way,
-//                   direction: AnimationType.Direction,
-//                   configuration: AnimationConfiguration,
-//                   shouldScale: Bool) -> AnimationValues {
-//    let scale = 3 * configuration.force
-//    var scaleX: CGFloat = 1
-//    var scaleY: CGFloat = 1
-//
-//    var frame: CGRect
-//    if let window = window {
-//        frame = window.convert(self.frame, to: window)
-//    } else {
-//        frame = self.frame
-//    }
-//
-//    var x: CGFloat = 0
-//    var y: CGFloat = 0
-//    switch (way, direction) {
-//        case (.in, .left), (.out, .right):
-//            x = screenSize.width - frame.minX
-//        case (.in, .right), (.out, .left):
-//            x = -frame.maxX
-//        case (.in, .up), (.out, .down):
-//            y = screenSize.height - frame.minY
-//        case (.in, .down), (.out, .up):
-//            y = -frame.maxY
-//    }
-//
-//    x *= configuration.force
-//    y *= configuration.force
-//    if shouldScale && direction.isVertical() {
-//        scaleY = scale
-//    } else if shouldScale {
-//        scaleX = scale
-//    }
-//
-//    return (x: x, y: y, scaleX: scaleX, scaleY: scaleY)
-//}
-- (void) _animationIn:(NSInteger)animationValues alpha:(CGFloat)alpha configuration:(MMAnimationConfiguration *)config completion:(MMAnimationConfiguration *)completion{
+#pragma mark - Animation methods
+
+- (void) _slideWithWay:(MMAnimationWay)way
+             direction:(MMAnimationDirection)direction
+         configuration:(MMAnimationConfiguration *)config
+            completion:(MMAnimatableCompletion)completion{
     
-    CGAffineTransform translate = CGAffineTransformMakeTranslation(0, 0);
-    CGAffineTransform scale = CGAffineTransformMakeScale(1, 1);
+    MMAnimationScale animationValues = [self _computeValues:way
+                                                  direction:direction
+                                              configuration:config
+                                                shouleScale:NO];
+    if (way == MMAnimationWayIn) {
+        [self _animationInWith:animationValues alpha:1 configuration:config completion:completion];
+    }
+    if (way == MMAnimationWayOut) {
+        [self _animationOutWith:animationValues alpha:1 configuration:config completion:completion];
+    }
+}
+
+- (void) _squeezeWithWay:(MMAnimationWay)way
+               direction:(MMAnimationDirection)direction
+           configuration:(MMAnimationConfiguration *)config
+              completion:(MMAnimatableCompletion)completion{
+    
+    MMAnimationScale animationValues = [self _computeValues:way
+                                                  direction:direction
+                                              configuration:config
+                                                shouleScale:YES];
+    if (way == MMAnimationWayIn) {
+        [self _animationInWith:animationValues alpha:1 configuration:config completion:completion];
+    }
+    if (way == MMAnimationWayOut) {
+        [self _animationOutWith:animationValues alpha:1 configuration:config completion:completion];
+    }
+}
+
+- (void) _slideFadeWithWay:(MMAnimationWay)way
+                 direction:(MMAnimationDirection)direction
+             configuration:(MMAnimationConfiguration *)config
+                completion:(MMAnimatableCompletion)completion{
+    
+    MMAnimationScale animationValues = [self _computeValues:way
+                                                  direction:direction
+                                              configuration:config
+                                                shouleScale:NO];
+    if (way == MMAnimationWayIn) {
+        self.alpha = 0;
+        [self _animationInWith:animationValues alpha:1 configuration:config completion:completion];
+    }
+    if (way == MMAnimationWayOut) {
+        [self _animationOutWith:animationValues alpha:0 configuration:config completion:completion];
+    }
+}
+
+- (void) _squeezeFadeWithWay:(MMAnimationWay)way
+                   direction:(MMAnimationDirection)direction
+               configuration:(MMAnimationConfiguration *)config
+                  completion:(MMAnimatableCompletion)completion{
+    
+    MMAnimationScale animationValues = [self _computeValues:way
+                                                  direction:direction
+                                              configuration:config
+                                                shouleScale:YES];
+    if (way == MMAnimationWayIn) {
+        self.alpha = 0;
+        [self _animationInWith:animationValues alpha:1 configuration:config completion:completion];
+    }
+    if (way == MMAnimationWayOut) {
+        [self _animationOutWith:animationValues alpha:0 configuration:config completion:completion];
+    }
+}
+
+- (void) _fadeWithWay:(MMAnimationFadeWay)fadeWay
+        configuration:(MMAnimationConfiguration *)config
+           completion:(MMAnimatableCompletion)completion{
+    
+    if (fadeWay == MMAnimationFadeWayIn) {
+        self.alpha = 0;
+        [self _animationInWith:MMAnimationScaleMake(0, 0, 1, 1)
+                         alpha:1 configuration:config completion:completion];
+    }
+    if (fadeWay == MMAnimationFadeWayOut) {
+        self.alpha = 1;
+        [self _animationInWith:MMAnimationScaleMake(0, 0, 1, 1)
+                         alpha:0 configuration:config completion:completion];
+    }
+    if (fadeWay == MMAnimationFadeWayOutIn) {
+        self.alpha = 0;
+        [self _fadeOutInWith:config completion:completion];
+    }
+    if (fadeWay == MMAnimationFadeWayInOut) {
+        [self _fadeInOutWith:config completion:completion];
+    }
+}
+
+- (void) _zoomWithWay:(MMAnimationWay)way
+               invert:(BOOL)invert
+        configuration:(MMAnimationConfiguration *)config
+           completion:(MMAnimatableCompletion)completion{
+    
+}
+
+//func zoom(_ way: AnimationType.Way, invert: Bool = false, configuration: AnimationConfiguration, completion: AnimatableCompletion? = nil) {
+//    let toAlpha: CGFloat
+//
+//    switch way {
+//    case .in where invert:
+//        let scale = configuration.force
+//        alpha = 0
+//        toAlpha = 1
+//        transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+//        animateIn(animationValues: AnimationValues(x: 0, y: 0, scaleX: scale / 2, scaleY: scale / 2),
+//                  alpha: toAlpha,
+//                  configuration: configuration,
+//                  completion: completion)
+//    case .in:
+//        let scale = 2 * configuration.force
+//        alpha = 0
+//        toAlpha = 1
+//        animateIn(animationValues: AnimationValues(x: 0, y: 0, scaleX: scale, scaleY: scale),
+//                  alpha: toAlpha,
+//                  configuration: configuration,
+//                  completion: completion)
+//    case .out:
+//        let scale = (invert ? 0.1 :  2) * configuration.force
+//        toAlpha = 0
+//        animateOut(animationValues: AnimationValues(x: 0, y: 0, scaleX: scale, scaleY: scale),
+//                   alpha: toAlpha,
+//                   configuration: configuration,
+//                   completion: completion)
+//    }
+//}
+
+- (void) _rotateWithDirection:(MMAnimationRotationDirection)direction
+                  repeatCount:(NSUInteger)repeatCount
+                configuration:(MMAnimationConfiguration *)config
+                   completion:(MMAnimatableCompletion)completion{
+    
+    [CALayer animation:^{
+        
+    } completion:completion];
+}
+
+//func rotate(direction: AnimationType.RotationDirection,
+//            repeatCount: Int,
+//            configuration: AnimationConfiguration,
+//            completion: AnimatableCompletion? = nil) {
+//    CALayer.animate({
+//        let animation = CABasicAnimation(keyPath: .rotation)
+//        animation.fromValue = direction == .cw ? 0 : CGFloat.pi * 2
+//        animation.toValue = direction == .cw  ? CGFloat.pi * 2 : 0
+//        animation.duration = configuration.duration
+//        animation.repeatCount = Float(repeatCount)
+//        animation.autoreverses = false
+//        animation.beginTime = self.layer.currentMediaTime + configuration.delay
+//        self.layer.add(animation, forKey: "rotate")
+//    }, completion: completion)
+//}
+
+#pragma mark -
+
+- (void) _fadeOutInWith:(MMAnimationConfiguration *)config completion:(MMAnimatableCompletion)completion{
+    
+    [CALayer animation:^{
+        CABasicAnimation * animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        animation.fromValue = @(1);
+        animation.toValue = @(0);
+        animation.timingFunction = config.timingFunctionValue;
+        animation.duration = config.durationValue;
+        animation.beginTime = self.layer.currentMediaTime + config.delayValue;
+        animation.autoreverses = YES;
+        [self.layer addAnimation:animation forKey:@"fade"];
+    } completion:completion];
+}
+
+- (void) _fadeInOutWith:(MMAnimationConfiguration *)config completion:(MMAnimatableCompletion)completion{
+    
+    [CALayer animation:^{
+        CABasicAnimation * animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        animation.fromValue = @(0);
+        animation.toValue = @(1);
+        animation.timingFunction = config.timingFunctionValue;
+        animation.duration = config.durationValue;
+        animation.beginTime = self.layer.currentMediaTime + config.delayValue;
+        animation.autoreverses = YES;
+        animation.removedOnCompletion = NO;
+        [self.layer addAnimation:animation forKey:@"fade"];
+    } completion:^{
+        self.alpha = 0;
+        if (completion) {
+            completion();
+        }
+    }];
+}
+
+- (MMAnimationScale) _computeValues:(MMAnimationWay)way direction:(MMAnimationDirection)direction configuration:(MMAnimationConfiguration *)config shouleScale:(BOOL)shouldScale{
+    
+    CGFloat scale = 3 * config.forceValue;
+    CGFloat scaleX = 1;
+    CGFloat scaleY = 1;
+    
+    CGRect frame;
+    frame = self.frame;
+    if (self.window) {
+        frame = [self.window convertRect:self.frame toView:self.window];
+    }
+    
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    
+    CGFloat x = 0;
+    CGFloat y = 0;
+    if ((way == MMAnimationWayIn && direction == MMAnimationWayDirectionLeft) ||
+        (way == MMAnimationWayOut && direction == MMAnimationWayDirectionRight)) {
+        x = screenSize.width - CGRectGetMinX(frame);
+    }
+    if ((way == MMAnimationWayIn && direction == MMAnimationWayDirectionRight) ||
+        (way == MMAnimationWayOut && direction == MMAnimationWayDirectionLeft)) {
+        x = -CGRectGetMaxX(frame);
+    }
+    if ((way == MMAnimationWayIn && direction == MMAnimationWayDirectionUp) ||
+        (way == MMAnimationWayOut && direction == MMAnimationWayDirectionDown)) {
+        y = screenSize.height - CGRectGetMinY(frame);
+    }
+    if ((way == MMAnimationWayIn && direction == MMAnimationWayDirectionDown) ||
+        (way == MMAnimationWayOut && direction == MMAnimationWayDirectionUp)) {
+        y = -CGRectGetMaxY(frame);
+    }
+    
+    x *= config.forceValue;
+    y *= config.forceValue;
+    
+    BOOL isVertical = (direction == MMAnimationWayDirectionDown) ||
+    (direction == MMAnimationWayDirectionDown);
+    
+    if (shouldScale && isVertical) {
+        scaleY = scale;
+    } else if (shouldScale) {
+        scaleX = scale;
+    }
+    return MMAnimationScaleMake(x, y, scaleX, scaleY);
+}
+
+- (void) _animationInWith:(MMAnimationScale)animationValues
+                    alpha:(CGFloat)alpha
+            configuration:(MMAnimationConfiguration *)config
+               completion:(MMAnimatableCompletion)completion{
+    
+    CGAffineTransform translate = CGAffineTransformMakeTranslation(animationValues.fromX,
+                                                                   animationValues.fromY);
+    CGAffineTransform scale = CGAffineTransformMakeScale(animationValues.toX,
+                                                         animationValues.toY);
     CGAffineTransform translateAndScale = CGAffineTransformConcat(translate, scale);
     self.transform = translateAndScale;
     
@@ -193,41 +413,51 @@
         self.alpha = alpha;
         self.transform = CGAffineTransformIdentity;
     }] completion:^(BOOL finished) {
-        
+        if (completion) {
+            completion();
+        }
     }];
-//
-//    func animateIn(animationValues: AnimationValues, alpha: CGFloat, configuration: AnimationConfiguration, completion: AnimatableCompletion? = nil) {
-//        let translate = CGAffineTransform(translationX: animationValues.x, y: animationValues.y)
-//        let scale = CGAffineTransform(scaleX: animationValues.scaleX, y: animationValues.scaleY)
-//        let translateAndScale = translate.concatenating(scale)
-//        transform = translateAndScale
-//
-//        UIView.animate(with: configuration, animations: {
-//            self.transform = .identity
-//            self.alpha = alpha
-//        }, completion: { completed in
-//            if completed {
-//                completion?()
-//            }
-//        })
-}
-- (void) _animationOut:(NSInteger)animationValues alpha:(CGFloat)alpha configuration:(MMAnimationConfiguration *)config completion:(MMAnimationConfiguration *)completion{
-    
 }
 
-//func animateOut(animationValues: AnimationValues, alpha: CGFloat, configuration: AnimationConfiguration, completion: AnimatableCompletion? = nil) {
-//    let translate = CGAffineTransform(translationX: animationValues.x, y: animationValues.y)
-//    let scale = CGAffineTransform(scaleX: animationValues.scaleX, y: animationValues.scaleY)
-//    let translateAndScale = translate.concatenating(scale)
-//
-//    UIView.animate(with: configuration, animations: {
-//        self.transform = translateAndScale
-//        self.alpha = alpha
-//    }, completion: { completed in
-//        if completed {
-//            completion?()
-//        }
-//    })
-//}
+- (void) _animationOutWith:(MMAnimationScale)animationValues
+                     alpha:(CGFloat)alpha
+             configuration:(MMAnimationConfiguration *)config
+                completion:(MMAnimatableCompletion)completion{
+    
+    CGAffineTransform translate = CGAffineTransformMakeTranslation(animationValues.fromX,
+                                                                   animationValues.fromY);
+    CGAffineTransform scale = CGAffineTransformMakeScale(animationValues.toX,
+                                                         animationValues.toY);
+    CGAffineTransform translateAndScale = CGAffineTransformConcat(translate, scale);
+    
+    [[UIView.animator.duration(3) animations:^{
+        self.alpha = alpha;
+        self.transform = translateAndScale;
+    }] completion:^(BOOL finished) {
+        if (completion) {
+            completion();
+        }
+    }];
+}
+
 @end
 
+@implementation CALayer (MMAnimatable)
+
++ (void)animation:(MMAnimatableExecution)animation completion:(MMAnimatableCompletion)completion{
+    [CATransaction begin];
+    if (completion) {
+        [CATransaction setCompletionBlock:^{
+            completion();
+        }];
+    }
+    if (animation) {
+        animation();
+    }
+    [CATransaction commit];
+}
+
+- (CFTimeInterval) currentMediaTime{
+    return [self convertTime:CACurrentMediaTime() fromLayer:nil];
+}
+@end

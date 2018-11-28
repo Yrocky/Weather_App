@@ -1,5 +1,5 @@
 //
-//  MMAnimationType.m
+//  MMAnimationanimation.m
 //  Weather_App
 //
 //  Created by meme-rocky on 2018/11/28.
@@ -37,10 +37,10 @@
 @end
 
 @implementation MMAnimationType (Scale)
-+ (instancetype) scleTo:(CGFloat)x y:(CGFloat)y{
++ (instancetype) scaleToX:(CGFloat)x y:(CGFloat)y{
     return MMAnimationTypeMakeScale(MMAnimationScaleMake(1, 1, x, y));
 }
-+ (instancetype) scleFrom:(CGFloat)x y:(CGFloat)y{
++ (instancetype) scaleFromX:(CGFloat)x y:(CGFloat)y{
     return MMAnimationTypeMakeScale(MMAnimationScaleMake(x, y, 1, 1));
 }
 @end
@@ -49,115 +49,136 @@
 @end
 
 MMAnimationType * MMAnimationTypeMakeSlide(MMAnimationWay way, MMAnimationDirection direction){
-    MMAnimationType * type = [MMAnimationType new];
-    type.way = way;
-    type.direction = direction;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeSlide;
+    animation.way = way;
+    animation.direction = direction;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeSqueeze(MMAnimationWay way, MMAnimationDirection direction){
-    MMAnimationType * type = [MMAnimationType new];
-    type.way = way;
-    type.direction = direction;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeSqueeze;
+    animation.way = way;
+    animation.direction = direction;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeSlideFade(MMAnimationWay way, MMAnimationDirection direction){
-    MMAnimationType * type = [MMAnimationType new];
-    type.way = way;
-    type.direction = direction;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeSlideFade;
+    animation.way = way;
+    animation.direction = direction;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeSqueezeFade(MMAnimationWay way, MMAnimationDirection direction){
-    MMAnimationType * type = [MMAnimationType new];
-    type.way = way;
-    type.direction = direction;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeSqueezeFade;
+    animation.way = way;
+    animation.direction = direction;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeFade(MMAnimationFadeWay fadeWay){
-    MMAnimationType * type = [MMAnimationType new];
-    type.fadeWay = fadeWay;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeFade;
+    animation.fadeWay = fadeWay;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeZoom(MMAnimationWay way){
-    MMAnimationType * type = [MMAnimationType new];
-    type.way = way;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeZoom;
+    animation.way = way;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeZoomInvert(MMAnimationWay way){
-    MMAnimationType * type = [MMAnimationType new];
-    type.way = way;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeZoomInvert;
+    animation.way = way;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeShake(NSUInteger repeatCount){
-    MMAnimationType * type = [MMAnimationType new];
-    type.repeatCount = repeatCount;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeShake;
+    animation.repeatCount = repeatCount;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakePop(NSUInteger repeatCount){
-    MMAnimationType * type = [MMAnimationType new];
-    type.repeatCount = repeatCount;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypePop;
+    animation.repeatCount = repeatCount;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeSquash(NSUInteger repeatCount){
-    MMAnimationType * type = [MMAnimationType new];
-    type.repeatCount = repeatCount;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeSquash;
+    animation.repeatCount = repeatCount;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeFlip(MMAnimationAxis along){
-    MMAnimationType * type = [MMAnimationType new];
-    type.along = along;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeFlip;
+    animation.along = along;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeMorph(NSUInteger repeatCount){
-    MMAnimationType * type = [MMAnimationType new];
-    type.repeatCount = repeatCount;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeMorph;
+    animation.repeatCount = repeatCount;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeFlash(NSUInteger repeatCount){
-    MMAnimationType * type = [MMAnimationType new];
-    type.repeatCount = repeatCount;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeFlash;
+    animation.repeatCount = repeatCount;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeWobble(NSUInteger repeatCount){
-    MMAnimationType * type = [MMAnimationType new];
-    type.repeatCount = repeatCount;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeWoble;
+    animation.repeatCount = repeatCount;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeSwing(NSUInteger repeatCount){
-    MMAnimationType * type = [MMAnimationType new];
-    type.repeatCount = repeatCount;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeSwing;
+    animation.repeatCount = repeatCount;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeRotate(MMAnimationRotationDirection rotationDirection){
-    MMAnimationType * type = [MMAnimationType new];
-    type.rotationDirection = rotationDirection;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeRotate;
+    animation.rotationDirection = rotationDirection;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeMoveTo(CGFloat x, CGFloat y){
-    MMAnimationType * type = [MMAnimationType new];
-    type.x = x;
-    type.y = y;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeMoveTo;
+    animation.x = x;
+    animation.y = y;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeMoveBy(CGFloat x, CGFloat y){
-    MMAnimationType * type = [MMAnimationType new];
-    type.x = x;
-    type.y = y;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeMoveBy;
+    animation.x = x;
+    animation.y = y;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeScale(struct MMAnimationScale scale){
-    MMAnimationType * type = [MMAnimationType new];
-    type.scale = scale;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeScale;
+    animation.scale = scale;
+    return animation;
 }
 MMAnimationType * MMAnimationTypeMakeSpin(NSUInteger repeatCount){
-    MMAnimationType * type = [MMAnimationType new];
-    type.repeatCount = repeatCount;
-    return type;
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeSpin;
+    animation.repeatCount = repeatCount;
+    return animation;
 }
 
-MMAnimationType * MMAnimationTypeCompound(NSArray<MMAnimationType *> * animations ,MMAnimationRun run){
-    MMAnimationType * type = [MMAnimationType new];
-    type.animations = animations;
-    type.run = run;
-    return type;
+MMAnimationType * MMAnimationTypeMakeCompound(NSArray<MMAnimationType *> * animations ,MMAnimationRun run){
+    MMAnimationType * animation = [MMAnimationType new];
+    animation.type = MMAnimationTypeCompound;
+    animation.animations = animations;
+    animation.run = run;
+    return animation;
 }

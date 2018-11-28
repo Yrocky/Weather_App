@@ -16,17 +16,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic ,assign ,readonly) CGFloat dampingValue;///<0.7
 @property (nonatomic ,assign ,readonly) CGFloat velocityValue;///<0.7
-@property (nonatomic ,assign ,readonly) NSTimeInterval derationValue;///<0.7
+@property (nonatomic ,assign ,readonly) NSTimeInterval durationValue;///<0.7
 @property (nonatomic ,assign ,readonly) NSTimeInterval delayValue;///<0
 @property (nonatomic ,assign ,readonly) CGFloat forceValue;///<摩擦系数:1
-@property (nonatomic ,strong ,readonly) MMAnimationTimingFunctionType * timingFunctionValue;// todo
+@property (nonatomic ,strong ,readonly) CAMediaTimingFunction * timingFunctionValue;
 
 - (MMAnimationConfiguration*(^)(CGFloat)) damping;
 - (MMAnimationConfiguration*(^)(CGFloat)) velocity;
-- (MMAnimationConfiguration*(^)(NSTimeInterval)) deration;
+- (MMAnimationConfiguration*(^)(NSTimeInterval)) duration;
 - (MMAnimationConfiguration*(^)(NSTimeInterval)) delay;
 - (MMAnimationConfiguration*(^)(CGFloat)) force;
-- (MMAnimationConfiguration*(^)(MMAnimationTimingFunctionType *)) timingFunction;//todo
+- (MMAnimationConfiguration*(^)(CAMediaTimingFunction *)) timingFunction;
 
 - (UIViewAnimationOptions) options;
 @end

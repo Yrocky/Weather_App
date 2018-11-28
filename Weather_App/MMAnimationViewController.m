@@ -11,6 +11,8 @@
 #import "Masonry.h"
 
 #import "MMAnimator.h"
+#import "MMAnimationTimingFunctionType.h"
+#import "MMAnimationType.h"
 
 @interface MMAnimationViewController ()
 
@@ -113,6 +115,12 @@
 //    [itemViews mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedItemLength:50 leadSpacing:10 tailSpacing:10];
 //    [itemViews mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:20 leadSpacing:10 tailSpacing:10];
     [itemViews mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withViewsAlignment:MASViewsAlignmentCenter fixedItemLength:50 fixedSpacing:20];
+    
+    id tf = MMAnimationTimingFunctionEaseInQuint();
+    id as = MMAnimationTypeMakeSlide(MMAnimationWayOut, MMAnimationWayDirectionUp);
+    
+    id scale = [MMAnimationType scaleToX:3 y:3];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{

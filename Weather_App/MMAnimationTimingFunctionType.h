@@ -11,56 +11,53 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MMAnimationTimingFunctionType : CAMediaTimingFunction
-@end
-
 ///<Normal
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionLinear();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyIn();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyOut();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInOut();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionDefault();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionLinear();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseIn();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseOut();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInOut();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionDefault();
 
 // http://easings.net/
 ///<Sine
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInSine();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyOutSine();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInOutSine();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInSine();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseOutSine();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInOutSine();
 
 ///<Quad
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInQuad();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyOutQuad();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInOutQuad();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInQuad();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseOutQuad();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInOutQuad();
 
 ///<Cubic
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInCubic();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyOutCubic();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInOutCubic();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInCubic();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseOutCubic();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInOutCubic();
 
 ///<Quart
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInQuart();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyOutQuart();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInOutQuart();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInQuart();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseOutQuart();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInOutQuart();
 
 ///<Quint
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInQuint();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyOutQuint();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInOutQuint();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInQuint();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseOutQuint();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInOutQuint();
 
 ///<Expo
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInExpo();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyOutExpo();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInOutExpo();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInExpo();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseOutExpo();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInOutExpo();
 
 ///<Circ
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInCirc();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyOutCirc();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInOutCirc();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInCirc();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseOutCirc();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInOutCirc();
 
 ///<Back
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInBack();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyOutBack();
-extern MMAnimationTimingFunctionType * MMAnimationTimingFunctionEasyInOutBack();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInBack();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseOutBack();
+extern CAMediaTimingFunction * MMAnimationTimingFunctionEaseInOutBack();
 
 
 NS_ASSUME_NONNULL_END

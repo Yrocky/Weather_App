@@ -14,7 +14,7 @@
     
     self = [super init];
     if (self) {
-        self.damping(0.7).velocity(0.7).deration(0.7).delay(0).
+        self.damping(0.7).velocity(0.7).duration(0.7).delay(0).
         force(1);
     }
     return self;
@@ -32,9 +32,9 @@
         return self;
     };
 }
-- (MMAnimationConfiguration*(^)(NSTimeInterval)) deration{
-    return ^MMAnimationConfiguration *(NSTimeInterval deration){
-        _derationValue = deration;
+- (MMAnimationConfiguration*(^)(NSTimeInterval)) duration{
+    return ^MMAnimationConfiguration *(NSTimeInterval duration){
+        _durationValue = duration;
         return self;
     };
 }
@@ -50,8 +50,8 @@
         return self;
     };
 }
-- (MMAnimationConfiguration*(^)(MMAnimationTimingFunctionType *)) timingFunction{
-    return ^MMAnimationConfiguration *(MMAnimationTimingFunctionType * timingFunction){
+- (MMAnimationConfiguration*(^)(CAMediaTimingFunction *)) timingFunction{
+    return ^MMAnimationConfiguration *(CAMediaTimingFunction * timingFunction){
         _timingFunctionValue = timingFunction;
         return self;
     };

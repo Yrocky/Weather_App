@@ -11,6 +11,31 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger , MMAnimationTypes) {
+    MMAnimationTypeNone,
+    MMAnimationTypeSlide,
+    MMAnimationTypeSqueeze,
+    MMAnimationTypeSlideFade,
+    MMAnimationTypeSqueezeFade,
+    MMAnimationTypeFade,
+    MMAnimationTypeZoom,
+    MMAnimationTypeZoomInvert,
+    MMAnimationTypeShake,
+    MMAnimationTypePop,
+    MMAnimationTypeSquash,
+    MMAnimationTypeFlip,
+    MMAnimationTypeMorph,
+    MMAnimationTypeFlash,
+    MMAnimationTypeWoble,
+    MMAnimationTypeSwing,
+    MMAnimationTypeRotate,
+    MMAnimationTypeMoveTo,
+    MMAnimationTypeMoveBy,
+    MMAnimationTypeScale,
+    MMAnimationTypeSpin,
+    MMAnimationTypeCompound
+};
+
 typedef NS_ENUM(NSUInteger , MMAnimationFadeWay) {
     MMAnimationFadeWayIn,
     MMAnimationFadeWayOut,
@@ -50,17 +75,20 @@ struct MMAnimationScale {
     CGFloat fromY;
     CGFloat toX;
     CGFloat toY;
-}MMAnimationScale;
-NS_INLINE struct MMAnimationScale MMAnimationScaleMake(CGFloat fromX ,CGFloat fromY ,CGFloat toX ,CGFloat toY){
-    struct MMAnimationScale scale = MMAnimationScale;
-    scale.fromX = fromX;
-    scale.fromY = fromY;
-    scale.toX = toX;
-    scale.toY = toY;
+};
+typedef struct MMAnimationScale MMAnimationScale;
+
+NS_INLINE struct MMAnimationScale
+MMAnimationScaleMake(CGFloat fromX ,CGFloat fromY ,CGFloat toX ,CGFloat toY){
+    struct MMAnimationScale scale;
+    scale.fromX = fromX; scale.fromY = fromY;
+    scale.toX = toX; scale.toY = toY;
     return scale;
 }
 
 @interface MMAnimationType : NSObject
+
+@property (nonatomic ,assign) MMAnimationTypes type;
 
 @property (nonatomic ,assign) MMAnimationWay way;
 @property (nonatomic ,assign) MMAnimationFadeWay fadeWay;
@@ -83,8 +111,8 @@ NS_INLINE struct MMAnimationScale MMAnimationScaleMake(CGFloat fromX ,CGFloat fr
 
 @interface MMAnimationType (Scale)
 @property (nonatomic ,assign) struct MMAnimationScale scale;
-+ (instancetype) scleTo:(CGFloat)x y:(CGFloat)y;
-+ (instancetype) scleFrom:(CGFloat)x y:(CGFloat)y;
++ (instancetype) scaleToX:(CGFloat)x y:(CGFloat)y;
++ (instancetype) scaleFromX:(CGFloat)x y:(CGFloat)y;
 @end
 
 @interface MMAnimationType (Compound)
@@ -113,6 +141,6 @@ extern MMAnimationType * MMAnimationTypeMakeMoveBy(CGFloat x, CGFloat y);
 extern MMAnimationType * MMAnimationTypeMakeScale(struct MMAnimationScale scale);
 extern MMAnimationType * MMAnimationTypeMakeSpin(NSUInteger repeatCount);
 
-extern MMAnimationType * MMAnimationTypeCompound(NSArray<MMAnimationType *> * animations ,MMAnimationRun run);
+extern MMAnimationType * MMAnimationTypeMakeCompound(NSArray<MMAnimationType *> * animations ,MMAnimationRun run);
 
 NS_ASSUME_NONNULL_END

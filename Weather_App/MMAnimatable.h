@@ -44,19 +44,6 @@ typedef void(^MMAnimatableExecution)();
 - (void) doAnimation:(MMAnimationType *)animationType
        configuration:(MMAnimationConfiguration *)config
           completion:(MMAnimatableCompletion)completion;
-
-//- (void) slideAnimation:()
-//func slide(_ way: AnimationType.Way,
-//           direction: AnimationType.Direction,
-//           configuration: AnimationConfiguration,
-//           completion: AnimatableCompletion? = nil) {
-//    let values = computeValues(way: way, direction: direction, configuration: configuration, shouldScale: false)
-//    switch way {
-//    case .in:
-//        animateIn(animationValues: values, alpha: 1, configuration: configuration, completion: completion)
-//    case .out:
-//        animateOut(animationValues: values, alpha: 1, configuration: configuration, completion: completion)
-//    }
-//}
 @end
+
 NS_ASSUME_NONNULL_END
