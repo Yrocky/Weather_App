@@ -10,6 +10,7 @@
 #import "MM24GameManager.h"
 #import "UIView+RoundCorner.h"
 #import "Masonry.h"
+#import "UIImage+DrawImage.h"
 
 @interface RoundCornerViewController ()
 @property (nonatomic ,strong) UIView * roundView;
@@ -84,11 +85,29 @@
 //    [view.layer yy_setImageWithURL:[NSURL URLWithString:imageURL] options:YYWebImageOptionSetImageWithFadeAnimation];
     view.frame = CGRectMake(150, 50, 150, 100);
     [self.view addSubview:view];
-    [view mm_makeRoundCorner:^(MM_RoundCorner *make) {
-        make.outerColor([UIColor redColor]);
-        make.radius(CGSizeMake(10, 10)).corners(UIRectCornerAllCorners);
-        make.borderWidth(2).borderColor([UIColor orangeColor]);
-    }];
+//    view.image = [[[[[[UIImage imageDrawerWithResizable]
+//                      borderWidth:2]
+//                     borderColor:[UIColor orangeColor]]
+//                    borderAlinment:MMBorderAligmentCenter]
+//                   cornerRadius:20] image];
+    
+//    view.image = [[[[[UIImage imageDrawerWithResizable]
+//                     cornerTopLeft:10] cornerBottomRight:10]
+//                   fillGradientColor:@[[UIColor orangeColor],[UIColor redColor]]
+//                   locations:@[@(0.5),@(0.8)]
+//                   startPoint:CGPointMake(.0, 0)
+//                   endPoint:CGPointMake(1., 1.)] image];
+    
+    view.image = [[[[[[[UIImage imageDrawerWithResizable]
+                      fillColor:[UIColor redColor]]
+                     cornerTopLeft:10]
+                     borderWidth:2] borderColor:[UIColor greenColor]]
+                   borderAlinment:MMBorderAligmentInside] image];
+//    [view mm_makeRoundCorner:^(MM_RoundCorner *make) {
+//        make.outerColor([UIColor redColor]);
+//        make.radius(CGSizeMake(10, 10)).corners(UIRectCornerAllCorners);
+//        make.borderWidth(2).borderColor([UIColor orangeColor]);
+//    }];
 }
 
 - (void)viewDidLayoutSubviews{

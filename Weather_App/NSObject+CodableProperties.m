@@ -126,3 +126,18 @@
 
 @end
 
+
+@implementation NSObject (DebugTagName)
+
+- (void)setDebugTagName:(NSString *)debugTagName{
+    objc_setAssociatedObject([self class], _cmd, debugTagName, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (NSString *)debugTagName{
+    return objc_getAssociatedObject([self class], @selector(setDebugTagName:));
+}
+
+- (NSString *) objectIdentifier{
+    return [NSString stringWithFormat:@"%@:0x%0x",self.class.description ,(int)self];
+}
+@end

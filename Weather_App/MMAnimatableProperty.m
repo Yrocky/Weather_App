@@ -8,6 +8,21 @@
 
 #import "MMAnimatableProperty.h"
 
+//#define POP_ARRAY_COUNT(x) sizeof(x) / sizeof(x[0])
+
+//static NSUInteger staticIndexWithName(NSString *aName){
+//
+//    NSUInteger idx = 0;
+//
+//    while (idx < POP_ARRAY_COUNT(_staticStates)) {
+//        if ([_staticStates[idx].name isEqualToString:aName])
+//            return idx;
+//        idx++;
+//    }
+//
+//    return NSNotFound;
+//}
+
 // 单例占位符对象，提供类簇的功能
 @interface MMPlaceholdAnimatableProperty : MMAnimatableProperty
 @end
@@ -91,7 +106,7 @@ static MMAnimatableProperty * placeholder = nil;
         return prop;
     }
     
-    NSUInteger staticIdx ;//= staticIndexWithName(aName);
+    NSUInteger staticIdx = 0;//= staticIndexWithName(aName);
     
     if (NSNotFound != staticIdx) {
         MMStaticAnimatableProperty *staticProp = [[MMStaticAnimatableProperty alloc] init];
@@ -110,5 +125,6 @@ static MMAnimatableProperty * placeholder = nil;
 @end
 
 @implementation MMMutableAnimatableProperty
+
 
 @end

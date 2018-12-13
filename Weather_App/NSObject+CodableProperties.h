@@ -13,3 +13,8 @@
 
 - (NSDictionary *)codableProperties;
 @end
+
+@interface NSObject (DebugTagName)
+
+@property (nonatomic ,copy) NSString * debugTagName;
+@end

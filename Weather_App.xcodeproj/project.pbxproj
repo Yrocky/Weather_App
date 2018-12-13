@@ -165,7 +165,10 @@
 		D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */; };
 		D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */; };
 		D759BB03218CA1B500A06FE0 /* MMAnimatableProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = D759BB02218CA1B500A06FE0 /* MMAnimatableProperty.m */; };
+		D783D36721B8160C002C0D40 /* MMConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = D783D36621B8160C002C0D40 /* MMConversation.m */; };
+		D7963EFB21B5678B00B44397 /* ALBookDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7963EFA21B5678B00B44397 /* ALBookDemoViewController.m */; };
 		D7A325E420772DD700B2F8AB /* BillKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A325E320772DD700B2F8AB /* BillKeyboardView.m */; };
+		D7A45DD721B94FCA003EDE2F /* UIImage+DrawImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A45DD621B94FCA003EDE2F /* UIImage+DrawImage.m */; };
 		D7A595B81FAAC156000C59FE /* CreatePDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A595B71FAAC156000C59FE /* CreatePDFViewController.m */; };
 		D7A595BB1FAAC743000C59FE /* FDHTMLRenderComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A595BA1FAAC743000C59FE /* FDHTMLRenderComposer.m */; };
 		D7A595BF1FAACFED000C59FE /* rootTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = D7A595BD1FAACFED000C59FE /* rootTemplate.html */; };
@@ -506,8 +509,14 @@
 		D759BB00218C891F00A06FE0 /* MMCGUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMCGUtils.h; sourceTree = "<group>"; };
 		D759BB01218CA1B500A06FE0 /* MMAnimatableProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimatableProperty.h; sourceTree = "<group>"; };
 		D759BB02218CA1B500A06FE0 /* MMAnimatableProperty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimatableProperty.m; sourceTree = "<group>"; };
+		D783D36521B8160C002C0D40 /* MMConversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMConversation.h; sourceTree = "<group>"; };
+		D783D36621B8160C002C0D40 /* MMConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMConversation.m; sourceTree = "<group>"; };
+		D7963EF921B5678B00B44397 /* ALBookDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALBookDemoViewController.h; sourceTree = "<group>"; };
+		D7963EFA21B5678B00B44397 /* ALBookDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALBookDemoViewController.m; sourceTree = "<group>"; };
 		D7A325E220772DD700B2F8AB /* BillKeyboardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BillKeyboardView.h; sourceTree = "<group>"; };
 		D7A325E320772DD700B2F8AB /* BillKeyboardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BillKeyboardView.m; sourceTree = "<group>"; };
+		D7A45DD521B94FCA003EDE2F /* UIImage+DrawImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+DrawImage.h"; sourceTree = "<group>"; };
+		D7A45DD621B94FCA003EDE2F /* UIImage+DrawImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DrawImage.m"; sourceTree = "<group>"; };
 		D7A595B61FAAC156000C59FE /* CreatePDFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreatePDFViewController.h; sourceTree = "<group>"; };
 		D7A595B71FAAC156000C59FE /* CreatePDFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreatePDFViewController.m; sourceTree = "<group>"; };
 		D7A595B91FAAC743000C59FE /* FDHTMLRenderComposer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDHTMLRenderComposer.h; sourceTree = "<group>"; };
@@ -950,6 +959,7 @@
 				7F9810132121889B0004C638 /* MMDelegateService.m */,
 				7F9810152122AE7A0004C638 /* MMSingleton.h */,
 				7F9810162122AE7B0004C638 /* MMSingleton.m */,
+				D7A45DD421B816B3003EDE2F /* 单向数据流方案 */,
 				D759BB00218C891F00A06FE0 /* MMCGUtils.h */,
 				D759BB01218CA1B500A06FE0 /* MMAnimatableProperty.h */,
 				D759BB02218CA1B500A06FE0 /* MMAnimatableProperty.m */,
@@ -1072,6 +1082,8 @@
 				D706294E1F8B189C00F52FCB /* UIColor+Common.m */,
 				7F9CED351F57F31C00A64EB5 /* UIView+AutoLayoutSupport.h */,
 				7F9CED361F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m */,
+				D7A45DD521B94FCA003EDE2F /* UIImage+DrawImage.h */,
+				D7A45DD621B94FCA003EDE2F /* UIImage+DrawImage.m */,
 				7F94A3491F55120D00DA28EA /* NSArray+Sugar.h */,
 				7F94A34A1F55120D00DA28EA /* NSArray+Sugar.m */,
 				7FA726131FFB7A2800C0F6F2 /* NSNumber+Sugar.h */,
@@ -1283,6 +1295,8 @@
 				7F677F3A218C1157009851B6 /* MMGradientViewController.m */,
 				7F472927218C6F07007A10FB /* EmojiViewController.h */,
 				7F472928218C6F07007A10FB /* EmojiViewController.m */,
+				D7963EF921B5678B00B44397 /* ALBookDemoViewController.h */,
+				D7963EFA21B5678B00B44397 /* ALBookDemoViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -1338,6 +1352,15 @@
 				D715E6A51FA7152000CFBFF4 /* CLTStickyLayout.m */,
 			);
 			name = CLTStickyLayout;
+			sourceTree = "<group>";
+		};
+		D7A45DD421B816B3003EDE2F /* 单向数据流方案 */ = {
+			isa = PBXGroup;
+			children = (
+				D783D36521B8160C002C0D40 /* MMConversation.h */,
+				D783D36621B8160C002C0D40 /* MMConversation.m */,
+			);
+			name = "单向数据流方案";
 			sourceTree = "<group>";
 		};
 		D7A595BC1FAACE36000C59FE /* 渲染 */ = {
@@ -1666,9 +1689,11 @@
 				7FA7262E1FFCE40E00C0F6F2 /* MMBackground.m in Sources */,
 				7FA726241FFCD28500C0F6F2 /* MMContent.m in Sources */,
 				7F14A7D02064B1A1006EC133 /* AsyncDrawViewController.m in Sources */,
+				D783D36721B8160C002C0D40 /* MMConversation.m in Sources */,
 				F77231C021AE581600DA019B /* MMAnimation.m in Sources */,
 				7F8B6C081F95ED6F00F3A6E3 /* MMSearchReusableView.m in Sources */,
 				D713B8C8207602FF00D388F2 /* BillLocationExtensionView.m in Sources */,
+				D7A45DD721B94FCA003EDE2F /* UIImage+DrawImage.m in Sources */,
 				7F472929218C6F07007A10FB /* EmojiViewController.m in Sources */,
 				D706294C1F8B185100F52FCB /* HSTitleTableViewCell.m in Sources */,
 				7F8593581FDE54DC00E6AFFC /* MMXibCustomView.m in Sources */,
@@ -1696,6 +1721,7 @@
 				D715E6A01FA627D500CFBFF4 /* FDViewController.m in Sources */,
 				7FDC6ECA1F46E35A00D94379 /* main.m in Sources */,
 				7FA7261B1FFB89AF00C0F6F2 /* MMToolBar.m in Sources */,
+				D7963EFB21B5678B00B44397 /* ALBookDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

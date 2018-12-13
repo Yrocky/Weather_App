@@ -15,6 +15,8 @@ typedef NS_ENUM(NSUInteger, ADKLayoutAttribute) {
     ADKLayoutAttributeTrailing = 1 << 3,
     ADKLayoutAttributeWidth = 1 << 4,
     ADKLayoutAttributeHeight = 1 << 5,
+    ADKLayoutAttributeLeft = 1 << 6,
+    ADKLayoutAttributeRight = 1 << 7,
 };
 
 @interface UIView (AutoLayoutSupport)
@@ -40,6 +42,12 @@ typedef NS_ENUM(NSUInteger, ADKLayoutAttribute) {
 
 - (void)ADKHideTrailingConstraint;
 - (void)ADKUnhideTrailingConstraint;
+
+- (void)ADKHideLeftConstraint;
+- (void)ADKUnhideLeftConstraint;
+
+- (void)ADKHideRightConstraint;
+- (void)ADKUnhideRightConstraint;
 
 - (void)ADKSetConstraintConstant:(CGFloat)constant forAttribute:(NSLayoutAttribute)attribute;
 

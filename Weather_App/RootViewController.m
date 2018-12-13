@@ -36,6 +36,7 @@
 #import "SignalViewController.h"
 #import "MMGradientViewController.h"
 #import "EmojiViewController.h"
+#import "ALBookDemoViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic ,strong) NSString * str;
@@ -79,6 +80,14 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"🙈Emoji🙉" actionBlock:^(HSTitleCellModel *model) {
             
             EmojiViewController * vc = [[EmojiViewController alloc] init];
+            vc.title = model.title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"🥧Auto Layout🌮" actionBlock:^(HSTitleCellModel *model) {
+            
+            ALBookDemoViewController * vc = [[ALBookDemoViewController alloc] init];
             vc.title = model.title;
             [self.navigationController pushViewController:vc animated:YES];
         }];
