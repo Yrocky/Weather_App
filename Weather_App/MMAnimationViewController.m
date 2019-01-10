@@ -13,6 +13,8 @@
 #import "MMAnimator.h"
 #import "MMAnimationTimingFunctionType.h"
 #import "MMAnimationType.h"
+#import "MMAnimatable.h"
+#import "MMAnimationPromise.h"
 
 @interface MMAnimationViewController ()
 
@@ -121,6 +123,9 @@
     
     id scale = [MMAnimationType scaleToX:3 y:3];
     
+    MMAnimationConfiguration * config = MMAnimationConfiguration.new.duration(2.3)
+    .force(1.3).damping(0.8).velocity(2);
+    [[self.superView animateWith:config].delay(3) thenAnimationWith:config];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

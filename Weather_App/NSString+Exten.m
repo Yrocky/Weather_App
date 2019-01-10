@@ -7,6 +7,8 @@
 //
 
 #import "NSString+Exten.h"
+#import "HLLAttributedBuilder.h"
+#import "NSArray+Sugar.h"
 
 @implementation NSString (Exten)
 
@@ -94,4 +96,41 @@
     return ceil(textSize.height);
 }
 
+- (NSArray<NSString *> *) separatedByStrings:(NSArray<NSString *> *)strings contained:(BOOL)contained{
+    
+    if (nil == strings) {
+        return nil;
+    }
+    NSString * joinStrings = [strings componentsJoinedByString:@""];
+    NSString * pattern = [NSString stringWithFormat:@"[%@]",joinStrings];
+    NSArray <NSTextCheckingResult *>* matched = [RX(pattern) matches:self];
+    
+    if (matched.count) {
+
+        NSMutableArray<NSString *> *separatedStrings = [NSMutableArray array];
+        
+        for (NSUInteger index = 0; index < matched.count; index ++) {
+            
+            NSTextCheckingResult * matchResult = matched[index];
+            NSString * separatedString = nil;
+            if (index) {
+                NSRange preRange = matched[index - 1].range;
+                NSUInteger location = NSMaxRange(preRange);
+                NSUInteger length = NSMaxRange(matchResult.range) - location;
+                length = contained ? length : length - 1;
+                NSRange range = NSMakeRange(location,length);
+                separatedString = [self substringWithRange:range];
+            } else {
+                NSUInteger toIndex = NSMaxRange(matchResult.range);
+                toIndex = contained ? toIndex : toIndex - 1;
+                separatedString = [self substringToIndex:toIndex];
+            }
+            if (separatedString && separatedString.length) {
+                [separatedStrings addObject:separatedString];
+            }
+        }
+        return separatedStrings;
+    }
+    return nil;
+}
 @end

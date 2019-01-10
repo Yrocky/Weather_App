@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "MMAnimationConfiguration.h"
+#import "MMAnimationType.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@class MMAnimationConfiguration;
 @class MMAnimationPromise;
-@class MMAnimationType;
 
 typedef void(^MMAnimatableCompletion)();
 typedef void(^MMAnimatableExecution)();
@@ -39,7 +40,7 @@ typedef void(^MMAnimatableExecution)();
 @end
 
 
-@interface UIView (MMAnimatable)
+@interface UIView (MMAnimatable)<MMAnimatable>
 
 - (void) doAnimation:(MMAnimationType *)animationType
        configuration:(MMAnimationConfiguration *)config

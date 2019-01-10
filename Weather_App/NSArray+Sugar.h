@@ -21,6 +21,8 @@
 - (NSArray *) mm_mapWithIndex:(id (^)(T obj,NSUInteger index))handle;
 - (NSArray *) mm_mapWithSkipIndex:(id (^)(T obj, BOOL *skip, NSUInteger idnex))handle;
 
+- (NSArray *) mm_compactMap:(id (^)(T obj))handle;
+
 - (void) mm_each:(void(^)(T obj))handle;
 - (void) mm_eachWithOptions:(void (^)(T))handle options:(NSEnumerationOptions)options;
 - (void) mm_eachWithIndex:(void(^)(T obj,NSInteger index))handle;

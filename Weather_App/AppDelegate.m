@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "NSArray+Sugar.h"
 #import <AVKit/AVKit.h>
+#import "EaseDevice.h"
 
 //#import <objc/objc-runtime.h>
 @interface AppDelegate ()

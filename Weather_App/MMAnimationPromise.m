@@ -8,6 +8,7 @@
 
 #import "MMAnimationPromise.h"
 #import "MMAnimationConfiguration.h"
+#import "MMAnimatable.h"
 
 @interface MMAnimationPromise ()
 

@@ -188,6 +188,7 @@
 		D7F1F8062070FEA3000478C2 /* HomeBillContentDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8052070FEA3000478C2 /* HomeBillContentDateView.m */; };
 		D7F1F8092070FEDF000478C2 /* HomeBillContentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */; };
 		E3CDC4C9DF28E252C8F70DC9 /* libPods-Weather_App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */; };
+		F703661821E720380086832C /* EaseDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F703661721E720380086832C /* EaseDevice.m */; };
 		F77231C021AE581600DA019B /* MMAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231BF21AE581600DA019B /* MMAnimation.m */; };
 		F77231C321AE5FEB00DA019B /* MMAnimationConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231C221AE5FEB00DA019B /* MMAnimationConfiguration.m */; };
 		F77231C621AE607400DA019B /* MMAnimationPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231C521AE607400DA019B /* MMAnimationPromise.m */; };
@@ -552,6 +553,8 @@
 		D7F1F8052070FEA3000478C2 /* HomeBillContentDateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContentDateView.m; sourceTree = "<group>"; };
 		D7F1F8072070FEDF000478C2 /* HomeBillContentListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBillContentListView.h; sourceTree = "<group>"; };
 		D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContentListView.m; sourceTree = "<group>"; };
+		F703661621E720380086832C /* EaseDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseDevice.h; sourceTree = "<group>"; };
+		F703661721E720380086832C /* EaseDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseDevice.m; sourceTree = "<group>"; };
 		F77231BE21AE581600DA019B /* MMAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimation.h; sourceTree = "<group>"; };
 		F77231BF21AE581600DA019B /* MMAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimation.m; sourceTree = "<group>"; };
 		F77231C121AE5FEB00DA019B /* MMAnimationConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationConfiguration.h; sourceTree = "<group>"; };
@@ -961,6 +964,8 @@
 				7F9810162122AE7B0004C638 /* MMSingleton.m */,
 				D7A45DD421B816B3003EDE2F /* 单向数据流方案 */,
 				D759BB00218C891F00A06FE0 /* MMCGUtils.h */,
+				F703661621E720380086832C /* EaseDevice.h */,
+				F703661721E720380086832C /* EaseDevice.m */,
 				D759BB01218CA1B500A06FE0 /* MMAnimatableProperty.h */,
 				D759BB02218CA1B500A06FE0 /* MMAnimatableProperty.m */,
 				7F677F37218C1130009851B6 /* MMDirectionGestureRecognizer */,
@@ -1628,6 +1633,7 @@
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
 				F77231CF21AE8A5300DA019B /* MMAnimationTimingFunctionType.m in Sources */,
 				7F3815B52129460F006016E9 /* MMGCDTimerManager.m in Sources */,
+				F703661821E720380086832C /* EaseDevice.m in Sources */,
 				D7F1F8032070F9FB000478C2 /* HomeBillContentView.m in Sources */,
 				D706293E1F8B185100F52FCB /* HSInputCellModel.m in Sources */,
 				D7A595B81FAAC156000C59FE /* CreatePDFViewController.m in Sources */,

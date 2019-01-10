@@ -134,6 +134,20 @@
     return [_self copy];
 }
 
+- (NSArray *) mm_compactMap:(id (^)(id))handle{
+    
+    NSMutableArray * _self = [NSMutableArray arrayWithCapacity:self.count];
+    @autoreleasepool{
+        for (id obj in self) {
+            id mappedObj = handle(obj);
+            if (mappedObj) {
+                [_self addObject:mappedObj];
+            }
+        }
+    }
+    return [_self copy];
+}
+
 - (NSArray *) mm_select:(BOOL (^)(id obj))handle{
 
     return [self filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {

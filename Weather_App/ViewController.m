@@ -18,6 +18,8 @@
 #import "NSUserDefaults+MM_Common.h"
 #import "MMOBJ.h"
 #import <SDWebImage/UIImage+GIF.h>
+#import "NSString+Exten.h"
+#import "NSArray+Sugar.h"
 
 @interface MMColorView : UIView<DataSource>
 
@@ -128,6 +130,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    NSString * poetry = @"石头城上，望天低吴楚，眼空无物。指点六朝形胜地，惟有青山如壁。蔽日旌旗，连云樯橹，白骨纷如雪。一江南北，消磨多少豪杰。";
+//    [[poetry separatedByStrings:@[@"，",@"。"] contained:NO] mm_each:^(NSString *obj) {
+//        NSLog(@"[%@]",obj);
+//    }];
+//    
+//    [[poetry separatedByStrings:@[@"，",@"。"] contained:YES] mm_each:^(NSString *obj) {
+//        NSLog(@"[%@]",obj);
+//    }];
+
+    poetry = @"石头城上，望天低吴楚，眼空无物。指点六朝形胜地，惟有青山如壁。蔽日旌旗，连云樯橹，白骨纷如雪。一江南北，消磨多少豪杰。寂寞避暑离宫，东风辇路，芳草年年发。落日无人松径里，鬼火高低明灭。歌舞尊前，繁华镜里，暗换青青发。伤心千古，秦淮一片明月！";
+    [[poetry separatedByStrings:@[@"？",@"！",@"。"] contained:YES] mm_each:^(NSString *obj) {
+        NSLog(@"[%@]",obj);
+    }];
     
     UIImageView * imageView = [[UIImageView alloc] init];
     imageView.image = [UIImage sd_animatedGIFNamed:@"img_user_level_8"];
