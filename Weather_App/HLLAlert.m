@@ -90,7 +90,9 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
     
     if (buttons && buttons.count) {
         for (NSString * handle in buttons) {
-            NSDictionary * handleDic = [NSMutableDictionary dictionaryWithDictionary:@{kAlertActionSheetHandleDisplayText:handle,kAlertActionSheetHandleStyle:@(0)}];
+            NSDictionary * handleDic = [NSMutableDictionary dictionaryWithDictionary:
+                                        @{kAlertActionSheetHandleDisplayText:handle,
+                                          kAlertActionSheetHandleStyle:@(UIAlertActionStyleDefault)}];
             [self.aModel.handleButtons addObject:handleDic];
         }
     }
@@ -110,11 +112,18 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
         
         if (buttons && buttons.count) {
             for (NSString * handle in buttons) {
-                NSDictionary * handleDic = [NSMutableDictionary dictionaryWithDictionary:@{kAlertActionSheetHandleDisplayText:handle,kAlertActionSheetHandleStyle:@(0)}];
+                NSDictionary * handleDic = [NSMutableDictionary dictionaryWithDictionary:
+                                            @{kAlertActionSheetHandleDisplayText:handle,
+                                              kAlertActionSheetHandleStyle:@(UIAlertActionStyleDefault)}];
                 [self.aModel.handleButtons addObject:handleDic];
             }
         }
     }
+    
+    return self;
+}
+
+- (id<HLLAlertActionSheetProtocol>) addCancelButton{
     
     return self;
 }
@@ -221,8 +230,12 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
     
     if (buttons && buttons.count) {
         for (NSString * handle in buttons) {
-            NSDictionary * handleDic = [NSMutableDictionary dictionaryWithDictionary:@{kAlertActionSheetHandleDisplayText:handle,kAlertActionSheetHandleStyle:@(0)}];
+            NSDictionary * handleDic = [NSMutableDictionary dictionaryWithDictionary:
+                                        @{kAlertActionSheetHandleDisplayText:handle,
+                                          kAlertActionSheetHandleStyle:@(UIAlertActionStyleDefault)}];
             [self.aModel.handleButtons addObject:handleDic];
+            
+//            [self.aModel.handleButtons insertObject:handleDic atIndex:0];
         }
     }
     return self;
@@ -241,7 +254,9 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
         
         if (buttons && buttons.count) {
             for (NSString * handle in buttons) {
-                NSDictionary * handleDic = [NSMutableDictionary dictionaryWithDictionary:@{kAlertActionSheetHandleDisplayText:handle,kAlertActionSheetHandleStyle:@(0)}];
+                NSDictionary * handleDic = [NSMutableDictionary dictionaryWithDictionary:
+                                            @{kAlertActionSheetHandleDisplayText:handle,
+                                              kAlertActionSheetHandleStyle:@(UIAlertActionStyleDefault)}];
                 [self.aModel.handleButtons addObject:handleDic];
             }
         }
@@ -259,6 +274,11 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
     dictionary[kAlertActionSheetHandleStyle] = @(style);
     
     [self.aModel.handleButtons replaceObjectAtIndex:index withObject:dictionary];
+    return self;
+}
+
+- (id<HLLAlertActionSheetProtocol>) addCancelButton{
+    
     return self;
 }
 

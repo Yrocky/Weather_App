@@ -9,7 +9,7 @@
 #import "CreatePDFViewController.h"
 #import "FDHTMLRenderComposer.h"
 #import "Masonry.h"
-
+#import "MMGCD.h"
 
 @interface CreatePDFViewController ()<UIDocumentInteractionControllerDelegate>
 
@@ -28,6 +28,8 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.96 blue:0.98 alpha:1.00];
 
+    MMGCDGroup * group = [MMGCDGroup new];
+    
     self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithTitle:@"PDF" style:UIBarButtonItemStylePlain target:self action:@selector(exportPDF)],[[UIBarButtonItem alloc] initWithTitle:@"PNG" style:UIBarButtonItemStylePlain target:self action:@selector(exportImage)]];
     
     self.webView = [[UIWebView alloc] init];

@@ -189,6 +189,7 @@
 		D7F1F8092070FEDF000478C2 /* HomeBillContentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */; };
 		E3CDC4C9DF28E252C8F70DC9 /* libPods-Weather_App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */; };
 		F703661821E720380086832C /* EaseDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F703661721E720380086832C /* EaseDevice.m */; };
+		F703661B21E77D4E0086832C /* MMAnimationKeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = F703661A21E77D4E0086832C /* MMAnimationKeyPath.m */; };
 		F77231C021AE581600DA019B /* MMAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231BF21AE581600DA019B /* MMAnimation.m */; };
 		F77231C321AE5FEB00DA019B /* MMAnimationConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231C221AE5FEB00DA019B /* MMAnimationConfiguration.m */; };
 		F77231C621AE607400DA019B /* MMAnimationPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231C521AE607400DA019B /* MMAnimationPromise.m */; };
@@ -555,6 +556,8 @@
 		D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContentListView.m; sourceTree = "<group>"; };
 		F703661621E720380086832C /* EaseDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseDevice.h; sourceTree = "<group>"; };
 		F703661721E720380086832C /* EaseDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseDevice.m; sourceTree = "<group>"; };
+		F703661921E77D4E0086832C /* MMAnimationKeyPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationKeyPath.h; sourceTree = "<group>"; };
+		F703661A21E77D4E0086832C /* MMAnimationKeyPath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationKeyPath.m; sourceTree = "<group>"; };
 		F77231BE21AE581600DA019B /* MMAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimation.h; sourceTree = "<group>"; };
 		F77231BF21AE581600DA019B /* MMAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimation.m; sourceTree = "<group>"; };
 		F77231C121AE5FEB00DA019B /* MMAnimationConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationConfiguration.h; sourceTree = "<group>"; };
@@ -662,6 +665,8 @@
 				F77231C821AE629C00DA019B /* MMAnimatable.m */,
 				F77231CA21AE6A8A00DA019B /* MMAnimationType.h */,
 				F77231CB21AE6A8A00DA019B /* MMAnimationType.m */,
+				F703661921E77D4E0086832C /* MMAnimationKeyPath.h */,
+				F703661A21E77D4E0086832C /* MMAnimationKeyPath.m */,
 				F77231CD21AE8A5300DA019B /* MMAnimationTimingFunctionType.h */,
 				F77231CE21AE8A5300DA019B /* MMAnimationTimingFunctionType.m */,
 				F77231C121AE5FEB00DA019B /* MMAnimationConfiguration.h */,
@@ -1431,8 +1436,6 @@
 				7FDC6EC11F46E35A00D94379 /* Sources */,
 				7FDC6EC21F46E35A00D94379 /* Frameworks */,
 				7FDC6EC31F46E35A00D94379 /* Resources */,
-				0B1A2ABB6BAEC654A44A08C1 /* [CP] Embed Pods Frameworks */,
-				B8ACD983C8A776B1E1D573D8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1506,49 +1509,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0B1A2ABB6BAEC654A44A08C1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		71017A02D968912DFA3CF791 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Weather_App-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		B8ACD983C8A776B1E1D573D8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1621,6 +1597,7 @@
 				D7F1F8062070FEA3000478C2 /* HomeBillContentDateView.m in Sources */,
 				7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */,
 				D713B8CE2076033800D388F2 /* BillRemarksExtensionView.m in Sources */,
+				F703661B21E77D4E0086832C /* MMAnimationKeyPath.m in Sources */,
 				D70629061F8B143D00F52FCB /* MMPickerView.m in Sources */,
 				7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */,
 				D713B8CB2076030D00D388F2 /* BillImageExtensionView.m in Sources */,

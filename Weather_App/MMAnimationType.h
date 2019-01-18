@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger , MMAnimationTypes) {
     MMAnimationTypeFlip,
     MMAnimationTypeMorph,
     MMAnimationTypeFlash,
-    MMAnimationTypeWoble,
+    MMAnimationTypeWobble,
     MMAnimationTypeSwing,
     MMAnimationTypeRotate,
     MMAnimationTypeMoveTo,

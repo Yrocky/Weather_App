@@ -32,7 +32,11 @@
     if (self.animationList.count) {
         [self.animationList removeObjectAtIndex:0];
         if (self.animationList.count) {
-            //            view.doAnimation(currentAnimation.type, configuration: currentAnimation.configuration, promise: self)
+            self.animationList.firstObject;
+//            view.doAnimation(currentAnimation.type,
+//                             configuration: currentAnimation.configuration,
+//                             promise: self)
+//            self.view doAnimation: configuration:<#(nonnull MMAnimationConfiguration *)#> promise:<#(nonnull MMAnimationPromise *)#>
         }else if (self.completion){
             self.completion();
         }
