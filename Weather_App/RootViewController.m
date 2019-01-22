@@ -37,6 +37,7 @@
 #import "MMGradientViewController.h"
 #import "EmojiViewController.h"
 #import "ALBookDemoViewController.h"
+#import "PromiseKitViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic ,strong) NSString * str;
@@ -74,6 +75,14 @@
         HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"原来的Main控制器" actionBlock:^(HSBaseCellModel *model) {
             
             [self performSegueWithIdentifier:@"RootToMain" sender:nil];
+        }];
+        [s addCellModel:c];
+       
+        c = [[HSTitleCellModel alloc] initWithTitle:@"🧐PromiseKit🧐" actionBlock:^(HSTitleCellModel *model) {
+            
+            PromiseKitViewController * vc = [[PromiseKitViewController alloc] init];
+            vc.title = model.title;
+            [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];
         

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29DBA5C092A3C92ABAAD9DA9 /* Pods_Weather_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD27D1478D1B8369B4F8A1A3 /* Pods_Weather_App.framework */; };
 		7F0501822011EAD00033E83C /* MMAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501812011EAD00033E83C /* MMAnimationViewController.m */; };
 		7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501842011EAE80033E83C /* YALPreloaderCircleView.m */; };
 		7F0C0EC5214B5288000C55C6 /* UIButton+MMCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0EC4214B5288000C55C6 /* UIButton+MMCustom.m */; };
@@ -187,7 +188,6 @@
 		D7F1F8032070F9FB000478C2 /* HomeBillContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8022070F9FB000478C2 /* HomeBillContentView.m */; };
 		D7F1F8062070FEA3000478C2 /* HomeBillContentDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8052070FEA3000478C2 /* HomeBillContentDateView.m */; };
 		D7F1F8092070FEDF000478C2 /* HomeBillContentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */; };
-		E3CDC4C9DF28E252C8F70DC9 /* libPods-Weather_App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */; };
 		F703661821E720380086832C /* EaseDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F703661721E720380086832C /* EaseDevice.m */; };
 		F703661B21E77D4E0086832C /* MMAnimationKeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = F703661A21E77D4E0086832C /* MMAnimationKeyPath.m */; };
 		F77231C021AE581600DA019B /* MMAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231BF21AE581600DA019B /* MMAnimation.m */; };
@@ -196,6 +196,9 @@
 		F77231C921AE629C00DA019B /* MMAnimatable.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231C821AE629C00DA019B /* MMAnimatable.m */; };
 		F77231CC21AE6A8A00DA019B /* MMAnimationType.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231CB21AE6A8A00DA019B /* MMAnimationType.m */; };
 		F77231CF21AE8A5300DA019B /* MMAnimationTimingFunctionType.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231CE21AE8A5300DA019B /* MMAnimationTimingFunctionType.m */; };
+		F7C5B57721F571BC00D3F9D7 /* YTKRequest+PromiseKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C5B57621F571BC00D3F9D7 /* YTKRequest+PromiseKit.m */; };
+		F7C5B57B21F5BA0B00D3F9D7 /* PromiseKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C5B57A21F5BA0B00D3F9D7 /* PromiseKitViewController.m */; };
+		F7C5B57E21F6CDD200D3F9D7 /* XXXGushiciRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C5B57D21F6CDD200D3F9D7 /* XXXGushiciRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -408,8 +411,8 @@
 		7FFAB83F210AC39500CA6671 /* MMBObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMBObject.h; sourceTree = "<group>"; };
 		7FFAB840210AC39500CA6671 /* MMBObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMBObject.m; sourceTree = "<group>"; };
 		8B9A4BC81A12BABD40DE994D /* Pods-Weather_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App.debug.xcconfig"; sourceTree = "<group>"; };
-		AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weather_App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DD493FBDDB77E68B89AA1C /* Pods-Weather_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App.release.xcconfig"; sourceTree = "<group>"; };
+		CD27D1478D1B8369B4F8A1A3 /* Pods_Weather_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7008DDA1FB180B500BD6EA0 /* MMNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMNavigationController.h; sourceTree = "<group>"; };
 		D7008DDB1FB180B500BD6EA0 /* MMNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMNavigationController.m; sourceTree = "<group>"; };
 		D70629001F8B132E00F52FCB /* NSUserDefaults+MM_Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+MM_Common.h"; sourceTree = "<group>"; };
@@ -570,6 +573,12 @@
 		F77231CB21AE6A8A00DA019B /* MMAnimationType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationType.m; sourceTree = "<group>"; };
 		F77231CD21AE8A5300DA019B /* MMAnimationTimingFunctionType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationTimingFunctionType.h; sourceTree = "<group>"; };
 		F77231CE21AE8A5300DA019B /* MMAnimationTimingFunctionType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationTimingFunctionType.m; sourceTree = "<group>"; };
+		F7C5B57521F571BC00D3F9D7 /* YTKRequest+PromiseKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YTKRequest+PromiseKit.h"; sourceTree = "<group>"; };
+		F7C5B57621F571BC00D3F9D7 /* YTKRequest+PromiseKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "YTKRequest+PromiseKit.m"; sourceTree = "<group>"; };
+		F7C5B57921F5BA0B00D3F9D7 /* PromiseKitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PromiseKitViewController.h; sourceTree = "<group>"; };
+		F7C5B57A21F5BA0B00D3F9D7 /* PromiseKitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PromiseKitViewController.m; sourceTree = "<group>"; };
+		F7C5B57C21F6CDD200D3F9D7 /* XXXGushiciRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXGushiciRequest.h; sourceTree = "<group>"; };
+		F7C5B57D21F6CDD200D3F9D7 /* XXXGushiciRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXGushiciRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -577,7 +586,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3CDC4C9DF28E252C8F70DC9 /* libPods-Weather_App.a in Frameworks */,
+				29DBA5C092A3C92ABAAD9DA9 /* Pods_Weather_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,7 +597,7 @@
 			isa = PBXGroup;
 			children = (
 				7F94A34E1F5519D800DA28EA /* XCTest.framework */,
-				AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */,
+				CD27D1478D1B8369B4F8A1A3 /* Pods_Weather_App.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -977,6 +986,7 @@
 				7F677F38218C1139009851B6 /* MMGradientView */,
 				7F7BA14A2090799C0085E045 /* PKProtocolExtension.h */,
 				7F7BA14B2090799C0085E045 /* PKProtocolExtension.m */,
+				F7C5B57821F571C400D3F9D7 /* PromiseKit */,
 				7F7BA143208DE2EF0085E045 /* 链表 */,
 				7FA274CC2087633E001B9FD2 /* YYWeakProxy */,
 				7F63BBBD2072036E0084ABC8 /* LunarCore */,
@@ -1307,6 +1317,8 @@
 				7F472928218C6F07007A10FB /* EmojiViewController.m */,
 				D7963EF921B5678B00B44397 /* ALBookDemoViewController.h */,
 				D7963EFA21B5678B00B44397 /* ALBookDemoViewController.m */,
+				F7C5B57921F5BA0B00D3F9D7 /* PromiseKitViewController.h */,
+				F7C5B57A21F5BA0B00D3F9D7 /* PromiseKitViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -1425,6 +1437,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F7C5B57821F571C400D3F9D7 /* PromiseKit */ = {
+			isa = PBXGroup;
+			children = (
+				F7C5B57521F571BC00D3F9D7 /* YTKRequest+PromiseKit.h */,
+				F7C5B57621F571BC00D3F9D7 /* YTKRequest+PromiseKit.m */,
+				F7C5B57C21F6CDD200D3F9D7 /* XXXGushiciRequest.h */,
+				F7C5B57D21F6CDD200D3F9D7 /* XXXGushiciRequest.m */,
+			);
+			name = PromiseKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1436,6 +1459,7 @@
 				7FDC6EC11F46E35A00D94379 /* Sources */,
 				7FDC6EC21F46E35A00D94379 /* Frameworks */,
 				7FDC6EC31F46E35A00D94379 /* Resources */,
+				2AA405F967781D68AE8E5EF5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1509,6 +1533,38 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2AA405F967781D68AE8E5EF5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/MMMarkdown/MMMarkdown.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/YTKNetwork/YTKNetwork.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMMarkdown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTKNetwork.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		71017A02D968912DFA3CF791 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1553,6 +1609,7 @@
 				D715E6A31FA64ECF00CFBFF4 /* FDContentView.m in Sources */,
 				7F8B6C071F95ED6F00F3A6E3 /* MMSearchDefaultCollectionView.m in Sources */,
 				7F243E3E1FA81E7A00AE4134 /* MMGCD.m in Sources */,
+				F7C5B57E21F6CDD200D3F9D7 /* XXXGushiciRequest.m in Sources */,
 				7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */,
 				7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */,
 				7F472923218C6B50007A10FB /* MMLiveEmojiManager.m in Sources */,
@@ -1571,6 +1628,7 @@
 				7F9810142121889B0004C638 /* MMDelegateService.m in Sources */,
 				7F590D801FA9A5D4006F7BF0 /* UIViewController+STPopup.m in Sources */,
 				D7A73E231FB04F4800818CF5 /* MM_FindFriendEntryItemView.m in Sources */,
+				F7C5B57721F571BC00D3F9D7 /* YTKRequest+PromiseKit.m in Sources */,
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FA36CEA20B4082B0027B61E /* NSArray+Algorithms.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
@@ -1645,6 +1703,7 @@
 				7FE705BE1FBD8CFC009FF3A7 /* MMCollectionViewController.m in Sources */,
 				7FBCF0BE1F4D269100E2EEC7 /* HLLSegmentView.m in Sources */,
 				7F1D9A92208714C000E822B7 /* ProxyViewController.m in Sources */,
+				F7C5B57B21F5BA0B00D3F9D7 /* PromiseKitViewController.m in Sources */,
 				D70629411F8B185100F52FCB /* HSTitleCellModel.m in Sources */,
 				7F8AE0DD20B7EC05009D378A /* ZSWTappableLabel.m in Sources */,
 				D713B8BF207601A500D388F2 /* BillIndicateView.m in Sources */,
