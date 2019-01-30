@@ -136,3 +136,8 @@
     }];
 }
 @end
+
+@implementation XXXRequest
+
+
+@end

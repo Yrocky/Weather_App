@@ -36,11 +36,11 @@
     }];
     
     NSURLRequest * r = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://img-blog.csdn.net/20170809135909929?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGVsbG9fSHdj/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"]];
-    [[NSURLSession sharedSession] promiseDataTaskWithRequest:r].then(^(id response, id rsp,id data){
+    [[NSURLSession sharedSession] promiseDataTaskWithRequest:r].then(^(id response){
         // response is probably an NSDictionary deserialized from JSON
         NSLog(@"respone:%@",response);
         NSLog(@"number-100");
-        //            imageView.image = response;
+        imageView.image = response;
         return @(100);
     }).then(^(NSNumber * number){
         NSLog(@"number-10:%@",number);
