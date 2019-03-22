@@ -27,6 +27,9 @@
 - (void) mm_eachWithOptions:(void (^)(T))handle options:(NSEnumerationOptions)options;
 - (void) mm_eachWithIndex:(void(^)(T obj,NSInteger index))handle;
 
+- (void) mm_eachWithStop:(BOOL(^)(T obj))handle;
+- (void) mm_eachWithIndexStop:(BOOL(^)(T obj ,NSUInteger index))handle;
+
 - (BOOL (^)(T obj)) mm_have;
 
 - (NSArray<T> *) mm_select:(BOOL (^)(T obj))handle;

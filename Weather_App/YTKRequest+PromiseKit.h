@@ -20,6 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface XXXRequest<__covariant ResultType> : YTKRequest
-
+- (ResultType) mapModelWithJsonData:(id)jsonData;
 @end
 NS_ASSUME_NONNULL_END

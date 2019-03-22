@@ -60,6 +60,22 @@
     }
 }
 
+- (void) mm_eachWithStop:(BOOL(^)(id obj))handle{
+
+    @autoreleasepool{
+        [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            *stop = handle(obj);
+        }];
+    }
+}
+
+- (void) mm_eachWithIndexStop:(BOOL(^)(id obj ,NSUInteger index))handle{
+    @autoreleasepool{
+        [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            *stop = handle(obj ,idx);
+        }];
+    }
+}
 - (BOOL) mm_includes:(id)obj{
 
     return [self containsObject:obj];
