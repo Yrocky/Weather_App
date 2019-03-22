@@ -133,6 +133,7 @@
     [rooms mm_each:^(RoomModel *obj) {
         [self removeRoom:obj];
     }];
+    [self toggleRoomForDelegate];
 }
 
 ///<在当前主播后面插入一条数据，并滚动到该数据处

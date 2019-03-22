@@ -143,16 +143,25 @@ RoomCycleScrollViewDelegate>{
 - (void) roomCycleScrollView:(RoomCycleScrollView *)view
                didToggleRoom:(RoomModel *)room atIndex:(NSUInteger)index{
 //    NSLog(@"toggle room:%@ at index:%ld",room,(long)index);
-    [self.userLiveVC updateLiveRoom:room atIndex:index];
+    if (prepareToRemoveRooms.count) {///<有已经下播的房间
+        NSArray * temp = prepareToRemoveRooms.copy;
+        NSLog(@"移除房间%@",temp);
+        [prepareToRemoveRooms removeAllObjects];
+        [view removeRooms:temp];
+    } else {    
+        NSLog(@"更新房间%@",room);
+        [self.userLiveVC updateLiveRoom:room atIndex:index];
+    }
 }
 
 - (void) roomCycleScrollView:(RoomCycleScrollView *)view
          didFinishToggleRoom:(RoomModel *)room{
 //    NSLog(@"finish toggle room:%ld",(long)room.roomId);
-    if (prepareToRemoveRooms.count) {///<有已经下播的房间
-        [view removeRooms:prepareToRemoveRooms.copy];
-        [prepareToRemoveRooms removeAllObjects];
-    }
+//    if (prepareToRemoveRooms.count) {///<有已经下播的房间
+//        NSLog(@"移除房间%@",room);
+//        [view removeRooms:prepareToRemoveRooms.copy];
+//        [prepareToRemoveRooms removeAllObjects];
+//    }
 }
 
 #pragma mark - RoomViewControllerDelegate
