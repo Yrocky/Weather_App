@@ -40,6 +40,7 @@
 #import "PromiseKitViewController.h"
 #import "CardCollectionViewController.h"
 #import "RoomModel.h"
+#import "MMNavigationController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic ,strong) NSString * str;
@@ -84,8 +85,9 @@
             
             CardCollectionViewController * vc = [[CardCollectionViewController alloc] init];
             vc.title = model.title;
-            [vc setupDataSource:[RoomModel dataSource] roomIndex:2];
-            [self.navigationController presentViewController:vc animated:YES completion:nil];
+            [vc setupDataSource:[RoomModel dataSource] roomIndex:0];
+            MMNavigationController * navi = [[MMNavigationController alloc] initWithRootViewController:vc];
+            [self.navigationController presentViewController:navi animated:YES completion:nil];
         }];
         [s addCellModel:c];
         

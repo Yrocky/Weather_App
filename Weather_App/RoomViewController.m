@@ -11,6 +11,7 @@
 #import "RoomModel.h"
 #import "Masonry.h"
 #import "ANYMethodLog.h"
+#import "RankViewController.h"
 
 @class InternalRoomView;
 @protocol InternalRoomViewDelegate <NSObject>
@@ -33,11 +34,12 @@
 }
 
 @end
-@interface RoomViewController ()<InternalRoomViewDelegate>{
+@interface RoomViewController ()<InternalRoomViewDelegate,RankViewControllerDelegate>{
     UILabel * _nameLabel;
-    UIButton * _offlineButton;
+    UIButton * _recommendView;
+    BOOL _isLinkMic;///<是否在连麦中
 }
-@property (nonatomic ,strong) RoomModel * roomInfo;
+@property (nonatomic ,strong) RoomModel * room;
 @end
 
 @implementation RoomViewController
@@ -52,16 +54,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor randomColor];
-//    self.view.alpha = 0.4;
-    
-//    [ANYMethodLog logMethodWithClass:[RoomViewController class] condition:^BOOL(SEL sel) {
-//
-//        return [NSStringFromSelector(sel) isEqualToString:@"addSection:"];
-//    } before:^(id target, SEL sel, NSArray *args, int deep) {
-//        NSLog(@" before target:%@ sel:%@",target,NSStringFromSelector(sel));
-//    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
-//
-//    }];
+    self.view.alpha = 0.6;
     
     _nameLabel = [UILabel new];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
@@ -74,14 +67,16 @@
         make.centerY.equalTo(self.view).mas_offset(20);
     }];
     
-    _offlineButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_offlineButton setTitle:@"Offline" forState:UIControlStateNormal];
-    _offlineButton.backgroundColor = [UIColor orangeColor];
-    [_offlineButton addTarget:self
+    UIButton * offlineButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [offlineButton setTitle:@"Offline" forState:UIControlStateNormal];
+    [offlineButton setTitleColor:[UIColor greenColor]
+                        forState:UIControlStateNormal];
+    offlineButton.backgroundColor = [UIColor orangeColor];
+    [offlineButton addTarget:self
                        action:@selector(onOfflineAction:)
              forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_offlineButton];
-    [_offlineButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:offlineButton];
+    [offlineButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self->_nameLabel.mas_bottom).mas_offset(20);
         make.size.mas_equalTo(CGSizeMake(100, 40));
         make.centerX.equalTo(self->_nameLabel);
@@ -89,43 +84,122 @@
     
     UIButton * closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     closeButton.backgroundColor = [UIColor redColor];
+    [closeButton setTitleColor:[UIColor greenColor]
+                      forState:UIControlStateNormal];
+    [closeButton setTitle:@"Close" forState:UIControlStateNormal];
     [closeButton addTarget:self
                     action:@selector(onCloseAction)
           forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeButton];
     [closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(40, 40));
+        make.size.mas_equalTo(CGSizeMake(80, 40));
         make.left.equalTo(self.view.mas_left);
         make.top.equalTo(self.view.mas_top).mas_offset(60);
     }];
+    
+    UIButton * rankButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rankButton setTitle:@"Rank" forState:UIControlStateNormal];
+    [rankButton setTitleColor:[UIColor greenColor]
+                     forState:UIControlStateNormal];
+    rankButton.backgroundColor = [UIColor purpleColor];
+    [rankButton addTarget:self action:@selector(onRankAction)
+         forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:rankButton];
+    [rankButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(100, 50));
+        make.centerY.equalTo(self.view).mas_offset(-40);
+        make.right.equalTo(self.view);
+    }];
+    
+    _recommendView = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_recommendView addTarget:self action:@selector(onRecommendAction)
+             forControlEvents:UIControlEventTouchUpInside];
+    _recommendView.backgroundColor = [UIColor randomColor];
+    [self.view addSubview:_recommendView];
+    [_recommendView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(150, 150));
+        make.centerX.equalTo(self.view);
+        if (@available(iOS 11.0, *)) {
+            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).mas_offset(-40);
+        } else {
+            make.bottom.mas_equalTo(self.view.mas_bottom).mas_offset(-40);
+        }
+    }];
+    
+    UISwitch * toggle = [UISwitch new];
+    [toggle addTarget:self action:@selector(onLinkMicAction:)
+     forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:toggle];
+    [toggle mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(_nameLabel.mas_top).mas_offset(-30);
+    }];
+}
+
+#pragma mark - Action M
+
+- (void) onRankAction{
+    RankViewController * rank = [RankViewController new];
+    rank.delegate = self;
+    [self.navigationController pushViewController:rank animated:YES];
 }
 
 - (void) onCloseAction{
-    if (self.bCloseRoom) {
-        self.bCloseRoom();
-    }
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) onOfflineAction:(UIButton *)button{
-    if (self.bRemoveRoomInfo) {
-        self.bRemoveRoomInfo(self.roomInfo);
+    if (self.delegate &&
+        [self.delegate respondsToSelector:@selector(roomViewController:offlineWithRoom:)]) {
+        [self.delegate roomViewController:self offlineWithRoom:self.room];
+    }
+    _recommendView.hidden = NO;
+}
+- (void) onRecommendAction{
+    if (self.delegate &&
+        [self.delegate respondsToSelector:@selector(roomViewController:didChangeRoom:)]) {
+        [self.delegate roomViewController:self didChangeRoom:[RoomModel room:300]];
     }
 }
-- (void) updateLiveRoom:(RoomModel *)roomInfo atIndex:(NSUInteger)index{
+- (void) onLinkMicAction:(UISwitch *)toggle{
+    _isLinkMic = toggle.isOn;
+}
+
+#pragma mark - API
+
+- (void) updateLiveRoom:(RoomModel *)room atIndex:(NSUInteger)index{
     
-    self.roomInfo = roomInfo;
+    self.room = room;
     
-    _nameLabel.text = [NSString stringWithFormat:@"%d %d",index ,roomInfo.roomId];
+    _nameLabel.text = [NSString stringWithFormat:@"%lu %lu",(unsigned long)index ,(unsigned long)room.roomId];
     _nameLabel.textColor = [UIColor randomColor];
     
 //    self.view.backgroundColor = [UIColor randomColor];
 }
+
+- (BOOL) roomIsLinkMic{
+    return _isLinkMic;
+}
+
+#pragma mark - RankViewControllerDelegate
+
+- (void)rankViewController:(RankViewController *)rank didSelectedRoom:(RoomModel *)room{
+    if (self.delegate &&
+        [self.delegate respondsToSelector:@selector(roomViewController:didInsertRoom:)]) {
+        [self.delegate roomViewController:self didInsertRoom:room];
+    }
+}
+
 #pragma mark - InternalRoomViewDelegate
+
 - (void)roomViewDidMoveToSuperView:(InternalRoomView *)roomView{
     roomView.backgroundColor = [UIColor clearColor];
-    [UIView animateWithDuration:2.5 animations:^{
-        roomView.backgroundColor = [UIColor redColor];
+    [UIView animateWithDuration:2.5 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+//        roomView.backgroundColor = [UIColor redColor];
+    } completion:^(BOOL finished) {
     }];
+    _recommendView.hidden = YES;
     ///<各个layerView进行替换数据的动画，将原始数据置空、对新数据进行获取然后设置
 }
 @end

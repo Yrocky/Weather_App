@@ -13,12 +13,14 @@
 #import "RoomModel.h"
 #import "NSArray+Sugar.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
+#import "HLLAlert.h"
 
 @interface CardCollectionViewController ()<
-CardCollectionViewDelegate>{
+CardCollectionViewDelegate,
+RoomViewControllerDelegate>{
     
     NSArray <RoomModel *>* origDataSource;
-    NSMutableArray <RoomModel *>* prepareToRemoveRoomInfos;///<已经关播的主播，需要移除
+    NSMutableArray <RoomModel *>* prepareToRemoveRooms;///<已经关播的主播，需要移除
     NSUInteger _roomIndex;
 }
 
@@ -78,6 +80,13 @@ CardCollectionViewDelegate>{
 #pragma mark - CardCollectionViewDelegate
 
 - (BOOL) cardCollectionViewShouldScroll:(CardCollectionView *)view{
+    ///<这部分可以用来在直播间正进行比较重要的事情，比如和主播连麦，来询问用户是否要先停止了连麦再滑动
+    if (self.userLiveVC.roomIsLinkMic) {
+        
+        [[[HLLAlertUtil title:@"当前房间在连麦中，请先停止连麦再切换直播间！"]
+          buttonTitles:@"确定", nil] showIn:self];
+        return NO;
+    }
     return YES;
 }
 
@@ -86,22 +95,43 @@ CardCollectionViewDelegate>{
     return self.userLiveVC.view;
 }
 
-- (void)cardCollectionView:(CardCollectionView *)view willStartToggleRoom:(RoomModel *)roomInfo{
-    NSLog(@"will start toggle room:%ld",(long)roomInfo.roomId);
-}
-- (void) cardCollectionView:(CardCollectionView *)view didToggleRoom:(RoomModel *)roomInfo atIndex:(NSUInteger)index{
-    
-    [self.userLiveVC updateLiveRoom:roomInfo atIndex:index];
+- (void)cardCollectionView:(CardCollectionView *)view willStartToggleRoom:(RoomModel *)room{
+    NSLog(@"will start toggle room:%ld",(long)room.roomId);
 }
 
-- (void)cardCollectionView:(CardCollectionView *)view didFinishToggleRoom:(RoomModel *)roomInfo{
-    NSLog(@"finish toggle room:%ld",(long)roomInfo.roomId);
-    if (prepareToRemoveRoomInfos.count) {///<有已经下播的房间
-        [view removeRoomWithRoomIds:[prepareToRemoveRoomInfos mm_map:^id _Nonnull(RoomModel * _Nonnull obj) {
+- (void) cardCollectionView:(CardCollectionView *)view didToggleRoom:(RoomModel *)room atIndex:(NSUInteger)index{
+    
+    [self.userLiveVC updateLiveRoom:room atIndex:index];
+}
+
+- (void)cardCollectionView:(CardCollectionView *)view didFinishToggleRoom:(RoomModel *)room{
+    NSLog(@"finish toggle room:%ld",(long)room.roomId);
+    if (prepareToRemoveRooms.count) {///<有已经下播的房间
+        [view removeRoomWithRoomIds:[prepareToRemoveRooms mm_map:^id _Nonnull(RoomModel * _Nonnull obj) {
             return @(obj.roomId);
         }]];
-        [prepareToRemoveRoomInfos removeAllObjects];
+        [prepareToRemoveRooms removeAllObjects];
     }
+}
+
+#pragma mark - RoomViewControllerDelegate
+- (void)roomViewController:(RoomViewController *)liveRoom allowScroll:(BOOL)allow{
+    [self.collectionView allowScroll:allow];
+}
+
+- (void)roomViewController:(RoomViewController *)liveRoom didChangeRoom:(RoomModel *)room{
+    [self.collectionView updateWithNewRoom:room];
+}
+
+- (void)roomViewController:(RoomViewController *)liveRoom didInsertRoom:(RoomModel *)room{
+    [self.collectionView insertNewRoom:room];
+}
+
+- (void)roomViewController:(RoomViewController *)liveRoom offlineWithRoom:(RoomModel *)room{
+    if (nil == prepareToRemoveRooms) {
+        prepareToRemoveRooms = [NSMutableArray array];
+    }
+    [prepareToRemoveRooms addObject:room];
 }
 
 #pragma mark - Getter
@@ -118,18 +148,7 @@ CardCollectionViewDelegate>{
     if (!_userLiveVC) {
         _userLiveVC = [[RoomViewController alloc] init];
         _userLiveVC.view.frame = self.view.bounds;
-        __weak typeof(self) weakSelf = self;
-        _userLiveVC.bRemoveRoomInfo = ^(RoomModel * _Nonnull roomInfo) {
-            
-//            weakSelf->prepareToRemoveRoomInfos;
-//            if (nil == weakSelf->prepareToRemoveRoomInfos) {
-//                weakSelf->prepareToRemoveRoomInfos = [NSMutableArray array];
-//            }
-//            [weakSelf->prepareToRemoveRoomInfos addObject:roomInfo];
-        };
-        _userLiveVC.bCloseRoom = ^{
-//            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-        };
+        _userLiveVC.delegate = self;
     }
     return _userLiveVC;
 }

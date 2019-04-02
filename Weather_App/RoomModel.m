@@ -31,16 +31,33 @@ static NSArray * pics;
     if (self) {
         
         self.roomId = roomId;
-        self.roomName = [NSString stringWithFormat:@"name:%d",roomId];
+        self.roomName = [NSString stringWithFormat:@"name:%ld",(long)roomId];
         self.pic = [pics mm_sample];
     }
     return self;
 }
+
+- (BOOL)isEqual:(id)object{
+    if ([object isKindOfClass:[self class]]) {
+        return ((RoomModel *)object).roomId == self.roomId;
+    }
+    return [super isEqual:object];
+}
+
 + (NSArray<RoomModel *> *)dataSource{
     return @[[RoomModel room:100],
              [RoomModel room:101],
              [RoomModel room:102],
              [RoomModel room:103],
-             [RoomModel room:104]];
+             [RoomModel room:104]
+             ];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"id:%ld", (long)self.roomId];
+}
+- (NSString *)debugDescription{
+    return [self description];
 }
 @end

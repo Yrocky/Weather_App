@@ -16,8 +16,8 @@ static NSString * const MMRunwayManagerSendNormalProSingleLineViewNotification =
 @class MMRunwayManager;
 @protocol MMRunwayManagerDelegate <NSObject>
 
-- (void) runwayManager:(MMRunwayManager *)mgr didSendNormalSingleLineView:(id)singleLineView;
-- (void) runwayManager:(MMRunwayManager *)mgr didSendProSingleLineView:(id)singleLineView;
+- (void) runwayManager:(MMRunwayManager *)mgr didSendNormalSingleLineView:(__kindof UIView *)singleLineView;
+- (void) runwayManager:(MMRunwayManager *)mgr didSendProSingleLineView:(__kindof UIView *)singleLineView;
 
 @end
 // 用来管理跑道视图的生成，销毁
@@ -25,6 +25,7 @@ static NSString * const MMRunwayManagerSendNormalProSingleLineViewNotification =
 
 @property (nonatomic ,weak) id<MMRunwayManagerDelegate>delegate;
 
+///<这里不需要将manager设置成单例，当时主要是为了在socket解析层中使用
 + (instancetype) runwayManager;
 
 ////////// 普通跑道相关业务逻辑

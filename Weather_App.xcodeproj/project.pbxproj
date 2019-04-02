@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		29DBA5C092A3C92ABAAD9DA9 /* Pods_Weather_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD27D1478D1B8369B4F8A1A3 /* Pods_Weather_App.framework */; };
+		5C4E3A702252F54C001499AF /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E3A6F2252F54C001499AF /* RankViewController.m */; };
+		5C4E3ADF22532B74001499AF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E3ADE22532B74001499AF /* README.md */; };
 		5C5E63C22244AB9100C0B85D /* CardCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63C12244AB9100C0B85D /* CardCollectionViewController.m */; };
 		5C5E63C52244ABD200C0B85D /* CardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63C42244ABD200C0B85D /* CardCollectionViewCell.m */; };
 		5C5E63C82244ABF100C0B85D /* CardCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63C72244ABF100C0B85D /* CardCollectionView.m */; };
@@ -208,6 +210,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C4E3A6E2252F54C001499AF /* RankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
+		5C4E3A6F2252F54C001499AF /* RankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
+		5C4E3ADE22532B74001499AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5C5E63C02244AB9100C0B85D /* CardCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardCollectionViewController.h; sourceTree = "<group>"; };
 		5C5E63C12244AB9100C0B85D /* CardCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardCollectionViewController.m; sourceTree = "<group>"; };
 		5C5E63C32244ABD200C0B85D /* CardCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardCollectionViewCell.h; sourceTree = "<group>"; };
@@ -646,6 +651,8 @@
 			children = (
 				5C5E63CF2244AC9B00C0B85D /* RoomViewController.h */,
 				5C5E63D02244AC9B00C0B85D /* RoomViewController.m */,
+				5C4E3A6E2252F54C001499AF /* RankViewController.h */,
+				5C4E3A6F2252F54C001499AF /* RankViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -992,6 +999,7 @@
 		7FDC6EBC1F46E35A00D94379 = {
 			isa = PBXGroup;
 			children = (
+				5C4E3ADE22532B74001499AF /* README.md */,
 				7FDC6EC71F46E35A00D94379 /* Weather_App */,
 				7FDC6EC61F46E35A00D94379 /* Products */,
 				E487AB39E2CE10CFE9CB0233 /* Pods */,
@@ -1551,7 +1559,7 @@
 				TargetAttributes = {
 					7FDC6EC41F46E35A00D94379 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = ZKEWNK6EPU;
+						DevelopmentTeam = LL7GM42E2F;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -1586,6 +1594,7 @@
 				7F53C0F32126740600567D74 /* v520.xml in Resources */,
 				7F53C0EE2126740600567D74 /* heart.xml in Resources */,
 				7F53C0EF2126740600567D74 /* v3344.xml in Resources */,
+				5C4E3ADF22532B74001499AF /* README.md in Resources */,
 				7F53C0F22126740600567D74 /* v.xml in Resources */,
 				7F85935A1FDE54E500E6AFFC /* MMXibCustomView.xib in Resources */,
 				7FDC6ED81F46E35A00D94379 /* LaunchScreen.storyboard in Resources */,
@@ -1835,6 +1844,7 @@
 				7FBC5FB71F97454C00DCF3E9 /* ANYMethodLog.m in Sources */,
 				7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */,
 				7FA726271FFCD51300C0F6F2 /* MMText.m in Sources */,
+				5C4E3A702252F54C001499AF /* RankViewController.m in Sources */,
 				7F677F36218C1128009851B6 /* MMGradientView.m in Sources */,
 				7F590D7E1FA9A5D4006F7BF0 /* STPopupNavigationBar.m in Sources */,
 				D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */,
@@ -1968,7 +1978,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = ZKEWNK6EPU;
+				DEVELOPMENT_TEAM = LL7GM42E2F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/QQSDK",
@@ -1986,7 +1996,7 @@
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.HFLifeLiving.ap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2004,7 +2014,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZKEWNK6EPU;
+				DEVELOPMENT_TEAM = LL7GM42E2F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/QQSDK",
@@ -2021,7 +2031,7 @@
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.HFLifeLiving.ap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Weather_App/Weather_App-Bridging-Header.h";
