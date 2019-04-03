@@ -217,8 +217,11 @@ UICollectionViewDelegateFlowLayout>
 
 #pragma mark - UIScrollViewDelegate
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"");
+}
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    
+    NSLog(@"will begin draging");
     if (self.currentIndex == [self convertContentOffsetToIndex]) {
         [self willStartToggleLiveForDelegateWithRoom:[self.infiniteDataSource objectAtIndex:self.currentIndex]];
     }
@@ -249,6 +252,10 @@ UICollectionViewDelegateFlowLayout>
 
 - (void) updateDataSourceWithRoom:(RoomModel *)room removeCurrentRoom:(BOOL)remove{
     
+    ///<fix:当从外部进来的是当前的room信息，不需要更新数据结构
+    if ([room isEqual:self.currentRoom]) {
+        return;
+    }
     NSArray<RoomModel *> * newRooms = [self.infiniteDataSource mm_select:^BOOL(RoomModel * _Nonnull obj) {
         return room.roomId == obj.roomId;
     }];
@@ -311,8 +318,8 @@ UICollectionViewDelegateFlowLayout>
     [[self _liveViewFromDelegate] removeFromSuperview];
     
     NSIndexPath * indexPath = [NSIndexPath indexPathForItem:self.currentIndex inSection:0];
-    CardCollectionViewCell * cell = (CardCollectionViewCell *)[self.contentView cellForItemAtIndexPath:indexPath];
-    [cell.contentView addSubview:[self _liveViewFromDelegate]];
+    
+    [self addLiveViewForCellAtIndexPath:indexPath];
     
     self.currentRoom = [self.infiniteDataSource objectAtIndex:self.currentIndex];
 
