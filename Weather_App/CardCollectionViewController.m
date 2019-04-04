@@ -14,10 +14,12 @@
 #import "NSArray+Sugar.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
 #import "HLLAlert.h"
+#import "RoomCycleScrollView.h"
 
 @interface CardCollectionViewController ()<
 CardCollectionViewDelegate,
-RoomViewControllerDelegate>{
+RoomViewControllerDelegate,
+RoomCycleScrollViewDelegate>{
     
     NSArray <RoomModel *>* origDataSource;
     NSMutableArray <RoomModel *>* prepareToRemoveRooms;///<已经关播的主播，需要移除
@@ -26,6 +28,7 @@ RoomViewControllerDelegate>{
 
 @property (nonatomic ,strong) RoomViewController * userLiveVC;
 @property (nonatomic ,strong) CardCollectionView * collectionView;
+@property (nonatomic ,strong) RoomCycleScrollView * cycleScrollView;
 
 @end
 
@@ -55,11 +58,15 @@ RoomViewControllerDelegate>{
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.view addSubview:self.collectionView];
+    [self.view addSubview:self.cycleScrollView];
     
     [self addChildViewController:self.userLiveVC];
     
     [self.collectionView setupDataSource:origDataSource
                                  atIndex:_roomIndex];
+    [self.cycleScrollView setupDataSource:origDataSource
+                                  atIndex:_roomIndex];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
@@ -114,17 +121,58 @@ RoomViewControllerDelegate>{
     }
 }
 
+#pragma mark - RoomCycleScrollViewDelegate
+- (__kindof UIView *)roomCycleScrollViewShouldAddLiveView:(RoomCycleScrollView *)view{
+    return self.userLiveVC.view;
+}
+
+- (BOOL) roomCycleScrollViewShouldScroll:(RoomCycleScrollView *)view{
+    ///<这部分可以用来在直播间正进行比较重要的事情，比如和主播连麦，来询问用户是否要先停止了连麦再滑动
+    if (self.userLiveVC.roomIsLinkMic) {
+        
+        [[[HLLAlertUtil title:@"当前房间在连麦中，请先停止连麦再切换直播间！"]
+          buttonTitles:@"确定", nil] showIn:self];
+        return NO;
+    }
+    return YES;
+}
+
+- (void) roomCycleScrollView:(RoomCycleScrollView *)view
+         willStartToggleRoom:(RoomModel *)room{
+//    NSLog(@"will toggle room:%@",room);
+}
+
+- (void) roomCycleScrollView:(RoomCycleScrollView *)view
+               didToggleRoom:(RoomModel *)room atIndex:(NSUInteger)index{
+    NSLog(@"toggle room:%@ at index:%ld",room,(long)index);
+    [self.userLiveVC updateLiveRoom:room atIndex:index];
+}
+
+- (void) roomCycleScrollView:(RoomCycleScrollView *)view
+         didFinishToggleRoom:(RoomModel *)room{
+    NSLog(@"finish toggle room:%ld",(long)room.roomId);
+    if (prepareToRemoveRooms.count) {///<有已经下播的房间
+        [view removeRoomWithRoomIds:[prepareToRemoveRooms mm_map:^id _Nonnull(RoomModel * _Nonnull obj) {
+            return @(obj.roomId);
+        }]];
+        [prepareToRemoveRooms removeAllObjects];
+    }
+}
+
 #pragma mark - RoomViewControllerDelegate
 - (void)roomViewController:(RoomViewController *)liveRoom allowScroll:(BOOL)allow{
     [self.collectionView allowScroll:allow];
+    [self.cycleScrollView allowScroll:allow];
 }
 
 - (void)roomViewController:(RoomViewController *)liveRoom didChangeRoom:(RoomModel *)room{
     [self.collectionView updateWithNewRoom:room];
+    [self.cycleScrollView updateWithNewRoom:room];
 }
 
 - (void)roomViewController:(RoomViewController *)liveRoom didInsertRoom:(RoomModel *)room{
     [self.collectionView insertNewRoom:room];
+    [self.cycleScrollView insertNewRoom:room];
 }
 
 - (void)roomViewController:(RoomViewController *)liveRoom offlineWithRoom:(RoomModel *)room{
@@ -137,6 +185,7 @@ RoomViewControllerDelegate>{
 #pragma mark - Getter
 
 - (CardCollectionView *)collectionView{
+    return nil;
     if (!_collectionView) {
         _collectionView = [[CardCollectionView alloc] initWithFrame:self.view.bounds];
         _collectionView.delegate = self;
@@ -153,4 +202,11 @@ RoomViewControllerDelegate>{
     return _userLiveVC;
 }
 
+- (RoomCycleScrollView *)cycleScrollView{
+    if (nil == _cycleScrollView) {
+        _cycleScrollView = [[RoomCycleScrollView alloc] initWithFrame:self.view.bounds];
+        _cycleScrollView.cycleDelegate = self;
+    }
+    return _cycleScrollView;
+}
 @end

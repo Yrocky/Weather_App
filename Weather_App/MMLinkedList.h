@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MMNode.h"
 
 // 双向链表：head、tail、current，并且使用链表存储的数据都是相同类型的，因此可以使用泛型类
 // Lightweight Generics 轻量级泛型，轻量是因为这是个纯编译器的语法支持（llvm 7.0），和 Nullability 一样，没有借助任何 objc runtime 的升级，也就是说，这个新语法在 Xcode 7 上可以使用且完全向下兼容（更低的 iOS 版本）
@@ -26,11 +27,20 @@
 // 看一下维基对链表的解释：https://en.wikipedia.org/wiki/Linked_list
 // 链接列表的一个缺点是访问时间是线性的，链表的访问是从head开始使用next指针依次遍历
 
-@interface MMLinkedList<T> : NSObject<NSFastEnumeration>
+@interface MMLinkedList<__covariant T> : NSObject<NSFastEnumeration>{
+    MMNode<T> *_current;
+    MMNode<T> *_head;
+    MMNode<T> *_tail;
+    NSUInteger _count;
+}
+@property (nonatomic ,strong ,readonly) MMNode<T> * current;
+@property (nonatomic ,strong ,readonly) MMNode<T> * head;
+@property (nonatomic ,strong ,readonly) MMNode<T> * tail;
 
 #pragma mark - init
 + (instancetype) linkedListWithHead:(T)value;
 - (instancetype) initWithHead:(T)value;
+- (instancetype) initWithArray:(NSArray<T> *)array;
 
 #pragma mark - add
 - (void) addToFront:(T)value;
@@ -51,7 +61,7 @@
 - (T) valueAtIndex:(NSInteger)index;
 - (T) objectAtIndexedSubscript:(NSUInteger)idx;// for NSFastEnumeration
 - (NSInteger) count;
-- (NSArray *) findValue:(T)value;
+- (NSArray *) findValue:(T)value;///<FIXME:这里有问题
 
 - (void) enumerateValuesUsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;// for NSFastEnumeration
 - (NSEnumerator*)objectEnumerator;// for NSFastEnumeration
@@ -59,9 +69,19 @@
 #pragma mark - delete
 - (BOOL) removeCurrent;
 - (BOOL) removeValueAtIndex:(NSInteger)index;
+- (void) removeAll;
+
+#pragma mark - move
+- (void) moveToValue:(T)value;
+- (void) moveToIndex:(NSUInteger)index;
 
 #pragma mark - handle
 - (void) printList;// 打印链表
 - (void) reverseList;// 反转链表
+
+@end
+
+///<双向循环链表
+@interface MMCycleLinkedList<T> : MMLinkedList<T>
 
 @end

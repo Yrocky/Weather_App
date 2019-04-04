@@ -377,12 +377,54 @@ static void PrintDescription(NSString *name, id obj)
     
 //    [self mutableDelegate];
 //
-//    MMLinkedList<NSNumber *> * list = [MMLinkedList linkedListWithHead:@0];
-//    for (NSInteger index = 1; index < 5; index ++) {
-////        [list addToBack:@(index)];
-//        [list addToFront:@(index)];
-//    }
-//    [list printList];
+    MMLinkedList<NSNumber *> * list = [MMLinkedList linkedListWithHead:@0];
+    for (NSInteger index = 1; index < 5; index ++) {
+//        [list addToBack:@(index)];
+        [list addToFront:@(index)];
+    }
+    [list printList];
+    if (0) {
+        NSLog(@"current:%@",[list currentValue]);// 4
+        NSLog(@"next:%@",[list nextValue]);// 3
+        NSLog(@"next:%@",[list nextValue]);// 2
+        NSLog(@"next:%@",[list nextValue]);// 1
+        NSLog(@"next:%@",[list nextValue]);// 0
+        NSLog(@"next:%@",[list nextValue]);// nil
+    }
+    if (0){
+        NSLog(@"index 2:%@",[list valueAtIndex:2]);// 2
+        NSLog(@"next:%@",[list nextValue]);// 1
+        [list removeAll];
+    }
+    if (1) {
+        MMCycleLinkedList<NSNumber *>* cls = [[MMCycleLinkedList alloc] initWithArray:@[@(0),@(1),@(2)]];
+        //    [cls addToBack:@(1)];
+        
+        NSLog(@"current:%@",[cls preValue]);// 1
+        
+        NSLog(@"current:%@",[cls currentValue]);// 0
+        NSLog(@"next:%@",[cls nextValue]);// 1
+        NSLog(@"current:%@",[cls currentValue]);// 1
+        NSLog(@"next:%@",[cls nextValue]);// 2
+        NSLog(@"current:%@",[cls currentValue]);// 2
+        NSLog(@"next:%@",[cls nextValue]);// 0
+        NSLog(@"current:%@",[cls currentValue]);// 0
+        NSLog(@"next:%@",[cls nextValue]);// 1
+        
+        NSLog(@"at index:%@",[cls valueAtIndex:1]);
+        NSLog(@"current:%@",[cls currentValue]);// 1
+        
+        [cls removeAll];
+        [cls addToBack:@(11)];
+        [cls addToBack:@(12)];
+        [cls addToBack:@(13)];
+        
+        [cls removeValueAtIndex:1];
+        
+        NSLog(@"after remove all %@",cls);
+    }
+    
+    
 //
 ////    [list reverseList];
 //    [list insertValue:@(4) atIndex:3];

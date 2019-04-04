@@ -85,7 +85,7 @@
             
             CardCollectionViewController * vc = [[CardCollectionViewController alloc] init];
             vc.title = model.title;
-            [vc setupDataSource:[RoomModel dataSource] roomIndex:0];
+            [vc setupDataSource:[RoomModel dataSource] roomIndex:2];
             MMNavigationController * navi = [[MMNavigationController alloc] initWithRootViewController:vc];
             [self.navigationController presentViewController:navi animated:YES completion:nil];
         }];

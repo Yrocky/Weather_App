@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		29DBA5C092A3C92ABAAD9DA9 /* Pods_Weather_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD27D1478D1B8369B4F8A1A3 /* Pods_Weather_App.framework */; };
+		5C2174612254B30B001443BC /* RoomCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2174602254B30B001443BC /* RoomCycleScrollView.m */; };
 		5C4E3A702252F54C001499AF /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E3A6F2252F54C001499AF /* RankViewController.m */; };
 		5C4E3ADF22532B74001499AF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E3ADE22532B74001499AF /* README.md */; };
 		5C5E63C22244AB9100C0B85D /* CardCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63C12244AB9100C0B85D /* CardCollectionViewController.m */; };
@@ -210,6 +211,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C21745F2254B30B001443BC /* RoomCycleScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomCycleScrollView.h; sourceTree = "<group>"; };
+		5C2174602254B30B001443BC /* RoomCycleScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomCycleScrollView.m; sourceTree = "<group>"; };
+		5C2174622254B7BE001443BC /* RoomDataSourceHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomDataSourceHandler.h; sourceTree = "<group>"; };
 		5C4E3A6E2252F54C001499AF /* RankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
 		5C4E3A6F2252F54C001499AF /* RankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
 		5C4E3ADE22532B74001499AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -629,10 +633,13 @@
 		5C5E63CA2244AC1500C0B85D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5C2174622254B7BE001443BC /* RoomDataSourceHandler.h */,
 				5C5E63C62244ABF100C0B85D /* CardCollectionView.h */,
 				5C5E63C72244ABF100C0B85D /* CardCollectionView.m */,
 				5C5E63C32244ABD200C0B85D /* CardCollectionViewCell.h */,
 				5C5E63C42244ABD200C0B85D /* CardCollectionViewCell.m */,
+				5C21745F2254B30B001443BC /* RoomCycleScrollView.h */,
+				5C2174602254B30B001443BC /* RoomCycleScrollView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1794,6 +1801,7 @@
 				7FED6BA61F5557F0004E3345 /* TableViewDataSource.m in Sources */,
 				D70F5DD71FA74B26007FBD43 /* UIView+Glow.m in Sources */,
 				D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */,
+				5C2174612254B30B001443BC /* RoomCycleScrollView.m in Sources */,
 				7FA274CF20876366001B9FD2 /* YYWeakProxy.m in Sources */,
 				7F6FFB8D209458E100A84A81 /* NSAttributedString+ZPAttributedString.m in Sources */,
 				7F39ED06214FC3B7006CE72F /* MMAnimator.m in Sources */,

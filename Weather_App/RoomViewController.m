@@ -12,6 +12,7 @@
 #import "Masonry.h"
 #import "ANYMethodLog.h"
 #import "RankViewController.h"
+#import "UIImageView+WebCache.h"
 
 @class InternalRoomView;
 @protocol InternalRoomViewDelegate <NSObject>
@@ -35,6 +36,7 @@
 
 @end
 @interface RoomViewController ()<InternalRoomViewDelegate,RankViewControllerDelegate>{
+    UIImageView * _iconImageView;
     UILabel * _nameLabel;
     UIButton * _recommendView;
     BOOL _isLinkMic;///<是否在连麦中
@@ -56,12 +58,25 @@
     self.view.backgroundColor = [UIColor randomColor];
     self.view.alpha = 0.6;
     
+    _iconImageView = [UIImageView new];
+    _iconImageView.contentMode = UIViewContentModeScaleAspectFill;
+    _iconImageView.layer.cornerRadius = 100.0f;
+    _iconImageView.layer.masksToBounds = YES;
+    _iconImageView.layer.borderWidth = 2.0;
+    _iconImageView.layer.borderColor = [UIColor redColor].CGColor;
+    [self.view addSubview:_iconImageView];
+    
     _nameLabel = [UILabel new];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
     _nameLabel.font = [UIFont systemFontOfSize:20];
     _nameLabel.textColor = [UIColor randomColor];
     [self.view addSubview:_nameLabel];
     
+    [_iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(200, 200));
+        make.centerX.equalTo(self.view);
+        make.bottom.equalTo(_nameLabel.mas_top).mas_offset(-80);
+    }];
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.centerY.equalTo(self.view).mas_offset(20);
@@ -172,6 +187,7 @@
     
     self.room = room;
     
+    [_iconImageView sd_setImageWithURL:[NSURL URLWithString:room.pic]];
     _nameLabel.text = [NSString stringWithFormat:@"%lu %lu",(unsigned long)index ,(unsigned long)room.roomId];
     _nameLabel.textColor = [UIColor randomColor];
     
