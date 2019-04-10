@@ -144,13 +144,13 @@ RoomCycleScrollViewDelegate>{
 
 - (void) roomCycleScrollView:(RoomCycleScrollView *)view
                didToggleRoom:(RoomModel *)room atIndex:(NSUInteger)index{
-    NSLog(@"toggle room:%@ at index:%ld",room,(long)index);
+//    NSLog(@"toggle room:%@ at index:%ld",room,(long)index);
     [self.userLiveVC updateLiveRoom:room atIndex:index];
 }
 
 - (void) roomCycleScrollView:(RoomCycleScrollView *)view
          didFinishToggleRoom:(RoomModel *)room{
-    NSLog(@"finish toggle room:%ld",(long)room.roomId);
+//    NSLog(@"finish toggle room:%ld",(long)room.roomId);
     if (prepareToRemoveRooms.count) {///<有已经下播的房间
         [view removeRoomWithRoomIds:[prepareToRemoveRooms mm_map:^id _Nonnull(RoomModel * _Nonnull obj) {
             return @(obj.roomId);

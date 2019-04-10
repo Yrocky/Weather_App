@@ -49,7 +49,6 @@
     MMNode * node = [MMNode nodeWithValue:value];
     node.index = 0;
     
-    // TODO: 待验证，在removeAll之后，head和tail都没有了
     if (_head == nil) {
         _head = node;
     }
@@ -211,7 +210,7 @@
     if (value) {
         MMNode * currentNode = self.head;
         NSMutableArray * result = [@[] mutableCopy];
-        while (currentNode != self.tail) {
+        for (NSUInteger i = 0; i < _count; i ++) {
             
             if ([currentNode.value isEqual:value]) {
                 [result addObject:currentNode];
@@ -239,26 +238,16 @@
 
 - (BOOL)removeCurrent{
     
-    //FIXME: improve code below
-    NSLog(@"-removeCurrent current value %@", [self currentValue]);
-    
     BOOL removed = NO;
     if (self.current != nil) {
-        MMNode * node = self.current;
-        for (NSUInteger i = _current.index; i < _count; i ++) {
-            node.index = i - 1;
-            node = node.next;
-        }
-        self.current.pre.next = self.current.next;
-        self.current.next.pre = self.current.pre;
-        _current = self.head;///<移除当前node之后将游标置为head
-        removed = YES;
-        _count--;
+        NSUInteger currentIndex = self.current.index;
+        removed = [self removeValueAtIndex:currentIndex];
+        _current = self.head;
+        return removed;
     }
     else {
         removed = NO;
     }
-    
     return removed;
 }
 
@@ -384,8 +373,14 @@
 @implementation MMCycleLinkedList
 
 - (void) cycle{
-    self.tail.index = self.count - 1;
-    self.tail.next = self.head;
+    if (self.count == 1) {///<仅有一个node，将tail置为nil，仅仅保留head
+        NSLog(@"仅有一个node，将tail置为nil，仅仅保留head");
+        self.tail.next = nil;
+        _tail = nil;
+    } else {
+        self.tail.index = self.count - 1;
+        self.tail.next = self.head;
+    }
     
     self.head.index = 0;
     self.head.pre = self.tail;
@@ -432,7 +427,7 @@
 - (BOOL)removeCurrent{
     
     BOOL removed = [super removeCurrent];
-    
+    [self cycle];
     return removed;
 }
 
@@ -451,6 +446,9 @@
         node.pre = self.tail;
         node.next = self.head;
         
+        if (nil == _tail) {
+            _tail = self.head;
+        }
         self.tail.next = node;
         self.head.pre = node;
         
@@ -460,18 +458,6 @@
         [super insertValue:value atIndex:index];
         [self cycle];
     }
-}
-
-- (NSArray *)findValue:(id)value{
-    
-    NSMutableArray * result = [[super findValue:value] mutableCopy];
-    if (value) {
-        if ([self.tail.value isEqual:value]) {
-            [result addObject:self.tail];
-        }
-        return result.copy;
-    }
-    return nil;
 }
 
 - (void) moveToValue:(id)value{

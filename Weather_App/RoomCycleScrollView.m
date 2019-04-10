@@ -283,6 +283,9 @@
 #pragma mark - UIGestureRecognizerDelegate
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    if (self.linkedList.count == 1) {
+        return NO;
+    }
     if (self.cycleDelegate &&
         [self.cycleDelegate respondsToSelector:@selector(roomCycleScrollViewShouldScroll:)]) {
         return [self.cycleDelegate roomCycleScrollViewShouldScroll:self];

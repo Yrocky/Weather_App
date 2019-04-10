@@ -380,31 +380,36 @@ static void PrintDescription(NSString *name, id obj)
     if (1) {
         
         MMCycleLinkedList<NSNumber *>* cls = [[MMCycleLinkedList alloc] initWithArray:@[@(0),@(1),@(2)]];
-        [cls insertValue:@(22) atIndex:0];
-        [cls insertValue:@(4) atIndex:4];
-        [cls insertValue:@(88) atIndex:2];
-        [cls insertValue:@(99) atIndex:cls.current.index + 1];
-        NSLog(@"after insert %@",cls);
-        [cls addToBack:@(33)];
-        NSLog(@"after remove all %@",cls);
-        [cls addToFront:@(44)];
-        NSLog(@"after remove all %@",cls);
+//        [cls insertValue:@(22) atIndex:0];
+//        [cls insertValue:@(4) atIndex:4];
+//        [cls insertValue:@(88) atIndex:2];
+//        [cls insertValue:@(99) atIndex:cls.current.index + 1];
+//        NSLog(@"after insert %@",cls);
+//        [cls addToBack:@(33)];
+//        NSLog(@"after remove all %@",cls);
+//        [cls addToFront:@(44)];
+//        NSLog(@"after remove all %@",cls);
         //    [cls removeValueAtIndex:4];
         //    NSLog(@"after remove all %@",cls);
-        [cls removeValueAtIndex:5];
-        NSLog(@"after index 0 %@",cls);
+//        [cls removeValueAtIndex:5];
+//        NSLog(@"after index 0 %@",cls);
         
-        [cls moveToValue:@(2)];
-        [cls moveToIndex:4];
+//        [cls moveToValue:@(1)];
+//        [cls moveToIndex:4];
+        [cls removeCurrent];
+        [cls removeCurrent];
+        [cls removeCurrent];
         NSLog(@"++++++++");
     }
-    
     
     MMLinkedList<NSNumber *> * list = [MMLinkedList linkedListWithHead:@0];
     for (NSInteger index = 1; index < 5; index ++) {
         [list addToBack:@(index)];
 //        [list addToFront:@(index)];
     }
+//    [list removeCurrent];
+//    [list removeCurrent];
+    return;
     /// 0,1,2,3,4
     [list insertValue:@(11) atIndex:5];
     /// 0,1,2,11,3,4
