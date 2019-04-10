@@ -131,17 +131,17 @@ UICollectionViewDelegateFlowLayout>
     [self toggleLiveView];
 }
 
-- (void) removeRoomWithRoomIds:(NSArray <NSNumber *>*)roomIds{
-    [roomIds mm_each:^(NSNumber * _Nonnull obj) {
-        [self removeRoomWithRoomId:obj.integerValue];
+- (void) removeRooms:(NSArray <RoomModel *>*)rooms{
+    [rooms mm_each:^(RoomModel * _Nonnull obj) {
+        [self removeRoom:obj];
     }];
 }
 
-- (void) removeRoomWithRoomId:(NSUInteger)roomId{
+- (void) removeRoom:(RoomModel *)room{
     
     ///<移除roomId下的room
     [self.infiniteDataSource mm_each:^(RoomModel * _Nonnull obj) {
-        if (obj.roomId == roomId) {
+        if (obj.roomId == room.roomId) {
             [self.infiniteDataSource removeObject:obj];
         }
     }];

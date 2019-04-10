@@ -100,6 +100,12 @@
     }];
 }
 
+- (void)setDelegate:(id<UIScrollViewDelegate>)delegate{
+    NSAssert(delegate == self ||
+             delegate == nil, @"setup RoomCycleScrollView's cycleDelegate for %@",delegate);
+    [super setDelegate:delegate];
+}
+
 #pragma mark - API
 
 - (void)setupDataSource:(NSArray<RoomModel *> *)dataSource atIndex:(NSUInteger)index{
@@ -119,13 +125,13 @@
 }
 
 ///<删除指定的房间
-- (void) removeRoomWithRoomId:(NSUInteger)roomId{
-    
+- (void) removeRoom:(RoomModel *)room{
+    [self.linkedList removeValue:room];
 }
 
-- (void) removeRoomWithRoomIds:(NSArray <NSNumber *>*)roomIds{
-    [roomIds mm_each:^(NSNumber *obj) {
-        [self removeRoomWithRoomId:obj.integerValue];
+- (void) removeRooms:(NSArray<RoomModel *> *)rooms{
+    [rooms mm_each:^(RoomModel *obj) {
+        [self removeRoom:obj];
     }];
 }
 
@@ -141,14 +147,14 @@
     [self updateDataSourceWithRoom:newRoom removeCurrentRoom:YES];
 }
 
-- (void) reloadData{
-    
-}
-
 ///<是否允许滑动
 - (void) allowScroll:(BOOL)allow{
     self.scrollEnabled = allow;
     self.pagingEnabled = allow;
+}
+
+- (BOOL)canSlipCard{
+    return self.linkedList.count > 1;
 }
 
 #pragma mark - Privet M

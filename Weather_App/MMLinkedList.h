@@ -70,6 +70,7 @@
 - (BOOL) removeHead;///<移除之后，其后面的节点将会替代它
 - (BOOL) removeTail;
 - (BOOL) removeCurrent;
+- (BOOL) removeValue:(T)value;
 - (BOOL) removeValueAtIndex:(NSInteger)index;
 - (void) removeAll;
 

@@ -236,19 +236,41 @@
     _count = 0;
 }
 
+- (BOOL)removeHead{
+    return [self removeValueAtIndex:0];
+}
+
+- (BOOL)removeTail{
+    return [self removeValueAtIndex:_count - 1];
+}
+
 - (BOOL)removeCurrent{
     
     BOOL removed = NO;
     if (self.current != nil) {
         NSUInteger currentIndex = self.current.index;
         removed = [self removeValueAtIndex:currentIndex];
-        _current = self.head;
+        [self moveToHead];
         return removed;
     }
     else {
         removed = NO;
     }
     return removed;
+}
+
+- (BOOL) removeValue:(id)value{
+    
+    MMNode * node = self.head;
+    NSUInteger index = 0;
+    for (NSUInteger i = 0; i < _count; i ++) {
+        if ([node.value isEqual:value]) {
+            index = i;
+            break;
+        }
+        node = node.next;
+    }
+    return [self removeValueAtIndex:index];
 }
 
 - (BOOL)removeValueAtIndex:(NSInteger)index{

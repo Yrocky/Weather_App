@@ -114,9 +114,7 @@ RoomCycleScrollViewDelegate>{
 - (void)cardCollectionView:(CardCollectionView *)view didFinishToggleRoom:(RoomModel *)room{
     NSLog(@"finish toggle room:%ld",(long)room.roomId);
     if (prepareToRemoveRooms.count) {///<有已经下播的房间
-        [view removeRoomWithRoomIds:[prepareToRemoveRooms mm_map:^id _Nonnull(RoomModel * _Nonnull obj) {
-            return @(obj.roomId);
-        }]];
+        [view removeRooms:prepareToRemoveRooms.copy];
         [prepareToRemoveRooms removeAllObjects];
     }
 }
@@ -152,9 +150,7 @@ RoomCycleScrollViewDelegate>{
          didFinishToggleRoom:(RoomModel *)room{
 //    NSLog(@"finish toggle room:%ld",(long)room.roomId);
     if (prepareToRemoveRooms.count) {///<有已经下播的房间
-        [view removeRoomWithRoomIds:[prepareToRemoveRooms mm_map:^id _Nonnull(RoomModel * _Nonnull obj) {
-            return @(obj.roomId);
-        }]];
+        [view removeRooms:prepareToRemoveRooms.copy];
         [prepareToRemoveRooms removeAllObjects];
     }
 }

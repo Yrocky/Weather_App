@@ -18,16 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) setupDataSource:(NSArray<RoomModel *> *)dataSource atIndex:(NSUInteger)index;
 
 ///<删除指定的房间
-- (void) removeRoomWithRoomId:(NSUInteger)roomId;///<由于还有主播已经关播，所以要移除这个数据
-- (void) removeRoomWithRoomIds:(NSArray <NSNumber *>*)roomIds;///<移除已经关播的主播
+- (void) removeRoom:(RoomModel *)room;///<由于还有主播已经关播，所以要移除这个数据
+- (void) removeRooms:(NSArray <RoomModel *>*)rooms;///<移除已经关播的主播
 
 ///<在当前主播后面插入一条数据，并滚动到该数据处
 - (void) insertNewRoom:(RoomModel *)newRoom;
 
 ///<替换当前直播间数据为新的直播间
 - (void) updateWithNewRoom:(RoomModel *)newRoom;
-
-- (void) reloadData;
 
 ///<是否允许滑动
 - (void) allowScroll:(BOOL)allow;
