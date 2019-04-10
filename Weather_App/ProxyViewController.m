@@ -380,8 +380,11 @@ static void PrintDescription(NSString *name, id obj)
     if (1) {
         
         MMCycleLinkedList<NSNumber *>* cls = [[MMCycleLinkedList alloc] initWithArray:@[@(0),@(1),@(2)]];
-        [cls insertValue:@(22) atIndex:2];
-        NSLog(@"after remove all %@",cls);
+        [cls insertValue:@(22) atIndex:0];
+        [cls insertValue:@(4) atIndex:4];
+        [cls insertValue:@(88) atIndex:2];
+        [cls insertValue:@(99) atIndex:cls.current.index + 1];
+        NSLog(@"after insert %@",cls);
         [cls addToBack:@(33)];
         NSLog(@"after remove all %@",cls);
         [cls addToFront:@(44)];
@@ -403,7 +406,7 @@ static void PrintDescription(NSString *name, id obj)
 //        [list addToFront:@(index)];
     }
     /// 0,1,2,3,4
-//    [list insertValue:@(11) atIndex:3];
+    [list insertValue:@(11) atIndex:5];
     /// 0,1,2,11,3,4
 //    [list printList];
 //    NSLog(@"value at index:%@",[list valueAtIndex:3]);

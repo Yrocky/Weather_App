@@ -53,9 +53,8 @@ static NSArray * pics;
              ];
 }
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"id:%ld", (long)self.roomId];
+- (NSString *)description{
+    return [NSString stringWithFormat:@"RoomModel【id:%ld】", (long)self.roomId];
 }
 - (NSString *)debugDescription{
     return [self description];

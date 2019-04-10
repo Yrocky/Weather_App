@@ -111,11 +111,18 @@
 
 - (void)insertValue:(id)value atIndex:(NSInteger)index{
     
-    if (index >= _count) {
+    if (index > _count) {
         NSLog(@"too big then count");
         return;
     }
-    
+    if (index == 0) {
+        [self addToFront:value];
+        return;
+    }
+    if (index == _count) {
+        [self addToBack:value];
+        return;
+    }
     MMNode * currentNode = self.head;
     MMNode * node = [MMNode nodeWithValue:value];
     node.index = index;
@@ -123,8 +130,7 @@
     MMNode * next = nil;
     
     // 找到index现在所在的node
-    for (NSInteger i = 1; i < _count; i ++) {
-        currentNode = currentNode.next;
+    for (NSInteger i = 0; i < _count; i ++) {
         if (i == index - 1) {
             pre = currentNode;
         }else if (i == index){
@@ -133,10 +139,11 @@
         } else if (i > index) {
             currentNode.index = i + 1;
         }
+        currentNode = currentNode.next;
     }
     
     if (!pre) {
-        [self addToFront:node];
+        [self addToFront:value];
     }else{
         if (nil == next) {
             next = self.tail;
@@ -237,7 +244,14 @@
     
     BOOL removed = NO;
     if (self.current != nil) {
+        MMNode * node = self.current;
+        for (NSUInteger i = _current.index; i < _count; i ++) {
+            node.index = i - 1;
+            node = node.next;
+        }
         self.current.pre.next = self.current.next;
+        self.current.next.pre = self.current.pre;
+        _current = self.head;///<移除当前node之后将游标置为head
         removed = YES;
         _count--;
     }
@@ -414,6 +428,14 @@
     [super addToBack:value];
     [self cycle];
 }
+
+- (BOOL)removeCurrent{
+    
+    BOOL removed = [super removeCurrent];
+    
+    return removed;
+}
+
 ///<access test
 - (BOOL)removeValueAtIndex:(NSInteger)index{
     
@@ -433,10 +455,11 @@
         self.head.pre = node;
         
         _tail = node;
+        _count ++;
     } else {
         [super insertValue:value atIndex:index];
+        [self cycle];
     }
-    [self cycle];
 }
 
 - (NSArray *)findValue:(id)value{
