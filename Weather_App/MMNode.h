@@ -11,7 +11,7 @@
 @interface MMNode<T> : NSObject
 
 @property (nonatomic ,strong) MMNode<T> * pre;
-@property (nonatomic ,strong) MMNode<T> * next;
+@property (nonatomic ,weak) MMNode<T> * next;
 @property (nonatomic ,assign) NSUInteger index;
 
 @property (nonatomic ,strong ,readonly) T value;

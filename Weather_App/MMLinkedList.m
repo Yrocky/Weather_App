@@ -70,13 +70,16 @@
     //
     node.next = self.head;
     
-    //FIXME:这里的index设置不对
-    node.pre.index = self.count + 1;
-    node.next.index = self.count - node.pre.index;
-
     self.head.pre = node;
     _head = node;
     
+    ///<更新node的index O(n)
+    MMNode * nextNode = self.head;
+    for (NSUInteger index = 0; index < self.count; index ++) {
+        nextNode.index = index;
+        nextNode = nextNode.next;
+    }
+
     _count ++;
 }
 
@@ -99,7 +102,6 @@
         _tail = lastNode;
     }
     
-    // FIXME:这里的index还没有设置
     self.tail.next = node;
     node.pre = self.tail;
     _tail = node;
@@ -153,9 +155,6 @@
 }
 
 - (id) currentValue{
-    if (nil == _current) {
-        _current = self.head;
-    }
     return self.current.value;
 }
 
@@ -165,9 +164,6 @@
 }
 
 - (id) nextValue{
-    if (nil == _current) {
-        _current = self.head;
-    }
     _current = self.current.next;
     return self.current.value;
 }
@@ -176,11 +172,27 @@
 - (id) valueAtIndex:(NSInteger)index{
     
     // 这里由于是取的node.next，可能为nil，所以不用考虑是否index越界
-    _current = self.head;
+    return [self nodeAtIndex:index].value;
+}
+
+- (MMNode *) nodeAtIndex:(NSUInteger)index{
+    MMNode * currentNode = self.head;
     for (int i = 0; i < index; i ++) {
-        _current = _current.next;
+        currentNode = currentNode.next;
     }
-    return _current.value;
+    return currentNode;
+}
+
+- (MMNode *)current{
+    if (nil == _current) {
+        return self.head;
+    }
+    return _current;
+}
+
+- (id) objectAtIndexedSubscript:(NSUInteger)idx{
+    
+    return [self valueAtIndex:idx];
 }
 
 - (NSInteger) count{
@@ -238,29 +250,44 @@
 
 - (BOOL)removeValueAtIndex:(NSInteger)index{
     
-    if (index < 1 || index > [self count]) {
+    if (index < 0 || index > [self count]) {
         NSLog(@"index <%ld> didn't in the range of list",(long)index);
         return NO;
     }
     MMNode * currentNode = self.head;
     
-    for (NSInteger i = 1; i < index; i ++) {
+    for (NSUInteger i = 0; i < self.count; i ++) {
         if (currentNode.next == nil) {// 链表中只有一个node的时候
             return NO;
         }
-        currentNode = currentNode.next;// 向下遍历，直到便利到index所在的node
+        if (i > index) {
+            MMNode * node = [self nodeAtIndex:i];
+            node.index = i - 1;
+        } else if (i < index) {
+            currentNode = currentNode.next;// 向下遍历，直到便利到index所在的node
+        }
     }
-    // 将index所在的node的next指向node.next.next
-    currentNode.next = currentNode.next.next;
-    _count --;
     
+    // 将index所在的node的next指向node.next.next
+    MMNode * preNode = currentNode.pre;
+    MMNode * nextNode = currentNode.next;
+    preNode.next = nextNode;
+    nextNode.pre = preNode;
+    if (index == 0) {
+        _head = nextNode;
+    }
+    if (index == _count - 1) {
+        _tail = preNode;
+    }
+    _count --;
+
     return YES;
 }
 
 - (void) moveToValue:(id)value{
     if (value) {
         MMNode * currentNode = self.head;
-        while (currentNode != self.tail) {
+        while (currentNode.next != self.head) {
             if ([currentNode.value isEqual:value]) {
                 _current = currentNode;
                 break;
@@ -271,8 +298,24 @@
     }
 }
 
+- (void) moveToHead{
+    _current = self.head;
+}
+
+- (void) moveToTail{
+    _current = self.tail;
+}
+
 - (void) moveToIndex:(NSUInteger)index{
+ 
+    NSAssert(index < self.count, @"index is must be less then linkedList.count");
     
+    MMNode * currentNode = self.head;
+    for (int i = 0; i < index; i ++) {
+        currentNode = currentNode.next;
+    }
+    
+    _current = currentNode;
 }
 
 - (void)printList{
@@ -281,7 +324,7 @@
     NSLog(@"print linked list start");
     NSString * list = @" - ";
     while (node) {
-        list = [list stringByAppendingFormat:@"[pre:%@ node:%@ %d next:%@] - ",node.pre,node.value,node.index,node.next];
+        list = [list stringByAppendingFormat:@"[pre:%@ node:%@ %lu next:%@] - ",node.pre,node.value,(unsigned long)node.index,node.next];
         node = node.next;
     }
     NSLog(@"%@",list);
@@ -316,9 +359,10 @@
 {
     NSMutableString * string = [@"" mutableCopy];
     for (NSInteger index = 0; index < [self count]; index ++) {
-        NSLog(@"index<%ld> : value<%@>",(long)index,[self valueAtIndex:index]);
+        NSLog(@"index-%ld : %@",(long)index,[self nodeAtIndex:index]);
         [string appendFormat:@"%@ -- ",[self valueAtIndex:index]];
     }
+    NSLog(@"\n+++++++++++++++++++\nself.head:%@  self.tail:%@",self.head,self.tail);
     return [NSString stringWithFormat:@"%@", string];
 }
 @end
@@ -326,14 +370,11 @@
 @implementation MMCycleLinkedList
 
 - (void) cycle{
-    if (nil == self.tail.next) {
-        self.tail.index = self.count - 1;
-        self.tail.next = self.head;
-    }
-    if (nil == self.head.pre) {
-        self.head.index = 0;
-        self.head.pre = self.tail;
-    }
+    self.tail.index = self.count - 1;
+    self.tail.next = self.head;
+    
+    self.head.index = 0;
+    self.head.pre = self.tail;
 }
 
 ///<重写父类的这两个方法，将tail和head进行相连
@@ -361,6 +402,24 @@
     }
     [self cycle];
     return [super nextValue];
+}
+- (void)addToFront:(id)value{
+    
+    [super addToFront:value];
+    [self cycle];
+}
+
+- (void)addToBack:(id)value{
+
+    [super addToBack:value];
+    [self cycle];
+}
+///<access test
+- (BOOL)removeValueAtIndex:(NSInteger)index{
+    
+    BOOL removed = [super removeValueAtIndex:index];
+    [self cycle];
+    return removed;
 }
 
 - (void)insertValue:(id)value atIndex:(NSInteger)index{
@@ -403,7 +462,7 @@
 
 - (void)printList{
     for (int i = 0; i < self.count; i ++) {
-        NSLog(@"index:%@",[self valueAtIndex:i]);
+        NSLog(@"index: %d %@",i,[self nodeAtIndex:i]);
     }
 }
 

@@ -14,7 +14,7 @@
 @implementation MMNode
 
 - (void)dealloc{
-    NSLog(@"node %@ dealloc",self);
+    NSLog(@"【%@ dealloc】",self);
 }
 
 + (instancetype) nodeWithValue:(id)value{
@@ -29,7 +29,7 @@
 }
 
 - (NSString *)description{
-    return [NSString stringWithFormat:@"node %@", self.value];
+    return [NSString stringWithFormat:@"node【value: %@ index: %lu】", self.value,(unsigned long)self.index];
 }
 - (NSString *)debugDescription{
     return [self description];

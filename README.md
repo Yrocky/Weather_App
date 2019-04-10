@@ -246,10 +246,14 @@ NSAttributedString * attS = AttBuilderWith(a).
 
 > 这个思路的灵感来自于[这个仓库](https://github.com/poos/SXCycleView)，结合上一个版本然后整理出来直播间无限滑动原型。
 
+### MMLinkedList
+
+这个方案中，双向循环链表示其中的核心，它需要担当数据的处理部分的任务，并且要保证内存的合理释放。
+
 ### RoomCycleScrollView
 
 
 
-### MMLinkedList
+
 
 

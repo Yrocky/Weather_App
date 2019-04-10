@@ -63,8 +63,8 @@
 - (NSInteger) count;
 - (NSArray *) findValue:(T)value;///<FIXME:这里有问题
 
-- (void) enumerateValuesUsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;// for NSFastEnumeration
-- (NSEnumerator*)objectEnumerator;// for NSFastEnumeration
+- (void) enumerateValuesUsingBlock:(void (^)(T obj, NSUInteger idx, BOOL *stop))block;// TODO: for NSFastEnumeration
+- (NSEnumerator*)objectEnumerator;// TODO: for NSFastEnumeration
 
 #pragma mark - delete
 - (BOOL) removeCurrent;
@@ -72,8 +72,10 @@
 - (void) removeAll;
 
 #pragma mark - move
-- (void) moveToValue:(T)value;
+- (void) moveToHead;
+- (void) moveToTail;
 - (void) moveToIndex:(NSUInteger)index;
+- (void) moveToValue:(T)value;
 
 #pragma mark - handle
 - (void) printList;// 打印链表
