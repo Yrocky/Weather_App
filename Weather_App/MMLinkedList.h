@@ -61,10 +61,10 @@
 - (T) valueAtIndex:(NSInteger)index;
 - (T) objectAtIndexedSubscript:(NSUInteger)idx;// for NSFastEnumeration
 - (NSInteger) count;
-- (NSArray *) findValue:(T)value;///<FIXME:这里有问题
+- (NSArray *) findValue:(T)value;
 
-- (void) enumerateValuesUsingBlock:(void (^)(T obj, NSUInteger idx, BOOL *stop))block;// TODO: for NSFastEnumeration
-- (NSEnumerator*)objectEnumerator;// TODO: for NSFastEnumeration
+//- (void) enumerateValuesUsingBlock:(void (^)(T obj, NSUInteger idx, BOOL *stop))block;// TODO: for NSFastEnumeration
+//- (NSEnumerator*)objectEnumerator;// TODO: for NSFastEnumeration
 
 #pragma mark - delete
 - (BOOL) removeHead;///<移除之后，其后面的节点将会替代它

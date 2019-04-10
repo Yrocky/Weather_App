@@ -15,6 +15,7 @@
 
 - (void)dealloc{
     NSLog(@"linked list %@ dealloc",self);
+    [self removeAll];
     _head = nil;
     _tail = nil;
     _current = nil;///<防止循环引用不释放，这里手动释放内存

@@ -246,14 +246,43 @@ NSAttributedString * attS = AttBuilderWith(a).
 
 > 这个思路的灵感来自于[这个仓库](https://github.com/poos/SXCycleView)，结合上一个版本然后整理出来直播间无限滑动原型。
 
-### MMLinkedList
+### MMCycleLinkedList
 
-这个方案中，双向循环链表示其中的核心，它需要担当数据的处理部分的任务，并且要保证内存的合理释放。
+这个方案中，双向循环链表示其中的核心，它需要担当数据的处理部分的任务，并且要保证内存的合理释放。这个类是在`MMLinkedList`的基础上创建的，并且添加了一些和业务相关的接口：
+
+``` objective-c
+#pragma mark - delete
+- (BOOL) removeHead;///<移除之后，其后面的节点将会替代它
+- (BOOL) removeTail;
+- (BOOL) removeCurrent;
+- (BOOL) removeValue:(T)value;
+- (BOOL) removeValueAtIndex:(NSInteger)index;
+- (void) removeAll;
+
+#pragma mark - move
+- (void) moveToHead;
+- (void) moveToTail;
+- (void) moveToIndex:(NSUInteger)index;
+- (void) moveToValue:(T)value;
+```
+由于链表的查询存在耗时（复杂度差不多O(n)）的特性，因此在数据多的时候可能会存在一些问题，这个后期考虑使用其他方式（c、c++）来重新实现链表。另外，双向链表中的节点们之间通过`pre`和`next`来连接，如果都是用`strong`来持有前后节点，会导致循环引用，但又不能全部使用`weak`来修饰，因此这里的节点头文件如下：
+``` objective-c
+@interface MMNode<T> : NSObject
+
+@property (nonatomic ,strong) MMNode<T> * pre;
+@property (nonatomic ,weak) MMNode<T> * next;
+@property (nonatomic ,assign) NSUInteger index;
+
+@property (nonatomic ,strong ,readonly) T value;
+
++ (instancetype) nodeWithValue:(T)value;
+- (void) updateValue:(T)newValue;
+@end
+```
+即使节点这样修改了，到了双向循环链表中，还是会出现循环引用的，一个不是很优雅的做法就是在使用的时候注意一下，sad。
 
 ### RoomCycleScrollView
 
+这一部分其实和上面版本中的CardCollectionView差不多，只不过他的循环形式是使用三个子视图`RoomCycleItemView`，在滑动结束之后移动到中间位置，并且更新当前的数据给到该子视图，这样的做法比上面好的一个地方是快速滑动的时候不会出现由于位移没到位的卡顿(以及由两个子视图实现也会有这样的情况)。
 
-
-
-
-
+另外，将无限滚动视图的功能使用`RoomDataSourceHandler`协议抽象了一下，这样方便在控制器中方便的进行切换两种方案。控制器部分基本上不需要大改动，只需要将循环试图替换一下就可以了。
