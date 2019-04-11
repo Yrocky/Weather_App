@@ -8,15 +8,21 @@
 
 #import "MMGradientViewController.h"
 #import "MMGradientView.h"
-
+#import "MMNoRetainTimer.h"
 #import <Masonry/Masonry.h>
 
 @interface MMGradientViewController ()
-
+@property (nonatomic ,strong) MMNoRetainTimer * timer;
 @property (nonatomic ,strong) MMGradientView * gradientView;
+@property (nonatomic ,strong) NSTimer * timer2;
 @end
 
 @implementation MMGradientViewController
+
+- (void)dealloc{
+    
+    [self.timer invalidate];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,6 +34,10 @@
     [button addTarget:self action:@selector(onGradientAction)
      forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
+    
+    self.timer = [MMNoRetainTimer<NSString *> scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(onTimerAction:) userInfo:@"hhhhhh" repeats:YES];
+    
+//    self.timer2 = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(onTimer2) userInfo:nil repeats:YES];
     
     self.gradientView = [MMBlurGradientView blurGradientView:UIBlurEffectStyleLight];
     self.gradientView.colors = @[[UIColor colorWithWhite:0 alpha:0],
@@ -56,12 +66,22 @@
 }
 
 - (void) onGradientAction{
-    
+    [self.timer invalidate];
+    [self.timer2 invalidate];
+//    [self.gradientView setHighlighted:!self.gradientView.isHighlighted
+//                             animated:YES];
+}
+
+- (void) onTimerAction:(MMNoRetainTimer<NSString *> *)timer{
+    NSLog(@"timer.userInfo:%@",timer.userInfo);
     [self.gradientView setHighlighted:!self.gradientView.isHighlighted
                              animated:YES];
 }
 
-
+- (void) onTimer2{
+    [self.gradientView setHighlighted:!self.gradientView.isHighlighted
+                             animated:YES];
+}
 /*
 #pragma mark - Navigation
 

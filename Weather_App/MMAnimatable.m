@@ -24,16 +24,15 @@
     }
     return  nil;
 }
-
-- (MMAnimationPromise *) animateWith:(MMAnimationConfiguration *)config{
-    
+- (MMAnimationPromise *) animationWith:(MMAnimationType *)animationType configuration:(MMAnimationConfiguration *)config{
     if (self._UIView) {
         MMAnimationPromise * promise = [[MMAnimationPromise alloc] initWithView:self._UIView];
-        [promise.delay(config.delayValue) thenAnimationWith:config];
+        [promise.delay(config.delayValue) thenAnimation:animationType config:config];
         return promise;
     }
     return nil;
 }
+
 - (MMAnimationPromise *) delay:(NSTimeInterval)delay{
     if (self._UIView) {
         MMAnimationPromise * promise = [[MMAnimationPromise alloc] initWithView:self._UIView];
@@ -70,6 +69,8 @@
 - (void) doAnimation:(MMAnimationType *)animationType
        configuration:(MMAnimationConfiguration *)config
           completion:(MMAnimatableCompletion)completion{
+    
+    [self layoutIfNeeded];
     
     if (animationType.type == MMAnimationTypeSlide) {
         [self _slideWithWay:animationType.way

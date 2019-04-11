@@ -43,7 +43,7 @@
 //    });
     
     self.superView = [UIView new];
-    self.superView.backgroundColor = [UIColor orangeColor];
+    self.superView.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.superView];
     
     [self.superView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -52,9 +52,9 @@
         make.width.mas_equalTo(300);
     }];
     
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor greenColor];
     [[[UIView.animator.duration(2.0f) animations:^{
-        self.view.backgroundColor = [UIColor orangeColor];
+//        self.view.backgroundColor = [UIColor orangeColor];
     }] completion:^(BOOL finished) {
         NSLog(@"animator completion");
     }] animate];
@@ -83,10 +83,14 @@
     
     // 第四个缺点，如果先设置springAnimator的delay，然后再设置dampingRatio、velocity会报错，
     // 因为delay返回的是 MMAnimator 协议，而 dampingRatio 是 MMSpringAnimator 协议的
+    // 使用类的时候，比如SuperClass有一个`-(SuperClass *)func;`，而子类SonClass有一个属性`NSString *name`
+    // 在子类进行下面操作 `[[SonClass new] func].name = @"rocky";`的时候会报错，因为`-func`方法返回的是父类
+    // 系统给出的解决办法是使用`instancetype`这个关键字来解决，谁调用返回的就是哪个具体的类的实例对象，
+    // 但可惜的是，协议中没有这种方法
     
     [[[UIView.springAnimator.dampingRatio(10).velocity(20)
        .duration(2.0f).delay(4.25f) animations:^{
-           self.superView.backgroundColor = [UIColor purpleColor];
+//           self.superView.backgroundColor = [UIColor purpleColor];
        }] completion:^(BOOL finished) {
            NSLog(@"springAnimator completion");
        }] animate];
@@ -105,7 +109,7 @@
     
     [[UIView.keyframeAnimator.keyFrameOptions(UIViewKeyframeAnimationOptionCalculationModeCubic)
       .duration(2.0f) animations:^{
-          self.itemView3.backgroundColor = [UIColor orangeColor];
+//          self.itemView3.backgroundColor = [UIColor orangeColor];
       }] animate];
     
     NSArray * itemViews = @[self.itemView1,self.itemView2,self.itemView3];
@@ -121,11 +125,18 @@
     id tf = MMAnimationTimingFunctionEaseInQuint();
     id as = MMAnimationTypeMakeSlide(MMAnimationWayOut, MMAnimationWayDirectionUp);
     
-    id scale = [MMAnimationType scaleToX:3 y:3];
+    MMAnimationType * zoom = MMAnimationTypeMakeZoom(MMAnimationWayIn);
+    
+    id scale = [MMAnimationType scaleToX:1 y:3];
+    MMAnimationType * shake = MMAnimationTypeMakeShake(2);
+    
+    MMAnimationType * rotate = MMAnimationTypeMakeRotate(MMAnimationWayRotationDirectionCW);
     
     MMAnimationConfiguration * config = MMAnimationConfiguration.new.duration(2.3)
-    .force(1.3).damping(0.8).velocity(2);
-    [[self.superView animateWith:config].delay(3) thenAnimationWith:config];
+    .force(1.3).damping(0.8).velocity(2).timingFunction(tf);
+    
+    [[[self.superView animationWith:rotate configuration:config].delay(3)
+      thenAnimation:zoom config:config] animationCompletiond];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

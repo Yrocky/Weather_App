@@ -17,6 +17,7 @@
 		5C5E63CD2244AC3000C0B85D /* RoomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63CC2244AC3000C0B85D /* RoomModel.m */; };
 		5C5E63D22244AC9B00C0B85D /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63D02244AC9B00C0B85D /* RoomViewController.m */; };
 		5C5E63D82244B86D00C0B85D /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63D72244B86C00C0B85D /* UINavigationController+FDFullscreenPopGesture.m */; };
+		5C9C28C8225F13C2000B5631 /* MMNoRetainTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */; };
 		7F0501822011EAD00033E83C /* MMAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501812011EAD00033E83C /* MMAnimationViewController.m */; };
 		7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501842011EAE80033E83C /* YALPreloaderCircleView.m */; };
 		7F0C0EC5214B5288000C55C6 /* UIButton+MMCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0EC4214B5288000C55C6 /* UIButton+MMCustom.m */; };
@@ -229,6 +230,8 @@
 		5C5E63D02244AC9B00C0B85D /* RoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomViewController.m; sourceTree = "<group>"; };
 		5C5E63D62244B86C00C0B85D /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		5C5E63D72244B86C00C0B85D /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
+		5C9C28C6225F13C2000B5631 /* MMNoRetainTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMNoRetainTimer.h; sourceTree = "<group>"; };
+		5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMNoRetainTimer.m; sourceTree = "<group>"; };
 		7F0501802011EAD00033E83C /* MMAnimationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationViewController.h; sourceTree = "<group>"; };
 		7F0501812011EAD00033E83C /* MMAnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationViewController.m; sourceTree = "<group>"; };
 		7F0501842011EAE80033E83C /* YALPreloaderCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALPreloaderCircleView.m; sourceTree = "<group>"; };
@@ -1048,6 +1051,8 @@
 				D713B8B5207280C900D388F2 /* CustomNavigationBar.m */,
 				7F5FD9912115898C00DB70F8 /* MM24GameManager.h */,
 				7F5FD9922115898D00DB70F8 /* MM24GameManager.m */,
+				5C9C28C6225F13C2000B5631 /* MMNoRetainTimer.h */,
+				5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */,
 				7F53C0DE2126740500567D74 /* GIftEffectView */,
 				7FFAB83C210AC38A00CA6671 /* MMAObject.h */,
 				7FFAB83D210AC38A00CA6671 /* MMAObject.m */,
@@ -1730,6 +1735,7 @@
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
 				7F981011211C6BE90004C638 /* UIView+RoundCorner.m in Sources */,
 				7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */,
+				5C9C28C8225F13C2000B5631 /* MMNoRetainTimer.m in Sources */,
 				7F590D7B1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m in Sources */,
 				F77231C321AE5FEB00DA019B /* MMAnimationConfiguration.m in Sources */,
 				7F3E0A211FB93BF200F8C258 /* BottomFollowView.m in Sources */,
