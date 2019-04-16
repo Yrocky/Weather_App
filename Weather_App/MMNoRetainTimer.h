@@ -11,11 +11,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MMTimerWrap<T> : NSObject
-@property (nonatomic ,assign ,readonly) NSTimeInterval intervalValue;
-@property (nonatomic ,assign ,readonly) SEL selectorValue;
-@property (nonatomic ,assign ,readonly) BOOL repeatsValue;
-@property (nonatomic ,strong ,readonly) T userInfoValue;
-@property (nonatomic ,strong ,readonly) id target;
 
 + (instancetype) timerWith:(id)target;
 

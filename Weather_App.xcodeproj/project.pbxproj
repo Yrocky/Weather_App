@@ -18,6 +18,7 @@
 		5C5E63D22244AC9B00C0B85D /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63D02244AC9B00C0B85D /* RoomViewController.m */; };
 		5C5E63D82244B86D00C0B85D /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63D72244B86C00C0B85D /* UINavigationController+FDFullscreenPopGesture.m */; };
 		5C9C28C8225F13C2000B5631 /* MMNoRetainTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */; };
+		5C9C28CB226418F4000B5631 /* MMAccumulateTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C28CA226418F4000B5631 /* MMAccumulateTimer.m */; };
 		7F0501822011EAD00033E83C /* MMAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501812011EAD00033E83C /* MMAnimationViewController.m */; };
 		7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501842011EAE80033E83C /* YALPreloaderCircleView.m */; };
 		7F0C0EC5214B5288000C55C6 /* UIButton+MMCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0EC4214B5288000C55C6 /* UIButton+MMCustom.m */; };
@@ -232,6 +233,8 @@
 		5C5E63D72244B86C00C0B85D /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
 		5C9C28C6225F13C2000B5631 /* MMNoRetainTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMNoRetainTimer.h; sourceTree = "<group>"; };
 		5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMNoRetainTimer.m; sourceTree = "<group>"; };
+		5C9C28C9226418F4000B5631 /* MMAccumulateTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAccumulateTimer.h; sourceTree = "<group>"; };
+		5C9C28CA226418F4000B5631 /* MMAccumulateTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAccumulateTimer.m; sourceTree = "<group>"; };
 		7F0501802011EAD00033E83C /* MMAnimationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationViewController.h; sourceTree = "<group>"; };
 		7F0501812011EAD00033E83C /* MMAnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationViewController.m; sourceTree = "<group>"; };
 		7F0501842011EAE80033E83C /* YALPreloaderCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALPreloaderCircleView.m; sourceTree = "<group>"; };
@@ -1053,6 +1056,8 @@
 				7F5FD9922115898D00DB70F8 /* MM24GameManager.m */,
 				5C9C28C6225F13C2000B5631 /* MMNoRetainTimer.h */,
 				5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */,
+				5C9C28C9226418F4000B5631 /* MMAccumulateTimer.h */,
+				5C9C28CA226418F4000B5631 /* MMAccumulateTimer.m */,
 				7F53C0DE2126740500567D74 /* GIftEffectView */,
 				7FFAB83C210AC38A00CA6671 /* MMAObject.h */,
 				7FFAB83D210AC38A00CA6671 /* MMAObject.m */,
@@ -1856,6 +1861,7 @@
 				5C5E63C52244ABD200C0B85D /* CardCollectionViewCell.m in Sources */,
 				D7A595BB1FAAC743000C59FE /* FDHTMLRenderComposer.m in Sources */,
 				7FBC5FB71F97454C00DCF3E9 /* ANYMethodLog.m in Sources */,
+				5C9C28CB226418F4000B5631 /* MMAccumulateTimer.m in Sources */,
 				7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */,
 				7FA726271FFCD51300C0F6F2 /* MMText.m in Sources */,
 				5C4E3A702252F54C001499AF /* RankViewController.m in Sources */,

@@ -9,11 +9,11 @@
 #import "MMNoRetainTimer.h"
 
 @interface MMTimerWrap ()
-@property (nonatomic ,assign ,readwrite) NSTimeInterval intervalValue;
-@property (nonatomic ,assign ,readwrite) SEL selectorValue;
-@property (nonatomic ,assign ,readwrite) BOOL repeatsValue;
-@property (nonatomic ,strong ,readwrite) id userInfoValue;
-@property (nonatomic ,strong ,readwrite) id target;
+@property (nonatomic ,assign) NSTimeInterval intervalValue;
+@property (nonatomic ,assign) SEL selectorValue;
+@property (nonatomic ,assign) BOOL repeatsValue;
+@property (nonatomic ,strong) id userInfoValue;
+@property (nonatomic ,strong) id target;
 @end
 
 @implementation MMNoRetainTimer
