@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, ADKLayoutAttribute) {
+typedef NS_OPTIONS(NSUInteger, ADKLayoutAttribute) {
     ADKLayoutAttributeTop = 1 << 0,
     ADKLayoutAttributeBottom = 1 << 1,
     ADKLayoutAttributeLeading = 1 << 2,
@@ -48,6 +48,10 @@ typedef NS_ENUM(NSUInteger, ADKLayoutAttribute) {
 
 - (void)ADKHideRightConstraint;
 - (void)ADKUnhideRightConstraint;
+
+///<相当于将left、right、top、bottom、width、height约束都设置为0
+- (void) ADKHide;
+- (void) ADKShow;
 
 - (void)ADKSetConstraintConstant:(CGFloat)constant forAttribute:(NSLayoutAttribute)attribute;
 

@@ -10,7 +10,8 @@
 
 @class MMPickerView;
 
-// config
+#pragma mark - config
+
 @interface MMPickerViewConfig<T> : NSObject
 
 + (instancetype _Nullable ) config;
@@ -23,7 +24,7 @@
 - (void) defaultSelect:(NSUInteger (^_Nullable)(NSUInteger column))callback;
 
 // 装有字符串的数组
-- (void) configRowAt:(NSArray <NSString *>*_Nullable(^_Nullable)(NSUInteger cloumn))callBack;
+- (void) configRowAt:(NSArray <NSString *>*_Nullable(^_Nullable)(NSUInteger cloumn))callback;
 
 // 装有对象的数组，可以根据callBack2进行对应的属性获取
 - (void) configRowAt:(NSArray <T>*_Nullable(^_Nullable)(NSUInteger cloumn))callback
@@ -42,7 +43,8 @@
 @property (nonatomic) NSTimeInterval countDownDuration;// 仅针对于 UIDatePickerModeCountDownTimer ，其他类型忽略
 @end
 
-// interface
+#pragma mark - interface
+
 @interface MMPickerViewInterface : NSObject
 
 + (instancetype _Nullable ) interface;
@@ -63,7 +65,8 @@
 
 @end
 
-// view
+#pragma mark - PickerView
+
 @interface MMPickerView : UIView
 
 @property (nonatomic ,strong ,readonly) __kindof MMPickerViewConfig *  _Nullable config;
@@ -73,6 +76,9 @@
 
 - (instancetype _Nullable ) initWithConfig:(MMPickerViewConfig *_Nonnull)config;
 - (instancetype _Nullable ) initWithDatePickerConfig:(MMDatePickerViewConfig *_Nullable)config;
+
++ (instancetype _Nullable ) pickerViewWithConfig:(void(^)(MMPickerViewConfig *_Nonnull config))configHandle;
++ (instancetype _Nullable ) pickerViewWithDatePickerConfig:(void(^)(MMDatePickerViewConfig *_Nonnull config))configHandle;
 
 - (void) setupInterface:(MMPickerViewInterface *_Nonnull)interface;
 
