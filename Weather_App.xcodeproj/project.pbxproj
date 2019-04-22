@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29DBA5C092A3C92ABAAD9DA9 /* Pods_Weather_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD27D1478D1B8369B4F8A1A3 /* Pods_Weather_App.framework */; };
+		5C2174612254B30B001443BC /* RoomCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2174602254B30B001443BC /* RoomCycleScrollView.m */; };
+		5C392B26226D835900C15344 /* MMWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392B25226D835900C15344 /* MMWebView.m */; };
+		5C392B29226D852800C15344 /* XXXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392B28226D852800C15344 /* XXXWebViewController.m */; };
+		5C392B2F226D89D200C15344 /* Console.js in Resources */ = {isa = PBXBuildFile; fileRef = 5C392B2C226D89D200C15344 /* Console.js */; };
+		5C392B30226D89D200C15344 /* Base.js in Resources */ = {isa = PBXBuildFile; fileRef = 5C392B2D226D89D200C15344 /* Base.js */; };
+		5C392B31226D89D200C15344 /* Accelerometer.js in Resources */ = {isa = PBXBuildFile; fileRef = 5C392B2E226D89D200C15344 /* Accelerometer.js */; };
+		5C392B34226D8A6B00C15344 /* MMPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392B33226D8A6B00C15344 /* MMPlugin.m */; };
+		5C392BA2226DDD5800C15344 /* MMConsolePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA1226DDD5800C15344 /* MMConsolePlugin.m */; };
+		5C392BA5226DDD9D00C15344 /* MMAccelerometerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA4226DDD9D00C15344 /* MMAccelerometerPlugin.m */; };
+		5C4E3A702252F54C001499AF /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E3A6F2252F54C001499AF /* RankViewController.m */; };
+		5C4E3ADF22532B74001499AF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E3ADE22532B74001499AF /* README.md */; };
+		5C5E63C22244AB9100C0B85D /* CardCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63C12244AB9100C0B85D /* CardCollectionViewController.m */; };
+		5C5E63C52244ABD200C0B85D /* CardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63C42244ABD200C0B85D /* CardCollectionViewCell.m */; };
+		5C5E63C82244ABF100C0B85D /* CardCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63C72244ABF100C0B85D /* CardCollectionView.m */; };
+		5C5E63CD2244AC3000C0B85D /* RoomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63CC2244AC3000C0B85D /* RoomModel.m */; };
+		5C5E63D22244AC9B00C0B85D /* RoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63D02244AC9B00C0B85D /* RoomViewController.m */; };
+		5C5E63D82244B86D00C0B85D /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63D72244B86C00C0B85D /* UINavigationController+FDFullscreenPopGesture.m */; };
+		5C9C28C8225F13C2000B5631 /* MMNoRetainTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */; };
+		5C9C28CB226418F4000B5631 /* MMAccumulateTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C28CA226418F4000B5631 /* MMAccumulateTimer.m */; };
 		7F0501822011EAD00033E83C /* MMAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501812011EAD00033E83C /* MMAnimationViewController.m */; };
 		7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501842011EAE80033E83C /* YALPreloaderCircleView.m */; };
 		7F0C0EC5214B5288000C55C6 /* UIButton+MMCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0EC4214B5288000C55C6 /* UIButton+MMCustom.m */; };
@@ -187,17 +207,55 @@
 		D7F1F8032070F9FB000478C2 /* HomeBillContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8022070F9FB000478C2 /* HomeBillContentView.m */; };
 		D7F1F8062070FEA3000478C2 /* HomeBillContentDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8052070FEA3000478C2 /* HomeBillContentDateView.m */; };
 		D7F1F8092070FEDF000478C2 /* HomeBillContentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */; };
-		E3CDC4C9DF28E252C8F70DC9 /* libPods-Weather_App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */; };
 		F703661821E720380086832C /* EaseDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F703661721E720380086832C /* EaseDevice.m */; };
+		F703661B21E77D4E0086832C /* MMAnimationKeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = F703661A21E77D4E0086832C /* MMAnimationKeyPath.m */; };
 		F77231C021AE581600DA019B /* MMAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231BF21AE581600DA019B /* MMAnimation.m */; };
 		F77231C321AE5FEB00DA019B /* MMAnimationConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231C221AE5FEB00DA019B /* MMAnimationConfiguration.m */; };
 		F77231C621AE607400DA019B /* MMAnimationPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231C521AE607400DA019B /* MMAnimationPromise.m */; };
 		F77231C921AE629C00DA019B /* MMAnimatable.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231C821AE629C00DA019B /* MMAnimatable.m */; };
 		F77231CC21AE6A8A00DA019B /* MMAnimationType.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231CB21AE6A8A00DA019B /* MMAnimationType.m */; };
 		F77231CF21AE8A5300DA019B /* MMAnimationTimingFunctionType.m in Sources */ = {isa = PBXBuildFile; fileRef = F77231CE21AE8A5300DA019B /* MMAnimationTimingFunctionType.m */; };
+		F7C5B57721F571BC00D3F9D7 /* YTKRequest+PromiseKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C5B57621F571BC00D3F9D7 /* YTKRequest+PromiseKit.m */; };
+		F7C5B57B21F5BA0B00D3F9D7 /* PromiseKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C5B57A21F5BA0B00D3F9D7 /* PromiseKitViewController.m */; };
+		F7C5B57E21F6CDD200D3F9D7 /* XXXGushiciRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C5B57D21F6CDD200D3F9D7 /* XXXGushiciRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C21745F2254B30B001443BC /* RoomCycleScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomCycleScrollView.h; sourceTree = "<group>"; };
+		5C2174602254B30B001443BC /* RoomCycleScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomCycleScrollView.m; sourceTree = "<group>"; };
+		5C2174622254B7BE001443BC /* RoomDataSourceHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomDataSourceHandler.h; sourceTree = "<group>"; };
+		5C392B24226D835900C15344 /* MMWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMWebView.h; sourceTree = "<group>"; };
+		5C392B25226D835900C15344 /* MMWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMWebView.m; sourceTree = "<group>"; };
+		5C392B27226D852800C15344 /* XXXWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXWebViewController.h; sourceTree = "<group>"; };
+		5C392B28226D852800C15344 /* XXXWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXWebViewController.m; sourceTree = "<group>"; };
+		5C392B2C226D89D200C15344 /* Console.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Console.js; sourceTree = "<group>"; };
+		5C392B2D226D89D200C15344 /* Base.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Base.js; sourceTree = "<group>"; };
+		5C392B2E226D89D200C15344 /* Accelerometer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Accelerometer.js; sourceTree = "<group>"; };
+		5C392B32226D8A6B00C15344 /* MMPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMPlugin.h; sourceTree = "<group>"; };
+		5C392B33226D8A6B00C15344 /* MMPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMPlugin.m; sourceTree = "<group>"; };
+		5C392BA0226DDD5800C15344 /* MMConsolePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMConsolePlugin.h; sourceTree = "<group>"; };
+		5C392BA1226DDD5800C15344 /* MMConsolePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMConsolePlugin.m; sourceTree = "<group>"; };
+		5C392BA3226DDD9D00C15344 /* MMAccelerometerPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAccelerometerPlugin.h; sourceTree = "<group>"; };
+		5C392BA4226DDD9D00C15344 /* MMAccelerometerPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAccelerometerPlugin.m; sourceTree = "<group>"; };
+		5C4E3A6E2252F54C001499AF /* RankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
+		5C4E3A6F2252F54C001499AF /* RankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
+		5C4E3ADE22532B74001499AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5C5E63C02244AB9100C0B85D /* CardCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardCollectionViewController.h; sourceTree = "<group>"; };
+		5C5E63C12244AB9100C0B85D /* CardCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardCollectionViewController.m; sourceTree = "<group>"; };
+		5C5E63C32244ABD200C0B85D /* CardCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardCollectionViewCell.h; sourceTree = "<group>"; };
+		5C5E63C42244ABD200C0B85D /* CardCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardCollectionViewCell.m; sourceTree = "<group>"; };
+		5C5E63C62244ABF100C0B85D /* CardCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardCollectionView.h; sourceTree = "<group>"; };
+		5C5E63C72244ABF100C0B85D /* CardCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardCollectionView.m; sourceTree = "<group>"; };
+		5C5E63CB2244AC3000C0B85D /* RoomModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomModel.h; sourceTree = "<group>"; };
+		5C5E63CC2244AC3000C0B85D /* RoomModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomModel.m; sourceTree = "<group>"; };
+		5C5E63CF2244AC9B00C0B85D /* RoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomViewController.h; sourceTree = "<group>"; };
+		5C5E63D02244AC9B00C0B85D /* RoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomViewController.m; sourceTree = "<group>"; };
+		5C5E63D62244B86C00C0B85D /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
+		5C5E63D72244B86C00C0B85D /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
+		5C9C28C6225F13C2000B5631 /* MMNoRetainTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMNoRetainTimer.h; sourceTree = "<group>"; };
+		5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMNoRetainTimer.m; sourceTree = "<group>"; };
+		5C9C28C9226418F4000B5631 /* MMAccumulateTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAccumulateTimer.h; sourceTree = "<group>"; };
+		5C9C28CA226418F4000B5631 /* MMAccumulateTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAccumulateTimer.m; sourceTree = "<group>"; };
 		7F0501802011EAD00033E83C /* MMAnimationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationViewController.h; sourceTree = "<group>"; };
 		7F0501812011EAD00033E83C /* MMAnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationViewController.m; sourceTree = "<group>"; };
 		7F0501842011EAE80033E83C /* YALPreloaderCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALPreloaderCircleView.m; sourceTree = "<group>"; };
@@ -407,8 +465,8 @@
 		7FFAB83F210AC39500CA6671 /* MMBObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMBObject.h; sourceTree = "<group>"; };
 		7FFAB840210AC39500CA6671 /* MMBObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMBObject.m; sourceTree = "<group>"; };
 		8B9A4BC81A12BABD40DE994D /* Pods-Weather_App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather_App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App.debug.xcconfig"; sourceTree = "<group>"; };
-		AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Weather_App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1DD493FBDDB77E68B89AA1C /* Pods-Weather_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App.release.xcconfig"; sourceTree = "<group>"; };
+		CD27D1478D1B8369B4F8A1A3 /* Pods_Weather_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7008DDA1FB180B500BD6EA0 /* MMNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMNavigationController.h; sourceTree = "<group>"; };
 		D7008DDB1FB180B500BD6EA0 /* MMNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMNavigationController.m; sourceTree = "<group>"; };
 		D70629001F8B132E00F52FCB /* NSUserDefaults+MM_Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+MM_Common.h"; sourceTree = "<group>"; };
@@ -555,6 +613,8 @@
 		D7F1F8082070FEDF000478C2 /* HomeBillContentListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBillContentListView.m; sourceTree = "<group>"; };
 		F703661621E720380086832C /* EaseDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseDevice.h; sourceTree = "<group>"; };
 		F703661721E720380086832C /* EaseDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseDevice.m; sourceTree = "<group>"; };
+		F703661921E77D4E0086832C /* MMAnimationKeyPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationKeyPath.h; sourceTree = "<group>"; };
+		F703661A21E77D4E0086832C /* MMAnimationKeyPath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationKeyPath.m; sourceTree = "<group>"; };
 		F77231BE21AE581600DA019B /* MMAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimation.h; sourceTree = "<group>"; };
 		F77231BF21AE581600DA019B /* MMAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimation.m; sourceTree = "<group>"; };
 		F77231C121AE5FEB00DA019B /* MMAnimationConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationConfiguration.h; sourceTree = "<group>"; };
@@ -567,6 +627,12 @@
 		F77231CB21AE6A8A00DA019B /* MMAnimationType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationType.m; sourceTree = "<group>"; };
 		F77231CD21AE8A5300DA019B /* MMAnimationTimingFunctionType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationTimingFunctionType.h; sourceTree = "<group>"; };
 		F77231CE21AE8A5300DA019B /* MMAnimationTimingFunctionType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationTimingFunctionType.m; sourceTree = "<group>"; };
+		F7C5B57521F571BC00D3F9D7 /* YTKRequest+PromiseKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YTKRequest+PromiseKit.h"; sourceTree = "<group>"; };
+		F7C5B57621F571BC00D3F9D7 /* YTKRequest+PromiseKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "YTKRequest+PromiseKit.m"; sourceTree = "<group>"; };
+		F7C5B57921F5BA0B00D3F9D7 /* PromiseKitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PromiseKitViewController.h; sourceTree = "<group>"; };
+		F7C5B57A21F5BA0B00D3F9D7 /* PromiseKitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PromiseKitViewController.m; sourceTree = "<group>"; };
+		F7C5B57C21F6CDD200D3F9D7 /* XXXGushiciRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXGushiciRequest.h; sourceTree = "<group>"; };
+		F7C5B57D21F6CDD200D3F9D7 /* XXXGushiciRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXGushiciRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -574,18 +640,97 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3CDC4C9DF28E252C8F70DC9 /* libPods-Weather_App.a in Frameworks */,
+				29DBA5C092A3C92ABAAD9DA9 /* Pods_Weather_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C392B2A226D88CF00C15344 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				5C392B2B226D89D200C15344 /* plugins */,
+				5C392B24226D835900C15344 /* MMWebView.h */,
+				5C392B25226D835900C15344 /* MMWebView.m */,
+				5C392B32226D8A6B00C15344 /* MMPlugin.h */,
+				5C392B33226D8A6B00C15344 /* MMPlugin.m */,
+				5C392BA0226DDD5800C15344 /* MMConsolePlugin.h */,
+				5C392BA1226DDD5800C15344 /* MMConsolePlugin.m */,
+				5C392BA3226DDD9D00C15344 /* MMAccelerometerPlugin.h */,
+				5C392BA4226DDD9D00C15344 /* MMAccelerometerPlugin.m */,
+			);
+			name = WebView;
+			sourceTree = "<group>";
+		};
+		5C392B2B226D89D200C15344 /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				5C392B2C226D89D200C15344 /* Console.js */,
+				5C392B2D226D89D200C15344 /* Base.js */,
+				5C392B2E226D89D200C15344 /* Accelerometer.js */,
+			);
+			path = plugins;
+			sourceTree = "<group>";
+		};
+		5C5E63C92244ABF900C0B85D /* 无限滚动 */ = {
+			isa = PBXGroup;
+			children = (
+				5C5E63CE2244AC3A00C0B85D /* Model */,
+				5C5E63CA2244AC1500C0B85D /* View */,
+				5C5E63D42244ACA300C0B85D /* Controller */,
+			);
+			name = "无限滚动";
+			sourceTree = "<group>";
+		};
+		5C5E63CA2244AC1500C0B85D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5C2174622254B7BE001443BC /* RoomDataSourceHandler.h */,
+				5C5E63C62244ABF100C0B85D /* CardCollectionView.h */,
+				5C5E63C72244ABF100C0B85D /* CardCollectionView.m */,
+				5C5E63C32244ABD200C0B85D /* CardCollectionViewCell.h */,
+				5C5E63C42244ABD200C0B85D /* CardCollectionViewCell.m */,
+				5C21745F2254B30B001443BC /* RoomCycleScrollView.h */,
+				5C2174602254B30B001443BC /* RoomCycleScrollView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		5C5E63CE2244AC3A00C0B85D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5C5E63CB2244AC3000C0B85D /* RoomModel.h */,
+				5C5E63CC2244AC3000C0B85D /* RoomModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5C5E63D42244ACA300C0B85D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5C5E63CF2244AC9B00C0B85D /* RoomViewController.h */,
+				5C5E63D02244AC9B00C0B85D /* RoomViewController.m */,
+				5C4E3A6E2252F54C001499AF /* RankViewController.h */,
+				5C4E3A6F2252F54C001499AF /* RankViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		5C5E63D52244B86C00C0B85D /* FDFullscreenPopGesture */ = {
+			isa = PBXGroup;
+			children = (
+				5C5E63D62244B86C00C0B85D /* UINavigationController+FDFullscreenPopGesture.h */,
+				5C5E63D72244B86C00C0B85D /* UINavigationController+FDFullscreenPopGesture.m */,
+			);
+			path = FDFullscreenPopGesture;
+			sourceTree = "<group>";
+		};
 		78B0F788262D33A0091F4C84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				7F94A34E1F5519D800DA28EA /* XCTest.framework */,
-				AC63F9F5AB2BDDA29691841E /* libPods-Weather_App.a */,
+				CD27D1478D1B8369B4F8A1A3 /* Pods_Weather_App.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -662,6 +807,8 @@
 				F77231C821AE629C00DA019B /* MMAnimatable.m */,
 				F77231CA21AE6A8A00DA019B /* MMAnimationType.h */,
 				F77231CB21AE6A8A00DA019B /* MMAnimationType.m */,
+				F703661921E77D4E0086832C /* MMAnimationKeyPath.h */,
+				F703661A21E77D4E0086832C /* MMAnimationKeyPath.m */,
 				F77231CD21AE8A5300DA019B /* MMAnimationTimingFunctionType.h */,
 				F77231CE21AE8A5300DA019B /* MMAnimationTimingFunctionType.m */,
 				F77231C121AE5FEB00DA019B /* MMAnimationConfiguration.h */,
@@ -912,6 +1059,7 @@
 		7FDC6EBC1F46E35A00D94379 = {
 			isa = PBXGroup;
 			children = (
+				5C4E3ADE22532B74001499AF /* README.md */,
 				7FDC6EC71F46E35A00D94379 /* Weather_App */,
 				7FDC6EC61F46E35A00D94379 /* Products */,
 				E487AB39E2CE10CFE9CB0233 /* Pods */,
@@ -942,6 +1090,8 @@
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
 				D7A325E220772DD700B2F8AB /* BillKeyboardView.h */,
 				D7A325E320772DD700B2F8AB /* BillKeyboardView.m */,
+				5C392B2A226D88CF00C15344 /* WebView */,
+				5C5E63C92244ABF900C0B85D /* 无限滚动 */,
 				7F472926218C6B7C007A10FB /* MMAnimator */,
 				7F472924218C6B58007A10FB /* MMLiveChatEmojiView */,
 				7F472925218C6B61007A10FB /* MMSwipeCell */,
@@ -952,6 +1102,10 @@
 				D713B8B5207280C900D388F2 /* CustomNavigationBar.m */,
 				7F5FD9912115898C00DB70F8 /* MM24GameManager.h */,
 				7F5FD9922115898D00DB70F8 /* MM24GameManager.m */,
+				5C9C28C6225F13C2000B5631 /* MMNoRetainTimer.h */,
+				5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */,
+				5C9C28C9226418F4000B5631 /* MMAccumulateTimer.h */,
+				5C9C28CA226418F4000B5631 /* MMAccumulateTimer.m */,
 				7F53C0DE2126740500567D74 /* GIftEffectView */,
 				7FFAB83C210AC38A00CA6671 /* MMAObject.h */,
 				7FFAB83D210AC38A00CA6671 /* MMAObject.m */,
@@ -972,6 +1126,7 @@
 				7F677F38218C1139009851B6 /* MMGradientView */,
 				7F7BA14A2090799C0085E045 /* PKProtocolExtension.h */,
 				7F7BA14B2090799C0085E045 /* PKProtocolExtension.m */,
+				F7C5B57821F571C400D3F9D7 /* PromiseKit */,
 				7F7BA143208DE2EF0085E045 /* 链表 */,
 				7FA274CC2087633E001B9FD2 /* YYWeakProxy */,
 				7F63BBBD2072036E0084ABC8 /* LunarCore */,
@@ -999,6 +1154,7 @@
 				7FBCF0BF1F4D269E00E2EEC7 /* CustomView */,
 				7FBC5FB41F97454B00DCF3E9 /* ANYMethodLog */,
 				7FDC6ED11F46E35A00D94379 /* Main.storyboard */,
+				5C5E63D52244B86C00C0B85D /* FDFullscreenPopGesture */,
 				7FDC6ED41F46E35A00D94379 /* Assets.xcassets */,
 				7FDC6ED61F46E35A00D94379 /* LaunchScreen.storyboard */,
 				7FDC6ED91F46E35A00D94379 /* Info.plist */,
@@ -1302,6 +1458,12 @@
 				7F472928218C6F07007A10FB /* EmojiViewController.m */,
 				D7963EF921B5678B00B44397 /* ALBookDemoViewController.h */,
 				D7963EFA21B5678B00B44397 /* ALBookDemoViewController.m */,
+				F7C5B57921F5BA0B00D3F9D7 /* PromiseKitViewController.h */,
+				F7C5B57A21F5BA0B00D3F9D7 /* PromiseKitViewController.m */,
+				5C5E63C02244AB9100C0B85D /* CardCollectionViewController.h */,
+				5C5E63C12244AB9100C0B85D /* CardCollectionViewController.m */,
+				5C392B27226D852800C15344 /* XXXWebViewController.h */,
+				5C392B28226D852800C15344 /* XXXWebViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -1420,6 +1582,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F7C5B57821F571C400D3F9D7 /* PromiseKit */ = {
+			isa = PBXGroup;
+			children = (
+				F7C5B57521F571BC00D3F9D7 /* YTKRequest+PromiseKit.h */,
+				F7C5B57621F571BC00D3F9D7 /* YTKRequest+PromiseKit.m */,
+				F7C5B57C21F6CDD200D3F9D7 /* XXXGushiciRequest.h */,
+				F7C5B57D21F6CDD200D3F9D7 /* XXXGushiciRequest.m */,
+			);
+			name = PromiseKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1431,8 +1604,7 @@
 				7FDC6EC11F46E35A00D94379 /* Sources */,
 				7FDC6EC21F46E35A00D94379 /* Frameworks */,
 				7FDC6EC31F46E35A00D94379 /* Resources */,
-				0B1A2ABB6BAEC654A44A08C1 /* [CP] Embed Pods Frameworks */,
-				B8ACD983C8A776B1E1D573D8 /* [CP] Copy Pods Resources */,
+				2AA405F967781D68AE8E5EF5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1454,7 +1626,7 @@
 				TargetAttributes = {
 					7FDC6EC41F46E35A00D94379 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = ZKEWNK6EPU;
+						DevelopmentTeam = LL7GM42E2F;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -1483,17 +1655,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C392B2F226D89D200C15344 /* Console.js in Resources */,
 				D7A595BF1FAACFED000C59FE /* rootTemplate.html in Resources */,
+				5C392B31226D89D200C15344 /* Accelerometer.js in Resources */,
 				7F53C0EC2126740600567D74 /* smile_face.xml in Resources */,
 				7FE705BB1FBD6A75009FF3A7 /* SomeCustomView.xib in Resources */,
 				7F53C0F32126740600567D74 /* v520.xml in Resources */,
 				7F53C0EE2126740600567D74 /* heart.xml in Resources */,
 				7F53C0EF2126740600567D74 /* v3344.xml in Resources */,
+				5C4E3ADF22532B74001499AF /* README.md in Resources */,
 				7F53C0F22126740600567D74 /* v.xml in Resources */,
 				7F85935A1FDE54E500E6AFFC /* MMXibCustomView.xib in Resources */,
 				7FDC6ED81F46E35A00D94379 /* LaunchScreen.storyboard in Resources */,
 				7F53C0ED2126740600567D74 /* v1314.xml in Resources */,
 				7FDC6ED51F46E35A00D94379 /* Assets.xcassets in Resources */,
+				5C392B30226D89D200C15344 /* Base.js in Resources */,
 				7F53C0F42126740600567D74 /* love.xml in Resources */,
 				7F47292B218C6FBF007A10FB /* MMEmojiText.plist in Resources */,
 				7FDC6ED31F46E35A00D94379 /* Main.storyboard in Resources */,
@@ -1506,15 +1682,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0B1A2ABB6BAEC654A44A08C1 /* [CP] Embed Pods Frameworks */ = {
+		2AA405F967781D68AE8E5EF5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/MMMarkdown/MMMarkdown.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/YTKNetwork/YTKNetwork.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMMarkdown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTKNetwork.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1527,28 +1722,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Weather_App-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		B8ACD983C8A776B1E1D573D8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1577,6 +1760,8 @@
 				D715E6A31FA64ECF00CFBFF4 /* FDContentView.m in Sources */,
 				7F8B6C071F95ED6F00F3A6E3 /* MMSearchDefaultCollectionView.m in Sources */,
 				7F243E3E1FA81E7A00AE4134 /* MMGCD.m in Sources */,
+				F7C5B57E21F6CDD200D3F9D7 /* XXXGushiciRequest.m in Sources */,
+				5C5E63C22244AB9100C0B85D /* CardCollectionViewController.m in Sources */,
 				7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */,
 				7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */,
 				7F472923218C6B50007A10FB /* MMLiveEmojiManager.m in Sources */,
@@ -1584,9 +1769,12 @@
 				D70629471F8B185100F52FCB /* HSCustomTableViewCell.m in Sources */,
 				7F6FFB92209458E100A84A81 /* ZPTextRunDelegate.m in Sources */,
 				7F6FFB8E209458E100A84A81 /* ZPTextDrawer.m in Sources */,
+				5C392BA2226DDD5800C15344 /* MMConsolePlugin.m in Sources */,
 				7F590D7F1FA9A5D4006F7BF0 /* UIResponder+STPopup.m in Sources */,
 				D713B8C2207601C100D388F2 /* BillExtensionView.m in Sources */,
+				5C5E63D82244B86D00C0B85D /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				7F6FFB91209458E100A84A81 /* ZPLabelLayer.m in Sources */,
+				5C392B34226D8A6B00C15344 /* MMPlugin.m in Sources */,
 				D706294F1F8B189C00F52FCB /* UIColor+Common.m in Sources */,
 				7F590D7D1FA9A5D4006F7BF0 /* STPopupLeftBarItem.m in Sources */,
 				D759BB03218CA1B500A06FE0 /* MMAnimatableProperty.m in Sources */,
@@ -1595,6 +1783,8 @@
 				7F9810142121889B0004C638 /* MMDelegateService.m in Sources */,
 				7F590D801FA9A5D4006F7BF0 /* UIViewController+STPopup.m in Sources */,
 				D7A73E231FB04F4800818CF5 /* MM_FindFriendEntryItemView.m in Sources */,
+				F7C5B57721F571BC00D3F9D7 /* YTKRequest+PromiseKit.m in Sources */,
+				5C5E63CD2244AC3000C0B85D /* RoomModel.m in Sources */,
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FA36CEA20B4082B0027B61E /* NSArray+Algorithms.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
@@ -1605,6 +1795,7 @@
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
 				7F981011211C6BE90004C638 /* UIView+RoundCorner.m in Sources */,
 				7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */,
+				5C9C28C8225F13C2000B5631 /* MMNoRetainTimer.m in Sources */,
 				7F590D7B1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m in Sources */,
 				F77231C321AE5FEB00DA019B /* MMAnimationConfiguration.m in Sources */,
 				7F3E0A211FB93BF200F8C258 /* BottomFollowView.m in Sources */,
@@ -1621,6 +1812,7 @@
 				D7F1F8062070FEA3000478C2 /* HomeBillContentDateView.m in Sources */,
 				7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */,
 				D713B8CE2076033800D388F2 /* BillRemarksExtensionView.m in Sources */,
+				F703661B21E77D4E0086832C /* MMAnimationKeyPath.m in Sources */,
 				D70629061F8B143D00F52FCB /* MMPickerView.m in Sources */,
 				7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */,
 				D713B8CB2076030D00D388F2 /* BillImageExtensionView.m in Sources */,
@@ -1647,6 +1839,7 @@
 				D70F5DE31FA81D69007FBD43 /* FDDismissingAnimator.m in Sources */,
 				7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */,
 				D70629421F8B185100F52FCB /* HSSectionModel.m in Sources */,
+				5C392BA5226DDD9D00C15344 /* MMAccelerometerPlugin.m in Sources */,
 				7FF4FC091FB55D980097CB3D /* LayoutViewController.m in Sources */,
 				7F5FD9932115898D00DB70F8 /* MM24GameManager.m in Sources */,
 				7F472922218C6B50007A10FB /* MMLiveChatEmojiView.m in Sources */,
@@ -1668,12 +1861,14 @@
 				7FE705BE1FBD8CFC009FF3A7 /* MMCollectionViewController.m in Sources */,
 				7FBCF0BE1F4D269100E2EEC7 /* HLLSegmentView.m in Sources */,
 				7F1D9A92208714C000E822B7 /* ProxyViewController.m in Sources */,
+				F7C5B57B21F5BA0B00D3F9D7 /* PromiseKitViewController.m in Sources */,
 				D70629411F8B185100F52FCB /* HSTitleCellModel.m in Sources */,
 				7F8AE0DD20B7EC05009D378A /* ZSWTappableLabel.m in Sources */,
 				D713B8BF207601A500D388F2 /* BillIndicateView.m in Sources */,
 				7FED6BA61F5557F0004E3345 /* TableViewDataSource.m in Sources */,
 				D70F5DD71FA74B26007FBD43 /* UIView+Glow.m in Sources */,
 				D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */,
+				5C2174612254B30B001443BC /* RoomCycleScrollView.m in Sources */,
 				7FA274CF20876366001B9FD2 /* YYWeakProxy.m in Sources */,
 				7F6FFB8D209458E100A84A81 /* NSAttributedString+ZPAttributedString.m in Sources */,
 				7F39ED06214FC3B7006CE72F /* MMAnimator.m in Sources */,
@@ -1683,6 +1878,7 @@
 				7F9810172122AE7C0004C638 /* MMSingleton.m in Sources */,
 				7F63BBC02072036F0084ABC8 /* LunarCore.m in Sources */,
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
+				5C5E63D22244AC9B00C0B85D /* RoomViewController.m in Sources */,
 				D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */,
 				7F53C0F52126740600567D74 /* XMLReader.m in Sources */,
 				D70629391F8B185100F52FCB /* MMAssetsCellModel.m in Sources */,
@@ -1708,7 +1904,9 @@
 				D713B8C5207602EA00D388F2 /* BillCalendarExtensionView.m in Sources */,
 				7F63BBB8206E25340084ABC8 /* HomeBillContainerView.m in Sources */,
 				7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */,
+				5C392B29226D852800C15344 /* XXXWebViewController.m in Sources */,
 				D70F5DDA1FA74BCB007FBD43 /* FDCustomView.m in Sources */,
+				5C5E63C82244ABF100C0B85D /* CardCollectionView.m in Sources */,
 				7F63BBBC2071EC650084ABC8 /* HomeBillContentDefaultView.m in Sources */,
 				D713B8B320727F0700D388F2 /* BillViewController.m in Sources */,
 				7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */,
@@ -1717,10 +1915,14 @@
 				D70F5DDD1FA74FFB007FBD43 /* FDCollectionView.m in Sources */,
 				7F9CED3E1F5D1F9D00A64EB5 /* MMRunwayProContentView.m in Sources */,
 				D7A73E1D1FAC16E800818CF5 /* MarkdownRenderHTMLViewController.m in Sources */,
+				5C5E63C52244ABD200C0B85D /* CardCollectionViewCell.m in Sources */,
 				D7A595BB1FAAC743000C59FE /* FDHTMLRenderComposer.m in Sources */,
+				5C392B26226D835900C15344 /* MMWebView.m in Sources */,
 				7FBC5FB71F97454C00DCF3E9 /* ANYMethodLog.m in Sources */,
+				5C9C28CB226418F4000B5631 /* MMAccumulateTimer.m in Sources */,
 				7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */,
 				7FA726271FFCD51300C0F6F2 /* MMText.m in Sources */,
+				5C4E3A702252F54C001499AF /* RankViewController.m in Sources */,
 				7F677F36218C1128009851B6 /* MMGradientView.m in Sources */,
 				7F590D7E1FA9A5D4006F7BF0 /* STPopupNavigationBar.m in Sources */,
 				D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */,
@@ -1854,7 +2056,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = ZKEWNK6EPU;
+				DEVELOPMENT_TEAM = LL7GM42E2F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/QQSDK",
@@ -1872,7 +2074,7 @@
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.HFLifeLiving.ap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1890,7 +2092,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZKEWNK6EPU;
+				DEVELOPMENT_TEAM = LL7GM42E2F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/QQSDK",
@@ -1907,7 +2109,7 @@
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.HFLifeLiving.ap;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Weather_App/Weather_App-Bridging-Header.h";

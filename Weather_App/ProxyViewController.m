@@ -377,19 +377,89 @@ static void PrintDescription(NSString *name, id obj)
     
 //    [self mutableDelegate];
 //
-//    MMLinkedList<NSNumber *> * list = [MMLinkedList linkedListWithHead:@0];
-//    for (NSInteger index = 1; index < 5; index ++) {
-////        [list addToBack:@(index)];
+    if (1) {
+        
+        MMCycleLinkedList<NSNumber *>* cls = [[MMCycleLinkedList alloc] initWithArray:@[@(0),@(1),@(2)]];
+//        [cls insertValue:@(22) atIndex:0];
+//        [cls insertValue:@(4) atIndex:4];
+//        [cls insertValue:@(88) atIndex:2];
+//        [cls insertValue:@(99) atIndex:cls.current.index + 1];
+//        NSLog(@"after insert %@",cls);
+//        [cls addToBack:@(33)];
+//        NSLog(@"after remove all %@",cls);
+//        [cls addToFront:@(44)];
+//        NSLog(@"after remove all %@",cls);
+        //    [cls removeValueAtIndex:4];
+        //    NSLog(@"after remove all %@",cls);
+//        [cls removeValueAtIndex:5];
+//        NSLog(@"after index 0 %@",cls);
+        
+//        [cls moveToValue:@(1)];
+//        [cls moveToIndex:4];
+        [cls removeCurrent];
+        [cls removeCurrent];
+        [cls removeCurrent];
+        NSLog(@"++++++++");
+    }
+    
+    MMLinkedList<NSNumber *> * list = [MMLinkedList linkedListWithHead:@0];
+    for (NSInteger index = 1; index < 5; index ++) {
+        [list addToBack:@(index)];
 //        [list addToFront:@(index)];
-//    }
+    }
+//    [list removeCurrent];
+//    [list removeCurrent];
+    return;
+    /// 0,1,2,3,4
+    [list insertValue:@(11) atIndex:5];
+    /// 0,1,2,11,3,4
 //    [list printList];
+//    NSLog(@"value at index:%@",[list valueAtIndex:3]);
+//    [list removeValueAtIndex:2];
+    NSLog(@"after remove at 2:%@",list);
+//    [list removeValueAtIndex:0];
+    NSLog(@"after remove at 0:%@",list);
+//    [list removeValueAtIndex:[list count] - 1];
+    NSLog(@"after remove at last:%@",list);
+    
+//    [list addToBack:@(10)];
+    NSLog(@"current node:%@",list.currentValue);
+    [list moveToIndex:2];
+//    [list moveToValue:@(0)];
+    [list moveToValue:@(4)];
+    NSLog(@"list:%@",list);
+    
+    if (0) {
+        NSLog(@"current:%@",[list currentValue]);// 4
+        NSLog(@"next:%@",[list nextValue]);// 3
+        NSLog(@"next:%@",[list nextValue]);// 2
+        NSLog(@"next:%@",[list nextValue]);// 1
+        NSLog(@"next:%@",[list nextValue]);// 0
+        NSLog(@"next:%@",[list nextValue]);// nil
+    }
+    if (0){
+        NSLog(@"index 2:%@",[list valueAtIndex:2]);// 2
+        NSLog(@"next:%@",[list nextValue]);// 1
+        [list removeAll];
+    }
+    if (0) {
+        MMCycleLinkedList<NSNumber *>* cls = [[MMCycleLinkedList alloc] initWithArray:@[@(0),@(1),@(2)]];
+        [cls insertValue:@(22) atIndex:2];
+        NSLog(@"after remove all %@",cls);
+        [cls addToBack:@(33)];
+        NSLog(@"after remove all %@",cls);
+        [cls addToFront:@(44)];
+        NSLog(@"after remove all %@",cls);
+    }
+    
+    NSLog(@"+_+_+");
 //
 ////    [list reverseList];
 //    [list insertValue:@(4) atIndex:3];
 //    [list printList];
 //    NSLog(@"find:%@",[list findValue:@(4)]);
 //    id value = [list valueAtIndex:0];
-//    value = list[3];// NSFastEnumeration
+//    value = list[9];// NSFastEnumeration
 //
 //    for (NSInteger index = 0; index < [list count]; index ++) {
 //        NSLog(@"value:%@",[list valueAtIndex:index]);

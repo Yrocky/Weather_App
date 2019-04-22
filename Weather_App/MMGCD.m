@@ -191,8 +191,11 @@ static MMGCDQueue *backgroundPriorityGlobalQueue;
 - (void)execute:(dispatch_block_t)block{
     
     [self enter];
-    //    block();
+    if (block) {
+        block();
+    }
 }
+
 - (void)enter {
     
     dispatch_group_enter(self.dispatchGroup);

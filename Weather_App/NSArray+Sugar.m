@@ -7,6 +7,7 @@
 //
 
 #import "NSArray+Sugar.h"
+#import "NSObject+CodableProperties.h"
 
 @implementation NSArray (Sugar)
 
@@ -60,6 +61,22 @@
     }
 }
 
+- (void) mm_eachWithStop:(BOOL(^)(id obj))handle{
+
+    @autoreleasepool{
+        [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            *stop = handle(obj);
+        }];
+    }
+}
+
+- (void) mm_eachWithIndexStop:(BOOL(^)(id obj ,NSUInteger index))handle{
+    @autoreleasepool{
+        [self enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            *stop = handle(obj ,idx);
+        }];
+    }
+}
 - (BOOL) mm_includes:(id)obj{
 
     return [self containsObject:obj];
@@ -191,6 +208,44 @@
     return [_self copy];
 }
 
+- (NSArray *) mm_distinctUnion2{
+    @autoreleasepool {
+        NSMutableArray * _self = [@[] mutableCopy];
+        [self mm_each:^(id  _Nonnull obj) {
+            if (!_self.mm_have(obj)) {
+                [_self addObject:obj];
+            }
+        }];
+        return [_self copy];
+    }
+}
+
+- (NSArray *) mm_distinctUnion{
+    return [self mm_distinctUnionWithKey:@"self"];
+}
+
+- (NSArray *) mm_distinctUnionWithKey:(NSString *)key{
+    
+    NSAssert([[[self mm_sample] mm_getAllProperties] containsObject:key] ||
+             [key isEqualToString:@"self"],
+             @"the `key` must be one of properties with T class or is `self`");
+    
+    NSString * keyPath = [NSString stringWithFormat:@"@distinctUnionOfObjects.%@",key];
+    return [self valueForKeyPath:keyPath];
+}
+
+
+- (NSArray *) mm_append:(NSArray *)other{
+    NSMutableArray * _self = [self mutableCopy];
+    
+    [_self mm_each:^(id  _Nonnull obj) {
+        if (!_self.mm_have(obj)) {
+            [_self addObject:obj];
+        }
+    }];
+    
+    return [_self copy];
+}
 #pragma mark - 布尔运算
 
 - (NSArray *) mm_intersect:(NSArray *)other{

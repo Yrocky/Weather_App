@@ -70,8 +70,8 @@
         [backButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
         backButton.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
 //        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-//        viewController.hidesBottomBarWhenPushed = YES; // 隐藏底部的工具条
     }
+    viewController.hidesBottomBarWhenPushed = self.viewControllers.count > 0;
     [super pushViewController:viewController animated:animated];
 }
 

@@ -132,7 +132,7 @@ MMAnimationType * MMAnimationTypeMakeFlash(NSUInteger repeatCount){
 }
 MMAnimationType * MMAnimationTypeMakeWobble(NSUInteger repeatCount){
     MMAnimationType * animation = [MMAnimationType new];
-    animation.type = MMAnimationTypeWoble;
+    animation.type = MMAnimationTypeWobble;
     animation.repeatCount = repeatCount;
     return animation;
 }

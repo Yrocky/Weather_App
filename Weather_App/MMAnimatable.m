@@ -12,6 +12,7 @@
 #import "MMAnimationPromise.h"
 #import "MMAnimator.h"
 #import "MMAnimationType.h"
+#import "MMAnimationKeyPath.h"
 
 @defs(MMAnimatable)
 
@@ -23,16 +24,15 @@
     }
     return  nil;
 }
-
-- (MMAnimationPromise *) animateWith:(MMAnimationConfiguration *)config{
-    
+- (MMAnimationPromise *) animationWith:(MMAnimationType *)animationType configuration:(MMAnimationConfiguration *)config{
     if (self._UIView) {
         MMAnimationPromise * promise = [[MMAnimationPromise alloc] initWithView:self._UIView];
-        [promise.delay(config.delayValue) thenAnimationWith:config];
+        [promise.delay(config.delayValue) thenAnimation:animationType config:config];
         return promise;
     }
     return nil;
 }
+
 - (MMAnimationPromise *) delay:(NSTimeInterval)delay{
     if (self._UIView) {
         MMAnimationPromise * promise = [[MMAnimationPromise alloc] initWithView:self._UIView];
@@ -70,89 +70,96 @@
        configuration:(MMAnimationConfiguration *)config
           completion:(MMAnimatableCompletion)completion{
     
+    [self layoutIfNeeded];
+    
     if (animationType.type == MMAnimationTypeSlide) {
         [self _slideWithWay:animationType.way
                   direction:animationType.direction
               configuration:config
                  completion:completion];
     }
-    /*
-     switch animation {
-     case let .slide(way, direction):
-     slide(way, direction: direction, configuration: configuration, completion: completion)
-     case let .squeeze(way, direction):
-     squeeze(way, direction: direction, configuration: configuration, completion: completion)
-     case let .squeezeFade(way, direction):
-     squeezeFade(way, direction: direction, configuration: configuration, completion: completion)
-     case let .slideFade(way, direction):
-     slideFade(way, direction: direction, configuration: configuration, completion: completion)
-     case let .fade(way):
-     fade(way, configuration: configuration, completion: completion)
-     case let .zoom(way):
-     zoom(way, configuration: configuration, completion: completion)
-     case let .zoomInvert(way):
-     zoom(way, invert: true, configuration: configuration, completion: completion)
-     case let .shake(repeatCount):
-     shake(repeatCount: repeatCount, configuration: configuration, completion: completion)
-     case let .pop(repeatCount):
-     pop(repeatCount: repeatCount, configuration: configuration, completion: completion)
-     case let .squash(repeatCount):
-     squash(repeatCount: repeatCount, configuration: configuration, completion: completion)
-     case let .flip(axis):
-     flip(axis: axis, configuration: configuration, completion: completion)
-     case let .morph(repeatCount):
-     morph(repeatCount: repeatCount, configuration: configuration, completion: completion)
-     case let .flash(repeatCount):
-     flash(repeatCount: repeatCount, configuration: configuration, completion: completion)
-     case let .wobble(repeatCount):
-     wobble(repeatCount: repeatCount, configuration: configuration, completion: completion)
-     case let .swing(repeatCount):
-     swing(repeatCount: repeatCount, configuration: configuration, completion: completion)
-     case let .rotate(direction, repeatCount):
-     rotate(direction: direction, repeatCount: repeatCount, configuration: configuration, completion: completion)
-     case let .moveBy(x, y):
-     moveBy(x: x, y: y, configuration: configuration, completion: completion)
-     case let .moveTo(x, y):
-     moveTo(x: x, y: y, configuration: configuration, completion: completion)
-     case let .scale(fromX, fromY, toX, toY):
-     scale(fromX: fromX, fromY: fromY, toX: toX, toY: toY, configuration: configuration, completion: completion)
-     case let .spin(repeatCount):
-     spin(repeatCount: repeatCount, configuration: configuration, completion: completion)
-     case let .compound(animations, run):
-     let animations = animations.filter {
-     if case .none = $0 {
-     return false
-     }
-     return true
-     }
-     guard !animations.isEmpty else {
-     completion()
-     return
-     }
-     switch run {
-     case .sequential:
-     let launch = animations.reversed().reduce(completion) { result, animation in
-     return {
-     self.doAnimation(animation, configuration: configuration, completion: result)
-     }
-     }
-     launch()
-     case .parallel:
-     var finalized = 0
-     let finalCompletion: () -> Void = {
-     finalized += 1
-     if finalized == animations.count {
-     completion()
-     }
-     }
-     for animation in animations {
-     self.doAnimation(animation, configuration: configuration, completion: finalCompletion)
-     }
-     }
-     case .none:
-     break
-     }
-     */
+    if (animationType.type == MMAnimationTypeSlideFade) {
+        [self _slideFadeWithWay:animationType.way
+                      direction:animationType.direction
+                  configuration:config
+                     completion:completion];
+    }
+    if (animationType.type == MMAnimationTypeSqueeze) {
+        [self _squeezeWithWay:animationType.way
+                    direction:animationType.direction
+                configuration:config
+                   completion:completion];
+    }
+    if (animationType.type == MMAnimationTypeSqueezeFade) {
+        [self _squeezeFadeWithWay:animationType.way
+                        direction:animationType.direction
+                    configuration:config
+                       completion:completion];
+    }
+    if (animationType.type == MMAnimationTypeFade) {
+        [self _fadeWithWay:animationType.fadeWay
+             configuration:config
+                completion:completion];
+    }
+    if (animationType.type == MMAnimationTypeZoom) {
+        [self _zoomWithWay:animationType.way
+                    invert:NO
+             configuration:config
+                completion:completion];
+    }
+    if (animationType.type == MMAnimationTypeZoomInvert) {
+        [self _zoomWithWay:animationType.way
+                    invert:YES
+             configuration:config
+                completion:completion];
+    }
+    if (animationType.type == MMAnimationTypeShake) {
+        // todo:shake
+    }
+    if (animationType.type == MMAnimationTypePop) {
+        // todo:pop
+    }
+    if (animationType.type == MMAnimationTypeSquash) {
+        // todo:squash
+    }
+    if (animationType.type == MMAnimationTypeFlip) {
+        // todo:filp
+    }
+    if (animationType.type == MMAnimationTypeMorph) {
+        // todo:morph
+    }
+    if (animationType.type == MMAnimationTypeFlash) {
+        [self _flashWithRepeatCount:animationType.repeatCount
+                      configuration:config
+                         completion:completion];
+    }
+    if (animationType.type == MMAnimationTypeWobble) {
+        // todo:wobble
+    }
+    if (animationType.type == MMAnimationTypeSwing) {
+        // todo:swing
+    }
+    if (animationType.type == MMAnimationTypeRotate) {
+        [self _rotateWithDirection:animationType.rotationDirection
+                       repeatCount:animationType.repeatCount
+                     configuration:config
+                        completion:completion];
+    }
+    if (animationType.type == MMAnimationTypeMoveBy) {
+        // todo:moveBy
+    }
+    if (animationType.type == MMAnimationTypeMoveTo) {
+        // todo:moveTo
+    }
+    if (animationType.type == MMAnimationTypeScale) {
+        // todo:scale
+    }
+    if (animationType.type == MMAnimationTypeSpin) {
+        // todo:spin
+    }
+    if (animationType.type == MMAnimationTypeCompound) {
+        
+    }
 }
 
 #pragma mark - Animation methods
@@ -166,23 +173,6 @@
                                                   direction:direction
                                               configuration:config
                                                 shouleScale:NO];
-    if (way == MMAnimationWayIn) {
-        [self _animationInWith:animationValues alpha:1 configuration:config completion:completion];
-    }
-    if (way == MMAnimationWayOut) {
-        [self _animationOutWith:animationValues alpha:1 configuration:config completion:completion];
-    }
-}
-
-- (void) _squeezeWithWay:(MMAnimationWay)way
-               direction:(MMAnimationDirection)direction
-           configuration:(MMAnimationConfiguration *)config
-              completion:(MMAnimatableCompletion)completion{
-    
-    MMAnimationScale animationValues = [self _computeValues:way
-                                                  direction:direction
-                                              configuration:config
-                                                shouleScale:YES];
     if (way == MMAnimationWayIn) {
         [self _animationInWith:animationValues alpha:1 configuration:config completion:completion];
     }
@@ -206,6 +196,23 @@
     }
     if (way == MMAnimationWayOut) {
         [self _animationOutWith:animationValues alpha:0 configuration:config completion:completion];
+    }
+}
+
+- (void) _squeezeWithWay:(MMAnimationWay)way
+               direction:(MMAnimationDirection)direction
+           configuration:(MMAnimationConfiguration *)config
+              completion:(MMAnimatableCompletion)completion{
+    
+    MMAnimationScale animationValues = [self _computeValues:way
+                                                  direction:direction
+                                              configuration:config
+                                                shouleScale:YES];
+    if (way == MMAnimationWayIn) {
+        [self _animationInWith:animationValues alpha:1 configuration:config completion:completion];
+    }
+    if (way == MMAnimationWayOut) {
+        [self _animationOutWith:animationValues alpha:1 configuration:config completion:completion];
     }
 }
 
@@ -255,38 +262,39 @@
         configuration:(MMAnimationConfiguration *)config
            completion:(MMAnimatableCompletion)completion{
     
+    CGFloat toAlpha = 0;
+    if (way == MMAnimationWayIn) {
+        if (invert) {
+            CGFloat scale = config.forceValue;
+            self.alpha = 0;
+            toAlpha = 1.0;
+            self.transform = CGAffineTransformMakeScale(0.1, 0.1);
+            MMAnimationScale animationScale = MMAnimationScaleMake(0, 0, scale*0.5, scale*0.5);
+            [self _animationInWith:animationScale
+                             alpha:toAlpha
+                     configuration:config
+                        completion:completion];
+        } else {
+            CGFloat scale = config.forceValue * 2.0;
+            self.alpha = 0;
+            toAlpha = 1.0;
+            MMAnimationScale animationScale = MMAnimationScaleMake(0, 0, scale, scale);
+            [self _animationInWith:animationScale
+                             alpha:toAlpha
+                     configuration:config
+                        completion:completion];
+        }
+    }
+    if (way == MMAnimationWayOut) {
+        CGFloat scale = config.forceValue * (invert ? 0.1 : 2.0);
+        toAlpha = 1.0;
+        MMAnimationScale animationScale = MMAnimationScaleMake(0, 0, scale, scale);
+        [self _animationInWith:animationScale
+                         alpha:toAlpha
+                 configuration:config
+                    completion:completion];
+    }
 }
-
-//func zoom(_ way: AnimationType.Way, invert: Bool = false, configuration: AnimationConfiguration, completion: AnimatableCompletion? = nil) {
-//    let toAlpha: CGFloat
-//
-//    switch way {
-//    case .in where invert:
-//        let scale = configuration.force
-//        alpha = 0
-//        toAlpha = 1
-//        transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-//        animateIn(animationValues: AnimationValues(x: 0, y: 0, scaleX: scale / 2, scaleY: scale / 2),
-//                  alpha: toAlpha,
-//                  configuration: configuration,
-//                  completion: completion)
-//    case .in:
-//        let scale = 2 * configuration.force
-//        alpha = 0
-//        toAlpha = 1
-//        animateIn(animationValues: AnimationValues(x: 0, y: 0, scaleX: scale, scaleY: scale),
-//                  alpha: toAlpha,
-//                  configuration: configuration,
-//                  completion: completion)
-//    case .out:
-//        let scale = (invert ? 0.1 :  2) * configuration.force
-//        toAlpha = 0
-//        animateOut(animationValues: AnimationValues(x: 0, y: 0, scaleX: scale, scaleY: scale),
-//                   alpha: toAlpha,
-//                   configuration: configuration,
-//                   completion: completion)
-//    }
-//}
 
 - (void) _rotateWithDirection:(MMAnimationRotationDirection)direction
                   repeatCount:(NSUInteger)repeatCount
@@ -294,25 +302,55 @@
                    completion:(MMAnimatableCompletion)completion{
     
     [CALayer animation:^{
-        
+        CABasicAnimation * animation = [CABasicAnimation animation];
+        animation.fromValue = direction == MMAnimationWayRotationDirectionCW ? @(0) : @(3.14*2);
+        animation.toValue = direction == MMAnimationWayRotationDirectionCW ? @(3.14*2) : @(0);
+        animation.duration = config.durationValue;
+        animation.repeatCount = repeatCount;
+        animation.autoreverses = NO;
+        animation.beginTime = self.layer.currentMediaTime + config.delayValue;
+        [self.layer addAnimation:animation forKey:@"rotate"];
     } completion:completion];
 }
 
-//func rotate(direction: AnimationType.RotationDirection,
-//            repeatCount: Int,
-//            configuration: AnimationConfiguration,
-//            completion: AnimatableCompletion? = nil) {
-//    CALayer.animate({
-//        let animation = CABasicAnimation(keyPath: .rotation)
-//        animation.fromValue = direction == .cw ? 0 : CGFloat.pi * 2
-//        animation.toValue = direction == .cw  ? CGFloat.pi * 2 : 0
-//        animation.duration = configuration.duration
-//        animation.repeatCount = Float(repeatCount)
-//        animation.autoreverses = false
-//        animation.beginTime = self.layer.currentMediaTime + configuration.delay
-//        self.layer.add(animation, forKey: "rotate")
-//    }, completion: completion)
-//}
+- (void) _flashWithRepeatCount:(NSUInteger)repeatCount
+                 configuration:(MMAnimationConfiguration *)config
+                    completion:(MMAnimatableCompletion)completion {
+    [CALayer animation:^{
+        CABasicAnimation * animation = [CABasicAnimation animation];
+        animation.fromValue = @(1);
+        animation.toValue = @(0);
+        animation.duration = config.durationValue;
+        animation.repeatCount = repeatCount * 2.0;
+        animation.autoreverses = YES;
+        animation.beginTime = self.layer.currentMediaTime + config.delayValue;
+        [self.layer addAnimation:animation forKey:@"flash"];
+    } completion:completion];
+}
+
+- (void) _morphWithRepeatCount:(NSUInteger)repeatCount
+                 configuration:(MMAnimationConfiguration *)config
+                    completion:(MMAnimatableCompletion)completion {
+    [CALayer animation:^{
+        
+        CAKeyframeAnimation * morphX = [CAKeyframeAnimation animationWithKeyPath:MMAnimationKeyPath.scaleX];
+        morphX.values = @[@(1),@(1.3*config.forceValue),@(0.7),@(1.3*config.forceValue),@(1)];
+        morphX.keyTimes = @[@(0),@(0.2),@(0.4),@(0.6),@(0.8),@(1)];
+        morphX.timingFunction = config.timingFunctionValue;
+        
+        CAKeyframeAnimation * morphY = [CAKeyframeAnimation animationWithKeyPath:MMAnimationKeyPath.scaleX];
+        morphY.values = @[@(1),@(0.7),@(1.3*config.forceValue),@(0.7),@(1)];
+        morphY.keyTimes = @[@(0),@(0.2),@(0.4),@(0.6),@(0.8),@(1)];
+        morphY.timingFunction = config.timingFunctionValue;
+        
+        CAAnimationGroup * group = [CAAnimationGroup animation];
+        group.duration = config.durationValue;
+        group.animations = @[morphX, morphY];
+        group.repeatCount = repeatCount;
+        group.beginTime = self.layer.currentMediaTime + config.delayValue;
+        [self.layer addAnimation:group forKey:@"morph"];
+    } completion:completion];
+}
 
 #pragma mark -
 

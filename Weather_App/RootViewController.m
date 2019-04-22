@@ -37,6 +37,11 @@
 #import "MMGradientViewController.h"
 #import "EmojiViewController.h"
 #import "ALBookDemoViewController.h"
+#import "PromiseKitViewController.h"
+#import "CardCollectionViewController.h"
+#import "RoomModel.h"
+#import "MMNavigationController.h"
+#import "XXXWebViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic ,strong) NSString * str;
@@ -74,6 +79,32 @@
         HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"原来的Main控制器" actionBlock:^(HSBaseCellModel *model) {
             
             [self performSegueWithIdentifier:@"RootToMain" sender:nil];
+        }];
+        [s addCellModel:c];
+       
+        c = [[HSTitleCellModel alloc] initWithTitle:@"🍳webview🍳" actionBlock:^(HSTitleCellModel *model) {
+            
+            XXXWebViewController * vc = [[XXXWebViewController alloc] init];
+            vc.title = model.title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"🥪直播间无限轮滑🥪" actionBlock:^(HSTitleCellModel *model) {
+            
+            CardCollectionViewController * vc = [[CardCollectionViewController alloc] init];
+            vc.title = model.title;
+            [vc setupDataSource:[RoomModel dataSource] roomIndex:2];
+            MMNavigationController * navi = [[MMNavigationController alloc] initWithRootViewController:vc];
+            [self.navigationController presentViewController:navi animated:YES completion:nil];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"🧐PromiseKit🧐" actionBlock:^(HSTitleCellModel *model) {
+            
+            PromiseKitViewController * vc = [[PromiseKitViewController alloc] init];
+            vc.title = model.title;
+            [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];
         

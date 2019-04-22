@@ -8,7 +8,14 @@
 
 #import "MMNode.h"
 
+@interface MMNode ()
+@property (nonatomic ,strong ,readwrite) id value;
+@end
 @implementation MMNode
+
+- (void)dealloc{
+    NSLog(@"【%@ dealloc】",self);
+}
 
 + (instancetype) nodeWithValue:(id)value{
     
@@ -17,4 +24,14 @@
     return node;
 }
 
+- (void) updateValue:(id)newValue{
+    self.value = newValue;
+}
+
+- (NSString *)description{
+    return [NSString stringWithFormat:@"node【value: %@ index: %lu】", self.value,(unsigned long)self.index];
+}
+- (NSString *)debugDescription{
+    return [self description];
+}
 @end

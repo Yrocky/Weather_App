@@ -83,10 +83,6 @@
 	<string>use</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>WKBackgroundModes</key>
-	<array>
-		<string>App plays audio</string>
-	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -103,6 +99,10 @@
 	<key>UTImportedTypeDeclarations</key>
 	<array>
 		<dict/>
+	</array>
+	<key>WKBackgroundModes</key>
+	<array>
+		<string>App plays audio</string>
 	</array>
 </dict>
 </plist>

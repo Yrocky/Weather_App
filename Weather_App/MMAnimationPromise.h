@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype) initWithView:(UIView<MMAnimatable>*)view;
 - (MMAnimationPromise*(^)(NSTimeInterval)) delay;
 
-- (MMAnimationPromise *) thenAnimationWith:(MMAnimationConfiguration *)config;
+- (MMAnimationPromise *) thenAnimation:(MMAnimationType *)animation config:(MMAnimationConfiguration *)config;
 - (void) animationCompletiond;
 - (void) completion:(MMAnimatableCompletion)completion;
 @end

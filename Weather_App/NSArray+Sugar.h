@@ -27,6 +27,9 @@
 - (void) mm_eachWithOptions:(void (^)(T))handle options:(NSEnumerationOptions)options;
 - (void) mm_eachWithIndex:(void(^)(T obj,NSInteger index))handle;
 
+- (void) mm_eachWithStop:(BOOL(^)(T obj))handle;
+- (void) mm_eachWithIndexStop:(BOOL(^)(T obj ,NSUInteger index))handle;
+
 - (BOOL (^)(T obj)) mm_have;
 
 - (NSArray<T> *) mm_select:(BOOL (^)(T obj))handle;
@@ -36,6 +39,15 @@
 ///< same as addFromArray:
 - (NSArray<T> *) mm_merge:(NSArray<T> *)other;
 //- (NSArray *) mm_special:(NSString *(^)(id obj))handle1 merge:(NSArray *)other special:(NSString * (^)(id obj))handle;
+
+- (NSArray<T> *) mm_distinctUnion2;
+///<distinct union objectives, default is `@distinctUnionOfObjects.self`
+- (NSArray<T> *) mm_distinctUnion;
+///<base on `T.key` for distinct union objectives ,`key` is one of properties from T
+- (NSArray<T> *) mm_distinctUnionWithKey:(NSString *)key;
+
+///<self：[a,b,c,d,e] other:[x,d,y,e,o,m] result:[a,b,c,d,e,x,y,o,m] ,base on `isEqual:`
+- (NSArray<T> *) mm_append:(NSArray<T> *)other;
 
 #pragma mark - 布尔运算
 ///< self:[1,2,3,4] oher:[1,4,6,7,8] result:[1,4]

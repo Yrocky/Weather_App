@@ -218,6 +218,9 @@
     }];
     
     [_operations removeAllObjects];
+    
+    ///<fix:当外部取消所有移动的时候，将定时器停止
+    [self allOperationDidFinished];
 }
 
 @end

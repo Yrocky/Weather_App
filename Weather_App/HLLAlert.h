@@ -26,6 +26,9 @@
 /** Config special button type at `index`. */
 - (id<HLLAlertActionSheetProtocol>) style:(UIAlertActionStyle)style index:(NSInteger)index;
 
+///将 取消 按钮放入到最后
+- (id<HLLAlertActionSheetProtocol>) addCancelButton;
+
 #pragma mark - hide
 
 - (id<HLLAlertActionSheetProtocol>) hide:(void(^)())hide;

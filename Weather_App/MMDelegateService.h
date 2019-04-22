@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+///<模拟多代理
 @interface MMDelegateService : NSProxy
 
 @property (nonatomic ,strong ,readonly) NSArray * delegates;

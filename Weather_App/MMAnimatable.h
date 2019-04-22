@@ -30,7 +30,8 @@ typedef void(^MMAnimatableExecution)();
 @property (nonatomic ,assign) CGFloat force;
 @property (nonatomic ,assign) NSUInteger timingFunction;
 
-- (MMAnimationPromise *) animateWith:(MMAnimationConfiguration *)config;
+- (MMAnimationPromise *) animationWith:(MMAnimationType *)animationType
+                         configuration:(MMAnimationConfiguration *)config;
 - (MMAnimationPromise *) delay:(NSTimeInterval)delay;
 - (void) doAnimation:(MMAnimationType *)animationType
        configuration:(MMAnimationConfiguration *)config

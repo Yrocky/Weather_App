@@ -18,3 +18,17 @@
 
 @property (nonatomic ,copy) NSString * debugTagName;
 @end
+
+@interface NSObject (MMRuntime)
++ (NSArray<NSString *> *) mm_getAllProperties;
+- (NSArray<NSString *> *) mm_getAllProperties;
+
++ (NSArray<NSString *> *) mm_getAllMethods;
+- (NSArray<NSString *> *) mm_getAllMethods;
+
++ (BOOL) mm_implementationMethod:(SEL)method;
+- (BOOL) mm_implementationMethod:(SEL)method;
+
++ (BOOL) mm_implementationMethodWith:(NSString *)methodName;
+- (BOOL) mm_implementationMethodWith:(NSString *)methodName;
+@end
