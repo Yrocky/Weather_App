@@ -41,6 +41,7 @@
 #import "CardCollectionViewController.h"
 #import "RoomModel.h"
 #import "MMNavigationController.h"
+#import "XXXWebViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic ,strong) NSString * str;
@@ -81,6 +82,14 @@
         }];
         [s addCellModel:c];
        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"🍳webview🍳" actionBlock:^(HSTitleCellModel *model) {
+            
+            XXXWebViewController * vc = [[XXXWebViewController alloc] init];
+            vc.title = model.title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
         c = [[HSTitleCellModel alloc] initWithTitle:@"🥪直播间无限轮滑🥪" actionBlock:^(HSTitleCellModel *model) {
             
             CardCollectionViewController * vc = [[CardCollectionViewController alloc] init];

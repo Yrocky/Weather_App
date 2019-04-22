@@ -51,10 +51,10 @@
     //
     self.renderComposer = [[FDHTMLRenderComposer alloc] init];
     [self.renderComposer renderHTML:@"2017年" items:arr cb:^(NSString *html) {
-//        [self.webView loadHTMLString:html baseURL:nil];
+        [self.webView loadHTMLString:html baseURL:nil];
     }];
     
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://music.163.com/playlist/817223072/10440591?userid=10440591"]]];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://music.163.com/playlist/817223072/10440591?userid=10440591"]]];
     //
     self.docInteractionController = [[UIDocumentInteractionController alloc] init];
     self.docInteractionController.delegate = self;

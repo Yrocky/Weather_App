@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		29DBA5C092A3C92ABAAD9DA9 /* Pods_Weather_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD27D1478D1B8369B4F8A1A3 /* Pods_Weather_App.framework */; };
 		5C2174612254B30B001443BC /* RoomCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2174602254B30B001443BC /* RoomCycleScrollView.m */; };
+		5C392B26226D835900C15344 /* MMWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392B25226D835900C15344 /* MMWebView.m */; };
+		5C392B29226D852800C15344 /* XXXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392B28226D852800C15344 /* XXXWebViewController.m */; };
+		5C392B2F226D89D200C15344 /* Console.js in Resources */ = {isa = PBXBuildFile; fileRef = 5C392B2C226D89D200C15344 /* Console.js */; };
+		5C392B30226D89D200C15344 /* Base.js in Resources */ = {isa = PBXBuildFile; fileRef = 5C392B2D226D89D200C15344 /* Base.js */; };
+		5C392B31226D89D200C15344 /* Accelerometer.js in Resources */ = {isa = PBXBuildFile; fileRef = 5C392B2E226D89D200C15344 /* Accelerometer.js */; };
+		5C392B34226D8A6B00C15344 /* MMPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392B33226D8A6B00C15344 /* MMPlugin.m */; };
+		5C392BA2226DDD5800C15344 /* MMConsolePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA1226DDD5800C15344 /* MMConsolePlugin.m */; };
+		5C392BA5226DDD9D00C15344 /* MMAccelerometerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA4226DDD9D00C15344 /* MMAccelerometerPlugin.m */; };
 		5C4E3A702252F54C001499AF /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E3A6F2252F54C001499AF /* RankViewController.m */; };
 		5C4E3ADF22532B74001499AF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E3ADE22532B74001499AF /* README.md */; };
 		5C5E63C22244AB9100C0B85D /* CardCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63C12244AB9100C0B85D /* CardCollectionViewController.m */; };
@@ -216,6 +224,19 @@
 		5C21745F2254B30B001443BC /* RoomCycleScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomCycleScrollView.h; sourceTree = "<group>"; };
 		5C2174602254B30B001443BC /* RoomCycleScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomCycleScrollView.m; sourceTree = "<group>"; };
 		5C2174622254B7BE001443BC /* RoomDataSourceHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomDataSourceHandler.h; sourceTree = "<group>"; };
+		5C392B24226D835900C15344 /* MMWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMWebView.h; sourceTree = "<group>"; };
+		5C392B25226D835900C15344 /* MMWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMWebView.m; sourceTree = "<group>"; };
+		5C392B27226D852800C15344 /* XXXWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXWebViewController.h; sourceTree = "<group>"; };
+		5C392B28226D852800C15344 /* XXXWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXWebViewController.m; sourceTree = "<group>"; };
+		5C392B2C226D89D200C15344 /* Console.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Console.js; sourceTree = "<group>"; };
+		5C392B2D226D89D200C15344 /* Base.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Base.js; sourceTree = "<group>"; };
+		5C392B2E226D89D200C15344 /* Accelerometer.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Accelerometer.js; sourceTree = "<group>"; };
+		5C392B32226D8A6B00C15344 /* MMPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMPlugin.h; sourceTree = "<group>"; };
+		5C392B33226D8A6B00C15344 /* MMPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMPlugin.m; sourceTree = "<group>"; };
+		5C392BA0226DDD5800C15344 /* MMConsolePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMConsolePlugin.h; sourceTree = "<group>"; };
+		5C392BA1226DDD5800C15344 /* MMConsolePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMConsolePlugin.m; sourceTree = "<group>"; };
+		5C392BA3226DDD9D00C15344 /* MMAccelerometerPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAccelerometerPlugin.h; sourceTree = "<group>"; };
+		5C392BA4226DDD9D00C15344 /* MMAccelerometerPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAccelerometerPlugin.m; sourceTree = "<group>"; };
 		5C4E3A6E2252F54C001499AF /* RankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
 		5C4E3A6F2252F54C001499AF /* RankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
 		5C4E3ADE22532B74001499AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -626,6 +647,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C392B2A226D88CF00C15344 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				5C392B2B226D89D200C15344 /* plugins */,
+				5C392B24226D835900C15344 /* MMWebView.h */,
+				5C392B25226D835900C15344 /* MMWebView.m */,
+				5C392B32226D8A6B00C15344 /* MMPlugin.h */,
+				5C392B33226D8A6B00C15344 /* MMPlugin.m */,
+				5C392BA0226DDD5800C15344 /* MMConsolePlugin.h */,
+				5C392BA1226DDD5800C15344 /* MMConsolePlugin.m */,
+				5C392BA3226DDD9D00C15344 /* MMAccelerometerPlugin.h */,
+				5C392BA4226DDD9D00C15344 /* MMAccelerometerPlugin.m */,
+			);
+			name = WebView;
+			sourceTree = "<group>";
+		};
+		5C392B2B226D89D200C15344 /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				5C392B2C226D89D200C15344 /* Console.js */,
+				5C392B2D226D89D200C15344 /* Base.js */,
+				5C392B2E226D89D200C15344 /* Accelerometer.js */,
+			);
+			path = plugins;
+			sourceTree = "<group>";
+		};
 		5C5E63C92244ABF900C0B85D /* 无限滚动 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1043,6 +1090,7 @@
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
 				D7A325E220772DD700B2F8AB /* BillKeyboardView.h */,
 				D7A325E320772DD700B2F8AB /* BillKeyboardView.m */,
+				5C392B2A226D88CF00C15344 /* WebView */,
 				5C5E63C92244ABF900C0B85D /* 无限滚动 */,
 				7F472926218C6B7C007A10FB /* MMAnimator */,
 				7F472924218C6B58007A10FB /* MMLiveChatEmojiView */,
@@ -1414,6 +1462,8 @@
 				F7C5B57A21F5BA0B00D3F9D7 /* PromiseKitViewController.m */,
 				5C5E63C02244AB9100C0B85D /* CardCollectionViewController.h */,
 				5C5E63C12244AB9100C0B85D /* CardCollectionViewController.m */,
+				5C392B27226D852800C15344 /* XXXWebViewController.h */,
+				5C392B28226D852800C15344 /* XXXWebViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -1605,7 +1655,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C392B2F226D89D200C15344 /* Console.js in Resources */,
 				D7A595BF1FAACFED000C59FE /* rootTemplate.html in Resources */,
+				5C392B31226D89D200C15344 /* Accelerometer.js in Resources */,
 				7F53C0EC2126740600567D74 /* smile_face.xml in Resources */,
 				7FE705BB1FBD6A75009FF3A7 /* SomeCustomView.xib in Resources */,
 				7F53C0F32126740600567D74 /* v520.xml in Resources */,
@@ -1617,6 +1669,7 @@
 				7FDC6ED81F46E35A00D94379 /* LaunchScreen.storyboard in Resources */,
 				7F53C0ED2126740600567D74 /* v1314.xml in Resources */,
 				7FDC6ED51F46E35A00D94379 /* Assets.xcassets in Resources */,
+				5C392B30226D89D200C15344 /* Base.js in Resources */,
 				7F53C0F42126740600567D74 /* love.xml in Resources */,
 				7F47292B218C6FBF007A10FB /* MMEmojiText.plist in Resources */,
 				7FDC6ED31F46E35A00D94379 /* Main.storyboard in Resources */,
@@ -1716,10 +1769,12 @@
 				D70629471F8B185100F52FCB /* HSCustomTableViewCell.m in Sources */,
 				7F6FFB92209458E100A84A81 /* ZPTextRunDelegate.m in Sources */,
 				7F6FFB8E209458E100A84A81 /* ZPTextDrawer.m in Sources */,
+				5C392BA2226DDD5800C15344 /* MMConsolePlugin.m in Sources */,
 				7F590D7F1FA9A5D4006F7BF0 /* UIResponder+STPopup.m in Sources */,
 				D713B8C2207601C100D388F2 /* BillExtensionView.m in Sources */,
 				5C5E63D82244B86D00C0B85D /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				7F6FFB91209458E100A84A81 /* ZPLabelLayer.m in Sources */,
+				5C392B34226D8A6B00C15344 /* MMPlugin.m in Sources */,
 				D706294F1F8B189C00F52FCB /* UIColor+Common.m in Sources */,
 				7F590D7D1FA9A5D4006F7BF0 /* STPopupLeftBarItem.m in Sources */,
 				D759BB03218CA1B500A06FE0 /* MMAnimatableProperty.m in Sources */,
@@ -1784,6 +1839,7 @@
 				D70F5DE31FA81D69007FBD43 /* FDDismissingAnimator.m in Sources */,
 				7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */,
 				D70629421F8B185100F52FCB /* HSSectionModel.m in Sources */,
+				5C392BA5226DDD9D00C15344 /* MMAccelerometerPlugin.m in Sources */,
 				7FF4FC091FB55D980097CB3D /* LayoutViewController.m in Sources */,
 				7F5FD9932115898D00DB70F8 /* MM24GameManager.m in Sources */,
 				7F472922218C6B50007A10FB /* MMLiveChatEmojiView.m in Sources */,
@@ -1848,6 +1904,7 @@
 				D713B8C5207602EA00D388F2 /* BillCalendarExtensionView.m in Sources */,
 				7F63BBB8206E25340084ABC8 /* HomeBillContainerView.m in Sources */,
 				7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */,
+				5C392B29226D852800C15344 /* XXXWebViewController.m in Sources */,
 				D70F5DDA1FA74BCB007FBD43 /* FDCustomView.m in Sources */,
 				5C5E63C82244ABF100C0B85D /* CardCollectionView.m in Sources */,
 				7F63BBBC2071EC650084ABC8 /* HomeBillContentDefaultView.m in Sources */,
@@ -1860,6 +1917,7 @@
 				D7A73E1D1FAC16E800818CF5 /* MarkdownRenderHTMLViewController.m in Sources */,
 				5C5E63C52244ABD200C0B85D /* CardCollectionViewCell.m in Sources */,
 				D7A595BB1FAAC743000C59FE /* FDHTMLRenderComposer.m in Sources */,
+				5C392B26226D835900C15344 /* MMWebView.m in Sources */,
 				7FBC5FB71F97454C00DCF3E9 /* ANYMethodLog.m in Sources */,
 				5C9C28CB226418F4000B5631 /* MMAccumulateTimer.m in Sources */,
 				7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */,

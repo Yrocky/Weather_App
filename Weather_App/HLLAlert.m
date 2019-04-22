@@ -152,7 +152,8 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
 
 - (HLLAlert *) showIn:(__kindof UIViewController *)vc{
     
-    self.aModel.alertVC = [UIAlertController alertControllerWithTitle:self.aModel.title message:self.aModel.message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:self.aModel.title message:self.aModel.message preferredStyle:UIAlertControllerStyleAlert];
+    self.aModel.alertVC = alertVC;
     
     for (int i = 0; i < self.aModel.handleButtons.count; i++) {
         NSDictionary * handle = self.aModel.handleButtons[i];
@@ -301,7 +302,8 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
 
 - (HLLActionSheet *) showIn:(__kindof UIViewController *)vc{
     
-    self.aModel.alertVC = [UIAlertController alertControllerWithTitle:self.aModel.title message:self.aModel.message preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:self.aModel.title message:self.aModel.message preferredStyle:UIAlertControllerStyleActionSheet];
+    self.aModel.alertVC = alertVC;
     
     for (int i = 0; i < self.aModel.handleButtons.count; i++) {
         NSDictionary * handle = self.aModel.handleButtons[i];
