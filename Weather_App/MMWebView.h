@@ -12,36 +12,31 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^MMWebViewEvaluateJSCompletionBlock)(NSObject *result);
 
-typedef NS_ENUM(NSUInteger ,BBanWebViewShowType) {
-    BBanWebViewShowHalfScreen = 0,///<半屏显示
-    BBanWebViewShowFullScreen = 1,///<全屏显示
-};
-
 ///< 提供一个messageHandler的抽象数据，不是用对象
-typedef struct BBanMessageHandler{
+typedef struct MMMessageHandler{
     NSString *name;
     SEL method;
-} BBanMessageHandler;
+} MMMessageHandler;
 
-NS_INLINE BBanMessageHandler
-BBanMessageHandlerMake(NSString *name, SEL method){
-    BBanMessageHandler msgHandler;
+NS_INLINE MMMessageHandler
+MMMessageHandlerMake(NSString *name, SEL method){
+    MMMessageHandler msgHandler;
     msgHandler.name = name;
     msgHandler.method = method;
     return msgHandler;
 };
 
-NS_INLINE BBanMessageHandler
-BBanMessageHandlerFromNSValue(NSValue * value){
-    BBanMessageHandler msgHandler;
+NS_INLINE MMMessageHandler
+MMMessageHandlerFromNSValue(NSValue * value){
+    MMMessageHandler msgHandler;
     [value getValue:&msgHandler];
     return msgHandler;
 };
 
 NS_INLINE NSValue *
-NSValueFromMessageHandler(BBanMessageHandler msgHandler){
+NSValueFromMessageHandler(MMMessageHandler msgHandler){
     NSValue *msgHandlerValue = [NSValue valueWithBytes:&msgHandler
-                                              objCType:@encode(struct BBanMessageHandler)];
+                                              objCType:@encode(struct MMMessageHandler)];
     return msgHandlerValue;
 };
 
@@ -74,6 +69,7 @@ NSValueFromMessageHandler(BBanMessageHandler msgHandler){
 @property (nonatomic ,assign) BOOL scrollEnabled;
 @property (nonatomic ,assign) BOOL bounces;
 
+//FIXME:这里的实现方式不是很优雅，待优化
 ///<添加一套视图的显示消失逻辑，在这里进行messageHandler的添加和移除，
 - (void) viewWillAppear;
 - (void) viewWillDisappear;
@@ -125,6 +121,7 @@ NSValueFromMessageHandler(BBanMessageHandler msgHandler){
 @interface MMWebView (Plugin)
 
 - (void) addDefaultPlugins;
+///<外部如果需要添加自定义的插件，需要在plugins文件夹下添加对应的脚本以及对应的插件类
 - (void) addPlugins:(NSArray<NSString *> *)plugins;
 @end
 

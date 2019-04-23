@@ -103,7 +103,7 @@ WKScriptMessageHandler
 #pragma mark - API
 - (void) viewWillAppear{
     
-    [self enumDelegateForGetMessageHandler:^(BBanMessageHandler msgHandler) {
+    [self enumDelegateForGetMessageHandler:^(MMMessageHandler msgHandler) {
         [self.userContentController addScriptMessageHandler:msgHandler.name];
     }];
 
@@ -261,13 +261,13 @@ WKScriptMessageHandler
     }];
 }
 
-- (void) enumDelegateForGetMessageHandler:(void(^)(BBanMessageHandler))cb{
+- (void) enumDelegateForGetMessageHandler:(void(^)(MMMessageHandler))cb{
     
     if (self.delegate &&
         [self.delegate respondsToSelector:@selector(webViewAddScriptMessageHandlers:)]) {
         NSSet<NSValue *> * set = [self.delegate webViewAddScriptMessageHandlers:self];
         [set enumerateObjectsUsingBlock:^(NSValue * _Nonnull value, BOOL * _Nonnull stop) {
-            BBanMessageHandler msgHandler = BBanMessageHandlerFromNSValue(value);
+            MMMessageHandler msgHandler = MMMessageHandlerFromNSValue(value);
             if (cb) {
                 cb(msgHandler);
             }
@@ -320,7 +320,7 @@ WKScriptMessageHandler
         [self jsActionWithCloseWebView];
     }
     
-    [self enumDelegateForGetMessageHandler:^(BBanMessageHandler msgHandler) {
+    [self enumDelegateForGetMessageHandler:^(MMMessageHandler msgHandler) {
         if ([msgHandler.name isEqualToString:message.name] &&
             [self.delegate respondsToSelector:msgHandler.method]) {
 #pragma clang diagnostic push
