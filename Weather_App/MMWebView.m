@@ -146,7 +146,11 @@ WKScriptMessageHandler
 }
 
 - (void) loadHTML:(NSString *)html{
-    [self.webView loadHTMLString:html baseURL:nil];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"testwebview.html" ofType:nil];
+    NSURL *baseURL = [NSURL fileURLWithPath:path];
+    NSURLRequest *request = [NSURLRequest requestWithURL:baseURL];
+    [self.webView loadRequest:request];
 }
 
 - (void) reload{
@@ -650,7 +654,7 @@ WKScriptMessageHandler
 
 ///加载默认的插件
 - (void) addDefaultPlugins{
-    [self addPlugins:@[@"Base",@"Console",@"Accelerometer"]];
+    [self addPlugins:@[@"Base",@"Console",@"Accelerometer",@"Share"]];
 }
 
 - (void) addPlugins:(NSArray<NSString *> *)plugins{

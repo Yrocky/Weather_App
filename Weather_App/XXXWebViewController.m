@@ -34,8 +34,9 @@
     self.webView.delegate = self;
     [self.webView addProgressView];
     [self.webView addDefaultPlugins];
-    [self.webView setupUrlStirng:@"http://www.baidu.com/"];
-    [self.webView startLoad];
+//    [self.webView setupUrlStirng:@"http://www.baidu.com/"];
+//    [self.webView startLoad];
+    [self.webView loadHTML:@"testwebview"];
     [self.view addSubview:self.webView];
     
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {

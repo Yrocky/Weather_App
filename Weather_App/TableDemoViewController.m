@@ -49,17 +49,30 @@
     
     
     
-    
-    MMDatePickerViewConfig * dateConfig = [[MMDatePickerViewConfig alloc] init];
-    dateConfig.datePickerMode = UIDatePickerModeCountDownTimer;
-//    dateConfig.countDownDuration = 66;
-    MMPickerView * pickerView = [[MMPickerView alloc] initWithDatePickerConfig:dateConfig];
-    pickerView.bDoneAction = ^(MMPickerView * _Nullable _pickerView) {
-        MMDatePickerViewConfig * _dateConfig = _pickerView.config;
-        NSLog(@"date:%@",_dateConfig.date);
-    };
-    [pickerView setupInterface:[MMPickerViewInterface interface]];
-    [pickerView show];
+    if(0){
+        MMDatePickerViewConfig * dateConfig = [[MMDatePickerViewConfig alloc] init];
+        dateConfig.datePickerMode = UIDatePickerModeCountDownTimer;
+        //    dateConfig.countDownDuration = 66;
+        MMPickerView * pickerView = [[MMPickerView alloc] initWithDatePickerConfig:dateConfig];
+        pickerView.bDoneAction = ^(MMPickerView * _Nullable _pickerView) {
+            MMDatePickerViewConfig * _dateConfig = _pickerView.config;
+            NSLog(@"date:%@",_dateConfig.date);
+        };
+        [pickerView setupInterface:[MMPickerViewInterface interface]];
+        [pickerView show];
+    }
+    {
+        MMPickerView * pickerView = [MMPickerView pickerViewWithDatePickerConfig:^(MMDatePickerViewConfig * _Nonnull config) {
+            config.datePickerMode = UIDatePickerModeCountDownTimer;
+            config.countDownDuration = 60*3;//60s*3 = 3分钟
+        }];
+        pickerView.bDoneAction = ^(MMPickerView * _Nullable _pickerView) {
+            MMDatePickerViewConfig * _dateConfig = _pickerView.config;
+            NSLog(@"date:%@",_dateConfig.date);
+        };
+        [pickerView setupInterface:[MMPickerViewInterface interface]];
+        [pickerView show];
+    }
     
     [self.tableViewModel addSection:({
         

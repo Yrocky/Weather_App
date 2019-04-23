@@ -14,6 +14,30 @@
 #import "BillInputView.h"
 #import "BillKeyboardView.h"
 #import "MMSingleton.h"
+#import "NSArray+Sugar.h"
+
+@interface ArrayWrap : NSObject
+@property (nonatomic ,copy) NSString * name;
++ (instancetype) wrap:(NSString *)name;
+@end
+@implementation ArrayWrap
++ (instancetype) wrap:(NSString *)name{
+    return [[self alloc] initWith:name];
+}
+- (instancetype) initWith:(NSString *)name{
+
+    self = [super init];
+    if (self) {
+        self.name = name;
+    }
+    return self;
+}
+@end
+
+@interface MutableArrayWrap : ArrayWrap
+@end
+@implementation MutableArrayWrap
+@end
 
 @interface ExtensionViewController ()<BillExtensionViewDelegate>
 
@@ -30,6 +54,22 @@
     self.title = @"拓展功能";
     self.view.backgroundColor = [UIColor whiteColor];
     [self singleton];
+    
+    ///<使用谓词对数组进行filter的时候，如果谓词中有使用class作为条件来过滤数组，那么这个类不支持向下拓展，也就是说，他不支持class的子类，只能找到指定的类的实例对象
+    ///<像下面的例子中，如果谓词中有 ‘class == %@,[ArrayWrap class]’这样的条件，只能从array数组中过滤出来四个元素（1，2，3，5），而不是六个元素（33，55不符合条件）
+    ///<这样的问题如何解决呢？？？
+    NSArray * array = @[[ArrayWrap wrap:@"1"],
+                        [ArrayWrap wrap:@"2"],
+                        [MutableArrayWrap wrap:@"33"],
+                        [ArrayWrap wrap:@"3"],
+                        [MutableArrayWrap wrap:@"55"],
+                        [ArrayWrap wrap:@"5"],];
+    
+    [[array filteredArrayUsingPredicate:
+      [NSPredicate predicateWithFormat:@"class == %@",[ArrayWrap class]]]
+     mm_each:^(ArrayWrap * wrap) {
+         NSLog(@"ArrayWrap:%@",wrap.name);
+    }];
     // Do any additional setup after loading the view.
 }
 

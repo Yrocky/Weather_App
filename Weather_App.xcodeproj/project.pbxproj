@@ -184,6 +184,9 @@
 		D715E6A61FA7152100CFBFF4 /* CLTStickyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D715E6A51FA7152000CFBFF4 /* CLTStickyLayout.m */; };
 		D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */; };
 		D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */; };
+		D72CE20A226E10B6005D187A /* testwebview.html in Resources */ = {isa = PBXBuildFile; fileRef = D72CE209226E10B5005D187A /* testwebview.html */; };
+		D72CE20D226E14E8005D187A /* MMSharePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = D72CE20C226E14E8005D187A /* MMSharePlugin.m */; };
+		D72CE20F226E165D005D187A /* Share.js in Resources */ = {isa = PBXBuildFile; fileRef = D72CE20E226E165D005D187A /* Share.js */; };
 		D759BB03218CA1B500A06FE0 /* MMAnimatableProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = D759BB02218CA1B500A06FE0 /* MMAnimatableProperty.m */; };
 		D783D36721B8160C002C0D40 /* MMConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = D783D36621B8160C002C0D40 /* MMConversation.m */; };
 		D7963EFB21B5678B00B44397 /* ALBookDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7963EFA21B5678B00B44397 /* ALBookDemoViewController.m */; };
@@ -565,6 +568,10 @@
 		D719742E1F6EFEDA0068F971 /* MM_AutoReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MM_AutoReplyViewController.m; sourceTree = "<group>"; };
 		D71974301F6EFEFC0068F971 /* MM_AutoReplyEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MM_AutoReplyEditViewController.h; sourceTree = "<group>"; };
 		D71974311F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MM_AutoReplyEditViewController.m; sourceTree = "<group>"; };
+		D72CE209226E10B5005D187A /* testwebview.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = testwebview.html; sourceTree = "<group>"; };
+		D72CE20B226E14E8005D187A /* MMSharePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMSharePlugin.h; sourceTree = "<group>"; };
+		D72CE20C226E14E8005D187A /* MMSharePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMSharePlugin.m; sourceTree = "<group>"; };
+		D72CE20E226E165D005D187A /* Share.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Share.js; sourceTree = "<group>"; };
 		D759BB00218C891F00A06FE0 /* MMCGUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMCGUtils.h; sourceTree = "<group>"; };
 		D759BB01218CA1B500A06FE0 /* MMAnimatableProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimatableProperty.h; sourceTree = "<group>"; };
 		D759BB02218CA1B500A06FE0 /* MMAnimatableProperty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimatableProperty.m; sourceTree = "<group>"; };
@@ -650,6 +657,7 @@
 		5C392B2A226D88CF00C15344 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
+				D72CE209226E10B5005D187A /* testwebview.html */,
 				5C392B2B226D89D200C15344 /* plugins */,
 				5C392B24226D835900C15344 /* MMWebView.h */,
 				5C392B25226D835900C15344 /* MMWebView.m */,
@@ -659,6 +667,8 @@
 				5C392BA1226DDD5800C15344 /* MMConsolePlugin.m */,
 				5C392BA3226DDD9D00C15344 /* MMAccelerometerPlugin.h */,
 				5C392BA4226DDD9D00C15344 /* MMAccelerometerPlugin.m */,
+				D72CE20B226E14E8005D187A /* MMSharePlugin.h */,
+				D72CE20C226E14E8005D187A /* MMSharePlugin.m */,
 			);
 			name = WebView;
 			sourceTree = "<group>";
@@ -666,6 +676,7 @@
 		5C392B2B226D89D200C15344 /* plugins */ = {
 			isa = PBXGroup;
 			children = (
+				D72CE20E226E165D005D187A /* Share.js */,
 				5C392B2C226D89D200C15344 /* Console.js */,
 				5C392B2D226D89D200C15344 /* Base.js */,
 				5C392B2E226D89D200C15344 /* Accelerometer.js */,
@@ -1655,6 +1666,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72CE20A226E10B6005D187A /* testwebview.html in Resources */,
 				5C392B2F226D89D200C15344 /* Console.js in Resources */,
 				D7A595BF1FAACFED000C59FE /* rootTemplate.html in Resources */,
 				5C392B31226D89D200C15344 /* Accelerometer.js in Resources */,
@@ -1669,6 +1681,7 @@
 				7FDC6ED81F46E35A00D94379 /* LaunchScreen.storyboard in Resources */,
 				7F53C0ED2126740600567D74 /* v1314.xml in Resources */,
 				7FDC6ED51F46E35A00D94379 /* Assets.xcassets in Resources */,
+				D72CE20F226E165D005D187A /* Share.js in Resources */,
 				5C392B30226D89D200C15344 /* Base.js in Resources */,
 				7F53C0F42126740600567D74 /* love.xml in Resources */,
 				7F47292B218C6FBF007A10FB /* MMEmojiText.plist in Resources */,
@@ -1851,6 +1864,7 @@
 				D70629461F8B185100F52FCB /* HSBaseTableViewCell.m in Sources */,
 				7FBCF0C41F4E776B00E2EEC7 /* HLLCircularLoaderView.m in Sources */,
 				D706294B1F8B185100F52FCB /* HSTextTableViewCell.m in Sources */,
+				D72CE20D226E14E8005D187A /* MMSharePlugin.m in Sources */,
 				7FD8CC291F984A8D005DC9FF /* UILabel+ContentSize.m in Sources */,
 				7F14A7D9206B29F2006EC133 /* RunwayViewController.m in Sources */,
 				D713B8B6207280C900D388F2 /* CustomNavigationBar.m in Sources */,

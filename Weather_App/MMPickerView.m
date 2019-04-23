@@ -43,10 +43,10 @@
     }
 }
 
-- (void) configRowAt:(NSArray <NSString *>*(^)(NSUInteger))callBack{
+- (void) configRowAt:(NSArray <NSString *>*(^)(NSUInteger))callback{
     
-    if (callBack) {
-        [self configRowAt:callBack displayText:nil];
+    if (callback) {
+        [self configRowAt:callback displayText:nil];
     }
 }
 
@@ -173,6 +173,24 @@
     [b setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     return b;
 }
+
++ (instancetype _Nullable ) pickerViewWithConfig:(void(^)(MMPickerViewConfig *_Nonnull config))configHandle{
+    
+    MMPickerViewConfig * config = [[MMPickerViewConfig alloc] init];
+    if (configHandle) {
+        configHandle(config);
+    }
+    return [[self alloc] initWithConfig:config];
+}
+
++ (instancetype _Nullable ) pickerViewWithDatePickerConfig:(void(^)(MMDatePickerViewConfig *_Nonnull config))configHandle{
+    MMDatePickerViewConfig * config = [[MMDatePickerViewConfig alloc] init];
+    if (configHandle) {
+        configHandle(config);
+    }
+    return [[self alloc] initWithDatePickerConfig:config];
+}
+
 - (instancetype)initWithConfig:(MMPickerViewConfig *)config{
     
     self = [self init];
@@ -210,9 +228,11 @@
         self.datePickerView.backgroundColor = [UIColor whiteColor];
         self.datePickerView.datePickerMode = config.datePickerMode;
         self.datePickerView.countDownDuration = config.countDownDuration;
-        self.datePickerView.date = config.date ? config.date : [NSDate date];
-        self.datePickerView.minimumDate = config.minimumDate ;
-        self.datePickerView.maximumDate = config.maximumDate ;
+        if (config.datePickerMode != UIDatePickerModeCountDownTimer) {
+            self.datePickerView.date = config.date ? config.date : [NSDate date];
+        }
+        self.datePickerView.minimumDate = config.minimumDate;
+        self.datePickerView.maximumDate = config.maximumDate;
         [self addSubview:self.datePickerView];
     }
     return self;
