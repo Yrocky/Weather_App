@@ -12,7 +12,7 @@
 
 - (void) log{
     if (nil != self.data) {
-        NSLog(@"[webView][plugin][log] %@",self.data);
+        NSLog(@"[webView] log:%@",self.data);
     }
 }
 @end

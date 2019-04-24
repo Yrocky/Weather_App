@@ -17,6 +17,7 @@
 		5C392B34226D8A6B00C15344 /* MMPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392B33226D8A6B00C15344 /* MMPlugin.m */; };
 		5C392BA2226DDD5800C15344 /* MMConsolePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA1226DDD5800C15344 /* MMConsolePlugin.m */; };
 		5C392BA5226DDD9D00C15344 /* MMAccelerometerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA4226DDD9D00C15344 /* MMAccelerometerPlugin.m */; };
+		5C392BA8226EB04A00C15344 /* MMScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA7226EB04A00C15344 /* MMScriptMessageHandler.m */; };
 		5C4E3A702252F54C001499AF /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E3A6F2252F54C001499AF /* RankViewController.m */; };
 		5C4E3ADF22532B74001499AF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E3ADE22532B74001499AF /* README.md */; };
 		5C5E63C22244AB9100C0B85D /* CardCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63C12244AB9100C0B85D /* CardCollectionViewController.m */; };
@@ -240,6 +241,9 @@
 		5C392BA1226DDD5800C15344 /* MMConsolePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMConsolePlugin.m; sourceTree = "<group>"; };
 		5C392BA3226DDD9D00C15344 /* MMAccelerometerPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAccelerometerPlugin.h; sourceTree = "<group>"; };
 		5C392BA4226DDD9D00C15344 /* MMAccelerometerPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAccelerometerPlugin.m; sourceTree = "<group>"; };
+		5C392BA6226EB04A00C15344 /* MMScriptMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMScriptMessageHandler.h; sourceTree = "<group>"; };
+		5C392BA7226EB04A00C15344 /* MMScriptMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMScriptMessageHandler.m; sourceTree = "<group>"; };
+		5C392BA9226EB7B200C15344 /* MMEvaluateJaveScriptAble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMEvaluateJaveScriptAble.h; sourceTree = "<group>"; };
 		5C4E3A6E2252F54C001499AF /* RankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
 		5C4E3A6F2252F54C001499AF /* RankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
 		5C4E3ADE22532B74001499AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -661,6 +665,9 @@
 				5C392B2B226D89D200C15344 /* plugins */,
 				5C392B24226D835900C15344 /* MMWebView.h */,
 				5C392B25226D835900C15344 /* MMWebView.m */,
+				5C392BA9226EB7B200C15344 /* MMEvaluateJaveScriptAble.h */,
+				5C392BA6226EB04A00C15344 /* MMScriptMessageHandler.h */,
+				5C392BA7226EB04A00C15344 /* MMScriptMessageHandler.m */,
 				5C392B32226D8A6B00C15344 /* MMPlugin.h */,
 				5C392B33226D8A6B00C15344 /* MMPlugin.m */,
 				5C392BA0226DDD5800C15344 /* MMConsolePlugin.h */,
@@ -1761,6 +1768,7 @@
 				7FFAB841210AC39500CA6671 /* MMBObject.m in Sources */,
 				7F32E0B41FA1CB74002D57FB /* HLLIndicatorViewController.m in Sources */,
 				D7DE014F1F98C1EF008682DE /* NSObject+AHKBuilder.m in Sources */,
+				5C392BA8226EB04A00C15344 /* MMScriptMessageHandler.m in Sources */,
 				7FCA92192111A77F00DB7EFD /* RoundCornerViewController.m in Sources */,
 				D70629551F8B191C00F52FCB /* UIView+MHCommon.m in Sources */,
 				D7A325E420772DD700B2F8AB /* BillKeyboardView.m in Sources */,

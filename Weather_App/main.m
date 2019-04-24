@@ -52,10 +52,10 @@ int main(int argc, char * argv[]) {
         NSInteger index = [[[NSUserDefaults standardUserDefaults] valueForKey:@"key-asfsd"] integerValue];
         
         NSDictionary * d = @{@"key":@"sfsdf"};
-        d = nil;
+//        d = nil;
         NSLog(@"%d",[d[@"key"] boolValue]);
         NSLog(@"value:%@",[d objectForKey:@"key1"]);
-    
+        NSLog(@"noneKE:%@",d[@"KE"]);
 //        e();
         
 //        NSData* jsonData = [d dataUsingEncoding:NSUTF8StringEncoding];

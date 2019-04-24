@@ -7,38 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MMScriptMessageHandler.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-typedef void (^MMWebViewEvaluateJSCompletionBlock)(NSObject *result);
-
-///< 提供一个messageHandler的抽象数据，不是用对象
-typedef struct MMMessageHandler{
-    NSString *name;
-    SEL method;
-} MMMessageHandler;
-
-NS_INLINE MMMessageHandler
-MMMessageHandlerMake(NSString *name, SEL method){
-    MMMessageHandler msgHandler;
-    msgHandler.name = name;
-    msgHandler.method = method;
-    return msgHandler;
-};
-
-NS_INLINE MMMessageHandler
-MMMessageHandlerFromNSValue(NSValue * value){
-    MMMessageHandler msgHandler;
-    [value getValue:&msgHandler];
-    return msgHandler;
-};
-
-NS_INLINE NSValue *
-NSValueFromMessageHandler(MMMessageHandler msgHandler){
-    NSValue *msgHandlerValue = [NSValue valueWithBytes:&msgHandler
-                                              objCType:@encode(struct MMMessageHandler)];
-    return msgHandlerValue;
-};
 
 @class MMWebView;
 @protocol MMWebViewDelegate <NSObject>
@@ -52,7 +23,6 @@ NSValueFromMessageHandler(MMMessageHandler msgHandler){
 - (void) webViewDidLoadNavigation:(MMWebView *)webView progress:(float)progress;
 
 - (void) webViewDidPerformCloseAction:(MMWebView *)webView;///<关闭
-- (NSSet<NSValue *> *) webViewAddScriptMessageHandlers:(MMWebView *)webView;////<设置需要添加和js交互的message-
 @end
 
 @interface MMWebView : UIView{
@@ -62,6 +32,7 @@ NSValueFromMessageHandler(MMMessageHandler msgHandler){
 @property (nonatomic ,copy ,readonly) NSString * title;
 @property (nonatomic ,copy ,readonly) NSString * urlString;
 
+@property (nonatomic ,strong ,readonly) MMScriptMessageHandler * messageHandler;
 @property (nonatomic ,weak) id<MMWebViewDelegate> delegate;
 
 @property (nonatomic ,copy) NSDictionary * extraParams;///<对于有些url需要额外的添加参数
@@ -69,7 +40,6 @@ NSValueFromMessageHandler(MMMessageHandler msgHandler){
 @property (nonatomic ,assign) BOOL scrollEnabled;
 @property (nonatomic ,assign) BOOL bounces;
 
-//FIXME:这里的实现方式不是很优雅，待优化
 ///<添加一套视图的显示消失逻辑，在这里进行messageHandler的添加和移除，
 - (void) viewWillAppear;
 - (void) viewWillDisappear;
@@ -80,21 +50,19 @@ NSValueFromMessageHandler(MMMessageHandler msgHandler){
 - (void) setupUrlStirng:(NSString *)urlString;///<hostType为InUrl，也就是包含在urlString内部
 
 - (void) loadHTML:(NSString *)html;
+- (void) loadHTMLString:(NSString *)htmlString;
 
 - (void) reload;
 - (void) goBack;
 
-///<用于外部视图、控制器的appear和disappear时候调用
 - (void) startLoad;
 - (void) stopLoad;
 
 - (void) clearCache;
 @end
 
-@interface MMWebView (EvaluateJSExtension)
+@interface MMWebView (EvaluateJSExtension)<MMEvaluateJaveScriptAble>
 
-- (void) safeAsyncEvaluateJavaScriptString:(NSString *)script;
-- (void) safeAsyncEvaluateJavaScriptString:(NSString *)script completionBlock:(nullable MMWebViewEvaluateJSCompletionBlock)block;
 @end
 
 @interface MMWebView (Cookie)

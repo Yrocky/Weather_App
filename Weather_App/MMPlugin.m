@@ -10,6 +10,10 @@
 
 @implementation MMPlugin
 
+- (void)dealloc{
+    NSLog(@"[webView] %@ dealloc",self);
+}
+
 - (BOOL) callback:(NSDictionary *)values{
     if (nil == values) {
         return NO;
@@ -25,20 +29,9 @@
     
     return YES;
 }
+
 - (void) errorCallback:(NSString *)errorMessage{
     NSString * js = [NSString stringWithFormat:@"onError(%lu,'%@');",(unsigned long)self.taskId,errorMessage];
     [self.wk safeAsyncEvaluateJavaScriptString:js];
-}
-
-- (NSString *)stringByEscapingQueryString:(NSString *)string {
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_7_0 || __MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_10_9
-    return [string stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-#else
-    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                                 (CFStringRef)string,
-                                                                                 NULL,
-                                                                                 (CFStringRef) @":/?#[]@!$&'()*+,;=",
-                                                                                 kCFStringEncodingUTF8));
-#endif
 }
 @end

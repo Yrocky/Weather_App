@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MMWebView.h"
+#import "MMEvaluateJaveScriptAble.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MMPlugin : NSObject
 
-@property (nonatomic ,weak) MMWebView * wk;
+@property (nonatomic ,weak) id<MMEvaluateJaveScriptAble> wk;
 @property (nonatomic ,assign) NSUInteger taskId;
 @property (nonatomic ,strong) NSString * data;
 

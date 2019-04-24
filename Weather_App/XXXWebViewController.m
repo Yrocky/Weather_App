@@ -9,8 +9,12 @@
 #import "XXXWebViewController.h"
 #import "MMWebView.h"
 #import "Masonry.h"
+#import "MMSharePlugin.h"
 
-@interface XXXWebViewController ()<MMWebViewDelegate>
+@interface XXXWebViewController ()<
+MMWebViewDelegate,
+MMScriptMessageHandlerDelegate,
+MMSharePluginDelegate>
 @property (nonatomic ,strong) MMWebView * webView;
 @end
 
@@ -18,12 +22,10 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.webView viewWillAppear];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.webView viewWillDisappear];
 }
 
 - (void)viewDidLoad {
@@ -32,9 +34,11 @@
     
     self.webView = [MMWebView new];
     self.webView.delegate = self;
+    self.webView.messageHandler.delegate = self;
     [self.webView addProgressView];
     [self.webView addDefaultPlugins];
-//    [self.webView setupUrlStirng:@"http://www.baidu.com/"];
+    [self.webView viewWillAppear];///<一定要在 设置`webView.messageHandler.delegate`之后
+//    [self.webView setupUrlStirng:@"http://192.168.99.146:8080/publish/html5/index.html"];
 //    [self.webView startLoad];
     [self.webView loadHTML:@"testwebview"];
     [self.view addSubview:self.webView];
@@ -44,6 +48,32 @@
     }];
 }
 
+- (void) onSomeValue:(id)data{
+    NSLog(@"on some value:%@",data);
+}
 #pragma mark - MMWebViewDelegate
+
+#pragma mark - MMScriptMessageHandlerDelegate
+
+- (NSSet<NSValue *> *) messageHandlerResponseMessages:(MMScriptMessageHandler *)msgHandler{
+    
+    return [NSSet setWithObjects:NSValueFromMessageHandler(MMMessageHandlerMake(@"SomeValue", @selector(onSomeValue:))), nil];
+}
+
+- (void)messageHandler:(MMScriptMessageHandler *)msgHandler willPerformPlugin:(__kindof MMPlugin *)plugin{
+    if ([plugin isKindOfClass:[MMSharePlugin class]]) {
+        MMSharePlugin * sharePlugin = (MMSharePlugin *)plugin;
+        sharePlugin.delegate = self;
+    }
+}
+
+#pragma mark - MMSharePluginDelegate
+
+- (void) sharePlugin:(MMSharePlugin *)plugin didShareSuccess:(id)info{
+    NSLog(@"on share success:%@",info);
+}
+- (void) sharePlugin:(MMSharePlugin *)plugin didShareFailed:(NSError *)error{
+    NSLog(@"on share error:%@",error);
+}
 
 @end

@@ -13,11 +13,6 @@
 #import "MMPlugin.h"
 #import "HLLAlert.h"
 
-static NSString *const kWebMsgHandlerNameiOSClosePage = @"iOSClosePage";
-static NSString *const kWebMsgHandlerNameAppCallClose = @"appCallClose";
-
-static NSString *const kWebMsgHandlerNameiMMWebViewPlugin = @"MMWebViewPlugin";
-
 static inline void clearWebViewCacheFolderByType(NSString *cacheType) {
     static dispatch_once_t once;
     static NSDictionary *cachePathMap = nil;
@@ -62,8 +57,7 @@ static inline void clearWebViewCacheFolderByType(NSString *cacheType) {
 // 使用WKWebView遇到的大多数问题都可以在这里找到解决方案，https://mp.weixin.qq.com/s/rhYKLIbXOsUJC_n6dt9UfA?
 @interface MMWebView ()
 <WKUIDelegate,
-WKNavigationDelegate,
-WKScriptMessageHandler
+WKNavigationDelegate
 >{
     NSDate *_beforeRequestDate;
     NSDate *_afterRequestDate;
@@ -71,15 +65,18 @@ WKScriptMessageHandler
 }
 
 @property (nonatomic, strong) WKWebView *webView;
-@property (nonatomic, strong) NSMutableDictionary<NSString *, NSString *> *cookieDic;
 @property (nonatomic, strong) UIProgressView *progressView;
+
+@property (nonatomic, strong) NSMutableDictionary<NSString *, NSString *> *cookieDic;
+@property (nonatomic ,strong) MMScriptMessageHandler * messageHandler;
 @property (nonatomic ,weak) MMInternalUserContentController * userContentController;
 @property (nonatomic, copy) NSString *lastUrlString;
 @end
 
 @implementation MMWebView
+
 - (void)dealloc{
-    NSLog(@"dealloc --- MMWebView");
+    NSLog(@"[webView] MMWebView dealloc");
     [self stopLoad];
     if (_didAddWebViewObserver) {
         [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
@@ -91,6 +88,9 @@ WKScriptMessageHandler
     self = [super initWithFrame:frame];
     if (self) {
         
+        self.messageHandler = [MMScriptMessageHandler new];
+        [self.messageHandler setupWebView:self.webView];
+
         [self addSubview:self.webView];
         [self.webView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.equalTo(self).offset(0);
@@ -102,14 +102,10 @@ WKScriptMessageHandler
 
 #pragma mark - API
 - (void) viewWillAppear{
-    
-    [self enumDelegateForGetMessageHandler:^(MMMessageHandler msgHandler) {
+
+    [self.messageHandler enumDelegateForGetMessageHandler:^(MMMessageHandler msgHandler) {
         [self.userContentController addScriptMessageHandler:msgHandler.name];
     }];
-
-    ///添加默认的message-handler
-    [self.userContentController addScriptMessageHandler:kWebMsgHandlerNameiOSClosePage];
-    [self.userContentController addScriptMessageHandler:kWebMsgHandlerNameAppCallClose];
 }
 
 - (void) viewWillDisappear{
@@ -147,10 +143,25 @@ WKScriptMessageHandler
 
 - (void) loadHTML:(NSString *)html{
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"testwebview.html" ofType:nil];
-    NSURL *baseURL = [NSURL fileURLWithPath:path];
-    NSURLRequest *request = [NSURLRequest requestWithURL:baseURL];
-    [self.webView loadRequest:request];
+    [self.webView.configuration.preferences setValue:@YES forKey:@"allowFileAccessFromFileURLs"];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:html ofType:@"html"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    if (@available(iOS 9.0, *)) {
+        [self.webView loadFileURL:url allowingReadAccessToURL:url];
+    } else {
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [self.webView loadRequest:request];
+    }
+    
+    [self addWebViewObserver];
+}
+
+- (void) loadHTMLString:(NSString *)htmlString{
+
+    [self.webView.configuration.preferences setValue:@YES forKey:@"allowFileAccessFromFileURLs"];
+    [self.webView loadHTMLString:htmlString baseURL:nil];
+    [self addWebViewObserver];
 }
 
 - (void) reload{
@@ -164,7 +175,9 @@ WKScriptMessageHandler
 - (void) startLoad{
     
     NSLog(@"[webview]开始加载%@",self.urlString);
-    
+
+    [self.webView.configuration.preferences setValue:@YES forKey:@"allowFileAccessFromFileURLs"];
+
     if (nil != self.lastUrlString &&
         ![self.lastUrlString isEqualToString:self.urlString]) {
         //清空内容
@@ -182,16 +195,12 @@ WKScriptMessageHandler
     
     NSLog(@"[webView] loadRequest:");
     
-    if (!_didAddWebViewObserver) {
-        [self.webView addObserver:self forKeyPath:@"estimatedProgress"
-                          options:NSKeyValueObservingOptionNew context:nil];
-        _didAddWebViewObserver = YES;
-    }
+    [self addWebViewObserver];
 }
 
 - (void) stopLoad{
     
-    NSLog(@"[webview]结束加载%@",self.urlString);
+    NSLog(@"[webview] 结束加载%@",self.urlString);
     [self.webView stopLoading];
     ///<将webView的显示内容置为空白
     [self safeAsyncEvaluateJavaScriptString:@"document.body.innerHTML='';"];
@@ -200,6 +209,14 @@ WKScriptMessageHandler
 }
 
 #pragma mark - Privates
+
+- (void) addWebViewObserver{
+    if (!_didAddWebViewObserver) {
+        [self.webView addObserver:self forKeyPath:@"estimatedProgress"
+                          options:NSKeyValueObservingOptionNew context:nil];
+        _didAddWebViewObserver = YES;
+    }
+}
 
 - (NSString *)joinAuthForUrlString{
     
@@ -265,19 +282,6 @@ WKScriptMessageHandler
     }];
 }
 
-- (void) enumDelegateForGetMessageHandler:(void(^)(MMMessageHandler))cb{
-    
-    if (self.delegate &&
-        [self.delegate respondsToSelector:@selector(webViewAddScriptMessageHandlers:)]) {
-        NSSet<NSValue *> * set = [self.delegate webViewAddScriptMessageHandlers:self];
-        [set enumerateObjectsUsingBlock:^(NSValue * _Nonnull value, BOOL * _Nonnull stop) {
-            MMMessageHandler msgHandler = MMMessageHandlerFromNSValue(value);
-            if (cb) {
-                cb(msgHandler);
-            }
-        }];
-    }
-}
 #pragma mark - js action
 
 - (void)jsActionWithCloseWebView{
@@ -308,56 +312,6 @@ WKScriptMessageHandler
         if (self.delegate &&
             [self.delegate respondsToSelector:@selector(webViewDidLoadNavigation:progress:)]) {
             [self.delegate webViewDidLoadNavigation:self progress:newValue];
-        }
-    }
-}
-
-#pragma mark - WKScriptMessageHandler
-/** 实现js注入方法的协议方法 */
-- (void)userContentController:(WKUserContentController *)userContentController
-      didReceiveScriptMessage:(WKScriptMessage *)message{
-    
-    // 为以后对接js的方法入口
-    if ([message.name isEqualToString:kWebMsgHandlerNameiOSClosePage] ||
-        [message.name isEqualToString:kWebMsgHandlerNameAppCallClose]) {
-        //关闭
-        [self jsActionWithCloseWebView];
-    }
-    
-    [self enumDelegateForGetMessageHandler:^(MMMessageHandler msgHandler) {
-        if ([msgHandler.name isEqualToString:message.name] &&
-            [self.delegate respondsToSelector:msgHandler.method]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            [self.delegate performSelector:msgHandler.method withObject:message.body];
-#pragma clang diagnostic pop
-        }
-    }];
-    
-    if ([message.name isEqualToString:kWebMsgHandlerNameiMMWebViewPlugin]) {
-        if (nil != message.body && [message.body isKindOfClass:[NSDictionary class]]) {
-            NSDictionary * body = message.body;
-            if ([body.allKeys containsObject:@"className"]) {
-                NSString * className = body[@"className"];
-                if ([body.allKeys containsObject:@"functionName"]) {
-                    NSString * funcName = body[@"functionName"];
-                    MMPlugin * plugin = [NSClassFromString(className) new];
-                    //FIXME:这里的plugin类没有进行运行时的判断，如果是一个没有生命的类，运行下面的代码会崩溃
-                    plugin.wk = self;
-                    plugin.taskId = [body[@"taskId"] integerValue];
-                    plugin.data = body[@"data"];
-                    if ([plugin respondsToSelector:NSSelectorFromString(funcName)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                        [plugin performSelector:NSSelectorFromString(funcName)];
-#pragma clang diagnostic pop
-                    }
-                } else {
-                    NSLog(@"[webView]没有找到方法");
-                }
-            } else {
-                NSLog(@"[webView]没有找到类");
-            }
         }
     }
 }
@@ -490,7 +444,7 @@ WKScriptMessageHandler
         WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
         
         // ucc
-        MMInternalUserContentController * ucc = [MMInternalUserContentController uccWithHandler:self];
+        MMInternalUserContentController * ucc = [MMInternalUserContentController uccWithHandler:self.messageHandler];
         self.userContentController = ucc;
         configuration.userContentController = ucc;
         
@@ -543,43 +497,9 @@ WKScriptMessageHandler
 }
 
 - (void) safeAsyncEvaluateJavaScriptString:(NSString *)script completionBlock:(nullable MMWebViewEvaluateJSCompletionBlock)block{
-    if (!script || script.length <= 0) {
-        NSLog(@"[webView]无效的 脚本");
-        if (block) {
-            block(@"");
-        }
-        return;
-    }
-    
-    [self.webView evaluateJavaScript:script
-                   completionHandler:^(id result, NSError *_Nullable error) {
-                       
-                       if (!error) {
-                           if (block) {
-                               NSObject *resultObj = @"";
-                               if (!result || [result isKindOfClass:[NSNull class]]) {
-                                   resultObj = @"";
-                               } else if ([result isKindOfClass:[NSNumber class]]) {
-                                   resultObj = ((NSNumber *)result).stringValue;
-                               } else if ([result isKindOfClass:[NSObject class]]){
-                                   resultObj = (NSObject *)result;
-                               } else {
-                                   NSLog(@"[webView] 执行js脚本:%@ 返回类型:%@",
-                                         NSStringFromClass([result class]),
-                                         script);
-                               }
-                               if (block) {
-                                   block(resultObj);
-                               }
-                           }
-                       } else {
-                           NSLog(@"[webView] 执行js脚本:%@ 出错: %@", script,error.description);
-                           if (block) {
-                               block(@"");
-                           }
-                       }
-                   }];
+    [self.messageHandler safeAsyncEvaluateJavaScriptString:script completionBlock:block];
 }
+
 @end
 
 @implementation MMWebView (Cookie)
@@ -681,7 +601,7 @@ WKScriptMessageHandler
 @implementation MMInternalUserContentController
 
 - (void)dealloc{
-    NSLog(@"MMInternalUserContentController dealloc");
+    NSLog(@"[webView] MMInternalUserContentController dealloc");
     [self removeAllScriptMessageHandlers];
 }
 
