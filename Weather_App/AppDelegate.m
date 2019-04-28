@@ -10,6 +10,7 @@
 #import "NSArray+Sugar.h"
 #import <AVKit/AVKit.h>
 #import "EaseDevice.h"
+#import "XXXHTTPProtocol.h"
 
 //#import <objc/objc-runtime.h>
 @interface AppDelegate ()
@@ -55,6 +56,7 @@ extern CFAbsoluteTime StartTime;
     
     example_A();
     
+    [XXXHTTPProtocol start];
 //    id overlayClass = NSClassFromString(@"UIDebuggingInformationOverlay");
 //    if ([overlayClass respondsToSelector:NSSelectorFromString(@"prepareDebuggingOverlay")]) {
 //        [overlayClass performSelector:NSSelectorFromString(@"prepareDebuggingOverlay")];

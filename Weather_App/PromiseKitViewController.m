@@ -65,7 +65,7 @@
     ///由于`XXXGushiciRequest`重写了`mapModelWithJsonData:`方法，
     ///返回了`XXXGushiciWrap`类型的数据，因此这里的then可以直接使用
     [[XXXGushiciRequest new] startPromise].then(^(XXXGushiciWrap * wrap){
-        NSLog(@"gushici:%@",wrap);
+        NSLog(@"gushici:%@ contents:%@",wrap,wrap.contents);
     }).catch(^(NSError * error){
         NSLog(@"error:%@",error);
     });

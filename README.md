@@ -374,7 +374,7 @@ A -. weak 使用userContentController属性 .-> D
 * 使用`WKWebView`的`-evaluateJavaScript: completionHandler:`方法完成native和js的交互
 * 通过`-userContentController: didReceiveScriptMessage:`回调函数创建插件，并执行相应的native调js方法
 
-下面所以下使用过程中的一个场景，比如`web需要通过native获取一个值来进行下一步操作`，简化一下过程就是：
+下面是在使用过程中遇到问题的一个场景，概述下为`web需要通过native获取一个值来进行下一步操作`，简化一下过程就是：
 
 ```js
 // in index.html

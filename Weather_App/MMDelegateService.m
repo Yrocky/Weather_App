@@ -90,6 +90,7 @@ The fast enumeration protocol (supporting the for..in statement) will yield NULL
             }
         }
     } else {
+        // 主要是为了解决菱形问题
         id firstResponder = [self p_firstResponderToSelector:invocation.selector];
         [invocation invokeWithTarget:firstResponder];
     }

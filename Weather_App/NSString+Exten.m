@@ -109,18 +109,26 @@
 
         NSMutableArray<NSString *> *separatedStrings = [NSMutableArray array];
         
-        for (NSUInteger index = 0; index < matched.count; index ++) {
+        for (NSUInteger index = 0; index < matched.count + 1; index ++) {
             
-            NSTextCheckingResult * matchResult = matched[index];
+            NSTextCheckingResult * matchResult = index == matched.count ? nil : matched[index];
             NSString * separatedString = nil;
+            
             if (index) {
                 NSRange preRange = matched[index - 1].range;
-                NSUInteger location = NSMaxRange(preRange);
-                NSUInteger length = NSMaxRange(matchResult.range) - location;
-                length = contained ? length : length - 1;
-                NSRange range = NSMakeRange(location,length);
-                separatedString = [self substringWithRange:range];
-            } else {
+                if (index == matched.count) {
+                    NSUInteger location = NSMaxRange(preRange);
+                    NSUInteger length = self.length - location;
+                    NSRange range = NSMakeRange(location, length);
+                    separatedString = [self substringWithRange:range];
+                } else {
+                    NSUInteger location = NSMaxRange(preRange);
+                    NSUInteger length = NSMaxRange(matchResult.range) - location;
+                    length = contained ? length : length - 1;
+                    NSRange range = NSMakeRange(location,length);
+                    separatedString = [self substringWithRange:range];
+                }
+            } else {// 第一个
                 NSUInteger toIndex = NSMaxRange(matchResult.range);
                 toIndex = contained ? toIndex : toIndex - 1;
                 separatedString = [self substringToIndex:toIndex];
@@ -131,6 +139,6 @@
         }
         return separatedStrings;
     }
-    return nil;
+    return @[self.copy];
 }
 @end

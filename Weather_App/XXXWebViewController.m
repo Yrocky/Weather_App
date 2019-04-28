@@ -38,9 +38,9 @@ MMSharePluginDelegate>
     [self.webView addProgressView];
     [self.webView addDefaultPlugins];
     [self.webView viewWillAppear];///<一定要在 设置`webView.messageHandler.delegate`之后
-//    [self.webView setupUrlStirng:@"http://192.168.99.146:8080/publish/html5/index.html"];
-//    [self.webView startLoad];
-    [self.webView loadHTML:@"testwebview"];
+    [self.webView setupUrlStirng:@"https://www.baidu.com"];
+    [self.webView startLoad];
+//    [self.webView loadHTML:@"testwebview"];
     [self.view addSubview:self.webView];
     
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {

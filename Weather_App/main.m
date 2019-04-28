@@ -11,6 +11,8 @@
 #import "HLLAttributedBuilder.h"
 #import "NSArray+Sugar.h"
 #import "NSNumber+Sugar.h"
+#import "NSString+Exten.h"
+
 //
 //void am(NSMutableArray * a){
 ////    char b = 'b';
@@ -38,6 +40,13 @@ int main(int argc, char * argv[]) {
     @autoreleasepool {
         
         StartTime = CFAbsoluteTimeGetCurrent();
+        
+        NSArray * strings = @[@",",@".",@";",@"\\+",@"\\-",@"\\*",@"\\/"];
+        NSString * expression = @"13*5/45-32+1";
+        NSArray * contained = [expression separatedByStrings:strings contained:YES];
+        NSArray * unContained = [expression separatedByStrings:strings contained:NO];
+        NSLog(@"expression:%@",contained);
+        NSLog(@"expression:%@",unContained);
         
         typedef void (^BlockType)();
         NSLog(@"load main-func");
@@ -67,6 +76,7 @@ int main(int argc, char * argv[]) {
         //
         NSLog(@"compera:%d",[other compare:date]);
         
+        NSLog(@"comp:%@",[@"10-23*3/4" componentsSeparatedByString:@""]);
         
         NSArray * a =  @[@2,@3,@4,@5,@6,@7];
         

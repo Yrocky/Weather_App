@@ -42,6 +42,8 @@
 #import "RoomModel.h"
 #import "MMNavigationController.h"
 #import "XXXWebViewController.h"
+#import "FishBoViewController.h"
+#import "InterpreterViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic ,strong) NSString * str;
@@ -79,6 +81,22 @@
         HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"原来的Main控制器" actionBlock:^(HSBaseCellModel *model) {
             
             [self performSegueWithIdentifier:@"RootToMain" sender:nil];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"🥩解释器模式🥩" actionBlock:^(HSTitleCellModel *model) {
+            
+            InterpreterViewController * vc = [[InterpreterViewController alloc] init];
+            vc.title = model.title;
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"🍗辣鸡bo🍗" actionBlock:^(HSTitleCellModel *model) {
+            
+            FishBoViewController * vc = [[FishBoViewController alloc] init];
+            vc.title = model.title;
+            [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];
        

@@ -306,6 +306,7 @@ static void PrintDescription(NSString *name, id obj)
     if(self.delegate && [self.delegate respondsToSelector:@selector(protocolReturnMethod)]){
         self.count = [self.delegate protocolReturnMethod];
     }
+    NSLog(@"[proxy] count:%lu",(unsigned long)self.count);
 }
 
 @end
@@ -315,7 +316,7 @@ static void PrintDescription(NSString *name, id obj)
 @implementation MMDelegateA
 
 - (void)protocolNoneReturnMethod{
-    NSLog(@"delegate - a invok");
+    NSLog(@"[proxy] delegate - a invok");
 }
 - (NSInteger) protocolReturnMethod{
     return 11;
@@ -330,7 +331,7 @@ static void PrintDescription(NSString *name, id obj)
 @implementation MMDelegateB
 
 - (void)protocolNoneReturnMethod{
-    NSLog(@"delegate - b invok");
+    NSLog(@"[proxy] delegate - b invok");
 }
 - (NSInteger) protocolReturnMethod{
     return 22;
@@ -375,7 +376,7 @@ static void PrintDescription(NSString *name, id obj)
 
     self.array = [[NSMutableArray alloc] init];
     
-//    [self mutableDelegate];
+    [self mutableDelegate];
 //
     if (1) {
         
@@ -551,6 +552,8 @@ static void PrintDescription(NSString *name, id obj)
     
     self.obj = [[MMTableViewObjective alloc] init];
     self.obj.delegate = self.delegateSercive;
+    [self.obj noneReturnMethodInvok];
+    [self.obj returnMethodInvok];
 }
 
 - (void) funcWithCopy{
