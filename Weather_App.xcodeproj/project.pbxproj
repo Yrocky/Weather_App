@@ -30,6 +30,9 @@
 		5C5E63D82244B86D00C0B85D /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63D72244B86C00C0B85D /* UINavigationController+FDFullscreenPopGesture.m */; };
 		5C6EA2ED22759FD300EA3D0F /* InterpreterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA2EC22759FD300EA3D0F /* InterpreterViewController.m */; };
 		5C6EA2F02275AE2900EA3D0F /* MMStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA2EF2275AE2900EA3D0F /* MMStack.m */; };
+		5C6EA37922768F8D00EA3D0F /* XXXContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA37822768F8D00EA3D0F /* XXXContext.m */; };
+		5C6EA37C22768FA300EA3D0F /* XXXExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA37B22768FA300EA3D0F /* XXXExpression.m */; };
+		5C6EA37F2276904700EA3D0F /* XXXCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA37E2276904700EA3D0F /* XXXCalculator.m */; };
 		5C9C28C8225F13C2000B5631 /* MMNoRetainTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */; };
 		5C9C28CB226418F4000B5631 /* MMAccumulateTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C28CA226418F4000B5631 /* MMAccumulateTimer.m */; };
 		5CBAFA372270557D003A5620 /* FishBoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBAFA362270557D003A5620 /* FishBoViewController.m */; };
@@ -272,6 +275,12 @@
 		5C6EA2EC22759FD300EA3D0F /* InterpreterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterpreterViewController.m; sourceTree = "<group>"; };
 		5C6EA2EE2275AE2900EA3D0F /* MMStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMStack.h; sourceTree = "<group>"; };
 		5C6EA2EF2275AE2900EA3D0F /* MMStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMStack.m; sourceTree = "<group>"; };
+		5C6EA37722768F8D00EA3D0F /* XXXContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXContext.h; sourceTree = "<group>"; };
+		5C6EA37822768F8D00EA3D0F /* XXXContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXContext.m; sourceTree = "<group>"; };
+		5C6EA37A22768FA300EA3D0F /* XXXExpression.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXExpression.h; sourceTree = "<group>"; };
+		5C6EA37B22768FA300EA3D0F /* XXXExpression.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXExpression.m; sourceTree = "<group>"; };
+		5C6EA37D2276904700EA3D0F /* XXXCalculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXCalculator.h; sourceTree = "<group>"; };
+		5C6EA37E2276904700EA3D0F /* XXXCalculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXCalculator.m; sourceTree = "<group>"; };
 		5C9C28C6225F13C2000B5631 /* MMNoRetainTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMNoRetainTimer.h; sourceTree = "<group>"; };
 		5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMNoRetainTimer.m; sourceTree = "<group>"; };
 		5C9C28C9226418F4000B5631 /* MMAccumulateTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAccumulateTimer.h; sourceTree = "<group>"; };
@@ -759,6 +768,19 @@
 			path = FDFullscreenPopGesture;
 			sourceTree = "<group>";
 		};
+		5C6EA37622768F6200EA3D0F /* Interpreter */ = {
+			isa = PBXGroup;
+			children = (
+				5C6EA37D2276904700EA3D0F /* XXXCalculator.h */,
+				5C6EA37E2276904700EA3D0F /* XXXCalculator.m */,
+				5C6EA37722768F8D00EA3D0F /* XXXContext.h */,
+				5C6EA37822768F8D00EA3D0F /* XXXContext.m */,
+				5C6EA37A22768FA300EA3D0F /* XXXExpression.h */,
+				5C6EA37B22768FA300EA3D0F /* XXXExpression.m */,
+			);
+			name = Interpreter;
+			sourceTree = "<group>";
+		};
 		78B0F788262D33A0091F4C84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1129,6 +1151,7 @@
 				5C574AF72272AD310029DB7F /* MMThreadInfo.m */,
 				5C6EA2EE2275AE2900EA3D0F /* MMStack.h */,
 				5C6EA2EF2275AE2900EA3D0F /* MMStack.m */,
+				5C6EA37622768F6200EA3D0F /* Interpreter */,
 				5C392B2A226D88CF00C15344 /* WebView */,
 				5C5E63C92244ABF900C0B85D /* 无限滚动 */,
 				7F472926218C6B7C007A10FB /* MMAnimator */,
@@ -1837,6 +1860,7 @@
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FA36CEA20B4082B0027B61E /* NSArray+Algorithms.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
+				5C6EA37922768F8D00EA3D0F /* XXXContext.m in Sources */,
 				F77231C621AE607400DA019B /* MMAnimationPromise.m in Sources */,
 				7F3815B821294F60006016E9 /* MM_GiftEffectView.m in Sources */,
 				7F3815892126CA68006016E9 /* GiftEffectViewController.m in Sources */,
@@ -1862,6 +1886,7 @@
 				D7F1F8062070FEA3000478C2 /* HomeBillContentDateView.m in Sources */,
 				7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */,
 				D713B8CE2076033800D388F2 /* BillRemarksExtensionView.m in Sources */,
+				5C6EA37F2276904700EA3D0F /* XXXCalculator.m in Sources */,
 				F703661B21E77D4E0086832C /* MMAnimationKeyPath.m in Sources */,
 				D70629061F8B143D00F52FCB /* MMPickerView.m in Sources */,
 				7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */,
@@ -1938,6 +1963,7 @@
 				7F6FFB90209458E100A84A81 /* ZPTextLayout.m in Sources */,
 				D7A73E201FB04B2B00818CF5 /* MM_FindFriendEntryViewController.m in Sources */,
 				7F6FFB8F209458E100A84A81 /* ZPTextMeasurement.m in Sources */,
+				5C6EA37C22768FA300EA3D0F /* XXXExpression.m in Sources */,
 				D70F5DEB1FA81EED007FBD43 /* YXEasing.m in Sources */,
 				7F14A7DC206B2A54006EC133 /* MMRunwayManager.m in Sources */,
 				7FA7262E1FFCE40E00C0F6F2 /* MMBackground.m in Sources */,

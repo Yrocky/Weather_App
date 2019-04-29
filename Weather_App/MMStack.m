@@ -20,13 +20,17 @@
 }
 
 - (void)push:(id)value{
-    [_arr addObject:value];
+    @synchronized (_arr) {
+        [_arr addObject:value];
+    }
 }
 
 - (id)pop{
-    id value = [_arr lastObject];
-    [_arr removeLastObject];
-    return value;
+    @synchronized (_arr) {
+        id value = [_arr lastObject];
+        [_arr removeLastObject];
+        return value;
+    }
 }
 
 - (id)peekStack:(NSUInteger)index{
@@ -35,13 +39,18 @@
 }
 
 - (void)shrinkStack:(NSUInteger)shrinkSize{
-    [_arr removeObjectsInRange:NSMakeRange(_arr.count - shrinkSize, shrinkSize)];
+    @synchronized (_arr) {
+        [_arr removeObjectsInRange:NSMakeRange(_arr.count - shrinkSize, shrinkSize)];
+    }
 }
 
 - (NSUInteger)size{
     return _arr.count;
 }
+
 - (void)clear{
-    [_arr removeAllObjects];
+    @synchronized (_arr) {
+        [_arr removeAllObjects];
+    }
 }
 @end
