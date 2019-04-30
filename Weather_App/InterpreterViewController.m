@@ -8,6 +8,8 @@
 
 #import "InterpreterViewController.h"
 #import "XXXCalculator.h"
+#import "MMInterpreter.h"
+#import "MMParserr.h"
 
 @interface InterpreterViewController ()
 
@@ -19,6 +21,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self testBaseExpression];
+    [self testMMInterpreter];
 }
 
 - (void) testBaseExpression{
@@ -35,6 +38,41 @@
     }
 }
 
+- (void) testMMInterpreter{
+    {
+        MMLexer * lexer = [MMLexer lexer:@"8+(3-6)*4/2"];
+        MMParserr * parser = [MMParserr parser:lexer];
+        MMAST * ast = [parser parse];
+        NSLog(@"[MMAST] %@",ast);
+        MMInterpreter * interpreter = [MMInterpreter interpreter:lexer];
+        NSLog(@"[Interpreter] exp:%@ result:%ld",lexer.text,(long)[interpreter expr]);
+    }
+    {
+        MMLexer * lexer = [MMLexer lexer:@"8+(3+-6)+4/2"];
+        MMInterpreter * interpreter = [MMInterpreter interpreter:lexer];
+        NSLog(@"[Interpreter] exp:%@ result:%ld",lexer.text,(long)[interpreter expr]);
+    }
+    {
+        MMLexer * lexer = [MMLexer lexer:@"8*(3-6)-4+2"];
+        MMInterpreter * interpreter = [MMInterpreter interpreter:lexer];
+        NSLog(@"[Interpreter] exp:%@ result:%ld",lexer.text,(long)[interpreter expr]);
+    }
+    {
+        MMLexer * lexer = [MMLexer lexer:@"(8+(3-6)*4)/2"];
+        MMInterpreter * interpreter = [MMInterpreter interpreter:lexer];
+        NSLog(@"[Interpreter] exp:%@ result:%ld",lexer.text,(long)[interpreter expr]);
+    }
+    {
+        MMLexer * lexer = [MMLexer lexer:@"8*(3+6)/4+2"];
+        MMInterpreter * interpreter = [MMInterpreter interpreter:lexer];
+        NSLog(@"[Interpreter] exp:%@ result:%ld",lexer.text,(long)[interpreter expr]);
+    }
+    {
+        MMLexer * lexer = [MMLexer lexer:@"((8-4)*2+(3-6)*5)*4/2"];
+        MMInterpreter * interpreter = [MMInterpreter interpreter:lexer];
+        NSLog(@"[Interpreter] exp:%@ result:%ld",lexer.text,(long)[interpreter expr]);
+    }
+}
 @end
 
 

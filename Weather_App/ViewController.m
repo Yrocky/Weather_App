@@ -186,10 +186,10 @@
     [self.coreView appendRunwayLabel:label];
     
     
-//    NSString * a = @"a[bc]d(you)A[BCD]1【大家好】2a[gs]34(me)";
-//    NSAttributedString * attS = AttBuilderWith(a).
-//    configStringAndStyle(@"(?<=\\【)[^\\】]+",@{NSForegroundColorAttributeName:[UIColor orangeColor]}).
-//    attributedStr();
+    NSString * a = @"a[bc]d(you)A[BCD]1【大家好】2a[gs]34(me)";
+    NSAttributedString * attS = AttBuilderWith(a).
+    configStringAndStyle(@"(?<=\\【)[^\\】]+",@{NSForegroundColorAttributeName:[UIColor orangeColor]}).
+    attributedStr();
     
     ////////////// 根据属性字符串添加一个UILabel跑道视图
     NSAttributedString * attString;
@@ -246,7 +246,7 @@
                                       NSUnderlineStyleAttributeName:@2}].attributedString];
     
     
-    return;
+//    return;
     
     
     self.runwayProView = [[MMRunwayProContentView alloc] init];
@@ -257,7 +257,7 @@
     label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont systemFontOfSize:12];
     label.textColor = [UIColor whiteColor];
-    size = [label configAttributedString:attString];
+    size = [label configAttributedString:attS];
     label.frame = (CGRect){0, 0, size};
     UIScrollView * scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 360, size.width - 0, size.height)];
     scrollView.backgroundColor = [UIColor redColor];
