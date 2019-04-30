@@ -7,13 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MMSyntaxDiagramAble.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class MMAST;
 @class MMLexer;
-@interface MMParserr<T> : NSObject<MMSyntaxDiagramAble>
+@interface MMParserr<T> : NSObject
 
 @property (nonatomic ,strong, readonly) MMLexer * lexer;
 

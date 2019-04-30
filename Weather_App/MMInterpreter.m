@@ -20,6 +20,10 @@
 
 @implementation MMInterpreter
 
++ (instancetype) interpreterWith:(NSString *)text{
+    return [self interpreter:[MMLexer lexer:text]];
+}
+
 + (instancetype) interpreter:(MMLexer *)lexer{
     
     MMInterpreter * interpreter = [MMInterpreter new];

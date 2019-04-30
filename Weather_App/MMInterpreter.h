@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MMInterpreter : NSObject
 
 + (instancetype) interpreter:(MMLexer *)lexer;
++ (instancetype) interpreterWith:(NSString *)text;
 
 - (NSInteger) expr;
 @end
