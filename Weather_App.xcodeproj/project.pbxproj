@@ -30,6 +30,9 @@
 		5C5E63D82244B86D00C0B85D /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5E63D72244B86C00C0B85D /* UINavigationController+FDFullscreenPopGesture.m */; };
 		5C60D503227843F2003AE46C /* Weather_AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C60D502227843F2003AE46C /* Weather_AppTests.m */; };
 		5C60D50B22784412003AE46C /* MMLexrParserText.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C60D50A22784412003AE46C /* MMLexrParserText.m */; };
+		5C60D521227855D4003AE46C /* lept_json.c in Sources */ = {isa = PBXBuildFile; fileRef = 5C60D520227855D4003AE46C /* lept_json.c */; };
+		5C60D5232278561F003AE46C /* MMLeptTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C60D5222278561F003AE46C /* MMLeptTest.m */; };
+		5C60D524227856DD003AE46C /* lept_json.c in Sources */ = {isa = PBXBuildFile; fileRef = 5C60D520227855D4003AE46C /* lept_json.c */; };
 		5C6EA2ED22759FD300EA3D0F /* InterpreterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA2EC22759FD300EA3D0F /* InterpreterViewController.m */; };
 		5C6EA2F02275AE2900EA3D0F /* MMStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA2EF2275AE2900EA3D0F /* MMStack.m */; };
 		5C6EA37922768F8D00EA3D0F /* XXXContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA37822768F8D00EA3D0F /* XXXContext.m */; };
@@ -297,6 +300,9 @@
 		5C60D502227843F2003AE46C /* Weather_AppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Weather_AppTests.m; sourceTree = "<group>"; };
 		5C60D504227843F2003AE46C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C60D50A22784412003AE46C /* MMLexrParserText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMLexrParserText.m; sourceTree = "<group>"; };
+		5C60D51F227855D4003AE46C /* lept_json.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lept_json.h; sourceTree = "<group>"; };
+		5C60D520227855D4003AE46C /* lept_json.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = lept_json.c; sourceTree = "<group>"; };
+		5C60D5222278561F003AE46C /* MMLeptTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMLeptTest.m; sourceTree = "<group>"; };
 		5C6EA2EB22759FD300EA3D0F /* InterpreterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterpreterViewController.h; sourceTree = "<group>"; };
 		5C6EA2EC22759FD300EA3D0F /* InterpreterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterpreterViewController.m; sourceTree = "<group>"; };
 		5C6EA2EE2275AE2900EA3D0F /* MMStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMStack.h; sourceTree = "<group>"; };
@@ -822,6 +828,7 @@
 			isa = PBXGroup;
 			children = (
 				5C60D4F422784347003AE46C /* Weather_AppTests.m */,
+				5C60D5222278561F003AE46C /* MMLeptTest.m */,
 				5C60D4F622784347003AE46C /* Info.plist */,
 			);
 			path = Weather_AppTests;
@@ -1254,6 +1261,8 @@
 				5C574AF72272AD310029DB7F /* MMThreadInfo.m */,
 				5C6EA2EE2275AE2900EA3D0F /* MMStack.h */,
 				5C6EA2EF2275AE2900EA3D0F /* MMStack.m */,
+				5C60D51F227855D4003AE46C /* lept_json.h */,
+				5C60D520227855D4003AE46C /* lept_json.c */,
 				5C6EA3832276A7F200EA3D0F /* lsbasi */,
 				5C6EA37622768F6200EA3D0F /* Interpreter */,
 				5C392B2A226D88CF00C15344 /* WebView */,
@@ -1947,6 +1956,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C60D50B22784412003AE46C /* MMLexrParserText.m in Sources */,
+				5C60D5232278561F003AE46C /* MMLeptTest.m in Sources */,
+				5C60D524227856DD003AE46C /* lept_json.c in Sources */,
 				5C60D503227843F2003AE46C /* Weather_AppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2061,6 +2072,7 @@
 				7F14A78E2064AE00006EC133 /* UIView+AsyncDrawImage.m in Sources */,
 				D7F1F8092070FEDF000478C2 /* HomeBillContentListView.m in Sources */,
 				D70F5DE31FA81D69007FBD43 /* FDDismissingAnimator.m in Sources */,
+				5C60D521227855D4003AE46C /* lept_json.c in Sources */,
 				7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */,
 				D70629421F8B185100F52FCB /* HSSectionModel.m in Sources */,
 				5C392BA5226DDD9D00C15344 /* MMAccelerometerPlugin.m in Sources */,
