@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MMObjDescribeAble.h"
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MMAST : NSObject<MMObjDescribeAble>
 
 // subclass override
-- (NSInteger) visit;
+- (CGFloat) visit;
 - (NSString *) toLispStyle;
 - (NSString *) toBackStyle;
 @end

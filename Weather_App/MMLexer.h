@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,copy ,readonly) NSString * text;
 
 + (instancetype) lexer:(NSString *)text;
-
+- (NSString *) intergerString;
+- (NSString *) floatString;
 - (MMToken *) nextToken;
 @end
 

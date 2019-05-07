@@ -23,8 +23,8 @@
 }
 
 #pragma mark - override
-- (NSInteger)visit{
-    return self.num.value.integerValue;
+- (CGFloat)visit{
+    return self.num.value.floatValue;
 }
 
 - (NSString *)toString{

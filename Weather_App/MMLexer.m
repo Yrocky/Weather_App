@@ -11,7 +11,7 @@
 
 @interface MMLexer ()
 @property (nonatomic ,copy ,readwrite) NSString * text;
-@property (nonatomic ,assign) NSUInteger pos;
+@property (nonatomic ,assign) NSUInteger pos;// 用于在下面遍历字符串的时候使用的游标
 @property (nonatomic ,copy) NSString * currentStr;
 @end
 
@@ -56,6 +56,19 @@
     return interger;
 }
 
+- (NSString *) floatString{
+    NSString * floatStr = @"";
+    while (self.pos < self.text.length &&
+           (MM_isInterger([self.text substringWithRange:NSMakeRange(self.pos, 1)]) ||
+            [[self.text substringWithRange:NSMakeRange(self.pos, 1)] isEqualToString:@"."])) {
+
+               NSString * otherString = [self.text substringWithRange:NSMakeRange(self.pos, 1)];
+               floatStr = [floatStr stringByAppendingString:otherString];
+               [self advance];
+    }
+    return floatStr;
+}
+
 ///<根据pos来解析文本，返回对应的token
 ///<如果是运算符或者括号，返回对应的token
 ///<如果是数字，会去寻找最大的数字字符串
@@ -66,8 +79,8 @@
         
         NSString * current = [self.text substringWithRange:NSMakeRange(self.pos, 1)];
 
-        if (MM_isInterger(current)) {
-            return [MMToken intergerToken:[self intergerString]];
+        if (MM_isInterger(current) || [current isEqualToString:@"."]) {
+            return [MMToken floatToken:[self floatString]];
             
         } else if ([current isEqualToString:MM_opString(MMTokenPlus)]) {
             [self advance];

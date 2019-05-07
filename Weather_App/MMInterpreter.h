@@ -11,12 +11,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, MMParseExpressionResult) {
+    MMParseExpressionValid,// 有效的
+    MMParseExpressionInvalid,
+};
+
 @interface MMInterpreter : NSObject
 
 + (instancetype) interpreter:(MMLexer *)lexer;
 + (instancetype) interpreterWith:(NSString *)text;
 
-- (NSInteger) expr;
+- (MMParseExpressionResult) parseResult;
+- (double) expr;
 @end
 
 NS_ASSUME_NONNULL_END

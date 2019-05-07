@@ -15,8 +15,8 @@
 
 @implementation MMToken
 
-+ (instancetype) intergerToken:(NSString *)value{
-    return [self token:MMTokenInterger value:value];
++ (instancetype) floatToken:(NSString *)value{
+    return [self token:MMTokenFloat value:value];
 }
 
 + (instancetype) plusToken{
@@ -71,8 +71,8 @@ inline BOOL MM_isOps(NSString * str) {
 
 inline NSString * MM_opString(MMTokenType type) {
     
-    if (type == MMTokenInterger) {
-        return @"int";
+    if (type == MMTokenFloat) {
+        return @"float";
     } else if (type == MMTokenPlus) {
         return @"+";
     } else if (type == MMTokenMinus) {
@@ -93,5 +93,8 @@ inline NSString * MM_opString(MMTokenType type) {
 }
 
 inline BOOL MM_isInterger(NSString * str){
-    return [str isEqualToString:@"0"] || [str integerValue] > 0;
+    
+    NSString *regex =@"[0-9]*";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    return [pred evaluateWithObject:str];
 }

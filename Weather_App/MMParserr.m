@@ -72,9 +72,9 @@
         [self eat:MMTokenMinus];
         return [MMUnaryOpAST unaryOpAST:token expr:[self factor]];
         
-    } else if (self.currentToken.type == MMTokenInterger) {
+    } else if (self.currentToken.type == MMTokenFloat) {
         MMToken * token = self.currentToken;
-        [self eat:MMTokenInterger];
+        [self eat:MMTokenFloat];
         return [MMNumAST numAST:token];
         
     } else if (self.currentToken.type == MMTokenLParen) {

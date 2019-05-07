@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger ,MMTokenType) {
-    MMTokenInterger,
+    MMTokenFloat,
     MMTokenPlus,// +
     MMTokenMinus,// -
     MMTokenMul,// *
@@ -41,7 +41,7 @@ extern inline BOOL MM_isInterger(NSString * str);
 
 + (instancetype) token:(MMTokenType)type value:(NSString *)value;
 
-+ (instancetype) intergerToken:(NSString *)value;
++ (instancetype) floatToken:(NSString *)value;
 + (instancetype) plusToken;
 + (instancetype) minusToken;
 + (instancetype) mulToken;

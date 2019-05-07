@@ -38,10 +38,14 @@
 
 #pragma mark - api method
 
-- (NSInteger) factor{
-    if (self.currentToken.type == MMTokenInterger) {
-        NSInteger value = self.currentToken.value.integerValue;
-        [self eat:MMTokenInterger];
+- (MMParseExpressionResult) parseResult{
+    return MMParseExpressionValid;
+}
+
+- (double) factor{
+    if (self.currentToken.type == MMTokenFloat) {
+        double value = self.currentToken.value.doubleValue;
+        [self eat:MMTokenFloat];
         return value;
     } else if (self.currentToken.type == MMTokenLParen) {
         [self eat:MMTokenLParen];
@@ -53,9 +57,10 @@
 }
 
 ///<语法图中的术语，在这个场景下，表示的是int类型的数字
-- (NSInteger) term{
+- (double) term{
     
-    NSInteger result = [self factor];
+    double result = [self factor];
+    // 如果当前的token是乘除才进入这里，因为乘除的优先级会高一点，
     while (self.currentToken.type == MMTokenDiv ||
            self.currentToken.type == MMTokenMul) {
         if (self.currentToken.type == MMTokenMul) {
@@ -69,8 +74,8 @@
     return result;
 }
 
-- (NSInteger) expr{
-    NSInteger result = [self term];
+- (double) expr{
+    double result = [self term];
     while (self.currentToken.type == MMTokenPlus ||
            self.currentToken.type == MMTokenMinus) {
         

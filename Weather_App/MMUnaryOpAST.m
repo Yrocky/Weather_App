@@ -26,7 +26,7 @@
 
 #pragma mark - override
 
-- (NSInteger)visit{
+- (CGFloat)visit{
     if (self.op.type == MMTokenPlus) {
         return self.expr.visit;
     }
