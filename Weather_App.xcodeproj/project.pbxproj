@@ -49,6 +49,9 @@
 		5C9C28C8225F13C2000B5631 /* MMNoRetainTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */; };
 		5C9C28CB226418F4000B5631 /* MMAccumulateTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C28CA226418F4000B5631 /* MMAccumulateTimer.m */; };
 		5CBAFA372270557D003A5620 /* FishBoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBAFA362270557D003A5620 /* FishBoViewController.m */; };
+		5CDF128B22818DF4007FD7A7 /* XXXRPN.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF128A22818DF4007FD7A7 /* XXXRPN.m */; };
+		5CDF128D22819061007FD7A7 /* XXXRPNTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF128C22819061007FD7A7 /* XXXRPNTest.m */; };
+		5CFAF3E0228199850057BD05 /* MMToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA3922276A8CC00EA3D0F /* MMToken.m */; };
 		7F0501822011EAD00033E83C /* MMAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501812011EAD00033E83C /* MMAnimationViewController.m */; };
 		7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501842011EAE80033E83C /* YALPreloaderCircleView.m */; };
 		7F0C0EC5214B5288000C55C6 /* UIButton+MMCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0EC4214B5288000C55C6 /* UIButton+MMCustom.m */; };
@@ -336,6 +339,9 @@
 		5C9C28CA226418F4000B5631 /* MMAccumulateTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAccumulateTimer.m; sourceTree = "<group>"; };
 		5CBAFA352270557D003A5620 /* FishBoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FishBoViewController.h; sourceTree = "<group>"; };
 		5CBAFA362270557D003A5620 /* FishBoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FishBoViewController.m; sourceTree = "<group>"; };
+		5CDF128922818DF4007FD7A7 /* XXXRPN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXRPN.h; sourceTree = "<group>"; };
+		5CDF128A22818DF4007FD7A7 /* XXXRPN.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXRPN.m; sourceTree = "<group>"; };
+		5CDF128C22819061007FD7A7 /* XXXRPNTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXRPNTest.m; sourceTree = "<group>"; };
 		7F0501802011EAD00033E83C /* MMAnimationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationViewController.h; sourceTree = "<group>"; };
 		7F0501812011EAD00033E83C /* MMAnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationViewController.m; sourceTree = "<group>"; };
 		7F0501842011EAE80033E83C /* YALPreloaderCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALPreloaderCircleView.m; sourceTree = "<group>"; };
@@ -829,6 +835,7 @@
 			children = (
 				5C60D4F422784347003AE46C /* Weather_AppTests.m */,
 				5C60D5222278561F003AE46C /* MMLeptTest.m */,
+				5CDF128C22819061007FD7A7 /* XXXRPNTest.m */,
 				5C60D4F622784347003AE46C /* Info.plist */,
 			);
 			path = Weather_AppTests;
@@ -852,6 +859,8 @@
 				5C6EA37822768F8D00EA3D0F /* XXXContext.m */,
 				5C6EA37A22768FA300EA3D0F /* XXXExpression.h */,
 				5C6EA37B22768FA300EA3D0F /* XXXExpression.m */,
+				5CDF128922818DF4007FD7A7 /* XXXRPN.h */,
+				5CDF128A22818DF4007FD7A7 /* XXXRPN.m */,
 			);
 			name = Interpreter;
 			sourceTree = "<group>";
@@ -1956,6 +1965,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C60D50B22784412003AE46C /* MMLexrParserText.m in Sources */,
+				5CFAF3E0228199850057BD05 /* MMToken.m in Sources */,
+				5CDF128D22819061007FD7A7 /* XXXRPNTest.m in Sources */,
 				5C60D5232278561F003AE46C /* MMLeptTest.m in Sources */,
 				5C60D524227856DD003AE46C /* lept_json.c in Sources */,
 				5C60D503227843F2003AE46C /* Weather_AppTests.m in Sources */,
@@ -2063,6 +2074,7 @@
 				D7F1F8032070F9FB000478C2 /* HomeBillContentView.m in Sources */,
 				5C6EA3822276A7EE00EA3D0F /* MMAST.m in Sources */,
 				D706293E1F8B185100F52FCB /* HSInputCellModel.m in Sources */,
+				5CDF128B22818DF4007FD7A7 /* XXXRPN.m in Sources */,
 				D7A595B81FAAC156000C59FE /* CreatePDFViewController.m in Sources */,
 				F77231CC21AE6A8A00DA019B /* MMAnimationType.m in Sources */,
 				D7A77D772134526900E0E435 /* SignalViewController.m in Sources */,

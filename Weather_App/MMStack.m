@@ -19,6 +19,26 @@
     return self;
 }
 
+- (id)top{
+    @synchronized (_arr) {
+        if (_arr.count) {
+            return [_arr lastObject];
+        } else {
+            return nil;
+        }
+    }
+}
+
+- (id)bottom{
+    @synchronized (_arr) {
+        if (_arr.count) {
+            return [_arr firstObject];
+        } else {
+            return nil;
+        }
+    }
+}
+
 - (void)push:(id)value{
     @synchronized (_arr) {
         [_arr addObject:value];
@@ -52,5 +72,9 @@
     @synchronized (_arr) {
         [_arr removeAllObjects];
     }
+}
+
+- (NSString *)description{
+    return [_arr description];
 }
 @end

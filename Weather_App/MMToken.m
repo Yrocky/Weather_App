@@ -55,6 +55,23 @@
     return token;
 }
 
+- (MMOperatorPriority) operatorPriorityWith:(MMToken *)otherToken{
+
+    if (self.type <= 0 || otherToken.type <= 0) {
+        return MMOperatorPriorityDefault;
+    }
+    if (self.type == otherToken.type + 1 ||
+        self.type == otherToken.type - 1 ||
+        self.type == otherToken.type) {
+        return MMOperatorPriorityEqual;
+    } else if (self.type < otherToken.type) {
+        return MMOperatorPriorityLow;
+    } else if (self.type > otherToken.type) {
+        return MMOperatorPriorityHigh;
+    }
+    return MMOperatorPriorityDefault;
+}
+
 - (NSString *) toString{
     return [NSString stringWithFormat:@"MMToken(%@ , %@)",MM_opString(self.type),self.value];
 }

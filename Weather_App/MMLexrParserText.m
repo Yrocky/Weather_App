@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "MMInterpreter.h"
 #import "MMParserr.h"
+#import "MMToken.h"
 
 #define MMInterpreterExpr(text) [[MMInterpreter interpreterWith:text] expr]
 
@@ -24,6 +25,30 @@
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+}
+
+- (void) testTokenOperatorPriority{
+
+    XCTAssertEqual(MMOperatorPriorityDefault, [[MMToken plusToken] operatorPriorityWith:[MMToken lParenToken]]);
+    XCTAssertEqual(MMOperatorPriorityDefault, [[MMToken mulToken] operatorPriorityWith:[MMToken eofToken]]);
+    XCTAssertEqual(MMOperatorPriorityDefault, [[MMToken minusToken] operatorPriorityWith:[MMToken rParenToken]]);
+    XCTAssertEqual(MMOperatorPriorityDefault, [[MMToken divToken] operatorPriorityWith:[MMToken lParenToken]]);
+    XCTAssertEqual(MMOperatorPriorityDefault, [[MMToken lParenToken] operatorPriorityWith:[MMToken minusToken]]);
+
+    XCTAssertEqual(MMOperatorPriorityEqual, [[MMToken plusToken] operatorPriorityWith:[MMToken minusToken]]);
+    XCTAssertEqual(MMOperatorPriorityEqual, [[MMToken minusToken] operatorPriorityWith:[MMToken plusToken]]);
+    XCTAssertEqual(MMOperatorPriorityEqual, [[MMToken mulToken] operatorPriorityWith:[MMToken divToken]]);
+    XCTAssertEqual(MMOperatorPriorityEqual, [[MMToken divToken] operatorPriorityWith:[MMToken mulToken]]);
+
+    XCTAssertEqual(MMOperatorPriorityHigh, [[MMToken mulToken] operatorPriorityWith:[MMToken minusToken]]);
+    XCTAssertEqual(MMOperatorPriorityHigh, [[MMToken mulToken] operatorPriorityWith:[MMToken plusToken]]);
+    XCTAssertEqual(MMOperatorPriorityHigh, [[MMToken divToken] operatorPriorityWith:[MMToken minusToken]]);
+    XCTAssertEqual(MMOperatorPriorityHigh, [[MMToken divToken] operatorPriorityWith:[MMToken plusToken]]);
+    
+    XCTAssertEqual(MMOperatorPriorityLow, [[MMToken plusToken] operatorPriorityWith:[MMToken divToken]]);
+    XCTAssertEqual(MMOperatorPriorityLow, [[MMToken plusToken] operatorPriorityWith:[MMToken mulToken]]);
+    XCTAssertEqual(MMOperatorPriorityLow, [[MMToken minusToken] operatorPriorityWith:[MMToken divToken]]);
+    XCTAssertEqual(MMOperatorPriorityLow, [[MMToken minusToken] operatorPriorityWith:[MMToken mulToken]]);
 }
 
 - (void) testDotNumber{

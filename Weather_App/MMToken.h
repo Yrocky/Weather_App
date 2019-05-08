@@ -11,15 +11,26 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSUInteger ,MMTokenType) {
+typedef NS_ENUM(NSInteger ,MMTokenType) {
     MMTokenFloat,
-    MMTokenPlus,// +
+    
+    MMTokenPlus = 1,// +
     MMTokenMinus,// -
-    MMTokenMul,// *
+    
+    MMTokenMul = 10,// *
     MMTokenDiv,// /
-    MMTokenLParen,// (
-    MMTokenRParen,// )
-    MMTokenEOF,
+    
+    MMTokenLParen = -20,// (
+    MMTokenRParen = -30,// )
+    
+    MMTokenEOF = -40,
+};
+
+typedef NS_ENUM(NSUInteger ,MMOperatorPriority) {
+    MMOperatorPriorityDefault,///<
+    MMOperatorPriorityLow,///<低优先级
+    MMOperatorPriorityEqual,///<优先级相等
+    MMOperatorPriorityHigh,///<高优先级
 };
 
 static NSString * ops = @"+-*/";
@@ -40,6 +51,9 @@ extern inline BOOL MM_isInterger(NSString * str);
 @property (nonatomic ,copy ,readonly) NSString * value;
 
 + (instancetype) token:(MMTokenType)type value:(NSString *)value;
+
+///<当前token和otherToken的优先级比较，返回的结果为self和other的比较
+- (MMOperatorPriority) operatorPriorityWith:(MMToken *)otherToken;
 
 + (instancetype) floatToken:(NSString *)value;
 + (instancetype) plusToken;
