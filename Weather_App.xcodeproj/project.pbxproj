@@ -51,7 +51,16 @@
 		5CBAFA372270557D003A5620 /* FishBoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBAFA362270557D003A5620 /* FishBoViewController.m */; };
 		5CDF128B22818DF4007FD7A7 /* XXXRPN.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF128A22818DF4007FD7A7 /* XXXRPN.m */; };
 		5CDF128D22819061007FD7A7 /* XXXRPNTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF128C22819061007FD7A7 /* XXXRPNTest.m */; };
+		5CE772C622843A61003A251D /* NSArray+Unretained.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE772C522843A61003A251D /* NSArray+Unretained.m */; };
+		5CE772C722843A61003A251D /* NSArray+Unretained.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE772C522843A61003A251D /* NSArray+Unretained.m */; };
 		5CFAF3E0228199850057BD05 /* MMToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA3922276A8CC00EA3D0F /* MMToken.m */; };
+		5CFAF3E32283F53B0057BD05 /* MMGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAF3E22283F53B0057BD05 /* MMGraph.m */; };
+		5CFAF3E82283F59A0057BD05 /* MMVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAF3E72283F59A0057BD05 /* MMVertex.m */; };
+		5CFAF3E92283F59A0057BD05 /* MMVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAF3E72283F59A0057BD05 /* MMVertex.m */; };
+		5CFAF3EC2283F5FE0057BD05 /* MMEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAF3EB2283F5FE0057BD05 /* MMEdge.m */; };
+		5CFAF3ED2283F5FE0057BD05 /* MMEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAF3EB2283F5FE0057BD05 /* MMEdge.m */; };
+		5CFAF3EF22840C5E0057BD05 /* MMGraphTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAF3EE22840C5E0057BD05 /* MMGraphTest.m */; };
+		5CFAF3F122840C970057BD05 /* MMGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAF3E22283F53B0057BD05 /* MMGraph.m */; };
 		7F0501822011EAD00033E83C /* MMAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501812011EAD00033E83C /* MMAnimationViewController.m */; };
 		7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0501842011EAE80033E83C /* YALPreloaderCircleView.m */; };
 		7F0C0EC5214B5288000C55C6 /* UIButton+MMCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F0C0EC4214B5288000C55C6 /* UIButton+MMCustom.m */; };
@@ -342,6 +351,15 @@
 		5CDF128922818DF4007FD7A7 /* XXXRPN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXRPN.h; sourceTree = "<group>"; };
 		5CDF128A22818DF4007FD7A7 /* XXXRPN.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXRPN.m; sourceTree = "<group>"; };
 		5CDF128C22819061007FD7A7 /* XXXRPNTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXRPNTest.m; sourceTree = "<group>"; };
+		5CE772C422843A61003A251D /* NSArray+Unretained.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Unretained.h"; sourceTree = "<group>"; };
+		5CE772C522843A61003A251D /* NSArray+Unretained.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Unretained.m"; sourceTree = "<group>"; };
+		5CFAF3E12283F53B0057BD05 /* MMGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMGraph.h; sourceTree = "<group>"; };
+		5CFAF3E22283F53B0057BD05 /* MMGraph.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMGraph.m; sourceTree = "<group>"; };
+		5CFAF3E62283F59A0057BD05 /* MMVertex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMVertex.h; sourceTree = "<group>"; };
+		5CFAF3E72283F59A0057BD05 /* MMVertex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMVertex.m; sourceTree = "<group>"; };
+		5CFAF3EA2283F5FE0057BD05 /* MMEdge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMEdge.h; sourceTree = "<group>"; };
+		5CFAF3EB2283F5FE0057BD05 /* MMEdge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMEdge.m; sourceTree = "<group>"; };
+		5CFAF3EE22840C5E0057BD05 /* MMGraphTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMGraphTest.m; sourceTree = "<group>"; };
 		7F0501802011EAD00033E83C /* MMAnimationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAnimationViewController.h; sourceTree = "<group>"; };
 		7F0501812011EAD00033E83C /* MMAnimationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAnimationViewController.m; sourceTree = "<group>"; };
 		7F0501842011EAE80033E83C /* YALPreloaderCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALPreloaderCircleView.m; sourceTree = "<group>"; };
@@ -836,6 +854,7 @@
 				5C60D4F422784347003AE46C /* Weather_AppTests.m */,
 				5C60D5222278561F003AE46C /* MMLeptTest.m */,
 				5CDF128C22819061007FD7A7 /* XXXRPNTest.m */,
+				5CFAF3EE22840C5E0057BD05 /* MMGraphTest.m */,
 				5C60D4F622784347003AE46C /* Info.plist */,
 			);
 			path = Weather_AppTests;
@@ -895,6 +914,19 @@
 				5C6EA38B2276A89900EA3D0F /* MMUnaryOpAST.m */,
 			);
 			name = ast;
+			sourceTree = "<group>";
+		};
+		5CFAF3E52283F57B0057BD05 /* MMGraph */ = {
+			isa = PBXGroup;
+			children = (
+				5CFAF3E12283F53B0057BD05 /* MMGraph.h */,
+				5CFAF3E22283F53B0057BD05 /* MMGraph.m */,
+				5CFAF3E62283F59A0057BD05 /* MMVertex.h */,
+				5CFAF3E72283F59A0057BD05 /* MMVertex.m */,
+				5CFAF3EA2283F5FE0057BD05 /* MMEdge.h */,
+				5CFAF3EB2283F5FE0057BD05 /* MMEdge.m */,
+			);
+			name = MMGraph;
 			sourceTree = "<group>";
 		};
 		78B0F788262D33A0091F4C84 /* Frameworks */ = {
@@ -1270,6 +1302,7 @@
 				5C574AF72272AD310029DB7F /* MMThreadInfo.m */,
 				5C6EA2EE2275AE2900EA3D0F /* MMStack.h */,
 				5C6EA2EF2275AE2900EA3D0F /* MMStack.m */,
+				5CFAF3E52283F57B0057BD05 /* MMGraph */,
 				5C60D51F227855D4003AE46C /* lept_json.h */,
 				5C60D520227855D4003AE46C /* lept_json.c */,
 				5C6EA3832276A7F200EA3D0F /* lsbasi */,
@@ -1430,6 +1463,8 @@
 				7F9CED361F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m */,
 				D7A45DD521B94FCA003EDE2F /* UIImage+DrawImage.h */,
 				D7A45DD621B94FCA003EDE2F /* UIImage+DrawImage.m */,
+				5CE772C422843A61003A251D /* NSArray+Unretained.h */,
+				5CE772C522843A61003A251D /* NSArray+Unretained.m */,
 				7F94A3491F55120D00DA28EA /* NSArray+Sugar.h */,
 				7F94A34A1F55120D00DA28EA /* NSArray+Sugar.m */,
 				7FA726131FFB7A2800C0F6F2 /* NSNumber+Sugar.h */,
@@ -1964,12 +1999,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CFAF3ED2283F5FE0057BD05 /* MMEdge.m in Sources */,
 				5C60D50B22784412003AE46C /* MMLexrParserText.m in Sources */,
 				5CFAF3E0228199850057BD05 /* MMToken.m in Sources */,
+				5CFAF3EF22840C5E0057BD05 /* MMGraphTest.m in Sources */,
+				5CFAF3F122840C970057BD05 /* MMGraph.m in Sources */,
 				5CDF128D22819061007FD7A7 /* XXXRPNTest.m in Sources */,
 				5C60D5232278561F003AE46C /* MMLeptTest.m in Sources */,
+				5CFAF3E92283F59A0057BD05 /* MMVertex.m in Sources */,
 				5C60D524227856DD003AE46C /* lept_json.c in Sources */,
 				5C60D503227843F2003AE46C /* Weather_AppTests.m in Sources */,
+				5CE772C722843A61003A251D /* NSArray+Unretained.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2103,6 +2143,7 @@
 				D72CE20D226E14E8005D187A /* MMSharePlugin.m in Sources */,
 				7FD8CC291F984A8D005DC9FF /* UILabel+ContentSize.m in Sources */,
 				7F14A7D9206B29F2006EC133 /* RunwayViewController.m in Sources */,
+				5CFAF3EC2283F5FE0057BD05 /* MMEdge.m in Sources */,
 				D713B8B6207280C900D388F2 /* CustomNavigationBar.m in Sources */,
 				7F63BBB1206E220D0084ABC8 /* HomeViewController.m in Sources */,
 				D7A77D72213451F200E0E435 /* MMSignal.m in Sources */,
@@ -2125,12 +2166,14 @@
 				7F39ED06214FC3B7006CE72F /* MMAnimator.m in Sources */,
 				D706293A1F8B185100F52FCB /* HSSetTableViewMainController.m in Sources */,
 				7FA726151FFB7A2800C0F6F2 /* NSNumber+Sugar.m in Sources */,
+				5CFAF3E82283F59A0057BD05 /* MMVertex.m in Sources */,
 				D7008DDC1FB180B500BD6EA0 /* MMNavigationController.m in Sources */,
 				7F9810172122AE7C0004C638 /* MMSingleton.m in Sources */,
 				5C6EA38C2276A89900EA3D0F /* MMUnaryOpAST.m in Sources */,
 				7F63BBC02072036F0084ABC8 /* LunarCore.m in Sources */,
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
 				5C6EA39A2276C4F000EA3D0F /* MMParserr.m in Sources */,
+				5CFAF3E32283F53B0057BD05 /* MMGraph.m in Sources */,
 				5C5E63D22244AC9B00C0B85D /* RoomViewController.m in Sources */,
 				D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */,
 				7F53C0F52126740600567D74 /* XMLReader.m in Sources */,
@@ -2138,6 +2181,7 @@
 				7F590D7A1FA9A5D4006F7BF0 /* STPopupController.m in Sources */,
 				7F6FFB90209458E100A84A81 /* ZPTextLayout.m in Sources */,
 				D7A73E201FB04B2B00818CF5 /* MM_FindFriendEntryViewController.m in Sources */,
+				5CE772C622843A61003A251D /* NSArray+Unretained.m in Sources */,
 				7F6FFB8F209458E100A84A81 /* ZPTextMeasurement.m in Sources */,
 				5C6EA37C22768FA300EA3D0F /* XXXExpression.m in Sources */,
 				D70F5DEB1FA81EED007FBD43 /* YXEasing.m in Sources */,

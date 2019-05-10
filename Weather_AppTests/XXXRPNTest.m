@@ -30,6 +30,7 @@
     XCTAssertEqualObjects(@"253-4*+",[[XXXRPN rpnWithExpression:@"2+(5-3)*4"] rpnString]);
     XCTAssertEqualObjects(@"82-3/53-4*+",[[XXXRPN rpnWithExpression:@"(8-2)/3+(5-3)*4"] rpnString]);
     XCTAssertEqualObjects(@"82-3/53-+4*",[[XXXRPN rpnWithExpression:@"((8-2)/3+(5-3))*4"] rpnString]);
+    XCTAssertEqualObjects(@"123+4*+5-",[[XXXRPN rpnWithExpression:@"1+((2+3)*4)-5"] rpnString]);
 }
 
 - (void) testRPNResult{
@@ -38,6 +39,7 @@
     XCTAssertEqual(2+(5-3)*4, [[XXXRPN rpnWithExpression:@"2+(5-3)*4"] result]);
     XCTAssertEqual((8-2)/3+(5-3)*4, [[XXXRPN rpnWithExpression:@"(8-2)/3+(5-3)*4"] result]);
     XCTAssertEqual(((8-2)/3+(5-3))*4, [[XXXRPN rpnWithExpression:@"((8-2)/3+(5-3))*4"] result]);
+    XCTAssertEqual(1+((2+3)*4)-5, [[XXXRPN rpnWithExpression:@"1+((2+3)*4)-5"] result]);
 }
 
 - (void) testRPNFloatResult{
