@@ -10,18 +10,40 @@
 #import "XXXCalculator.h"
 #import "MMInterpreter.h"
 #import "MMParserr.h"
+#import "MMVertex.h"
 
 @interface InterpreterViewController ()
 
+@property (nonatomic ,strong) MMVertex<NSString *> * node;
+@property (nonatomic ,copy) NSArray<NSValue *> * nodes;
+
+@property (nonatomic ,strong) MMVertex<NSString *> * node2;
+@property (nonatomic ,copy) NSArray<MMVertex *> * node2s;
 @end
 
 @implementation InterpreterViewController
+
+- (void)dealloc{
+    NSLog(@"InterpreterViewController dealloc");
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self testBaseExpression];
     [self testMMInterpreter];
+    
+    [self weakValue];
+}
+
+- (void) weakValue{
+    
+    self.node = [MMVertex vertex:@"aaa"];
+    NSValue * value = [NSValue valueWithNonretainedObject:self.node];
+    self.node = @[value];
+    
+    self.node2 = [MMVertex vertex:@"bbbb"];
+    self.node2s = @[self.node2];
 }
 
 - (void) testBaseExpression{

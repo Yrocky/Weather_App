@@ -44,6 +44,7 @@
 #import "XXXWebViewController.h"
 #import "FishBoViewController.h"
 #import "InterpreterViewController.h"
+#import "ResumeViewController.h"
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic ,strong) NSString * str;
@@ -81,6 +82,14 @@
         HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"原来的Main控制器" actionBlock:^(HSBaseCellModel *model) {
             
             [self performSegueWithIdentifier:@"RootToMain" sender:nil];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"🍇Resume🍇" actionBlock:^(HSTitleCellModel *model) {
+            
+            ResumeViewController * vc = [[ResumeViewController alloc] init];
+            vc.title = model.title;
+            [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];
         

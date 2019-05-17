@@ -38,15 +38,6 @@
     }
     return self;
 }
-- (id)copyWithZone:(NSZone *)zone{
-    
-    MMVertex *v = [[[self class] allocWithZone:zone] init]; // <== 注意这里
-    if (self.value) {
-        v->_value = self.value;
-    }
-    
-    return v;
-}
 
 - (BOOL)isEqual:(id)object{
     return [object isKindOfClass:[self class]] &&

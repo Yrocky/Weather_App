@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class MMEdge;
 // 图 中的节点
-@interface MMVertex<V> : NSObject<NSCopying>{
+@interface MMVertex<V> : NSObject{
     NSMutableSet<MMEdge *> * _edges;
     NSMutableSet<MMVertex *> * _vertexs;///<内部使用一个弱引用对象的集合
     NSHashTable<MMVertex *> * _table;///<使用hashtable来弱引用相邻接点

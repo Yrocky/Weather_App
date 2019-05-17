@@ -51,6 +51,18 @@
 		5CBAFA372270557D003A5620 /* FishBoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBAFA362270557D003A5620 /* FishBoViewController.m */; };
 		5CDF128B22818DF4007FD7A7 /* XXXRPN.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF128A22818DF4007FD7A7 /* XXXRPN.m */; };
 		5CDF128D22819061007FD7A7 /* XXXRPNTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF128C22819061007FD7A7 /* XXXRPNTest.m */; };
+		5CE42B0D228E867A00C236FC /* ResumeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE42B0C228E867900C236FC /* ResumeViewController.m */; };
+		5CE42B11228E871600C236FC /* ResumePortraitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE42B0F228E871600C236FC /* ResumePortraitCell.m */; };
+		5CE42B12228E871600C236FC /* ResumePortraitCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CE42B10228E871600C236FC /* ResumePortraitCell.xib */; };
+		5CE42B17228E874400C236FC /* ResumeSkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE42B15228E874400C236FC /* ResumeSkillCell.m */; };
+		5CE42B18228E874400C236FC /* ResumeSkillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CE42B16228E874400C236FC /* ResumeSkillCell.xib */; };
+		5CE42B1C228E876200C236FC /* ResumProjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE42B1A228E876200C236FC /* ResumProjectCell.m */; };
+		5CE42B1D228E876200C236FC /* ResumProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CE42B1B228E876200C236FC /* ResumProjectCell.xib */; };
+		5CE42B21228E879B00C236FC /* ResumeInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE42B1F228E879B00C236FC /* ResumeInfoCell.m */; };
+		5CE42B22228E879B00C236FC /* ResumeInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CE42B20228E879B00C236FC /* ResumeInfoCell.xib */; };
+		5CE42B29228E880400C236FC /* ResumeCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE42B27228E880400C236FC /* ResumeCompanyCell.m */; };
+		5CE42B2A228E880400C236FC /* ResumeCompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CE42B28228E880400C236FC /* ResumeCompanyCell.xib */; };
+		5CE42B2E228E889200C236FC /* ResumeSectionHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE42B2D228E889200C236FC /* ResumeSectionHeaderFooterView.m */; };
 		5CE772C622843A61003A251D /* NSArray+Unretained.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE772C522843A61003A251D /* NSArray+Unretained.m */; };
 		5CE772C722843A61003A251D /* NSArray+Unretained.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE772C522843A61003A251D /* NSArray+Unretained.m */; };
 		5CFAF3E0228199850057BD05 /* MMToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA3922276A8CC00EA3D0F /* MMToken.m */; };
@@ -351,6 +363,25 @@
 		5CDF128922818DF4007FD7A7 /* XXXRPN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXRPN.h; sourceTree = "<group>"; };
 		5CDF128A22818DF4007FD7A7 /* XXXRPN.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXRPN.m; sourceTree = "<group>"; };
 		5CDF128C22819061007FD7A7 /* XXXRPNTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXRPNTest.m; sourceTree = "<group>"; };
+		5CE42B0B228E867900C236FC /* ResumeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeViewController.h; sourceTree = "<group>"; };
+		5CE42B0C228E867900C236FC /* ResumeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeViewController.m; sourceTree = "<group>"; };
+		5CE42B0E228E871600C236FC /* ResumePortraitCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumePortraitCell.h; sourceTree = "<group>"; };
+		5CE42B0F228E871600C236FC /* ResumePortraitCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumePortraitCell.m; sourceTree = "<group>"; };
+		5CE42B10228E871600C236FC /* ResumePortraitCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumePortraitCell.xib; sourceTree = "<group>"; };
+		5CE42B14228E874400C236FC /* ResumeSkillCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeSkillCell.h; sourceTree = "<group>"; };
+		5CE42B15228E874400C236FC /* ResumeSkillCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeSkillCell.m; sourceTree = "<group>"; };
+		5CE42B16228E874400C236FC /* ResumeSkillCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeSkillCell.xib; sourceTree = "<group>"; };
+		5CE42B19228E876200C236FC /* ResumProjectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumProjectCell.h; sourceTree = "<group>"; };
+		5CE42B1A228E876200C236FC /* ResumProjectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumProjectCell.m; sourceTree = "<group>"; };
+		5CE42B1B228E876200C236FC /* ResumProjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumProjectCell.xib; sourceTree = "<group>"; };
+		5CE42B1E228E879B00C236FC /* ResumeInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeInfoCell.h; sourceTree = "<group>"; };
+		5CE42B1F228E879B00C236FC /* ResumeInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeInfoCell.m; sourceTree = "<group>"; };
+		5CE42B20228E879B00C236FC /* ResumeInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeInfoCell.xib; sourceTree = "<group>"; };
+		5CE42B26228E880400C236FC /* ResumeCompanyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeCompanyCell.h; sourceTree = "<group>"; };
+		5CE42B27228E880400C236FC /* ResumeCompanyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeCompanyCell.m; sourceTree = "<group>"; };
+		5CE42B28228E880400C236FC /* ResumeCompanyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCompanyCell.xib; sourceTree = "<group>"; };
+		5CE42B2C228E889200C236FC /* ResumeSectionHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeSectionHeaderFooterView.h; sourceTree = "<group>"; };
+		5CE42B2D228E889200C236FC /* ResumeSectionHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeSectionHeaderFooterView.m; sourceTree = "<group>"; };
 		5CE772C422843A61003A251D /* NSArray+Unretained.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Unretained.h"; sourceTree = "<group>"; };
 		5CE772C522843A61003A251D /* NSArray+Unretained.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Unretained.m"; sourceTree = "<group>"; };
 		5CFAF3E12283F53B0057BD05 /* MMGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMGraph.h; sourceTree = "<group>"; };
@@ -916,6 +947,62 @@
 			name = ast;
 			sourceTree = "<group>";
 		};
+		5CE42B13228E871E00C236FC /* Resume */ = {
+			isa = PBXGroup;
+			children = (
+				5CE42B2C228E889200C236FC /* ResumeSectionHeaderFooterView.h */,
+				5CE42B2D228E889200C236FC /* ResumeSectionHeaderFooterView.m */,
+				5CE42B23228E87A500C236FC /* Basic */,
+				5CE42B24228E87B600C236FC /* Skill */,
+				5CE42B2B228E881D00C236FC /* Company */,
+				5CE42B25228E87BF00C236FC /* Project */,
+			);
+			name = Resume;
+			sourceTree = "<group>";
+		};
+		5CE42B23228E87A500C236FC /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				5CE42B0E228E871600C236FC /* ResumePortraitCell.h */,
+				5CE42B0F228E871600C236FC /* ResumePortraitCell.m */,
+				5CE42B10228E871600C236FC /* ResumePortraitCell.xib */,
+				5CE42B1E228E879B00C236FC /* ResumeInfoCell.h */,
+				5CE42B1F228E879B00C236FC /* ResumeInfoCell.m */,
+				5CE42B20228E879B00C236FC /* ResumeInfoCell.xib */,
+			);
+			name = Basic;
+			sourceTree = "<group>";
+		};
+		5CE42B24228E87B600C236FC /* Skill */ = {
+			isa = PBXGroup;
+			children = (
+				5CE42B14228E874400C236FC /* ResumeSkillCell.h */,
+				5CE42B15228E874400C236FC /* ResumeSkillCell.m */,
+				5CE42B16228E874400C236FC /* ResumeSkillCell.xib */,
+			);
+			name = Skill;
+			sourceTree = "<group>";
+		};
+		5CE42B25228E87BF00C236FC /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				5CE42B19228E876200C236FC /* ResumProjectCell.h */,
+				5CE42B1A228E876200C236FC /* ResumProjectCell.m */,
+				5CE42B1B228E876200C236FC /* ResumProjectCell.xib */,
+			);
+			name = Project;
+			sourceTree = "<group>";
+		};
+		5CE42B2B228E881D00C236FC /* Company */ = {
+			isa = PBXGroup;
+			children = (
+				5CE42B26228E880400C236FC /* ResumeCompanyCell.h */,
+				5CE42B27228E880400C236FC /* ResumeCompanyCell.m */,
+				5CE42B28228E880400C236FC /* ResumeCompanyCell.xib */,
+			);
+			name = Company;
+			sourceTree = "<group>";
+		};
 		5CFAF3E52283F57B0057BD05 /* MMGraph */ = {
 			isa = PBXGroup;
 			children = (
@@ -1302,6 +1389,7 @@
 				5C574AF72272AD310029DB7F /* MMThreadInfo.m */,
 				5C6EA2EE2275AE2900EA3D0F /* MMStack.h */,
 				5C6EA2EF2275AE2900EA3D0F /* MMStack.m */,
+				5CE42B13228E871E00C236FC /* Resume */,
 				5CFAF3E52283F57B0057BD05 /* MMGraph */,
 				5C60D51F227855D4003AE46C /* lept_json.h */,
 				5C60D520227855D4003AE46C /* lept_json.c */,
@@ -1688,6 +1776,8 @@
 				5CBAFA362270557D003A5620 /* FishBoViewController.m */,
 				5C6EA2EB22759FD300EA3D0F /* InterpreterViewController.h */,
 				5C6EA2EC22759FD300EA3D0F /* InterpreterViewController.m */,
+				5CE42B0B228E867900C236FC /* ResumeViewController.h */,
+				5CE42B0C228E867900C236FC /* ResumeViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -1913,17 +2003,22 @@
 			files = (
 				D72CE20A226E10B6005D187A /* testwebview.html in Resources */,
 				5C392B2F226D89D200C15344 /* Console.js in Resources */,
+				5CE42B2A228E880400C236FC /* ResumeCompanyCell.xib in Resources */,
 				D7A595BF1FAACFED000C59FE /* rootTemplate.html in Resources */,
 				5C392B31226D89D200C15344 /* Accelerometer.js in Resources */,
 				7F53C0EC2126740600567D74 /* smile_face.xml in Resources */,
+				5CE42B12228E871600C236FC /* ResumePortraitCell.xib in Resources */,
 				7FE705BB1FBD6A75009FF3A7 /* SomeCustomView.xib in Resources */,
 				7F53C0F32126740600567D74 /* v520.xml in Resources */,
+				5CE42B1D228E876200C236FC /* ResumProjectCell.xib in Resources */,
 				7F53C0EE2126740600567D74 /* heart.xml in Resources */,
+				5CE42B22228E879B00C236FC /* ResumeInfoCell.xib in Resources */,
 				7F53C0EF2126740600567D74 /* v3344.xml in Resources */,
 				5C4E3ADF22532B74001499AF /* README.md in Resources */,
 				7F53C0F22126740600567D74 /* v.xml in Resources */,
 				7F85935A1FDE54E500E6AFFC /* MMXibCustomView.xib in Resources */,
 				7FDC6ED81F46E35A00D94379 /* LaunchScreen.storyboard in Resources */,
+				5CE42B18228E874400C236FC /* ResumeSkillCell.xib in Resources */,
 				7F53C0ED2126740600567D74 /* v1314.xml in Resources */,
 				7FDC6ED51F46E35A00D94379 /* Assets.xcassets in Resources */,
 				D72CE20F226E165D005D187A /* Share.js in Resources */,
@@ -2069,11 +2164,14 @@
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FA36CEA20B4082B0027B61E /* NSArray+Algorithms.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
+				5CE42B17228E874400C236FC /* ResumeSkillCell.m in Sources */,
 				5C6EA37922768F8D00EA3D0F /* XXXContext.m in Sources */,
 				F77231C621AE607400DA019B /* MMAnimationPromise.m in Sources */,
 				7F3815B821294F60006016E9 /* MM_GiftEffectView.m in Sources */,
 				7F3815892126CA68006016E9 /* GiftEffectViewController.m in Sources */,
+				5CE42B29228E880400C236FC /* ResumeCompanyCell.m in Sources */,
 				7F7BA149208EDB240085E045 /* MMSinglyLinkedList.m in Sources */,
+				5CE42B2E228E889200C236FC /* ResumeSectionHeaderFooterView.m in Sources */,
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
 				7F981011211C6BE90004C638 /* UIView+RoundCorner.m in Sources */,
 				7F32E0B01FA1BC70002D57FB /* HLLStickIndicator.m in Sources */,
@@ -2126,6 +2224,7 @@
 				D70F5DE31FA81D69007FBD43 /* FDDismissingAnimator.m in Sources */,
 				5C60D521227855D4003AE46C /* lept_json.c in Sources */,
 				7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */,
+				5CE42B0D228E867A00C236FC /* ResumeViewController.m in Sources */,
 				D70629421F8B185100F52FCB /* HSSectionModel.m in Sources */,
 				5C392BA5226DDD9D00C15344 /* MMAccelerometerPlugin.m in Sources */,
 				7FF4FC091FB55D980097CB3D /* LayoutViewController.m in Sources */,
@@ -2135,6 +2234,7 @@
 				D715E6A61FA7152100CFBFF4 /* CLTStickyLayout.m in Sources */,
 				D7A78FBD218752240021313B /* MMDirectionGestureRecognizer.m in Sources */,
 				7FDC6EE11F46E38800D94379 /* HLLWaveView.m in Sources */,
+				5CE42B21228E879B00C236FC /* ResumeInfoCell.m in Sources */,
 				D7DE014E1F98C1EF008682DE /* NSInvocation+AHKAdditions.m in Sources */,
 				D70629461F8B185100F52FCB /* HSBaseTableViewCell.m in Sources */,
 				5C6EA3932276A8CC00EA3D0F /* MMToken.m in Sources */,
@@ -2207,6 +2307,7 @@
 				D70F5DDA1FA74BCB007FBD43 /* FDCustomView.m in Sources */,
 				5C5E63C82244ABF100C0B85D /* CardCollectionView.m in Sources */,
 				7F63BBBC2071EC650084ABC8 /* HomeBillContentDefaultView.m in Sources */,
+				5CE42B11228E871600C236FC /* ResumePortraitCell.m in Sources */,
 				D713B8B320727F0700D388F2 /* BillViewController.m in Sources */,
 				7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */,
 				7F8593551FDE54AA00E6AFFC /* MMXibViewController.m in Sources */,
@@ -2230,6 +2331,7 @@
 				7FDC6ECA1F46E35A00D94379 /* main.m in Sources */,
 				7FA7261B1FFB89AF00C0F6F2 /* MMToolBar.m in Sources */,
 				D7963EFB21B5678B00B44397 /* ALBookDemoViewController.m in Sources */,
+				5CE42B1C228E876200C236FC /* ResumProjectCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
