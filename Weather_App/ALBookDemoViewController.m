@@ -18,7 +18,13 @@
 @end
 
 @implementation ALDebugView
-
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor randomColor];
+    }
+    return self;
+}
 + (instancetype) debugView:(NSString *)name{
     return [[self alloc] initWithName:name];
 }
@@ -28,7 +34,6 @@
     self = [super initWithFrame:CGRectZero];
     if (self) {
         self.name = name;
-        self.backgroundColor = [UIColor randomColor];
     }
     return self;
 }
@@ -67,7 +72,8 @@
 ///<一般在使用一个有阴影或者有装饰的image的时候，这些装饰没有在布局的时候被考虑进去，就会导致
 - (UIEdgeInsets)alignmentRectInsets{
 //    CGFloat top, CGFloat left, CGFloat bottom, CGFloat right) {
-    return UIEdgeInsetsMake(0, 0, 3, 3);
+    return UIEdgeInsetsMake(0, 0, -3, 3);// 如果设置了size为{100,40},最后呈现的尺寸为{103,37},也就是说{width+left+right, height+top+bottom}
+//    return UIEdgeInsetsMake(0, 0, 3, 3);
 }
 
 @end
@@ -93,6 +99,8 @@
 //    [self nonatomicCarshMethod];
 //    [self atomicNoneCrashMethod];
     
+    [self layout];
+    return;
     {
         self.oneView = [ALDebugView debugView:@"oneView"];
         [self.view addSubview:self.oneView];
@@ -410,9 +418,11 @@
     [self.view addSubview:tenShadowImageView];
     [tenShadowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(tenShadowView);
-        make.top.mas_equalTo(tenShadowView.mas_bottom).mas_offset(tenShadowView.alignmentRectInsets.bottom);
+        make.top.mas_equalTo(tenShadowView.mas_bottom);
         make.centerX.equalTo(self.view);
     }];
+    
+    
     ALDebugView * leftView = [ALDebugView new];
     [self.view addSubview:leftView];
     [leftView mas_makeConstraints:^(MASConstraintMaker *make) {

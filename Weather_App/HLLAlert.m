@@ -25,12 +25,11 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
 
 @implementation HLLAlertActionSheetModel
 
-- (void)dealloc
-{
+- (void)dealloc{
     NSLog(@"%@ dealloc",self);
 }
-- (instancetype)init
-{
+
+- (instancetype)init{
     self = [super init];
     if (self) {
         _handleButtons = [NSMutableArray array];
@@ -44,22 +43,17 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
 }
 @end
 
-@interface HLLAlert : NSObject<HLLAlertActionSheetProtocol>
-
+@interface InternalAlert : NSObject<HLLAlertActionSheetProtocol>
 @property (nonatomic ,strong) HLLAlertActionSheetModel * aModel;
 
-#pragma mark - config
-
-+ (HLLAlert *) alert;
-
+- (UIAlertControllerStyle) style;
 @end
 
-@implementation HLLAlert
-
-- (void)dealloc
-{
+@implementation InternalAlert
+- (void)dealloc{
     NSLog(@"%@ dealloc",self);
 }
+
 - (instancetype)init
 {
     self = [super init];
@@ -69,24 +63,19 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
     return self;
 }
 
-+ (HLLAlert *) alert{
-    
-    return [[HLLAlert alloc] init];
-}
-
-- (HLLAlert *) title:(NSString *)titile{
+- (instancetype) title:(NSString *)titile{
     
     self.aModel.title = titile;
     return self;
 }
 
-- (HLLAlert *) message:(NSString *)message{
+- (instancetype) message:(NSString *)message{
     
     self.aModel.message = message;
     return self;
 }
 
-- (HLLAlert *) buttons:(NSArray *)buttons{
+- (instancetype) buttons:(NSArray *)buttons{
     
     if (buttons && buttons.count) {
         for (NSString * handle in buttons) {
@@ -99,7 +88,7 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
     return self;
 }
 
-- (HLLAlert *) buttonTitles:(NSString *)buttonTitles, ... NS_REQUIRES_NIL_TERMINATION{
+- (instancetype) buttonTitles:(NSString *)buttonTitles, ... NS_REQUIRES_NIL_TERMINATION{
     
     if(buttonTitles){
         NSMutableArray *buttons = [NSMutableArray array];
@@ -119,16 +108,10 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
             }
         }
     }
-    
     return self;
 }
 
-- (id<HLLAlertActionSheetProtocol>) addCancelButton{
-    
-    return self;
-}
-
-- (HLLAlert *) style:(UIAlertActionStyle)style index:(NSInteger)index{
+- (instancetype) style:(UIAlertActionStyle)style index:(NSInteger)index{
     
     NSAssert([self.aModel isInvaild:index], @"Your `handleButtons` MUST BE nunull, AND the `index` less then handleButtons's length.");
     
@@ -138,21 +121,36 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
     [self.aModel.handleButtons replaceObjectAtIndex:index withObject:dictionary];
     return self;
 }
-
-- (HLLAlert *) fetchClick:(void (^)(NSInteger index))click{
+- (id<HLLAlertActionSheetProtocol>) addButton:(void (^)(NSInteger index))click title:(NSString *)title style:(UIAlertActionStyle)style{
+    
+    NSDictionary * handleDic = [NSMutableDictionary dictionaryWithDictionary:
+                                @{kAlertActionSheetHandleDisplayText:title,
+                                  kAlertActionSheetHandleStyle:@(style)}];
+    [self.aModel.handleButtons addObject:handleDic];
+    self.aModel.bClickHandle = click;
+    return self;
+}
+- (id<HLLAlertActionSheetProtocol>) addCancelButton:(NSString *)title{
+    NSDictionary * handleDic = [NSMutableDictionary dictionaryWithDictionary:
+                                @{kAlertActionSheetHandleDisplayText:title,
+                                  kAlertActionSheetHandleStyle:@(UIAlertActionStyleCancel)}];
+    [self.aModel.handleButtons addObject:handleDic];
+    return self;
+}
+- (instancetype) fetchClick:(void (^)(NSInteger index))click{
     
     self.aModel.bClickHandle = click;
     return self;
 }
 
-- (HLLAlert *) show{
+- (instancetype) show{
     
     return [self showIn:nil];
 }
 
-- (HLLAlert *) showIn:(__kindof UIViewController *)vc{
+- (instancetype) showIn:(__kindof UIViewController *)vc{
     
-    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:self.aModel.title message:self.aModel.message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:self.aModel.title message:self.aModel.message preferredStyle:[self style]];
     self.aModel.alertVC = alertVC;
     
     for (int i = 0; i < self.aModel.handleButtons.count; i++) {
@@ -183,110 +181,43 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
     
     [self.aModel.alertVC dismissViewControllerAnimated:YES completion:completion];
 }
+
+- (UIAlertControllerStyle) style{
+    return UIAlertControllerStyleAlert;
+}
 @end
 
+@interface HLLAlert : InternalAlert
 
-@interface HLLActionSheet : NSObject<HLLAlertActionSheetProtocol>
+#pragma mark - config
++ (HLLAlert *) alert;
+@end
 
-@property (nonatomic ,strong) HLLAlertActionSheetModel * aModel;
+@implementation HLLAlert
+
++ (HLLAlert *) alert{
+    return [[HLLAlert alloc] init];
+}
+
+- (UIAlertControllerStyle) style{
+    return UIAlertControllerStyleAlert;
+}
+
+@end
+
+@interface HLLActionSheet : InternalAlert
 
 @property (nonatomic ,copy) void (^bHideHandle)();
 
 #pragma mark - config
-
 + (HLLActionSheet *) actionSheet;
 @end
 
 @implementation HLLActionSheet
 
-- (void)dealloc
-{
-    NSLog(@"%@ dealloc",self);
-}
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.aModel = [[HLLAlertActionSheetModel alloc] init];
-    }
-    return self;
-}
-
 + (HLLActionSheet *) actionSheet{
     
     return [[HLLActionSheet alloc] init];
-}
-
-- (HLLActionSheet *) title:(NSString *)titile{
-    
-    self.aModel.title = titile;
-    return self;
-}
-- (HLLActionSheet *) message:(NSString *)message{
-    
-    self.aModel.message = message;
-    return self;
-}
-- (HLLActionSheet *) buttons:(NSArray *)buttons{
-    
-    if (buttons && buttons.count) {
-        for (NSString * handle in buttons) {
-            NSDictionary * handleDic = [NSMutableDictionary dictionaryWithDictionary:
-                                        @{kAlertActionSheetHandleDisplayText:handle,
-                                          kAlertActionSheetHandleStyle:@(UIAlertActionStyleDefault)}];
-            [self.aModel.handleButtons addObject:handleDic];
-            
-//            [self.aModel.handleButtons insertObject:handleDic atIndex:0];
-        }
-    }
-    return self;
-}
-
-- (HLLActionSheet *) buttonTitles:(NSString *)buttonTitles, ... NS_REQUIRES_NIL_TERMINATION{
-    
-    if(buttonTitles){
-        NSMutableArray *buttons = [NSMutableArray array];
-        va_list args;
-        va_start(args, buttonTitles);
-        for (NSString *str = buttonTitles; str != nil; str = va_arg(args,NSString*)) {
-            [buttons addObject:str];
-        }
-        va_end(args);
-        
-        if (buttons && buttons.count) {
-            for (NSString * handle in buttons) {
-                NSDictionary * handleDic = [NSMutableDictionary dictionaryWithDictionary:
-                                            @{kAlertActionSheetHandleDisplayText:handle,
-                                              kAlertActionSheetHandleStyle:@(UIAlertActionStyleDefault)}];
-                [self.aModel.handleButtons addObject:handleDic];
-            }
-        }
-    }
-    
-    return self;
-}
-
-
-- (HLLActionSheet *) style:(UIAlertActionStyle)style index:(NSInteger)index{
-    
-    NSAssert([self.aModel isInvaild:index], @"Your `handleButtons` MUST BE nunull, AND the `index` less then handleButtons's length.");
-    
-    NSMutableDictionary * dictionary = self.aModel.handleButtons[index];
-    dictionary[kAlertActionSheetHandleStyle] = @(style);
-    
-    [self.aModel.handleButtons replaceObjectAtIndex:index withObject:dictionary];
-    return self;
-}
-
-- (id<HLLAlertActionSheetProtocol>) addCancelButton{
-    
-    return self;
-}
-
-- (HLLActionSheet *) fetchClick:(void (^)(NSInteger index))click{
-    
-    self.aModel.bClickHandle = click;
-    return self;
 }
 
 - (HLLActionSheet *)hide:(void (^)())hide{
@@ -294,45 +225,8 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
     self.bHideHandle = hide;
     return self;
 }
-
-- (HLLActionSheet *) show{
-    
-    return [self showIn:nil];
-}
-
-- (HLLActionSheet *) showIn:(__kindof UIViewController *)vc{
-    
-    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:self.aModel.title message:self.aModel.message preferredStyle:UIAlertControllerStyleActionSheet];
-    self.aModel.alertVC = alertVC;
-    
-    for (int i = 0; i < self.aModel.handleButtons.count; i++) {
-        NSDictionary * handle = self.aModel.handleButtons[i];
-        
-        NSString * title = handle[kAlertActionSheetHandleDisplayText];
-        UIAlertActionStyle style = [handle[kAlertActionSheetHandleStyle] integerValue];
-        
-        UIAlertAction *action = [UIAlertAction actionWithTitle:title style:style handler:^(UIAlertAction * _Nonnull action) {
-            if (self.aModel.bClickHandle) {
-                self.aModel.bClickHandle(i);
-            }
-        }];
-        [self.aModel.alertVC addAction:action];
-    }
-    if (!vc) {
-        vc = [HLLAlertActionSheet getPresentedViewController];//[UIApplication sharedApplication].keyWindow.rootViewController;
-    }
-    [vc presentViewController:self.aModel.alertVC animated:YES completion:nil];
-    return self;
-}
-
-- (void)dismiss{
-    
-    [self dismiss:nil];
-}
-
-- (void) dismiss:(void (^ __nullable)(void))completion{
-
-    [self.aModel.alertVC dismissViewControllerAnimated:YES completion:completion];
+- (UIAlertControllerStyle) style{
+    return UIAlertControllerStyleActionSheet;
 }
 @end
 

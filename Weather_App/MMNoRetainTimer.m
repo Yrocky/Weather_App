@@ -63,6 +63,8 @@
                                selector:(SEL)selector
                                userInfo:(id)userInfo
                                 repeats:(BOOL)repeats{
+    _intervalValue = interval;
+    _repeats = repeats;
     _target = target;
     _selector = selector;
     _userInfo = userInfo;
@@ -78,7 +80,8 @@
                       selector:(SEL)selector
                       userInfo:(id)userInfo
                        repeats:(BOOL)repeats{
-    
+    _intervalValue = interval;
+    _repeats = repeats;
     _target = target;
     _selector = selector;
     _userInfo = userInfo;
@@ -96,6 +99,21 @@
         [self.target performSelector:self.selector withObject:self];
     }
 #pragma clang diagnostic pop
+}
+
+- (void) pause{
+    NSLog(@"[Timer] pause");
+    [self invalidate];
+    _timer = nil;
+}
+
+- (void) restart{
+    NSLog(@"[Timer] restart");
+    [self scheduledTimerWithTimeInterval:_intervalValue
+                                  target:_target
+                                selector:_selector
+                                userInfo:_userInfo
+                                 repeats:_repeats];
 }
 
 - (void) invalidate{

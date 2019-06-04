@@ -22,10 +22,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 这里使用泛型貌似没啥用，因为在selector方法中还需要在声明一下
 @interface MMNoRetainTimer<T> : NSObject{
+    NSTimeInterval _intervalValue;
     id _userInfo;
     NSTimer *_timer;
     __weak id _target;
     SEL _selector;
+    BOOL _repeats;
 }
 @property (nonatomic ,assign ,readonly) SEL selector;
 @property (nonatomic ,weak ,readonly) id target;
@@ -44,8 +46,10 @@ NS_ASSUME_NONNULL_BEGIN
                                     repeats:(BOOL)repeats;
 
 + (MMNoRetainTimer *) scheduledTimerWith:(MMTimerWrap<T> *)timerWrap;
-
 + (MMNoRetainTimer *) timerWith:(MMTimerWrap<T> *)timerWrap;
+
+- (void) pause;
+- (void) restart;
 
 - (void) invalidate;
 

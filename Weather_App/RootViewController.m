@@ -45,6 +45,11 @@
 #import "FishBoViewController.h"
 #import "InterpreterViewController.h"
 #import "ResumeViewController.h"
+#import "NoticeScrollViewController.h"
+
+#define weakify(...) autoreleasepool {} __attribute__((objc_ownership(weak))) __typeof__(self) self_weak_ = (self);
+
+#define strongify(...) autoreleasepool {} __attribute__((objc_ownership(strong))) __typeof__(self) self = self_weak_;
 
 @interface RootViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic ,strong) NSString * str;
@@ -58,15 +63,18 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
+
     self.title = @"Root";
     self.str = @"123";
     self.navigationController.navigationBar.prefersLargeTitles = YES;
     self.navigationController.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAlways;
-    
+    @weakify(self);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(printSome) name:@"noti_mm_custom" object:nil];
     [ANYMethodLog logMethodWithClass:[HSTableViewModel class] condition:^BOOL(SEL sel) {
-        
+        @strongify(self);
+
         return [NSStringFromSelector(sel) isEqualToString:@"addSection:"];
     } before:^(id target, SEL sel, NSArray *args, int deep) {
         NSLog(@" before target:%@ sel:%@",target,NSStringFromSelector(sel));
@@ -82,6 +90,14 @@
         HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"原来的Main控制器" actionBlock:^(HSBaseCellModel *model) {
             
             [self performSegueWithIdentifier:@"RootToMain" sender:nil];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"🍇NoticeScroll🍇" actionBlock:^(HSTitleCellModel *model) {
+            
+            NoticeScrollViewController * vc = [[NoticeScrollViewController alloc] init];
+            vc.title = model.title;
+            [self.navigationController pushViewController:vc animated:YES];
         }];
         [s addCellModel:c];
         

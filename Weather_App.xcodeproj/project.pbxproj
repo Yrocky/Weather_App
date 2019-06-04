@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		29DBA5C092A3C92ABAAD9DA9 /* Pods_Weather_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD27D1478D1B8369B4F8A1A3 /* Pods_Weather_App.framework */; };
+		5C04C60A229BC075000F0000 /* UIView+FrameLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */; };
+		5C04C60B229BC075000F0000 /* UIView+FrameLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */; };
+		5C04D35F22A13DFA000F0000 /* XXXAutoScrollImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04D35E22A13DFA000F0000 /* XXXAutoScrollImageView.m */; };
 		5C2174612254B30B001443BC /* RoomCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2174602254B30B001443BC /* RoomCycleScrollView.m */; };
 		5C303135227195AF00B882AA /* XXXHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C303134227195AF00B882AA /* XXXHTTPProtocol.m */; };
 		5C392B26226D835900C15344 /* MMWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392B25226D835900C15344 /* MMWebView.m */; };
@@ -19,6 +22,8 @@
 		5C392BA2226DDD5800C15344 /* MMConsolePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA1226DDD5800C15344 /* MMConsolePlugin.m */; };
 		5C392BA5226DDD9D00C15344 /* MMAccelerometerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA4226DDD9D00C15344 /* MMAccelerometerPlugin.m */; };
 		5C392BA8226EB04A00C15344 /* MMScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA7226EB04A00C15344 /* MMScriptMessageHandler.m */; };
+		5C48AB0C2296377A00535980 /* NoticeScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C48AB0B2296377A00535980 /* NoticeScrollViewController.m */; };
+		5C48AB0F229637C600535980 /* XXXNoticeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C48AB0E229637C600535980 /* XXXNoticeScrollView.m */; };
 		5C4E3A702252F54C001499AF /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E3A6F2252F54C001499AF /* RankViewController.m */; };
 		5C4E3ADF22532B74001499AF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E3ADE22532B74001499AF /* README.md */; };
 		5C574AF82272AD310029DB7F /* MMThreadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C574AF72272AD310029DB7F /* MMThreadInfo.m */; };
@@ -63,6 +68,8 @@
 		5CE42B29228E880400C236FC /* ResumeCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE42B27228E880400C236FC /* ResumeCompanyCell.m */; };
 		5CE42B2A228E880400C236FC /* ResumeCompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CE42B28228E880400C236FC /* ResumeCompanyCell.xib */; };
 		5CE42B2E228E889200C236FC /* ResumeSectionHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE42B2D228E889200C236FC /* ResumeSectionHeaderFooterView.m */; };
+		5CE42B782292459000C236FC /* ResumeDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE42B762292459000C236FC /* ResumeDescriptionCell.m */; };
+		5CE42B792292459000C236FC /* ResumeDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CE42B772292459000C236FC /* ResumeDescriptionCell.xib */; };
 		5CE772C622843A61003A251D /* NSArray+Unretained.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE772C522843A61003A251D /* NSArray+Unretained.m */; };
 		5CE772C722843A61003A251D /* NSArray+Unretained.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE772C522843A61003A251D /* NSArray+Unretained.m */; };
 		5CFAF3E0228199850057BD05 /* MMToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA3922276A8CC00EA3D0F /* MMToken.m */; };
@@ -280,6 +287,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C04C608229BC075000F0000 /* UIView+FrameLayoutSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameLayoutSupport.h"; sourceTree = "<group>"; };
+		5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameLayoutSupport.m"; sourceTree = "<group>"; };
+		5C04D35D22A13DFA000F0000 /* XXXAutoScrollImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXAutoScrollImageView.h; sourceTree = "<group>"; };
+		5C04D35E22A13DFA000F0000 /* XXXAutoScrollImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXAutoScrollImageView.m; sourceTree = "<group>"; };
 		5C21745F2254B30B001443BC /* RoomCycleScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomCycleScrollView.h; sourceTree = "<group>"; };
 		5C2174602254B30B001443BC /* RoomCycleScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomCycleScrollView.m; sourceTree = "<group>"; };
 		5C2174622254B7BE001443BC /* RoomDataSourceHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomDataSourceHandler.h; sourceTree = "<group>"; };
@@ -301,6 +312,10 @@
 		5C392BA6226EB04A00C15344 /* MMScriptMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMScriptMessageHandler.h; sourceTree = "<group>"; };
 		5C392BA7226EB04A00C15344 /* MMScriptMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMScriptMessageHandler.m; sourceTree = "<group>"; };
 		5C392BA9226EB7B200C15344 /* MMEvaluateJaveScriptAble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMEvaluateJaveScriptAble.h; sourceTree = "<group>"; };
+		5C48AB0A2296377A00535980 /* NoticeScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeScrollViewController.h; sourceTree = "<group>"; };
+		5C48AB0B2296377A00535980 /* NoticeScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeScrollViewController.m; sourceTree = "<group>"; };
+		5C48AB0D229637C600535980 /* XXXNoticeScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXNoticeScrollView.h; sourceTree = "<group>"; };
+		5C48AB0E229637C600535980 /* XXXNoticeScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXNoticeScrollView.m; sourceTree = "<group>"; };
 		5C4E3A6E2252F54C001499AF /* RankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
 		5C4E3A6F2252F54C001499AF /* RankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
 		5C4E3ADE22532B74001499AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -382,6 +397,9 @@
 		5CE42B28228E880400C236FC /* ResumeCompanyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCompanyCell.xib; sourceTree = "<group>"; };
 		5CE42B2C228E889200C236FC /* ResumeSectionHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeSectionHeaderFooterView.h; sourceTree = "<group>"; };
 		5CE42B2D228E889200C236FC /* ResumeSectionHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeSectionHeaderFooterView.m; sourceTree = "<group>"; };
+		5CE42B752292459000C236FC /* ResumeDescriptionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeDescriptionCell.h; sourceTree = "<group>"; };
+		5CE42B762292459000C236FC /* ResumeDescriptionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeDescriptionCell.m; sourceTree = "<group>"; };
+		5CE42B772292459000C236FC /* ResumeDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeDescriptionCell.xib; sourceTree = "<group>"; };
 		5CE772C422843A61003A251D /* NSArray+Unretained.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Unretained.h"; sourceTree = "<group>"; };
 		5CE772C522843A61003A251D /* NSArray+Unretained.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Unretained.m"; sourceTree = "<group>"; };
 		5CFAF3E12283F53B0057BD05 /* MMGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMGraph.h; sourceTree = "<group>"; };
@@ -969,6 +987,9 @@
 				5CE42B1E228E879B00C236FC /* ResumeInfoCell.h */,
 				5CE42B1F228E879B00C236FC /* ResumeInfoCell.m */,
 				5CE42B20228E879B00C236FC /* ResumeInfoCell.xib */,
+				5CE42B752292459000C236FC /* ResumeDescriptionCell.h */,
+				5CE42B762292459000C236FC /* ResumeDescriptionCell.m */,
+				5CE42B772292459000C236FC /* ResumeDescriptionCell.xib */,
 			);
 			name = Basic;
 			sourceTree = "<group>";
@@ -1411,6 +1432,10 @@
 				5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */,
 				5C9C28C9226418F4000B5631 /* MMAccumulateTimer.h */,
 				5C9C28CA226418F4000B5631 /* MMAccumulateTimer.m */,
+				5C48AB0D229637C600535980 /* XXXNoticeScrollView.h */,
+				5C48AB0E229637C600535980 /* XXXNoticeScrollView.m */,
+				5C04D35D22A13DFA000F0000 /* XXXAutoScrollImageView.h */,
+				5C04D35E22A13DFA000F0000 /* XXXAutoScrollImageView.m */,
 				7F53C0DE2126740500567D74 /* GIftEffectView */,
 				7FFAB83C210AC38A00CA6671 /* MMAObject.h */,
 				7FFAB83D210AC38A00CA6671 /* MMAObject.m */,
@@ -1569,6 +1594,8 @@
 				7FA36CE920B4082B0027B61E /* NSArray+Algorithms.m */,
 				7F98100F211C6BE90004C638 /* UIView+RoundCorner.h */,
 				7F981010211C6BE90004C638 /* UIView+RoundCorner.m */,
+				5C04C608229BC075000F0000 /* UIView+FrameLayoutSupport.h */,
+				5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */,
 				7F0C0EC3214B5288000C55C6 /* UIButton+MMCustom.h */,
 				7F0C0EC4214B5288000C55C6 /* UIButton+MMCustom.m */,
 			);
@@ -1778,6 +1805,8 @@
 				5C6EA2EC22759FD300EA3D0F /* InterpreterViewController.m */,
 				5CE42B0B228E867900C236FC /* ResumeViewController.h */,
 				5CE42B0C228E867900C236FC /* ResumeViewController.m */,
+				5C48AB0A2296377A00535980 /* NoticeScrollViewController.h */,
+				5C48AB0B2296377A00535980 /* NoticeScrollViewController.m */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -2016,6 +2045,7 @@
 				7F53C0EF2126740600567D74 /* v3344.xml in Resources */,
 				5C4E3ADF22532B74001499AF /* README.md in Resources */,
 				7F53C0F22126740600567D74 /* v.xml in Resources */,
+				5CE42B792292459000C236FC /* ResumeDescriptionCell.xib in Resources */,
 				7F85935A1FDE54E500E6AFFC /* MMXibCustomView.xib in Resources */,
 				7FDC6ED81F46E35A00D94379 /* LaunchScreen.storyboard in Resources */,
 				5CE42B18228E874400C236FC /* ResumeSkillCell.xib in Resources */,
@@ -2098,6 +2128,7 @@
 				5C60D50B22784412003AE46C /* MMLexrParserText.m in Sources */,
 				5CFAF3E0228199850057BD05 /* MMToken.m in Sources */,
 				5CFAF3EF22840C5E0057BD05 /* MMGraphTest.m in Sources */,
+				5C04C60B229BC075000F0000 /* UIView+FrameLayoutSupport.m in Sources */,
 				5CFAF3F122840C970057BD05 /* MMGraph.m in Sources */,
 				5CDF128D22819061007FD7A7 /* XXXRPNTest.m in Sources */,
 				5C60D5232278561F003AE46C /* MMLeptTest.m in Sources */,
@@ -2112,6 +2143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C04C60A229BC075000F0000 /* UIView+FrameLayoutSupport.m in Sources */,
 				D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */,
 				D706293F1F8B185100F52FCB /* HSSwitchCellModel.m in Sources */,
 				7FFAB83E210AC38A00CA6671 /* MMAObject.m in Sources */,
@@ -2260,6 +2292,7 @@
 				7FED6BA61F5557F0004E3345 /* TableViewDataSource.m in Sources */,
 				D70F5DD71FA74B26007FBD43 /* UIView+Glow.m in Sources */,
 				D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */,
+				5C48AB0F229637C600535980 /* XXXNoticeScrollView.m in Sources */,
 				5C2174612254B30B001443BC /* RoomCycleScrollView.m in Sources */,
 				7FA274CF20876366001B9FD2 /* YYWeakProxy.m in Sources */,
 				7F6FFB8D209458E100A84A81 /* NSAttributedString+ZPAttributedString.m in Sources */,
@@ -2271,6 +2304,7 @@
 				7F9810172122AE7C0004C638 /* MMSingleton.m in Sources */,
 				5C6EA38C2276A89900EA3D0F /* MMUnaryOpAST.m in Sources */,
 				7F63BBC02072036F0084ABC8 /* LunarCore.m in Sources */,
+				5C48AB0C2296377A00535980 /* NoticeScrollViewController.m in Sources */,
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
 				5C6EA39A2276C4F000EA3D0F /* MMParserr.m in Sources */,
 				5CFAF3E32283F53B0057BD05 /* MMGraph.m in Sources */,
@@ -2304,6 +2338,7 @@
 				7F63BBB8206E25340084ABC8 /* HomeBillContainerView.m in Sources */,
 				7F9CED371F57F31C00A64EB5 /* UIView+AutoLayoutSupport.m in Sources */,
 				5C392B29226D852800C15344 /* XXXWebViewController.m in Sources */,
+				5CE42B782292459000C236FC /* ResumeDescriptionCell.m in Sources */,
 				D70F5DDA1FA74BCB007FBD43 /* FDCustomView.m in Sources */,
 				5C5E63C82244ABF100C0B85D /* CardCollectionView.m in Sources */,
 				7F63BBBC2071EC650084ABC8 /* HomeBillContentDefaultView.m in Sources */,
@@ -2322,6 +2357,7 @@
 				5C9C28CB226418F4000B5631 /* MMAccumulateTimer.m in Sources */,
 				7F8B6C021F95ECBC00F3A6E3 /* MMSearchViewController.m in Sources */,
 				7FA726271FFCD51300C0F6F2 /* MMText.m in Sources */,
+				5C04D35F22A13DFA000F0000 /* XXXAutoScrollImageView.m in Sources */,
 				5C574AF82272AD310029DB7F /* MMThreadInfo.m in Sources */,
 				5C4E3A702252F54C001499AF /* RankViewController.m in Sources */,
 				7F677F36218C1128009851B6 /* MMGradientView.m in Sources */,

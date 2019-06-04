@@ -169,10 +169,17 @@
         
         c = [[HSTextCellModel alloc] initWithTitle:@"Text - 时间" actionBlock:^(HSBaseCellModel *model) {
             NSLog(@"model:%@",model);
-            MMDatePickerViewConfig * dateConfig = [MMDatePickerViewConfig config];
-            dateConfig.datePickerMode = UIDatePickerModeTime;
-            MMPickerView * pickerView = [[MMPickerView alloc] initWithDatePickerConfig:dateConfig];
-            [pickerView show];
+//            MMDatePickerViewConfig * dateConfig = [MMDatePickerViewConfig config];
+//            dateConfig.datePickerMode = UIDatePickerModeTime;
+//            MMPickerView * pickerView = [[MMPickerView alloc] initWithDatePickerConfig:dateConfig];
+//            [pickerView show];
+            
+            [[[[HLLAlertUtil message:@"msg"] addButton:^(NSInteger index) {
+                NSLog(@"index:%d",index);
+            } title:@"default" style:UIAlertActionStyleDefault] addButton:^(NSInteger index) {
+                NSLog(@"index:%d",index);
+            } title:@"cancel" style:UIAlertActionStyleDefault] showIn:self];
+            
         }];
         ((HSTextCellModel *)c).detailText = @"detail";
         ((HSTextCellModel *)c).detailColor = [UIColor lightGrayColor];

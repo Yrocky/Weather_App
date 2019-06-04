@@ -16,7 +16,7 @@
 @implementation YTKRequest (PromiseKit)
 
 - (void)dealloc{
-    NSLog(@"%@ dealloc",self);
+    NSLog(@"[YTK] %@ dealloc",self);
 }
 
 - (id) mapModelWithJsonData:(id)jsonData{
@@ -71,7 +71,7 @@
             
             NSInteger responseStatusCode = request.responseStatusCode;
             if (responseStatusCode < 200 || responseStatusCode >= 300) {
-                rejecter(commonError(@"The server returned a bad HTTP response code"));
+                rejecter(commonError(@"[YTK] The server returned a bad HTTP response code"));
             } else if (PMKHTTPURLResponseIsJSON(request.response)) {
                 
                 // work around ever-so-common Rails workaround: https://github.com/rails/rails/issues/1742
@@ -95,7 +95,7 @@
                     }
                     long long length = [response expectedContentLength];
                     id bytes = length <= 0 ? @"" : [NSString stringWithFormat:@"%lld bytes", length];
-                    id fmt = @"The server claimed a %@ JSON response, but decoding failed with: %@";
+                    id fmt = @"[YTK] The server claimed a %@ JSON response, but decoding failed with: %@";
                     userInfo[NSLocalizedDescriptionKey] = [NSString stringWithFormat:fmt, bytes, userInfo[NSLocalizedDescriptionKey]];
                     err = [NSError errorWithDomain:err.domain code:err.code userInfo:userInfo];
                     rejecter(err);
@@ -106,14 +106,14 @@
                 if (image)
                     fulfiller(image);
                 else {
-                    rejecter(commonError(@"The server returned invalid image data"));
+                    rejecter(commonError(@"[YTK] The server returned invalid image data"));
                 }
             } else if (PMKHTTPURLResponseIsText(response)) {
                 id str = [[NSString alloc] initWithData:data encoding:stringEncoding()];
                 if (str)
                     fulfiller(str);
                 else {
-                    rejecter(commonError(@"The server returned invalid string data"));
+                    rejecter(commonError(@"[YTK] The server returned invalid string data"));
                 }
             } else {
                 fulfiller(data);
