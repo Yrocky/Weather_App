@@ -65,7 +65,6 @@ static inline NSValue* XXXPointValueOffset(CGPoint point, CGFloat x, CGFloat y) 
         [self.internalImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self);
             make.centerY.equalTo(self);
-            //make.left.top.right.bottom.equalTo(self).priority(249);
         }];
         
         ///<add noti
@@ -93,24 +92,22 @@ static inline NSValue* XXXPointValueOffset(CGPoint point, CGFloat x, CGFloat y) 
     [self.internalImageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]]
                                   placeholderImage:[UIImage imageNamed:placeholder]
                                            success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
-                                               dispatch_async(dispatch_get_main_queue(), ^{
-                                                   weakSelf.internalImageView.image = image;
-                                                   [weakSelf start];
-                                               });
+                                               weakSelf.internalImageView.image = image;
+                                               [weakSelf start];
                                            } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
-                                               dispatch_async(dispatch_get_main_queue(), ^{
-                                                   [weakSelf start];
-                                               });
+                                               [weakSelf start];
                                            }];
 }
 
 - (void)start{
     
-    [self setNeedsLayout];
-    
-    [self setupMarginWithImage:self.internalImageView.image];
-    
-    [self onAnimation];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setNeedsLayout];
+        
+        [self setupMarginWithImage:self.internalImageView.image];
+        
+        [self onAnimation];
+    });
 }
 
 - (void)pause{
