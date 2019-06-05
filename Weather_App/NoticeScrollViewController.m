@@ -38,7 +38,7 @@
     self.thirdView.restorationIdentifier = @"thridView";
     self.thirdView.backgroundColor = [UIColor purpleColor];
     
-    if (1){
+    if (0){
         XXXNoticeScrollView * scrollView = [[XXXNoticeScrollView alloc] initWithTimeInterval:2.5];
         scrollView.delegate = self;
         [scrollView addContentViews:@[self.oneView,self.otherView,self.thirdView]];
@@ -54,7 +54,7 @@
             }
         }];
     }
-    {
+    if(0){
         UILabel * oneView = [UILabel new];
         oneView.restorationIdentifier = @"oneView";
         oneView.text = @"oneeeeeeeeeeeView";
@@ -112,14 +112,19 @@
     
     {
         XXXAutoScrollImageView * scrollView = [[XXXAutoScrollImageView alloc] initWithDirection:XXXAutoScrollDirectionVertical];
-        [scrollView setupImage:@"sunset"];
+        scrollView.layer.cornerRadius = 5;
+        scrollView.layer.masksToBounds = YES;
+        scrollView.duration = 20.0f;
+//        [scrollView setupImage:@"sunset"];
+        [scrollView setupImage:@"http://out8i00tg.bkt.clouddn.com/FvxQfoUDroEqYagImfiIRu5SFuXA"
+                   placeholder:@"sunset"];
         [self.view addSubview:scrollView];
         [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(self.view);
-            make.height.mas_equalTo(200);
+            make.left.equalTo(self.view).mas_offset(20);
+            make.right.equalTo(self.view).mas_offset(-20);
+            make.height.mas_equalTo(100);
             make.top.equalTo(self.view.mas_centerY);
         }];
-        [scrollView start];
     }
 }
 

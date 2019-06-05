@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger ,XXXAutoScrollDirection) {
-    XXXAutoScrollDirectionVertical,///<垂直翻滚
-    XXXAutoScrollDirectionHorizontal,///<水平翻滚
+    XXXAutoScrollDirectionVertical,///<垂直位移
+    XXXAutoScrollDirectionHorizontal,///<水平位移
     XXXAutoScrollDirectionLeftToRightDiagonal,///<\对角线
     XXXAutoScrollDirectionRightToLeftDiagonal,///</对角线
 };
@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger ,XXXAutoScrollDirection) {
 @interface XXXAutoScrollImageView : UIView
 
 @property (nonatomic ,assign ,readonly) XXXAutoScrollDirection direction;///<default vertical
+@property (nonatomic ,assign) NSTimeInterval duration;///<default 10s
 
 - (instancetype) initWithDirection:(XXXAutoScrollDirection)direction;
 
