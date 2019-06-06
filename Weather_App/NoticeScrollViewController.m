@@ -115,9 +115,9 @@
         scrollView.layer.cornerRadius = 5;
         scrollView.layer.masksToBounds = YES;
         scrollView.duration = 20.0f;
-        [scrollView setupImage:@"sunset"];
-//        [scrollView setupImage:@"http://out8i00tg.bkt.clouddn.com/FvxQfoUDroEqYagImfiIRu5SFuXA"
-//                   placeholder:@"sunset"];
+//        [scrollView setupImage:@"sunset"];
+        [scrollView setupImage:@"http://out8i00tg.bkt.clouddn.com/FpwfCXsZMGOWXKv6mj1PigOoDQU5"
+                   placeholder:@"sunset"];
         [self.view addSubview:scrollView];
         [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.view).mas_offset(20);
