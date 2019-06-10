@@ -46,6 +46,7 @@
 #import "InterpreterViewController.h"
 #import "ResumeViewController.h"
 #import "NoticeScrollViewController.h"
+#import "OldLoginViewController.h"
 
 #define weakify(...) autoreleasepool {} __attribute__((objc_ownership(weak))) __typeof__(self) self_weak_ = (self);
 
@@ -90,6 +91,13 @@
         HSTitleCellModel * c = [[HSTitleCellModel alloc] initWithTitle:@"原来的Main控制器" actionBlock:^(HSBaseCellModel *model) {
             
             [self performSegueWithIdentifier:@"RootToMain" sender:nil];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"🍒Login🍒" actionBlock:^(HSTitleCellModel *model) {
+            OldLoginViewController * vc = [[OldLoginViewController alloc] init];
+            MMNavigationController * navi = [[MMNavigationController alloc] initWithRootViewController:vc];
+            [self.navigationController presentViewController:navi animated:YES completion:nil];
         }];
         [s addCellModel:c];
         

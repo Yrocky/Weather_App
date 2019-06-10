@@ -72,6 +72,13 @@
 		5CE42B792292459000C236FC /* ResumeDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CE42B772292459000C236FC /* ResumeDescriptionCell.xib */; };
 		5CE772C622843A61003A251D /* NSArray+Unretained.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE772C522843A61003A251D /* NSArray+Unretained.m */; };
 		5CE772C722843A61003A251D /* NSArray+Unretained.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE772C522843A61003A251D /* NSArray+Unretained.m */; };
+		5CE8B33822A8C4A2002CFA38 /* OldLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8B33722A8C4A2002CFA38 /* OldLoginViewController.m */; };
+		5CE8B33B22A8C4B6002CFA38 /* OldRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8B33A22A8C4B6002CFA38 /* OldRegistViewController.m */; };
+		5CE8B33E22A8C4CB002CFA38 /* OldForgetPswViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8B33D22A8C4CB002CFA38 /* OldForgetPswViewController.m */; };
+		5CE8B34122A8C4EB002CFA38 /* OldForgetPswConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8B34022A8C4EB002CFA38 /* OldForgetPswConfirmViewController.m */; };
+		5CE8B34522A8C5C3002CFA38 /* XXXLoginInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8B34422A8C5C3002CFA38 /* XXXLoginInputView.m */; };
+		5CE8B34822A8DAAC002CFA38 /* XXXLoginCommitButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8B34722A8DAAC002CFA38 /* XXXLoginCommitButton.m */; };
+		5CE8B34B22A8ED7D002CFA38 /* XXXLoginNotiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8B34A22A8ED7D002CFA38 /* XXXLoginNotiView.m */; };
 		5CFAF3E0228199850057BD05 /* MMToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA3922276A8CC00EA3D0F /* MMToken.m */; };
 		5CFAF3E32283F53B0057BD05 /* MMGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAF3E22283F53B0057BD05 /* MMGraph.m */; };
 		5CFAF3E82283F59A0057BD05 /* MMVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAF3E72283F59A0057BD05 /* MMVertex.m */; };
@@ -402,6 +409,20 @@
 		5CE42B772292459000C236FC /* ResumeDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeDescriptionCell.xib; sourceTree = "<group>"; };
 		5CE772C422843A61003A251D /* NSArray+Unretained.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Unretained.h"; sourceTree = "<group>"; };
 		5CE772C522843A61003A251D /* NSArray+Unretained.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Unretained.m"; sourceTree = "<group>"; };
+		5CE8B33622A8C4A2002CFA38 /* OldLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldLoginViewController.h; sourceTree = "<group>"; };
+		5CE8B33722A8C4A2002CFA38 /* OldLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OldLoginViewController.m; sourceTree = "<group>"; };
+		5CE8B33922A8C4B6002CFA38 /* OldRegistViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldRegistViewController.h; sourceTree = "<group>"; };
+		5CE8B33A22A8C4B6002CFA38 /* OldRegistViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OldRegistViewController.m; sourceTree = "<group>"; };
+		5CE8B33C22A8C4CB002CFA38 /* OldForgetPswViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldForgetPswViewController.h; sourceTree = "<group>"; };
+		5CE8B33D22A8C4CB002CFA38 /* OldForgetPswViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OldForgetPswViewController.m; sourceTree = "<group>"; };
+		5CE8B33F22A8C4EB002CFA38 /* OldForgetPswConfirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldForgetPswConfirmViewController.h; sourceTree = "<group>"; };
+		5CE8B34022A8C4EB002CFA38 /* OldForgetPswConfirmViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OldForgetPswConfirmViewController.m; sourceTree = "<group>"; };
+		5CE8B34322A8C5C3002CFA38 /* XXXLoginInputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXLoginInputView.h; sourceTree = "<group>"; };
+		5CE8B34422A8C5C3002CFA38 /* XXXLoginInputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXLoginInputView.m; sourceTree = "<group>"; };
+		5CE8B34622A8DAAC002CFA38 /* XXXLoginCommitButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXLoginCommitButton.h; sourceTree = "<group>"; };
+		5CE8B34722A8DAAC002CFA38 /* XXXLoginCommitButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXLoginCommitButton.m; sourceTree = "<group>"; };
+		5CE8B34922A8ED7D002CFA38 /* XXXLoginNotiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXLoginNotiView.h; sourceTree = "<group>"; };
+		5CE8B34A22A8ED7D002CFA38 /* XXXLoginNotiView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXLoginNotiView.m; sourceTree = "<group>"; };
 		5CFAF3E12283F53B0057BD05 /* MMGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMGraph.h; sourceTree = "<group>"; };
 		5CFAF3E22283F53B0057BD05 /* MMGraph.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMGraph.m; sourceTree = "<group>"; };
 		5CFAF3E62283F59A0057BD05 /* MMVertex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMVertex.h; sourceTree = "<group>"; };
@@ -1022,6 +1043,35 @@
 				5CE42B28228E880400C236FC /* ResumeCompanyCell.xib */,
 			);
 			name = Company;
+			sourceTree = "<group>";
+		};
+		5CE8B33522A8C47C002CFA38 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5CE8B34322A8C5C3002CFA38 /* XXXLoginInputView.h */,
+				5CE8B34422A8C5C3002CFA38 /* XXXLoginInputView.m */,
+				5CE8B34622A8DAAC002CFA38 /* XXXLoginCommitButton.h */,
+				5CE8B34722A8DAAC002CFA38 /* XXXLoginCommitButton.m */,
+				5CE8B34922A8ED7D002CFA38 /* XXXLoginNotiView.h */,
+				5CE8B34A22A8ED7D002CFA38 /* XXXLoginNotiView.m */,
+				5CE8B34222A8C5A5002CFA38 /* vc */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		5CE8B34222A8C5A5002CFA38 /* vc */ = {
+			isa = PBXGroup;
+			children = (
+				5CE8B33622A8C4A2002CFA38 /* OldLoginViewController.h */,
+				5CE8B33722A8C4A2002CFA38 /* OldLoginViewController.m */,
+				5CE8B33922A8C4B6002CFA38 /* OldRegistViewController.h */,
+				5CE8B33A22A8C4B6002CFA38 /* OldRegistViewController.m */,
+				5CE8B33C22A8C4CB002CFA38 /* OldForgetPswViewController.h */,
+				5CE8B33D22A8C4CB002CFA38 /* OldForgetPswViewController.m */,
+				5CE8B33F22A8C4EB002CFA38 /* OldForgetPswConfirmViewController.h */,
+				5CE8B34022A8C4EB002CFA38 /* OldForgetPswConfirmViewController.m */,
+			);
+			path = vc;
 			sourceTree = "<group>";
 		};
 		5CFAF3E52283F57B0057BD05 /* MMGraph */ = {
@@ -1807,6 +1857,7 @@
 				5CE42B0C228E867900C236FC /* ResumeViewController.m */,
 				5C48AB0A2296377A00535980 /* NoticeScrollViewController.h */,
 				5C48AB0B2296377A00535980 /* NoticeScrollViewController.m */,
+				5CE8B33522A8C47C002CFA38 /* Login */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
 			name = "控制器";
@@ -2192,6 +2243,7 @@
 				D7A73E231FB04F4800818CF5 /* MM_FindFriendEntryItemView.m in Sources */,
 				5CBAFA372270557D003A5620 /* FishBoViewController.m in Sources */,
 				F7C5B57721F571BC00D3F9D7 /* YTKRequest+PromiseKit.m in Sources */,
+				5CE8B33B22A8C4B6002CFA38 /* OldRegistViewController.m in Sources */,
 				5C5E63CD2244AC3000C0B85D /* RoomModel.m in Sources */,
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FA36CEA20B4082B0027B61E /* NSArray+Algorithms.m in Sources */,
@@ -2225,6 +2277,7 @@
 				D7F1F8062070FEA3000478C2 /* HomeBillContentDateView.m in Sources */,
 				7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */,
 				D713B8CE2076033800D388F2 /* BillRemarksExtensionView.m in Sources */,
+				5CE8B33822A8C4A2002CFA38 /* OldLoginViewController.m in Sources */,
 				5C6EA37F2276904700EA3D0F /* XXXCalculator.m in Sources */,
 				F703661B21E77D4E0086832C /* MMAnimationKeyPath.m in Sources */,
 				D70629061F8B143D00F52FCB /* MMPickerView.m in Sources */,
@@ -2239,6 +2292,7 @@
 				D70629401F8B185100F52FCB /* HSTextCellModel.m in Sources */,
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
 				F77231CF21AE8A5300DA019B /* MMAnimationTimingFunctionType.m in Sources */,
+				5CE8B34522A8C5C3002CFA38 /* XXXLoginInputView.m in Sources */,
 				7F3815B52129460F006016E9 /* MMGCDTimerManager.m in Sources */,
 				F703661821E720380086832C /* EaseDevice.m in Sources */,
 				D7F1F8032070F9FB000478C2 /* HomeBillContentView.m in Sources */,
@@ -2260,6 +2314,7 @@
 				D70629421F8B185100F52FCB /* HSSectionModel.m in Sources */,
 				5C392BA5226DDD9D00C15344 /* MMAccelerometerPlugin.m in Sources */,
 				7FF4FC091FB55D980097CB3D /* LayoutViewController.m in Sources */,
+				5CE8B34122A8C4EB002CFA38 /* OldForgetPswConfirmViewController.m in Sources */,
 				7F5FD9932115898D00DB70F8 /* MM24GameManager.m in Sources */,
 				7F472922218C6B50007A10FB /* MMLiveChatEmojiView.m in Sources */,
 				7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */,
@@ -2294,6 +2349,7 @@
 				D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */,
 				5C48AB0F229637C600535980 /* XXXNoticeScrollView.m in Sources */,
 				5C2174612254B30B001443BC /* RoomCycleScrollView.m in Sources */,
+				5CE8B34B22A8ED7D002CFA38 /* XXXLoginNotiView.m in Sources */,
 				7FA274CF20876366001B9FD2 /* YYWeakProxy.m in Sources */,
 				7F6FFB8D209458E100A84A81 /* NSAttributedString+ZPAttributedString.m in Sources */,
 				7F39ED06214FC3B7006CE72F /* MMAnimator.m in Sources */,
@@ -2327,10 +2383,12 @@
 				F77231C021AE581600DA019B /* MMAnimation.m in Sources */,
 				7F8B6C081F95ED6F00F3A6E3 /* MMSearchReusableView.m in Sources */,
 				5C6EA3902276A8BA00EA3D0F /* MMLexer.m in Sources */,
+				5CE8B33E22A8C4CB002CFA38 /* OldForgetPswViewController.m in Sources */,
 				D713B8C8207602FF00D388F2 /* BillLocationExtensionView.m in Sources */,
 				D7A45DD721B94FCA003EDE2F /* UIImage+DrawImage.m in Sources */,
 				7F472929218C6F07007A10FB /* EmojiViewController.m in Sources */,
 				D706294C1F8B185100F52FCB /* HSTitleTableViewCell.m in Sources */,
+				5CE8B34822A8DAAC002CFA38 /* XXXLoginCommitButton.m in Sources */,
 				7F8593581FDE54DC00E6AFFC /* MMXibCustomView.m in Sources */,
 				D70629451F8B185100F52FCB /* HSSetTableViewControllerConst.m in Sources */,
 				7FEC5C532060C18000FAE1D1 /* MMOBJ.m in Sources */,
