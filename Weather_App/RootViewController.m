@@ -69,8 +69,16 @@
 
     self.title = @"Root";
     self.str = @"123";
-    self.navigationController.navigationBar.prefersLargeTitles = YES;
-    self.navigationController.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAlways;
+    if (@available(iOS 11.0, *)) {
+        self.navigationController.navigationBar.prefersLargeTitles = YES;
+    } else {
+        // Fallback on earlier versions
+    }
+    if (@available(iOS 11.0, *)) {
+        self.navigationController.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAlways;
+    } else {
+        // Fallback on earlier versions
+    }
     @weakify(self);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(printSome) name:@"noti_mm_custom" object:nil];
     [ANYMethodLog logMethodWithClass:[HSTableViewModel class] condition:^BOOL(SEL sel) {

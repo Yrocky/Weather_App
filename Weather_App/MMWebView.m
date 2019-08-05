@@ -57,7 +57,8 @@ static inline void clearWebViewCacheFolderByType(NSString *cacheType) {
 // 使用WKWebView遇到的大多数问题都可以在这里找到解决方案，https://mp.weixin.qq.com/s/rhYKLIbXOsUJC_n6dt9UfA?
 @interface MMWebView ()
 <WKUIDelegate,
-WKNavigationDelegate
+WKNavigationDelegate,
+UIScrollViewDelegate
 >{
     NSDate *_beforeRequestDate;
     NSDate *_afterRequestDate;
@@ -78,6 +79,9 @@ WKNavigationDelegate
 - (void)dealloc{
     NSLog(@"[webView] MMWebView dealloc");
     [self stopLoad];
+    if (self.webView.scrollView.delegate == self) {
+        self.webView.scrollView.delegate = nil;
+    }
     if (_didAddWebViewObserver) {
         [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
     }
@@ -305,7 +309,7 @@ WKNavigationDelegate
         [self.progressView setProgress:newValue animated:YES];
         if (newValue >= 1.0) {
             [UIView animateWithDuration:0.25 animations:^{
-                self.progressView.alpha = YES;
+                self.progressView.alpha = 0;
             }];
         }
         
@@ -463,6 +467,7 @@ WKNavigationDelegate
         _webView.autoresizesSubviews = YES;
         _webView.scrollView.alwaysBounceVertical = YES;
         _webView.scrollView.bounces = YES;
+        _webView.scrollView.delegate = self;
         _webView.scrollView.bouncesZoom = NO;
         _webView.allowsBackForwardNavigationGestures = NO;
         

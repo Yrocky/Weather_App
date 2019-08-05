@@ -10,27 +10,35 @@
 
 @implementation UIView (MHCommon)
 
-- (CGPoint)viewOrigin {
-    
-    return self.frame.origin;
+#define XXXCgpointGetter(__name__,__result__)\
+- (CGPoint)__name__ {\
+    return __result__;\
+}\
+
+
+XXXCgpointGetter(viewOrigin, self.frame.origin);
+
+#define XXXCGPointSetter(__name__,__block__)\
+- (void)set##__name__:(CGPoint)__name__ {\
+    __block__();\
 }
 
-- (void)setViewOrigin:(CGPoint)viewOrigin {
-    
+XXXCGPointSetter(ViewOrigin, (^(void){
     CGRect newFrame = self.frame;
-    newFrame.origin = viewOrigin;
+    newFrame.origin = ViewOrigin;
     self.frame      = newFrame;
-}
+}));
+
 
 - (CGSize)viewSize {
     
     return self.frame.size;
 }
 
-- (void)setViewSize:(CGSize)viewSize {
+- (void)setViewSize:(CGSize)cccc {
     
     CGRect newFrame = self.frame;
-    newFrame.size   = viewSize;
+    newFrame.size   = cccc;
     self.frame      = newFrame;
 }
 

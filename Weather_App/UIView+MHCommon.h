@@ -18,6 +18,8 @@
  */
 #define  kScreenHeight  [UIScreen mainScreen].bounds.size.height
 
+#define XXXCGPointProperty(__name__) @property (nonatomic) CGPoint __name__;
+
 /**
  *  UIView 通用Category
  */
@@ -27,6 +29,9 @@
  *	@brief	删除所有子对象
  */
 - (void)removeAllSubviews;
+
+
+XXXCGPointProperty(viewTop);
 
 @property (nonatomic) CGPoint viewOrigin;
 @property (nonatomic) CGSize  viewSize;

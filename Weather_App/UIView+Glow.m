@@ -33,6 +33,17 @@ static char* GLOWVIEW_KEY = "GLOWVIEW";
 }
 
 
+#define XXXUIViewGetter(__name__)\
+- (UIView *)__name__ {\
+    return objc_getAssociatedObject(self, __name__##_key);\
+}\
+
+#define XXXUIViewSetter(__name__)\
+- (void)set##__name__:(UIView *)__name__ {\
+    objc_setAssociatedObject(self, __name__##_key, __name__, OBJC_ASSOCIATION_RETAIN);\
+}
+
+
 #pragma mark -
 #pragma mark API
 
