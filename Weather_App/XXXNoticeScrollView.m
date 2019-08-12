@@ -10,7 +10,12 @@
 #import "Masonry.h"
 #import "MMNoRetainTimer.h"
 
-@interface XXXNoticeScrollView ()
+@interface XXXNoticeScrollView ()<UIGestureRecognizerDelegate>{
+    BOOL _didAddGesture;
+    
+    BOOL _isChangeToNextView;
+    BOOL _canChangeForPanGesture;
+}
 
 @property (nonatomic ,copy) NSArray<UIView *> * contentViews;
 @property (nonatomic ,assign) NSInteger offset;///<从contentViews中选取视图的游标
@@ -29,6 +34,10 @@
     [self.timer invalidate];
 }
 
+- (instancetype)initWithFrame:(CGRect)frame{
+    return [self initWithTimeInterval:4.0f];
+}
+
 - (instancetype) initWithTimeInterval:(NSTimeInterval)timeInterval{
     
     self = [super initWithFrame:CGRectZero];
@@ -43,6 +52,41 @@
     return self;
 }
 
+- (NSInteger) contentViewCount{
+    return self.contentViews.count;
+}
+
+- (BOOL) containContentView:(UIView *)contentView{
+    if (!contentView) {
+        return NO;
+    }
+    return [self.contentViews containsObject:contentView];
+}
+
+- (void) addContentView:(UIView *)contentView{
+    if ([self containContentView:contentView]) {
+        return;
+    }
+    NSMutableArray<UIView *> * temp = [NSMutableArray array];
+    if (self.contentViews.count) {
+        [temp addObjectsFromArray:self.contentViews];
+    }
+    [temp addObject:contentView];
+    [self addContentViews:temp.copy];
+    [self restartTimerIfNeeded];
+}
+
+- (void) removeContentView:(UIView *)contentView{
+    
+    if (![self containContentView:contentView]) {
+        return;
+    }
+    NSMutableArray<UIView *> * temp = [self.contentViews mutableCopy];
+    [temp removeObject:contentView];
+    [self addContentViews:temp.copy];
+    [self restartTimerIfNeeded];
+}
+
 - (void) addContentViews:(NSArray<UIView *> *)contentViews{
     
     if (nil == self.timer && contentViews.count > 1) {
@@ -52,9 +96,10 @@
                                                             userInfo:nil
                                                              repeats:YES];
     } else {
-        [self.timer invalidate];
-        self.timer = nil;
+        [self.timer pause];
     }
+    
+    self.offset = 0;
     
     if (self.contentViews.count) {
         [self.contentViews enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -100,8 +145,16 @@
 }
 
 - (void) addGestureForContentView{
-    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap)];
-    [self addGestureRecognizer:tap];
+    if (!_didAddGesture) {
+        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap)];
+        [self addGestureRecognizer:tap];
+        
+        UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                               action:@selector(onPan:)];
+        pan.delegate = self;
+        [self addGestureRecognizer:pan];
+        _didAddGesture = YES;
+    }
 }
 
 - (void) onTap{
@@ -112,19 +165,246 @@
     }
 }
 
+- (void) onPan:(UIPanGestureRecognizer *)gesture{
+
+    CGFloat offset = 0.0f;
+    CGFloat velocity = 0.0f;
+    CGPoint movePoint = CGPointZero;
+    switch (gesture.state) {
+        case UIGestureRecognizerStateBegan:
+            [self.timer pause];
+            break;
+        case UIGestureRecognizerStateChanged:
+            movePoint = [gesture translationInView:gesture.view];
+            if (self.direction == XXXNoticeScrollDirectionVertical) {
+                ///<正是向下，负是向上
+                offset = movePoint.y;
+                velocity = [gesture velocityInView:gesture.view].y;
+            } else if (self.direction == XXXNoticeScrollDirectionHorizontal) {
+                ///<正是向右，负是向左
+                offset = movePoint.x;
+                velocity = [gesture velocityInView:gesture.view].x;
+            }
+            [self changeContentViewWithGestureOffset:offset velocity:velocity];
+            [gesture setTranslation:CGPointZero inView:gesture.view];
+            break;
+        case UIGestureRecognizerStateFailed:
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled:
+            [self endChangeContentViewWithGesture];
+            break;
+        default:
+            break;
+    }
+}
+
 - (void) onTimer:(MMNoRetainTimer *)timer{
     
     NSLog(@"[Timer] change contentView");
-    
+    [self incrementOffset];
+    [self changeContentViewAnimationAction];
+}
+
+- (void) incrementOffset{
     self.offset ++;
     if (self.offset >= self.contentViews.count) {
         self.offset = 0;
     }
-    [self changeContentViewAnimationAction];
 }
 
-- (void) changeContentViewAnimationAction{
+- (void) decrementOffset{
+    self.offset --;
+    if (self.offset < 0) {
+        self.offset = self.contentViews.count - 1;
+    }
+}
+- (void) restartTimerIfNeeded{
+    if (self.contentViews.count > 1) {
+        [self.timer restart];
+    }
+}
+
+- (void) changeContentViewWithGestureOffset:(CGFloat)offset velocity:(CGFloat)velocity{
+    NSLog(@"[gesture] move velocity:%f",velocity);
+
+    CGFloat height = CGRectGetHeight(self.frame);
+    CGFloat width = CGRectGetWidth(self.frame);
     
+    _canChangeForPanGesture = ABS(velocity) > 100;
+    UIView * otherView;
+    CGRect otherViewFrame = CGRectZero;
+    CGRect currentViewFrame = self.currentContentView.frame;
+    BOOL isMoveNextView = NO;
+    
+    if (self.direction == XXXNoticeScrollDirectionVertical) {
+        currentViewFrame.origin.y += offset;
+        ///<正是向下，负是向上
+        isMoveNextView = CGRectGetMaxY(currentViewFrame) <= height;
+        if (isMoveNextView) {
+            otherView = self.nextView;
+            otherViewFrame = otherView.frame;
+            otherViewFrame.origin.y = CGRectGetMaxY(currentViewFrame);
+        } else {
+            otherView = self.preView;
+            otherViewFrame = otherView.frame;
+            otherViewFrame.origin.y = CGRectGetMinY(currentViewFrame) - height;
+        }
+        _canChangeForPanGesture |= (ABS(height - CGRectGetMaxY(currentViewFrame)) >= height * 0.3);
+    } else if (self.direction == XXXNoticeScrollDirectionHorizontal) {
+        currentViewFrame.origin.x += offset;
+        ///<正是向右，负是向左
+        isMoveNextView = CGRectGetMaxX(currentViewFrame) <= width;
+        if (isMoveNextView) {
+            otherView = self.nextView;
+            otherViewFrame = otherView.frame;
+            otherViewFrame.origin.x = CGRectGetMaxX(currentViewFrame);
+        } else {
+            otherView = self.preView;
+            otherViewFrame = otherView.frame;
+            otherViewFrame.origin.x = CGRectGetMinX(currentViewFrame) - width;
+        }
+        _canChangeForPanGesture |= (ABS(width - CGRectGetMaxX(currentViewFrame)) >= width * 0.3);
+    }
+
+    _isChangeToNextView = isMoveNextView;
+    NSLog(@"[gesture] otherView:%@ canChange:%d",otherView.restorationIdentifier,_canChangeForPanGesture);
+    
+    self.currentContentView.frame = currentViewFrame;
+    otherView.frame = otherViewFrame;
+}
+
+- (void) endChangeContentViewWithGesture{
+    
+    CGFloat height = CGRectGetHeight(self.frame);
+    CGFloat width = CGRectGetWidth(self.frame);
+
+    UIView * otherView;
+    CGRect currentViewFrame = self.currentContentView.frame;
+    CGRect otherViewFrame = CGRectZero;
+    
+    if (_canChangeForPanGesture) {
+        ///<切换动画
+        if (self.direction == XXXNoticeScrollDirectionVertical) {
+            if (_isChangeToNextView) {
+                otherView = self.nextView;
+                otherViewFrame = otherView.frame;
+                
+                currentViewFrame.origin.y = -height;
+                otherViewFrame.origin.y = 0;
+                
+                [UIView animateWithDuration:0.25 animations:^{
+                    self.currentContentView.frame = currentViewFrame;
+                    otherView.frame = otherViewFrame;
+                } completion:^(BOOL finished) {
+                    [self resetCurrentViewFrame:currentViewFrame];
+                    self.currentContentView = otherView;
+                    [self incrementOffset];
+                    [self restartTimerIfNeeded];
+                }];
+            } else {
+                otherView = self.preView;
+                otherViewFrame = otherView.frame;
+                
+                currentViewFrame.origin.y = height;
+                otherViewFrame.origin.y = 0;
+                
+                [UIView animateWithDuration:0.25 animations:^{
+                    self.currentContentView.frame = currentViewFrame;
+                    otherView.frame = otherViewFrame;
+                } completion:^(BOOL finished) {
+                    [self resetCurrentViewFrame:currentViewFrame];
+                    self.currentContentView = otherView;
+                    [self decrementOffset];
+                    [self restartTimerIfNeeded];
+                }];
+            }
+        } else {
+            if (_isChangeToNextView) {
+                otherView = self.nextView;
+                otherViewFrame = otherView.frame;
+                
+                currentViewFrame.origin.x = -width;
+                otherViewFrame.origin.x = 0;
+                
+                [UIView animateWithDuration:0.25 animations:^{
+                    self.currentContentView.frame = currentViewFrame;
+                    otherView.frame = otherViewFrame;
+                } completion:^(BOOL finished) {
+                    [self resetCurrentViewFrame:currentViewFrame];
+                    self.currentContentView = otherView;
+                    [self incrementOffset];
+                    [self restartTimerIfNeeded];
+                }];
+            } else {
+                otherView = self.preView;
+                otherViewFrame = otherView.frame;
+                
+                currentViewFrame.origin.x = width;
+                otherViewFrame.origin.x = 0;
+                
+                [UIView animateWithDuration:0.25 animations:^{
+                    self.currentContentView.frame = currentViewFrame;
+                    otherView.frame = otherViewFrame;
+                } completion:^(BOOL finished) {
+                    [self resetCurrentViewFrame:currentViewFrame];
+                    self.currentContentView = otherView;
+                    [self decrementOffset];
+                    [self restartTimerIfNeeded];
+                }];
+            }
+        }
+    } else {
+        ///<回归动画
+        
+        if (_isChangeToNextView) {
+            otherView = self.nextView;
+            otherViewFrame = otherView.frame;
+        } else {
+            otherView = self.preView;
+            otherViewFrame = otherView.frame;
+        }
+        
+        if (self.direction == XXXNoticeScrollDirectionVertical) {
+            currentViewFrame.origin.y = 0;
+            if (_isChangeToNextView) {
+                otherViewFrame.origin.y = height;
+
+            } else {
+                otherViewFrame.origin.y = -height;
+            }
+        } else {
+            currentViewFrame.origin.x = 0;
+            if (_isChangeToNextView) {
+                otherViewFrame.origin.x = width;
+            } else {
+                otherViewFrame.origin.x = -width;
+            }
+        }
+        [UIView animateWithDuration:0.25 animations:^{
+            self.currentContentView.frame = currentViewFrame;
+            otherView.frame = otherViewFrame;
+        } completion:^(BOOL finished) {
+            [self restartTimerIfNeeded];
+        }];
+    }
+}
+
+- (void)resetCurrentViewFrame:(CGRect)currentViewFrame{
+    
+    CGFloat height = CGRectGetHeight(self.frame);
+    CGFloat width = CGRectGetWidth(self.frame);
+
+    if (self.direction == XXXNoticeScrollDirectionVertical) {
+        currentViewFrame.origin.y = height;
+    } else if (self.direction == XXXNoticeScrollDirectionHorizontal) {
+        currentViewFrame.origin.x = width;
+    }
+    self.currentContentView.frame = currentViewFrame;
+}
+#define ChangeContentViewFlag
+
+- (void) changeContentViewAnimationAction{
+    NSLog(@"aaaaaaaaaaaa");
     CGFloat height = CGRectGetHeight(self.frame);
     CGFloat width = CGRectGetWidth(self.frame);
     
@@ -132,6 +412,18 @@
     
     UIView * nextView = self.contentViews[self.offset];
     
+#ifdef ChangeContentViewFlag
+    __block CGRect currentViewFrame = self.currentContentView.frame;
+    CGRect nextViewFrame = nextView.frame;
+    
+    if (self.direction == XXXNoticeScrollDirectionVertical) {
+        currentViewFrame.origin.y = -height;
+        nextViewFrame.origin.y = 0;
+    } else if (self.direction == XXXNoticeScrollDirectionHorizontal) {
+        currentViewFrame.origin.x = -width;
+        nextViewFrame.origin.x = 0;
+    }
+#else
     [self.currentContentView mas_updateConstraints:^(MASConstraintMaker *make) {
         if (self.direction == XXXNoticeScrollDirectionVertical) {
             make.top.mas_equalTo(-height);
@@ -139,7 +431,7 @@
             make.left.mas_equalTo(-width);
         }
     }];
-    
+
     [nextView mas_updateConstraints:^(MASConstraintMaker *make) {
         if (self.direction == XXXNoticeScrollDirectionVertical) {
             make.top.mas_equalTo(0);
@@ -147,14 +439,24 @@
             make.left.mas_equalTo(0);
         }
     }];
+#endif
     
+
     ///<为定时器添加暂停功能，可以避免动画时间大于切换视图间隔的时间
     [_timer pause];
     
     [UIView animateKeyframesWithDuration:self.duration delay:0 options:(UIViewKeyframeAnimationOptionLayoutSubviews|UIViewKeyframeAnimationOptionAllowUserInteraction) animations:^{
+#ifdef ChangeContentViewFlag
+        self.currentContentView.frame = currentViewFrame;
+        nextView.frame = nextViewFrame;
+#else
         [self layoutIfNeeded];
+#endif
     } completion:^(BOOL finished) {
-        
+
+#ifdef ChangeContentViewFlag
+        [self resetCurrentViewFrame:currentViewFrame];
+#else
         [self.currentContentView mas_updateConstraints:^(MASConstraintMaker *make) {
             if (self.direction == XXXNoticeScrollDirectionVertical) {
                 make.top.mas_equalTo(height);
@@ -165,11 +467,40 @@
         
         [self setNeedsLayout];
         [self layoutIfNeeded];
-        
+#endif
         [_timer restart];
         
         self.currentContentView = nextView;
     }];
+}
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
+        return self.canGestureScroll;
+    }
+    return YES;
+}
+
+- (UIView *) preView{
+    if (self.contentViews.count == 1) {
+        return nil;
+    }
+    if (self.offset == 0) {
+        return self.contentViews.lastObject;
+    }
+    return self.contentViews[self.offset - 1];
+}
+
+- (UIView *) nextView{
+    if (self.contentViews.count == 1) {
+        return nil;
+    }
+    if (self.offset + 1 == self.contentViews.count) {
+        return self.contentViews.firstObject;
+    }
+    return self.contentViews[self.offset + 1];
 }
 
 @end

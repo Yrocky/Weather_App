@@ -105,15 +105,19 @@
     NSLog(@"[Timer] pause");
     [self invalidate];
     _timer = nil;
+    _isPause = YES;
 }
 
 - (void) restart{
     NSLog(@"[Timer] restart");
-    [self scheduledTimerWithTimeInterval:_intervalValue
-                                  target:_target
-                                selector:_selector
-                                userInfo:_userInfo
-                                 repeats:_repeats];
+    if (_isPause) {
+        [self scheduledTimerWithTimeInterval:_intervalValue
+                                      target:_target
+                                    selector:_selector
+                                    userInfo:_userInfo
+                                     repeats:_repeats];
+        _isPause = NO;
+    }
 }
 
 - (void) invalidate{

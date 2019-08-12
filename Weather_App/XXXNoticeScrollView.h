@@ -29,8 +29,18 @@ typedef NS_ENUM(NSInteger ,XXXNoticeScrollDirection) {
 @property (nonatomic ,assign) NSTimeInterval duration;///<动画的时间
 @property (nonatomic ,assign) XXXNoticeScrollDirection direction;///<default vertical
 
+@property (nonatomic ,assign) BOOL canGestureScroll;///<是否可以使用手势滑动视图
+
 - (instancetype) initWithTimeInterval:(NSTimeInterval)timeInterval;///<视图切换的间隔时间
 
+- (NSInteger) contentViewCount;
+- (BOOL) containContentView:(UIView *)contentView;
+
+- (void) addContentView:(UIView *)contentView;
 - (void) addContentViews:(NSArray<UIView *> *)contentViews;
+
+- (void) removeContentView:(UIView *)contentView;
+
 @end
+
 NS_ASSUME_NONNULL_END

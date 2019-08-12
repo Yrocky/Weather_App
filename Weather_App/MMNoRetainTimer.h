@@ -28,7 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
     __weak id _target;
     SEL _selector;
     BOOL _repeats;
+    BOOL _isPause;
 }
+@property (nonatomic ,assign ,readonly) BOOL isPause;
 @property (nonatomic ,assign ,readonly) SEL selector;
 @property (nonatomic ,weak ,readonly) id target;
 @property (strong, nonatomic ,readonly ,nullable) T userInfo;

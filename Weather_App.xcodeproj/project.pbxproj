@@ -2043,7 +2043,7 @@
 					};
 					7FDC6EC41F46E35A00D94379 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = LL7GM42E2F;
+						DevelopmentTeam = N8H7Q699Q8;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -2619,7 +2619,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = LL7GM42E2F;
+				DEVELOPMENT_TEAM = N8H7Q699Q8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/QQSDK",
@@ -2655,7 +2655,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LL7GM42E2F;
+				DEVELOPMENT_TEAM = N8H7Q699Q8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/QQSDK",
