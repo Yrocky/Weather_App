@@ -384,9 +384,21 @@
             self.currentContentView.frame = currentViewFrame;
             otherView.frame = otherViewFrame;
         } completion:^(BOOL finished) {
+            [self resetOtherView:otherView frame:otherViewFrame];
             [self restartTimerIfNeeded];
         }];
     }
+}
+- (void) resetOtherView:(UIView *)otherView frame:(CGRect)otherViewFrame{
+    CGFloat height = CGRectGetHeight(self.frame);
+    CGFloat width = CGRectGetWidth(self.frame);
+
+    if (self.direction == XXXNoticeScrollDirectionVertical) {
+        otherViewFrame.origin.y = height;
+    } else if (self.direction == XXXNoticeScrollDirectionHorizontal) {
+        otherViewFrame.origin.x = width;
+    }
+    otherView.frame = otherViewFrame;
 }
 
 - (void)resetCurrentViewFrame:(CGRect)currentViewFrame{
@@ -401,10 +413,8 @@
     }
     self.currentContentView.frame = currentViewFrame;
 }
-#define ChangeContentViewFlag
 
 - (void) changeContentViewAnimationAction{
-    NSLog(@"aaaaaaaaaaaa");
     CGFloat height = CGRectGetHeight(self.frame);
     CGFloat width = CGRectGetWidth(self.frame);
     
@@ -412,7 +422,6 @@
     
     UIView * nextView = self.contentViews[self.offset];
     
-#ifdef ChangeContentViewFlag
     __block CGRect currentViewFrame = self.currentContentView.frame;
     CGRect nextViewFrame = nextView.frame;
     
@@ -423,51 +432,17 @@
         currentViewFrame.origin.x = -width;
         nextViewFrame.origin.x = 0;
     }
-#else
-    [self.currentContentView mas_updateConstraints:^(MASConstraintMaker *make) {
-        if (self.direction == XXXNoticeScrollDirectionVertical) {
-            make.top.mas_equalTo(-height);
-        } else if (self.direction == XXXNoticeScrollDirectionHorizontal) {
-            make.left.mas_equalTo(-width);
-        }
-    }];
-
-    [nextView mas_updateConstraints:^(MASConstraintMaker *make) {
-        if (self.direction == XXXNoticeScrollDirectionVertical) {
-            make.top.mas_equalTo(0);
-        } else if (self.direction == XXXNoticeScrollDirectionHorizontal) {
-            make.left.mas_equalTo(0);
-        }
-    }];
-#endif
-    
 
     ///<为定时器添加暂停功能，可以避免动画时间大于切换视图间隔的时间
     [_timer pause];
     
     [UIView animateKeyframesWithDuration:self.duration delay:0 options:(UIViewKeyframeAnimationOptionLayoutSubviews|UIViewKeyframeAnimationOptionAllowUserInteraction) animations:^{
-#ifdef ChangeContentViewFlag
+
         self.currentContentView.frame = currentViewFrame;
         nextView.frame = nextViewFrame;
-#else
-        [self layoutIfNeeded];
-#endif
     } completion:^(BOOL finished) {
 
-#ifdef ChangeContentViewFlag
         [self resetCurrentViewFrame:currentViewFrame];
-#else
-        [self.currentContentView mas_updateConstraints:^(MASConstraintMaker *make) {
-            if (self.direction == XXXNoticeScrollDirectionVertical) {
-                make.top.mas_equalTo(height);
-            } else if (self.direction == XXXNoticeScrollDirectionHorizontal) {
-                make.left.mas_equalTo(width);
-            }
-        }];
-        
-        [self setNeedsLayout];
-        [self layoutIfNeeded];
-#endif
         [_timer restart];
         
         self.currentContentView = nextView;
@@ -478,7 +453,7 @@
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
-        return self.canGestureScroll;
+        return self.canGestureScroll && self.contentViews.count > 1;
     }
     return YES;
 }
