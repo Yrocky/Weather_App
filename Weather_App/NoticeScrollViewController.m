@@ -78,11 +78,11 @@
     if (1){
         XXXNoticeScrollView * scrollView = [[XXXNoticeScrollView alloc] initWithTimeInterval:2.5];
         scrollView.delegate = self;
-        scrollView.canGestureScroll = YES;
-        scrollView.direction = XXXNoticeScrollDirectionHorizontal;
-//        [scrollView addContentViews:@[self.oneView,self.otherView,self.thirdView]];
-        [scrollView addContentView:self.oneView];
-        [scrollView addContentView:self.thirdView];
+//        scrollView.canGestureScroll = YES;
+//        scrollView.direction = XXXNoticeScrollDirectionHorizontal;
+        [scrollView addContentViews:@[self.oneView,self.otherView,self.thirdView]];
+//        [scrollView addContentView:self.oneView];
+//        [scrollView addContentView:self.thirdView];
         self.scrollView = scrollView;
         [self.view addSubview:scrollView];
         [scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
