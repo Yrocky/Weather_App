@@ -11,11 +11,13 @@
 #import "GIftEffectView/GiftEffect/GiftShapeEffectView.h"
 #import "MMDirectionGestureRecognizer.h"
 #import "MMAObject.h"
+#import "MMGiftContainerView.h"
 
-@interface GiftEffectViewController ()
+@interface GiftEffectViewController ()<MMGiftViewDelegate>
 
 @property (nonatomic ,strong) UIView * redView;
 
+@property (nonatomic ,strong) MMGiftContainerView * giftView;
 @property (nonatomic ,strong) GiftShapeEffectView * effectView;
 
 @property (nonatomic ,strong) UILabel * directionLabel;
@@ -91,7 +93,7 @@
     
     MMDirectionGestureRecognizer * gesture = [[MMDirectionGestureRecognizer alloc] initWithTarget:self action:@selector(onDirectoinGesture:)];
     gesture.hysteresisOffset = 2;
-    [self.view addGestureRecognizer:gesture];
+//    [self.view addGestureRecognizer:gesture];
     
     self.circleView = [UIView new];
     self.circleView.layer.borderColor = [UIColor redColor].CGColor;
@@ -103,7 +105,13 @@
     [self.view addSubview:self.circleView];
     
 //    UIViewPropertyAnimator * animator = [UIViewPropertyAnimator new];
-    
+    self.giftView = [MMGiftContainerView new];
+    self.giftView.proxy = self;
+    [self.view addSubview:self.giftView];
+    [self.giftView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(100, 100));
+        make.center.equalTo(self.view);
+    }];
     return;
     self.effectView = [[GiftShapeEffectView alloc] init];
     self.effectView.backgroundColor = [UIColor greenColor];
@@ -148,14 +156,10 @@
     [self.effectView start:EFFECT_TYPE_50 image:[UIImage imageNamed:@"red_dot"]];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - MMGiftView
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)trackCallback{
+    NSLog(@"in delegate callback");
 }
-*/
 
 @end

@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AppLord (1.2.1)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -22,14 +23,14 @@ PODS:
   - Bolts/Tasks (1.9.0)
   - Masonry (1.1.0)
   - MMMarkdown (0.5.5)
-  - PromiseKit (6.8.4):
-    - PromiseKit/CorePromise (= 6.8.4)
-    - PromiseKit/Foundation (= 6.8.4)
-    - PromiseKit/UIKit (= 6.8.4)
-  - PromiseKit/CorePromise (6.8.4)
-  - PromiseKit/Foundation (6.8.4):
+  - PromiseKit (6.10.0):
+    - PromiseKit/CorePromise (= 6.10.0)
+    - PromiseKit/Foundation (= 6.10.0)
+    - PromiseKit/UIKit (= 6.10.0)
+  - PromiseKit/CorePromise (6.10.0)
+  - PromiseKit/Foundation (6.10.0):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.8.4):
+  - PromiseKit/UIKit (6.10.0):
     - PromiseKit/CorePromise
   - SDWebImage (4.1.2):
     - SDWebImage/Core (= 4.1.2)
@@ -39,6 +40,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - AppLord
   - Bolts
   - Masonry (~> 1.1.0)
   - MMMarkdown (~> 0.5.5)
@@ -49,6 +51,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - AppLord
     - Bolts
     - Masonry
     - MMMarkdown
@@ -58,13 +61,14 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AppLord: b276ec9fbe09639839b66d13ad3cb5835eedb8bb
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MMMarkdown: 1af97166ce0f6d6e0cb05695665492195d27c3f1
-  PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
+  PromiseKit: 1fdaeb6c0a94a5114fcb814ff3d772b86886ad4e
   SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: 7f95f20081a3b30ebe6d3fd1e856ba3d4c9440d0
+PODFILE CHECKSUM: 6900d61c90e9ac386d59016f070f6d97e49a467e
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.2

@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "MMGiftEffectOperationMgr.h"
 
+@protocol MMGiftViewDelegate <NSObject>
+- (void) trackCallback;
+@end
 @interface MMGiftContainerView : UIView{
     
     __block NSMutableArray * _giftViews;
 }
 
+@property (nonatomic ,weak) id proxy;
 @property (nonatomic ,strong ,readonly) NSArray * giftViews;
 
 - (void)startTrack;
@@ -24,6 +28,6 @@
 
 @interface MMGiftView : UIView
 
-
+@property (nonatomic ,weak) id<MMGiftViewDelegate> delegate;
 @end
 
