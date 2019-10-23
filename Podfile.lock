@@ -32,9 +32,9 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.10.0):
     - PromiseKit/CorePromise
-  - SDWebImage (4.1.2):
-    - SDWebImage/Core (= 4.1.2)
-  - SDWebImage/Core (4.1.2)
+  - SDWebImage (5.1.0):
+    - SDWebImage/Core (= 5.1.0)
+  - SDWebImage/Core (5.1.0)
   - YTKNetwork (2.0.4):
     - AFNetworking (~> 3.0)
 
@@ -45,7 +45,7 @@ DEPENDENCIES:
   - Masonry (~> 1.1.0)
   - MMMarkdown (~> 0.5.5)
   - PromiseKit
-  - SDWebImage (~> 4.1.0)
+  - SDWebImage (~> 5.0)
   - YTKNetwork (~> 2.0.4)
 
 SPEC REPOS:
@@ -66,9 +66,9 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MMMarkdown: 1af97166ce0f6d6e0cb05695665492195d27c3f1
   PromiseKit: 1fdaeb6c0a94a5114fcb814ff3d772b86886ad4e
-  SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
+  SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: 6900d61c90e9ac386d59016f070f6d97e49a467e
+PODFILE CHECKSUM: 6ad050e9dd1a516b1def72901c8079b492205302
 
 COCOAPODS: 1.7.2

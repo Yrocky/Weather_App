@@ -11,6 +11,7 @@
 		5C04C60A229BC075000F0000 /* UIView+FrameLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */; };
 		5C04C60B229BC075000F0000 /* UIView+FrameLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */; };
 		5C04D35F22A13DFA000F0000 /* XXXAutoScrollImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04D35E22A13DFA000F0000 /* XXXAutoScrollImageView.m */; };
+		5C0D1D9A2317AD8B003E9E62 /* FinanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0D1D992317AD8A003E9E62 /* FinanceViewController.m */; };
 		5C2174612254B30B001443BC /* RoomCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2174602254B30B001443BC /* RoomCycleScrollView.m */; };
 		5C303135227195AF00B882AA /* XXXHTTPProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C303134227195AF00B882AA /* XXXHTTPProtocol.m */; };
 		5C392B26226D835900C15344 /* MMWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392B25226D835900C15344 /* MMWebView.m */; };
@@ -24,6 +25,7 @@
 		5C392BA8226EB04A00C15344 /* MMScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA7226EB04A00C15344 /* MMScriptMessageHandler.m */; };
 		5C48AB0C2296377A00535980 /* NoticeScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C48AB0B2296377A00535980 /* NoticeScrollViewController.m */; };
 		5C48AB0F229637C600535980 /* XXXNoticeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C48AB0E229637C600535980 /* XXXNoticeScrollView.m */; };
+		5C4D1E3E230BCB32000829CA /* XXXHomeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D1E3D230BCB32000829CA /* XXXHomeModule.m */; };
 		5C4E3A702252F54C001499AF /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4E3A6F2252F54C001499AF /* RankViewController.m */; };
 		5C4E3ADF22532B74001499AF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C4E3ADE22532B74001499AF /* README.md */; };
 		5C574AF82272AD310029DB7F /* MMThreadInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C574AF72272AD310029DB7F /* MMThreadInfo.m */; };
@@ -298,6 +300,8 @@
 		5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameLayoutSupport.m"; sourceTree = "<group>"; };
 		5C04D35D22A13DFA000F0000 /* XXXAutoScrollImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXAutoScrollImageView.h; sourceTree = "<group>"; };
 		5C04D35E22A13DFA000F0000 /* XXXAutoScrollImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXAutoScrollImageView.m; sourceTree = "<group>"; };
+		5C0D1D982317AD8A003E9E62 /* FinanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinanceViewController.h; sourceTree = "<group>"; };
+		5C0D1D992317AD8A003E9E62 /* FinanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinanceViewController.m; sourceTree = "<group>"; };
 		5C21745F2254B30B001443BC /* RoomCycleScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomCycleScrollView.h; sourceTree = "<group>"; };
 		5C2174602254B30B001443BC /* RoomCycleScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoomCycleScrollView.m; sourceTree = "<group>"; };
 		5C2174622254B7BE001443BC /* RoomDataSourceHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoomDataSourceHandler.h; sourceTree = "<group>"; };
@@ -323,6 +327,8 @@
 		5C48AB0B2296377A00535980 /* NoticeScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeScrollViewController.m; sourceTree = "<group>"; };
 		5C48AB0D229637C600535980 /* XXXNoticeScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXNoticeScrollView.h; sourceTree = "<group>"; };
 		5C48AB0E229637C600535980 /* XXXNoticeScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXNoticeScrollView.m; sourceTree = "<group>"; };
+		5C4D1E3C230BCB32000829CA /* XXXHomeModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXHomeModule.h; sourceTree = "<group>"; };
+		5C4D1E3D230BCB32000829CA /* XXXHomeModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXHomeModule.m; sourceTree = "<group>"; };
 		5C4E3A6E2252F54C001499AF /* RankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
 		5C4E3A6F2252F54C001499AF /* RankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
 		5C4E3ADE22532B74001499AF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -1454,6 +1460,8 @@
 				7F414F4D1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m */,
 				D7A325E220772DD700B2F8AB /* BillKeyboardView.h */,
 				D7A325E320772DD700B2F8AB /* BillKeyboardView.m */,
+				5C4D1E3C230BCB32000829CA /* XXXHomeModule.h */,
+				5C4D1E3D230BCB32000829CA /* XXXHomeModule.m */,
 				5C303133227195AF00B882AA /* XXXHTTPProtocol.h */,
 				5C303134227195AF00B882AA /* XXXHTTPProtocol.m */,
 				5C574AF62272AD310029DB7F /* MMThreadInfo.h */,
@@ -1857,6 +1865,8 @@
 				5CE42B0C228E867900C236FC /* ResumeViewController.m */,
 				5C48AB0A2296377A00535980 /* NoticeScrollViewController.h */,
 				5C48AB0B2296377A00535980 /* NoticeScrollViewController.m */,
+				5C0D1D982317AD8A003E9E62 /* FinanceViewController.h */,
+				5C0D1D992317AD8A003E9E62 /* FinanceViewController.m */,
 				5CE8B33522A8C47C002CFA38 /* Login */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
@@ -2212,6 +2222,7 @@
 				7FCF75021F8B1DC100514597 /* HLLAlert.m in Sources */,
 				D715E6A31FA64ECF00CFBFF4 /* FDContentView.m in Sources */,
 				7F8B6C071F95ED6F00F3A6E3 /* MMSearchDefaultCollectionView.m in Sources */,
+				5C4D1E3E230BCB32000829CA /* XXXHomeModule.m in Sources */,
 				7F243E3E1FA81E7A00AE4134 /* MMGCD.m in Sources */,
 				F7C5B57E21F6CDD200D3F9D7 /* XXXGushiciRequest.m in Sources */,
 				5C6EA3892276A87400EA3D0F /* MMNumAST.m in Sources */,
@@ -2290,6 +2301,7 @@
 				D70629401F8B185100F52FCB /* HSTextCellModel.m in Sources */,
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
 				F77231CF21AE8A5300DA019B /* MMAnimationTimingFunctionType.m in Sources */,
+				5C0D1D9A2317AD8B003E9E62 /* FinanceViewController.m in Sources */,
 				5CE8B34522A8C5C3002CFA38 /* XXXLoginInputView.m in Sources */,
 				7F3815B52129460F006016E9 /* MMGCDTimerManager.m in Sources */,
 				F703661821E720380086832C /* EaseDevice.m in Sources */,
@@ -2635,7 +2647,7 @@
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makefriend.rocky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2670,7 +2682,7 @@
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rocky.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.makefriend.rocky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Weather_App/Weather_App-Bridging-Header.h";

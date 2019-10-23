@@ -12,6 +12,7 @@
 #import <PromiseKit/PMKFoundation.h>
 #import "Masonry.h"
 #import "XXXGushiciRequest.h"
+#import <Bolts/Bolts.h>
 
 @interface PromiseKitViewController ()
 
@@ -35,6 +36,13 @@
         make.height.equalTo(@200);
     }];
     
+    [[XXXGushiciRequest new] startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
+        NSLog(@"origin gushici:%@",request.gushici);
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        NSLog(@"origin error:%@",request.error);
+    }];
+    
+    return;
     NSURLRequest * r = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://img-blog.csdn.net/20170809135909929?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGVsbG9fSHdj/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"]];
     [[NSURLSession sharedSession] promiseDataTaskWithRequest:r].then(^(id response){
         // response is probably an NSDictionary deserialized from JSON
@@ -71,10 +79,47 @@
     });
     
     ///使用YTK提供的处理数据的方法`requestCompletePreprocessor`，将json转成模型，在这里进行使用
+    
     [[XXXGushiciRequest new] startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
         NSLog(@"origin gushici:%@",request.gushici);
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSLog(@"origin error:%@",request.error);
     }];
+    
+    [[self asyncFetchGushiciList2] continueWithBlock:^id _Nullable(BFTask<XXXGushiciWrap *> * _Nonnull t) {
+        if (t.isCancelled) {
+            NSLog(@"[BFTask] is cancelled");
+        } else if (t.error) {
+            NSLog(@"[BFTask] error:%@",t.error);
+        } else if (t.result) {
+            NSLog(@"[BFTask] result:%@",t.result);
+        }
+        return nil;
+    }];
+}
+
+- (BFTask<XXXGushiciWrap *> *) asyncFetchGushiciList{
+    
+    BFTaskCompletionSource * tcs = [BFTaskCompletionSource taskCompletionSource];
+    
+    [[XXXGushiciRequest new] startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
+        
+        [tcs setResult:request.gushici];
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        
+        [tcs setError:request.error];
+    }];
+    return tcs.task;
+}
+
+- (BFTask<XXXGushiciWrap *> *) asyncFetchGushiciList2{
+    
+    __block BFTask * task;
+    [[XXXGushiciRequest new] startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
+        task = [BFTask taskWithResult:request.gushici];
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        task = [BFTask taskWithError:request.error];
+    }];
+    return task;
 }
 @end

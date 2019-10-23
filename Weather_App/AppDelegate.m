@@ -11,6 +11,8 @@
 #import <AVKit/AVKit.h>
 #import "EaseDevice.h"
 #import "XXXHTTPProtocol.h"
+#import <AppLord/AppLord.h>
+#import "XXXHomeModule.h"
 
 //#import <objc/objc-runtime.h>
 @interface AppDelegate ()
@@ -56,6 +58,12 @@ extern CFAbsoluteTime StartTime;
     
     example_A();
     
+    [[ALContext sharedContext] loadModules];
+//    [[ALContext sharedContext] registerModule:[XXXHomeModule class]];
+//    [[ALContext sharedContext] registerService:@protocol(XXXHomeService)
+//                                      withImpl:XXXHomeServiceImpl.class];
+//    [[ALContext sharedContext] setObject:launchOptions forKey:@"ALLaunchOptionsKey"];
+
     [XXXHTTPProtocol start];
 //    id overlayClass = NSClassFromString(@"UIDebuggingInformationOverlay");
 //    if ([overlayClass respondsToSelector:NSSelectorFromString(@"prepareDebuggingOverlay")]) {

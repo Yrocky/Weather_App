@@ -42,6 +42,10 @@
 
 @implementation XXXGushiciRequest
 
+- (void)dealloc
+{
+    NSLog(@"XXXGushiciRequest dealloc");
+}
 - (NSString *)baseUrl{
     return @"https://api.gushi.ci";
 }

@@ -11,6 +11,7 @@
 #import "Masonry.h"
 #import "UIColor+Common.h"
 #import "XXXAutoScrollImageView.h"
+#import "XXXHomeModule.h"
 
 @interface NoticeScrollViewController ()<XXXNoticeScrollViewDelegate>{
     NSInteger _addIndex;
@@ -29,6 +30,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    id<XXXHomeService> service = [[ALContext sharedContext] findService:@protocol(XXXHomeService)];
+    [service doSomething];
     
     self.view.backgroundColor = [UIColor whiteColor];
     

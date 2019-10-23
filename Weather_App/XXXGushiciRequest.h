@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,copy) NSString * origin;
 
 @end
+
+
 @interface XXXGushiciRequest : YTKRequest
 
 @property (nonatomic ,strong ,readonly) XXXGushiciWrap * gushici;
