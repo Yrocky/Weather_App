@@ -13,6 +13,7 @@
 #import "XXXHTTPProtocol.h"
 #import <AppLord/AppLord.h>
 #import "XXXHomeModule.h"
+#import <JLRoutes/JLRoutes.h>
 
 //#import <objc/objc-runtime.h>
 @interface AppDelegate ()
@@ -55,6 +56,8 @@ extern CFAbsoluteTime StartTime;
     
     [UINavigationBar appearance].backItem.leftItemsSupplementBackButton = YES;
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"back"];
+    
+//    [self addRoutes];
     
     example_A();
     
@@ -153,6 +156,24 @@ extern CFAbsoluteTime StartTime;
 }
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application{
     NSLog(@"AppDelegate warning");
+}
+
+- (void) addRoutes{
+
+    [JLRoutes.globalRoutes addRoute:@"push/:viewControllerName" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+        NSLog(@"parameters:%@",parameters);
+        return YES;
+    }];
+    
+    [[JLRoutes routesForScheme:@"MMLive"] addRoute:@"push/:viewControllerName/second" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+        NSLog(@"MMLive parameters:%@",parameters);
+        return YES;
+    }];
+    
+    [[JLRoutes routesForScheme:@"MMLive"] addRoute:@"present/(:vcName)(c/d)" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+        NSLog(@"MMLive parameters:%@",parameters);
+        return YES;
+    }];
 }
 
 @end

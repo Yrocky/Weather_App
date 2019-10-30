@@ -12,7 +12,8 @@ pod 'MMMarkdown', '~> 0.5.5'
 pod 'PromiseKit'
 pod 'Masonry', '~> 1.1.0'
 pod 'AFNetworking', '~> 3.1.0'
-pod 'SDWebImage', '~> 5.0'  
+pod 'SDWebImage', '~> 4.4.7'
+pod 'JLRoutes', '~> 2.1'
 # Pods for Weather_App
 
 end

@@ -20,6 +20,7 @@
 #import <SDWebImage/UIImage+GIF.h>
 #import "NSString+Exten.h"
 #import "NSArray+Sugar.h"
+#import <JLRoutes/JLRoutes.h>
 
 @interface MMColorView : UIView<DataSource>
 
@@ -145,7 +146,7 @@
     }];
     
     UIImageView * imageView = [[UIImageView alloc] init];
-    imageView.image = [UIImage sd_animatedGIFNamed:@"img_user_level_8"];
+//    imageView.image = [UIImage sd_animatedGIFNamed:@"img_user_level_8"];
     imageView.frame = CGRectMake(20, 100, 28, 12);
     [self.view addSubview:imageView];
     
@@ -202,7 +203,7 @@
     
     ////////////// 根据属性字符串添加跑道视图
     NSTextAttachment * attachment = [[NSTextAttachment alloc] init];
-    attachment.image = [UIImage sd_animatedGIFNamed:@"img_user_level_8"];
+//    attachment.image = [UIImage sd_animatedGIFNamed:@"img_user_level_8"];
     attachment.bounds = CGRectMake(0, 0, 28, 12);
     attString = [[[[[[[HLLAttributedBuilder builder]
                       appendAttachment:attachment]
