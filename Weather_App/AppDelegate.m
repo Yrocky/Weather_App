@@ -57,7 +57,7 @@ extern CFAbsoluteTime StartTime;
     [UINavigationBar appearance].backItem.leftItemsSupplementBackButton = YES;
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"back"];
     
-//    [self addRoutes];
+    [self addRoutes];
     
     example_A();
     
@@ -175,5 +175,10 @@ extern CFAbsoluteTime StartTime;
         return YES;
     }];
 }
-
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
+{
+    // bbanlive://jumpRoom?uid=122&nick=sfs
+    // bbanlive://jumpRoom?json='uid=12,nick=dsfsd'
+    return YES;
+}
 @end

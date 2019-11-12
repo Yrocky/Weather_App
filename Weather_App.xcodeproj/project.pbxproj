@@ -53,8 +53,26 @@
 		5C6EA3932276A8CC00EA3D0F /* MMToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA3922276A8CC00EA3D0F /* MMToken.m */; };
 		5C6EA3962276A8EE00EA3D0F /* MMInterpreter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA3952276A8EE00EA3D0F /* MMInterpreter.m */; };
 		5C6EA39A2276C4F000EA3D0F /* MMParserr.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA3992276C4EF00EA3D0F /* MMParserr.m */; };
+		5C9A3BD72379383E00CF7B45 /* FaceUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BD62379383E00CF7B45 /* FaceUViewController.m */; };
+		5C9A3BF8237938C200CF7B45 /* KXBeautyMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BDD237938C200CF7B45 /* KXBeautyMainViewController.m */; };
+		5C9A3BF9237938C200CF7B45 /* KXFaceBeautyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BDF237938C200CF7B45 /* KXFaceBeautyModel.m */; };
+		5C9A3BFA237938C200CF7B45 /* KXBeautyType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BE0237938C200CF7B45 /* KXBeautyType.m */; };
+		5C9A3BFB237938C200CF7B45 /* KXFilterCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BE2237938C200CF7B45 /* KXFilterCellModel.m */; };
+		5C9A3BFC237938C200CF7B45 /* KXBeautyCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BE7237938C200CF7B45 /* KXBeautyCellModel.m */; };
+		5C9A3BFD237938C200CF7B45 /* KXFaceBeautyModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BE8237938C200CF7B45 /* KXFaceBeautyModelManager.m */; };
+		5C9A3BFE237938C200CF7B45 /* KXBeautyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BEA237938C200CF7B45 /* KXBeautyView.m */; };
+		5C9A3C00237938C200CF7B45 /* KXBeautyFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BEC237938C200CF7B45 /* KXBeautyFilterView.m */; };
+		5C9A3C02237938C200CF7B45 /* KXBeautyFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BEE237938C200CF7B45 /* KXBeautyFilterCell.m */; };
+		5C9A3C03237938C200CF7B45 /* KXBeautySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BEF237938C200CF7B45 /* KXBeautySlider.m */; };
+		5C9A3C04237938C200CF7B45 /* KXBeautyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BF0237938C200CF7B45 /* KXBeautyCell.m */; };
+		5C9A3C0723793D0200CF7B45 /* FUManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3C0623793D0200CF7B45 /* FUManager.m */; };
 		5C9C28C8225F13C2000B5631 /* MMNoRetainTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */; };
 		5C9C28CB226418F4000B5631 /* MMAccumulateTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9C28CA226418F4000B5631 /* MMAccumulateTimer.m */; };
+		5CA3ED9C237A49C8002D028E /* FURenderer+header.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3ED97237A49C8002D028E /* FURenderer+header.m */; };
+		5CA3ED9D237A49C8002D028E /* FUImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3ED98237A49C8002D028E /* FUImageHelper.m */; };
+		5CA3EDA2237A49FE002D028E /* FULiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3EDA1237A49FE002D028E /* FULiveModel.m */; };
+		5CA3EDA6237A4DF3002D028E /* XXXBasePopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3EDA5237A4DF3002D028E /* XXXBasePopupView.m */; };
+		5CA3EDA9237A80CB002D028E /* KXMoreBeautyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3EDA8237A80CB002D028E /* KXMoreBeautyView.m */; };
 		5CBAFA372270557D003A5620 /* FishBoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBAFA362270557D003A5620 /* FishBoViewController.m */; };
 		5CDF128B22818DF4007FD7A7 /* XXXRPN.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF128A22818DF4007FD7A7 /* XXXRPN.m */; };
 		5CDF128D22819061007FD7A7 /* XXXRPNTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF128C22819061007FD7A7 /* XXXRPNTest.m */; };
@@ -382,10 +400,48 @@
 		5C6EA3972276AB4700EA3D0F /* MMObjDescribeAble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMObjDescribeAble.h; sourceTree = "<group>"; };
 		5C6EA3982276C4EF00EA3D0F /* MMParserr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMParserr.h; sourceTree = "<group>"; };
 		5C6EA3992276C4EF00EA3D0F /* MMParserr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMParserr.m; sourceTree = "<group>"; };
+		5C9A3BD52379383E00CF7B45 /* FaceUViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceUViewController.h; sourceTree = "<group>"; };
+		5C9A3BD62379383E00CF7B45 /* FaceUViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceUViewController.m; sourceTree = "<group>"; };
+		5C9A3BDA237938C200CF7B45 /* KXBeautyMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KXBeautyMainViewController.h; sourceTree = "<group>"; };
+		5C9A3BDD237938C200CF7B45 /* KXBeautyMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KXBeautyMainViewController.m; sourceTree = "<group>"; };
+		5C9A3BDF237938C200CF7B45 /* KXFaceBeautyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KXFaceBeautyModel.m; sourceTree = "<group>"; };
+		5C9A3BE0237938C200CF7B45 /* KXBeautyType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KXBeautyType.m; sourceTree = "<group>"; };
+		5C9A3BE1237938C200CF7B45 /* KXBeautyCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KXBeautyCellModel.h; sourceTree = "<group>"; };
+		5C9A3BE2237938C200CF7B45 /* KXFilterCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KXFilterCellModel.m; sourceTree = "<group>"; };
+		5C9A3BE3237938C200CF7B45 /* KXFaceBeautyModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KXFaceBeautyModelManager.h; sourceTree = "<group>"; };
+		5C9A3BE4237938C200CF7B45 /* KXBeautyType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KXBeautyType.h; sourceTree = "<group>"; };
+		5C9A3BE5237938C200CF7B45 /* KXFaceBeautyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KXFaceBeautyModel.h; sourceTree = "<group>"; };
+		5C9A3BE6237938C200CF7B45 /* KXFilterCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KXFilterCellModel.h; sourceTree = "<group>"; };
+		5C9A3BE7237938C200CF7B45 /* KXBeautyCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KXBeautyCellModel.m; sourceTree = "<group>"; };
+		5C9A3BE8237938C200CF7B45 /* KXFaceBeautyModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KXFaceBeautyModelManager.m; sourceTree = "<group>"; };
+		5C9A3BEA237938C200CF7B45 /* KXBeautyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KXBeautyView.m; sourceTree = "<group>"; };
+		5C9A3BEC237938C200CF7B45 /* KXBeautyFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KXBeautyFilterView.m; sourceTree = "<group>"; };
+		5C9A3BEE237938C200CF7B45 /* KXBeautyFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KXBeautyFilterCell.m; sourceTree = "<group>"; };
+		5C9A3BEF237938C200CF7B45 /* KXBeautySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KXBeautySlider.m; sourceTree = "<group>"; };
+		5C9A3BF0237938C200CF7B45 /* KXBeautyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KXBeautyCell.m; sourceTree = "<group>"; };
+		5C9A3BF1237938C200CF7B45 /* KXBeautyFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KXBeautyFilterView.h; sourceTree = "<group>"; };
+		5C9A3BF3237938C200CF7B45 /* KXBeautyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KXBeautyView.h; sourceTree = "<group>"; };
+		5C9A3BF4237938C200CF7B45 /* KXBeautyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KXBeautyCell.h; sourceTree = "<group>"; };
+		5C9A3BF5237938C200CF7B45 /* KXBeautySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KXBeautySlider.h; sourceTree = "<group>"; };
+		5C9A3BF6237938C200CF7B45 /* KXBeautyFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KXBeautyFilterCell.h; sourceTree = "<group>"; };
+		5C9A3C0523793D0200CF7B45 /* FUManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUManager.h; sourceTree = "<group>"; };
+		5C9A3C0623793D0200CF7B45 /* FUManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUManager.m; sourceTree = "<group>"; };
+		5C9A3C0823793DBC00CF7B45 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		5C9C28C6225F13C2000B5631 /* MMNoRetainTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMNoRetainTimer.h; sourceTree = "<group>"; };
 		5C9C28C7225F13C2000B5631 /* MMNoRetainTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMNoRetainTimer.m; sourceTree = "<group>"; };
 		5C9C28C9226418F4000B5631 /* MMAccumulateTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAccumulateTimer.h; sourceTree = "<group>"; };
 		5C9C28CA226418F4000B5631 /* MMAccumulateTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAccumulateTimer.m; sourceTree = "<group>"; };
+		5CA3ED97237A49C8002D028E /* FURenderer+header.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FURenderer+header.m"; sourceTree = "<group>"; };
+		5CA3ED98237A49C8002D028E /* FUImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUImageHelper.m; sourceTree = "<group>"; };
+		5CA3ED99237A49C8002D028E /* FURenderer+header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FURenderer+header.h"; sourceTree = "<group>"; };
+		5CA3ED9A237A49C8002D028E /* FUImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUImageHelper.h; sourceTree = "<group>"; };
+		5CA3EDA0237A49FE002D028E /* FULiveModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FULiveModel.h; sourceTree = "<group>"; };
+		5CA3EDA1237A49FE002D028E /* FULiveModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FULiveModel.m; sourceTree = "<group>"; };
+		5CA3EDA3237A4A3D002D028E /* authpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = authpack.h; sourceTree = "<group>"; };
+		5CA3EDA4237A4DF3002D028E /* XXXBasePopupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXBasePopupView.h; sourceTree = "<group>"; };
+		5CA3EDA5237A4DF3002D028E /* XXXBasePopupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXBasePopupView.m; sourceTree = "<group>"; };
+		5CA3EDA7237A80CB002D028E /* KXMoreBeautyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KXMoreBeautyView.h; sourceTree = "<group>"; };
+		5CA3EDA8237A80CB002D028E /* KXMoreBeautyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KXMoreBeautyView.m; sourceTree = "<group>"; };
 		5CBAFA352270557D003A5620 /* FishBoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FishBoViewController.h; sourceTree = "<group>"; };
 		5CBAFA362270557D003A5620 /* FishBoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FishBoViewController.m; sourceTree = "<group>"; };
 		5CDF128922818DF4007FD7A7 /* XXXRPN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXRPN.h; sourceTree = "<group>"; };
@@ -992,6 +1048,94 @@
 			name = ast;
 			sourceTree = "<group>";
 		};
+		5C9A3BD8237938C200CF7B45 /* KXBeautyUI */ = {
+			isa = PBXGroup;
+			children = (
+				5CA3ED9E237A49D5002D028E /* FaceU */,
+				5C9A3BD9237938C200CF7B45 /* Controller */,
+				5C9A3BDE237938C200CF7B45 /* Model */,
+				5C9A3BE9237938C200CF7B45 /* Views */,
+			);
+			path = KXBeautyUI;
+			sourceTree = "<group>";
+		};
+		5C9A3BD9237938C200CF7B45 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5C9A3BDA237938C200CF7B45 /* KXBeautyMainViewController.h */,
+				5C9A3BDD237938C200CF7B45 /* KXBeautyMainViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5C9A3BDE237938C200CF7B45 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5C9A3BE4237938C200CF7B45 /* KXBeautyType.h */,
+				5C9A3BE0237938C200CF7B45 /* KXBeautyType.m */,
+				5C9A3BE6237938C200CF7B45 /* KXFilterCellModel.h */,
+				5C9A3BE2237938C200CF7B45 /* KXFilterCellModel.m */,
+				5C9A3BE3237938C200CF7B45 /* KXFaceBeautyModelManager.h */,
+				5C9A3BE8237938C200CF7B45 /* KXFaceBeautyModelManager.m */,
+				5C9A3BE5237938C200CF7B45 /* KXFaceBeautyModel.h */,
+				5C9A3BDF237938C200CF7B45 /* KXFaceBeautyModel.m */,
+				5C9A3BE1237938C200CF7B45 /* KXBeautyCellModel.h */,
+				5C9A3BE7237938C200CF7B45 /* KXBeautyCellModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5C9A3BE9237938C200CF7B45 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C9A3BF4237938C200CF7B45 /* KXBeautyCell.h */,
+				5C9A3BF0237938C200CF7B45 /* KXBeautyCell.m */,
+				5C9A3BF6237938C200CF7B45 /* KXBeautyFilterCell.h */,
+				5C9A3BEE237938C200CF7B45 /* KXBeautyFilterCell.m */,
+				5C9A3BF1237938C200CF7B45 /* KXBeautyFilterView.h */,
+				5C9A3BEC237938C200CF7B45 /* KXBeautyFilterView.m */,
+				5C9A3BF5237938C200CF7B45 /* KXBeautySlider.h */,
+				5C9A3BEF237938C200CF7B45 /* KXBeautySlider.m */,
+				5C9A3BF3237938C200CF7B45 /* KXBeautyView.h */,
+				5C9A3BEA237938C200CF7B45 /* KXBeautyView.m */,
+				5CA3EDA7237A80CB002D028E /* KXMoreBeautyView.h */,
+				5CA3EDA8237A80CB002D028E /* KXMoreBeautyView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5CA3ED96237A49C8002D028E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5CA3EDA3237A4A3D002D028E /* authpack.h */,
+				5CA3ED9A237A49C8002D028E /* FUImageHelper.h */,
+				5CA3ED98237A49C8002D028E /* FUImageHelper.m */,
+				5CA3ED99237A49C8002D028E /* FURenderer+header.h */,
+				5CA3ED97237A49C8002D028E /* FURenderer+header.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5CA3ED9E237A49D5002D028E /* FaceU */ = {
+			isa = PBXGroup;
+			children = (
+				5C9A3C0523793D0200CF7B45 /* FUManager.h */,
+				5C9A3C0623793D0200CF7B45 /* FUManager.m */,
+				5CA3ED96237A49C8002D028E /* Helpers */,
+				5CA3ED9F237A49D6002D028E /* Model */,
+			);
+			path = FaceU;
+			sourceTree = "<group>";
+		};
+		5CA3ED9F237A49D6002D028E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5CA3EDA0237A49FE002D028E /* FULiveModel.h */,
+				5CA3EDA1237A49FE002D028E /* FULiveModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5CE42B13228E871E00C236FC /* Resume */ = {
 			isa = PBXGroup;
 			children = (
@@ -1492,6 +1636,9 @@
 				5C9C28CA226418F4000B5631 /* MMAccumulateTimer.m */,
 				5C48AB0D229637C600535980 /* XXXNoticeScrollView.h */,
 				5C48AB0E229637C600535980 /* XXXNoticeScrollView.m */,
+				5CA3EDA4237A4DF3002D028E /* XXXBasePopupView.h */,
+				5CA3EDA5237A4DF3002D028E /* XXXBasePopupView.m */,
+				5C9A3BD8237938C200CF7B45 /* KXBeautyUI */,
 				5C04D35D22A13DFA000F0000 /* XXXAutoScrollImageView.h */,
 				5C04D35E22A13DFA000F0000 /* XXXAutoScrollImageView.m */,
 				7F53C0DE2126740500567D74 /* GIftEffectView */,
@@ -1547,6 +1694,7 @@
 				7FDC6ED61F46E35A00D94379 /* LaunchScreen.storyboard */,
 				7FDC6ED91F46E35A00D94379 /* Info.plist */,
 				5C60D50A22784412003AE46C /* MMLexrParserText.m */,
+				5C9A3C0823793DBC00CF7B45 /* PrefixHeader.pch */,
 				7FDC6EC81F46E35A00D94379 /* Supporting Files */,
 				7FBCF1281F540CDC00E2EEC7 /* Weather_App-Bridging-Header.h */,
 			);
@@ -1867,6 +2015,8 @@
 				5C48AB0B2296377A00535980 /* NoticeScrollViewController.m */,
 				5C0D1D982317AD8A003E9E62 /* FinanceViewController.h */,
 				5C0D1D992317AD8A003E9E62 /* FinanceViewController.m */,
+				5C9A3BD52379383E00CF7B45 /* FaceUViewController.h */,
+				5C9A3BD62379383E00CF7B45 /* FaceUViewController.m */,
 				5CE8B33522A8C47C002CFA38 /* Login */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
@@ -2027,6 +2177,7 @@
 				7FDC6EC21F46E35A00D94379 /* Frameworks */,
 				7FDC6EC31F46E35A00D94379 /* Resources */,
 				2AA405F967781D68AE8E5EF5 /* [CP] Embed Pods Frameworks */,
+				6AB073AE8C3ECF96C4215DA4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2160,6 +2311,30 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Weather_App/Pods-Weather_App-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6AB073AE8C3ECF96C4215DA4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Weather_App/Pods-Weather_App-resources.sh",
+				"${PODS_ROOT}/Nama-lite/FaceUnity-SDK-iOS-v6.4.0-lite/Resources/face_beautification.bundle",
+				"${PODS_ROOT}/Nama-lite/FaceUnity-SDK-iOS-v6.4.0-lite/Resources/fxaa.bundle",
+				"${PODS_ROOT}/Nama-lite/FaceUnity-SDK-iOS-v6.4.0-lite/Resources/tongue.bundle",
+				"${PODS_ROOT}/Nama-lite/FaceUnity-SDK-iOS-v6.4.0-lite/Resources/v3.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/face_beautification.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fxaa.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/tongue.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/v3.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Weather_App/Pods-Weather_App-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		71017A02D968912DFA3CF791 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2207,6 +2382,8 @@
 				5C04C60A229BC075000F0000 /* UIView+FrameLayoutSupport.m in Sources */,
 				D71974321F6EFEFC0068F971 /* MM_AutoReplyEditViewController.m in Sources */,
 				D706293F1F8B185100F52FCB /* HSSwitchCellModel.m in Sources */,
+				5C9A3BFA237938C200CF7B45 /* KXBeautyType.m in Sources */,
+				5C9A3BF8237938C200CF7B45 /* KXBeautyMainViewController.m in Sources */,
 				7FFAB83E210AC38A00CA6671 /* MMAObject.m in Sources */,
 				F77231C921AE629C00DA019B /* MMAnimatable.m in Sources */,
 				7FFAB841210AC39500CA6671 /* MMBObject.m in Sources */,
@@ -2250,6 +2427,7 @@
 				7F53C0F02126740600567D74 /* GiftShapeEffectView.m in Sources */,
 				7FD8CC351F98A995005DC9FF /* NSObject+CodableProperties.m in Sources */,
 				7F9810142121889B0004C638 /* MMDelegateService.m in Sources */,
+				5C9A3C02237938C200CF7B45 /* KXBeautyFilterCell.m in Sources */,
 				7F590D801FA9A5D4006F7BF0 /* UIViewController+STPopup.m in Sources */,
 				D7A73E231FB04F4800818CF5 /* MM_FindFriendEntryItemView.m in Sources */,
 				5CBAFA372270557D003A5620 /* FishBoViewController.m in Sources */,
@@ -2274,9 +2452,12 @@
 				5C9C28C8225F13C2000B5631 /* MMNoRetainTimer.m in Sources */,
 				7F590D7B1FA9A5D4006F7BF0 /* STPopupControllerTransitioningFade.m in Sources */,
 				F77231C321AE5FEB00DA019B /* MMAnimationConfiguration.m in Sources */,
+				5C9A3BFB237938C200CF7B45 /* KXFilterCellModel.m in Sources */,
 				7F3E0A211FB93BF200F8C258 /* BottomFollowView.m in Sources */,
 				7FE705C11FBD9AAB009FF3A7 /* MMLabel.m in Sources */,
 				7F6FFB8C209458E100A84A81 /* ZPAttributedLabel.m in Sources */,
+				5CA3ED9C237A49C8002D028E /* FURenderer+header.m in Sources */,
+				5CA3EDA6237A4DF3002D028E /* XXXBasePopupView.m in Sources */,
 				D706293D1F8B185100F52FCB /* HSImageCellModel.m in Sources */,
 				7F7BA142208DE2E90085E045 /* MMLinkedList.m in Sources */,
 				7FE705B81FBD6A52009FF3A7 /* SomeCustomView.m in Sources */,
@@ -2289,11 +2470,14 @@
 				7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */,
 				D713B8CE2076033800D388F2 /* BillRemarksExtensionView.m in Sources */,
 				5CE8B33822A8C4A2002CFA38 /* OldLoginViewController.m in Sources */,
+				5C9A3C00237938C200CF7B45 /* KXBeautyFilterView.m in Sources */,
 				5C6EA37F2276904700EA3D0F /* XXXCalculator.m in Sources */,
 				F703661B21E77D4E0086832C /* MMAnimationKeyPath.m in Sources */,
+				5C9A3C0723793D0200CF7B45 /* FUManager.m in Sources */,
 				D70629061F8B143D00F52FCB /* MMPickerView.m in Sources */,
 				7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */,
 				5C6EA3962276A8EE00EA3D0F /* MMInterpreter.m in Sources */,
+				5CA3EDA2237A49FE002D028E /* FULiveModel.m in Sources */,
 				D713B8CB2076030D00D388F2 /* BillImageExtensionView.m in Sources */,
 				D70629481F8B185100F52FCB /* HSImageTableViewCell.m in Sources */,
 				7F0501822011EAD00033E83C /* MMAnimationViewController.m in Sources */,
@@ -2302,6 +2486,7 @@
 				D70629491F8B185100F52FCB /* HSInputTableViewCell.m in Sources */,
 				D70629401F8B185100F52FCB /* HSTextCellModel.m in Sources */,
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
+				5C9A3BF9237938C200CF7B45 /* KXFaceBeautyModel.m in Sources */,
 				F77231CF21AE8A5300DA019B /* MMAnimationTimingFunctionType.m in Sources */,
 				5C0D1D9A2317AD8B003E9E62 /* FinanceViewController.m in Sources */,
 				5CE8B34522A8C5C3002CFA38 /* XXXLoginInputView.m in Sources */,
@@ -2329,10 +2514,13 @@
 				5CE8B34122A8C4EB002CFA38 /* OldForgetPswConfirmViewController.m in Sources */,
 				7F5FD9932115898D00DB70F8 /* MM24GameManager.m in Sources */,
 				7F472922218C6B50007A10FB /* MMLiveChatEmojiView.m in Sources */,
+				5C9A3C03237938C200CF7B45 /* KXBeautySlider.m in Sources */,
+				5C9A3BFC237938C200CF7B45 /* KXBeautyCellModel.m in Sources */,
 				7FCF75061F8B1EAD00514597 /* TableDemoViewController.m in Sources */,
 				D715E6A61FA7152100CFBFF4 /* CLTStickyLayout.m in Sources */,
 				D7A78FBD218752240021313B /* MMDirectionGestureRecognizer.m in Sources */,
 				7FDC6EE11F46E38800D94379 /* HLLWaveView.m in Sources */,
+				5C9A3BFD237938C200CF7B45 /* KXFaceBeautyModelManager.m in Sources */,
 				5CE42B21228E879B00C236FC /* ResumeInfoCell.m in Sources */,
 				D7DE014E1F98C1EF008682DE /* NSInvocation+AHKAdditions.m in Sources */,
 				D70629461F8B185100F52FCB /* HSBaseTableViewCell.m in Sources */,
@@ -2358,6 +2546,7 @@
 				D713B8BF207601A500D388F2 /* BillIndicateView.m in Sources */,
 				7FED6BA61F5557F0004E3345 /* TableViewDataSource.m in Sources */,
 				D70F5DD71FA74B26007FBD43 /* UIView+Glow.m in Sources */,
+				5CA3ED9D237A49C8002D028E /* FUImageHelper.m in Sources */,
 				D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */,
 				5C48AB0F229637C600535980 /* XXXNoticeScrollView.m in Sources */,
 				5C2174612254B30B001443BC /* RoomCycleScrollView.m in Sources */,
@@ -2374,6 +2563,7 @@
 				7F63BBC02072036F0084ABC8 /* LunarCore.m in Sources */,
 				5C48AB0C2296377A00535980 /* NoticeScrollViewController.m in Sources */,
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
+				5CA3EDA9237A80CB002D028E /* KXMoreBeautyView.m in Sources */,
 				5C6EA39A2276C4F000EA3D0F /* MMParserr.m in Sources */,
 				5CFAF3E32283F53B0057BD05 /* MMGraph.m in Sources */,
 				5C5E63D22244AC9B00C0B85D /* RoomViewController.m in Sources */,
@@ -2383,6 +2573,7 @@
 				7F590D7A1FA9A5D4006F7BF0 /* STPopupController.m in Sources */,
 				7F6FFB90209458E100A84A81 /* ZPTextLayout.m in Sources */,
 				D7A73E201FB04B2B00818CF5 /* MM_FindFriendEntryViewController.m in Sources */,
+				5C9A3C04237938C200CF7B45 /* KXBeautyCell.m in Sources */,
 				5CE772C622843A61003A251D /* NSArray+Unretained.m in Sources */,
 				7F6FFB8F209458E100A84A81 /* ZPTextMeasurement.m in Sources */,
 				5C6EA37C22768FA300EA3D0F /* XXXExpression.m in Sources */,
@@ -2410,10 +2601,12 @@
 				5C392B29226D852800C15344 /* XXXWebViewController.m in Sources */,
 				5CE42B782292459000C236FC /* ResumeDescriptionCell.m in Sources */,
 				D70F5DDA1FA74BCB007FBD43 /* FDCustomView.m in Sources */,
+				5C9A3BD72379383E00CF7B45 /* FaceUViewController.m in Sources */,
 				5C5E63C82244ABF100C0B85D /* CardCollectionView.m in Sources */,
 				7F63BBBC2071EC650084ABC8 /* HomeBillContentDefaultView.m in Sources */,
 				5CE42B11228E871600C236FC /* ResumePortraitCell.m in Sources */,
 				D713B8B320727F0700D388F2 /* BillViewController.m in Sources */,
+				5C9A3BFE237938C200CF7B45 /* KXBeautyView.m in Sources */,
 				7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */,
 				7F8593551FDE54AA00E6AFFC /* MMXibViewController.m in Sources */,
 				D706295C1F8B860B00F52FCB /* PCCustomView.m in Sources */,
@@ -2640,6 +2833,7 @@
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformConnector",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK",
 				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Weather_App//PrefixHeader.pch";
 				INFOPLIST_FILE = Weather_App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2676,6 +2870,7 @@
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformConnector",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK",
 				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Weather_App//PrefixHeader.pch";
 				INFOPLIST_FILE = Weather_App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -49,10 +49,7 @@
 #import "OldLoginViewController.h"
 #import "FinanceViewController.h"
 #import <JLRoutes/JLRoutes.h>
-
-#define weakify(...) autoreleasepool {} __attribute__((objc_ownership(weak))) __typeof__(self) self_weak_ = (self);
-
-#define strongify(...) autoreleasepool {} __attribute__((objc_ownership(strong))) __typeof__(self) self = self_weak_;
+#import "FaceUViewController.h"
 
 #define MMLiveRoute [JLRoutes routesForScheme:@"MMLive"]
 
@@ -70,7 +67,6 @@
     [super viewDidLoad];
 
     
-
     self.title = @"Root";
     self.str = @"123";
     if (@available(iOS 11.0, *)) {
@@ -106,13 +102,22 @@
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"🦋365计划🦋" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Faceu界面" actionBlock:^(HSTitleCellModel *model) {
             
+            FaceUViewController * vc = [[FaceUViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+
+//            NSString * url = [NSString stringWithFormat:@"MMLive://push/FaceUViewController?title=%@",model.title];
+//            [MMLiveRoute routeURL:[NSURL URLWithString:url]];
+        }];
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"🦋365计划🦋" actionBlock:^(HSTitleCellModel *model) {
+
 //            FinanceViewController * vc = [[FinanceViewController alloc] init];
 //            [self.navigationController pushViewController:vc animated:YES];
-            [MMLiveRoute routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/FinanceViewController?title=%@",model.title];
-            })]];
+            NSString * url = [NSString stringWithFormat:@"push/FinanceViewController?title=%@",model.title];
+            [MMLiveRoute routeURL:[NSURL URLWithString:url]];
         }];
         [s addCellModel:c];
         

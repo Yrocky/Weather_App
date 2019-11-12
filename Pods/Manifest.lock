@@ -24,6 +24,7 @@ PODS:
   - JLRoutes (2.1)
   - Masonry (1.1.0)
   - MMMarkdown (0.5.5)
+  - Nama-lite (6.4.0)
   - PromiseKit (6.10.0):
     - PromiseKit/CorePromise (= 6.10.0)
     - PromiseKit/Foundation (= 6.10.0)
@@ -46,6 +47,7 @@ DEPENDENCIES:
   - JLRoutes (~> 2.1)
   - Masonry (~> 1.1.0)
   - MMMarkdown (~> 0.5.5)
+  - Nama-lite (= 6.4.0)
   - PromiseKit
   - SDWebImage (~> 4.4.7)
   - YTKNetwork (~> 2.0.4)
@@ -58,6 +60,7 @@ SPEC REPOS:
     - JLRoutes
     - Masonry
     - MMMarkdown
+    - Nama-lite
     - PromiseKit
     - SDWebImage
     - YTKNetwork
@@ -69,10 +72,11 @@ SPEC CHECKSUMS:
   JLRoutes: d755245322b94227662ea3e43492fdca94e05c5b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MMMarkdown: 1af97166ce0f6d6e0cb05695665492195d27c3f1
+  Nama-lite: 39e4b2163343c342a60237b681345fda1a4fbc99
   PromiseKit: 1fdaeb6c0a94a5114fcb814ff3d772b86886ad4e
   SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: e3c620e96d6273a4f33dbaf497f83ccf9bbac24e
+PODFILE CHECKSUM: 41af6e4beea88ce2a5e76d6ef9cb68d2b4f930dd
 
 COCOAPODS: 1.7.2

@@ -15,5 +15,6 @@ pod 'AFNetworking', '~> 3.1.0'
 pod 'SDWebImage', '~> 4.4.7'
 pod 'JLRoutes', '~> 2.1'
 # Pods for Weather_App
+pod 'Nama-lite', '6.4.0'
 
 end
