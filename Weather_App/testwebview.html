@@ -3,16 +3,20 @@
 	<title>MMWebView</title>
 </head>
 <body>
-<a onclick="js_method();">Touch me</a> 
-<a onclick="js_share_wechat();">Share Wechat</a> 
-<a onclick="js_share_qq();">Share QQ</a> 
-<a onclick="js_share_qq2();">Share QQ 2</a>
-<a onclick="js_custom_msgHandler();">Custom Message handler</a>
+<li><a onclick="js_method();">Touch me</a></li>
+<li><a onclick="js_exchange_method();">不修改h5，替换方法交换</a></li>
+<li><a onclick="js_share_wechat();">Share Wechat</a></li>
+<li><a onclick="js_share_qq();">Share QQ</a> </li>
+<li><a onclick="js_share_qq2();">Share QQ 2</a></li>
+<li><a onclick="js_custom_msgHandler();">Custom Message handler</a></li>
 
 </body>
 <script type="text/javascript">
     
-    
+function js_exchange_method(){
+    console.log('js_exchange_method ori');
+};
+
 function js_method(){
 	// alert('rocky jiaojiao')
 	console.log('dfd');

@@ -163,8 +163,10 @@
        
         c = [[HSTitleCellModel alloc] initWithTitle:@"🍳webview🍳" actionBlock:^(HSTitleCellModel *model) {
             
+            XXXWebViewController * web = [XXXWebViewController new];
+            [self.navigationController pushViewController:web animated:YES];
             [MMLiveRoute routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/XXXWebViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"MMLive://push/XXXWebViewController?title=%@",model.title];
             })]];
         }];
         [s addCellModel:c];

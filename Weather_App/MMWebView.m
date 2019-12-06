@@ -107,6 +107,10 @@ UIScrollViewDelegate
 #pragma mark - API
 - (void) viewWillAppear{
 
+    NSString * javascript = @"setTimeout(function(){window.js_exchange_method=function(str){window.webkit.messageHandlers.JSMethod.postMessage(null)};}, 1)";
+    WKUserScript * userScript = [[WKUserScript alloc] initWithSource:javascript injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES];
+    [self.webView.configuration.userContentController addUserScript:userScript];
+    
     [self.messageHandler enumDelegateForGetMessageHandler:^(MMMessageHandler msgHandler) {
         [self.userContentController addScriptMessageHandler:msgHandler.name];
     }];
