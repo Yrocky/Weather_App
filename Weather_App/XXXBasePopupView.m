@@ -9,17 +9,27 @@
 #import "XXXBasePopupView.h"
 #import "Masonry.h"
 
+static NSString * XXXBasePopupCustomShowAnimationKey = @"custom.show.animation";
+static NSString * XXXBasePopupCustomDismissAnimationKey = @"custom.dismiss.animation";
+
 @interface XXXBasePopupView (Animation)
 - (void) showAnimation;
 - (void) dismissAnimation;
 - (void) finishDismiss;
 @end
 
-@interface XXXBasePopupView (PrivateCustomer)
+@interface XXXBasePopupView (Private)
+
+- (void)_addSubContentView:(XXXPopupLayoutType)layoutType
+      contentViewWidthType:(XXXPopupContentSizeType)widthType
+                     width:(CGFloat)width
+                heightType:(XXXPopupContentSizeType)heightType
+                    height:(CGFloat)height;
+
 - (UIColor *) touchMaskViewColor;
 @end
 
-@interface XXXBasePopupView()<UIGestureRecognizerDelegate>{
+@interface XXXBasePopupView()<UIGestureRecognizerDelegate,CAAnimationDelegate>{
     BOOL _inAnimation;
 }
 @property (nonatomic ,strong ,readwrite) UIView * viewControllerWrapperView;
@@ -28,7 +38,7 @@
 @implementation XXXBasePopupView
 
 -(void)dealloc{
-    NSLog(@"XXXBasePopupView dealloc");
+    NSLog(@"%@ dealloc",self);
 }
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -37,6 +47,9 @@
     if (self) {
 
         self.backgroundColor = [UIColor clearColor];
+        
+        self.showAnimationDuration = 0.3;
+        self.dismissAnimationDuration = 0.3;
         
         self.dismissOnMaskTouched = YES;
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -74,31 +87,11 @@
 
 - (void) addSubContentView{
     
-    if (!_contentView) {
-        _contentView = [UIView new];
-        _contentView.restorationIdentifier = @"popupView.contentView";
-        _contentView.backgroundColor = [UIColor whiteColor];
-        [self addSubview:_contentView];
-        _contentView.layer.cornerRadius = 8;
-        _contentView.layer.masksToBounds = YES;
-        [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-            if (self.layoutType == XXXPopupLayoutTypeTop) {
-                make.top.centerX.equalTo(self);
-            } else if (self.layoutType == XXXPopupLayoutTypeBottom) {
-                make.centerX.bottom.equalTo(self);
-            } else if (self.layoutType == XXXPopupLayoutTypeCenter) {
-                make.center.equalTo(self);
-            }
-            
-            if (self.contentViewWidthType == XXXPopupContentSizeFixed) {
-                make.width.mas_equalTo([self contentViewFixedWidth]);
-            }
-            
-            if (self.contentViewHeightType == XXXPopupContentSizeFixed) {
-                make.height.mas_equalTo([self contentViewFixedHeight]);
-            }
-        }];
-    }
+    [self _addSubContentView:self.layoutType
+        contentViewWidthType:self.contentViewWidthType
+                       width:[self contentViewFixedWidth]
+                  heightType:self.contentViewHeightType
+                      height:[self contentViewFixedHeight]];
 }
 
 - (void) showIn:(UIView *)view{
@@ -138,6 +131,7 @@
 @implementation XXXBasePopupView (CustomeUI)
 
 - (XXXPopupTransitStyle) transitStyle{
+    
     if (self.layoutType == XXXPopupLayoutTypeTop) {
         return XXXPopupTransitStyleFromTop;
     } else if (self.layoutType == XXXPopupLayoutTypeBottom) {
@@ -171,16 +165,37 @@
 - (CGFloat) contentViewFixedHeight{
     return 100;
 }
+
+- (CAAnimation *) customShowAnimation{
+    return nil;
+}
+
+- (CAAnimation *) customDismissAnimation{
+    return nil;
+}
+
 @end
 
 @implementation XXXBasePopupView (Animation)
 
 - (void) showAnimation{
     
-    [self contentViewDismissLocation];
+    CAAnimation * customAnimation = [self customShowAnimation];
+    if (customAnimation) {
+        customAnimation.delegate = self;
+        customAnimation.removedOnCompletion = NO;
+        [self.contentView.layer addAnimation:customAnimation
+                                      forKey:XXXBasePopupCustomShowAnimationKey];
+        [UIView animateWithDuration:customAnimation.duration animations:^{
+            self.contentView.alpha = 1.0f;
+            self->_touchMaskView.alpha = 1;
+        }];
+        return;
+    }
     
+    [self contentViewDismissLocation];
     _inAnimation = YES;
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:self.showAnimationDuration animations:^{
         self.contentView.alpha = 1.0f;
         self.contentView.transform = CGAffineTransformIdentity;
         self->_touchMaskView.alpha = 1;
@@ -191,7 +206,19 @@
 
 - (void) dismissAnimation{
     
-    [UIView animateWithDuration:0.3 animations:^{
+    CAAnimation * customAnimation = [self customDismissAnimation];
+    if (customAnimation) {
+        customAnimation.removedOnCompletion = NO;
+        customAnimation.delegate = self;
+        [self.contentView.layer addAnimation:customAnimation
+                                      forKey:XXXBasePopupCustomDismissAnimationKey];
+        [UIView animateWithDuration:customAnimation.duration animations:^{
+            self->_touchMaskView.alpha = 0;
+        }];
+        return;
+    }
+    
+    [UIView animateWithDuration:self.dismissAnimationDuration animations:^{
         [self contentViewDismissLocation];
         self->_touchMaskView.alpha = 0;
     } completion:^(BOOL finished) {
@@ -220,10 +247,14 @@
         self.contentView.alpha = 0.0f;
     }
 }
+
 - (void) finishShow{
     _inAnimation = NO;
     if (self.bShowedCallback) {
         self.bShowedCallback();
+    }
+    if (self.contentView.layer.animationKeys.count) {
+        [self.contentView.layer removeAllAnimations];
     }
 }
 
@@ -233,10 +264,64 @@
         self.bDismissedCallback();
     }
     [self removeFromSuperview];
+    if (self.contentView.layer.animationKeys.count) {
+        [self.contentView.layer removeAllAnimations];
+    }
 }
+
+#pragma mark - CAAnimationDelegate
+
+- (void)animationDidStart:(CAAnimation *)anim{
+    _inAnimation = YES;
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    _inAnimation = NO;
+    
+    if ([self.contentView.layer animationForKey:XXXBasePopupCustomShowAnimationKey] == anim) {
+        [self finishShow];
+    }
+    if ([self.contentView.layer animationForKey:XXXBasePopupCustomDismissAnimationKey]  == anim) {
+        [self finishDismiss];
+    }
+}
+
 @end
 
-@implementation XXXBasePopupView (PrivateCustomer)
+@implementation XXXBasePopupView (Private)
+
+- (void)_addSubContentView:(XXXPopupLayoutType)layoutType
+      contentViewWidthType:(XXXPopupContentSizeType)widthType
+                     width:(CGFloat)width
+                heightType:(XXXPopupContentSizeType)heightType
+                    height:(CGFloat)height{
+
+    if (!_contentView) {
+        _contentView = [UIView new];
+        _contentView.restorationIdentifier = @"popupView.contentView";
+        _contentView.backgroundColor = [UIColor whiteColor];
+        [self addSubview:_contentView];
+        _contentView.layer.cornerRadius = 8;
+        _contentView.layer.masksToBounds = YES;
+        [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            if (layoutType == XXXPopupLayoutTypeTop) {
+                make.top.centerX.equalTo(self);
+            } else if (layoutType == XXXPopupLayoutTypeBottom) {
+                make.centerX.bottom.equalTo(self);
+            } else if (layoutType == XXXPopupLayoutTypeCenter) {
+                make.center.equalTo(self);
+            }
+            
+            if (widthType == XXXPopupContentSizeFixed) {
+                make.width.mas_equalTo(width);
+            }
+            
+            if (heightType == XXXPopupContentSizeFixed) {
+                make.height.mas_equalTo(height);
+            }
+        }];
+    }
+}
 
 - (UIColor *) touchMaskViewColor{
     switch ([self touchMaskViewColorType]) {
@@ -254,19 +339,27 @@
 @implementation XXXBasePopupView (WrapperViewController)
 
 - (void)wrapViewController:(UIViewController *)vc fixedHeight:(CGFloat)fixedHeight{
-    
+
+    [self wrapViewController:vc
+                  layoutType:XXXPopupLayoutTypeBottom
+             contentViewSize:CGSizeMake([UIScreen.mainScreen bounds].size.width, fixedHeight)];
+}
+
+- (void) wrapViewController:(UIViewController *)vc
+                 layoutType:(XXXPopupLayoutType)layoutType
+            contentViewSize:(CGSize)contentViewSize{
     if (vc && [vc isKindOfClass:[UIViewController class]]) {
         self.viewControllerWrapperView = vc.view;
-        [self addSubContentView];
-        [self.contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.bottom.equalTo(self);
-            make.height.mas_equalTo(fixedHeight);
-        }];
+        self.viewControllerWrapperView.restorationIdentifier = @"popupView.vc.wrapperView";
+        [self _addSubContentView:layoutType
+            contentViewWidthType:XXXPopupContentSizeFixed
+                           width:contentViewSize.width
+                      heightType:XXXPopupContentSizeFixed
+                          height:contentViewSize.height];
         [self.contentView addSubview:self.viewControllerWrapperView];
         [self.viewControllerWrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.contentView);
         }];
     }
 }
-
 @end

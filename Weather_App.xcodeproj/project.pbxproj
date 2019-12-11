@@ -73,6 +73,8 @@
 		5CA3EDA2237A49FE002D028E /* FULiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3EDA1237A49FE002D028E /* FULiveModel.m */; };
 		5CA3EDA6237A4DF3002D028E /* XXXBasePopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3EDA5237A4DF3002D028E /* XXXBasePopupView.m */; };
 		5CA3EDA9237A80CB002D028E /* KXMoreBeautyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA3EDA8237A80CB002D028E /* KXMoreBeautyView.m */; };
+		5CA733FD2399FD8100A75DA9 /* MMKVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA733FC2399FD8100A75DA9 /* MMKVViewController.m */; };
+		5CA73400239A2E3C00A75DA9 /* XXXRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA733FF239A2E3B00A75DA9 /* XXXRoute.m */; };
 		5CBAFA372270557D003A5620 /* FishBoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBAFA362270557D003A5620 /* FishBoViewController.m */; };
 		5CDF128B22818DF4007FD7A7 /* XXXRPN.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF128A22818DF4007FD7A7 /* XXXRPN.m */; };
 		5CDF128D22819061007FD7A7 /* XXXRPNTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF128C22819061007FD7A7 /* XXXRPNTest.m */; };
@@ -442,6 +444,11 @@
 		5CA3EDA5237A4DF3002D028E /* XXXBasePopupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXBasePopupView.m; sourceTree = "<group>"; };
 		5CA3EDA7237A80CB002D028E /* KXMoreBeautyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KXMoreBeautyView.h; sourceTree = "<group>"; };
 		5CA3EDA8237A80CB002D028E /* KXMoreBeautyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KXMoreBeautyView.m; sourceTree = "<group>"; };
+		5CA733FB2399FD8000A75DA9 /* MMKVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMKVViewController.h; sourceTree = "<group>"; };
+		5CA733FC2399FD8100A75DA9 /* MMKVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMKVViewController.m; sourceTree = "<group>"; };
+		5CA733FE239A2E3B00A75DA9 /* XXXRoute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXRoute.h; sourceTree = "<group>"; };
+		5CA733FF239A2E3B00A75DA9 /* XXXRoute.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXRoute.m; sourceTree = "<group>"; };
+		5CA73401239A2FF300A75DA9 /* XXXRouteTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXRouteTemplate.h; sourceTree = "<group>"; };
 		5CBAFA352270557D003A5620 /* FishBoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FishBoViewController.h; sourceTree = "<group>"; };
 		5CBAFA362270557D003A5620 /* FishBoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FishBoViewController.m; sourceTree = "<group>"; };
 		5CDF128922818DF4007FD7A7 /* XXXRPN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXRPN.h; sourceTree = "<group>"; };
@@ -1136,6 +1143,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		5CA73402239A2FF900A75DA9 /* route */ = {
+			isa = PBXGroup;
+			children = (
+				5CA733FE239A2E3B00A75DA9 /* XXXRoute.h */,
+				5CA733FF239A2E3B00A75DA9 /* XXXRoute.m */,
+				5CA73401239A2FF300A75DA9 /* XXXRouteTemplate.h */,
+			);
+			name = route;
+			sourceTree = "<group>";
+		};
 		5CE42B13228E871E00C236FC /* Resume */ = {
 			isa = PBXGroup;
 			children = (
@@ -1612,6 +1629,7 @@
 				5C574AF72272AD310029DB7F /* MMThreadInfo.m */,
 				5C6EA2EE2275AE2900EA3D0F /* MMStack.h */,
 				5C6EA2EF2275AE2900EA3D0F /* MMStack.m */,
+				5CA73402239A2FF900A75DA9 /* route */,
 				5CE42B13228E871E00C236FC /* Resume */,
 				5CFAF3E52283F57B0057BD05 /* MMGraph */,
 				5C60D51F227855D4003AE46C /* lept_json.h */,
@@ -2017,6 +2035,8 @@
 				5C0D1D992317AD8A003E9E62 /* FinanceViewController.m */,
 				5C9A3BD52379383E00CF7B45 /* FaceUViewController.h */,
 				5C9A3BD62379383E00CF7B45 /* FaceUViewController.m */,
+				5CA733FB2399FD8000A75DA9 /* MMKVViewController.h */,
+				5CA733FC2399FD8100A75DA9 /* MMKVViewController.m */,
 				5CE8B33522A8C47C002CFA38 /* Login */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
@@ -2441,11 +2461,13 @@
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
 				5CE42B17228E874400C236FC /* ResumeSkillCell.m in Sources */,
 				5C6EA37922768F8D00EA3D0F /* XXXContext.m in Sources */,
+				5CA733FD2399FD8100A75DA9 /* MMKVViewController.m in Sources */,
 				F77231C621AE607400DA019B /* MMAnimationPromise.m in Sources */,
 				7F3815B821294F60006016E9 /* MM_GiftEffectView.m in Sources */,
 				7F3815892126CA68006016E9 /* GiftEffectViewController.m in Sources */,
 				5CE42B29228E880400C236FC /* ResumeCompanyCell.m in Sources */,
 				7F7BA149208EDB240085E045 /* MMSinglyLinkedList.m in Sources */,
+				5CA73400239A2E3C00A75DA9 /* XXXRoute.m in Sources */,
 				5CE42B2E228E889200C236FC /* ResumeSectionHeaderFooterView.m in Sources */,
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
 				7F981011211C6BE90004C638 /* UIView+RoundCorner.m in Sources */,

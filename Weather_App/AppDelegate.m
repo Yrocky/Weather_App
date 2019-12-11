@@ -13,7 +13,7 @@
 #import "XXXHTTPProtocol.h"
 #import <AppLord/AppLord.h>
 #import "XXXHomeModule.h"
-#import <JLRoutes/JLRoutes.h>
+#import "XXXRoute.h"
 
 //#import <objc/objc-runtime.h>
 @interface AppDelegate ()
@@ -160,20 +160,22 @@ extern CFAbsoluteTime StartTime;
 
 - (void) addRoutes{
 
+    [XXXRoute registRoutes];
+    
     [JLRoutes.globalRoutes addRoute:@"push/:viewControllerName" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
         NSLog(@"parameters:%@",parameters);
         return YES;
     }];
     
-    [[JLRoutes routesForScheme:@"MMLive"] addRoute:@"push/:viewControllerName/second" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
-        NSLog(@"MMLive parameters:%@",parameters);
-        return YES;
-    }];
-    
-    [[JLRoutes routesForScheme:@"MMLive"] addRoute:@"present/(:vcName)(c/d)" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
-        NSLog(@"MMLive parameters:%@",parameters);
-        return YES;
-    }];
+//    [[JLRoutes routesForScheme:@"MMLive"] addRoute:@"push/:viewControllerName/second" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+//        NSLog(@"MMLive push parameters:%@",parameters);
+//        return YES;
+//    }];
+//    
+//    [[JLRoutes routesForScheme:@"MMLive"] addRoute:@"present/(:vcName)(c/d)" handler:^BOOL(NSDictionary<NSString *,id> * _Nonnull parameters) {
+//        NSLog(@"MMLive present parameters:%@",parameters);
+//        return YES;
+//    }];
 }
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
 {
