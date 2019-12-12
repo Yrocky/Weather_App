@@ -31,6 +31,9 @@ static NSString * XXXBasePopupCustomDismissAnimationKey = @"custom.dismiss.anima
 
 @interface XXXBasePopupView()<UIGestureRecognizerDelegate,CAAnimationDelegate>{
     BOOL _inAnimation;
+    
+    BOOL _isWrapperViewController;
+    XXXPopupLayoutType _wrapperLayoutType;
 }
 @property (nonatomic ,strong ,readwrite) UIView * viewControllerWrapperView;
 @end
@@ -132,11 +135,13 @@ static NSString * XXXBasePopupCustomDismissAnimationKey = @"custom.dismiss.anima
 
 - (XXXPopupTransitStyle) transitStyle{
     
-    if (self.layoutType == XXXPopupLayoutTypeTop) {
+    XXXPopupLayoutType layoutType = _isWrapperViewController ? _wrapperLayoutType : self.layoutType;
+    
+    if (layoutType == XXXPopupLayoutTypeTop) {
         return XXXPopupTransitStyleFromTop;
-    } else if (self.layoutType == XXXPopupLayoutTypeBottom) {
+    } else if (layoutType == XXXPopupLayoutTypeBottom) {
         return XXXPopupTransitStyleFromBottom;
-    } else if (self.layoutType == XXXPopupLayoutTypeCenter) {
+    } else if (layoutType == XXXPopupLayoutTypeCenter) {
         return XXXPopupTransitStyleShrinkInOut;
     }
     return XXXPopupTransitStyleDefault;
@@ -349,8 +354,13 @@ static NSString * XXXBasePopupCustomDismissAnimationKey = @"custom.dismiss.anima
                  layoutType:(XXXPopupLayoutType)layoutType
             contentViewSize:(CGSize)contentViewSize{
     if (vc && [vc isKindOfClass:[UIViewController class]]) {
+
+        _isWrapperViewController = YES;
+        _wrapperLayoutType = layoutType;
+        
         self.viewControllerWrapperView = vc.view;
         self.viewControllerWrapperView.restorationIdentifier = @"popupView.vc.wrapperView";
+        
         [self _addSubContentView:layoutType
             contentViewWidthType:XXXPopupContentSizeFixed
                            width:contentViewSize.width

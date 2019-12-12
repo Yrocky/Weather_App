@@ -31,10 +31,10 @@ typedef NS_ENUM(NSInteger ,XXXPopupContentSizeType) {
 typedef NS_ENUM(NSUInteger, XXXPopupLayoutType) {
     /// 在顶部显示
     XXXPopupLayoutTypeTop = 0,
+    /// 居中显示
+    XXXPopupLayoutTypeCenter,
     /// 默认底部显示
     XXXPopupLayoutTypeBottom,
-    /// 居中显示
-    XXXPopupLayoutTypeCenter
 };
 
 // 控制弹出视图将以哪种样式呈现

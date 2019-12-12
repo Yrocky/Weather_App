@@ -44,8 +44,8 @@
 
 - (void) onButtonAction{
     
-    [[XXXDemoPopupView new] showIn:self.view];
-    return;
+//    [[XXXDemoPopupView new] showIn:self.view];
+//    return;
     if (!_popupView) {
         KXBeautyMainViewController * mainVC = [KXBeautyMainViewController new];
         [self addChildViewController:mainVC];
@@ -56,7 +56,7 @@
         }];
 //        [popupView wrapViewController:mainVC fixedHeight:350 + 52];
         [popupView wrapViewController:mainVC
-                           layoutType:XXXPopupLayoutTypeCenter
+                           layoutType:XXXPopupLayoutTypeBottom
                       contentViewSize:CGSizeMake(375, 350+52)];
         popupView.contentView.backgroundColor = [UIColor clearColor];
         [popupView clearContentViewCornerRadius];
