@@ -13,6 +13,7 @@
 
 @interface XXXDemoPopupView : XXXBasePopupView
 
+@property (nonatomic ,copy) void(^bTestTap) (void);
 @end
 
 @interface FaceUViewController ()
@@ -44,8 +45,16 @@
 
 - (void) onButtonAction{
     
-//    [[XXXDemoPopupView new] showIn:self.view];
-//    return;
+    XXXDemoPopupView * popupView = [XXXDemoPopupView new];
+    [popupView setBTestTap:^{
+//        [popupView contentViewVerticalOffset:30];
+        [popupView contentViewHorizontalOffset:30];
+//        [popupView contentViewWidthOffset:-30];
+//        [popupView contentViewHeightOffset:-30];
+    }];
+    [popupView showIn:self.view];
+    
+    return;
     if (!_popupView) {
         KXBeautyMainViewController * mainVC = [KXBeautyMainViewController new];
         [self addChildViewController:mainVC];
@@ -78,11 +87,42 @@
     return self;
 }
 
+- (void)addSubContentView{
+    [super addSubContentView];
+    UIButton * button = [UIButton new];
+    [button addTarget:self action:@selector(onTap) forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor = [UIColor orangeColor];
+    [self.contentView addSubview:button];
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+        make.centerY.equalTo(self.contentView);
+        make.left.equalTo(self.contentView);
+    }];
+    
+    button = [UIButton new];
+    [button addTarget:self action:@selector(onReset) forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor = [UIColor redColor];
+    [self.contentView addSubview:button];
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+        make.centerX.equalTo(self.contentView);
+        make.top.equalTo(self.contentView);
+    }];
+}
+- (void) onReset{
+    [self resetOrigFrame];
+}
+- (void) onTap{
+    if (self.bTestTap) {
+        self.bTestTap();
+    }
+}
+
 - (CAAnimation *)customShowAnimation{
     
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
     animation.keyPath = @"transform.translation.y";
-    animation.duration = 2;
+    animation.duration = 1.25;
     animation.fillMode = kCAFillModeBackwards;
     animation.timingFunction= [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     CGFloat y = -55;
@@ -104,9 +144,12 @@
 }
 
 - (XXXPopupLayoutType)layoutType{
-    return XXXPopupLayoutTypeBottom;
+    return XXXPopupLayoutTypeCenter;
 }
 
+- (CGFloat)contentViewFixedWidth{
+    return 300;
+}
 - (CGFloat)contentViewFixedHeight{
     return 200;
 }

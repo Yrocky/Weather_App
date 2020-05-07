@@ -113,6 +113,26 @@ typedef NS_ENUM(NSInteger, XXXPopupTransitStyle) {
 
 @end
 
+/// 动态修改尺寸
+@interface XXXBasePopupView (DynamicChangeContentViewSize)
+
+/// 将尺寸修改为原始值，水平、垂直、宽、高等
+- (void) resetOrigFrame;
+
+/// contentView在垂直方向上的偏移，+up，-down
+- (void) contentViewVerticalOffset:(CGFloat)offset;
+
+/// contentView在水平方向上的偏移，+left，-right
+- (void) contentViewHorizontalOffset:(CGFloat)offset;
+
+/// contentView的宽度发生变化
+- (void) contentViewWidthOffset:(CGFloat)offset;
+
+/// contentView的高度发生变化
+- (void) contentViewHeightOffset:(CGFloat)offset;
+
+@end
+
 /// 针对于已经存在的视图控制器，然后将其进行包裹展示，不用设置子类视图
 @interface XXXBasePopupView (WrapperViewController)
 

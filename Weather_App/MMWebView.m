@@ -442,8 +442,42 @@ UIScrollViewDelegate
 }
 
 - (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable result))completionHandler{
-    completionHandler(@"");
+    
+    if ([self JSPromptIsTargetSyncMessageWithPrompt:prompt]){
+        completionHandler(({
+            [self.messageHandler handleSyncMessageWithData:({
+                [MMWebView use_yy_dictionaryWithJSON:prompt];
+            })];
+        }));
+    }else{
+        completionHandler(@"");
+    }
 }
+
+- (BOOL) JSPromptIsTargetSyncMessageWithPrompt:(NSString *)prompt{
+
+    return [MMWebView use_yy_dictionaryWithJSON:prompt] != nil ? YES : NO;
+}
+
++ (NSDictionary *) use_yy_dictionaryWithJSON:(id)json {
+    if (!json || json == (id)kCFNull) return nil;
+    NSDictionary *dic = nil;
+    NSData *jsonData = nil;
+    if ([json isKindOfClass:[NSDictionary class]]) {
+        dic = json;
+    } else if ([json isKindOfClass:[NSString class]]) {
+        jsonData = [(NSString *)json dataUsingEncoding : NSUTF8StringEncoding];
+    } else if ([json isKindOfClass:[NSData class]]) {
+        jsonData = json;
+    }
+    if (jsonData) {
+        dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                              options:kNilOptions error:NULL];
+        if (![dic isKindOfClass:[NSDictionary class]]) dic = nil;
+    }
+    return dic;
+}
+
 #pragma mark - Getters
 
 - (WKWebView *)webView
@@ -598,7 +632,7 @@ UIScrollViewDelegate
             NSLog(@"[webView] add plugin error:%@",error.localizedDescription);
         }
     }];
-    [self.userContentController addScriptMessageHandler:kWebMsgHandlerNameiMMWebViewPlugin];
+    [self.userContentController addScriptMessageHandler:kWebMsgHandlerNameMMWebViewPlugin];
 }
 @end
 

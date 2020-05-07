@@ -37,6 +37,16 @@
     }
 }
 
+- (NSString *) handleSyncMessageWithData:(NSDictionary *)data{
+
+    if ([data isKindOfClass:[NSDictionary class]]) {
+        if ([self.delegate respondsToSelector:@selector(messageHandler:didReceiveSyncMessage:)]) {
+            return [self.delegate messageHandler:self didReceiveSyncMessage:data];
+        }
+    }
+    return @"";
+}
+
 #pragma mark - MMEvaluateJaveScriptAble
 
 - (void) safeAsyncEvaluateJavaScriptString:(NSString *)script{
@@ -86,7 +96,13 @@
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
     
-    ///<常规消息处理
+    ///< 交给代理处理原始WKMessage数据
+    if (self.delegate &&
+        [self.delegate respondsToSelector:@selector(messageHandler:didReceiveScriptMessage:)]) {
+        [self.delegate messageHandler:self didReceiveScriptMessage:message];
+    }
+    
+    ///< 常规消息处理
     [self enumDelegateForGetMessageHandler:^(MMMessageHandler msgHandler) {
         if ([msgHandler.name isEqualToString:message.name] &&
             [self.delegate respondsToSelector:msgHandler.method]) {
@@ -98,7 +114,7 @@
     }];
     
     ///<插件
-    if ([message.name isEqualToString:kWebMsgHandlerNameiMMWebViewPlugin]) {
+    if ([message.name isEqualToString:kWebMsgHandlerNameMMWebViewPlugin]) {
         if (nil != message.body && [message.body isKindOfClass:[NSDictionary class]]) {
             NSDictionary * body = message.body;
             NSString * className = body[@"className"];

@@ -38,6 +38,7 @@ PODS:
   - SDWebImage (4.4.7):
     - SDWebImage/Core (= 4.4.7)
   - SDWebImage/Core (4.4.7)
+  - TransitionKit (2.0.0)
   - YTKNetwork (2.0.4):
     - AFNetworking (~> 3.0)
 
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - Nama-lite (= 6.4.0)
   - PromiseKit
   - SDWebImage (~> 4.4.7)
+  - TransitionKit (~> 2.0.0)
   - YTKNetwork (~> 2.0.4)
 
 SPEC REPOS:
@@ -66,6 +68,7 @@ SPEC REPOS:
     - Nama-lite
     - PromiseKit
     - SDWebImage
+    - TransitionKit
     - YTKNetwork
 
 SPEC CHECKSUMS:
@@ -79,8 +82,9 @@ SPEC CHECKSUMS:
   Nama-lite: 39e4b2163343c342a60237b681345fda1a4fbc99
   PromiseKit: 1fdaeb6c0a94a5114fcb814ff3d772b86886ad4e
   SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
+  TransitionKit: c150629869b0eab9d270f914aad2d1a088a8c19d
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: 591fa2d86d8e3e07f65a07fea2dd4968453bee8b
+PODFILE CHECKSUM: 34cc0f58a9bd0b964f3affc39303372b33c21afb
 
 COCOAPODS: 1.7.2

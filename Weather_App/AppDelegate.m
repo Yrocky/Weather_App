@@ -14,6 +14,7 @@
 #import <AppLord/AppLord.h>
 #import "XXXHomeModule.h"
 #import "XXXRoute.h"
+#import "MMAObject.h"
 
 //#import <objc/objc-runtime.h>
 @interface AppDelegate ()
@@ -60,6 +61,9 @@ extern CFAbsoluteTime StartTime;
     [self addRoutes];
     
     example_A();
+    
+    MMAObject * a = [MMAObject new];
+    bool iseq = [a isEqual:a];
     
     [[ALContext sharedContext] loadModules];
 //    [[ALContext sharedContext] registerModule:[XXXHomeModule class]];
@@ -110,10 +114,28 @@ extern CFAbsoluteTime StartTime;
 //    NSLog(@"other-subtract-array:%@",[other subtract:array]);// 67 78
     NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSLog(@"docPath:%@",docPath);
+    
+    NSLog(@"is Big endian :%d",isBigEndian());
     return YES;
 }
 
+BOOL isBigEndian(){
+    
+    int a = 0x1234;
+    
+    // 通过将int强制类型转换成char单字节，通过判断其实存储位置
+    
+    char b = *(char *)&a;
+    
+    if (b == 0x12) {
+        
+        return YES;
+        
+    }
 
+return NO;
+
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

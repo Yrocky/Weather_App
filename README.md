@@ -422,7 +422,61 @@ Share = {
 }
 ```
 
-从打印的顺序中会发现，如果使用webKit的postMessage方法，得到的并不是想要的结果，而使用直接js调用则是正确的结果。因此，这种插件的机制仅仅适用于两方交互，js传递给native消息这样的场景，而不适用于交互的时候native给js传递数据，如果要解决这样的问题，还是需要一套更加完善的bridge机制。
+从打印的顺序中会发现，如果使用webKit的postMessage方法，得到的并不是想要的结果，而使用直接js调用则是正确的结果。因此，这种插件的机制仅仅适用于两方交互，js传递给native消息这样的场景，而不适用于交互的时候native给js传递数据，如果要解决这样的问题，可以使用[味儿精的方案](https://juejin.im/post/5a537686f265da3e4674ec7a#heading-16)使用拦截弹窗。
 
-### bridge
+通过重写`runJavaScriptTextInputPanelWithPrompt`代理方法在内部进行消息的传递和处理，在native对js传递过来的数据进行处理之后返回字符串给js，
 
+```objective-c
+
+// in js
+function js_load_prompt(){
+    var data = {
+        action:'modif',
+        params:'name=rocky',
+    };
+    var jsonData = JSON.stringify(data);
+    //发起弹框
+    let result = prompt(jsonData);
+    console.log(result)
+}
+
+// in MMWebView.m
+- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable result))completionHandler{
+    
+    if ([self JSPromptIsTargetSyncMessageWithPrompt:prompt]){
+        completionHandler(({
+            [self.messageHandler handleSyncMessageWithData:({
+                [MMWebView use_yy_dictionaryWithJSON:prompt];
+            })];
+        }));
+    }else{
+        completionHandler(@"");
+    }
+}
+
+// in MMScriptMessageHandler.m
+- (NSString *) handleSyncMessageWithData:(NSDictionary *)data{
+
+    if ([data isKindOfClass:[NSDictionary class]]) {
+        if ([self.delegate respondsToSelector:@selector(messageHandler:didReceiveSyncMessage:)]) {
+            return [self.delegate messageHandler:self didReceiveSyncMessage:data];
+        }
+    }
+    return @"";
+}
+
+// in XXXController.m
+- (NSString *)messageHandler:(MMScriptMessageHandler *)msgHandler didReceiveSyncMessage:(NSDictionary *)message{
+    NSString * name = message[@"action"];
+    if ([name isEqualToString: @"modif"]) {
+        return @"2222222";
+    }
+    if ([name isEqualToString:@"add"]) {
+        return @"33333";
+    }
+    
+    return @"";
+}
+```
+
+这种方式需要web端和移动端需要约定好数据格式，比如js给`prompt`弹框传递的参数需要两端统一，这里只是使用action作为一个实例。

@@ -9,6 +9,8 @@
 <li><a onclick="js_share_qq();">Share QQ</a> </li>
 <li><a onclick="js_share_qq2();">Share QQ 2</a></li>
 <li><a onclick="js_custom_msgHandler();">Custom Message handler</a></li>
+<li><a onclick="js_load_prompt();">Load Prompt</a></li>
+<li><a onclick="js_load_prompt2();">Load Prompt 2</a></li>
 
 </body>
 <script type="text/javascript">
@@ -74,6 +76,30 @@ function getNowFormatDate() {
 function js_custom_msgHandler(){
     window.webkit.messageHandlers.SomeValue.postMessage('Hello rocky~');
 };
+
+// 使用拦截弹窗来实现同步通信
+function js_load_prompt(){
+    var data = {
+        action:'modif',
+        params:'name=rocky',
+    };
+    var jsonData = JSON.stringify(data);
+    //发起弹框
+    let result = prompt(jsonData);
+    console.log(result)
+}
+
+// 使用拦截弹窗来实现同步通信
+function js_load_prompt2(){
+    var data = {
+        action:'add',
+    };
+    var jsonData = JSON.stringify(data);
+    //发起弹框
+    let result = prompt(jsonData);
+    console.log(result)
+}
+
 </script>
 
 </html>

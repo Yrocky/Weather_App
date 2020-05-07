@@ -23,6 +23,9 @@
 		5C392BA2226DDD5800C15344 /* MMConsolePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA1226DDD5800C15344 /* MMConsolePlugin.m */; };
 		5C392BA5226DDD9D00C15344 /* MMAccelerometerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA4226DDD9D00C15344 /* MMAccelerometerPlugin.m */; };
 		5C392BA8226EB04A00C15344 /* MMScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA7226EB04A00C15344 /* MMScriptMessageHandler.m */; };
+		5C4734F323BAF2A200CF02B8 /* XXXElevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4734F223BAF2A200CF02B8 /* XXXElevator.m */; };
+		5C4734F723BB4CC900CF02B8 /* XXXAudioWaveformConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4734F623BB4CC900CF02B8 /* XXXAudioWaveformConfig.m */; };
+		5C4734FA23BB4D1A00CF02B8 /* XXXAudioWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4734F923BB4D1A00CF02B8 /* XXXAudioWaveformView.m */; };
 		5C48AB0C2296377A00535980 /* NoticeScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C48AB0B2296377A00535980 /* NoticeScrollViewController.m */; };
 		5C48AB0F229637C600535980 /* XXXNoticeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C48AB0E229637C600535980 /* XXXNoticeScrollView.m */; };
 		5C4D1E3E230BCB32000829CA /* XXXHomeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4D1E3D230BCB32000829CA /* XXXHomeModule.m */; };
@@ -101,6 +104,9 @@
 		5CE8B34522A8C5C3002CFA38 /* XXXLoginInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8B34422A8C5C3002CFA38 /* XXXLoginInputView.m */; };
 		5CE8B34822A8DAAC002CFA38 /* XXXLoginCommitButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8B34722A8DAAC002CFA38 /* XXXLoginCommitButton.m */; };
 		5CE8B34B22A8ED7D002CFA38 /* XXXLoginNotiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8B34A22A8ED7D002CFA38 /* XXXLoginNotiView.m */; };
+		5CED28FD23B1F96000F314AB /* XXXLiveContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED28FC23B1F96000F314AB /* XXXLiveContentViewController.m */; };
+		5CED3F2423B9FFA500F314AB /* XXXKwaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED3F2323B9FFA500F314AB /* XXXKwaiViewController.m */; };
+		5CED3F2723BA005B00F314AB /* XXXKwaiFrameAdjustView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CED3F2623BA005B00F314AB /* XXXKwaiFrameAdjustView.m */; };
 		5CFAF3E0228199850057BD05 /* MMToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA3922276A8CC00EA3D0F /* MMToken.m */; };
 		5CFAF3E32283F53B0057BD05 /* MMGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAF3E22283F53B0057BD05 /* MMGraph.m */; };
 		5CFAF3E82283F59A0057BD05 /* MMVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAF3E72283F59A0057BD05 /* MMVertex.m */; };
@@ -343,6 +349,12 @@
 		5C392BA6226EB04A00C15344 /* MMScriptMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMScriptMessageHandler.h; sourceTree = "<group>"; };
 		5C392BA7226EB04A00C15344 /* MMScriptMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMScriptMessageHandler.m; sourceTree = "<group>"; };
 		5C392BA9226EB7B200C15344 /* MMEvaluateJaveScriptAble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMEvaluateJaveScriptAble.h; sourceTree = "<group>"; };
+		5C4734F123BAF2A200CF02B8 /* XXXElevator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXElevator.h; sourceTree = "<group>"; };
+		5C4734F223BAF2A200CF02B8 /* XXXElevator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXElevator.m; sourceTree = "<group>"; };
+		5C4734F523BB4CC900CF02B8 /* XXXAudioWaveformConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXAudioWaveformConfig.h; sourceTree = "<group>"; };
+		5C4734F623BB4CC900CF02B8 /* XXXAudioWaveformConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXAudioWaveformConfig.m; sourceTree = "<group>"; };
+		5C4734F823BB4D1A00CF02B8 /* XXXAudioWaveformView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXAudioWaveformView.h; sourceTree = "<group>"; };
+		5C4734F923BB4D1A00CF02B8 /* XXXAudioWaveformView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXAudioWaveformView.m; sourceTree = "<group>"; };
 		5C48AB0A2296377A00535980 /* NoticeScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoticeScrollViewController.h; sourceTree = "<group>"; };
 		5C48AB0B2296377A00535980 /* NoticeScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoticeScrollViewController.m; sourceTree = "<group>"; };
 		5C48AB0D229637C600535980 /* XXXNoticeScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXNoticeScrollView.h; sourceTree = "<group>"; };
@@ -492,6 +504,12 @@
 		5CE8B34722A8DAAC002CFA38 /* XXXLoginCommitButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXLoginCommitButton.m; sourceTree = "<group>"; };
 		5CE8B34922A8ED7D002CFA38 /* XXXLoginNotiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXLoginNotiView.h; sourceTree = "<group>"; };
 		5CE8B34A22A8ED7D002CFA38 /* XXXLoginNotiView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXLoginNotiView.m; sourceTree = "<group>"; };
+		5CED28FB23B1F96000F314AB /* XXXLiveContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXLiveContentViewController.h; sourceTree = "<group>"; };
+		5CED28FC23B1F96000F314AB /* XXXLiveContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXLiveContentViewController.m; sourceTree = "<group>"; };
+		5CED3F2223B9FFA500F314AB /* XXXKwaiViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXKwaiViewController.h; sourceTree = "<group>"; };
+		5CED3F2323B9FFA500F314AB /* XXXKwaiViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXKwaiViewController.m; sourceTree = "<group>"; };
+		5CED3F2523BA005B00F314AB /* XXXKwaiFrameAdjustView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXKwaiFrameAdjustView.h; sourceTree = "<group>"; };
+		5CED3F2623BA005B00F314AB /* XXXKwaiFrameAdjustView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXKwaiFrameAdjustView.m; sourceTree = "<group>"; };
 		5CFAF3E12283F53B0057BD05 /* MMGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMGraph.h; sourceTree = "<group>"; };
 		5CFAF3E22283F53B0057BD05 /* MMGraph.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMGraph.m; sourceTree = "<group>"; };
 		5CFAF3E62283F59A0057BD05 /* MMVertex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMVertex.h; sourceTree = "<group>"; };
@@ -932,6 +950,19 @@
 				5C392B2E226D89D200C15344 /* Accelerometer.js */,
 			);
 			path = plugins;
+			sourceTree = "<group>";
+		};
+		5C4734F423BB4CA200CF02B8 /* Kwai */ = {
+			isa = PBXGroup;
+			children = (
+				5CED3F2523BA005B00F314AB /* XXXKwaiFrameAdjustView.h */,
+				5CED3F2623BA005B00F314AB /* XXXKwaiFrameAdjustView.m */,
+				5C4734F823BB4D1A00CF02B8 /* XXXAudioWaveformView.h */,
+				5C4734F923BB4D1A00CF02B8 /* XXXAudioWaveformView.m */,
+				5C4734F523BB4CC900CF02B8 /* XXXAudioWaveformConfig.h */,
+				5C4734F623BB4CC900CF02B8 /* XXXAudioWaveformConfig.m */,
+			);
+			name = Kwai;
 			sourceTree = "<group>";
 		};
 		5C5E63C92244ABF900C0B85D /* 无限滚动 */ = {
@@ -1656,6 +1687,9 @@
 				5C48AB0E229637C600535980 /* XXXNoticeScrollView.m */,
 				5CA3EDA4237A4DF3002D028E /* XXXBasePopupView.h */,
 				5CA3EDA5237A4DF3002D028E /* XXXBasePopupView.m */,
+				5C4734F423BB4CA200CF02B8 /* Kwai */,
+				5C4734F123BAF2A200CF02B8 /* XXXElevator.h */,
+				5C4734F223BAF2A200CF02B8 /* XXXElevator.m */,
 				5C9A3BD8237938C200CF7B45 /* KXBeautyUI */,
 				5C04D35D22A13DFA000F0000 /* XXXAutoScrollImageView.h */,
 				5C04D35E22A13DFA000F0000 /* XXXAutoScrollImageView.m */,
@@ -2037,6 +2071,10 @@
 				5C9A3BD62379383E00CF7B45 /* FaceUViewController.m */,
 				5CA733FB2399FD8000A75DA9 /* MMKVViewController.h */,
 				5CA733FC2399FD8100A75DA9 /* MMKVViewController.m */,
+				5CED28FB23B1F96000F314AB /* XXXLiveContentViewController.h */,
+				5CED28FC23B1F96000F314AB /* XXXLiveContentViewController.m */,
+				5CED3F2223B9FFA500F314AB /* XXXKwaiViewController.h */,
+				5CED3F2323B9FFA500F314AB /* XXXKwaiViewController.m */,
 				5CE8B33522A8C47C002CFA38 /* Login */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
@@ -2313,6 +2351,7 @@
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionKit/TransitionKit.framework",
 				"${BUILT_PRODUCTS_DIR}/YTKNetwork/YTKNetwork.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -2326,6 +2365,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTKNetwork.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2406,6 +2446,8 @@
 				D706293F1F8B185100F52FCB /* HSSwitchCellModel.m in Sources */,
 				5C9A3BFA237938C200CF7B45 /* KXBeautyType.m in Sources */,
 				5C9A3BF8237938C200CF7B45 /* KXBeautyMainViewController.m in Sources */,
+				5CED3F2423B9FFA500F314AB /* XXXKwaiViewController.m in Sources */,
+				5CED28FD23B1F96000F314AB /* XXXLiveContentViewController.m in Sources */,
 				7FFAB83E210AC38A00CA6671 /* MMAObject.m in Sources */,
 				F77231C921AE629C00DA019B /* MMAnimatable.m in Sources */,
 				7FFAB841210AC39500CA6671 /* MMBObject.m in Sources */,
@@ -2573,6 +2615,8 @@
 				5CA3ED9D237A49C8002D028E /* FUImageHelper.m in Sources */,
 				D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */,
 				5C48AB0F229637C600535980 /* XXXNoticeScrollView.m in Sources */,
+				5C4734F323BAF2A200CF02B8 /* XXXElevator.m in Sources */,
+				5C4734F723BB4CC900CF02B8 /* XXXAudioWaveformConfig.m in Sources */,
 				5C2174612254B30B001443BC /* RoomCycleScrollView.m in Sources */,
 				5CE8B34B22A8ED7D002CFA38 /* XXXLoginNotiView.m in Sources */,
 				7FA274CF20876366001B9FD2 /* YYWeakProxy.m in Sources */,
@@ -2590,6 +2634,7 @@
 				5CA3EDA9237A80CB002D028E /* KXMoreBeautyView.m in Sources */,
 				5C6EA39A2276C4F000EA3D0F /* MMParserr.m in Sources */,
 				5CFAF3E32283F53B0057BD05 /* MMGraph.m in Sources */,
+				5CED3F2723BA005B00F314AB /* XXXKwaiFrameAdjustView.m in Sources */,
 				5C5E63D22244AC9B00C0B85D /* RoomViewController.m in Sources */,
 				D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */,
 				7F53C0F52126740600567D74 /* XMLReader.m in Sources */,
@@ -2605,6 +2650,7 @@
 				7F14A7DC206B2A54006EC133 /* MMRunwayManager.m in Sources */,
 				7FA7262E1FFCE40E00C0F6F2 /* MMBackground.m in Sources */,
 				7FA726241FFCD28500C0F6F2 /* MMContent.m in Sources */,
+				5C4734FA23BB4D1A00CF02B8 /* XXXAudioWaveformView.m in Sources */,
 				7F14A7D02064B1A1006EC133 /* AsyncDrawViewController.m in Sources */,
 				D783D36721B8160C002C0D40 /* MMConversation.m in Sources */,
 				F77231C021AE581600DA019B /* MMAnimation.m in Sources */,

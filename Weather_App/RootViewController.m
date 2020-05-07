@@ -70,7 +70,7 @@
     self.title = @"Root";
     self.str = @"123";
     if (@available(iOS 11.0, *)) {
-        self.navigationController.navigationBar.prefersLargeTitles = YES;
+        self.navigationController.navigationBar.prefersLargeTitles = NO;
     } else {
         // Fallback on earlier versions
     }
@@ -102,6 +102,30 @@
         }];
         [s addCellModel:c];
         
+        c = [[HSTitleCellModel alloc] initWithTitle:@"LiveContentView" actionBlock:^(HSTitleCellModel *model) {
+                    
+            [XXXRoute.core routeURL:[NSURL URLWithString:({
+                [NSString stringWithFormat:@"push/XXXLiveContentViewController"];
+            })] withParameters:@{
+                @"title":model.title,
+                @"addNavi" : @(YES)
+            }];
+        }];
+        
+        [s addCellModel:c];
+        
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Kwai ying" actionBlock:^(HSTitleCellModel *model) {
+                    
+            [XXXRoute.core routeURL:[NSURL URLWithString:({
+                [NSString stringWithFormat:@"push/XXXKwaiViewController"];
+            })] withParameters:@{
+                @"title":model.title,
+                @"addNavi" : @(YES)
+            }];
+        }];
+        
+        [s addCellModel:c];
+        
         c = [[HSTitleCellModel alloc] initWithTitle:@"MMKV" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
@@ -113,31 +137,31 @@
 //            [XXXRoute.core routeURL:[NSURL URLWithString:({
 //                [NSString stringWithFormat:@"push/MMKVViewController?title=%@&addNavi=true",model.title];
 //            })]];
-            //            NSString * url = [NSString stringWithFormat:@"MMLive://push/FaceUViewController?title=%@",model.title];
+            //            NSString * url = [NSString stringWithFormat:@"MMLive://push/FaceUViewController"];
             //            [XXXRoute.core routeURL:[NSURL URLWithString:url]];
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"Faceu界面" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Faceu" actionBlock:^(HSTitleCellModel *model) {
             
             FaceUViewController * vc = [[FaceUViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
 
-//            NSString * url = [NSString stringWithFormat:@"MMLive://push/FaceUViewController?title=%@",model.title];
+//            NSString * url = [NSString stringWithFormat:@"MMLive://push/FaceUViewController"];
 //            [XXXRoute.core routeURL:[NSURL URLWithString:url]];
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"🦋365计划🦋" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"365计划" actionBlock:^(HSTitleCellModel *model) {
 
 //            FinanceViewController * vc = [[FinanceViewController alloc] init];
 //            [self.navigationController pushViewController:vc animated:YES];
-            NSString * url = [NSString stringWithFormat:@"push/FinanceViewController?title=%@",model.title];
+            NSString * url = [NSString stringWithFormat:@"push/FinanceViewController"];
             [XXXRoute.core routeURL:[NSURL URLWithString:url]];
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"🍒Login🍒" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Login" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
                 [NSString stringWithFormat:@"present/OldLoginViewController?title=%@&addNavi=true",model.title];
@@ -145,49 +169,49 @@
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"🍇NoticeScroll🍇" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"NoticeScroll" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/NoticeScrollViewController?title=%@",model.title];
-            })]];
+                [NSString stringWithFormat:@"push/NoticeScrollViewController"];
+            })] withParameters:@{
+                @"title":model.title,
+            }];
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"🍇Resume🍇" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Resume" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/ResumeViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/ResumeViewController"];
             })]];
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"🥩解释器模式🥩" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Interpreter" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/InterpreterViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/InterpreterViewController"];
             })]];
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"🍗辣鸡bo🍗" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"fish b0" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/FishBoViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/FishBoViewController"];
             })]];
         }];
         [s addCellModel:c];
        
-        c = [[HSTitleCellModel alloc] initWithTitle:@"🍳webview🍳" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"webview" actionBlock:^(HSTitleCellModel *model) {
             
-            XXXWebViewController * web = [XXXWebViewController new];
-            [self.navigationController pushViewController:web animated:YES];
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"MMLive://push/XXXWebViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"MMLive://push/XXXWebViewController"];
             })]];
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"🥪直播间无限轮滑🥪" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"直播间无限轮滑" actionBlock:^(HSTitleCellModel *model) {
             
             CardCollectionViewController * vc = [[CardCollectionViewController alloc] init];
             vc.title = model.title;
@@ -196,55 +220,55 @@
             [self.navigationController presentViewController:navi animated:YES completion:nil];
             
 //            [XXXRoute.core routeURL:[NSURL URLWithString:({
-//                [NSString stringWithFormat:@"push/HLLIndicatorViewController?title=%@",model.title];
+//                [NSString stringWithFormat:@"push/HLLIndicatorViewController"];
 //            })]];
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"🧐PromiseKit🧐" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"PromiseKit" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/PromiseKitViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/PromiseKitViewController"];
             })]];
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"🙈Emoji🙉" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Emoji" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/EmojiViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/EmojiViewController"];
             })]];
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"🥧Auto Layout🌮" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Auto Layout" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/ALBookDemoViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/ALBookDemoViewController"];
             })]];
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"渐变" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"MMGradient" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/MMGradientViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/MMGradientViewController"];
             })]];
         }];
         [s addCellModel:c];
 
-        c = [[HSTitleCellModel alloc] initWithTitle:@"信号" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Signal" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/SignalViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/SignalViewController"];
             })]];
         }];
         [s addCellModel:c];
 
-        c = [[HSTitleCellModel alloc] initWithTitle:@"礼物特效" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"GiftEffect" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/GiftEffectViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/GiftEffectViewController"];
             })]];
         }];
         [s addCellModel:c];
@@ -252,15 +276,15 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"NSProxy" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/ProxyViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/ProxyViewController"];
             })]];
         }];
         [s addCellModel:c];
 
-        c = [[HSTitleCellModel alloc] initWithTitle:@"圆角问题" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"RoundCorner" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/RoundCornerViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/RoundCornerViewController"];
             })]];
         }];
         [s addCellModel:c];
@@ -268,23 +292,23 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"Core Text" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/MMCoreTextViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/MMCoreTextViewController"];
             })]];
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"记账-拓展功能" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"bill-Extension" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/ExtensionViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/ExtensionViewController"];
             })]];
         }];
         [s addCellModel:c];
         
-        c = [[HSTitleCellModel alloc] initWithTitle:@"记账-首页" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"bill-home" actionBlock:^(HSTitleCellModel *model) {
             
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/HomeViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/HomeViewController"];
             })]];
         }];
         [s addCellModel:c];
@@ -292,47 +316,47 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"Runway" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/RunwayViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/RunwayViewController"];
             })]];
         }];
         [s addCellModel:c];
 
-        c = [[HSTitleCellModel alloc] initWithTitle:@"礼物效果" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"MMGiftEffect" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/MMGiftEffectViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/MMGiftEffectViewController"];
             })]];
         }];
         [s addCellModel:c];
 
-        c = [[HSTitleCellModel alloc] initWithTitle:@"自动回复" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"AutoReply" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/MM_AutoReplyViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/MM_AutoReplyViewController"];
             })]];
         }];
         [s addCellModel:c];
 
-        c = [[HSTitleCellModel alloc] initWithTitle:@"模型化TableView" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"TableView" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/TableDemoViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/TableDemoViewController"];
             })]];
         }];
         [s addCellModel:c];
 
-        c = [[HSTitleCellModel alloc] initWithTitle:@"CollectionView折叠" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"CollectionView" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/MMSearchViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/MMSearchViewController"];
             })]];
         }];
         [s addCellModel:c];
 
-        c = [[HSTitleCellModel alloc] initWithTitle:@"粘性指引视图" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"Indicator" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/HLLIndicatorViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/HLLIndicatorViewController"];
             })]];
         }];
         [s addCellModel:c];
@@ -347,34 +371,34 @@
         }];
         [s addCellModel:c];
 
-        c = [[HSTitleCellModel alloc] initWithTitle:@"生成PDF" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"create PDF" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/CreatePDFViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/CreatePDFViewController"];
             })]];
         }];
         [s addCellModel:c];
 
-        c = [[HSTitleCellModel alloc] initWithTitle:@"渲染HTML" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"markdown to HTML" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/MarkdownRenderHTMLViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/MarkdownRenderHTMLViewController"];
             })]];
         }];
         [s addCellModel:c];
 
-        c = [[HSTitleCellModel alloc] initWithTitle:@"发现界面" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"find" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/MM_FindFriendEntryViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/MM_FindFriendEntryViewController"];
             })]];
         }];
         [s addCellModel:c];
 
-        c = [[HSTitleCellModel alloc] initWithTitle:@"布局" actionBlock:^(HSTitleCellModel *model) {
+        c = [[HSTitleCellModel alloc] initWithTitle:@"layout" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/LayoutViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/LayoutViewController"];
             })]];
         }];
         [s addCellModel:c];
@@ -392,7 +416,7 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"Xib" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/MMXibViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/MMXibViewController"];
             })]];
         }];
         [s addCellModel:c];
@@ -400,7 +424,7 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"Card" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/MMCardViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/MMCardViewController"];
             })]];
         }];
         [s addCellModel:c];
@@ -408,7 +432,7 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"Animation" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/MMAnimationViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/MMAnimationViewController"];
             })]];
         }];
         [s addCellModel:c];
@@ -416,7 +440,7 @@
         c = [[HSTitleCellModel alloc] initWithTitle:@"Async" actionBlock:^(HSTitleCellModel *model) {
 
             [XXXRoute.core routeURL:[NSURL URLWithString:({
-                [NSString stringWithFormat:@"push/AsyncDrawViewController?title=%@",model.title];
+                [NSString stringWithFormat:@"push/AsyncDrawViewController"];
             })]];
         }];
         [s addCellModel:c];

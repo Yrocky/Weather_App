@@ -12,6 +12,7 @@
 #import <Masonry/Masonry.h>
 
 @interface MMGradientViewController ()
+@property (nonatomic ,strong) UILabel * label;
 @property (nonatomic ,strong) MMNoRetainTimer * timer;
 @property (nonatomic ,strong) MMGradientView * gradientView;
 @property (nonatomic ,strong) NSTimer * timer2;
@@ -63,6 +64,16 @@
         make.size.mas_equalTo(CGSizeMake(80, 40));
         make.center.mas_equalTo(self.view);
     }];
+    
+    self.label = [UILabel new];
+    [self.view addSubview:self.label];
+    self.label.textColor = [UIColor orangeColor];
+    [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(button.mas_bottom);
+        make.centerX.equalTo(button);
+        make.height.mas_equalTo(12);
+        make.width.mas_equalTo(90);
+    }];
 }
 
 - (void) onGradientAction{
@@ -76,6 +87,7 @@
     NSLog(@"timer.userInfo:%@",timer.userInfo);
     [self.gradientView setHighlighted:!self.gradientView.isHighlighted
                              animated:YES];
+    self.label.text = @"34:51";
 }
 
 - (void) onTimer2{

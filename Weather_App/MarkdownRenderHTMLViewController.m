@@ -21,11 +21,51 @@
 
 @implementation MarkdownRenderHTMLViewController
 
+- (NSArray *)_lineRangesForString:(NSString *)aString
+{
+    NSMutableArray *result = [NSMutableArray array];
+    
+    NSUInteger location = 0;
+    NSUInteger idx;
+    for (idx=0; idx<aString.length; idx++)
+    {
+        unichar character = [aString characterAtIndex:idx];
+        if (character == '\r' || character == '\n')
+        {
+            NSRange range = NSMakeRange(location, idx-location);
+            [result addObject:[NSValue valueWithRange:range]];
+            
+            // If it's a carriage return, check for a line feed too
+            if (character == '\r')
+            {
+                if (idx + 1 < aString.length && [aString characterAtIndex:idx + 1] == '\n')
+                {
+                    idx += 1;
+                }
+            }
+            
+            location = idx + 1;
+        }
+    }
+    
+    // Add the final line if the string doesn't end with a newline
+    if (location < aString.length)
+    {
+        NSRange range = NSMakeRange(location, aString.length-location);
+        [result addObject:[NSValue valueWithRange:range]];
+    }
+    
+    return result;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Render HTML";
     
+    NSArray * tmo = [self _lineRangesForString:({
+        @"11111111\n222222222222\n333\n4444444444444\n55\n6666666\n7777777777\n88888888888888\n";
+    })];
     self.view.backgroundColor = [UIColor colorWithRed:0.95 green:0.96 blue:0.98 alpha:1.00];
     
     self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithTitle:@"Render" style:UIBarButtonItemStylePlain target:self action:@selector(renderHTML)]];

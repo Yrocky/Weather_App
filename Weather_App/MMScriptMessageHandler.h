@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-static NSString *const kWebMsgHandlerNameiMMWebViewPlugin = @"MMWebViewPlugin";
+static NSString *const kWebMsgHandlerNameMMWebViewPlugin = @"MMWebViewPlugin";
 
 ///< 提供一个messageHandler的抽象数据，不使用对象
 typedef struct MMMessageHandler{
@@ -25,22 +25,29 @@ typedef struct MMMessageHandler{
 @protocol MMScriptMessageHandlerDelegate <NSObject>
 
 @optional;
-////<设置需要添加和js交互的message-handler
+////<设置需要添加和js交互的message-handler，下面2个方法只需要实现一个
 - (NSSet<NSValue *> *) messageHandlerResponseMessages:(MMScriptMessageHandler *)msgHandler;
 - (void) messageHandler:(MMScriptMessageHandler *)msgHandler didReceiveScriptMessage:(WKScriptMessage *)message;
 
 - (void) messageHandler:(MMScriptMessageHandler *)msgHandler willPerformPlugin:(__kindof MMPlugin *)plugin;
+
+/// 用来完成js to native的同步消息机制，返回值用于回调给js使用
+- (NSString *) messageHandler:(MMScriptMessageHandler *)msgHandler didReceiveSyncMessage:(NSDictionary *)message;
 @end
 
 @protocol MMEvaluateJaveScriptAble;
+
 // 一个中间类，用来打破WKWebView中和ucc的循环引用
-@interface MMScriptMessageHandler : NSObject<WKScriptMessageHandler,MMEvaluateJaveScriptAble>
+@interface MMScriptMessageHandler : NSObject<WKScriptMessageHandler,
+MMEvaluateJaveScriptAble>
 
 @property (nonatomic ,weak ,readonly) WKWebView * webView;
 @property (nonatomic ,weak) id<MMScriptMessageHandlerDelegate> delegate;
 
 - (void) setupWebView:(WKWebView *)webView;
 - (void) enumDelegateForGetMessageHandler:(void(^)(MMMessageHandler msgHandler))cb;
+
+- (NSString *) handleSyncMessageWithData:(NSDictionary *)data;
 @end
 
 
@@ -63,8 +70,9 @@ MMMessageHandlerFromNSValue(NSValue * value){
 
 NS_INLINE NSValue *
 NSValueFromMessageHandler(MMMessageHandler msgHandler){
-    NSValue *msgHandlerValue = [NSValue valueWithBytes:&msgHandler
-                                              objCType:@encode(struct MMMessageHandler)];
-    return msgHandlerValue;
+    return ({
+        [NSValue valueWithBytes:&msgHandler
+                       objCType:@encode(struct MMMessageHandler)];
+    });
 };
 NS_ASSUME_NONNULL_END

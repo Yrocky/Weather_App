@@ -7,6 +7,7 @@
 //
 
 #import "MMNoRetainTimer.h"
+#import <UIKit/UIKit.h>
 
 @interface MMTimerWrap ()
 @property (nonatomic ,assign) NSTimeInterval intervalValue;
@@ -73,6 +74,7 @@
                                             selector:@selector(onTimer:)
                                             userInfo:userInfo
                                              repeats:repeats];
+    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:UITrackingRunLoopMode];
 }
 
 - (void) timerWithTimeInterval:(NSTimeInterval)interval
@@ -90,6 +92,7 @@
                                    selector:@selector(onTimer:)
                                    userInfo:userInfo
                                     repeats:repeats];
+    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:UITrackingRunLoopMode];
 }
 
 - (void) onTimer:(NSTimer *)timer{

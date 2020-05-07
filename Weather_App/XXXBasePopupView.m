@@ -34,6 +34,8 @@ static NSString * XXXBasePopupCustomDismissAnimationKey = @"custom.dismiss.anima
     
     BOOL _isWrapperViewController;
     XXXPopupLayoutType _wrapperLayoutType;
+    
+    CGRect _origContentViewFrame;
 }
 @property (nonatomic ,strong ,readwrite) UIView * viewControllerWrapperView;
 @end
@@ -254,6 +256,9 @@ static NSString * XXXBasePopupCustomDismissAnimationKey = @"custom.dismiss.anima
 }
 
 - (void) finishShow{
+    
+    _origContentViewFrame = self.contentView.frame;
+    
     _inAnimation = NO;
     if (self.bShowedCallback) {
         self.bShowedCallback();
@@ -265,6 +270,8 @@ static NSString * XXXBasePopupCustomDismissAnimationKey = @"custom.dismiss.anima
 
 - (void) finishDismiss{
     _inAnimation = NO;
+    // todo:将vc进行移除
+    //[self.viewControllerWrapperView.ownViewController removeFromParentViewController];
     if (self.bDismissedCallback) {
         self.bDismissedCallback();
     }
@@ -293,6 +300,110 @@ static NSString * XXXBasePopupCustomDismissAnimationKey = @"custom.dismiss.anima
 
 @end
 
+@implementation XXXBasePopupView(DynamicChangeContentViewSize)
+
+- (void) resetOrigFrame{
+
+    if (!CGRectEqualToRect(self.contentView.frame, _origContentViewFrame)) {
+        self.userInteractionEnabled = NO;
+        
+        BOOL isVertical = self.contentView.frame.origin.y != _origContentViewFrame.origin.y;
+        BOOL isHorizontal = self.contentView.frame.origin.x != _origContentViewFrame.origin.x;
+        BOOL isWidth = self.contentView.frame.size.width != _origContentViewFrame.size.width;
+        BOOL isHeight = self.contentView.frame.size.height != _origContentViewFrame.size.height;
+    
+        [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+            
+            if (isWidth) {
+                make.width.mas_equalTo(_origContentViewFrame.size.width);
+            }
+            if (isHeight) {
+                make.height.mas_equalTo(_origContentViewFrame.size.height);
+            }
+        }];
+        [UIView animateWithDuration:0.55 animations:^{
+            if (isVertical || isHorizontal) {
+                self.contentView.frame = _origContentViewFrame;
+            }
+            [self layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            self.userInteractionEnabled = YES;
+        }];
+    }
+}
+
+- (void) contentViewVerticalOffset:(CGFloat)offset{
+        
+    self.userInteractionEnabled = NO;
+    
+    CGRect contentViewFrame = self.contentView.frame;
+    contentViewFrame.origin.y -= offset;
+    
+    [UIView animateWithDuration:0.55 animations:^{
+        self.contentView.frame = contentViewFrame;
+    } completion:^(BOOL finished) {
+        self.userInteractionEnabled = YES;
+    }];
+}
+
+- (void) contentViewHorizontalOffset:(CGFloat)offset{
+    
+    self.userInteractionEnabled = NO;
+
+    CGRect contentViewFrame = self.contentView.frame;
+    contentViewFrame.origin.x -= offset;
+
+    [UIView animateWithDuration:0.55 animations:^{
+        self.contentView.frame = contentViewFrame;
+    } completion:^(BOOL finished) {
+        self.userInteractionEnabled = YES;
+    }];
+}
+
+- (void) contentViewWidthOffset:(CGFloat)offset{
+    
+    if (self.contentViewWidthType != XXXPopupContentSizeFixed) {
+        return;
+    }
+    /// 防止误触
+    self.userInteractionEnabled = NO;
+    CGRect contentViewFrame = self.contentView.frame;
+    contentViewFrame.size.width += offset;
+    CGFloat width = contentViewFrame.size.width;
+    
+    [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(width);
+    }];
+    [UIView animateWithDuration:0.55 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
+        [self layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        self.userInteractionEnabled = YES;
+    }];
+}
+
+- (void) contentViewHeightOffset:(CGFloat)offset{
+
+    if (self.contentViewHeightType != XXXPopupContentSizeFixed) {
+        return;
+    }
+    /// 防止误触
+    self.userInteractionEnabled = NO;
+    CGRect contentViewFrame = self.contentView.frame;
+    contentViewFrame.size.height += offset;
+    CGFloat height = contentViewFrame.size.height;
+    
+    [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(height);
+    }];
+    [UIView animateWithDuration:0.55 delay:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
+        [self layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        self.userInteractionEnabled = YES;
+    }];
+}
+
+@end
+
 @implementation XXXBasePopupView (Private)
 
 - (void)_addSubContentView:(XXXPopupLayoutType)layoutType
@@ -314,7 +425,7 @@ static NSString * XXXBasePopupCustomDismissAnimationKey = @"custom.dismiss.anima
             } else if (layoutType == XXXPopupLayoutTypeBottom) {
                 make.centerX.bottom.equalTo(self);
             } else if (layoutType == XXXPopupLayoutTypeCenter) {
-                make.center.equalTo(self);
+                make.centerX.centerY.equalTo(self);
             }
             
             if (widthType == XXXPopupContentSizeFixed) {

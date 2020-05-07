@@ -103,10 +103,8 @@
     BFTaskCompletionSource * tcs = [BFTaskCompletionSource taskCompletionSource];
     
     [[XXXGushiciRequest new] startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
-        
         [tcs setResult:request.gushici];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        
         [tcs setError:request.error];
     }];
     return tcs.task;
@@ -115,6 +113,7 @@
 - (BFTask<XXXGushiciWrap *> *) asyncFetchGushiciList2{
     
     __block BFTask * task;
+    
     [[XXXGushiciRequest new] startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
         task = [BFTask taskWithResult:request.gushici];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -122,4 +121,6 @@
     }];
     return task;
 }
+
+
 @end

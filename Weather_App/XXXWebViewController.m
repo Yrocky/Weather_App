@@ -75,6 +75,17 @@ MMSharePluginDelegate>
     }
 }
 
+- (NSString *)messageHandler:(MMScriptMessageHandler *)msgHandler didReceiveSyncMessage:(NSDictionary *)message{
+    NSString * name = message[@"action"];
+    if ([name isEqualToString: @"modif"]) {
+        return @"2222222";
+    }
+    if ([name isEqualToString:@"add"]) {
+        return @"33333";
+    }
+    
+    return @"";
+}
 #pragma mark - MMSharePluginDelegate
 
 - (void) sharePlugin:(MMSharePlugin *)plugin didShareSuccess:(id)info{

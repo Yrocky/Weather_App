@@ -17,5 +17,5 @@ pod 'JLRoutes', '~> 2.1'
 # Pods for Weather_App
 pod 'Nama-lite', '6.4.0'
 pod 'MMKV'
-
+pod 'TransitionKit', '~> 2.0.0'
 end

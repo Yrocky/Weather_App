@@ -13,6 +13,16 @@
 - (void) doSomthing:(int)foo{
     NSLog(@"A doSomthing %d",foo);
 }
+
+- (BOOL)isEqual:(id)other
+{
+    if (other == self) {
+        return YES;
+    } else if (![self isKindOfClass:[other class]]) {
+        return NO;
+    }
+    return NO;
+}
 @end
 
 @implementation MMOtherObject
