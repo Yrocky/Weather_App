@@ -23,6 +23,7 @@
 		5C392BA2226DDD5800C15344 /* MMConsolePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA1226DDD5800C15344 /* MMConsolePlugin.m */; };
 		5C392BA5226DDD9D00C15344 /* MMAccelerometerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA4226DDD9D00C15344 /* MMAccelerometerPlugin.m */; };
 		5C392BA8226EB04A00C15344 /* MMScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA7226EB04A00C15344 /* MMScriptMessageHandler.m */; };
+		5C3A5CAC2463DB04009ECCEF /* XXXLivingRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A5CAB2463DB04009ECCEF /* XXXLivingRoomViewController.m */; };
 		5C4734F323BAF2A200CF02B8 /* XXXElevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4734F223BAF2A200CF02B8 /* XXXElevator.m */; };
 		5C4734F723BB4CC900CF02B8 /* XXXAudioWaveformConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4734F623BB4CC900CF02B8 /* XXXAudioWaveformConfig.m */; };
 		5C4734FA23BB4D1A00CF02B8 /* XXXAudioWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4734F923BB4D1A00CF02B8 /* XXXAudioWaveformView.m */; };
@@ -349,6 +350,8 @@
 		5C392BA6226EB04A00C15344 /* MMScriptMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMScriptMessageHandler.h; sourceTree = "<group>"; };
 		5C392BA7226EB04A00C15344 /* MMScriptMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMScriptMessageHandler.m; sourceTree = "<group>"; };
 		5C392BA9226EB7B200C15344 /* MMEvaluateJaveScriptAble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMEvaluateJaveScriptAble.h; sourceTree = "<group>"; };
+		5C3A5CAA2463DB04009ECCEF /* XXXLivingRoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXLivingRoomViewController.h; sourceTree = "<group>"; };
+		5C3A5CAB2463DB04009ECCEF /* XXXLivingRoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXLivingRoomViewController.m; sourceTree = "<group>"; };
 		5C4734F123BAF2A200CF02B8 /* XXXElevator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXElevator.h; sourceTree = "<group>"; };
 		5C4734F223BAF2A200CF02B8 /* XXXElevator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXElevator.m; sourceTree = "<group>"; };
 		5C4734F523BB4CC900CF02B8 /* XXXAudioWaveformConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXAudioWaveformConfig.h; sourceTree = "<group>"; };
@@ -1997,6 +2000,8 @@
 				D7008DDB1FB180B500BD6EA0 /* MMNavigationController.m */,
 				D70629561F8B19AF00F52FCB /* RootViewController.h */,
 				D70629571F8B19AF00F52FCB /* RootViewController.m */,
+				5C3A5CAA2463DB04009ECCEF /* XXXLivingRoomViewController.h */,
+				5C3A5CAB2463DB04009ECCEF /* XXXLivingRoomViewController.m */,
 				7FDC6ECE1F46E35A00D94379 /* ViewController.h */,
 				7FDC6ECF1F46E35A00D94379 /* ViewController.m */,
 				7F414F491F67866200EC8E86 /* MMGiftEffectViewController.h */,
@@ -2696,6 +2701,7 @@
 				7F677F36218C1128009851B6 /* MMGradientView.m in Sources */,
 				7F590D7E1FA9A5D4006F7BF0 /* STPopupNavigationBar.m in Sources */,
 				D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */,
+				5C3A5CAC2463DB04009ECCEF /* XXXLivingRoomViewController.m in Sources */,
 				D715E6A01FA627D500CFBFF4 /* FDViewController.m in Sources */,
 				7FDC6ECA1F46E35A00D94379 /* main.m in Sources */,
 				7FA7261B1FFB89AF00C0F6F2 /* MMToolBar.m in Sources */,

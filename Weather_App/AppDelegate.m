@@ -46,14 +46,14 @@ extern CFAbsoluteTime StartTime;
         NSLog(@"Launched in %f sec", CFAbsoluteTimeGetCurrent() - StartTime);
     });
     
-    NSError *setCategoryErr = nil;
-    NSError *activationErr  = nil;
-    [[AVAudioSession sharedInstance]
-     setCategory: AVAudioSessionCategoryPlayback
-     error: &setCategoryErr];
-    [[AVAudioSession sharedInstance]
-     setActive: YES
-     error: &activationErr];
+//    NSError *setCategoryErr = nil;
+//    NSError *activationErr  = nil;
+//    [[AVAudioSession sharedInstance]
+//     setCategory: AVAudioSessionCategoryPlayback
+//     error: &setCategoryErr];
+//    [[AVAudioSession sharedInstance]
+//     setActive: YES
+//     error: &activationErr];
     
     [UINavigationBar appearance].backItem.leftItemsSupplementBackButton = YES;
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"back"];
