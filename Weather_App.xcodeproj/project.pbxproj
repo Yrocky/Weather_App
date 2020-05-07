@@ -24,6 +24,12 @@
 		5C392BA5226DDD9D00C15344 /* MMAccelerometerPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA4226DDD9D00C15344 /* MMAccelerometerPlugin.m */; };
 		5C392BA8226EB04A00C15344 /* MMScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C392BA7226EB04A00C15344 /* MMScriptMessageHandler.m */; };
 		5C3A5CAC2463DB04009ECCEF /* XXXLivingRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A5CAB2463DB04009ECCEF /* XXXLivingRoomViewController.m */; };
+		5C3A5CB12463F0B1009ECCEF /* RunwayView.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C3A5CB02463F0B1009ECCEF /* RunwayView.md */; };
+		5C3A5CB32463F100009ECCEF /* AsyncLoadImage.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C3A5CB22463F0FB009ECCEF /* AsyncLoadImage.md */; };
+		5C3A5CB52463F12B009ECCEF /* AttributesStringBuilder.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C3A5CB42463F12B009ECCEF /* AttributesStringBuilder.md */; };
+		5C3A5CB72463F165009ECCEF /* InfiniteScroll.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C3A5CB62463F165009ECCEF /* InfiniteScroll.md */; };
+		5C3A5CB92463F189009ECCEF /* AboutWebView.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C3A5CB82463F189009ECCEF /* AboutWebView.md */; };
+		5C3A5CBB2463F1A9009ECCEF /* ResponderChain.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C3A5CBA2463F1A9009ECCEF /* ResponderChain.md */; };
 		5C4734F323BAF2A200CF02B8 /* XXXElevator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4734F223BAF2A200CF02B8 /* XXXElevator.m */; };
 		5C4734F723BB4CC900CF02B8 /* XXXAudioWaveformConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4734F623BB4CC900CF02B8 /* XXXAudioWaveformConfig.m */; };
 		5C4734FA23BB4D1A00CF02B8 /* XXXAudioWaveformView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4734F923BB4D1A00CF02B8 /* XXXAudioWaveformView.m */; };
@@ -352,6 +358,12 @@
 		5C392BA9226EB7B200C15344 /* MMEvaluateJaveScriptAble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMEvaluateJaveScriptAble.h; sourceTree = "<group>"; };
 		5C3A5CAA2463DB04009ECCEF /* XXXLivingRoomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXLivingRoomViewController.h; sourceTree = "<group>"; };
 		5C3A5CAB2463DB04009ECCEF /* XXXLivingRoomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXLivingRoomViewController.m; sourceTree = "<group>"; };
+		5C3A5CB02463F0B1009ECCEF /* RunwayView.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = RunwayView.md; sourceTree = "<group>"; };
+		5C3A5CB22463F0FB009ECCEF /* AsyncLoadImage.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AsyncLoadImage.md; sourceTree = "<group>"; };
+		5C3A5CB42463F12B009ECCEF /* AttributesStringBuilder.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AttributesStringBuilder.md; sourceTree = "<group>"; };
+		5C3A5CB62463F165009ECCEF /* InfiniteScroll.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = InfiniteScroll.md; sourceTree = "<group>"; };
+		5C3A5CB82463F189009ECCEF /* AboutWebView.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AboutWebView.md; sourceTree = "<group>"; };
+		5C3A5CBA2463F1A9009ECCEF /* ResponderChain.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ResponderChain.md; sourceTree = "<group>"; };
 		5C4734F123BAF2A200CF02B8 /* XXXElevator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXElevator.h; sourceTree = "<group>"; };
 		5C4734F223BAF2A200CF02B8 /* XXXElevator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXElevator.m; sourceTree = "<group>"; };
 		5C4734F523BB4CC900CF02B8 /* XXXAudioWaveformConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXAudioWaveformConfig.h; sourceTree = "<group>"; };
@@ -953,6 +965,19 @@
 				5C392B2E226D89D200C15344 /* Accelerometer.js */,
 			);
 			path = plugins;
+			sourceTree = "<group>";
+		};
+		5C3A5CAF2463F0B1009ECCEF /* articles */ = {
+			isa = PBXGroup;
+			children = (
+				5C3A5CB02463F0B1009ECCEF /* RunwayView.md */,
+				5C3A5CB22463F0FB009ECCEF /* AsyncLoadImage.md */,
+				5C3A5CB42463F12B009ECCEF /* AttributesStringBuilder.md */,
+				5C3A5CB62463F165009ECCEF /* InfiniteScroll.md */,
+				5C3A5CB82463F189009ECCEF /* AboutWebView.md */,
+				5C3A5CBA2463F1A9009ECCEF /* ResponderChain.md */,
+			);
+			path = articles;
 			sourceTree = "<group>";
 		};
 		5C4734F423BB4CA200CF02B8 /* Kwai */ = {
@@ -1622,6 +1647,7 @@
 			isa = PBXGroup;
 			children = (
 				5C4E3ADE22532B74001499AF /* README.md */,
+				5C3A5CAF2463F0B1009ECCEF /* articles */,
 				7FDC6EC71F46E35A00D94379 /* Weather_App */,
 				5C60D4F322784347003AE46C /* Weather_AppTests */,
 				5C60D501227843F2003AE46C /* Weather_AppTests */,
@@ -2308,17 +2334,21 @@
 				D72CE20A226E10B6005D187A /* testwebview.html in Resources */,
 				5C392B2F226D89D200C15344 /* Console.js in Resources */,
 				5CE42B2A228E880400C236FC /* ResumeCompanyCell.xib in Resources */,
+				5C3A5CB12463F0B1009ECCEF /* RunwayView.md in Resources */,
 				D7A595BF1FAACFED000C59FE /* rootTemplate.html in Resources */,
 				5C392B31226D89D200C15344 /* Accelerometer.js in Resources */,
 				7F53C0EC2126740600567D74 /* smile_face.xml in Resources */,
 				5CE42B12228E871600C236FC /* ResumePortraitCell.xib in Resources */,
 				7FE705BB1FBD6A75009FF3A7 /* SomeCustomView.xib in Resources */,
 				7F53C0F32126740600567D74 /* v520.xml in Resources */,
+				5C3A5CB92463F189009ECCEF /* AboutWebView.md in Resources */,
 				5CE42B1D228E876200C236FC /* ResumProjectCell.xib in Resources */,
 				7F53C0EE2126740600567D74 /* heart.xml in Resources */,
+				5C3A5CB32463F100009ECCEF /* AsyncLoadImage.md in Resources */,
 				5CE42B22228E879B00C236FC /* ResumeInfoCell.xib in Resources */,
 				7F53C0EF2126740600567D74 /* v3344.xml in Resources */,
 				5C4E3ADF22532B74001499AF /* README.md in Resources */,
+				5C3A5CBB2463F1A9009ECCEF /* ResponderChain.md in Resources */,
 				7F53C0F22126740600567D74 /* v.xml in Resources */,
 				5CE42B792292459000C236FC /* ResumeDescriptionCell.xib in Resources */,
 				7F85935A1FDE54E500E6AFFC /* MMXibCustomView.xib in Resources */,
@@ -2333,6 +2363,8 @@
 				7FDC6ED31F46E35A00D94379 /* Main.storyboard in Resources */,
 				7FE705C31FBE8DB5009FF3A7 /* MMLabel.xib in Resources */,
 				D7A595C01FAACFED000C59FE /* singleItemTemplate.html in Resources */,
+				5C3A5CB72463F165009ECCEF /* InfiniteScroll.md in Resources */,
+				5C3A5CB52463F12B009ECCEF /* AttributesStringBuilder.md in Resources */,
 				7F53C0F12126740600567D74 /* double_heart.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
