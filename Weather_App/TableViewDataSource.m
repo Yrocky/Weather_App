@@ -8,6 +8,16 @@
 
 #import "TableViewDataSource.h"
 
+@interface ProxyDataSource : NSObject<DataSource>{
+    id<DataSource> _innerDataSource;
+}
+
+@property (nonatomic ,strong ,readonly) id<DataSource> innerDataSource;
+
+- (instancetype) initWithDataSource:(id<DataSource>)innerDataSource;
+
+@end
+
 @interface TableViewDataSource ()
 
 @property (nonatomic ,strong) ProxyDataSource * dataSource;

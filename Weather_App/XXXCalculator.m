@@ -63,19 +63,19 @@
             [stack push:add];
         }
         else if ([operator isEqualToString:@"-"]) {
-            XXXSubOperatorExpression * add = [XXXSubOperatorExpression new];
-            [add left:left right:right];
-            [stack push:add];
+            XXXSubOperatorExpression * sub = [XXXSubOperatorExpression new];
+            [sub left:left right:right];
+            [stack push:sub];
         }
         else if ([operator isEqualToString:@"*"]) {
-            XXXMulOperatorExpression * add = [XXXMulOperatorExpression new];
-            [add left:left right:right];
-            [stack push:add];
+            XXXMulOperatorExpression * mul = [XXXMulOperatorExpression new];
+            [mul left:left right:right];
+            [stack push:mul];
         }
         else if ([operator isEqualToString:@"/"]) {
-            XXXDivOperatorExpression * add = [XXXDivOperatorExpression new];
-            [add left:left right:right];
-            [stack push:add];
+            XXXDivOperatorExpression * div = [XXXDivOperatorExpression new];
+            [div left:left right:right];
+            [stack push:div];
         }
     }
     float value = [[stack pop] interpretInContext:_context];

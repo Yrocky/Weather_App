@@ -21,6 +21,9 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - IGListDiffKit (4.0.0)
+  - IGListKit (4.0.0):
+    - IGListDiffKit (= 4.0.0)
   - JLRoutes (2.1)
   - Masonry (1.1.0)
   - MMKV (1.0.23)
@@ -46,6 +49,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - AppLord
   - Bolts
+  - IGListKit (~> 4.0.0)
   - JLRoutes (~> 2.1)
   - Masonry (~> 1.1.0)
   - MMKV
@@ -57,7 +61,7 @@ DEPENDENCIES:
   - YTKNetwork (~> 2.0.4)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - AppLord
     - Bolts
@@ -70,11 +74,16 @@ SPEC REPOS:
     - SDWebImage
     - TransitionKit
     - YTKNetwork
+  trunk:
+    - IGListDiffKit
+    - IGListKit
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AppLord: b276ec9fbe09639839b66d13ad3cb5835eedb8bb
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
+  IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
   JLRoutes: d755245322b94227662ea3e43492fdca94e05c5b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MMKV: 031ae51aedc0af1b250922f7ed8a6b6ee2f94c4c
@@ -85,6 +94,6 @@ SPEC CHECKSUMS:
   TransitionKit: c150629869b0eab9d270f914aad2d1a088a8c19d
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: 34cc0f58a9bd0b964f3affc39303372b33c21afb
+PODFILE CHECKSUM: 110fbe6fd7707cec0decaaba5de1f212c6110f17
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.9.1

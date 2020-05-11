@@ -14,6 +14,7 @@ pod 'Masonry', '~> 1.1.0'
 pod 'AFNetworking', '~> 3.1.0'
 pod 'SDWebImage', '~> 4.4.7'
 pod 'JLRoutes', '~> 2.1'
+pod 'IGListKit', '~> 4.0.0'
 # Pods for Weather_App
 pod 'Nama-lite', '6.4.0'
 pod 'MMKV'

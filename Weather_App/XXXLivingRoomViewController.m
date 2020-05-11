@@ -9,6 +9,7 @@
 #import "XXXLivingRoomViewController.h"
 #import "Masonry.h"
 #import <objc/runtime.h>
+#import <IGListDiffKit/IGListDiffKit.h>
 
 typedef struct XXXEventWrap{
     NSString *name;
@@ -43,6 +44,12 @@ NSValueFromEventAndMethod(NSString * name, SEL method){
     return NSValueFromEventWrap(XXXEventWrapMake(name, method));
 };
 
+@interface XXXDiffObject : NSObject<IGListDiffable>
+@property (nonatomic ,copy) NSString * name;
+@property (nonatomic ,assign) NSInteger age;
+
++ (instancetype) object:(NSString *)name age:(NSInteger)age;
+@end
 @interface XXXEventProxy : NSObject{
     NSSet<NSValue *> * _eventStrategy;
 }
@@ -62,13 +69,13 @@ NSValueFromEventAndMethod(NSString * name, SEL method){
 
 @end
 
-@interface XXXLivingRoomEvnetProxy : XXXEventProxy
+@interface XXXLivingRoomEventProxy : XXXEventProxy
 - (instancetype) initWithController:(__kindof UIViewController *)controller;
 @end
 
 @interface XXXLivingRoomViewController ()
 
-@property (nonatomic ,strong) XXXLivingRoomEvnetProxy * eventProxy;
+@property (nonatomic ,strong) XXXLivingRoomEventProxy * eventProxy;
 @property (nonatomic ,strong) XXXContentView * oneContentView;
 @end
 
@@ -79,7 +86,7 @@ NSValueFromEventAndMethod(NSString * name, SEL method){
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.eventProxy = [[XXXLivingRoomEvnetProxy alloc] initWithController:self];
+    self.eventProxy = [[XXXLivingRoomEventProxy alloc] initWithController:self];
     
     self.oneContentView = [XXXContentView new];
     [self.view addSubview:self.oneContentView];
@@ -216,10 +223,10 @@ NSValueFromEventAndMethod(NSString * name, SEL method){
 }
 @end
 
-@interface XXXLivingRoomEvnetProxy ()
+@interface XXXLivingRoomEventProxy ()
 @property (nonatomic ,weak) XXXLivingRoomViewController * controller;
 @end
-@implementation XXXLivingRoomEvnetProxy
+@implementation XXXLivingRoomEventProxy
 
 -(instancetype)initWithController:(__kindof UIViewController *)controller{
     self = [super init];
@@ -250,5 +257,53 @@ NSValueFromEventAndMethod(NSString * name, SEL method){
 
 - (void) onSubViewButton2Click:(NSDictionary *)info{
     NSLog(@"onSubViewButton2Click:%@",info);
+    
+    XXXDiffObject * one = [XXXDiffObject object:@"aa" age:10];
+    XXXDiffObject * two = [XXXDiffObject object:@"b" age:20];
+    XXXDiffObject * three = [XXXDiffObject object:@"cc" age:30];
+    XXXDiffObject * four = [XXXDiffObject object:@"four" age:40];
+    
+    XXXDiffObject * nOne = [XXXDiffObject object:@"a" age:100];
+    XXXDiffObject * nTwo = [XXXDiffObject object:@"b" age:200];
+    XXXDiffObject * nThree = [XXXDiffObject object:@"c" age:300];
+    XXXDiffObject * nFour = [XXXDiffObject object:@"nfour" age:400];
+    if (0) {
+        NSArray * old = @[@1,@22,@33,@4,@55];
+        NSArray * new = @[@11,@3,@4,@6];
+        IGListIndexSetResult * result = IGListDiff(old, new, IGListDiffPointerPersonality);
+    }
+    {
+        NSArray * old = @[one,two,three];
+        NSArray * new = @[nOne,nThree,nTwo];
+        IGListIndexSetResult * result = IGListDiff(old, new, IGListDiffEquality);
+        NSLog(@"result:%@",result);
+    }
 }
+@end
+
+@implementation XXXDiffObject
+
+#pragma mark - <IGListDiffable>
++ (instancetype) object:(NSString *)name age:(NSInteger)age{
+    XXXDiffObject * obj = [XXXDiffObject new];
+    obj.name = name;
+    obj.age = age;
+    return obj;
+}
+
+- (id<NSObject>)diffIdentifier {
+    return self.name;
+}
+
+- (BOOL)isEqualToDiffableObject:(id<IGListDiffable>)object {
+    BOOL isSameClass = [(NSObject *)object isKindOfClass:XXXDiffObject.class];
+    if (!isSameClass) {
+        return NO;
+    }
+    BOOL isDiffIdentifierEqual = [self.diffIdentifier isEqual:object.diffIdentifier];
+    BOOL isSameAge = self.age == [(XXXDiffObject *)object age];
+    
+    return isDiffIdentifierEqual && isSameAge;
+}
+
 @end
