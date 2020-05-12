@@ -63,6 +63,8 @@
 		5C6EA3932276A8CC00EA3D0F /* MMToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA3922276A8CC00EA3D0F /* MMToken.m */; };
 		5C6EA3962276A8EE00EA3D0F /* MMInterpreter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA3952276A8EE00EA3D0F /* MMInterpreter.m */; };
 		5C6EA39A2276C4F000EA3D0F /* MMParserr.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EA3992276C4EF00EA3D0F /* MMParserr.m */; };
+		5C70C62E24694A3400CD6AB6 /* XXXMakeItEaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C70C62D24694A3400CD6AB6 /* XXXMakeItEaseViewController.m */; };
+		5C70C637246AAA5200CD6AB6 /* HomeModule.md in Resources */ = {isa = PBXBuildFile; fileRef = 5C70C636246AAA5200CD6AB6 /* HomeModule.md */; };
 		5C9A3BD72379383E00CF7B45 /* FaceUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BD62379383E00CF7B45 /* FaceUViewController.m */; };
 		5C9A3BF8237938C200CF7B45 /* KXBeautyMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BDD237938C200CF7B45 /* KXBeautyMainViewController.m */; };
 		5C9A3BF9237938C200CF7B45 /* KXFaceBeautyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C9A3BDF237938C200CF7B45 /* KXFaceBeautyModel.m */; };
@@ -429,6 +431,9 @@
 		5C6EA3972276AB4700EA3D0F /* MMObjDescribeAble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMObjDescribeAble.h; sourceTree = "<group>"; };
 		5C6EA3982276C4EF00EA3D0F /* MMParserr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMParserr.h; sourceTree = "<group>"; };
 		5C6EA3992276C4EF00EA3D0F /* MMParserr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMParserr.m; sourceTree = "<group>"; };
+		5C70C62C24694A3400CD6AB6 /* XXXMakeItEaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXMakeItEaseViewController.h; sourceTree = "<group>"; };
+		5C70C62D24694A3400CD6AB6 /* XXXMakeItEaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXMakeItEaseViewController.m; sourceTree = "<group>"; };
+		5C70C636246AAA5200CD6AB6 /* HomeModule.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = HomeModule.md; sourceTree = "<group>"; };
 		5C9A3BD52379383E00CF7B45 /* FaceUViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceUViewController.h; sourceTree = "<group>"; };
 		5C9A3BD62379383E00CF7B45 /* FaceUViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceUViewController.m; sourceTree = "<group>"; };
 		5C9A3BDA237938C200CF7B45 /* KXBeautyMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KXBeautyMainViewController.h; sourceTree = "<group>"; };
@@ -976,6 +981,7 @@
 				5C3A5CB62463F165009ECCEF /* InfiniteScroll.md */,
 				5C3A5CB82463F189009ECCEF /* AboutWebView.md */,
 				5C3A5CBA2463F1A9009ECCEF /* ResponderChain.md */,
+				5C70C636246AAA5200CD6AB6 /* HomeModule.md */,
 			);
 			path = articles;
 			sourceTree = "<group>";
@@ -2026,6 +2032,8 @@
 				D7008DDB1FB180B500BD6EA0 /* MMNavigationController.m */,
 				D70629561F8B19AF00F52FCB /* RootViewController.h */,
 				D70629571F8B19AF00F52FCB /* RootViewController.m */,
+				5C70C62C24694A3400CD6AB6 /* XXXMakeItEaseViewController.h */,
+				5C70C62D24694A3400CD6AB6 /* XXXMakeItEaseViewController.m */,
 				5C3A5CAA2463DB04009ECCEF /* XXXLivingRoomViewController.h */,
 				5C3A5CAB2463DB04009ECCEF /* XXXLivingRoomViewController.m */,
 				7FDC6ECE1F46E35A00D94379 /* ViewController.h */,
@@ -2342,6 +2350,7 @@
 				7FE705BB1FBD6A75009FF3A7 /* SomeCustomView.xib in Resources */,
 				7F53C0F32126740600567D74 /* v520.xml in Resources */,
 				5C3A5CB92463F189009ECCEF /* AboutWebView.md in Resources */,
+				5C70C637246AAA5200CD6AB6 /* HomeModule.md in Resources */,
 				5CE42B1D228E876200C236FC /* ResumProjectCell.xib in Resources */,
 				7F53C0EE2126740600567D74 /* heart.xml in Resources */,
 				5C3A5CB32463F100009ECCEF /* AsyncLoadImage.md in Resources */,
@@ -2670,6 +2679,7 @@
 				7F9810172122AE7C0004C638 /* MMSingleton.m in Sources */,
 				5C6EA38C2276A89900EA3D0F /* MMUnaryOpAST.m in Sources */,
 				7F63BBC02072036F0084ABC8 /* LunarCore.m in Sources */,
+				5C70C62E24694A3400CD6AB6 /* XXXMakeItEaseViewController.m in Sources */,
 				5C48AB0C2296377A00535980 /* NoticeScrollViewController.m in Sources */,
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
 				5CA3EDA9237A80CB002D028E /* KXMoreBeautyView.m in Sources */,

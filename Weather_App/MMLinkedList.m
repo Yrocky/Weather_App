@@ -14,7 +14,7 @@
 @implementation MMLinkedList
 
 - (void)dealloc{
-    NSLog(@"linked list %@ dealloc",self);
+//    NSLog(@"linked list %@ dealloc",self);
     [self removeAll];
     _head = nil;
     _tail = nil;
@@ -388,7 +388,7 @@
         NSLog(@"index-%ld : %@",(long)index,[self nodeAtIndex:index]);
         [string appendFormat:@"%@ -- ",[self valueAtIndex:index]];
     }
-    NSLog(@"\n+++++++++++++++++++\nself.head:%@  self.tail:%@",self.head,self.tail);
+    NSLog(@"\n\nself.head:%@  \nself.tail:%@",self.head,self.tail);
     return [NSString stringWithFormat:@"%@", string];
 }
 @end

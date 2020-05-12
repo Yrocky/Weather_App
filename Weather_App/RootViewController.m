@@ -103,6 +103,18 @@
         [s addCellModel:c];
         
         [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"0ff39" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/XXXMakeItEaseViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
+        [s addCellModel:({
             [[HSTitleCellModel alloc] initWithTitle:@"responder chain" actionBlock:^(HSTitleCellModel *model) {
                         
                 [XXXRoute.core routeURL:[NSURL URLWithString:({

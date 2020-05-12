@@ -24,3 +24,9 @@
 * [基于Responder Chain的事件传递](https://github.com/Yrocky/Weather_App/blob/master/articles/ResponderChain.md)
 
 基于`Responder Chain`来解决开发中多UI层级交互所带来的麻烦，介绍了项目中所使用的方案，然后参考[casatwy](https://casatwy.com/responder_chain_communication.html)的方案完善一些细节。
+
+* [一个解耦首页方案](https://github.com/Yrocky/Weather_App/blob/master/articles/HomeModule.md)
+
+像是首页有多种分类要展示，每一个分类中有有多种样式，并且分类之间可能有共用样式，这样的界面展示方式现在很普遍，新闻资讯中的首页、视频客户端中的首页以及直播软件中首页差不多都是这样的类型。根据在项目中总结的module-component方案，整理出来该解耦方案。
+
+

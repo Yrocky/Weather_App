@@ -14,7 +14,7 @@
 @implementation MMNode
 
 - (void)dealloc{
-    NSLog(@"【%@ dealloc】",self);
+//    NSLog(@"【%@ dealloc】",self);
 }
 
 + (instancetype) nodeWithValue:(id)value{
