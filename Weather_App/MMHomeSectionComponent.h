@@ -7,23 +7,12 @@
 //
 
 #import "MMHomeComponent.h"
+#import <IGListKit/IGListSectionController.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class MMHomeHeaderFooterComponent;
-@protocol MMHomeSectionComponentAble;
-@protocol MMHomeHeaderFooterComponentAble;
-@interface MMHomeSectionComponent : MMHomeComponent<MMHomeSectionComponentAble>
+@interface MMHomeSectionComponent : IGListSectionController
 
-@property (nonatomic, strong, nullable) MMHomeHeaderFooterComponent * headerComponent;
-@property (nonatomic, strong, nullable) MMHomeHeaderFooterComponent * footerComponent;
-
-@property (assign, nonatomic) CGFloat minimumLineSpacing;
-@property (nonatomic, assign) CGFloat minimumInteritemSpacing;
-
-@property (assign, nonatomic) UIEdgeInsets inset;
-
-@property (nonatomic ,assign) NSInteger section;
 
 @end
 

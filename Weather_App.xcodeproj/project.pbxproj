@@ -459,6 +459,7 @@
 		5C70C64F246BE63800CD6AB6 /* MMHomeComponent+CollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MMHomeComponent+CollectionView.m"; sourceTree = "<group>"; };
 		5C70C651246BF76D00CD6AB6 /* MMHomeModule+CollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MMHomeModule+CollectionView.h"; sourceTree = "<group>"; };
 		5C70C652246BF76D00CD6AB6 /* MMHomeModule+CollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MMHomeModule+CollectionView.m"; sourceTree = "<group>"; };
+		5C70C654246C0F4200CD6AB6 /* MMHomeComponentAble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMHomeComponentAble.h; sourceTree = "<group>"; };
 		5C9A3BD52379383E00CF7B45 /* FaceUViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceUViewController.h; sourceTree = "<group>"; };
 		5C9A3BD62379383E00CF7B45 /* FaceUViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceUViewController.m; sourceTree = "<group>"; };
 		5C9A3BDA237938C200CF7B45 /* KXBeautyMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KXBeautyMainViewController.h; sourceTree = "<group>"; };
@@ -1154,6 +1155,7 @@
 				5C70C652246BF76D00CD6AB6 /* MMHomeModule+CollectionView.m */,
 				5C70C642246AC82300CD6AB6 /* MMHomeComponentProxy.h */,
 				5C70C643246AC82300CD6AB6 /* MMHomeComponentProxy.m */,
+				5C70C654246C0F4200CD6AB6 /* MMHomeComponentAble.h */,
 				5C70C63C246AABF900CD6AB6 /* MMHomeComponent.h */,
 				5C70C63D246AABF900CD6AB6 /* MMHomeComponent.m */,
 				5C70C64E246BE63800CD6AB6 /* MMHomeComponent+CollectionView.h */,

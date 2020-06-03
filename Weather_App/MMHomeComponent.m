@@ -10,42 +10,35 @@
 #import "MMHomeComponent+CollectionView.h"
 #import "MMHomeComponent+Private.h"
 
-const CGFloat MMComponentAutomaticDimension = CGFLOAT_MAX;
-
 @implementation MMHomeComponent
 
 - (MMHomeComponent *)currentComponent{
     return self;
 }
 
-#pragma mark - api
+#pragma mark - IGListSectionController override
 
-- (NSInteger)item {
-    return 0;//[self.superComponent firstItemOfSubComponent:self];
+- (NSInteger)numberOfItems{
+    return 1;
 }
 
-- (NSInteger)section {
-    return 0;//[self.superComponent firstSectionOfSubComponent:self];
+- (CGSize)sizeForItemAtIndex:(NSInteger)index{
+    CGFloat width = self.collectionContext.containerSize.width;
+    width -= (self.inset.left + self.inset.right);
+    CGFloat height = 0;
+    return CGSizeMake(width,height);
 }
 
-#pragma mark - UICollectionViewDataSource
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 0;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 0;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSAssert(false, @"MUST override!");
+- (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
+    
     return nil;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    NSAssert(false, @"MUST override!");
-    return nil;
+- (void)didUpdateToObject:(id)object{
+}
+
+- (void)didSelectItemAtIndex:(NSInteger)index{
+    
 }
 
 @end

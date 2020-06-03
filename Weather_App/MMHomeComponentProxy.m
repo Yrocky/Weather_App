@@ -47,41 +47,41 @@ static BOOL MM_isInterceptedSelector(SEL sel) {
     __weak MMHomeComponent *_currentComponent;
 }
 
-- (instancetype) initWithComponent:(MMHomeComponent *)comp{
-    if (self) {
-        _currentComponent = comp;
-        if (_currentComponent.collectionView.dataSource) {
-            _currentComponent.collectionView.dataSource = nil;
-            _currentComponent.collectionView.dataSource = self;
-        }
-        if (_currentComponent.collectionView.delegate) {
-            _currentComponent.collectionView.delegate = nil;
-            _currentComponent.collectionView.delegate = self;
-        }
-        return self;
-    }
-    return self;
-}
-- (instancetype)initWithCollectionViewTarget:(nullable id<UICollectionViewDelegate>)collectionViewTarget
-                            scrollViewTarget:(nullable id<UIScrollViewDelegate>)scrollViewTarget
-                                   component:(MMHomeComponent *)comp{
-//    self = [super init];
-    if (self) {
-        _currentComponent = comp;
-        if (_currentComponent.collectionView.dataSource) {
-            _currentComponent.collectionView.dataSource = nil;
-            _currentComponent.collectionView.dataSource = self;
-        }
-        if (_currentComponent.collectionView.delegate) {
-            _currentComponent.collectionView.delegate = nil;
-            _currentComponent.collectionView.delegate = self;
-        }
-        _collectionViewTarget = collectionViewTarget;
-        _scrollViewTarget = scrollViewTarget;
-        return self;
-    }
-    return self;
-}
+//- (instancetype) initWithComponent:(MMHomeComponent *)comp{
+//    if (self) {
+//        _currentComponent = comp;
+//        if (_currentComponent.collectionView.dataSource) {
+//            _currentComponent.collectionView.dataSource = nil;
+//            _currentComponent.collectionView.dataSource = self;
+//        }
+//        if (_currentComponent.collectionView.delegate) {
+//            _currentComponent.collectionView.delegate = nil;
+//            _currentComponent.collectionView.delegate = self;
+//        }
+//        return self;
+//    }
+//    return self;
+//}
+//- (instancetype)initWithCollectionViewTarget:(nullable id<UICollectionViewDelegate>)collectionViewTarget
+//                            scrollViewTarget:(nullable id<UIScrollViewDelegate>)scrollViewTarget
+//                                   component:(MMHomeComponent *)comp{
+////    self = [super init];
+//    if (self) {
+//        _currentComponent = comp;
+//        if (_currentComponent.collectionView.dataSource) {
+//            _currentComponent.collectionView.dataSource = nil;
+//            _currentComponent.collectionView.dataSource = self;
+//        }
+//        if (_currentComponent.collectionView.delegate) {
+//            _currentComponent.collectionView.delegate = nil;
+//            _currentComponent.collectionView.delegate = self;
+//        }
+//        _collectionViewTarget = collectionViewTarget;
+//        _scrollViewTarget = scrollViewTarget;
+//        return self;
+//    }
+//    return self;
+//}
 
 
 //- (instancetype)initWithCollectionViewTarget:(nullable id<UICollectionViewDelegate>)collectionViewTarget

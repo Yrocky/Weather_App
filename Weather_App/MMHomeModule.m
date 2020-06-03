@@ -91,7 +91,7 @@
     }
 }
 
-- (id<MMHomeComponentAble>) compontnetAtIndex:(NSInteger)index{
+- (id<MMHomeComponentAble>) componentAtIndex:(NSInteger)index{
     id<MMHomeComponentAble> compontent;
     @synchronized (_innerComponents) {
         if (index < _innerComponents.count) {

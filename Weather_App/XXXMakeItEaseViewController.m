@@ -41,6 +41,7 @@
     [self makeQueueWithTwoStack];
     [self throughRotateArrayFindMinValue];
     [self makeFibonacci];
+    [self exchange];
 }
 
 // NO.4
@@ -251,6 +252,25 @@
 - (NSInteger) fib3:(NSInteger)n{
     
     return 1;
+}
+
+- (void) exchange{
+    MakeItEasyBegin
+    NSMutableArray * tmp = @[@3,@10,@1,@8,@76,@5,@19,@32,@17,@15].mutableCopy;
+    // 将一个数组中的元素按照基数在前，偶数在后进行排列
+    NSInteger index_1 = 0;
+    NSInteger index_2 = tmp.count - 1;
+    
+    for (NSInteger i = 0; i < tmp.count; i ++) {
+        NSInteger value_1 = [tmp[index_1] integerValue];
+        NSInteger value_2 = [tmp[index_2] integerValue];
+        if (value_1 / 2 == 0 && value_2 / 2 == 1) {
+            // 前面为偶数、后面为奇数的时候，换位置
+            [tmp exchangeObjectAtIndex:value_1 withObjectAtIndex:value_2];
+        }
+    }
+    NSLog(@"exchange :%@",tmp);
+    MakeItEasyEnd
 }
 @end
 

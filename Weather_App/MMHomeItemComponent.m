@@ -35,24 +35,24 @@
     return 1;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    CGSize size = self.size;
-    BOOL autoWidth = size.width == MMComponentAutomaticDimension;
-    BOOL autoHeight = size.height == MMComponentAutomaticDimension;
-    UIEdgeInsets inset = UIEdgeInsetsZero;
-    if (autoWidth || autoHeight) {
-//        inset = [self.rootComponent collectionView:collectionView
-//                                            layout:collectionViewLayout
-//                            insetForSectionAtIndex:indexPath.section];
-    }
-    if (autoWidth) {
-        size.width = MAX(collectionView.frame.size.width - inset.left - inset.right, 0);
-    }
-    if (autoHeight) {
-        size.height = MAX(collectionView.frame.size.height - inset.top - inset.bottom, 0);
-    }
-    return size;
-}
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    CGSize size = self.size;
+//    BOOL autoWidth = size.width == MMComponentAutomaticDimension;
+//    BOOL autoHeight = size.height == MMComponentAutomaticDimension;
+//    UIEdgeInsets inset = UIEdgeInsetsZero;
+//    if (autoWidth || autoHeight) {
+////        inset = [self.rootComponent collectionView:collectionView
+////                                            layout:collectionViewLayout
+////                            insetForSectionAtIndex:indexPath.section];
+//    }
+//    if (autoWidth) {
+//        size.width = MAX(collectionView.frame.size.width - inset.left - inset.right, 0);
+//    }
+//    if (autoHeight) {
+//        size.height = MAX(collectionView.frame.size.height - inset.top - inset.bottom, 0);
+//    }
+//    return size;
+//}
 
 @end

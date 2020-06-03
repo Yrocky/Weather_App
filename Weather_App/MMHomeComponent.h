@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import <IGListKit/IGListSectionController.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,20 +28,8 @@ UICollectionViewDataSource>
 - (void) clear;
 @end
 
-@interface MMHomeComponent : NSObject<MMHomeComponentAble>
+@interface MMHomeComponent : IGListSectionController<MMHomeComponentAble>
 
-@property (readonly, weak, nonatomic, nullable) UICollectionView *collectionView;
-
-@property (nonatomic ,assign) BOOL cacheEnable;
-
-- (void)prepareCollectionView NS_REQUIRES_SUPER;
-
-/// comp在collectionView中的位置
-@property (nonatomic ,assign) NSInteger section;
-@property (nonatomic ,assign) NSInteger item;
-
-- (NSInteger)firstItemOfSubComponent:(id<MMHomeComponentAble>)subComp;
-- (NSInteger)firstSectionOfSubComponent:(id<MMHomeComponentAble>)subComp;
 
 @end
 

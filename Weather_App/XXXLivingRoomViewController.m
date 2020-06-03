@@ -124,6 +124,15 @@ NSValueFromEventAndMethod(NSString * name, SEL method){
     }
     return self;
 }
+
+- (void)routerEventWithName:(NSString *)eventName userInfo:(NSDictionary *)userInfo{
+    NSMutableDictionary * tmp = [userInfo mutableCopy];
+    // 如果中间视图需要追加数据，可以重写方法，识别对应的event然后修改userInfo
+    if ([eventName isEqualToString:@"sub-view-button2-click"]) {
+        tmp[@"addKey"] = @"addValue";
+    }
+    [[self nextResponder] routerEventWithName:eventName userInfo:tmp.copy];
+}
 @end
 
 @implementation XXXSubView
@@ -272,7 +281,7 @@ NSValueFromEventAndMethod(NSString * name, SEL method){
         NSArray * new = @[@11,@3,@4,@6];
         IGListIndexSetResult * result = IGListDiff(old, new, IGListDiffPointerPersonality);
     }
-    {
+    if (0){
         NSArray * old = @[one,two,three];
         NSArray * new = @[nOne,nThree,nTwo];
         IGListIndexSetResult * result = IGListDiff(old, new, IGListDiffEquality);

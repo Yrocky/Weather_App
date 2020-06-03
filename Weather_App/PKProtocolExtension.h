@@ -50,11 +50,13 @@ protocol $protocol; \
 _pk_extension_load(@protocol($protocol), $container_class.class); \
 } \
 
-// 这里`_pk_get_container_class`宏的作用是根据协议来获取对应的类，接受两个参数，一个是协议名，一个是
+// 这里`_pk_get_container_class`宏的作用是根据协议来获取对应的类，接受两个参数，一个是协议名，一个是计数器，每调用一次就增加1
 // 这里的关键是根据协议找到对应的类！！！
 // Get container class name by counter
 #define _pk_get_container_class($protocol) _pk_get_container_class_imp($protocol, __COUNTER__)
+
 #define _pk_get_container_class_imp($protocol, $counter) _pk_get_container_class_imp_concat(__PKContainer_, $protocol, $counter)
+
 // 这个宏的作用是，使用`##`将三个参数进行连接，结果为:`ab_c`
 // 这里的a、b、c分别为：__PKContainer_、ProtocolName、__COUNTER__，
 #define _pk_get_container_class_imp_concat($a, $b, $c) $a ## $b ## _ ## $c
@@ -62,4 +64,8 @@ _pk_extension_load(@protocol($protocol), $container_class.class); \
 
 void _pk_extension_load(Protocol *protocol, Class containerClass);
 
+//#define PKAnnotationDATA __attribute((used, section("__DATA,protocol_extension")))
+//
+//#define PKAnnotation(__className__) \
+//char * kPKAnnotation_##__className__ PKAnnotationDATA = "CLS:"#__className__"";
 

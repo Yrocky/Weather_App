@@ -28,11 +28,42 @@
 }
 @end
 
+@protocol XXXMoveable <MMMoveable>
+
+- (void) run;
+@end
+
+@defs(XXXMoveable)
+
+- (void)run{
+    NSLog(@"%@ run",self.name);
+}
+- (NSString *)name {
+    return @"XXXMoveable";
+}
+
+@end
+
+@protocol OtherProtocol <NSObject>
+
+- (void) exp;
+@end
+
+@defs(OtherProtocol)
+- (void)exp{
+    NSLog(@"exp");
+}
+@end
 @interface MMRocky : NSObject<MMMoveable>
 
 @end
 
+//PKAnnotation(MMRocky)
+
 @implementation MMRocky
+- (void) move{
+    NSLog(@"imp %@ can moveable",self.name);
+}
 
 - (NSString *)name{
     return @"rocky";
@@ -136,6 +167,18 @@ typedef struct {
     
     MMRocky * rocky = [MMRocky new];
     [rocky move];
+    NSObject * obj = [NSObject new];
+    NSString * str = @"string";
+    NSArray * array = @[rocky, obj,str];
+    
+    for (NSInteger i = 0; i < array.count; i ++) {
+        NSObject * o = array[i];
+        Class class = o.class;
+        if (!class_conformsToProtocol(class, NSProtocolFromString(@"MMMoveable"))) {
+            continue;
+        }
+        NSLog(@"class:%@",o);
+    }
     
     self.observer = [MMRunloopObserver new];
     [self.observer start];

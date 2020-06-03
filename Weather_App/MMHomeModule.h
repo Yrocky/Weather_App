@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MMHomeComponent.h"
+#import "MMHomeSectionComponent.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -45,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) replaceComponent:(id<MMHomeComponentAble>)component atIndex:(NSInteger)index;
 
-- (id<MMHomeComponentAble>) compontnetAtIndex:(NSInteger)index;
+- (id<MMHomeComponentAble>) componentAtIndex:(NSInteger)index;
 
 - (NSArray<id<MMHomeComponentAble>> *) components;
 

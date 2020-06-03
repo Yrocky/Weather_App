@@ -36,11 +36,13 @@
         make.height.equalTo(@200);
     }];
     
-    [[XXXGushiciRequest new] startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
-        NSLog(@"origin gushici:%@",request.gushici);
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSLog(@"origin error:%@",request.error);
-    }];
+    [self getgusici];
+
+//    [[XXXGushiciRequest new] startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
+//        NSLog(@"origin gushici:%@",request.gushici);
+//    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+//        NSLog(@"origin error:%@",request.error);
+//    }];
     
     return;
     NSURLRequest * r = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://img-blog.csdn.net/20170809135909929?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSGVsbG9fSHdj/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast"]];
@@ -73,20 +75,20 @@
     ///由于`XXXGushiciRequest`重写了`mapModelWithJsonData:`方法，
     ///返回了`XXXGushiciWrap`类型的数据，因此这里的then可以直接使用
     [[XXXGushiciRequest new] startPromise].then(^(XXXGushiciWrap * wrap){
-        NSLog(@"gushici:%@ contents:%@",wrap,wrap.contents);
+        NSLog(@"[Promise]gushici:%@ contents:%@",wrap,wrap.contents);
     }).catch(^(NSError * error){
-        NSLog(@"error:%@",error);
+        NSLog(@"[Promise]error:%@",error);
     });
     
     ///使用YTK提供的处理数据的方法`requestCompletePreprocessor`，将json转成模型，在这里进行使用
     
     [[XXXGushiciRequest new] startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
-        NSLog(@"origin gushici:%@",request.gushici);
+        NSLog(@"[Origin] gushici:%@",request.gushici);
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        NSLog(@"origin error:%@",request.error);
+        NSLog(@"[Origin] error:%@",request.error);
     }];
     
-    [[self asyncFetchGushiciList2] continueWithBlock:^id _Nullable(BFTask<XXXGushiciWrap *> * _Nonnull t) {
+    [[self asyncFetchGushiciList] continueWithBlock:^id _Nullable(BFTask<XXXGushiciWrap *> * _Nonnull t) {
         if (t.isCancelled) {
             NSLog(@"[BFTask] is cancelled");
         } else if (t.error) {
@@ -113,12 +115,13 @@
 - (BFTask<XXXGushiciWrap *> *) asyncFetchGushiciList2{
     
     __block BFTask * task;
-    
+    // 不可以这么使用，因为task需要在异步进行初始化，所以返回的为nil
     [[XXXGushiciRequest new] startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
         task = [BFTask taskWithResult:request.gushici];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         task = [BFTask taskWithError:request.error];
     }];
+    NSLog(@"asyncFetchGushiciList2:%@",task);
     return task;
 }
 
