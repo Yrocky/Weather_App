@@ -82,7 +82,8 @@
     
     ///使用YTK提供的处理数据的方法`requestCompletePreprocessor`，将json转成模型，在这里进行使用
     
-    [[XXXGushiciRequest new] startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
+    [[XXXGushiciRequest new]
+     startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
         NSLog(@"[Origin] gushici:%@",request.gushici);
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         NSLog(@"[Origin] error:%@",request.error);
@@ -104,7 +105,8 @@
     
     BFTaskCompletionSource * tcs = [BFTaskCompletionSource taskCompletionSource];
     
-    [[XXXGushiciRequest new] startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
+    [[XXXGushiciRequest new]
+     startWithCompletionBlockWithSuccess:^(XXXGushiciRequest * request) {
         [tcs setResult:request.gushici];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [tcs setError:request.error];
