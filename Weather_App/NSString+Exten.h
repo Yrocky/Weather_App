@@ -34,4 +34,11 @@
 - (NSInteger)countOtherChar;
 
 - (CGFloat)hs_heightWithFont:(UIFont *)font constrainedToWidth:(CGFloat)width;
+
+///<根据提供的数组分割字符串，`contained`为是否包含分割的字符串
+- (NSArray<NSString *> *) separatedByStrings:(NSArray<NSString *> *)strings contained:(BOOL)contained;
+
+- (CGSize)YYY_sizeWithFont:(UIFont*)font maxSize:(CGSize)maxSize;
 @end
+
+

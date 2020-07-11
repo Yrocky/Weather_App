@@ -8,87 +8,16 @@
  */
 
 #import "UIImage+GIF.h"
-#import <ImageIO/ImageIO.h>
-#import "objc/runtime.h"
+#import "SDWebImageGIFCoder.h"
 #import "NSImage+WebCache.h"
 
 @implementation UIImage (GIF)
-
-+ (UIImage *)sd_animatedGIFNamed:(NSString *)name {
-    CGFloat scale = [UIScreen mainScreen].scale;
-    
-    if (scale > 1.0f) {
-        NSString *retinaPath = [[NSBundle mainBundle] pathForResource:[name stringByAppendingString:@"@2x"] ofType:@"gif"];
-        
-        NSData *data = [NSData dataWithContentsOfFile:retinaPath];
-        
-        if (data) {
-            return [UIImage sd_animatedGIFWithData:data];
-        }
-        
-        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"gif"];
-        
-        data = [NSData dataWithContentsOfFile:path];
-        
-        if (data) {
-            return [UIImage sd_animatedGIFWithData:data];
-        }
-        
-        return [UIImage imageNamed:name];
-    }
-    else {
-        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"gif"];
-        
-        NSData *data = [NSData dataWithContentsOfFile:path];
-        
-        if (data) {
-            return [UIImage sd_animatedGIFWithData:data];
-        }
-        
-        return [UIImage imageNamed:name];
-    }
-}
 
 + (UIImage *)sd_animatedGIFWithData:(NSData *)data {
     if (!data) {
         return nil;
     }
-    
-#if SD_MAC
-    return [[UIImage alloc] initWithData:data];
-#else
-
-    CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
-
-    size_t count = CGImageSourceGetCount(source);
-
-    UIImage *staticImage;
-
-    if (count <= 1) {
-        staticImage = [[UIImage alloc] initWithData:data];
-    } else {
-        // we will only retrieve the 1st frame. the full GIF support is available via the FLAnimatedImageView category.
-        // this here is only code to allow drawing animated images as static ones
-#if SD_WATCH
-        CGFloat scale = 1;
-        scale = [WKInterfaceDevice currentDevice].screenScale;
-#elif SD_UIKIT
-        CGFloat scale = 1;
-        scale = [UIScreen mainScreen].scale;
-#endif
-        
-        CGImageRef CGImage = CGImageSourceCreateImageAtIndex(source, 0, NULL);
-#if SD_UIKIT || SD_WATCH
-        UIImage *frameImage = [UIImage imageWithCGImage:CGImage scale:scale orientation:UIImageOrientationUp];
-        staticImage = [UIImage animatedImageWithImages:@[frameImage] duration:0.0f];
-#endif
-        CGImageRelease(CGImage);
-    }
-
-    CFRelease(source);
-
-    return staticImage;
-#endif
+    return [[SDWebImageGIFCoder sharedCoder] decodedImageWithData:data];
 }
 
 - (BOOL)isGIF {

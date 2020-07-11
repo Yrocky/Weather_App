@@ -59,11 +59,11 @@ static NSMutableArray<MMTodoItem *> * items;
 
         [self.showIndicator update:@(NO)];
         
-        [self.todos update:[items filter:^BOOL(MMTodoItem *obj) {
+        [self.todos update:[items mm_filter:^BOOL(MMTodoItem *obj) {
             return NO == obj.isFinished.peek.boolValue;
         }]];
         
-        [self.finisheds update:[items filter:^BOOL(MMTodoItem *obj) {
+        [self.finisheds update:[items mm_filter:^BOOL(MMTodoItem *obj) {
             return YES == obj.isFinished.peek.boolValue;
         }]];
     });

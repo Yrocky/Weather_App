@@ -10,9 +10,12 @@
 
 @interface MMNode<T> : NSObject
 
-@property (nonatomic ,strong) MMNode * pre;
-@property (nonatomic ,strong) MMNode * next;
-@property (nonatomic ,strong) T value;
+@property (nonatomic ,strong) MMNode<T> * pre;
+@property (nonatomic ,weak) MMNode<T> * next;
+@property (nonatomic ,assign) NSUInteger index;
+
+@property (nonatomic ,strong ,readonly) T value;
 
 + (instancetype) nodeWithValue:(T)value;
+- (void) updateValue:(T)newValue;
 @end

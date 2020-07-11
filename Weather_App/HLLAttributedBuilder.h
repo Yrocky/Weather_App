@@ -18,6 +18,24 @@
 #define AttBuilderWith(string) [HLLAttributedBuilder builderWithString:string]
 #define AttBuilderStyle(string,style) [HLLAttributedBuilder builderWithString:string defaultStyle:style]
 
+
+#ifndef RX
+#define RX(pattern) [[NSRegularExpression alloc] initWithPattern:pattern]
+#endif
+
+@interface NSRegularExpression (RX)
+
+- (instancetype) initWithPattern:(NSString *)pattern;
+// 在str中找寻匹配pattern的字符串
+- (NSArray <NSTextCheckingResult *>*) matches:(NSString *)str;
+// 在str中找寻匹配pattern的第一个字符串
+- (nullable NSTextCheckingResult *) firstMatch:(NSString *)str;
+// 遍历找到的字符串
+- (void) enumMatches:(void(^)(NSTextCheckingResult * result,NSUInteger index))handle inString:(NSString *)string;
+// 对查找到的字符串进行替换
+- (NSString *) replaceMatchedStringsWith:(NSString *(^)(NSString *matchedString))replace inString:(NSString *)string;
+@end
+
 @interface HLLAttributedBuilder : NSObject
 
 // black 16

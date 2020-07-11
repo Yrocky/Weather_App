@@ -1,0 +1,105 @@
+<html>
+<head>
+	<title>MMWebView</title>
+</head>
+<body>
+<li><a onclick="js_method();">Touch me</a></li>
+<li><a onclick="js_exchange_method();">不修改h5，替换方法交换</a></li>
+<li><a onclick="js_share_wechat();">Share Wechat</a></li>
+<li><a onclick="js_share_qq();">Share QQ</a> </li>
+<li><a onclick="js_share_qq2();">Share QQ 2</a></li>
+<li><a onclick="js_custom_msgHandler();">Custom Message handler</a></li>
+<li><a onclick="js_load_prompt();">Load Prompt</a></li>
+<li><a onclick="js_load_prompt2();">Load Prompt 2</a></li>
+
+</body>
+<script type="text/javascript">
+    
+function js_exchange_method(){
+    console.log('js_exchange_method ori');
+};
+
+function js_method(){
+	// alert('rocky jiaojiao')
+	console.log('dfd');
+};
+function js_share_wechat(){
+	//这里如果要给native传递复杂的数据，需要将对象转成string进行传递，这样在native中可以将string解析成字典
+	Share.wechat('this is for Wechat');
+};
+function js_share_qq(){
+	Share.qq('this is for QQ');
+};
+function js_share_qq2(){
+    
+    var a = 0;
+    console.log('0,'+getNowFormatDate())
+    function shareQQOnSuccess(successMsg){
+        // 由于这个方法是执行webKit.postMessage方法的，因此会有一个不及时性，对于`知晓操作之后native反馈的结果`的需求来说没有问题，但如果是要`通过操作获取native的数据`这样的需求就不行了，
+        a = 10;
+        console.log('10,'+getNowFormatDate())
+        alert(successMsg.success)
+    };
+    function shareQQError(e){
+        alert(e)
+    };
+
+    Share.qq2('this is for QQ', shareQQOnSuccess, shareQQError);
+    //Share.qq3('this is for QQ', shareQQOnSuccess, shareQQError);
+    console.log('100,'+getNowFormatDate())
+    console.log(a)
+    // 0-100-10
+};
+
+function getNowFormatDate() {
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+    + " " + date.getHours() + seperator2 + date.getMinutes()
+    + seperator2 + date.getSeconds();
+    
+    var temp = date.getHours() + seperator2 + date.getMinutes()
+    + seperator2 + date.getSeconds()
+    
+    //cc.log("UtilTool.getNowFormatDate,date = " + temp + " " + currentdate);
+    return currentdate;
+};
+function js_custom_msgHandler(){
+    window.webkit.messageHandlers.SomeValue.postMessage('Hello rocky~');
+};
+
+// 使用拦截弹窗来实现同步通信
+function js_load_prompt(){
+    var data = {
+        action:'modif',
+        params:'name=rocky',
+    };
+    var jsonData = JSON.stringify(data);
+    //发起弹框
+    let result = prompt(jsonData);
+    console.log(result)
+}
+
+// 使用拦截弹窗来实现同步通信
+function js_load_prompt2(){
+    var data = {
+        action:'add',
+    };
+    var jsonData = JSON.stringify(data);
+    //发起弹框
+    let result = prompt(jsonData);
+    console.log(result)
+}
+
+</script>
+
+</html>

@@ -8,18 +8,6 @@
 
 #import "HLLAttributedBuilder.h"
 
-#ifndef RX
-
-#define RX(pattern) [[NSRegularExpression alloc] initWithPattern:pattern]
-
-#endif
-
-@interface NSRegularExpression (RX)
-
-- (id) initWithPattern:(NSString*)pattern;
-- (NSArray*) matches:(NSString*)str;
-@end
-
 @implementation NSRegularExpression (RX)
 
 - (id) initWithPattern:(NSString*)pattern
@@ -49,7 +37,18 @@
         }];
     }
 }
-
+- (NSString *) replaceMatchedStringsWith:(NSString *(^)(NSString *matchedString))replace inString:(NSString *)string{
+    
+    __block NSMutableString * replacedString = [NSMutableString stringWithString:string];
+    [self enumMatches:^(NSTextCheckingResult * _Nonnull result, NSUInteger index) {
+        
+        NSString * template = replace ? replace([replacedString substringWithRange:result.range]) : @"";
+        // NSMatchingReportCompletion : 找到任何一个匹配串后都回调一次block
+        [self replaceMatchesInString:replacedString options:NSMatchingReportCompletion
+                               range:result.range withTemplate:template];
+    } inString:string];
+    return replacedString.copy;
+}
 @end
 
 @interface _HLLString : NSObject
@@ -61,6 +60,9 @@
 @end
 
 @implementation _HLLString
+- (void)dealloc {
+    NSLog(@"_HLLString:%@/%@ dealloc",self.string,self.attributedString);
+}
 @end
 
 @interface HLLAttributedBuilder (){
@@ -76,6 +78,10 @@
 @end
 
 @implementation HLLAttributedBuilder
+
+- (void)dealloc {
+    NSLog(@"HLLAttributedBuilder:%@ dealloc",self.originalString);
+}
 
 + (instancetype)builder{
 
@@ -114,9 +120,9 @@
         NSMutableDictionary * mergeStyle = [NSMutableDictionary dictionaryWithDictionary:self.defaultStyle];
         [mergeStyle addEntriesFromDictionary:style];
         
+        NSRange range = NSMakeRange(_originalString.length - 1, string.length);
+
         [_originalString appendString:string];
-        
-        NSRange range = [_originalString rangeOfString:string];
         
         NSAttributedString * attString = [[NSAttributedString alloc] initWithString:string attributes:mergeStyle];
         
