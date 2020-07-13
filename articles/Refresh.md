@@ -10,5 +10,25 @@
 
 这里就对这样的需求进行封装，抽离出来一个RefreshProxy组件。
 
+### usage
 
+根据一个ScrollView初始化RefreshProxy，然后使用`-addRefresh`和`-addLoadMore`接口就可以添加对应的刷新控件了，刷新控件已经被封装在了RefreshProxy内部，以及上面提到的索引的修改等逻辑：
+
+``` objective-c
+
+self.refreshProxy = [[EaseRefreshProxy alloc] initWithScrollView:self.collectionView];
+[self.refreshProxy setupPageOrigIndex:0 andSize:20];
+[self.refreshProxy addRefresh:^(NSInteger index) {
+    @strongify(self);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.refreshProxy endRefresh];
+    });
+}];
+[self.refreshProxy addLoadMore:@"没有更多内容" callback:^(NSInteger index) {
+    @strongify(self);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.refreshProxy endLoadMore];
+    });
+}];
+```
 
