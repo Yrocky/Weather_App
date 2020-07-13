@@ -33,7 +33,7 @@ attString = [[[[[HLLAttributedBuilder builder]
                                                     NSStrokeWidthAttributeName:@1}]
                  attributedString];
 ```
-![module](../img/normal.png)
+![module](../img/AttributesStringBuilder_normal.png)
 
 ### 2.支持 NSTextAttachment
 
@@ -63,7 +63,7 @@ attachment.bounds = CGRectMake(0, 0, 9, 9);
                  attributedString];
 ```
 
-![module](../img/attachment.png)
+![module](../img/AttributesStringBuilder_attachment.png)
 
 ### 3.支持查找设置
 
@@ -94,7 +94,7 @@ NSString * display = @"hello = nihao = Hello = 你好 = nihao";
                  attributedString];
 ```
 
-![module](../img/config.png)
+![module](../img/AttributesStringBuilder_config.png)
 
 使用正则表达式进行属性字符串设置
 
@@ -108,4 +108,4 @@ NSAttributedString * attS = AttBuilderWith(a).
 
 > 以上的正则中用了**零宽断言**的语法 http://www.ibloger.net/article/31.html
 
-![module](../img/rx.png)
+![module](../img/AttributesStringBuilder_rx.png)

@@ -53,7 +53,8 @@ Component只要DataSource为其提供注册好的可复用的Cell和Supplementar
 
 Layout中根据`insets`、`lineSpacing`、`interitemSpacing`、`distribution`、`itemRatio`会计算出来具体的itemSize，并且根据index进行缓存，每一个Component可以设置自己的Layout，这些设置会在DataSource中作为UICollectionView的数据源和代理进行布局使用。其中distribution和itemRatio分别表示一屏横向上可以显示的个数以及cell的宽高比，同时为具备灵活性，还提供了`QLLiveComponentLayoutDelegate`来让Component进行自定义itemSize。
 
-todo 图片
+![module](../img/module_layout.png)
+
 
 ### OrthogonalScroll
 
