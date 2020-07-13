@@ -4,9 +4,7 @@
 
 基于以上的这些痛点，考虑将首页进行解耦，抽离出来一个高复用、可配置的功能模块。
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/develop/img/module_live_home_display.png?raw=true"  align="center">
-</p>
+![module](../img/module_live_home_display.png)
 
 ### 拆分
 

@@ -33,10 +33,7 @@ attString = [[[[[HLLAttributedBuilder builder]
                                                     NSStrokeWidthAttributeName:@1}]
                  attributedString];
 ```
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/normal.png?raw=true"  align="center">
-</p>
-
+![module](../img/normal.png)
 
 ### 2.支持 NSTextAttachment
 
@@ -66,10 +63,7 @@ attachment.bounds = CGRectMake(0, 0, 9, 9);
                  attributedString];
 ```
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/attachment.png?raw=true"  align="center">
-</p>
-
+![module](../img/attachment.png)
 
 ### 3.支持查找设置
 
@@ -100,10 +94,7 @@ NSString * display = @"hello = nihao = Hello = 你好 = nihao";
                  attributedString];
 ```
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/config.png?raw=true"  align="center">
-</p>
-
+![module](../img/config.png)
 
 使用正则表达式进行属性字符串设置
 
@@ -117,6 +108,4 @@ NSAttributedString * attS = AttBuilderWith(a).
 
 > 以上的正则中用了**零宽断言**的语法 http://www.ibloger.net/article/31.html
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/rx.png?raw=true"  align="center">
-</p>
+![module](../img/rx.png)

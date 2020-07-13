@@ -18,10 +18,8 @@
 
 对于这种方式，我做了一个比较，对四个UIImageView分别进行设置图片，每个使用不同的方式：异步绘制图片然后设置image属性、异步绘制图片设置layer.contents、使用imageNamed、使用imageWithContentsOfFile，比较结果如下：
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/optimize_load_image.png?raw=true"  align="center">
 
-</p>
+![module](../img/optimize_load_image.png)
 
 可以看出来，将图片放入异步线程中去绘制，仅仅是在最后主线程中使用图片时有CPU的消耗，并且这个消耗比使用imageWithContentsOfFile设置图片还小，最主要的是这样的做法将CPU的消耗放到了异步线程，不会对主线程有影响。
 

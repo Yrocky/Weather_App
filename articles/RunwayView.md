@@ -10,17 +10,11 @@
 
 目前展示的跑道内容视图是在接收到socket的时候根据数据创建的，内容视图中有许多的子控件也需要跟随这创建，并且这些内容中会有动图出现，也不好使用异步绘制图片的方式进行优化。具体的从socket到展示的流程如下：
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/optimize_render_runway.png?raw=true"  align="center">
-
-</p>
+![module](../img/optimize_render_runway.png)
 
 由于我们的目的是要按照需要（在阀值内的消耗完了再创建等待的部分）创建，因此需要创建和展示这两部分可以进行通信：创建的根据展示的进程来决定是否要根据socket中的数据创建视图。这样需要使用单例来协调两者，另外，在创建singleLineView的时候是根据socket中的数组数据创建对应个数的控件（UILabel或者UIImageView），这样对于跑道这种数量会很大的视图来说，又增加了一些CPU的消耗。
 
 这里使用一个跑道管理单例，内部维护两个队列：一个作为要创建视图，记为queue；一个用来存储socket推送的json数据，记为cache。queue设置最大容量，在达到最大容量以后再接收的json数据就放入cache中，等一条跑道视图展示完成之后，将queue中最前面的数据移除，从cache中获取最前面的数据，加入到queue末尾。这样可以保证创建的跑道视图最多不会超过阀值，从而减轻了一些CPU消耗。
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/optimize_runway_manager.png?raw=true"  align="center">
-
-</p>
+![module](../img/optimize_runway_manager.png)
 

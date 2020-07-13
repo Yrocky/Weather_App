@@ -7,9 +7,8 @@
 
 如果中间只有contentView这一层还好，可以使用一个多余的delegate或者block将事件转换一下，但如果业务视图自己中也有其他的子控件需要传递事件到视图控制器，那就不止一层了。在软件开发中，只有变和不变，在这里就是如果他有一层，那么就可能有n多层，为了一层提出的方案在n多层中就会显得不那么适用，因为这样并没有解决根本问题。
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/responder_chain_contentviews.png?raw=true"  align="center">
-</p>
+![module](../img/responder_chain_contentviews.png)
+
 
 当然使用通知可以无视事件触发层和处理层之间的距离，但是，通知在我看来不是一个很好的UI通信方式，并且满天飞的通知很难管理。
 
@@ -19,23 +18,17 @@
 
 第一种做法是为contentView添加一个代理，这个代理继承至其子视图们的代理，由于协议是可以多继承，因此可以这么写，但是这样就会暴露这个contentView内部的子视图，不符合封装的特性，没有很好的体现这个contentView的封装性。
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/responder_chain_normal_1.png?raw=true"  align="center">
-</p>
+![module](../img/responder_chain_normal_1.png)
 
 这样的做法比较省心，不需要写很多的无用代理方法，缺点就是上面提到的暴露了内部的类。
 
 另一种做法是在contentView内部对子视图做一个代理传递，自己统一代理协议的接口：
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/responder_chain_normal_2.png?raw=true"  align="center">
-</p>
+![module](../img/responder_chain_normal_2.png)
 
 内部将子视图的代理回调方法传递给自己的代理：
 
-<p align="center">
-  <img src="https://github.com/Yrocky/Weather_App/blob/master/img/responder_chain_normal_3.png?raw=true"  align="center">
-</p>
+![module](../img/responder_chain_normal_3.png)
 
 这个做法的好处一个是代理接口统一，另外就是可以在子视图的代理回调里面做一些contentView的业务处理，灵活性更高一些。
 
