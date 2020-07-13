@@ -12,7 +12,7 @@
 
 在拆分模块的时候，参考的是IGListKit。IGListKit中对UICollectionView的抽离是将每个小模块抽象成一个SectionController，并且在SectionController中决定具体的cell、insert、spacing、header、footer等等。
 
-TODO 图片
+![module](../img/module-component.png)
 
 基于我们具体的业务，一共抽离出来`Module`、`DataSource`、`Component`和`Layout`四个模块。Module表示一个具体的业务，比如首页的一个分类，Component表示某一些具备特性的集合，同时也是组成Module的组件，DataSource和Layout是功能类，分别用来管理数据源和计算布局。四者之间的关系为：Component通过DataSource被Module管理，Layout通过Component为DataSource提供布局的计算操作。
 
