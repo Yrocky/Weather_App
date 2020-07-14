@@ -9,7 +9,7 @@
 #import "QLLiveModuleDataSource.h"
 #import "QLOrthogonalScrollerEmbeddedScrollView.h"
 #import "NSArray+Sugar.h"
-#import "QLLiveComponent+Private.h"
+#import "QLLiveComponent_Private.h"
 
 @interface QLLiveModuleDataSource (){
     __weak UICollectionView *_collectionView;
@@ -37,23 +37,21 @@
     return self;
 }
 
-- (UICollectionView *)collectionView {
-    return _collectionView;
-}
-
-- (void)setCollectionView:(UICollectionView *)collectionView {
-
-    if (_collectionView != collectionView ||
-        _collectionView.dataSource != self) {
+- (void)setEnvironment:(id<QLLiveModelEnvironment>)environment{
+    _environment = environment;
+    
+    UICollectionView * collectionView = environment.collectionView;
+    
+    if (_collectionView != environment.collectionView ||
+        collectionView.dataSource != self) {
+        _collectionView = collectionView;
         
         _registeredCellIdentifiers = [NSMutableSet new];
         _registeredPlaceholdCellIdentifiers = [NSMutableSet new];
         _registeredSupplementaryViewIdentifiers = [NSMutableSet new];
 
-        _collectionView = collectionView;
-        _collectionView.dataSource = self;
-
-        [_collectionView.collectionViewLayout invalidateLayout];
+        collectionView.dataSource = self;
+        [collectionView.collectionViewLayout invalidateLayout];
     }
     
     if (!self.collectionViewDelegate &&
@@ -61,6 +59,10 @@
         self.collectionViewDelegate = collectionView.delegate;
         collectionView.delegate = self;
     }
+}
+
+- (UICollectionView *)collectionView {
+    return _collectionView;
 }
 
 - (__kindof UICollectionViewCell *)dequeueReusableCellOfClass:(Class)cellClass forComponent:(__kindof QLLiveComponent *)component atIndex:(NSInteger)index{
@@ -142,13 +144,13 @@
     return [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 }
 
-- (BOOL)respondsToSelector:(SEL)aSelector {
-    return [self.collectionViewDelegate respondsToSelector:aSelector] || [super respondsToSelector:aSelector];
-}
-
-- (void)forwardInvocation:(NSInvocation *)anInvocation {
-    [anInvocation invokeWithTarget:self.collectionViewDelegate];
-}
+//- (BOOL)respondsToSelector:(SEL)aSelector {
+//    return [self.collectionViewDelegate respondsToSelector:aSelector] || [super respondsToSelector:aSelector];
+//}
+//
+//- (void)forwardInvocation:(NSInvocation *)anInvocation {
+//    [anInvocation invokeWithTarget:self.collectionViewDelegate];
+//}
 
 - (NSArray<__kindof QLLiveComponent *> *) usageHidenWhenMeptyComponents{
     NSArray * tmp;
@@ -201,7 +203,7 @@
     }
     @synchronized (_innerComponents) {
         component.dataSource = self;
-        component.viewController = self.viewController;
+        component.environment = self.environment;
         [_innerComponents addObject:component];
     }
 }
@@ -216,7 +218,7 @@
     @synchronized (_innerComponents) {
         if (index < _innerComponents.count && index >= 0) {
             component.dataSource = self;
-            component.viewController = self.viewController;
+            component.environment = self.environment;
             [_innerComponents insertObject:component atIndex:index];
         }
     }
@@ -245,7 +247,7 @@
     @synchronized (_innerComponents) {
         if (index < _innerComponents.count) {
             component.dataSource = self;
-            component.viewController = self.viewController;
+            component.environment = self.environment;
             [_innerComponents replaceObjectAtIndex:index withObject:component];
         }
     }

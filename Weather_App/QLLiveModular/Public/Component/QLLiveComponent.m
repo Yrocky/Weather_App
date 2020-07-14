@@ -7,7 +7,8 @@
 //
 
 #import "QLLiveComponent.h"
-#import "QLLiveComponent+Private.h"
+#import "QLLiveComponent_Private.h"
+#import "QLLiveComponentLayout_Private.h"
 
 @implementation QLLiveComponent
 
@@ -25,6 +26,11 @@
         _layout = layout;
     }
     return self;
+}
+
+- (void)setEnvironment:(id<QLLiveModelEnvironment>)environment{
+    _environment = environment;
+    self.layout.environment = environment;
 }
 
 - (void) addData:(id)data{

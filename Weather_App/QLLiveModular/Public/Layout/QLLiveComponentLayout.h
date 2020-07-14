@@ -14,10 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 @class QLLiveComponentDistribution;
 @class QLLiveComponentItemRatio;
 @protocol QLLiveComponentLayoutDelegate;
+@protocol QLLiveModelEnvironment;
 
 @interface QLLiveComponentLayout : NSObject{
     NSMutableDictionary * _cacheItemSize;
 }
+
+@property (nonatomic ,strong ,readonly) id<QLLiveModelEnvironment> environment;
 
 /// default zero
 @property (nonatomic ,assign) UIEdgeInsets insets;

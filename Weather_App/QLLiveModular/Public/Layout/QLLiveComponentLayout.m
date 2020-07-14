@@ -7,6 +7,8 @@
 //
 
 #import "QLLiveComponentLayout.h"
+#import "QLLiveComponentLayout_Private.h"
+#import "QLLiveModelEnvironment_Protocol.h"
 
 typedef NS_ENUM(NSUInteger, QLLiveComponentSemantic) {
     
@@ -48,11 +50,8 @@ typedef NS_ENUM(NSUInteger, QLLiveComponentSemantic) {
     return self;
 }
 
-- (void)setInsets:(UIEdgeInsets)insets{
-    _insets = insets;
-    // not mainScreen ,it's collectionView
-    _insetContainerWidth = [UIScreen mainScreen].bounds.size.width
-    - self.insets.left - self.insets.right;
+- (CGFloat)insetContainerWidth{
+    return [self.environment effectiveContentSizeWithInsets:self.insets].width;
 }
 
 - (CGSize)itemSize{

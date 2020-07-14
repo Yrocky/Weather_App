@@ -31,8 +31,7 @@ UICollectionViewDelegate>
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.module = [[YYYHomeModule alloc] initWithName:@"Home"
-                                       viewController:self];
+    self.module = [[YYYHomeModule alloc] initWithName:@"Home"];
     @weakify(self);
     
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
@@ -47,7 +46,8 @@ UICollectionViewDelegate>
     [self.view addSubview:self.collectionView];
     
     // 为module设置collectionView
-    self.module.collectionView = self.collectionView;
+    [self.module setupEnvironmentWithViewController:self
+                       collectionView:self.collectionView];
     
     self.refreshProxy = [[EaseRefreshProxy alloc] initWithScrollView:self.collectionView];
     [self.refreshProxy setupPageOrigIndex:0 andSize:20];
@@ -69,6 +69,10 @@ UICollectionViewDelegate>
     }
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
+//        make.left.equalTo(self.view);
+//        make.top.equalTo(self.view);
+//        make.width.mas_equalTo(200);
+//        make.bottom.equalTo(self.view);
     }];
 }
 
@@ -111,9 +115,8 @@ static NSDictionary * demoData;
 @implementation YYYHomeModule{
 }
 
-- (instancetype)initWithName:(NSString *)name viewController:(UIViewController *)viewController
-{
-    self = [super initWithName:name viewController:viewController];
+- (instancetype)initWithName:(NSString *)name{
+    self = [super initWithName:name];
     if (self) {
         demoData = @{
             @"languages":@[@"#swift#",@"#java#",@"#js#",@"#vue#",@"#ruby#",@"#css#",@"#go#"],

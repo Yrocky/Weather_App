@@ -16,6 +16,7 @@
 		323574C124B8613D00AE659B /* QLLiveModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574B724B8613D00AE659B /* QLLiveModule.m */; };
 		323574C224B8613D00AE659B /* QLLiveComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574BB24B8613D00AE659B /* QLLiveComponent.m */; };
 		323574C324B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574BE24B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.m */; };
+		32D11E9D24BD8F9600982F27 /* QLLiveModelEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D11E9C24BD8F9600982F27 /* QLLiveModelEnvironment.m */; };
 		40F95830277A374DF44DA0FA /* libPods-Weather_App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6B1AF26CE8C8DC2AAE81EC /* libPods-Weather_App.a */; };
 		5C04C60A229BC075000F0000 /* UIView+FrameLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */; };
 		5C04C60B229BC075000F0000 /* UIView+FrameLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */; };
@@ -347,11 +348,15 @@
 		323574B424B8613C00AE659B /* QLLiveComponentLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QLLiveComponentLayout.m; sourceTree = "<group>"; };
 		323574B624B8613D00AE659B /* QLLiveModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QLLiveModule.h; sourceTree = "<group>"; };
 		323574B724B8613D00AE659B /* QLLiveModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QLLiveModule.m; sourceTree = "<group>"; };
-		323574B924B8613D00AE659B /* QLLiveComponent+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QLLiveComponent+Private.h"; sourceTree = "<group>"; };
+		323574B924B8613D00AE659B /* QLLiveComponent_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QLLiveComponent_Private.h; sourceTree = "<group>"; };
 		323574BA24B8613D00AE659B /* QLLiveComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QLLiveComponent.h; sourceTree = "<group>"; };
 		323574BB24B8613D00AE659B /* QLLiveComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QLLiveComponent.m; sourceTree = "<group>"; };
 		323574BD24B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QLOrthogonalScrollerEmbeddedScrollView.h; sourceTree = "<group>"; };
 		323574BE24B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QLOrthogonalScrollerEmbeddedScrollView.m; sourceTree = "<group>"; };
+		323574C624BC3D5400AE659B /* QLLiveComponentLayout_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveComponentLayout_Private.h; sourceTree = "<group>"; };
+		32D11E9B24BD8F9600982F27 /* QLLiveModelEnvironment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveModelEnvironment.h; sourceTree = "<group>"; };
+		32D11E9C24BD8F9600982F27 /* QLLiveModelEnvironment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QLLiveModelEnvironment.m; sourceTree = "<group>"; };
+		32D11E9E24BD8FF400982F27 /* QLLiveModelEnvironment_Protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveModelEnvironment_Protocol.h; sourceTree = "<group>"; };
 		5C04C608229BC075000F0000 /* UIView+FrameLayoutSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameLayoutSupport.h"; sourceTree = "<group>"; };
 		5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameLayoutSupport.m"; sourceTree = "<group>"; };
 		5C04D35D22A13DFA000F0000 /* XXXAutoScrollImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXAutoScrollImageView.h; sourceTree = "<group>"; };
@@ -950,11 +955,8 @@
 		323574AD24B8613C00AE659B /* QLLiveModular */ = {
 			isa = PBXGroup;
 			children = (
-				323574B524B8613D00AE659B /* Module */,
-				323574AE24B8613C00AE659B /* Datasource */,
-				323574B224B8613C00AE659B /* Layout */,
-				323574B824B8613D00AE659B /* Component */,
-				323574BC24B8613D00AE659B /* OrthogonalScroll */,
+				32D11EA124BD91B800982F27 /* Public */,
+				32D11EA024BD91A900982F27 /* Privaate */,
 			);
 			path = QLLiveModular;
 			sourceTree = "<group>";
@@ -972,6 +974,7 @@
 		323574B224B8613C00AE659B /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				323574C624BC3D5400AE659B /* QLLiveComponentLayout_Private.h */,
 				323574B324B8613C00AE659B /* QLLiveComponentLayout.h */,
 				323574B424B8613C00AE659B /* QLLiveComponentLayout.m */,
 			);
@@ -990,7 +993,7 @@
 		323574B824B8613D00AE659B /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				323574B924B8613D00AE659B /* QLLiveComponent+Private.h */,
+				323574B924B8613D00AE659B /* QLLiveComponent_Private.h */,
 				323574BA24B8613D00AE659B /* QLLiveComponent.h */,
 				323574BB24B8613D00AE659B /* QLLiveComponent.m */,
 			);
@@ -1004,6 +1007,36 @@
 				323574BE24B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.m */,
 			);
 			path = OrthogonalScroll;
+			sourceTree = "<group>";
+		};
+		32D11E9F24BD919800982F27 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				32D11E9E24BD8FF400982F27 /* QLLiveModelEnvironment_Protocol.h */,
+				32D11E9B24BD8F9600982F27 /* QLLiveModelEnvironment.h */,
+				32D11E9C24BD8F9600982F27 /* QLLiveModelEnvironment.m */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		32D11EA024BD91A900982F27 /* Privaate */ = {
+			isa = PBXGroup;
+			children = (
+				32D11E9F24BD919800982F27 /* Environment */,
+				323574BC24B8613D00AE659B /* OrthogonalScroll */,
+			);
+			path = Privaate;
+			sourceTree = "<group>";
+		};
+		32D11EA124BD91B800982F27 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				323574B524B8613D00AE659B /* Module */,
+				323574AE24B8613C00AE659B /* Datasource */,
+				323574B824B8613D00AE659B /* Component */,
+				323574B224B8613C00AE659B /* Layout */,
+			);
+			path = Public;
 			sourceTree = "<group>";
 		};
 		5C392B2A226D88CF00C15344 /* WebView */ = {
@@ -2663,6 +2696,7 @@
 				5C5E63D22244AC9B00C0B85D /* RoomViewController.m in Sources */,
 				D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */,
 				323574C224B8613D00AE659B /* QLLiveComponent.m in Sources */,
+				32D11E9D24BD8F9600982F27 /* QLLiveModelEnvironment.m in Sources */,
 				7F53C0F52126740600567D74 /* XMLReader.m in Sources */,
 				D70629391F8B185100F52FCB /* MMAssetsCellModel.m in Sources */,
 				7F590D7A1FA9A5D4006F7BF0 /* STPopupController.m in Sources */,

@@ -33,21 +33,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype) initWithName:(NSString *)name;
 
-- (instancetype)initWithName:(NSString *)name
-              viewController:(nullable UIViewController *)viewController;
-
-@property (nonatomic, weak, nullable) UIViewController *viewController;
-@property (nonatomic, weak, nullable) UICollectionView *collectionView;
+@property (nonatomic, readonly) UIViewController * viewController;
+@property (nonatomic, readonly) UICollectionView * collectionView;
 
 @property (nonatomic ,strong ,readonly) QLLiveModuleDataSource * dataSource;
 
 - (void) refresh;///< 刷新数据
 - (void) loadMore;///< 加载下一页
 
+- (void) setupEnvironmentWithViewController:(UIViewController *)viewController
+                             collectionView:(UICollectionView *)collectionView;
 @end
 
 @interface QLLiveModule (SubclassingOverride)
-
 
 - (__kindof YTKRequest *) fetchModuleRequest;
 - (void) parseModuleDataWithRequest:(__kindof YTKRequest *)request;

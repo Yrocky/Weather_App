@@ -8,6 +8,7 @@
 
 #import "QLLiveModule.h"
 #import <YTKNetwork/YTKNetwork.h>
+#import "QLLiveModelEnvironment.h"
 
 @implementation QLLiveModule
 
@@ -32,15 +33,11 @@
         _shouldLoadMore = YES;
         
         _dataSource = [QLLiveModuleDataSource new];
-        
-        self.viewController = viewController;
     }
     return self;
 }
 
 - (void) refresh{
-    
-    self.dataSource.viewController = self.viewController;
     _isRefresh = YES;
     [self resetIndex];
     [self fetchModuleDataFromService];
@@ -53,22 +50,21 @@
     }
 }
 
-- (void)setViewController:(UIViewController *)viewController{
-    self.dataSource.viewController = viewController;
+- (void)setupEnvironmentWithViewController:(UIViewController *)viewController collectionView:(UICollectionView *)collectionView{
+    QLLiveModelEnvironment * environment = [QLLiveModelEnvironment new];
+    environment.viewController = viewController;
+    environment.collectionView = collectionView;
+    
+    self.dataSource.environment = environment;
 }
 
-- (UIViewController *)viewController{
-    return self.dataSource.viewController;
+- (UIViewController *)viewController {
+    return self.dataSource.environment.viewController;
 }
 
-- (void)setCollectionView:(UICollectionView *)collectionView{
-    self.dataSource.collectionView = collectionView;
+- (UICollectionView *)collectionView {
+    return self.dataSource.environment.collectionView;
 }
-
-- (UICollectionView *)collectionView{
-    return self.dataSource.collectionView;
-}
-
 - (BOOL)empty{
     return [self.dataSource empty];
 }

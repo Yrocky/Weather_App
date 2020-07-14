@@ -1,11 +1,11 @@
 > 这个仓库主要记录工作、学习中遇到的问题以及一些解决方案，比较杂，好在有些已经能够系统性的输出成为共用组件，并且也有对一些方案做下记录。随着越来越多的记录导致这个README变得很臃肿，所以就将其进行了拆分，将专门的解决方案作为单独的文章，虽然从版面上看东西没有那么多了，但是整体上清爽了许多，也方便以后将更多的方案进行落地。
 
 
-* [跑道视图](/articles/RunwayView.md)
+* [跑道视图](https://github.com/Yrocky/Weather_App/blob/develop/articles/RunwayView.md)
 
 通过使用两个队列来维护直播间的跑道数量，减少不必要的内存消耗。
 
-* [异步加载图片](articles/AsyncLoadImage.md)
+* [异步加载图片](https://github.com/Yrocky/Weather_App/blob/develop/articles/AsyncLoadImage.md)
 
 在做优化的时候发现，同样的本地图片，不同的加载方式会导致耗时不同，因此对本地图片做了一次异步加载的尝试。
 
