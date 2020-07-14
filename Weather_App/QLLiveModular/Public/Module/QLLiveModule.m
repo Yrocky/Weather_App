@@ -12,6 +12,11 @@
 
 @implementation QLLiveModule
 
+- (void)dealloc
+{
+    NSLog(@"%@ dealloc",self);
+}
+
 - (instancetype)init{
     return [self initWithName:@""];
 }

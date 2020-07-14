@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QLLiveModelEnvironment : NSObject<QLLiveModelEnvironment>
 
-@property (nonatomic, readwrite) UIViewController * viewController;
-@property (nonatomic, readwrite) UICollectionView * collectionView;
+@property (nonatomic, weak, readwrite) UIViewController * viewController;
+@property (nonatomic, weak, readwrite) UICollectionView * collectionView;
 
 @end
 

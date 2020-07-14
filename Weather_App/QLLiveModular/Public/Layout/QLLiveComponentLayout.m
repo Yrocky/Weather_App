@@ -39,6 +39,10 @@ typedef NS_ENUM(NSUInteger, QLLiveComponentSemantic) {
 
 @implementation QLLiveComponentLayout
 
+- (void)dealloc
+{
+    NSLog(@"%@ dealloc",self);
+}
 - (instancetype)init
 {
     self = [super init];

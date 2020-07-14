@@ -9,7 +9,10 @@
 #import "QLLiveModelEnvironment.h"
 
 @implementation QLLiveModelEnvironment
-
+- (void)dealloc
+{
+    NSLog(@"%@ dealloc",self);
+}
 - (CGSize) effectiveContentSizeWithInsets:(UIEdgeInsets)insets{
     return (CGSize){
         self.collectionView.bounds.size.width - insets.left - insets.right,

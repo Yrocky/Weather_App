@@ -26,6 +26,10 @@
 
 @implementation QLLiveModuleDataSource
 
+- (void)dealloc
+{
+    NSLog(@"%@ dealloc",self);
+}
 - (instancetype)init
 {
     self = [super init];

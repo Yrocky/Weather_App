@@ -92,7 +92,10 @@ UICollectionViewDelegateFlowLayout>
 @end
 
 @implementation QLOrthogonalScrollerSectionController
-
+- (void)dealloc
+{
+    NSLog(@"%@ dealloc",self);
+}
 - (instancetype)initWithSectionIndex:(NSInteger)sectionIndex
                       collectionView:(UICollectionView *)collectionView
                           scrollView:(QLOrthogonalScrollerEmbeddedScrollView *)scrollView {
