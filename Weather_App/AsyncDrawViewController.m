@@ -14,9 +14,9 @@
 #import <objc/runtime.h>
 #import "UIView+RoundCorner.h"
 
-@interface MMObject : NSProxy{
-//    int age;// 4字节
-//    NSString * name;// 8字节
+@interface MMObject : NSObject{
+    int age;// 4字节
+    NSString * name;// 8字节
 }
 - (void) foo;
 + (void) mock;
@@ -48,22 +48,24 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [super touchesBegan:touches withEvent:event];
-    return;
-    MMString * string = [[MMString alloc] init];
+//    return;
+//    MMString * string = [[MMString alloc] init];
     
+    MMObject * obj = [MMObject alloc];
+    NSString * msg = [NSString stringWithFormat:@"Size of MMObject: %zd bytes", malloc_size((__bridge const void *) obj)];
+        
+    NSLog(@"[alloc] size %@", msg);
+
     for (int i = 0; i < 1; i ++) {
         
-        MMObject * obj = [MMObject alloc];
-//        [obj methodForSelector:nil];
-        NSString * msg = [NSString stringWithFormat:@"Size of MMObject: %zd bytes", malloc_size((__bridge const void *) obj)];
-        [[[[[HLLAlertActionSheet alert]
-           title:@"Size"]
-          message:msg]
-         buttons:@[@"cancel"]]
-         showIn:self];
-            NSLog(@"%@", msg);
     }
 }
+
+//[[[[[HLLAlertActionSheet alert]
+//    title:@"Size"]
+//   message:msg]
+//  buttons:@[@"cancel"]]
+// showIn:self];
 
 - (void)viewDidLoad {
     [super viewDidLoad];

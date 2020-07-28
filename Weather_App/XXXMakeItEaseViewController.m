@@ -9,6 +9,7 @@
 #import "XXXMakeItEaseViewController.h"
 #import "MMLinkedList.h"
 #import "MMStack.h"
+#import <Masonry.h>
 
 #define MakeItEasyBegin NSLog(@"begin %@\n",NSStringFromSelector(_cmd));
 
@@ -35,6 +36,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIImageView * circle_1 = [UIImageView new];
+    circle_1.image = [UIImage imageNamed:@"demo_circle_3"];
+    circle_1.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:circle_1];
+    [circle_1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(20, 20));
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.view).mas_offset(20);
+    }];
+    
+    UIImageView * circle_2 = [UIImageView new];
+    circle_2.image = [UIImage imageNamed:@"demo_circle_3"];
+    circle_2.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:circle_2];
+    [circle_2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(40, 40));
+        make.centerX.equalTo(circle_1);
+        make.top.equalTo(circle_1.mas_bottom).mas_offset(20);
+    }];
+    
+    UIImageView * circle_3 = [UIImageView new];
+    circle_3.image = [UIImage imageNamed:@"demo_circle_3"];
+    circle_3.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:circle_3];
+    [circle_3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(60, 60));
+        make.centerX.equalTo(circle_2);
+        make.top.equalTo(circle_2.mas_bottom).mas_offset(20);
+    }];
     
     [self replaceSpace];
     [self printLinkFromTailToHead];

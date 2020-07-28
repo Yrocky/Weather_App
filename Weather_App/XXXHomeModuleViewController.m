@@ -15,6 +15,10 @@
 #import "NSArray+Sugar.h"
 #import "WSLWaterFlowLayout.h"
 
+@interface YYYYMoveContainerView : UIView
+@property (nonatomic ,strong) UIView * aView;
+@end
+
 @interface YYYHomeModule : QLLiveModule
 
 @end
@@ -24,6 +28,8 @@ UICollectionViewDelegate>
 @property (nonatomic ,strong) EaseRefreshProxy * refreshProxy;
 @property (nonatomic ,strong) YYYHomeModule * module;
 @property (nonatomic,strong) UICollectionView *collectionView;
+
+@property (nonatomic ,strong) YYYYMoveContainerView * moveContainerView;
 @end
 
 @implementation XXXHomeModuleViewController
@@ -73,6 +79,14 @@ UICollectionViewDelegate>
 //        make.top.equalTo(self.view);
 //        make.width.mas_equalTo(200);
 //        make.bottom.equalTo(self.view);
+    }];
+    
+    self.moveContainerView = [YYYYMoveContainerView new];
+    [self.view addSubview:self.moveContainerView];
+    [self.moveContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.centerX.equalTo(self.view);
+        make.height.mas_equalTo(300);
     }];
 }
 
@@ -545,5 +559,57 @@ static NSDictionary * demoData;
     height = width;
 
     return CGSizeMake(width, height);
+}
+@end
+@implementation YYYYMoveContainerView{
+    MASConstraint *_centerXConstraint;
+    MASConstraint *_centerYConstraint;
+    
+    CGPoint _translation;
+}
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        self.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.4];
+        
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onMove:)];
+
+        self.aView = [UIView new];
+        self.aView.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.3];
+        [self addSubview:self.aView];
+        [self.aView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(60, 60));
+            make.left.greaterThanOrEqualTo(self);
+            make.right.lessThanOrEqualTo(self);
+            make.top.greaterThanOrEqualTo(self);
+            make.bottom.lessThanOrEqualTo(self);
+            self->_centerXConstraint = make.centerX.equalTo(self).priorityHigh();
+            self->_centerYConstraint = make.centerY.equalTo(self).priorityHigh();
+        }];
+        [self.aView addGestureRecognizer:pan];
+    }
+    return self;
+}
+
+- (void) onMove:(UIPanGestureRecognizer *)gesture{
+    
+    CGPoint translation = [gesture translationInView:self];
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+//        _translation = CGPointZero;
+        _translation = translation;
+    } else if (gesture.state == UIGestureRecognizerStateChanged) {
+        NSLog(@"pan translation:%@",NSStringFromCGPoint(_translation));
+        
+        _centerXConstraint.offset = _translation.x;
+        _centerYConstraint.offset = _translation.y;
+        
+    } else if (gesture.state == UIGestureRecognizerStateCancelled ||
+               gesture.state == UIGestureRecognizerStateCancelled ||
+               gesture.state == UIGestureRecognizerStateEnded) {
+//        _translation = CGPointZero;
+//        _translation = CGPointMake(<#CGFloat x#>, <#CGFloat y#>);
+    }
 }
 @end

@@ -16,7 +16,8 @@
 #import "XXXRoute.h"
 #import "MMAObject.h"
 
-//#import <objc/objc-runtime.h>
+#import <objc/runtime.h>
+
 @interface AppDelegate ()
 
 @end
@@ -25,7 +26,7 @@ void addBlockToArray(NSMutableArray *arr){
 
     char a = 'a';
     [arr addObject:^{
-        printf("a:%c",a);
+//        printf("a:%c",a);
     }];
     
 }
@@ -61,10 +62,39 @@ extern CFAbsoluteTime StartTime;
     [self addRoutes];
     
     example_A();
+    //    bool iseq = [a isEqual:a];
     
     MMAObject * a = [MMAObject new];
-    bool iseq = [a isEqual:a];
     
+    NSLog(@"[clazz] mate class:%@",objc_getMetaClass(@"NSObject".UTF8String));
+    NSLog(@"[clazz] mate class:%@",objc_getMetaClass(@"MMAObject".UTF8String));
+    
+    NSLog(@"[clazz] kindof   %d", [NSObject.class isKindOfClass:NSObject.class]);
+    NSLog(@"[clazz] kindof   %d", [MMAObject.class isKindOfClass:NSObject.class]);
+    NSLog(@"[clazz] kindof   %d", [MMAObject.class isKindOfClass:MMAObject.class]);
+    
+    NSLog(@"[clazz] memberof %d", [NSObject.class isMemberOfClass:NSObject.class]);
+    NSLog(@"[clazz] memberof %d", [MMAObject.class isMemberOfClass:NSObject.class]);
+    NSLog(@"[clazz] memberof %d", [MMAObject.class isMemberOfClass:MMAObject.class]);
+    
+    NSLog(@"[clazz] kindof alloc %d", [MMAObject.alloc isKindOfClass:NSObject.class]);
+    NSLog(@"[clazz] kindof alloc %d", [MMAObject.alloc isKindOfClass:MMAObject.class]);
+    
+    __block NSObject * mArr = [NSObject new];
+    NSLog(@"[block] 1 - mArr:指针地址：%p-内存地址：%p",&mArr,mArr);
+    void(^block)() = ^(){
+        NSLog(@"[block] in block 指针地址：%p-内存地址：%p",&mArr,mArr);
+    };
+    
+    mArr = NSObject.new;// 内存地址发生可变化
+    NSLog(@"[block] 2 - mArr:指针地址：%p-内存地址：%p",&mArr,mArr);
+    mArr = NSObject.new;// 内存地址发生可变化
+    NSLog(@"[block] 2.5 - mArr:指针地址：%p-内存地址：%p",&mArr,mArr);
+    block();
+    mArr = NSObject.new;// 内存地址发生可变化
+    NSLog(@"[block] 3 - mArr:指针地址：%p-内存地址：%p",&mArr,mArr);
+    mArr = NSObject.new;// 内存地址发生可变化
+    NSLog(@"[block] 4 - mArr:指针地址：%p-内存地址：%p",&mArr,mArr);
     [[ALContext sharedContext] loadModules];
 //    [[ALContext sharedContext] registerModule:[XXXHomeModule class]];
 //    [[ALContext sharedContext] registerService:@protocol(XXXHomeService)
@@ -116,6 +146,12 @@ extern CFAbsoluteTime StartTime;
     NSLog(@"docPath:%@",docPath);
     
     NSLog(@"is Big endian :%d",isBigEndian());
+    
+    NSLog(@"[alloc] NSObject:  %@",NSObject.alloc);
+    NSLog(@"[alloc] NSObject:  %@",NSObject.alloc);
+    NSLog(@"[alloc] MMAObject: %@",MMAObject.alloc);
+    NSLog(@"[alloc] MMAObject: %@",MMAObject.alloc);
+    
     return YES;
 }
 

@@ -16,6 +16,8 @@
 		323574C124B8613D00AE659B /* QLLiveModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574B724B8613D00AE659B /* QLLiveModule.m */; };
 		323574C224B8613D00AE659B /* QLLiveComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574BB24B8613D00AE659B /* QLLiveComponent.m */; };
 		323574C324B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574BE24B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.m */; };
+		32BBDB5E24CE8803003C8FC2 /* EaseCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BBDB5D24CE8802003C8FC2 /* EaseCycleScrollView.m */; };
+		32BBDB6324CECB48003C8FC2 /* XXXCycleScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BBDB6224CECB48003C8FC2 /* XXXCycleScrollViewController.m */; };
 		32D11E9D24BD8F9600982F27 /* QLLiveModelEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D11E9C24BD8F9600982F27 /* QLLiveModelEnvironment.m */; };
 		40F95830277A374DF44DA0FA /* libPods-Weather_App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6B1AF26CE8C8DC2AAE81EC /* libPods-Weather_App.a */; };
 		5C04C60A229BC075000F0000 /* UIView+FrameLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */; };
@@ -354,6 +356,10 @@
 		323574BD24B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QLOrthogonalScrollerEmbeddedScrollView.h; sourceTree = "<group>"; };
 		323574BE24B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QLOrthogonalScrollerEmbeddedScrollView.m; sourceTree = "<group>"; };
 		323574C624BC3D5400AE659B /* QLLiveComponentLayout_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveComponentLayout_Private.h; sourceTree = "<group>"; };
+		32BBDB5C24CE8802003C8FC2 /* EaseCycleScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseCycleScrollView.h; sourceTree = "<group>"; };
+		32BBDB5D24CE8802003C8FC2 /* EaseCycleScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseCycleScrollView.m; sourceTree = "<group>"; };
+		32BBDB6124CECB47003C8FC2 /* XXXCycleScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXCycleScrollViewController.h; sourceTree = "<group>"; };
+		32BBDB6224CECB48003C8FC2 /* XXXCycleScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXCycleScrollViewController.m; sourceTree = "<group>"; };
 		32D11E9B24BD8F9600982F27 /* QLLiveModelEnvironment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveModelEnvironment.h; sourceTree = "<group>"; };
 		32D11E9C24BD8F9600982F27 /* QLLiveModelEnvironment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QLLiveModelEnvironment.m; sourceTree = "<group>"; };
 		32D11E9E24BD8FF400982F27 /* QLLiveModelEnvironment_Protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveModelEnvironment_Protocol.h; sourceTree = "<group>"; };
@@ -1120,6 +1126,8 @@
 				5C5E63C42244ABD200C0B85D /* CardCollectionViewCell.m */,
 				5C21745F2254B30B001443BC /* RoomCycleScrollView.h */,
 				5C2174602254B30B001443BC /* RoomCycleScrollView.m */,
+				32BBDB5C24CE8802003C8FC2 /* EaseCycleScrollView.h */,
+				32BBDB5D24CE8802003C8FC2 /* EaseCycleScrollView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -2076,6 +2084,8 @@
 				D7008DDB1FB180B500BD6EA0 /* MMNavigationController.m */,
 				D70629561F8B19AF00F52FCB /* RootViewController.h */,
 				D70629571F8B19AF00F52FCB /* RootViewController.m */,
+				32BBDB6124CECB47003C8FC2 /* XXXCycleScrollViewController.h */,
+				32BBDB6224CECB48003C8FC2 /* XXXCycleScrollViewController.m */,
 				323574A424B85CB400AE659B /* XXXHomeModuleViewController.h */,
 				323574A524B85CB400AE659B /* XXXHomeModuleViewController.m */,
 				5C70C62C24694A3400CD6AB6 /* XXXMakeItEaseViewController.h */,
@@ -2562,6 +2572,7 @@
 				5CE42B17228E874400C236FC /* ResumeSkillCell.m in Sources */,
 				5C6EA37922768F8D00EA3D0F /* XXXContext.m in Sources */,
 				D7862ADA24B9670000AA0BEB /* WSLWaterFlowLayout.m in Sources */,
+				32BBDB5E24CE8803003C8FC2 /* EaseCycleScrollView.m in Sources */,
 				5CA733FD2399FD8100A75DA9 /* MMKVViewController.m in Sources */,
 				F77231C621AE607400DA019B /* MMAnimationPromise.m in Sources */,
 				7F3815B821294F60006016E9 /* MM_GiftEffectView.m in Sources */,
@@ -2612,6 +2623,7 @@
 				5C0D1D9A2317AD8B003E9E62 /* FinanceViewController.m in Sources */,
 				5CE8B34522A8C5C3002CFA38 /* XXXLoginInputView.m in Sources */,
 				7F3815B52129460F006016E9 /* MMGCDTimerManager.m in Sources */,
+				32BBDB6324CECB48003C8FC2 /* XXXCycleScrollViewController.m in Sources */,
 				F703661821E720380086832C /* EaseDevice.m in Sources */,
 				D7F1F8032070F9FB000478C2 /* HomeBillContentView.m in Sources */,
 				323574A624B85CB400AE659B /* XXXHomeModuleViewController.m in Sources */,

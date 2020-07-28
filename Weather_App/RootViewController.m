@@ -50,6 +50,7 @@
 #import "FinanceViewController.h"
 #import "XXXRoute.h"
 #import "FaceUViewController.h"
+#import "XXXCycleScrollViewController.h"
 
 #define MMLiveRoute [JLRoutes routesForScheme:@"MMLive"]
 
@@ -101,6 +102,18 @@
             [self performSegueWithIdentifier:@"RootToMain" sender:nil];
         }];
         [s addCellModel:c];
+        
+        [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"cycle scroll" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/XXXCycleScrollViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
         
         [s addCellModel:({
             [[HSTitleCellModel alloc] initWithTitle:@"home" actionBlock:^(HSTitleCellModel *model) {
