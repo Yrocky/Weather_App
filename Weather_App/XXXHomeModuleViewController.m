@@ -198,7 +198,7 @@ static NSDictionary * demoData;
 //        [comp addDatas:[data[@"languages"] mm_randomObjects]];
 //        comp;
 //    })];
-//    
+//
 //    [self.dataSource addComponent:({
 //        YYYOneComponent * comp = [YYYOneComponent new];
 //        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
@@ -207,7 +207,7 @@ static NSDictionary * demoData;
 //        comp.layout.distribution = [QLLiveComponentDistribution distributionValue:4];
 //        comp;
 //    })];
-//    
+//
 //    [self.dataSource addComponent:({
 //        YYYOneComponent * comp = [YYYOneComponent new];
 //        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
@@ -220,7 +220,7 @@ static NSDictionary * demoData;
 //        [comp addDatas:[data[@"weather"] mm_randomObjects]];
 //        comp;
 //    })];
-//    
+//
 //    [self.dataSource addComponent:({
 //        YYYOneComponent * comp = [YYYOneComponent new];
 //        comp.layout.insets = UIEdgeInsetsMake(0, 5, 0, 5);

@@ -16,6 +16,7 @@ NSString *const CHTCollectionElementKindSectionFooter = @"CHTCollectionElementKi
 @property (nonatomic, weak) id <CHTCollectionViewDelegateWaterfallLayout> delegate;
 /// Array to store height for each column
 @property (nonatomic, strong) NSMutableArray *columnHeights;
+@property (nonatomic, strong) NSMutableArray *itemHeights;
 /// Array of arrays. Each array stores item attributes for each section
 @property (nonatomic, strong) NSMutableArray *sectionItemAttributes;
 /// Array to store attributes for all items includes headers, cells, and footers
@@ -157,6 +158,13 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
     return _columnHeights;
 }
 
+- (NSMutableArray *)itemHeights {
+    if (!_itemHeights) {
+        _itemHeights = [NSMutableArray array];
+    }
+    return _itemHeights;
+}
+
 - (NSMutableArray *)allItemAttributes {
     if (!_allItemAttributes) {
         _allItemAttributes = [NSMutableArray array];
@@ -210,6 +218,7 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
     [self.footersAttribute removeAllObjects];
     [self.unionRects removeAllObjects];
     [self.columnHeights removeAllObjects];
+    [self.itemHeights removeAllObjects];
     [self.allItemAttributes removeAllObjects];
     [self.sectionItemAttributes removeAllObjects];
     
@@ -219,7 +228,7 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
     }
     
     //  NSAssert([self.delegate conformsToProtocol:@protocol(CHTCollectionViewDelegateWaterfallLayout)], @"UICollectionView's delegate should conform to CHTCollectionViewDelegateWaterfallLayout protocol");
-    NSAssert(self.columnCount > 0 || [self.delegate respondsToSelector:@selector(collectionView:layout:columnCountForSection:)], @"UICollectionViewWaterfallLayout's columnCount should be greater than 0, or delegate must implement columnCountForSection:");
+//    NSAssert(self.columnCount > 0 || [self.delegate respondsToSelector:@selector(collectionView:layout:columnCountForSection:)], @"UICollectionViewWaterfallLayout's columnCount should be greater than 0, or delegate must implement columnCountForSection:");
     
     // Initialize variables
     NSInteger idx = 0;
@@ -259,9 +268,10 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
             sectionInset = self.sectionInset;
         }
         
-        CGFloat width = self.collectionView.bounds.size.width - sectionInset.left - sectionInset.right;
+        CGFloat sectionContainerWidth = self.collectionView.bounds.size.width - sectionInset.left - sectionInset.right;
         NSInteger columnCount = [self columnCountForSection:section];
-        CGFloat itemWidth = CHTFloorCGFloat((width - (columnCount - 1) * columnSpacing) / columnCount);
+        // item的width需要从代理里面取，他这里是根据column算出来固定宽度
+        CGFloat itemWidth = CHTFloorCGFloat((sectionContainerWidth - (columnCount - 1) * columnSpacing) / columnCount);
         
         /*
          * 2. Section header
@@ -280,6 +290,7 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
             headerInset = self.headerInset;
         }
         
+        // 更新top
         top += headerInset.top;
         
         if (headerHeight > 0) {
@@ -292,6 +303,7 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
             self.headersAttribute[@(section)] = attributes;
             [self.allItemAttributes addObject:attributes];
             
+            // 更新top，如果有设置sectionHeader的高度
             top = CGRectGetMaxY(attributes.frame) + headerInset.bottom;
         }
         
@@ -312,6 +324,7 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
             NSUInteger columnIndex = [self nextColumnIndexForItem:idx inSection:section];
             CGFloat xOffset = sectionInset.left + (itemWidth + columnSpacing) * columnIndex;
             CGFloat yOffset = [self.columnHeights[section][columnIndex] floatValue];
+            // 通过代理获得每一个cell的尺寸，
             CGSize itemSize = [self.delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:indexPath];
             CGFloat itemHeight = 0;
             if (itemSize.height > 0 && itemSize.width > 0) {
@@ -452,9 +465,11 @@ static CGFloat CHTFloorCGFloat(CGFloat value) {
         if (CGRectIntersectsRect(rect, attr.frame)) {
             switch (attr.representedElementCategory) {
                 case UICollectionElementCategorySupplementaryView:
-                    if ([attr.representedElementKind isEqualToString:CHTCollectionElementKindSectionHeader]) {
+                    if ([attr.representedElementKind isEqualToString:CHTCollectionElementKindSectionHeader] ||
+                        [attr.representedElementKind isEqualToString:UICollectionElementKindSectionHeader]) {
                         supplHeaderAttrDict[attr.indexPath] = attr;
-                    } else if ([attr.representedElementKind isEqualToString:CHTCollectionElementKindSectionFooter]) {
+                    } else if ([attr.representedElementKind isEqualToString:CHTCollectionElementKindSectionFooter] ||
+                               [attr.representedElementKind isEqualToString:UICollectionElementKindSectionFooter]) {
                         supplFooterAttrDict[attr.indexPath] = attr;
                     }
                     break;
