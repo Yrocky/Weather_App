@@ -8,12 +8,14 @@
 
 #import "QLLiveComponent.h"
 #import "QLLiveModelEnvironment_Protocol.h"
+#import "QLLiveModelEnvironment_Protocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QLLiveComponent ()
 
 @property (nonatomic, weak, readwrite) id<QLLiveModuleDataSourceAble> dataSource;
+@property (nonatomic ,weak) id<QLLiveModelEnvironment> environment;
 
 @end
 

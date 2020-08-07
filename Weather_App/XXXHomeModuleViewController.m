@@ -14,6 +14,7 @@
 #import "UIColor+Common.h"
 #import "NSArray+Sugar.h"
 #import "WSLWaterFlowLayout.h"
+#import "HLLAlert.h"
 
 @interface YYYYMoveContainerView : UIView
 @property (nonatomic ,strong) UIView * aView;
@@ -44,7 +45,6 @@ UICollectionViewDelegate>
                                          collectionViewLayout:({
         [[UICollectionViewFlowLayout alloc] init];
     })];
-    _collectionView.delegate = self;
     _collectionView.backgroundColor = UIColor.whiteColor;
     if (@available(iOS 11.0, *)) {
         _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentScrollableAxes;
@@ -52,8 +52,10 @@ UICollectionViewDelegate>
     [self.view addSubview:self.collectionView];
     
     // 为module设置collectionView
-    [self.module setupEnvironmentWithViewController:self
-                       collectionView:self.collectionView];
+    [self.module setupViewController:self
+                      collectionView:self.collectionView];
+    self.module.dataSource.scrollViewDelegate = self;
+    self.module.dataSource.collectionViewDelegate = self;
     
     self.refreshProxy = [[EaseRefreshProxy alloc] initWithScrollView:self.collectionView];
     [self.refreshProxy setupPageOrigIndex:0 andSize:20];
@@ -81,21 +83,23 @@ UICollectionViewDelegate>
 //        make.bottom.equalTo(self.view);
     }];
     
-    self.moveContainerView = [YYYYMoveContainerView new];
-    [self.view addSubview:self.moveContainerView];
-    [self.moveContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
-        make.centerX.equalTo(self.view);
-        make.height.mas_equalTo(300);
-    }];
+//    self.moveContainerView = [YYYYMoveContainerView new];
+//    [self.view addSubview:self.moveContainerView];
+//    [self.moveContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.equalTo(self.view);
+//        make.centerX.equalTo(self.view);
+//        make.height.mas_equalTo(300);
+//    }];
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"[module] selected at :%@",indexPath);
+//    NSLog(@"[module] selected at :%@",indexPath);
 }
-
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    NSLog(@"did scroll...");
+}
 @end
 
 @interface YYYBaseComponent : QLLiveComponent
@@ -125,6 +129,9 @@ UICollectionViewDelegate>
 @interface YYYFourComponent : YYYThreeComponent<QLLiveComponentLayoutDelegate>
 @end
 
+@interface YYYFiveComponent : YYYThreeComponent<QLLiveComponentLayoutDelegate>
+
+@end
 static NSDictionary * demoData;
 @implementation YYYHomeModule{
 }
@@ -142,6 +149,11 @@ static NSDictionary * demoData;
             @"number":@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"],
             @"company":@[@"google",@"facebook",@"youtube",@"amazon",@"apple",@"Microsoft",@"Alphabet",@"IBM"],
             @"music":@[@"Love of My Life",@"Thank You",@"Yesterday Once More",@"You Are Not Alone",@"Billie Jean",@"Smooth Criminal",@"Earth Song",@"I will always love you",@"black or white"],
+            @"waterFlow":@[
+                    @(170),@(80),@(190),@(100),
+                    @(110),@(200),@(130),
+                    @(40),@(150),@(60),
+            ],
         };
     }
     return self;
@@ -174,49 +186,49 @@ static NSDictionary * demoData;
 
 - (void) setupComponents:(NSDictionary *)data{
     
-    [self.dataSource addComponent:({
-        YYYOneComponent * comp = [YYYOneComponent new];
-        comp.arrange = QLLiveComponentArrangeHorizontal;
-        comp.layout.itemRatio = [QLLiveComponentItemRatio absoluteValue:40];
-        comp.layout.distribution = [QLLiveComponentDistribution distributionValue:6];
-        [comp setBSetupCell:^(YYYOneCCell *cell, id data) {
-            cell.oneLabel.textColor = [UIColor colorWithHexString:@"#CB2EFF"];
-            [cell setupWithData:data];
-        }];
-        [comp addDatas:[data[@"languages"] mm_randomObjects]];
-        comp;
-    })];
-    
-    [self.dataSource addComponent:({
-        YYYOneComponent * comp = [YYYOneComponent new];
-        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
-        comp.needPlacehold = YES;
-        comp.layout.placeholdHeight = 100;
-        comp.layout.distribution = [QLLiveComponentDistribution distributionValue:4];
-        comp;
-    })];
-    
-    [self.dataSource addComponent:({
-        YYYOneComponent * comp = [YYYOneComponent new];
-        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
-        comp.layout.distribution = [QLLiveComponentDistribution distributionValue:4];
-        [comp setBSetupCell:^(YYYOneCCell *cell, id data) {
-            [cell setupWithData:data];
-            // 由于复用，所以这段代码下载setupWithData下面
-            cell.oneLabel.textColor = [UIColor colorWithHexString:@"#B2E7F9"];
-        }];
-        [comp addDatas:[data[@"weather"] mm_randomObjects]];
-        comp;
-    })];
-    
-    [self.dataSource addComponent:({
-        YYYOneComponent * comp = [YYYOneComponent new];
-        comp.layout.insets = UIEdgeInsetsMake(0, 5, 0, 5);
-        comp.arrange = QLLiveComponentArrangeHorizontal;
-        comp.layout.distribution = [QLLiveComponentDistribution fractionalDimension:0.3];
-        [comp addDatas:[data[@"city"] mm_randomObjects]];
-        comp;
-    })];
+//    [self.dataSource addComponent:({
+//        YYYOneComponent * comp = [YYYOneComponent new];
+////        comp.arrange = QLLiveComponentArrangeHorizontal;
+//        comp.layout.itemRatio = [QLLiveComponentItemRatio absoluteValue:40];
+//        comp.layout.distribution = [QLLiveComponentDistribution distributionValue:6];
+//        [comp setBSetupCell:^(YYYOneCCell *cell, id data) {
+//            cell.oneLabel.textColor = [UIColor colorWithHexString:@"#CB2EFF"];
+//            [cell setupWithData:data];
+//        }];
+//        [comp addDatas:[data[@"languages"] mm_randomObjects]];
+//        comp;
+//    })];
+//    
+//    [self.dataSource addComponent:({
+//        YYYOneComponent * comp = [YYYOneComponent new];
+//        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
+//        comp.needPlacehold = YES;
+//        comp.layout.placeholdHeight = 100;
+//        comp.layout.distribution = [QLLiveComponentDistribution distributionValue:4];
+//        comp;
+//    })];
+//    
+//    [self.dataSource addComponent:({
+//        YYYOneComponent * comp = [YYYOneComponent new];
+//        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
+//        comp.layout.distribution = [QLLiveComponentDistribution distributionValue:4];
+//        [comp setBSetupCell:^(YYYOneCCell *cell, id data) {
+//            [cell setupWithData:data];
+//            // 由于复用，所以这段代码下载setupWithData下面
+//            cell.oneLabel.textColor = [UIColor colorWithHexString:@"#B2E7F9"];
+//        }];
+//        [comp addDatas:[data[@"weather"] mm_randomObjects]];
+//        comp;
+//    })];
+//    
+//    [self.dataSource addComponent:({
+//        YYYOneComponent * comp = [YYYOneComponent new];
+//        comp.layout.insets = UIEdgeInsetsMake(0, 5, 0, 5);
+////        comp.arrange = QLLiveComponentArrangeHorizontal;
+//        comp.layout.distribution = [QLLiveComponentDistribution fractionalDimension:0.3];
+//        [comp addDatas:[data[@"city"] mm_randomObjects]];
+//        comp;
+//    })];
 
     [self.dataSource addComponent:({
         // 这个component是用来做标签效果的，
@@ -226,7 +238,7 @@ static NSDictionary * demoData;
         [comp addDatas:[data[@"Cocoa"] mm_randomObjects]];
         comp;
     })];
-    
+    return;
     [self.dataSource addComponent:({
         YYYThreeComponent * comp = [[YYYThreeComponent alloc] initWithTitle:@"Word"];
         [comp addDatas:[data[@"word"] mm_randomObjects]];
@@ -234,7 +246,7 @@ static NSDictionary * demoData;
     })];
     [self.dataSource addComponent:({
         YYYOneComponent * comp = [YYYOneComponent new];
-        comp.arrange = QLLiveComponentArrangeHorizontal;
+//        comp.arrange = QLLiveComponentArrangeHorizontal;
         comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
         comp.layout.itemRatio = [QLLiveComponentItemRatio absoluteValue:50];
         comp.layout.distribution = [QLLiveComponentDistribution absoluteDimension:90];
@@ -259,7 +271,7 @@ static NSDictionary * demoData;
     })];
     [self.dataSource addComponent:({
         YYYOneComponent * comp = [YYYOneComponent new];
-        comp.arrange = QLLiveComponentArrangeHorizontal;
+//        comp.arrange = QLLiveComponentArrangeHorizontal;
         comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
         comp.layout.itemRatio = [QLLiveComponentItemRatio absoluteValue:50];
         comp.layout.distribution = [QLLiveComponentDistribution fractionalDimension:0.3];
@@ -268,6 +280,11 @@ static NSDictionary * demoData;
             cell.oneLabel.textColor = [UIColor colorWithHexString:@"#CB2EFF"];
         }];
         [comp addDatas:[data[@"company"] mm_randomObjects]];
+        comp;
+    })];
+    [self.dataSource addComponent:({
+        YYYFiveComponent * comp = [[YYYFiveComponent alloc] initWithTitle:@"waterFlow"];
+        [comp addDatas:[data[@"waterFlow"] mm_randomObjects]];
         comp;
     })];
 }
@@ -283,6 +300,8 @@ static NSDictionary * demoData;
     return self;
 }
 - (void)didSelectItemAtIndex:(NSInteger)index{
+    [[[HLLAlertUtil title:[self dataAtIndex:index]]
+      buttons:@[@"sure"]] show];
     NSLog(@"[component] did selected:%@ at:%ld",[self dataAtIndex:index],(long)index);
 }
 @end
@@ -352,7 +371,7 @@ static NSDictionary * demoData;
     return self;
 }
 - (void) setupWithData:(NSString *)data{
-    self.oneLabel.text = data;
+    self.oneLabel.text = [NSString stringWithFormat:@"%@",data];
     self.oneLabel.textColor = [UIColor colorWithHexString:@"#FF6A66"];
 }
 @end
@@ -383,7 +402,7 @@ static NSDictionary * demoData;
         }];
         
         [demoMaskImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(0, 20, 0, 20));
+            make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(0, 5, 0, 5));
         }];
     }
     return self;
@@ -469,8 +488,8 @@ static NSDictionary * demoData;
         self.layout.insets = UIEdgeInsetsMake(5, 5, 5, 5);
         self.layout.lineSpacing = 5;
         self.layout.interitemSpacing = 5;
-        self.layout.itemRatio = [QLLiveComponentItemRatio itemRatioValue:2.0];
         self.layout.distribution = [QLLiveComponentDistribution distributionValue:2];
+        self.layout.itemRatio = [QLLiveComponentItemRatio itemRatioValue:2.0];
     }
     return self;
 }
@@ -535,11 +554,11 @@ static NSDictionary * demoData;
 
 @implementation YYYFourComponent
 
-
 - (instancetype) initWithTitle:(NSString *)title{
     self = [super initWithTitle:title];
     if (self) {
         self.layout.customItemSize = self;
+        self.layout.distribution = [QLLiveComponentDistribution distributionValue:3];
     }
     return self;
 }
@@ -561,6 +580,39 @@ static NSDictionary * demoData;
     return CGSizeMake(width, height);
 }
 @end
+
+@implementation YYYFiveComponent
+
+- (instancetype) initWithTitle:(NSString *)title{
+    self = [super initWithTitle:title];
+    if (self) {
+        self.layout.customItemSize = self;
+        self.layout.distribution = [QLLiveComponentDistribution distributionValue:2];
+    }
+    return self;
+}
+
+#pragma mark - QLLiveComponentLayoutDelegate
+
+- (CGSize)componentLayoutCustomItemSize:(QLLiveComponentLayout *)layout atIndex:(NSInteger)index{
+    
+    CGFloat width = 0;
+    CGFloat height = 0;
+    // 这里的distribution不推荐使用absolute、fractional
+    if (layout.distribution.isAbsolute) {
+        width = layout.distribution.value;
+    } else if (layout.distribution.isFractional) {
+        width = layout.insetContainerWidth * layout.distribution.value;
+    } else {
+        width = (layout.insetContainerWidth - layout.interitemSpacing) / layout.distribution.value;
+    }
+    height = [[self dataAtIndex:index] integerValue];
+    
+    return CGSizeMake(width, height);
+}
+
+@end
+
 @implementation YYYYMoveContainerView{
     MASConstraint *_centerXConstraint;
     MASConstraint *_centerYConstraint;
@@ -578,6 +630,7 @@ static NSDictionary * demoData;
 
         self.aView = [UIView new];
         self.aView.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.3];
+        self.aView.hidden = YES;
         [self addSubview:self.aView];
         [self.aView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(60, 60));

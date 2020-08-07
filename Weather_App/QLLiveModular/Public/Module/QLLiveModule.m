@@ -9,6 +9,7 @@
 #import "QLLiveModule.h"
 #import <YTKNetwork/YTKNetwork.h>
 #import "QLLiveModelEnvironment.h"
+#import "QLLiveModuleDataSource_Private.h"
 
 @implementation QLLiveModule
 
@@ -55,7 +56,7 @@
     }
 }
 
-- (void)setupEnvironmentWithViewController:(UIViewController *)viewController collectionView:(UICollectionView *)collectionView{
+- (void)setupViewController:(UIViewController *)viewController collectionView:(UICollectionView *)collectionView{
     QLLiveModelEnvironment * environment = [QLLiveModelEnvironment new];
     environment.viewController = viewController;
     environment.collectionView = collectionView;
@@ -134,7 +135,10 @@
 
 @end
 
-@implementation QLLiveCompositeModule
+@implementation QLLiveCompositeModule{
+@protected
+    NSMutableArray<__kindof QLLiveModule *> *_innerModules;
+}
 
 - (instancetype)initWithName:(NSString *)name viewController:(nullable UIViewController *)viewController{
     
@@ -146,11 +150,55 @@
 }
 
 - (void)addModule:(__kindof QLLiveModule *)module{
-    [_innerModules addObject:module];
+    if (module && [module isKindOfClass:QLLiveModule.class]) {
+        [_innerModules addObject:module];
+    }
 }
 
 - (NSArray<__kindof QLLiveModule *> *)modules{
     return [NSArray arrayWithArray:_innerModules];
 }
 
+@end
+
+@implementation QLLivePureListModule
+
+- (QLLivePureListModuleType) pureListModuleType{
+    return QLLivePureListModuleReplace;
+}
+
+- (Class) pureListComponentClass{
+    return QLLiveComponent.class;
+}
+
+- (__kindof QLLiveComponent *) setupPureComponentWithDatas:(NSArray *)datas{
+    
+    Class componentClass = [self pureListComponentClass];
+    
+    if (self.pureListModuleType == QLLivePureListModuleReplace) {
+        [self.dataSource clear];
+        if (datas.count) {
+            QLLiveComponent * component = [componentClass new];
+            if (![component isKindOfClass:QLLiveComponent.class]) {
+                return nil;
+            }
+            [component addDatas:datas];
+            [self.dataSource addComponent:component];
+            return component;
+        }
+    } else if (self.pureListModuleType == QLLivePureListModuleAppend) {
+        QLLiveComponent * component = [self.dataSource componentAtIndex:0];
+        if (!component && datas.count) {
+            component = [componentClass new];
+            if (![component isKindOfClass:QLLiveComponent.class]) {
+                return nil;
+            }
+            [self.dataSource addComponent:component];
+        }
+        // todo 去重
+        [component addDatas:datas];
+        return component;
+    }
+    return nil;
+}
 @end

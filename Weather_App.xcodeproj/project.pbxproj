@@ -16,8 +16,12 @@
 		323574C124B8613D00AE659B /* QLLiveModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574B724B8613D00AE659B /* QLLiveModule.m */; };
 		323574C224B8613D00AE659B /* QLLiveComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574BB24B8613D00AE659B /* QLLiveComponent.m */; };
 		323574C324B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574BE24B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.m */; };
+		325A3F5E24DC06BF00A5508F /* QLLiveModuleAdapterProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 325A3F5D24DC06BF00A5508F /* QLLiveModuleAdapterProxy.m */; };
+		325A3F6124DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 325A3F6024DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.m */; };
+		325A3F6E24DD4B2B00A5508F /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 325A3F6D24DD4B2B00A5508F /* CHTCollectionViewWaterfallLayout.m */; };
 		32BBDB5E24CE8803003C8FC2 /* EaseCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BBDB5D24CE8802003C8FC2 /* EaseCycleScrollView.m */; };
 		32BBDB6324CECB48003C8FC2 /* XXXCycleScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BBDB6224CECB48003C8FC2 /* XXXCycleScrollViewController.m */; };
+		32BBDB6424D0218A003C8FC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6EC91F46E35A00D94379 /* main.m */; };
 		32D11E9D24BD8F9600982F27 /* QLLiveModelEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D11E9C24BD8F9600982F27 /* QLLiveModelEnvironment.m */; };
 		40F95830277A374DF44DA0FA /* libPods-Weather_App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6B1AF26CE8C8DC2AAE81EC /* libPods-Weather_App.a */; };
 		5C04C60A229BC075000F0000 /* UIView+FrameLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */; };
@@ -219,7 +223,6 @@
 		7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8CC251F984A3F005DC9FF /* HLLPlaceholderTextView.m */; };
 		7FD8CC291F984A8D005DC9FF /* UILabel+ContentSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8CC281F984A8D005DC9FF /* UILabel+ContentSize.m */; };
 		7FD8CC351F98A995005DC9FF /* NSObject+CodableProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8CC341F98A995005DC9FF /* NSObject+CodableProperties.m */; };
-		7FDC6ECA1F46E35A00D94379 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6EC91F46E35A00D94379 /* main.m */; };
 		7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6ECC1F46E35A00D94379 /* AppDelegate.m */; };
 		7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6ECF1F46E35A00D94379 /* ViewController.m */; };
 		7FDC6ED31F46E35A00D94379 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FDC6ED11F46E35A00D94379 /* Main.storyboard */; };
@@ -356,6 +359,13 @@
 		323574BD24B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QLOrthogonalScrollerEmbeddedScrollView.h; sourceTree = "<group>"; };
 		323574BE24B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QLOrthogonalScrollerEmbeddedScrollView.m; sourceTree = "<group>"; };
 		323574C624BC3D5400AE659B /* QLLiveComponentLayout_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveComponentLayout_Private.h; sourceTree = "<group>"; };
+		325A3F5C24DC06BF00A5508F /* QLLiveModuleAdapterProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveModuleAdapterProxy.h; sourceTree = "<group>"; };
+		325A3F5D24DC06BF00A5508F /* QLLiveModuleAdapterProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QLLiveModuleAdapterProxy.m; sourceTree = "<group>"; };
+		325A3F5F24DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewLayout+InteractiveLayout.h"; sourceTree = "<group>"; };
+		325A3F6024DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewLayout+InteractiveLayout.m"; sourceTree = "<group>"; };
+		325A3F6224DD191400A5508F /* QLLiveModuleDataSource_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveModuleDataSource_Private.h; sourceTree = "<group>"; };
+		325A3F6C24DD4B2B00A5508F /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
+		325A3F6D24DD4B2B00A5508F /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
 		32BBDB5C24CE8802003C8FC2 /* EaseCycleScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseCycleScrollView.h; sourceTree = "<group>"; };
 		32BBDB5D24CE8802003C8FC2 /* EaseCycleScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseCycleScrollView.m; sourceTree = "<group>"; };
 		32BBDB6124CECB47003C8FC2 /* XXXCycleScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXCycleScrollViewController.h; sourceTree = "<group>"; };
@@ -980,7 +990,6 @@
 		323574B224B8613C00AE659B /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				323574C624BC3D5400AE659B /* QLLiveComponentLayout_Private.h */,
 				323574B324B8613C00AE659B /* QLLiveComponentLayout.h */,
 				323574B424B8613C00AE659B /* QLLiveComponentLayout.m */,
 			);
@@ -999,7 +1008,6 @@
 		323574B824B8613D00AE659B /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				323574B924B8613D00AE659B /* QLLiveComponent_Private.h */,
 				323574BA24B8613D00AE659B /* QLLiveComponent.h */,
 				323574BB24B8613D00AE659B /* QLLiveComponent.m */,
 			);
@@ -1015,6 +1023,34 @@
 			path = OrthogonalScroll;
 			sourceTree = "<group>";
 		};
+		325A3F6324DD19BF00A5508F /* QLLiveModuleAdapterProxy */ = {
+			isa = PBXGroup;
+			children = (
+				325A3F5C24DC06BF00A5508F /* QLLiveModuleAdapterProxy.h */,
+				325A3F5D24DC06BF00A5508F /* QLLiveModuleAdapterProxy.m */,
+			);
+			path = QLLiveModuleAdapterProxy;
+			sourceTree = "<group>";
+		};
+		325A3F6424DD1A1500A5508F /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				323574B924B8613D00AE659B /* QLLiveComponent_Private.h */,
+				325A3F6224DD191400A5508F /* QLLiveModuleDataSource_Private.h */,
+				323574C624BC3D5400AE659B /* QLLiveComponentLayout_Private.h */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		325A3F6824DD366500A5508F /* QLLiveModuleFlowLayoutWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				325A3F5F24DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.h */,
+				325A3F6024DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.m */,
+			);
+			path = QLLiveModuleFlowLayoutWrapper;
+			sourceTree = "<group>";
+		};
 		32D11E9F24BD919800982F27 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1028,6 +1064,9 @@
 		32D11EA024BD91A900982F27 /* Privaate */ = {
 			isa = PBXGroup;
 			children = (
+				325A3F6424DD1A1500A5508F /* Private */,
+				325A3F6324DD19BF00A5508F /* QLLiveModuleAdapterProxy */,
+				325A3F6824DD366500A5508F /* QLLiveModuleFlowLayoutWrapper */,
 				32D11E9F24BD919800982F27 /* Environment */,
 				323574BC24B8613D00AE659B /* OrthogonalScroll */,
 			);
@@ -1795,6 +1834,8 @@
 				F703661721E720380086832C /* EaseDevice.m */,
 				D759BB01218CA1B500A06FE0 /* MMAnimatableProperty.h */,
 				D759BB02218CA1B500A06FE0 /* MMAnimatableProperty.m */,
+				325A3F6C24DD4B2B00A5508F /* CHTCollectionViewWaterfallLayout.h */,
+				325A3F6D24DD4B2B00A5508F /* CHTCollectionViewWaterfallLayout.m */,
 				7F677F37218C1130009851B6 /* MMDirectionGestureRecognizer */,
 				7F677F38218C1139009851B6 /* MMGradientView */,
 				7F7BA14A2090799C0085E045 /* PKProtocolExtension.h */,
@@ -2553,12 +2594,14 @@
 				5C5E63D82244B86D00C0B85D /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				7F6FFB91209458E100A84A81 /* ZPLabelLayer.m in Sources */,
 				5C392B34226D8A6B00C15344 /* MMPlugin.m in Sources */,
+				32BBDB6424D0218A003C8FC2 /* main.m in Sources */,
 				D706294F1F8B189C00F52FCB /* UIColor+Common.m in Sources */,
 				5C6EA3862276A85600EA3D0F /* MMBinAST.m in Sources */,
 				7F590D7D1FA9A5D4006F7BF0 /* STPopupLeftBarItem.m in Sources */,
 				D759BB03218CA1B500A06FE0 /* MMAnimatableProperty.m in Sources */,
 				7F53C0F02126740600567D74 /* GiftShapeEffectView.m in Sources */,
 				7FD8CC351F98A995005DC9FF /* NSObject+CodableProperties.m in Sources */,
+				325A3F5E24DC06BF00A5508F /* QLLiveModuleAdapterProxy.m in Sources */,
 				7F9810142121889B0004C638 /* MMDelegateService.m in Sources */,
 				7F590D801FA9A5D4006F7BF0 /* UIViewController+STPopup.m in Sources */,
 				D7A73E231FB04F4800818CF5 /* MM_FindFriendEntryItemView.m in Sources */,
@@ -2647,6 +2690,7 @@
 				5C70C650246BE63900CD6AB6 /* MMHomeComponent+CollectionView.m in Sources */,
 				7FF4FC091FB55D980097CB3D /* LayoutViewController.m in Sources */,
 				5CE8B34122A8C4EB002CFA38 /* OldForgetPswConfirmViewController.m in Sources */,
+				325A3F6E24DD4B2B00A5508F /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				7F5FD9932115898D00DB70F8 /* MM24GameManager.m in Sources */,
 				7F472922218C6B50007A10FB /* MMLiveChatEmojiView.m in Sources */,
 				323574BF24B8613D00AE659B /* QLLiveModuleDataSource.m in Sources */,
@@ -2701,6 +2745,7 @@
 				5C48AB0C2296377A00535980 /* NoticeScrollViewController.m in Sources */,
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
 				5C70C63A246AABC600CD6AB6 /* MMHomeModule.m in Sources */,
+				325A3F6124DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.m in Sources */,
 				5C70C647246AD32900CD6AB6 /* MMHomeSectionComponent.m in Sources */,
 				5C6EA39A2276C4F000EA3D0F /* MMParserr.m in Sources */,
 				5CFAF3E32283F53B0057BD05 /* MMGraph.m in Sources */,
@@ -2770,7 +2815,6 @@
 				D7DF33541F6AC9E400771928 /* MMPreviewHUD.m in Sources */,
 				5C3A5CAC2463DB04009ECCEF /* XXXLivingRoomViewController.m in Sources */,
 				D715E6A01FA627D500CFBFF4 /* FDViewController.m in Sources */,
-				7FDC6ECA1F46E35A00D94379 /* main.m in Sources */,
 				7FA7261B1FFB89AF00C0F6F2 /* MMToolBar.m in Sources */,
 				D7963EFB21B5678B00B44397 /* ALBookDemoViewController.m in Sources */,
 				5CE42B1C228E876200C236FC /* ResumProjectCell.m in Sources */,
@@ -2979,6 +3023,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Weather_App//PrefixHeader.pch";
 				INFOPLIST_FILE = Weather_App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_GENERATE_MAP_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3016,6 +3061,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Weather_App//PrefixHeader.pch";
 				INFOPLIST_FILE = Weather_App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_GENERATE_MAP_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

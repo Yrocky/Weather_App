@@ -67,6 +67,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    NSString * aaa = @"aaa";
     
     self.title = @"Root";
     self.str = @"123";
@@ -92,6 +93,17 @@
         
     }];
     
+    [ANYMethodLog logMethodWithClass:NSArray.class condition:^BOOL(SEL sel) {
+        return sel == @selector(enumerateObjectsWithOptions:usingBlock:);
+    } before:^(id target, SEL sel, NSArray *args, int deep) {
+        NSLog(@"args:%@",args);
+    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
+        NSLog(@"args:%@",args);
+    }];
+    
+    [@[@"sdfsdf",@"fsds"] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"obj:%@",obj);
+    }];
     [self.tableViewModel addSection:({
         
         HSSectionModel * s = [[HSSectionModel alloc] init];

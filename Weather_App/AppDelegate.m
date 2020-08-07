@@ -39,7 +39,18 @@ void example_A(){
 }
 extern CFAbsoluteTime StartTime;
 
-@implementation AppDelegate
+typedef NS_ENUM(NSInteger, XXXSomeEnum) {
+    XXXSomeEnumOne = 1,
+    XXXSomeEnumTwo = 2,
+    XXXSomeEnumThree = 3,
+    
+    XXXSomeEnumOnePlus = 1,
+    XXXSomeEnumOnePlusPlus = 1,
+};
+
+@implementation AppDelegate{
+    NSString * ccc;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -47,6 +58,25 @@ extern CFAbsoluteTime StartTime;
         NSLog(@"Launched in %f sec", CFAbsoluteTimeGetCurrent() - StartTime);
     });
     
+    ccc = @"aaa";
+    
+    NSString * aaa = @"aaa";
+    id num_1 = @(1);
+    id num_2 =[NSNumber numberWithInt:1];
+    
+    NSString * bbb = @"aaa";
+    if (aaa == bbb) {
+        NSLog(@"[equal] hit");
+    } else {
+        NSLog(@"[equal] miss");
+    }
+    
+    XXXSomeEnum type = XXXSomeEnumOne;
+    if (type == XXXSomeEnumOnePlus) {
+        NSLog(@"[enum] hit in plus");
+    } else {
+        NSLog(@"[enum] hit other");
+    }
 //    NSError *setCategoryErr = nil;
 //    NSError *activationErr  = nil;
 //    [[AVAudioSession sharedInstance]
@@ -60,6 +90,10 @@ extern CFAbsoluteTime StartTime;
     [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"back"];
     
     [self addRoutes];
+    
+    id cls = [MMAObject class];
+    void *obj = &cls;
+    [(__bridge id)obj doSomthing:23];
     
     example_A();
     //    bool iseq = [a isEqual:a];

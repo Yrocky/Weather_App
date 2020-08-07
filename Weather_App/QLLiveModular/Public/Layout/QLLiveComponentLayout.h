@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,assign) CGFloat lineSpacing;// default 5
 @property (nonatomic ,assign) CGFloat interitemSpacing;// default 5
 
-@property (nonatomic ,strong) QLLiveComponentDistribution  * distribution;
+@property (nonatomic ,strong) QLLiveComponentDistribution * distribution;
 @property (nonatomic ,strong) QLLiveComponentItemRatio * itemRatio;
 
 /// 有的模块在没有数据的时候要展示一个占位视图
@@ -63,6 +63,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) CGFloat value;
 
+- (BOOL)isAbsolute;
+- (BOOL)isFractional;
 @end
 
 // 宽高比

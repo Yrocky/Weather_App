@@ -25,7 +25,6 @@ typedef NS_ENUM(NSInteger, QLLiveComponentArrange) {
 }
 
 @property (nonatomic, weak, readonly) id<QLLiveModuleDataSourceAble> dataSource;
-@property (nonatomic ,weak) id<QLLiveModelEnvironment> environment;
 
 /// 是否需要独立请求数据，有的comp需要自己请求数据，
 /// 有的comp是在一个统一的接口中返回数据，default NO

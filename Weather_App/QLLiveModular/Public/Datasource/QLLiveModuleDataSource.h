@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "QLLiveComponent.h"
-#import "QLLiveModelEnvironment_Protocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,7 +22,8 @@ QLLiveModuleDataSourceAble>{
     NSMutableArray<__kindof QLLiveComponent *> *_innerComponents;
 }
 
-@property (nonatomic ,strong) id<QLLiveModelEnvironment> environment;
+@property (nonatomic, nullable, weak) id <UICollectionViewDelegate> collectionViewDelegate;
+@property (nonatomic, nullable, weak) id <UIScrollViewDelegate> scrollViewDelegate;
 
 @end
 
