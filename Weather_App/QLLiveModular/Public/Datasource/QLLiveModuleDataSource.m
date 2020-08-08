@@ -11,7 +11,7 @@
 #import "QLOrthogonalScrollerEmbeddedScrollView.h"
 #import "QLLiveComponent_Private.h"
 #import "QLLiveModuleAdapterProxy.h"
-#import "UICollectionViewLayout+InteractiveLayout.h"
+#import "QLLiveModuleFlowLayout.h"
 
 #import "NSArray+Sugar.h"
 #import "CHTCollectionViewWaterfallLayout.h"
@@ -62,9 +62,8 @@ CHTCollectionViewDelegateWaterfallLayout>{
 
         collectionView.dataSource = self;
         
-        //[collectionView.collectionViewLayout ql_hijackLayoutInteractiveLayoutMethodForDataSource:self];
         [collectionView setCollectionViewLayout:({
-            CHTCollectionViewWaterfallLayout.new;
+            QLLiveModuleFlowLayout.new;
         }) animated:YES];
 //        [collectionView.collectionViewLayout invalidateLayout];
         
@@ -413,10 +412,14 @@ CHTCollectionViewDelegateWaterfallLayout>{
     return nil;
 }
 
+@end
+
 #pragma mark - UICollectionViewDelegateFlowLayout
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+@implementation QLLiveModuleDataSource (UICollectionViewDelegateFlowLayout)
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    /// component & layout
     __kindof QLLiveComponent * component = [self usageHidenWhenMeptyComponentAtIndex:indexPath.section];
     CGSize itemSize = [component.layout itemSizeAtIndex:indexPath.item];
     if (component.isOrthogonallyScrolls &&
@@ -430,18 +433,22 @@ CHTCollectionViewDelegateWaterfallLayout>{
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    /// layout
     return [self usageHidenWhenMeptyComponentAtIndex:section].layout.lineSpacing;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    /// layout
     return [self usageHidenWhenMeptyComponentAtIndex:section].layout.interitemSpacing;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    /// layout
     return [self usageHidenWhenMeptyComponentAtIndex:section].layout.insets;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    /// component
     __kindof QLLiveComponent * comp = [self usageHidenWhenMeptyComponentAtIndex:section];
     if ([comp.supportedElementKinds containsObject:UICollectionElementKindSectionHeader]) {
         return [comp sizeForSupplementaryViewOfKind:({
@@ -452,6 +459,7 @@ CHTCollectionViewDelegateWaterfallLayout>{
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
+    /// component
     __kindof QLLiveComponent * comp = [self usageHidenWhenMeptyComponentAtIndex:section];
     if ([comp.supportedElementKinds containsObject:UICollectionElementKindSectionFooter]) {
         return [comp sizeForSupplementaryViewOfKind:({
@@ -503,9 +511,9 @@ CHTCollectionViewDelegateWaterfallLayout>{
 //    return 1;;
 //}
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumColumnSpacingForSectionAtIndex:(NSInteger)section{
-    return [self collectionView:collectionView layout:collectionViewLayout minimumLineSpacingForSectionAtIndex:section];
-}
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumColumnSpacingForSectionAtIndex:(NSInteger)section{
+//    return [self collectionView:collectionView layout:collectionViewLayout minimumLineSpacingForSectionAtIndex:section];
+//}
 
 @end
 

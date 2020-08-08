@@ -17,8 +17,8 @@
 		323574C224B8613D00AE659B /* QLLiveComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574BB24B8613D00AE659B /* QLLiveComponent.m */; };
 		323574C324B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574BE24B8613D00AE659B /* QLOrthogonalScrollerEmbeddedScrollView.m */; };
 		325A3F5E24DC06BF00A5508F /* QLLiveModuleAdapterProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 325A3F5D24DC06BF00A5508F /* QLLiveModuleAdapterProxy.m */; };
-		325A3F6124DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 325A3F6024DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.m */; };
 		325A3F6E24DD4B2B00A5508F /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 325A3F6D24DD4B2B00A5508F /* CHTCollectionViewWaterfallLayout.m */; };
+		325A3F7124DE5CAC00A5508F /* QLLiveModuleFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 325A3F7024DE5CAB00A5508F /* QLLiveModuleFlowLayout.m */; };
 		32BBDB5E24CE8803003C8FC2 /* EaseCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BBDB5D24CE8802003C8FC2 /* EaseCycleScrollView.m */; };
 		32BBDB6324CECB48003C8FC2 /* XXXCycleScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BBDB6224CECB48003C8FC2 /* XXXCycleScrollViewController.m */; };
 		32BBDB6424D0218A003C8FC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6EC91F46E35A00D94379 /* main.m */; };
@@ -361,11 +361,11 @@
 		323574C624BC3D5400AE659B /* QLLiveComponentLayout_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveComponentLayout_Private.h; sourceTree = "<group>"; };
 		325A3F5C24DC06BF00A5508F /* QLLiveModuleAdapterProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveModuleAdapterProxy.h; sourceTree = "<group>"; };
 		325A3F5D24DC06BF00A5508F /* QLLiveModuleAdapterProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QLLiveModuleAdapterProxy.m; sourceTree = "<group>"; };
-		325A3F5F24DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewLayout+InteractiveLayout.h"; sourceTree = "<group>"; };
-		325A3F6024DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewLayout+InteractiveLayout.m"; sourceTree = "<group>"; };
 		325A3F6224DD191400A5508F /* QLLiveModuleDataSource_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveModuleDataSource_Private.h; sourceTree = "<group>"; };
 		325A3F6C24DD4B2B00A5508F /* CHTCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHTCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		325A3F6D24DD4B2B00A5508F /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
+		325A3F6F24DE5CAB00A5508F /* QLLiveModuleFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveModuleFlowLayout.h; sourceTree = "<group>"; };
+		325A3F7024DE5CAB00A5508F /* QLLiveModuleFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QLLiveModuleFlowLayout.m; sourceTree = "<group>"; };
 		32BBDB5C24CE8802003C8FC2 /* EaseCycleScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseCycleScrollView.h; sourceTree = "<group>"; };
 		32BBDB5D24CE8802003C8FC2 /* EaseCycleScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseCycleScrollView.m; sourceTree = "<group>"; };
 		32BBDB6124CECB47003C8FC2 /* XXXCycleScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXCycleScrollViewController.h; sourceTree = "<group>"; };
@@ -1045,8 +1045,8 @@
 		325A3F6824DD366500A5508F /* QLLiveModuleFlowLayoutWrapper */ = {
 			isa = PBXGroup;
 			children = (
-				325A3F5F24DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.h */,
-				325A3F6024DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.m */,
+				325A3F6F24DE5CAB00A5508F /* QLLiveModuleFlowLayout.h */,
+				325A3F7024DE5CAB00A5508F /* QLLiveModuleFlowLayout.m */,
 			);
 			path = QLLiveModuleFlowLayoutWrapper;
 			sourceTree = "<group>";
@@ -2661,6 +2661,7 @@
 				7F677F3B218C1157009851B6 /* MMGradientViewController.m in Sources */,
 				D70629491F8B185100F52FCB /* HSInputTableViewCell.m in Sources */,
 				D70629401F8B185100F52FCB /* HSTextCellModel.m in Sources */,
+				325A3F7124DE5CAC00A5508F /* QLLiveModuleFlowLayout.m in Sources */,
 				7F414F4B1F67866200EC8E86 /* MMGiftEffectViewController.m in Sources */,
 				F77231CF21AE8A5300DA019B /* MMAnimationTimingFunctionType.m in Sources */,
 				5C0D1D9A2317AD8B003E9E62 /* FinanceViewController.m in Sources */,
@@ -2745,7 +2746,6 @@
 				5C48AB0C2296377A00535980 /* NoticeScrollViewController.m in Sources */,
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
 				5C70C63A246AABC600CD6AB6 /* MMHomeModule.m in Sources */,
-				325A3F6124DCF9FD00A5508F /* UICollectionViewLayout+InteractiveLayout.m in Sources */,
 				5C70C647246AD32900CD6AB6 /* MMHomeSectionComponent.m in Sources */,
 				5C6EA39A2276C4F000EA3D0F /* MMParserr.m in Sources */,
 				5CFAF3E32283F53B0057BD05 /* MMGraph.m in Sources */,

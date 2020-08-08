@@ -39,10 +39,12 @@ typedef NS_ENUM(NSInteger, QLLiveComponentArrange) {
 /// arrange == QLLiveComponentArrangeHorizontal
 @property (nonatomic ,assign ,readonly) BOOL isOrthogonallyScrolls;
 
-@property (nonatomic ,assign) QLLiveComponentArrange arrange;
-
 /// layout
 @property (nonatomic ,strong ,readonly) QLLiveComponentLayout * layout;
+
+@property (nonatomic ,assign) QLLiveComponentArrange arrange;
+/// headerView是否要黏性
+@property (nonatomic ,assign) BOOL headerPin;
 
 - (void) addData:(Data)data;
 - (void) addDatas:(NSArray<Data> *)datas;
@@ -80,6 +82,8 @@ typedef NS_ENUM(NSInteger, QLLiveComponentArrange) {
                                                                  atIndex:(NSInteger)index;
 - (CGSize)sizeForSupplementaryViewOfKind:(NSString *)elementKind
                                  atIndex:(NSInteger)index;
+- (UIEdgeInsets) insetForSupplementaryViewOfKind:(NSString *)elementKind
+                                         atIndex:(NSInteger)index;
 @end
 
 NS_ASSUME_NONNULL_END

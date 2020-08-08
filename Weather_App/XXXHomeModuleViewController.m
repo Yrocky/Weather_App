@@ -148,7 +148,7 @@ static NSDictionary * demoData;
             @"video":@[@"爱奇艺",@"腾讯视频",@"优酷",@"西瓜视频",@"哔哩哔哩"],
             @"number":@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"],
             @"company":@[@"google",@"facebook",@"youtube",@"amazon",@"apple",@"Microsoft",@"Alphabet",@"IBM"],
-            @"music":@[@"Love of My Life",@"Thank You",@"Yesterday Once More",@"You Are Not Alone",@"Billie Jean",@"Smooth Criminal",@"Earth Song",@"I will always love you",@"black or white"],
+            @"music":@[@"0 Love of My Life",@"1 Thank You",@"2 Yesterday Once More",@"3 You Are Not Alone",@"4 Billie Jean",@"5 Smooth Criminal",@"6 Earth Song",@"7 I will always love you",@"8 black or white"],
             @"waterFlow":@[
                     @(170),@(80),@(190),@(100),
                     @(110),@(200),@(130),
@@ -186,49 +186,49 @@ static NSDictionary * demoData;
 
 - (void) setupComponents:(NSDictionary *)data{
     
-//    [self.dataSource addComponent:({
-//        YYYOneComponent * comp = [YYYOneComponent new];
-////        comp.arrange = QLLiveComponentArrangeHorizontal;
-//        comp.layout.itemRatio = [QLLiveComponentItemRatio absoluteValue:40];
-//        comp.layout.distribution = [QLLiveComponentDistribution distributionValue:6];
-//        [comp setBSetupCell:^(YYYOneCCell *cell, id data) {
-//            cell.oneLabel.textColor = [UIColor colorWithHexString:@"#CB2EFF"];
-//            [cell setupWithData:data];
-//        }];
-//        [comp addDatas:[data[@"languages"] mm_randomObjects]];
-//        comp;
-//    })];
+    [self.dataSource addComponent:({
+        YYYOneComponent * comp = [YYYOneComponent new];
+//        comp.arrange = QLLiveComponentArrangeHorizontal;
+        comp.layout.itemRatio = [QLLiveComponentItemRatio absoluteValue:40];
+        comp.layout.distribution = [QLLiveComponentDistribution distributionValue:6];
+        [comp setBSetupCell:^(YYYOneCCell *cell, id data) {
+            cell.oneLabel.textColor = [UIColor colorWithHexString:@"#CB2EFF"];
+            [cell setupWithData:data];
+        }];
+        [comp addDatas:[data[@"languages"] mm_randomObjects]];
+        comp;
+    })];
 //
-//    [self.dataSource addComponent:({
-//        YYYOneComponent * comp = [YYYOneComponent new];
-//        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
-//        comp.needPlacehold = YES;
-//        comp.layout.placeholdHeight = 100;
-//        comp.layout.distribution = [QLLiveComponentDistribution distributionValue:4];
-//        comp;
-//    })];
+    [self.dataSource addComponent:({
+        YYYOneComponent * comp = [YYYOneComponent new];
+        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
+        comp.needPlacehold = YES;
+        comp.layout.placeholdHeight = 100;
+        comp.layout.distribution = [QLLiveComponentDistribution distributionValue:4];
+        comp;
+    })];
 //
-//    [self.dataSource addComponent:({
-//        YYYOneComponent * comp = [YYYOneComponent new];
-//        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
-//        comp.layout.distribution = [QLLiveComponentDistribution distributionValue:4];
-//        [comp setBSetupCell:^(YYYOneCCell *cell, id data) {
-//            [cell setupWithData:data];
-//            // 由于复用，所以这段代码下载setupWithData下面
-//            cell.oneLabel.textColor = [UIColor colorWithHexString:@"#B2E7F9"];
-//        }];
-//        [comp addDatas:[data[@"weather"] mm_randomObjects]];
-//        comp;
-//    })];
+    [self.dataSource addComponent:({
+        YYYOneComponent * comp = [YYYOneComponent new];
+        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
+        comp.layout.distribution = [QLLiveComponentDistribution distributionValue:4];
+        [comp setBSetupCell:^(YYYOneCCell *cell, id data) {
+            [cell setupWithData:data];
+            // 由于复用，所以这段代码下载setupWithData下面
+            cell.oneLabel.textColor = [UIColor colorWithHexString:@"#B2E7F9"];
+        }];
+        [comp addDatas:[data[@"weather"] mm_randomObjects]];
+        comp;
+    })];
 //
-//    [self.dataSource addComponent:({
-//        YYYOneComponent * comp = [YYYOneComponent new];
-//        comp.layout.insets = UIEdgeInsetsMake(0, 5, 0, 5);
-////        comp.arrange = QLLiveComponentArrangeHorizontal;
-//        comp.layout.distribution = [QLLiveComponentDistribution fractionalDimension:0.3];
-//        [comp addDatas:[data[@"city"] mm_randomObjects]];
-//        comp;
-//    })];
+    [self.dataSource addComponent:({
+        YYYOneComponent * comp = [YYYOneComponent new];
+        comp.layout.insets = UIEdgeInsetsMake(0, 5, 0, 5);
+//        comp.arrange = QLLiveComponentArrangeHorizontal;
+        comp.layout.distribution = [QLLiveComponentDistribution fractionalDimension:0.3];
+        [comp addDatas:[data[@"city"] mm_randomObjects]];
+        comp;
+    })];
 
     [self.dataSource addComponent:({
         // 这个component是用来做标签效果的，
@@ -238,7 +238,7 @@ static NSDictionary * demoData;
         [comp addDatas:[data[@"Cocoa"] mm_randomObjects]];
         comp;
     })];
-    return;
+//return;
     [self.dataSource addComponent:({
         YYYThreeComponent * comp = [[YYYThreeComponent alloc] initWithTitle:@"Word"];
         [comp addDatas:[data[@"word"] mm_randomObjects]];
@@ -264,29 +264,29 @@ static NSDictionary * demoData;
         [comp addDatas:[data[@"number"] mm_randomObjects]];
         comp;
     })];
-    [self.dataSource addComponent:({
-        YYYFourComponent * comp = [[YYYFourComponent alloc] initWithTitle:@"Music"];
-        [comp addDatas:[data[@"music"] mm_randomObjects]];
-        comp;
-    })];
-    [self.dataSource addComponent:({
-        YYYOneComponent * comp = [YYYOneComponent new];
-//        comp.arrange = QLLiveComponentArrangeHorizontal;
-        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
-        comp.layout.itemRatio = [QLLiveComponentItemRatio absoluteValue:50];
-        comp.layout.distribution = [QLLiveComponentDistribution fractionalDimension:0.3];
-        [comp setBSetupCell:^(YYYOneCCell *cell, id data) {
-            [cell setupWithData:data];
-            cell.oneLabel.textColor = [UIColor colorWithHexString:@"#CB2EFF"];
-        }];
-        [comp addDatas:[data[@"company"] mm_randomObjects]];
-        comp;
-    })];
-    [self.dataSource addComponent:({
-        YYYFiveComponent * comp = [[YYYFiveComponent alloc] initWithTitle:@"waterFlow"];
-        [comp addDatas:[data[@"waterFlow"] mm_randomObjects]];
-        comp;
-    })];
+//    [self.dataSource addComponent:({
+//        YYYFourComponent * comp = [[YYYFourComponent alloc] initWithTitle:@"Music"];
+//        [comp addDatas:[data[@"music"] mm_randomObjects]];
+//        comp;
+//    })];
+//    [self.dataSource addComponent:({
+//        YYYOneComponent * comp = [YYYOneComponent new];
+////        comp.arrange = QLLiveComponentArrangeHorizontal;
+//        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
+//        comp.layout.itemRatio = [QLLiveComponentItemRatio absoluteValue:50];
+//        comp.layout.distribution = [QLLiveComponentDistribution fractionalDimension:0.3];
+//        [comp setBSetupCell:^(YYYOneCCell *cell, id data) {
+//            [cell setupWithData:data];
+//            cell.oneLabel.textColor = [UIColor colorWithHexString:@"#CB2EFF"];
+//        }];
+//        [comp addDatas:[data[@"company"] mm_randomObjects]];
+//        comp;
+//    })];
+//    [self.dataSource addComponent:({
+//        YYYFiveComponent * comp = [[YYYFiveComponent alloc] initWithTitle:@"waterFlow"];
+//        [comp addDatas:[data[@"waterFlow"] mm_randomObjects]];
+//        comp;
+//    })];
 }
 @end
 
@@ -323,9 +323,13 @@ static NSDictionary * demoData;
     
     YYYOneCCell * ccell = [self.dataSource dequeueReusableCellOfClass:YYYOneCCell.class forComponent:self atIndex:index];
     if (self.bSetupCell) {
-        self.bSetupCell(ccell, [self dataAtIndex:index]);
+        self.bSetupCell(ccell, ({
+            [NSString stringWithFormat:@"%d %@",index,[self dataAtIndex:index]];
+        }));
     } else {
-        [ccell setupWithData:[self dataAtIndex:index]];
+        [ccell setupWithData:({
+            [NSString stringWithFormat:@"%d %@",index,[self dataAtIndex:index]];
+        })];
     }
     return ccell;
 }
@@ -430,7 +434,9 @@ static NSDictionary * demoData;
 - (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
     
     YYYTwoCCell * ccell = [self.dataSource dequeueReusableCellOfClass:YYYTwoCCell.class forComponent:self atIndex:index];
-    [ccell setupWithData:[self dataAtIndex:index]];
+    [ccell setupWithData:({
+        [NSString stringWithFormat:@"%d %@",index,[self dataAtIndex:index]];
+    })];
     return ccell;
 }
 
@@ -497,7 +503,9 @@ static NSDictionary * demoData;
 - (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
     
     YYYOneCCell * ccell = [self.dataSource dequeueReusableCellOfClass:YYYOneCCell.class forComponent:self atIndex:index];
-    [ccell setupWithData:[self dataAtIndex:index]];
+    [ccell setupWithData:({
+        [NSString stringWithFormat:@"%d %@",index,[self dataAtIndex:index]];
+    })];
     return ccell;
 }
 

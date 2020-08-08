@@ -33,16 +33,12 @@ static BOOL QLLiveProxy_isInterceptedSelector(SEL sel) {
             sel == @selector(collectionView:layout:minimumInteritemSpacingForSectionAtIndex:) ||
             sel == @selector(collectionView:layout:minimumLineSpacingForSectionAtIndex:) ||
             sel == @selector(collectionView:layout:referenceSizeForFooterInSection:) ||
-            sel == @selector(collectionView:layout:referenceSizeForHeaderInSection:)
+            sel == @selector(collectionView:layout:referenceSizeForHeaderInSection:) ||
             // CHTCollectionViewDelegateWaterfallLayout
-//            sel == @selector(collectionView:layout:columnCountForSection:) ||
-//            sel == @selector(collectionView:layout:heightForHeaderInSection:) ||
-//            sel == @selector(collectionView:layout:heightForFooterInSection:) ||
-//            sel == @selector(collectionView:layout:insetForSectionAtIndex:) ||
+            sel == @selector(collectionView:layout:heightForHeaderInSection:) ||
+            sel == @selector(collectionView:layout:heightForFooterInSection:)
 //            sel == @selector(collectionView:layout:insetForHeaderInSection:) ||
-//            sel == @selector(collectionView:layout:insetForFooterInSection:) ||
-//            sel == @selector(collectionView:layout:minimumInteritemSpacingForSectionAtIndex:) ||
-//            sel == @selector(collectionView:layout:minimumColumnSpacingForSectionAtIndex:)
+//            sel == @selector(collectionView:layout:insetForFooterInSection:)
             );
 }
 

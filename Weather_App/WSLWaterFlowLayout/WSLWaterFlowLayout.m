@@ -288,7 +288,8 @@ static const UIEdgeInsets WSLDefaultEdgeInset = {10, 10, 10, 10};
         return CGSizeMake(self.maxRowWidth + self.edgeInsets.right , 0);
     }else if(self.flowLayoutStyle == WSLWaterFlowHorizontalGrid){
         
-        return CGSizeMake(self.maxRowWidth + self.edgeInsets.right,self.collectionView.frame.size.height);
+        return CGSizeMake(self.maxRowWidth + self.edgeInsets.right,
+                          self.collectionView.frame.size.height);
     }
     
     return CGSizeMake(0, 0);
