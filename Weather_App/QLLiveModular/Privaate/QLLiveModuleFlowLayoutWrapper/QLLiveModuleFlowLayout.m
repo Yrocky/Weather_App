@@ -109,6 +109,12 @@ static CGFloat QLLiveFloorCGFloat(CGFloat value) {
             NSMutableArray<NSValue *> * line = [NSMutableArray array];
             [lines addObject:line];
 
+            // 记录之前最大x、最大y值的数组
+            NSMutableArray<NSValue *> * maxItem = [NSMutableArray array];
+            [maxItem addObject:[NSValue valueWithCGPoint:(CGPoint){
+                sectionInset.left,
+                top
+            }]];
             BOOL needShift = NO;
             for (idx = 0; idx < itemCount; idx++) {
                 NSIndexPath *indexPath = [NSIndexPath indexPathForItem:idx inSection:section];
@@ -119,6 +125,10 @@ static CGFloat QLLiveFloorCGFloat(CGFloat value) {
                 if (idx == 0) {
                     xOffset = sectionInset.left;
                     yOffset = top;
+                    [maxItem addObject:[NSValue valueWithCGPoint:(CGPoint){
+                        xOffset + itemSize.width,
+                        yOffset + itemSize.height
+                    }]];
                 } else {
                     // 上一个att的
                     UICollectionViewLayoutAttributes * preAtt = itemAttributes[idx - 1];
@@ -127,7 +137,7 @@ static CGFloat QLLiveFloorCGFloat(CGFloat value) {
                     needShift = (xOffset + itemSize.width) > sectionContainerMaxX;
                     
                     if (needShift) {
-                    
+                        NSLog(@"need shift");
                         NSArray<NSValue *> * preLine = lines.lastObject;
 
                         line = [NSMutableArray array];
@@ -155,21 +165,49 @@ static CGFloat QLLiveFloorCGFloat(CGFloat value) {
                         if (allItemHeightWasEqual) {
                             xOffset = sectionInset.left;
                         } else {
+                            // error
+                            // 要换行，需要找出来之前最短的那个
                             xOffset = longestX + minimumInteritemSpacing;
+                            if (xOffset >= sectionContainerMaxX) {
+                                // 如果最高的是上一行最后一个，需要再换行
+//                                xOffset = sectionInset.left;
+                            }
                         }
                         
-                        if (1) {
-                            // 需要确定上一行中最短的
-                            yOffset = [self shortestHeightItemAtLine:preLine] + minimumLineSpacing;
+                        if (lines.count == 1) {
+                            // 是第一行
+                            yOffset = CGRectGetMaxY([self shortestHeightItemAtLine:preLine]) + minimumLineSpacing;
                         } else {
-                            // 找上一行第一个的最大y
-                            yOffset = CGRectGetMaxY(preLine.firstObject.CGRectValue) + minimumLineSpacing;
+                            // 不是第一行，找所有最小的
+                            yOffset = CGRectGetMaxY([self shortestHeightItemAtLine:preLine]) + minimumLineSpacing;
                         }
+                        
+//                        if (1) {
+//                            // 需要确定上一行中最短的
+//                            yOffset = [self shortestHeightItemAtLine:preLine] + minimumLineSpacing;
+//                        } else {
+//                            // 找上一行第一个的最大y
+//                            yOffset = CGRectGetMaxY(preLine.firstObject.CGRectValue) + minimumLineSpacing;
+//                        }
                     } else {
                         // 不需要换行
                         if (lines.count == 1) {
                             // 是第一行
                             yOffset = CGRectGetMinY(preAtt.frame);
+                            
+                            CGFloat maxxx = 0;
+                            CGFloat maxyy = 0;
+                            CGPoint preMaxPoint = maxItem[maxItem.count - 1].CGPointValue;
+                            if (itemSize.height < preAtt.frame.size.height) {
+                                maxxx = CGRectGetMaxX(preAtt.frame);
+                                maxyy = yOffset + itemSize.height;
+                            } else {
+                                
+                            }
+                            [maxItem addObject:[NSValue valueWithCGPoint:(CGPoint){
+                                sectionInset.left,
+                                top
+                            }]];
                         } else {
                             // 不是第一行
                             NSArray<NSValue *> *
@@ -177,7 +215,7 @@ static CGFloat QLLiveFloorCGFloat(CGFloat value) {
                             
                             if (1) {
                                 // 需要确定上一行中最短的
-                                yOffset = [self shortestHeightItemAtLine:preLine] + minimumLineSpacing;
+                                yOffset = CGRectGetMaxY([self shortestHeightItemAtLine:preLine]) + minimumLineSpacing;
                             } else {
                                 // 找上一行第一个的最大y
                                 yOffset = CGRectGetMaxY(preLine.firstObject.CGRectValue) + minimumLineSpacing;
@@ -199,7 +237,7 @@ static CGFloat QLLiveFloorCGFloat(CGFloat value) {
             }// end for-on cells
             
             // 更新top，取出来最后一行最长的cell
-            top = [self longestHeightItemAtLine:lines.lastObject];
+            top = CGRectGetMaxY([self longestHeightItemAtLine:lines.lastObject]);
             
             [self.sectionItemAttributes addObject:itemAttributes];
             
@@ -405,27 +443,31 @@ static CGFloat QLLiveFloorCGFloat(CGFloat value) {
  *  @return index for the shortest column
  */
 // 一行中最短的
-- (CGFloat) shortestHeightItemAtLine:(NSArray<NSValue *> *)line{
+- (CGRect) shortestHeightItemAtLine:(NSArray<NSValue *> *)line{
     __block CGFloat shortest = MAXFLOAT;
+    __block CGRect targetFrame = CGRectZero;
     [line enumerateObjectsUsingBlock:^(NSValue * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat maxY = CGRectGetMaxY(obj.CGRectValue);
         if (maxY < shortest) {
             shortest = maxY;
+            targetFrame = obj.CGRectValue;
         }
     }];
-    return shortest;
+    return targetFrame;
 }
 
 // 一行最长的
-- (CGFloat) longestHeightItemAtLine:(NSArray<NSValue *> *)line{
+- (CGRect) longestHeightItemAtLine:(NSArray<NSValue *> *)line{
     __block CGFloat longestHeight = 0;
+    __block CGRect targetFrame = CGRectZero;
     [line enumerateObjectsUsingBlock:^(NSValue * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         CGFloat maxY = CGRectGetMaxY(obj.CGRectValue);
         if (maxY > longestHeight) {
             longestHeight = maxY;
+            targetFrame = obj.CGRectValue;
         }
     }];
-    return longestHeight;
+    return targetFrame;
 }
 
 /**

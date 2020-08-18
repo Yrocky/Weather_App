@@ -36,9 +36,9 @@ static BOOL QLLiveProxy_isInterceptedSelector(SEL sel) {
             sel == @selector(collectionView:layout:referenceSizeForHeaderInSection:) ||
             // CHTCollectionViewDelegateWaterfallLayout
             sel == @selector(collectionView:layout:heightForHeaderInSection:) ||
-            sel == @selector(collectionView:layout:heightForFooterInSection:)
-//            sel == @selector(collectionView:layout:insetForHeaderInSection:) ||
-//            sel == @selector(collectionView:layout:insetForFooterInSection:)
+            sel == @selector(collectionView:layout:heightForFooterInSection:) ||
+            sel == @selector(collectionView:layout:insetForHeaderInSection:) ||
+            sel == @selector(collectionView:layout:insetForFooterInSection:)
             );
 }
 

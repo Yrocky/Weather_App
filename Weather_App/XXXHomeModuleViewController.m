@@ -130,9 +130,51 @@ UICollectionViewDelegate>
 @end
 
 @interface YYYFiveComponent : YYYThreeComponent<QLLiveComponentLayoutDelegate>
-
+@end
+@interface YYYSixComponent : YYYThreeComponent<QLLiveComponentLayoutDelegate>
 @end
 static NSDictionary * demoData;
+
+@interface QLLiveModuleGrid : NSObject
+
+// 垂直
++ (instancetype) gridAbsoluteHeight:(CGFloat)height
+                    fractionalWidth:(CGFloat)width;
+// 水平
++ (instancetype) gridAbsoluteWidth:(CGFloat)width
+                  fractionalHeight:(CGFloat)height;
+
+@property (nonatomic ,assign ,readonly) CGFloat width;
+@property (nonatomic ,assign ,readonly) CGFloat height;
+
+@property (nonatomic ,assign ,readonly) BOOL isVerticel;
+
+@end
+
+@implementation QLLiveModuleGrid
+// 垂直
++ (instancetype) gridAbsoluteHeight:(CGFloat)height
+                    fractionalWidth:(CGFloat)width{
+    return [[self alloc] initWithWidth:width height:height isVertical:YES];
+}
+// 水平
++ (instancetype) gridAbsoluteWidth:(CGFloat)width
+                  fractionalHeight:(CGFloat)height{
+    return [[self alloc] initWithWidth:width height:height isVertical:NO];
+}
+
+- (instancetype) initWithWidth:(CGFloat)width height:(CGFloat)height isVertical:(BOOL)isVertical{
+    self = [super init];
+    if (self) {
+        _width = width;
+        _height = height;
+        _isVerticel = isVertical;
+    }
+    return self;
+}
+
+@end
+
 @implementation YYYHomeModule{
 }
 
@@ -153,6 +195,13 @@ static NSDictionary * demoData;
                     @(170),@(80),@(190),@(100),
                     @(110),@(200),@(130),
                     @(40),@(150),@(60),
+            ],
+            @"grid":@[[QLLiveModuleGrid gridAbsoluteHeight:50 fractionalWidth:0.25*3],
+                      [QLLiveModuleGrid gridAbsoluteHeight:100 fractionalWidth:0.25*1],
+                      [QLLiveModuleGrid gridAbsoluteHeight:100 fractionalWidth:0.25*2],
+                      [QLLiveModuleGrid gridAbsoluteHeight:100 fractionalWidth:0.25*1],
+                      [QLLiveModuleGrid gridAbsoluteHeight:150 fractionalWidth:0.25*1],
+                      [QLLiveModuleGrid gridAbsoluteHeight:50 fractionalWidth:0.25*3],
             ],
         };
     }
@@ -187,8 +236,14 @@ static NSDictionary * demoData;
 - (void) setupComponents:(NSDictionary *)data{
     
     [self.dataSource addComponent:({
+        YYYSixComponent * comp = [[YYYSixComponent alloc] initWithTitle:@"grid"];
+        [comp addDatas:[data[@"grid"] mm_randomObjects]];
+        comp;
+    })];
+    return;
+    [self.dataSource addComponent:({
         YYYOneComponent * comp = [YYYOneComponent new];
-//        comp.arrange = QLLiveComponentArrangeHorizontal;
+        comp.arrange = QLLiveComponentArrangeHorizontal;
         comp.layout.itemRatio = [QLLiveComponentItemRatio absoluteValue:40];
         comp.layout.distribution = [QLLiveComponentDistribution distributionValue:6];
         [comp setBSetupCell:^(YYYOneCCell *cell, id data) {
@@ -224,7 +279,7 @@ static NSDictionary * demoData;
     [self.dataSource addComponent:({
         YYYOneComponent * comp = [YYYOneComponent new];
         comp.layout.insets = UIEdgeInsetsMake(0, 5, 0, 5);
-//        comp.arrange = QLLiveComponentArrangeHorizontal;
+        comp.arrange = QLLiveComponentArrangeHorizontal;
         comp.layout.distribution = [QLLiveComponentDistribution fractionalDimension:0.3];
         [comp addDatas:[data[@"city"] mm_randomObjects]];
         comp;
@@ -246,7 +301,7 @@ static NSDictionary * demoData;
     })];
     [self.dataSource addComponent:({
         YYYOneComponent * comp = [YYYOneComponent new];
-//        comp.arrange = QLLiveComponentArrangeHorizontal;
+        comp.arrange = QLLiveComponentArrangeHorizontal;
         comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
         comp.layout.itemRatio = [QLLiveComponentItemRatio absoluteValue:50];
         comp.layout.distribution = [QLLiveComponentDistribution absoluteDimension:90];
@@ -264,29 +319,29 @@ static NSDictionary * demoData;
         [comp addDatas:[data[@"number"] mm_randomObjects]];
         comp;
     })];
-//    [self.dataSource addComponent:({
-//        YYYFourComponent * comp = [[YYYFourComponent alloc] initWithTitle:@"Music"];
-//        [comp addDatas:[data[@"music"] mm_randomObjects]];
-//        comp;
-//    })];
-//    [self.dataSource addComponent:({
-//        YYYOneComponent * comp = [YYYOneComponent new];
-////        comp.arrange = QLLiveComponentArrangeHorizontal;
-//        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
-//        comp.layout.itemRatio = [QLLiveComponentItemRatio absoluteValue:50];
-//        comp.layout.distribution = [QLLiveComponentDistribution fractionalDimension:0.3];
-//        [comp setBSetupCell:^(YYYOneCCell *cell, id data) {
-//            [cell setupWithData:data];
-//            cell.oneLabel.textColor = [UIColor colorWithHexString:@"#CB2EFF"];
-//        }];
-//        [comp addDatas:[data[@"company"] mm_randomObjects]];
-//        comp;
-//    })];
-//    [self.dataSource addComponent:({
-//        YYYFiveComponent * comp = [[YYYFiveComponent alloc] initWithTitle:@"waterFlow"];
-//        [comp addDatas:[data[@"waterFlow"] mm_randomObjects]];
-//        comp;
-//    })];
+    [self.dataSource addComponent:({
+        YYYFourComponent * comp = [[YYYFourComponent alloc] initWithTitle:@"Music"];
+        [comp addDatas:[data[@"music"] mm_randomObjects]];
+        comp;
+    })];
+    [self.dataSource addComponent:({
+        YYYOneComponent * comp = [YYYOneComponent new];
+        comp.arrange = QLLiveComponentArrangeHorizontal;
+        comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
+        comp.layout.itemRatio = [QLLiveComponentItemRatio absoluteValue:50];
+        comp.layout.distribution = [QLLiveComponentDistribution fractionalDimension:0.3];
+        [comp setBSetupCell:^(YYYOneCCell *cell, id data) {
+            [cell setupWithData:data];
+            cell.oneLabel.textColor = [UIColor colorWithHexString:@"#CB2EFF"];
+        }];
+        [comp addDatas:[data[@"company"] mm_randomObjects]];
+        comp;
+    })];
+    [self.dataSource addComponent:({
+        YYYFiveComponent * comp = [[YYYFiveComponent alloc] initWithTitle:@"waterFlow"];
+        [comp addDatas:[data[@"waterFlow"] mm_randomObjects]];
+        comp;
+    })];
 }
 @end
 
@@ -612,13 +667,44 @@ static NSDictionary * demoData;
     } else if (layout.distribution.isFractional) {
         width = layout.insetContainerWidth * layout.distribution.value;
     } else {
-        width = (layout.insetContainerWidth - layout.interitemSpacing) / layout.distribution.value;
+        width = (layout.insetContainerWidth - layout.interitemSpacing * (layout.distribution.value - 1)) / layout.distribution.value;
     }
     height = [[self dataAtIndex:index] integerValue];
     
     return CGSizeMake(width, height);
 }
 
+@end
+
+@implementation YYYSixComponent
+
+- (instancetype) initWithTitle:(NSString *)title{
+    self = [super initWithTitle:title];
+    if (self) {
+        self.layout.customItemSize = self;
+    }
+    return self;
+}
+
+#pragma mark - QLLiveComponentLayoutDelegate
+
+- (CGSize)componentLayoutCustomItemSize:(QLLiveComponentLayout *)layout atIndex:(NSInteger)index{
+    
+    CGFloat width = 0;
+    CGFloat height = 0;
+    // 这里的distribution不推荐使用absolute、fractional
+    QLLiveModuleGrid * grid = [self dataAtIndex:index];
+    CGFloat itemWidth = (layout.insetContainerWidth - 3 * layout.interitemSpacing) / 4.0;
+    if (grid.isVerticel) {
+        NSInteger count = grid.width / 0.25;
+        width = (count - 1) * layout.interitemSpacing + count * itemWidth;
+        height = grid.height;
+    } else {
+        
+    }
+    
+    return CGSizeMake(width, height);
+}
 @end
 
 @implementation YYYYMoveContainerView{

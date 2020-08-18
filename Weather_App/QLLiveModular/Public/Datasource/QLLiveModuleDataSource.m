@@ -424,6 +424,7 @@ CHTCollectionViewDelegateWaterfallLayout>{
     CGSize itemSize = [component.layout itemSizeAtIndex:indexPath.item];
     if (component.isOrthogonallyScrolls &&
         ![self targetWasOrthogonalScrollView:collectionView]) {
+        // 内嵌的效果需要将height修改一下，这样就可以完成垂直多个cell的效果了
         itemSize = (CGSize){
             component.layout.insetContainerWidth,
             itemSize.height
@@ -499,12 +500,11 @@ CHTCollectionViewDelegateWaterfallLayout>{
 
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForHeaderInSection:(NSInteger)section{
-    return UIEdgeInsetsZero;;
+    return UIEdgeInsetsMake(0, 5, 0, 5);;
 }
 
-
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForFooterInSection:(NSInteger)section{
-    return UIEdgeInsetsZero;;
+    return UIEdgeInsetsMake(0, 5, 0, 5);;
 }
 //
 //- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{

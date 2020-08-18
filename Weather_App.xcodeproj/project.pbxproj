@@ -23,6 +23,8 @@
 		32BBDB6324CECB48003C8FC2 /* XXXCycleScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BBDB6224CECB48003C8FC2 /* XXXCycleScrollViewController.m */; };
 		32BBDB6424D0218A003C8FC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FDC6EC91F46E35A00D94379 /* main.m */; };
 		32D11E9D24BD8F9600982F27 /* QLLiveModelEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D11E9C24BD8F9600982F27 /* QLLiveModelEnvironment.m */; };
+		32DB567D24E0127700AD669F /* QLLiveLayoutCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 32DB567C24E0127700AD669F /* QLLiveLayoutCalculator.m */; };
+		32DB568024E014B600AD669F /* XXXLayoutCalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32DB567F24E014B600AD669F /* XXXLayoutCalculatorViewController.m */; };
 		40F95830277A374DF44DA0FA /* libPods-Weather_App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE6B1AF26CE8C8DC2AAE81EC /* libPods-Weather_App.a */; };
 		5C04C60A229BC075000F0000 /* UIView+FrameLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */; };
 		5C04C60B229BC075000F0000 /* UIView+FrameLayoutSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */; };
@@ -373,6 +375,10 @@
 		32D11E9B24BD8F9600982F27 /* QLLiveModelEnvironment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveModelEnvironment.h; sourceTree = "<group>"; };
 		32D11E9C24BD8F9600982F27 /* QLLiveModelEnvironment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QLLiveModelEnvironment.m; sourceTree = "<group>"; };
 		32D11E9E24BD8FF400982F27 /* QLLiveModelEnvironment_Protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveModelEnvironment_Protocol.h; sourceTree = "<group>"; };
+		32DB567B24E0127700AD669F /* QLLiveLayoutCalculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QLLiveLayoutCalculator.h; sourceTree = "<group>"; };
+		32DB567C24E0127700AD669F /* QLLiveLayoutCalculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QLLiveLayoutCalculator.m; sourceTree = "<group>"; };
+		32DB567E24E014B600AD669F /* XXXLayoutCalculatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXLayoutCalculatorViewController.h; sourceTree = "<group>"; };
+		32DB567F24E014B600AD669F /* XXXLayoutCalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXLayoutCalculatorViewController.m; sourceTree = "<group>"; };
 		5C04C608229BC075000F0000 /* UIView+FrameLayoutSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameLayoutSupport.h"; sourceTree = "<group>"; };
 		5C04C609229BC075000F0000 /* UIView+FrameLayoutSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameLayoutSupport.m"; sourceTree = "<group>"; };
 		5C04D35D22A13DFA000F0000 /* XXXAutoScrollImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXAutoScrollImageView.h; sourceTree = "<group>"; };
@@ -1047,6 +1053,8 @@
 			children = (
 				325A3F6F24DE5CAB00A5508F /* QLLiveModuleFlowLayout.h */,
 				325A3F7024DE5CAB00A5508F /* QLLiveModuleFlowLayout.m */,
+				32DB567B24E0127700AD669F /* QLLiveLayoutCalculator.h */,
+				32DB567C24E0127700AD669F /* QLLiveLayoutCalculator.m */,
 			);
 			path = QLLiveModuleFlowLayoutWrapper;
 			sourceTree = "<group>";
@@ -2125,6 +2133,8 @@
 				D7008DDB1FB180B500BD6EA0 /* MMNavigationController.m */,
 				D70629561F8B19AF00F52FCB /* RootViewController.h */,
 				D70629571F8B19AF00F52FCB /* RootViewController.m */,
+				32DB567E24E014B600AD669F /* XXXLayoutCalculatorViewController.h */,
+				32DB567F24E014B600AD669F /* XXXLayoutCalculatorViewController.m */,
 				32BBDB6124CECB47003C8FC2 /* XXXCycleScrollViewController.h */,
 				32BBDB6224CECB48003C8FC2 /* XXXCycleScrollViewController.m */,
 				323574A424B85CB400AE659B /* XXXHomeModuleViewController.h */,
@@ -2641,6 +2651,7 @@
 				D70F5DE01FA81D02007FBD43 /* FDPresentingAnimator.m in Sources */,
 				7F6FF9B72091DC6100A84A81 /* MMCoreTextViewController.m in Sources */,
 				D70F5DEA1FA81EED007FBD43 /* Easing.c in Sources */,
+				32DB568024E014B600AD669F /* XXXLayoutCalculatorViewController.m in Sources */,
 				7F9CED3B1F5CEAA000A64EB5 /* MMRunwayCoreView.m in Sources */,
 				7F7BA146208DE3000085E045 /* MMNode.m in Sources */,
 				D7F1F8062070FEA3000478C2 /* HomeBillContentDateView.m in Sources */,
@@ -2743,6 +2754,7 @@
 				5C6EA38C2276A89900EA3D0F /* MMUnaryOpAST.m in Sources */,
 				7F63BBC02072036F0084ABC8 /* LunarCore.m in Sources */,
 				5C70C62E24694A3400CD6AB6 /* XXXMakeItEaseViewController.m in Sources */,
+				32DB567D24E0127700AD669F /* QLLiveLayoutCalculator.m in Sources */,
 				5C48AB0C2296377A00535980 /* NoticeScrollViewController.m in Sources */,
 				D70629521F8B18F300F52FCB /* NSString+Exten.m in Sources */,
 				5C70C63A246AABC600CD6AB6 /* MMHomeModule.m in Sources */,

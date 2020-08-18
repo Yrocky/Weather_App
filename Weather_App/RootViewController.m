@@ -116,6 +116,18 @@
         [s addCellModel:c];
         
         [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"Layout Calculator" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/XXXLayoutCalculatorViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
+        [s addCellModel:({
             [[HSTitleCellModel alloc] initWithTitle:@"cycle scroll" actionBlock:^(HSTitleCellModel *model) {
                         
                 [XXXRoute.core routeURL:[NSURL URLWithString:({
