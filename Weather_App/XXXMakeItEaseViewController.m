@@ -10,6 +10,7 @@
 #import "MMLinkedList.h"
 #import "MMStack.h"
 #import <Masonry.h>
+#import "NSArray+Sugar.h"
 
 #define MakeItEasyBegin NSLog(@"begin %@\n",NSStringFromSelector(_cmd));
 
@@ -67,12 +68,111 @@
         make.top.equalTo(circle_2.mas_bottom).mas_offset(20);
     }];
     
-    [self replaceSpace];
-    [self printLinkFromTailToHead];
-    [self makeQueueWithTwoStack];
-    [self throughRotateArrayFindMinValue];
-    [self makeFibonacci];
-    [self exchange];
+    [self greedyAlgorithm];
+//    [self qsort];
+//    [self replaceSpace];
+//    [self printLinkFromTailToHead];
+//    [self makeQueueWithTwoStack];
+//    [self throughRotateArrayFindMinValue];
+//    [self makeFibonacci];
+//    [self exchange];
+}
+
+// 贪心算法
+- (void) greedyAlgorithm {
+    MakeItEasyBegin
+    /*
+     假设字典中的key表示广播台，集合中的为广播台可以覆盖的区域，
+     要求使用最少的广播台覆盖全部的区域
+     
+     贪婪算法仅仅考虑当前的最优解
+     
+     */
+    NSSet * one = [NSSet setWithObjects:@"id",@"nv",@"ut", nil];
+    NSSet * two = [NSSet setWithObjects:@"wa",@"id",@"mt", nil];
+    NSSet * three = [NSSet setWithObjects:@"or",@"nv",@"ca", nil];
+    NSSet * four = [NSSet setWithObjects:@"nv",@"ut", nil];
+    NSSet * five = [NSSet setWithObjects:@"ca",@"az", nil];
+    
+    NSDictionary * stations = @{
+        @"kone": one,
+        @"ktwo": two,
+        @"kthree": three,
+        @"kfour": four,
+        @"kfive": five,
+    };
+    
+    NSMutableSet * result = [NSMutableSet new];
+    
+    // 记录已经被覆盖的数据
+    NSMutableSet * states_covered = [NSMutableSet new];
+    [stations enumerateKeysAndObjectsUsingBlock:^(NSString * station, NSSet * states_for_station, BOOL * _Nonnull stop) {
+        [states_covered intersectSet:states_for_station];
+    }];
+    
+    MakeItEasyEnd
+}
+
+// 快排
+- (void) qsort{
+
+    MakeItEasyBegin
+//    NSArray * tmp = @[@(12),@(4),@(8),@(1),@(10),@(34)];
+    NSArray * tmp = @[@(1),@(2),@(3),@(4),@(5),@(6),@(7),@(8)];
+    NSArray * result = [self quickSort:tmp];
+    NSLog(@"%@",result);
+    
+    MakeItEasyEnd
+}
+
+- (NSArray *) quickSort:(NSArray<NSNumber *> *)array{
+    /*
+     快排使用递归的方法
+     1.选取好结束条件
+     2.选取pivot，这里先使用第一个元素，然后比较当前数组中的元素，
+        小于pivot的放入一个less数组，大于pivot的放入一个greater数组
+        然后对less、greater数组进行快排，分别得到less_result和greater_result
+        并将 less_result + pivot + greater_result 作为排序结果
+     
+     在最坏的情况下，快排的运行时间为O(n²)，但是在平均情况下，是O(n log n)
+     
+     那么为什么快排比merge sort（合并排序）更好呢，合并排序比较稳定，时间一直是O(n log n)
+     
+     O(n)的实际表示为O(c*n)，c为固定的时间量，也就是常量，通常不考虑这个常量，
+     在两个算法的大O运行时间不同的时候，这个常量将无关紧要，比如简单查找和二分查找，常量起到的作用不大，
+     
+     但是如果在两个算法的运行时间很接近的时候，c常量就有用了，比如快排和合并排序就是这样，
+     这两个算法的运行时间都为O(n log n)的时候，快排的速度将更快，因为他的常量比合并的常量更小，
+     另一个问题，他最糟的时候可是O(n²)呀！因为相对于遇上最糟的情况，他遇上平均情况的可能性更大。
+     
+     快排的性能高度依赖于pivot，也就是选择分割数组的基准值，
+     由于快排是不检验输入的数组是否有序的，
+     这里是使用数组的第一个元素作为基准值，如果一个是逆向排序的数组，要升序排列，选择第一个就是最快的
+     
+     */
+    NSLog(@"++");
+    if (array.count < 2) {
+        return array;
+    }
+    // 选取第一个元素为基准值
+    NSInteger pivot = array.firstObject.integerValue;
+    // 选取中间值为基准值
+//    NSInteger pivot = array[array.count >> 1].integerValue;
+    
+    NSMutableArray<NSNumber *> * less = [NSMutableArray new];
+    NSMutableArray<NSNumber *> * greater = [NSMutableArray new];
+    for (NSInteger index = 1; index < array.count; index ++) {
+        NSNumber * obj = array[index];
+        if (obj.integerValue < pivot) {
+            [less addObject:obj];
+        } else {
+            [greater addObject:obj];
+        }
+    }
+    NSMutableArray * result = [NSMutableArray arrayWithArray:[self quickSort:less]];
+    [result addObject:@(pivot)];
+    [result addObjectsFromArray:[self quickSort:greater]];
+    return result;
 }
 
 // NO.4

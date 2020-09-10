@@ -21,6 +21,8 @@ PODS:
   - Bolts/AppLinks (1.9.1):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.1)
+  - EaseRefreshProxy (0.1.0):
+    - MJRefresh (~> 3.1.15.3)
   - IGListDiffKit (4.0.0)
   - IGListKit (4.0.0):
     - IGListDiffKit (= 4.0.0)
@@ -43,6 +45,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - AppLord
   - Bolts
+  - EaseRefreshProxy
   - IGListKit (~> 4.0.0)
   - JLRoutes (~> 2.1)
   - KVOController
@@ -55,6 +58,8 @@ DEPENDENCIES:
   - YTKNetwork (~> 2.0.4)
 
 SPEC REPOS:
+  https://github.com/EaseComponent/EaseSpecs.git:
+    - EaseRefreshProxy
   trunk:
     - AFNetworking
     - AppLord
@@ -76,6 +81,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AppLord: b276ec9fbe09639839b66d13ad3cb5835eedb8bb
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  EaseRefreshProxy: fcc1fd22ddb979333f490434544962409cf3b4bb
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
   IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
   JLRoutes: d755245322b94227662ea3e43492fdca94e05c5b
@@ -89,6 +95,6 @@ SPEC CHECKSUMS:
   TransitionKit: c150629869b0eab9d270f914aad2d1a088a8c19d
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: bb1d3f5b9182a8135998db2c15f4f86a2c51cafb
+PODFILE CHECKSUM: 6099df492b4941e2603f2182d506c889e2bd6a8e
 
 COCOAPODS: 1.9.3

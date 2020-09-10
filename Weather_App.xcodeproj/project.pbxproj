@@ -10,7 +10,6 @@
 		3201173A248F3CE30002F85B /* MMHomeSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32011739248F3CE30002F85B /* MMHomeSectionModel.m */; };
 		323574A624B85CB400AE659B /* XXXHomeModuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574A524B85CB400AE659B /* XXXHomeModuleViewController.m */; };
 		323574A824B85DB500AE659B /* Refresh.md in Resources */ = {isa = PBXBuildFile; fileRef = 323574A724B85DB500AE659B /* Refresh.md */; };
-		323574AB24B85E6800AE659B /* EaseRefreshProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574AA24B85E6800AE659B /* EaseRefreshProxy.m */; };
 		323574BF24B8613D00AE659B /* QLLiveModuleDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574AF24B8613C00AE659B /* QLLiveModuleDataSource.m */; };
 		323574C024B8613D00AE659B /* QLLiveComponentLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574B424B8613C00AE659B /* QLLiveComponentLayout.m */; };
 		323574C124B8613D00AE659B /* QLLiveModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574B724B8613D00AE659B /* QLLiveModule.m */; };
@@ -346,8 +345,6 @@
 		323574A424B85CB400AE659B /* XXXHomeModuleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXHomeModuleViewController.h; sourceTree = "<group>"; };
 		323574A524B85CB400AE659B /* XXXHomeModuleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXHomeModuleViewController.m; sourceTree = "<group>"; };
 		323574A724B85DB500AE659B /* Refresh.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Refresh.md; sourceTree = "<group>"; };
-		323574A924B85E6800AE659B /* EaseRefreshProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseRefreshProxy.h; sourceTree = "<group>"; };
-		323574AA24B85E6800AE659B /* EaseRefreshProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseRefreshProxy.m; sourceTree = "<group>"; };
 		323574AF24B8613C00AE659B /* QLLiveModuleDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QLLiveModuleDataSource.m; sourceTree = "<group>"; };
 		323574B024B8613C00AE659B /* QLLiveModuleDataSourceAble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QLLiveModuleDataSourceAble.h; sourceTree = "<group>"; };
 		323574B124B8613C00AE659B /* QLLiveModuleDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QLLiveModuleDataSource.h; sourceTree = "<group>"; };
@@ -1788,8 +1785,6 @@
 				5C303134227195AF00B882AA /* XXXHTTPProtocol.m */,
 				5C574AF62272AD310029DB7F /* MMThreadInfo.h */,
 				5C574AF72272AD310029DB7F /* MMThreadInfo.m */,
-				323574A924B85E6800AE659B /* EaseRefreshProxy.h */,
-				323574AA24B85E6800AE659B /* EaseRefreshProxy.m */,
 				5C6EA2EE2275AE2900EA3D0F /* MMStack.h */,
 				5C6EA2EF2275AE2900EA3D0F /* MMStack.m */,
 				323574AD24B8613C00AE659B /* QLLiveModular */,
@@ -2807,7 +2802,6 @@
 				D713B8B320727F0700D388F2 /* BillViewController.m in Sources */,
 				7F94A34B1F55120D00DA28EA /* NSArray+Sugar.m in Sources */,
 				7F8593551FDE54AA00E6AFFC /* MMXibViewController.m in Sources */,
-				323574AB24B85E6800AE659B /* EaseRefreshProxy.m in Sources */,
 				D706295C1F8B860B00F52FCB /* PCCustomView.m in Sources */,
 				D70F5DDD1FA74FFB007FBD43 /* FDCollectionView.m in Sources */,
 				7F9CED3E1F5D1F9D00A64EB5 /* MMRunwayProContentView.m in Sources */,
