@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3201173A248F3CE30002F85B /* MMHomeSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32011739248F3CE30002F85B /* MMHomeSectionModel.m */; };
+		321A4C8C253FE201000FBAF3 /* XXXResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 321A4C8B253FE201000FBAF3 /* XXXResultSet.m */; };
+		321A4C93253FE266000FBAF3 /* XXXViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 321A4C92253FE266000FBAF3 /* XXXViewModel.m */; };
+		321A4C99253FE2E8000FBAF3 /* XXXService.m in Sources */ = {isa = PBXBuildFile; fileRef = 321A4C98253FE2E8000FBAF3 /* XXXService.m */; };
+		321A4CA225400E48000FBAF3 /* MVVM.md in Resources */ = {isa = PBXBuildFile; fileRef = 321A4CA125400E48000FBAF3 /* MVVM.md */; };
+		321A4CA52540155A000FBAF3 /* XXXCellLayoutData.m in Sources */ = {isa = PBXBuildFile; fileRef = 321A4CA42540155A000FBAF3 /* XXXCellLayoutData.m */; };
+		321A4CA825401B9A000FBAF3 /* XXXMVVMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 321A4CA725401B9A000FBAF3 /* XXXMVVMViewController.m */; };
 		323574A624B85CB400AE659B /* XXXHomeModuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574A524B85CB400AE659B /* XXXHomeModuleViewController.m */; };
 		323574A824B85DB500AE659B /* Refresh.md in Resources */ = {isa = PBXBuildFile; fileRef = 323574A724B85DB500AE659B /* Refresh.md */; };
 		323574BF24B8613D00AE659B /* QLLiveModuleDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 323574AF24B8613C00AE659B /* QLLiveModuleDataSource.m */; };
@@ -342,6 +348,19 @@
 /* Begin PBXFileReference section */
 		32011738248F3CE30002F85B /* MMHomeSectionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMHomeSectionModel.h; sourceTree = "<group>"; };
 		32011739248F3CE30002F85B /* MMHomeSectionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMHomeSectionModel.m; sourceTree = "<group>"; };
+		321A4C8A253FE201000FBAF3 /* XXXResultSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXResultSet.h; sourceTree = "<group>"; };
+		321A4C8B253FE201000FBAF3 /* XXXResultSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXResultSet.m; sourceTree = "<group>"; };
+		321A4C91253FE266000FBAF3 /* XXXViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXViewModel.h; sourceTree = "<group>"; };
+		321A4C92253FE266000FBAF3 /* XXXViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXViewModel.m; sourceTree = "<group>"; };
+		321A4C97253FE2E8000FBAF3 /* XXXService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXService.h; sourceTree = "<group>"; };
+		321A4C98253FE2E8000FBAF3 /* XXXService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXService.m; sourceTree = "<group>"; };
+		321A4C9A253FE708000FBAF3 /* XXXModelAble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXModelAble.h; sourceTree = "<group>"; };
+		321A4CA125400E48000FBAF3 /* MVVM.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = MVVM.md; sourceTree = "<group>"; };
+		321A4CA32540155A000FBAF3 /* XXXCellLayoutData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXCellLayoutData.h; sourceTree = "<group>"; };
+		321A4CA42540155A000FBAF3 /* XXXCellLayoutData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXCellLayoutData.m; sourceTree = "<group>"; };
+		321A4CA625401B9A000FBAF3 /* XXXMVVMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXMVVMViewController.h; sourceTree = "<group>"; };
+		321A4CA725401B9A000FBAF3 /* XXXMVVMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXMVVMViewController.m; sourceTree = "<group>"; };
+		321A4CA925401DB2000FBAF3 /* XXXCellAble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXCellAble.h; sourceTree = "<group>"; };
 		323574A424B85CB400AE659B /* XXXHomeModuleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXHomeModuleViewController.h; sourceTree = "<group>"; };
 		323574A524B85CB400AE659B /* XXXHomeModuleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXHomeModuleViewController.m; sourceTree = "<group>"; };
 		323574A724B85DB500AE659B /* Refresh.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Refresh.md; sourceTree = "<group>"; };
@@ -971,6 +990,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		321A4C8D253FE209000FBAF3 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				321A4C9A253FE708000FBAF3 /* XXXModelAble.h */,
+				321A4CA925401DB2000FBAF3 /* XXXCellAble.h */,
+				321A4CAB2540311F000FBAF3 /* ViewModel */,
+				321A4CAA25403115000FBAF3 /* Service */,
+				321A4CAC2540312C000FBAF3 /* Layout */,
+			);
+			name = MVVM;
+			sourceTree = "<group>";
+		};
+		321A4CAA25403115000FBAF3 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				321A4C8A253FE201000FBAF3 /* XXXResultSet.h */,
+				321A4C8B253FE201000FBAF3 /* XXXResultSet.m */,
+				321A4C97253FE2E8000FBAF3 /* XXXService.h */,
+				321A4C98253FE2E8000FBAF3 /* XXXService.m */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		321A4CAB2540311F000FBAF3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				321A4C91253FE266000FBAF3 /* XXXViewModel.h */,
+				321A4C92253FE266000FBAF3 /* XXXViewModel.m */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		321A4CAC2540312C000FBAF3 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				321A4CA32540155A000FBAF3 /* XXXCellLayoutData.h */,
+				321A4CA42540155A000FBAF3 /* XXXCellLayoutData.m */,
+			);
+			name = Layout;
+			sourceTree = "<group>";
+		};
 		323574AD24B8613C00AE659B /* QLLiveModular */ = {
 			isa = PBXGroup;
 			children = (
@@ -1133,6 +1193,7 @@
 				5C3A5CBA2463F1A9009ECCEF /* ResponderChain.md */,
 				5C70C636246AAA5200CD6AB6 /* HomeModule.md */,
 				323574A724B85DB500AE659B /* Refresh.md */,
+				321A4CA125400E48000FBAF3 /* MVVM.md */,
 			);
 			path = articles;
 			sourceTree = "<group>";
@@ -1826,6 +1887,7 @@
 				7FFAB83D210AC38A00CA6671 /* MMAObject.m */,
 				7FFAB83F210AC39500CA6671 /* MMBObject.h */,
 				7FFAB840210AC39500CA6671 /* MMBObject.m */,
+				321A4C8D253FE209000FBAF3 /* MVVM */,
 				D7A77D74213451FA00E0E435 /* Signal */,
 				7F9810122121889B0004C638 /* MMDelegateService.h */,
 				7F9810132121889B0004C638 /* MMDelegateService.m */,
@@ -2128,6 +2190,8 @@
 				D7008DDB1FB180B500BD6EA0 /* MMNavigationController.m */,
 				D70629561F8B19AF00F52FCB /* RootViewController.h */,
 				D70629571F8B19AF00F52FCB /* RootViewController.m */,
+				321A4CA625401B9A000FBAF3 /* XXXMVVMViewController.h */,
+				321A4CA725401B9A000FBAF3 /* XXXMVVMViewController.m */,
 				32DB567E24E014B600AD669F /* XXXLayoutCalculatorViewController.h */,
 				32DB567F24E014B600AD669F /* XXXLayoutCalculatorViewController.m */,
 				32BBDB6124CECB47003C8FC2 /* XXXCycleScrollViewController.h */,
@@ -2473,6 +2537,7 @@
 				5CE42B792292459000C236FC /* ResumeDescriptionCell.xib in Resources */,
 				7F85935A1FDE54E500E6AFFC /* MMXibCustomView.xib in Resources */,
 				7FDC6ED81F46E35A00D94379 /* LaunchScreen.storyboard in Resources */,
+				321A4CA225400E48000FBAF3 /* MVVM.md in Resources */,
 				5CE42B18228E874400C236FC /* ResumeSkillCell.xib in Resources */,
 				7F53C0ED2126740600567D74 /* v1314.xml in Resources */,
 				7FDC6ED51F46E35A00D94379 /* Assets.xcassets in Resources */,
@@ -2572,6 +2637,7 @@
 				7F590D7C1FA9A5D4006F7BF0 /* STPopupControllerTransitioningSlideVertical.m in Sources */,
 				D706293B1F8B185100F52FCB /* HSBaseCellModel.m in Sources */,
 				7FDC6ED01F46E35A00D94379 /* ViewController.m in Sources */,
+				321A4C93253FE266000FBAF3 /* XXXViewModel.m in Sources */,
 				D7A77D73213451F200E0E435 /* MMViewModel.m in Sources */,
 				D7A77D7A2134668E00E0E435 /* MMSwipeCell.m in Sources */,
 				7FCF75021F8B1DC100514597 /* HLLAlert.m in Sources */,
@@ -2586,6 +2652,7 @@
 				7F414F4E1F67871A00EC8E86 /* MMGiftEffectOperationMgr.m in Sources */,
 				7F91F7C91F62991400B20D76 /* MMGiftContainerView.m in Sources */,
 				5C70C653246BF76E00CD6AB6 /* MMHomeModule+CollectionView.m in Sources */,
+				321A4CA52540155A000FBAF3 /* XXXCellLayoutData.m in Sources */,
 				7F472923218C6B50007A10FB /* MMLiveEmojiManager.m in Sources */,
 				D706294A1F8B185100F52FCB /* HSSwitchTableViewCell.m in Sources */,
 				5C70C64A246AD34000CD6AB6 /* MMHomeItemComponent.m in Sources */,
@@ -2614,6 +2681,7 @@
 				F7C5B57721F571BC00D3F9D7 /* YTKRequest+PromiseKit.m in Sources */,
 				5CE8B33B22A8C4B6002CFA38 /* OldRegistViewController.m in Sources */,
 				5C5E63CD2244AC3000C0B85D /* RoomModel.m in Sources */,
+				321A4CA825401B9A000FBAF3 /* XXXMVVMViewController.m in Sources */,
 				D706293C1F8B185100F52FCB /* HSCustomCellModel.m in Sources */,
 				7FA36CEA20B4082B0027B61E /* NSArray+Algorithms.m in Sources */,
 				7FDC6ECD1F46E35A00D94379 /* AppDelegate.m in Sources */,
@@ -2627,6 +2695,7 @@
 				7F3815892126CA68006016E9 /* GiftEffectViewController.m in Sources */,
 				5CE42B29228E880400C236FC /* ResumeCompanyCell.m in Sources */,
 				7F7BA149208EDB240085E045 /* MMSinglyLinkedList.m in Sources */,
+				321A4C8C253FE201000FBAF3 /* XXXResultSet.m in Sources */,
 				5CA73400239A2E3C00A75DA9 /* XXXRoute.m in Sources */,
 				5CE42B2E228E889200C236FC /* ResumeSectionHeaderFooterView.m in Sources */,
 				D719742F1F6EFEDA0068F971 /* MM_AutoReplyViewController.m in Sources */,
@@ -2659,6 +2728,7 @@
 				D70629061F8B143D00F52FCB /* MMPickerView.m in Sources */,
 				323574C124B8613D00AE659B /* QLLiveModule.m in Sources */,
 				7F0501862011EAE90033E83C /* YALPreloaderCircleView.m in Sources */,
+				321A4C99253FE2E8000FBAF3 /* XXXService.m in Sources */,
 				5C6EA3962276A8EE00EA3D0F /* MMInterpreter.m in Sources */,
 				D713B8CB2076030D00D388F2 /* BillImageExtensionView.m in Sources */,
 				D70629481F8B185100F52FCB /* HSImageTableViewCell.m in Sources */,

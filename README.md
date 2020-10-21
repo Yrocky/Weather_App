@@ -33,4 +33,8 @@
 
 刷新控件与业务之间的解耦
 
+* [一个简单的MVVM业务模型](https://github.com/Yrocky/Weather_App/blob/develop/articles/MVVM.md)
+
+为常规业务下提供一个简单的MVVM架构，抽离出具有通用性的service和viewModel。
+
 

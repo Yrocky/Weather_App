@@ -16,7 +16,7 @@
 @implementation YTKRequest (PromiseKit)
 
 - (void)dealloc{
-    NSLog(@"[YTK] %@ dealloc",self);
+//    NSLog(@"[YTK] %@ dealloc",self);
 }
 
 - (id) mapModelWithJsonData:(id)jsonData{

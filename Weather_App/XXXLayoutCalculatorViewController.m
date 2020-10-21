@@ -14,6 +14,8 @@
 @interface XXXSomeView : UIView
 
 - (void) setup:(id)data;
+
+@property (nonatomic ,copy) void(^bSomeBlock)(XXXSomeView *someView);
 @end
 
 @implementation XXXSomeView{
@@ -39,6 +41,9 @@
 }
 - (void) setup:(id)data{
     _label.text = [NSString stringWithFormat:@"%@",data];
+    if (self.bSomeBlock) {
+        self.bSomeBlock(self);
+    }
 }
 
 @end
@@ -55,6 +60,16 @@
     [super viewDidLoad];
     self.ScreenWith = [UIScreen mainScreen].bounds.size.width;
     
+    @weakify(self);
+    XXXSomeView * someView = [XXXSomeView new];
+    [someView setBSomeBlock:^(XXXSomeView *someView) {
+        @strongify(self);
+        NSLog(@"__slef:%@",self);
+        NSLog(@"__someView:%@",someView);
+    }];
+    [someView setup:@"aaa"];
+    
+    return;
 //    {
 //        UIView * waterflowView = [UIView new];
 //        [self.view addSubview:waterflowView];

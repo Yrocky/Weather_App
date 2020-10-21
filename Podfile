@@ -22,8 +22,6 @@ target 'Weather_App' do
   pod 'IGListKit', '~> 4.0.0'
   pod 'MJRefresh', '~> 3.1.15.3'
   pod 'KVOController'
-  # Pods for Weather_App
-  #pod 'Nama-lite', '6.4.0'
   pod 'MMKV'
   pod 'TransitionKit', '~> 2.0.0'
   pod 'EaseRefreshProxy'
