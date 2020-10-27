@@ -12,6 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// 抽象cell的大小、布局，可以作为cell的viewModel
 @interface XXXCellLayoutData : NSObject
 
 @property (nonatomic ,assign) CGFloat cellWidth;

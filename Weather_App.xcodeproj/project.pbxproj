@@ -348,6 +348,7 @@
 /* Begin PBXFileReference section */
 		32011738248F3CE30002F85B /* MMHomeSectionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMHomeSectionModel.h; sourceTree = "<group>"; };
 		32011739248F3CE30002F85B /* MMHomeSectionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMHomeSectionModel.m; sourceTree = "<group>"; };
+		32101E902546F33700EC44A2 /* XXXOperationItemAble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXOperationItemAble.h; sourceTree = "<group>"; };
 		321A4C8A253FE201000FBAF3 /* XXXResultSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXResultSet.h; sourceTree = "<group>"; };
 		321A4C8B253FE201000FBAF3 /* XXXResultSet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXResultSet.m; sourceTree = "<group>"; };
 		321A4C91253FE266000FBAF3 /* XXXViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXViewModel.h; sourceTree = "<group>"; };
@@ -995,6 +996,7 @@
 			children = (
 				321A4C9A253FE708000FBAF3 /* XXXModelAble.h */,
 				321A4CA925401DB2000FBAF3 /* XXXCellAble.h */,
+				32101E902546F33700EC44A2 /* XXXOperationItemAble.h */,
 				321A4CAB2540311F000FBAF3 /* ViewModel */,
 				321A4CAA25403115000FBAF3 /* Service */,
 				321A4CAC2540312C000FBAF3 /* Layout */,

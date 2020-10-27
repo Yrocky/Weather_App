@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XXXOperationItemAble.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol XXXModelAble;
 
 /// 用来承载从service中获取的数据，是service数据和业务模型之间的转接层
-@interface XXXResultSet : NSObject
+@interface XXXResultSet : NSObject<XXXOperationItemAble>
 
 @property (nonatomic ,readonly) NSMutableArray<id<XXXModelAble>> * items;
 
@@ -21,14 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic ,assign) NSInteger pageSize;
 
-- (void) reset;
-
-- (void) addItem:(id<XXXModelAble>)item;
-- (void) addItems:(NSArray *)items;
-
-- (void) insertItem:(id<XXXModelAble>)item atIndex:(NSInteger)index;
-
-- (void) deleteItem:(id<XXXModelAble>)item;
 @end
 
 NS_ASSUME_NONNULL_END

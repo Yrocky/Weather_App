@@ -8,17 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "XXXService.h"
-#import "XXXResultSet.h"
 #import "XXXCellLayoutData.h"
-#import "XXXModelAble.h"
 #import "XXXCellAble.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^XXXPrelayoutCompletionBlock)(NSArray <XXXCellLayoutData *> *layoutDatas, NSError *error);
+typedef void(^XXXPrelayoutCompletionBlock)(NSArray <XXXCellLayoutData *> *layoutDatas, NSError * __nullable error);
 
-/// 负责控制器中绝大部分的任务，发起service、
-@interface XXXViewModel : NSObject{
+/// 负责控制器中绝大部分的任务，发起service、处理数据
+@interface XXXViewModel : NSObject<XXXOperationItemAble>{
     __kindof XXXService * _service;
 }
 
@@ -39,7 +37,8 @@ typedef void(^XXXPrelayoutCompletionBlock)(NSArray <XXXCellLayoutData *> *layout
 
 - (void) refreshModelWithResultSet:(XXXResultSet *)resultSet;
 
-- (void) asyncRefreshModelWithResultSet:(XXXResultSet *)resultSet completion:(XXXPrelayoutCompletionBlock)completion;
+- (void) asyncRefreshModelWithResultSet:(XXXResultSet *)resultSet
+                             completion:(XXXPrelayoutCompletionBlock)completion;
 @end
 
 /// 发起网络、数据库等服务
@@ -51,16 +50,5 @@ typedef void(^XXXPrelayoutCompletionBlock)(NSArray <XXXCellLayoutData *> *layout
 
 @end
 
-/// 对数据的增删改查
-@interface XXXViewModel (Operation)
-
-- (void) insertItem:(id<XXXModelAble>)item atIndex:(NSInteger)index;
-
-- (void) deleteItem:(id<XXXModelAble>)item;
-
-- (void) replaceItemAtIndex:(NSInteger)index withItem:(id<XXXModelAble>)item;
-
-- (void) removeAllItems;
-@end
 
 NS_ASSUME_NONNULL_END

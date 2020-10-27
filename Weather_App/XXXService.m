@@ -29,20 +29,4 @@
     // 子类重写，编写具体的网络请求
 }
 
-- (void) addItem:(id<XXXModelAble>)item{
-    [self.resultSet addItem:item];
-}
-
-- (void) insertItem:(id<XXXModelAble>)item atIndex:(NSInteger)index{
-    [self.resultSet insertItem:item atIndex:index];
-}
-
-- (void) deleteItem:(id<XXXModelAble>)item{
-    [self.resultSet deleteItem:item];
-}
-
-- (void) removeAllItems{
-    [self.resultSet reset];
-}
-
 @end

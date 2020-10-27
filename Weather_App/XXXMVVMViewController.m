@@ -87,7 +87,7 @@ UITableViewDelegate,UITableViewDataSource>
     DemoListModel * model = layoutData.metaData;
     model.name = @"xxxxx";
     
-    [self.viewModel replaceItemAtIndex:indexPath.row withItem:model];
+//    [self.viewModel replaceItemAtIndex:indexPath.row withItem:model];
 //    [self.viewModel refreshModelWithResultSet:self.viewModel.service.resultSet];
     [self.tableView reloadData];
 }
@@ -184,7 +184,7 @@ UITableViewDelegate,UITableViewDataSource>
     DemoListRequest * request = [[DemoListRequest alloc] initWithKey:[[_targetKeys mm_sample] integerValue]];
     [request startWithCompletionBlockWithSuccess:^(DemoListRequest * _Nonnull request) {
         self->_state = XXXServiceStateLoaded;
-        [self.resultSet reset];
+        [self.resultSet removeAllItems];
         [self.resultSet addItems:request.list];
         if (completion) {
             completion(self.resultSet,nil);

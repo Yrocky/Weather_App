@@ -19,8 +19,7 @@
     return self;
 }
 
-- (void) reset{
-
+- (void) removeAllItems{
     _index = 0;
     [_items removeAllObjects];
 }
@@ -31,7 +30,7 @@
     }
 }
 
-- (void) addItems:(NSArray *)items{
+- (void) addItems:(NSArray<id<XXXModelAble>> *)items{
     if (0 != items.count) {
         [_items addObjectsFromArray:items];
     }

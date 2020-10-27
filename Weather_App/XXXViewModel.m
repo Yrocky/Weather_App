@@ -80,23 +80,61 @@
 
 #pragma mark - Operation
 
+- (void) addItem:(id<XXXModelAble>)item{
+    if (![NSThread isMainThread]) {
+        assert("must be main thread");
+    }
+    [self sync_invoke:^{
+        // 1.更新resultSet的数据
+        [self.service.resultSet addItem:item];
+        
+        // 2.根据resultSet更新layoutDatas中的数据
+        [self _refreshLayoutDatasWithResultSet:self.service.resultSet];
+    }];
+}
+
+- (void)addItems:(NSArray<id<XXXModelAble>> *)items{
+    if (![NSThread isMainThread]) {
+        assert("must be main thread");
+    }
+    [self sync_invoke:^{
+        // 1.更新resultSet的数据
+        [self.service.resultSet addItems:items];
+        
+        // 2.根据resultSet更新layoutDatas中的数据
+        [self _refreshLayoutDatasWithResultSet:self.service.resultSet];
+    }];
+}
+
 - (void) insertItem:(id<XXXModelAble>)item atIndex:(NSInteger)index{
     if (![NSThread isMainThread]) {
         assert("must be main thread");
     }
     
     [self sync_invoke:^{
-        // 1.更新service的数据
-        [self.service insertItem:item atIndex:index];
+        // 1.更新resultSet的数据
+        [self.service.resultSet insertItem:item atIndex:index];
         
-        // 2.根据service.resultSet更新cellDatas中的数据
-        NSMutableArray * layoutDatas = [NSMutableArray new];
-        [self _refreshModelWithResultSet:self.service.resultSet
-                correspondingLayoutDatas:layoutDatas];
-        [self.layoutDatas removeAllObjects];
-        if (layoutDatas.count) {
-            [self.layoutDatas addObjectsFromArray:layoutDatas];
-        }
+        // 2.根据resultSet更新layoutDatas中的数据
+        [self _refreshLayoutDatasWithResultSet:self.service.resultSet];
+    }];
+}
+
+- (void) replaceItemAtIndex:(NSInteger)index withItem:(id<XXXModelAble>)item{
+    
+    if (![NSThread isMainThread]) {
+        assert("must be main thread");
+    }
+    
+    [self sync_invoke:^{
+        // 1.更新resultSet的数据
+        id<XXXModelAble> origin =
+        [self.service.resultSet.items objectAtIndex:index];
+        [self.service.resultSet deleteItem:origin];
+        [self.service.resultSet insertItem:item atIndex:index];
+        
+        // 2.根据resultSet更新layoutDatas中的数据
+        [self _refreshLayoutDatasWithResultSet:self.service.resultSet];
     }];
 }
 
@@ -106,22 +144,12 @@
     }
     
     [self sync_invoke:^{
-        [self.service deleteItem:item];
-        NSMutableArray * layoutDatas = [NSMutableArray new];
-        [self _refreshModelWithResultSet:self.service.resultSet
-                correspondingLayoutDatas:layoutDatas];
-        [self.layoutDatas removeAllObjects];
-        if (layoutDatas.count) {
-            [self.layoutDatas addObjectsFromArray:layoutDatas];
-        }
+        // 1.更新resultSet的数据
+        [self.service.resultSet deleteItem:item];
+        
+        // 2.根据resultSet更新layoutDatas中的数据
+        [self _refreshLayoutDatasWithResultSet:self.service.resultSet];
     }];
-}
-
-- (void) replaceItemAtIndex:(NSInteger)index withItem:(id<XXXModelAble>)item{
-    id<XXXModelAble> origin =
-    [self.service.resultSet.items objectAtIndex:index];
-    [self deleteItem:origin];
-    [self insertItem:item atIndex:index];
 }
 
 - (void) removeAllItems{
@@ -130,9 +158,20 @@
     }
     
     [self sync_invoke:^{
-        [self.service removeAllItems];
+        [self.service.resultSet removeAllItems];
         [self.layoutDatas removeAllObjects];
     }];
+}
+
+- (void) _refreshLayoutDatasWithResultSet:(XXXResultSet *)resultSet{
+    
+    NSMutableArray * layoutDatas = [NSMutableArray new];
+    [self _refreshModelWithResultSet:resultSet
+            correspondingLayoutDatas:layoutDatas];
+    [self.layoutDatas removeAllObjects];
+    if (layoutDatas.count) {
+        [self.layoutDatas addObjectsFromArray:layoutDatas];
+    }
 }
 
 - (void) _refreshModelWithResultSet:(XXXResultSet *)resultSet correspondingLayoutDatas:(NSMutableArray *)layoutDatas{
@@ -160,13 +199,7 @@
 
 - (void) refreshModelWithResultSet:(XXXResultSet *)resultSet{
     [self sync_invoke:^{
-        NSMutableArray * layoutDatas = [NSMutableArray new];
-        [self _refreshModelWithResultSet:resultSet
-                correspondingLayoutDatas:layoutDatas];
-        [self.layoutDatas removeAllObjects];
-        if (layoutDatas.count) {
-            [self.layoutDatas addObjectsFromArray:layoutDatas];
-        }
+        [self _refreshLayoutDatasWithResultSet:resultSet];
     }];
 }
 

@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XXXResultSet.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class XXXResultSet;
 @protocol XXXModelAble;
 
 typedef void(^XXXServiceCompletionBlock)(XXXResultSet *resultSet, NSError * _Nullable error);
@@ -33,18 +33,6 @@ typedef NS_ENUM(NSUInteger, XXXServiceState) {
 - (void) reloadDataWithCompletion:(XXXServiceCompletionBlock)completion;
 - (void) loadMoreDataWithCompletion:(XXXServiceCompletionBlock)completion;
 
-@end
-
-/// 对数据的增删改查，存在一些业务是对服务端的数据进行进一步的处理
-@interface XXXService (Operation)
-
-- (void) addItem:(id<XXXModelAble>)item;
-
-- (void) insertItem:(id<XXXModelAble>)item atIndex:(NSInteger)index;
-
-- (void) deleteItem:(id<XXXModelAble>)item;
-
-- (void) removeAllItems;
 @end
 
 NS_ASSUME_NONNULL_END
