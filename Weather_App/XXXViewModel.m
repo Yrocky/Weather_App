@@ -80,7 +80,7 @@
 
 #pragma mark - Operation
 
-- (void) addItem:(id<XXXModelAble>)item{
+- (void) addItem:(XXXModel)item{
     if (![NSThread isMainThread]) {
         assert("must be main thread");
     }
@@ -93,7 +93,7 @@
     }];
 }
 
-- (void)addItems:(NSArray<id<XXXModelAble>> *)items{
+- (void)addItems:(NSArray<XXXModel> *)items{
     if (![NSThread isMainThread]) {
         assert("must be main thread");
     }
@@ -106,7 +106,7 @@
     }];
 }
 
-- (void) insertItem:(id<XXXModelAble>)item atIndex:(NSInteger)index{
+- (void) insertItem:(XXXModel)item atIndex:(NSInteger)index{
     if (![NSThread isMainThread]) {
         assert("must be main thread");
     }
@@ -120,7 +120,7 @@
     }];
 }
 
-- (void) replaceItemAtIndex:(NSInteger)index withItem:(id<XXXModelAble>)item{
+- (void) replaceItemAtIndex:(NSInteger)index withItem:(XXXModel)item{
     
     if (![NSThread isMainThread]) {
         assert("must be main thread");
@@ -128,7 +128,7 @@
     
     [self sync_invoke:^{
         // 1.更新resultSet的数据
-        id<XXXModelAble> origin =
+        XXXModel origin =
         [self.service.resultSet.items objectAtIndex:index];
         [self.service.resultSet deleteItem:origin];
         [self.service.resultSet insertItem:item atIndex:index];
@@ -138,7 +138,7 @@
     }];
 }
 
-- (void) deleteItem:(id<XXXModelAble>)item{
+- (void) deleteItem:(XXXModel)item{
     if (![NSThread isMainThread]) {
         assert("must be main thread");
     }
@@ -146,6 +146,21 @@
     [self sync_invoke:^{
         // 1.更新resultSet的数据
         [self.service.resultSet deleteItem:item];
+        
+        // 2.根据resultSet更新layoutDatas中的数据
+        [self _refreshLayoutDatasWithResultSet:self.service.resultSet];
+    }];
+}
+
+- (void) deleteItemAtIndex:(NSInteger)index{
+    
+    if (![NSThread isMainThread]) {
+        assert("must be main thread");
+    }
+    
+    [self sync_invoke:^{
+        // 1.更新resultSet的数据
+        [self.service.resultSet deleteItemAtIndex:index];
         
         // 2.根据resultSet更新layoutDatas中的数据
         [self _refreshLayoutDatasWithResultSet:self.service.resultSet];
@@ -163,6 +178,17 @@
     }];
 }
 
+- (XXXModel) itemAtIndex:(NSInteger)index{
+    if (![NSThread isMainThread]) {
+        assert("must be main thread");
+    }
+    __block XXXModel model;
+    [self sync_invoke:^{
+        model = [self.service.resultSet itemAtIndex:index];
+    }];
+    return model;
+}
+
 - (void) _refreshLayoutDatasWithResultSet:(XXXResultSet *)resultSet{
     
     NSMutableArray * layoutDatas = [NSMutableArray new];
@@ -176,7 +202,7 @@
 
 - (void) _refreshModelWithResultSet:(XXXResultSet *)resultSet correspondingLayoutDatas:(NSMutableArray *)layoutDatas{
     
-    for (id<XXXModelAble> item in resultSet.items) {
+    for (XXXModel item in resultSet.items) {
         if (item.layoutData == nil) {
             
             XXXCellLayoutData * layoutData = [self refreshCellDataWithMetaData:item];
@@ -190,7 +216,7 @@
     }
 }
 
-- (__kindof XXXCellLayoutData *) refreshCellDataWithMetaData:(id<XXXModelAble>)metaData{
+- (XXXKinfOfLayoutData *) refreshCellDataWithMetaData:(XXXModel)metaData{
     // 子类重写，根据metaData进行布局的计算
     return XXXCellLayoutData.new;
 }

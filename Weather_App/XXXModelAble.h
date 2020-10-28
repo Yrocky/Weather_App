@@ -19,4 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+typedef id<XXXModelAble> XXXModel;
+
 NS_ASSUME_NONNULL_END

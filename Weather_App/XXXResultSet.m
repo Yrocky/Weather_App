@@ -24,28 +24,41 @@
     [_items removeAllObjects];
 }
 
-- (void) addItem:(id<XXXModelAble>)item{
+- (void) addItem:(XXXModel)item{
     if (item) {
         [_items addObject:item];
     }
 }
 
-- (void) addItems:(NSArray<id<XXXModelAble>> *)items{
+- (void) addItems:(NSArray<XXXModel> *)items{
     if (0 != items.count) {
         [_items addObjectsFromArray:items];
     }
 }
 
-- (void) insertItem:(id<XXXModelAble>)item atIndex:(NSInteger)index{
+- (void) insertItem:(XXXModel)item atIndex:(NSInteger)index{
     if (item && index < _items.count) {
         [_items insertObject:item atIndex:index];
     }
 }
 
-- (void) deleteItem:(id<XXXModelAble>)item{
+- (void) deleteItem:(XXXModel)item{
     if (item) {
         [_items removeObject:item];
     }
+}
+
+- (void) deleteItemAtIndex:(NSInteger)index{
+    if (index < _items.count) {
+        [_items removeObjectAtIndex:index];
+    }
+}
+
+- (XXXModel)itemAtIndex:(NSInteger)index{
+    if (index < _items.count) {
+        return [_items objectAtIndex:index];
+    }
+    return nil;
 }
 
 @end

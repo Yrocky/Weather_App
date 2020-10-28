@@ -13,22 +13,25 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^XXXPrelayoutCompletionBlock)(NSArray <XXXCellLayoutData *> *layoutDatas, NSError * __nullable error);
+typedef __kindof XXXService XXXKinfOfService;
+typedef __kindof XXXCellLayoutData XXXKinfOfLayoutData;
+
+typedef void(^XXXPrelayoutCompletionBlock)(NSArray<XXXKinfOfLayoutData *> *layoutDatas, NSError * __nullable error);
 
 /// 负责控制器中绝大部分的任务，发起service、处理数据
 @interface XXXViewModel : NSObject<XXXOperationItemAble>{
-    __kindof XXXService * _service;
+    XXXKinfOfService * _service;
 }
 
-@property (nonatomic ,strong) __kindof XXXService * service;
+@property (nonatomic ,strong) XXXKinfOfService * service;
 
 @property (nonatomic ,strong ,readonly) NSError * error;
 
-@property (nonatomic ,strong ,readonly) NSMutableArray<__kindof XXXCellLayoutData *> * layoutDatas;
+@property (nonatomic ,strong ,readonly) NSMutableArray<XXXKinfOfLayoutData *> * layoutDatas;
 
 /// 根据`XXXModelAble`创建对应的`LayoutData`
 /// 子类要在这个方法中做主要的业务：布局、数据赋值等
-- (__kindof XXXCellLayoutData *) refreshCellDataWithMetaData:(id<XXXModelAble>)metaData;
+- (XXXKinfOfLayoutData *) refreshCellDataWithMetaData:(XXXModel)metaData;
 
 @end
 

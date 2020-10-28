@@ -16,8 +16,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface DemoListViewModel : XXXViewModel
+@interface DemoListViewModel : XXXViewModel{
+    UITableView *_tableView;
+    UICollectionView *_collectionView;
+}
 
+- (instancetype) initWithTableView:(UITableView *)tableView;
+- (instancetype) initWithCollectionView:(UICollectionView *)collectionView;
+
+- (void) reloadItemAtIndex:(NSInteger)index;
 @end
 
 @interface DemoListService : XXXService

@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) Class cellClass;
 
-@property (nonatomic ,weak) id<XXXModelAble> metaData;
+@property (nonatomic ,weak) XXXModel metaData;
 
 @end
 

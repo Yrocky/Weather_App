@@ -11,12 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol XXXModelAble;
-
 /// 用来承载从service中获取的数据，是service数据和业务模型之间的转接层
 @interface XXXResultSet : NSObject<XXXOperationItemAble>
 
-@property (nonatomic ,readonly) NSMutableArray<id<XXXModelAble>> * items;
+@property (nonatomic ,readonly) NSMutableArray<XXXModel> * items;
 
 @property (nonatomic ,assign) NSInteger index;
 

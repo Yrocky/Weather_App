@@ -13,14 +13,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol XXXOperationItemAble <NSObject>
 
-- (void) addItem:(id<XXXModelAble>)item;
-- (void) addItems:(NSArray<id<XXXModelAble>> *)item;
+- (void) addItem:(XXXModel)item;
+- (void) addItems:(NSArray<XXXModel> *)item;
 
-- (void) insertItem:(id<XXXModelAble>)item atIndex:(NSInteger)index;
+- (void) insertItem:(XXXModel)item atIndex:(NSInteger)index;
 
-- (void) deleteItem:(id<XXXModelAble>)item;
+- (void) deleteItem:(XXXModel)item;
+- (void) deleteItemAtIndex:(NSInteger)index;
 
 - (void) removeAllItems;
+
+- (XXXModel) itemAtIndex:(NSInteger)index;
 @end
 
 NS_ASSUME_NONNULL_END

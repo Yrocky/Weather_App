@@ -36,7 +36,7 @@ UITableViewDelegate,UITableViewDataSource>
     }];
     
     // viewModel
-    self.viewModel = [DemoListViewModel new];
+    self.viewModel = [[DemoListViewModel alloc] initWithTableView:self.tableView];
     
     // refresh
     self.refreshProxy = [[EaseRefreshProxy alloc] initWithScrollView:self.tableView];
@@ -83,22 +83,42 @@ UITableViewDelegate,UITableViewDataSource>
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    DemoListLayoutData * layoutData = [self.viewModel.layoutDatas objectAtIndex:indexPath.row];
-    DemoListModel * model = layoutData.metaData;
+    DemoListModel * model = [self.viewModel itemAtIndex:indexPath.row];
     model.name = @"xxxxx";
-    
-//    [self.viewModel replaceItemAtIndex:indexPath.row withItem:model];
-//    [self.viewModel refreshModelWithResultSet:self.viewModel.service.resultSet];
-    [self.tableView reloadData];
+    [self.viewModel reloadItemAtIndex:indexPath.row];
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleDelete;;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.viewModel deleteItemAtIndex:indexPath.row];
+    }
+}
+
 @end
 
 @implementation DemoListViewModel
 
-- (instancetype)init
-{
+- (instancetype) initWithTableView:(UITableView *)tableView{
     self = [super init];
     if (self) {
+        _tableView = tableView;
+        _service = [DemoListService new];
+    }
+    return self;
+}
+
+- (instancetype) initWithCollectionView:(UICollectionView *)collectionView{
+    self = [super init];
+    if (self) {
+        _collectionView = collectionView;
         _service = [DemoListService new];
     }
     return self;
@@ -157,6 +177,16 @@ UITableViewDelegate,UITableViewDataSource>
     };
     
     return layoutData;
+}
+
+- (void) reloadItemAtIndex:(NSInteger)index{
+    
+    [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)deleteItemAtIndex:(NSInteger)index{
+    [super deleteItemAtIndex:index];
+    [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end
