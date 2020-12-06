@@ -41,7 +41,7 @@ UITableViewDelegate,UITableViewDataSource>
     // refresh
     self.refreshProxy = [[EaseRefreshProxy alloc] initWithScrollView:self.tableView];
     [self.refreshProxy addRefresh:^(NSInteger index) {
-        [weakSelf.viewModel reloadDataWithCompletion:^(NSArray<XXXCellLayoutData *> * _Nonnull layoutDatas, NSError * _Nonnull error) {
+        [weakSelf.viewModel reloadDataWithCompletion:^(NSArray<XXXKinfOfLayoutData *> * _Nonnull layoutDatas, NSError * _Nonnull error) {
             __strong typeof(self) strongSelf = weakSelf;
             if (error) {
                 NSLog(@"load data error:%@",error);
@@ -49,6 +49,21 @@ UITableViewDelegate,UITableViewDataSource>
                 [strongSelf.tableView reloadData];
             }
             [strongSelf.refreshProxy endRefresh];
+        }];
+    }];
+    [self.refreshProxy addLoadMore:@"没有了哟~" callback:^(NSInteger index) {
+        [weakSelf.viewModel loadMoreDataWithCompletion:^(NSArray<XXXKinfOfLayoutData *> * _Nonnull layoutDatas, NSError * _Nonnull error) {
+            __strong typeof(self) strongSelf = weakSelf;
+            if (error) {
+                NSLog(@"load data error:%@",error);
+            } else {
+                [strongSelf.tableView reloadData];
+            }
+            if (layoutDatas.count == 0) {
+                [strongSelf.refreshProxy noMoreData];
+            } else {
+                [strongSelf.refreshProxy endLoadMore];
+            }
         }];
     }];
 }
@@ -227,7 +242,25 @@ UITableViewDelegate,UITableViewDataSource>
     }];
 }
 - (void)loadMoreDataWithCompletion:(XXXServiceCompletionBlock)completion{
+    if (_state == XXXServiceStateLoading) {
+        return;
+    }
+    _state = XXXServiceStateLoading;
     
+    // 发起网络请求
+    DemoListRequest * request = [[DemoListRequest alloc] initWithKey:[[_targetKeys mm_sample] integerValue]];
+    [request startWithCompletionBlockWithSuccess:^(DemoListRequest * _Nonnull request) {
+        self->_state = XXXServiceStateLoaded;
+        [self.resultSet addItems:request.list];
+        if (completion) {
+            completion(self.resultSet,nil);
+        }
+    } failure:^(DemoListRequest * _Nonnull request) {
+        self->_state = XXXServiceStateLoaded;
+        if (completion) {
+            completion(self.resultSet,request.error);
+        }
+    }];
 }
 
 @end

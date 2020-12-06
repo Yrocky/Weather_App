@@ -117,6 +117,30 @@
         [s addCellModel:c];
         
         [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"AnyComponent" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/MT_AnyComponentViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
+        [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"Plugin" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/PagePluginViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
+        [s addCellModel:({
             [[HSTitleCellModel alloc] initWithTitle:@"MVVM" actionBlock:^(HSTitleCellModel *model) {
                         
                 [XXXRoute.core routeURL:[NSURL URLWithString:({

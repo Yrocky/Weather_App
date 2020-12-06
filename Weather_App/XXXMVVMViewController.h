@@ -50,6 +50,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DemoListRequest : YTKRequest
 - (instancetype) initWithKey:(NSInteger)key;
-@property (nonatomic ,copy ,readonly) NSArray * list;
+@property (nonatomic ,copy ,readonly) NSArray<DemoListModel *> * list;
 @end
 NS_ASSUME_NONNULL_END
