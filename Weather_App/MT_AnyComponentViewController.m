@@ -306,6 +306,7 @@
 @end
 
 @interface AddressPickerContent : UIView<
+MT_Content,
 UIPickerViewDelegate,
 UIPickerViewDataSource>{
     UIPickerView * _pickerView;
@@ -412,7 +413,7 @@ UIPickerViewDataSource>{
 }
 @end
 
-@interface InsuranceContent : UIView{
+@interface InsuranceContent : UIView<MT_Content>{
     UILabel * _titleLabel;
     UISwitch * _switch;
 }

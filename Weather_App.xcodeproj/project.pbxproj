@@ -425,6 +425,7 @@
 		32B12F42257CF4E300566D11 /* MT_UITableViewReloadDataUpdater.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MT_UITableViewReloadDataUpdater.m; sourceTree = "<group>"; };
 		32B12F46257D0B2600566D11 /* MT_ComponentHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MT_ComponentHelper.h; sourceTree = "<group>"; };
 		32B12F47257D0B2600566D11 /* MT_ComponentHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MT_ComponentHelper.m; sourceTree = "<group>"; };
+		32B12F4F257DC22100566D11 /* RenderWithComponent.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RenderWithComponent.md; sourceTree = "<group>"; };
 		32BBDB5C24CE8802003C8FC2 /* EaseCycleScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EaseCycleScrollView.h; sourceTree = "<group>"; };
 		32BBDB5D24CE8802003C8FC2 /* EaseCycleScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EaseCycleScrollView.m; sourceTree = "<group>"; };
 		32BBDB6124CECB47003C8FC2 /* XXXCycleScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXCycleScrollViewController.h; sourceTree = "<group>"; };
@@ -1305,6 +1306,7 @@
 				5C70C636246AAA5200CD6AB6 /* HomeModule.md */,
 				323574A724B85DB500AE659B /* Refresh.md */,
 				321A4CA125400E48000FBAF3 /* MVVM.md */,
+				32B12F4F257DC22100566D11 /* RenderWithComponent.md */,
 			);
 			path = articles;
 			sourceTree = "<group>";

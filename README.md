@@ -37,4 +37,10 @@
 
 为常规业务下提供一个简单的MVVM架构，抽离出具有通用性的service和viewModel。
 
+* [声明式的视图](articles/RenderWithComponent.md)
 
+声明式的使用Component来组装UITableView、UICollectionView，不用过多的去关心常规使用方法中的数据源和代理。
+
+* [声明式的视图](./articles/RenderWithComponent.md)
+
+* [声明式的视图](/articles/RenderWithComponent.md)
