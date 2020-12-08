@@ -8,26 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import "XXXService.h"
-#import "XXXCellLayoutData.h"
+#import "XXXSectionLayoutData.h"
 #import "XXXCellAble.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef __kindof XXXService XXXKinfOfService;
-typedef __kindof XXXCellLayoutData XXXKinfOfLayoutData;
 
-typedef void(^XXXPrelayoutCompletionBlock)(NSArray<XXXKinfOfLayoutData *> *layoutDatas, NSError * __nullable error);
+typedef void(^XXXPrelayoutCompletionBlock)(NSArray<XXXSectionLayoutData *> *layoutDatas, NSError * __nullable error);
 
 /// 负责控制器中绝大部分的任务，发起service、处理数据
-@interface XXXViewModel : NSObject<XXXOperationItemAble>{
+@interface XXXViewModel : NSObject<XXXOperationIndexPathItemAble>{
     XXXKinfOfService * _service;
+    NSMutableArray<XXXSectionLayoutData *> * _innerLayoutDatas;
 }
 
 @property (nonatomic ,strong) XXXKinfOfService * service;
 
 @property (nonatomic ,strong ,readonly) NSError * error;
 
-@property (nonatomic ,strong ,readonly) NSMutableArray<XXXKinfOfLayoutData *> * layoutDatas;
+@property (nonatomic ,readonly) NSArray<XXXSectionLayoutData *> * layoutDatas;
 
 /// 根据`XXXModelAble`创建对应的`LayoutData`
 /// 子类要在这个方法中做主要的业务：布局、数据赋值等

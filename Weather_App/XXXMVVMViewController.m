@@ -76,7 +76,7 @@ UITableViewDelegate,UITableViewDataSource>
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    XXXCellLayoutData * layoutData = [self.viewModel.layoutDatas objectAtIndex:indexPath.row];
+    XXXCellLayoutData * layoutData = [self.viewModel itemAtIndexPath:indexPath];
     NSString * reuseIdentifier = NSStringFromClass(layoutData.cellClass);
     UITableViewCell<XXXCellAble> *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     if (!cell) {
@@ -91,14 +91,14 @@ UITableViewDelegate,UITableViewDataSource>
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    XXXCellLayoutData * layoutData = [self.viewModel.layoutDatas objectAtIndex:indexPath.row];
+    XXXCellLayoutData * layoutData = [self.viewModel itemAtIndexPath:indexPath];
     return layoutData.cellheight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    DemoListModel * model = [self.viewModel itemAtIndex:indexPath.row];
+    DemoListModel * model = [self.viewModel itemAtIndexPath:indexPath];
     model.name = @"xxxxx";
     [self.viewModel reloadItemAtIndex:indexPath.row];
 }
@@ -113,7 +113,7 @@ UITableViewDelegate,UITableViewDataSource>
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.viewModel deleteItemAtIndex:indexPath.row];
+        [self.viewModel deleteItemAtIndexPath:indexPath];
     }
 }
 
@@ -126,6 +126,7 @@ UITableViewDelegate,UITableViewDataSource>
     if (self) {
         _tableView = tableView;
         _service = [DemoListService new];
+        // 可以将tableView的数据源、代理设置为viewModel，依次来解耦Controller
     }
     return self;
 }
@@ -199,9 +200,11 @@ UITableViewDelegate,UITableViewDataSource>
     [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
-- (void)deleteItemAtIndex:(NSInteger)index{
-    [super deleteItemAtIndex:index];
-    [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+- (void)deleteItemAtIndexPath:(NSIndexPath *)indexPath{
+    [super deleteItemAtIndexPath:indexPath];
+    [_tableView deleteRowsAtIndexPaths:@[
+        indexPath
+    ] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end
@@ -230,7 +233,8 @@ UITableViewDelegate,UITableViewDataSource>
     [request startWithCompletionBlockWithSuccess:^(DemoListRequest * _Nonnull request) {
         self->_state = XXXServiceStateLoaded;
         [self.resultSet removeAllItems];
-        [self.resultSet addItems:request.list];
+//        [self.resultSet addItems:request.list];
+        [self.resultSet addItems:request.list forSection:0];
         if (completion) {
             completion(self.resultSet,nil);
         }
@@ -251,7 +255,7 @@ UITableViewDelegate,UITableViewDataSource>
     DemoListRequest * request = [[DemoListRequest alloc] initWithKey:[[_targetKeys mm_sample] integerValue]];
     [request startWithCompletionBlockWithSuccess:^(DemoListRequest * _Nonnull request) {
         self->_state = XXXServiceStateLoaded;
-        [self.resultSet addItems:request.list];
+//        [self.resultSet addItems:request.list];
         if (completion) {
             completion(self.resultSet,nil);
         }

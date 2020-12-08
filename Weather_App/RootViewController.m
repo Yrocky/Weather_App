@@ -117,6 +117,18 @@
         [s addCellModel:c];
         
         [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"Diff" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/DiffViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
+        [s addCellModel:({
             [[HSTitleCellModel alloc] initWithTitle:@"AnyComponent" actionBlock:^(HSTitleCellModel *model) {
                         
                 [XXXRoute.core routeURL:[NSURL URLWithString:({
