@@ -11,29 +11,32 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 应该限制为UIView的子类，oc中不支持
 @protocol MT_Content <NSObject>
 @end
 
+typedef id<MT_Content> MTContent;
+
 @protocol MT_Component <NSObject>
 
-- (id<MT_Content>) renderContent;
-- (void) renderInContent:(id<MT_Content>)content;
+- (MTContent) renderContent;
+- (void) renderInContent:(MTContent)content;
 
 @optional
 
 @property (nonatomic ,copy) NSString * reuseIdentifier;
 
 - (BOOL) shouldContentUpdateWithNext:(id<MT_Component>)next;
-- (BOOL) shouldRenderNext:(id<MT_Component>)next inContent:(id<MT_Content>)content;
+- (BOOL) shouldRenderNext:(id<MT_Component>)next inContent:(MTContent)content;
 
 - (CGSize) referenceSizeInBounds:(CGRect)bounds;
-- (CGSize) intrinsicContentSizeForContent:(id<MT_Content>)content;
-- (void) layoutContent:(id<MT_Content>)content inContainer:(UIView *)container;
+- (CGSize) intrinsicContentSizeForContent:(MTContent)content;
+- (void) layoutContent:(MTContent)content inContainer:(UIView *)container;
 
-- (void) contentWillDisplay:(id<MT_Content>)content;
-- (void) contentDidEndDisplay:(id<MT_Content>)content;
+- (void) contentWillDisplay:(MTContent)content;
+- (void) contentDidEndDisplay:(MTContent)content;
 
-- (void) contentDidSelected:(id<MT_Content>)content;
+- (void) contentDidSelected:(MTContent)content;
 @end
 
 NS_ASSUME_NONNULL_END

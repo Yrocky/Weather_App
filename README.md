@@ -40,3 +40,7 @@
 * [声明式的视图](articles/RenderWithComponent.md)
 
 声明式的使用Component来组装UITableView、UICollectionView，不用过多的去关心常规使用方法中的数据源和代理。
+
+* [全局定时器](articles/SingleTimer.md)
+
+在一个业务场景中可能有很多的子业务中需要用到定时器，每一个子业务创建一个定时器并不现实，SingleTimer可以让子业务之间共用一个定时器，提供子业务结束（一般为视图）自动移除定时器观察的功能。

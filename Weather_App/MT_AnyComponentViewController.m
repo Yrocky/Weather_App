@@ -28,6 +28,9 @@
 
 @property (nonatomic ,assign) BOOL isOpenAddress;
 @end
+
+#pragma mark - Component
+
 // 地址
 @interface Address : NSObject<MT_Component>{
     NSString *_address;
@@ -72,6 +75,8 @@
 }
 @property (class, readonly) Remark *(^create)(NSString * remark);
 @end
+
+#pragma mark - ViewController
 
 @interface MT_AnyComponentViewController ()
 @property (nonatomic ,copy) NSArray * components;
@@ -223,6 +228,8 @@
 }
 
 @end
+
+#pragma mark - Components Implementation
 
 @implementation Address
 
@@ -440,9 +447,11 @@ UIPickerViewDataSource>{
     NSString * title = _use ? @"使用准时宝" : @"不使用准时宝";
     [content setupTitle:title isOn:_use];
     content.bToggle = self.bToggle;
-//    [content setBToggle:^(BOOL isOn) {
-//        self->_use = isOn;
-//    }];
+    @weakify(self);
+    [content setBToggle:^(BOOL isOn) {
+        @strongify(self);
+        self->_use = isOn;
+    }];
 }
 
 - (CGSize)referenceSizeInBounds:(CGRect)bounds{
