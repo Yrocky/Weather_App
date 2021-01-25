@@ -37,13 +37,14 @@
 
 @interface _SingleInnerTimer : NSObject{
     NSTimeInterval _intervalValue;
-    id _userInfo;
-    NSTimer *_timer;
     __weak id _target;
     SEL _selector;
     BOOL _repeats;
     BOOL _isPause;
 }
+
+@property (nonatomic,strong) dispatch_source_t timer;
+@property (nonatomic,strong) dispatch_semaphore_t semaphore;
 
 + (_SingleInnerTimer *) scheduledTimerWithTimeInterval:(NSTimeInterval)interval
                                                 target:(id)target
@@ -163,42 +164,38 @@
     return timer;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.semaphore = dispatch_semaphore_create(1);
+    }
+    return self;
+}
+
 - (void) scheduledTimerWithTimeInterval:(NSTimeInterval)interval
                                  target:(id)target
                                selector:(SEL)selector
                                userInfo:(id)userInfo
                                 repeats:(BOOL)repeats{
-    _intervalValue = interval;
-    _repeats = repeats;
     _target = target;
     _selector = selector;
-    _userInfo = userInfo;
-    _timer = [NSTimer scheduledTimerWithTimeInterval:interval
-                                              target:self
-                                            selector:@selector(onTimer:)
-                                            userInfo:userInfo
-                                             repeats:repeats];
-    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];//UITrackingRunLoopMode
-}
+    BOOL async = NO;
+    uint64_t intervalInNanoSecs = (uint64_t)(interval * NSEC_PER_SEC);
+    uint64_t leewayInNanoSecs = (uint64_t)(0.0 * NSEC_PER_SEC);
 
-- (void) timerWithTimeInterval:(NSTimeInterval)interval
-                        target:(id)target
-                      selector:(SEL)selector
-                      userInfo:(id)userInfo
-                       repeats:(BOOL)repeats{
-    _intervalValue = interval;
-    _repeats = repeats;
-    _target = target;
-    _selector = selector;
-    _userInfo = userInfo;
-    _timer = [NSTimer timerWithTimeInterval:interval
-                                     target:self
-                                   selector:@selector(onTimer:)
-                                   userInfo:userInfo
-                                    repeats:repeats];
-    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSDefaultRunLoopMode];
-}
+    dispatch_queue_t queue = async ? dispatch_queue_create("com.single.timer", DISPATCH_QUEUE_CONCURRENT) : dispatch_get_main_queue();
 
+    self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    dispatch_source_set_timer(self.timer, [self.class wallTimeWithDate:[NSDate dateWithTimeIntervalSinceNow:interval]], intervalInNanoSecs, leewayInNanoSecs);
+    dispatch_source_set_event_handler(self.timer, ^{
+        [self onTimer:nil];
+        if (!repeats) {
+            [self invalidate];
+        }
+    });
+    dispatch_resume(self.timer);
+}
 - (void) onTimer:(NSTimer *)timer{
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -210,27 +207,49 @@
 
 - (void) pause{
     NSLog(@"[Timer] pause");
-    [self invalidate];
-    _timer = nil;
+//    [self invalidate];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    if (self.timer) {
+        dispatch_suspend(self.timer);
+    }
+    dispatch_semaphore_signal(self.semaphore);
+    
     _isPause = YES;
 }
 
 - (void) restart{
     NSLog(@"[Timer] restart");
-    if (_isPause) {
-        [self scheduledTimerWithTimeInterval:_intervalValue
-                                      target:_target
-                                    selector:_selector
-                                    userInfo:_userInfo
-                                     repeats:_repeats];
-        _isPause = NO;
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    if (self.timer) {
+        dispatch_resume(self.timer);
     }
+    dispatch_semaphore_signal(self.semaphore);
+    
+    _isPause = NO;
 }
 
 - (void) invalidate{
-    [_timer invalidate];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    if (self.timer) {
+        dispatch_source_cancel(self.timer);
+        self.timer = nil;
+    }
+    dispatch_semaphore_signal(self.semaphore);
 }
 
++ (dispatch_time_t)wallTimeWithDate:(NSDate *)date {
+    NSCParameterAssert(date != nil);
+
+    double seconds = 0;
+    double frac = modf(date.timeIntervalSince1970, &seconds);
+
+    struct timespec walltime = {
+        .tv_sec = (time_t)fmin(fmax(seconds, LONG_MIN), LONG_MAX),
+        .tv_nsec = (long)fmin(fmax(frac * NSEC_PER_SEC, LONG_MIN), LONG_MAX)
+    };
+
+    return dispatch_walltime(&walltime, 0);
+}
 @end
 
 @implementation _TimerToken{

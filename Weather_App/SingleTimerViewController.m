@@ -12,6 +12,15 @@
 #import <Masonry/Masonry.h>
 #import "XXXBasePopupView.h"
 
+@interface ExampleTimerObj : NSObject
+@property (nonatomic ,assign) NSInteger counter;
++ (instancetype) obj:(NSInteger)counter;
+@end
+
+@interface ExampleTableViewCell : UITableViewCell
+- (void) setupWith:(ExampleTimerObj *)obj;
+- (void) onTimer;
+@end
 @class SubComponentView;
 @protocol SubComponentViewDelegate <NSObject>
 
@@ -24,10 +33,14 @@
 
 @interface SingleTimerViewController ()<
 TimerObserver,
-SubComponentViewDelegate>
+SubComponentViewDelegate,
+UITableViewDelegate,
+UITableViewDataSource>
 @property (nonatomic ,strong) SingleTimer * timer;
 @property (nonatomic ,assign) NSInteger counter;
 @property (nonatomic ,strong) UILabel * displayLabel;
+@property (nonatomic ,strong) UITableView * tableView;
+@property (nonatomic ,copy) NSArray<ExampleTimerObj *> * dataSource;
 @end
 
 @implementation SingleTimerViewController
@@ -35,18 +48,41 @@ SubComponentViewDelegate>
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.dataSource = @[
+        [ExampleTimerObj obj:100],[ExampleTimerObj obj:60],
+        [ExampleTimerObj obj:120],[ExampleTimerObj obj:30],
+        [ExampleTimerObj obj:130],[ExampleTimerObj obj:80],
+        [ExampleTimerObj obj:140],[ExampleTimerObj obj:90],
+        [ExampleTimerObj obj:150],[ExampleTimerObj obj:20],
+        [ExampleTimerObj obj:180],[ExampleTimerObj obj:120],
+        [ExampleTimerObj obj:190],[ExampleTimerObj obj:50],
+        [ExampleTimerObj obj:170],[ExampleTimerObj obj:70],
+        [ExampleTimerObj obj:160],[ExampleTimerObj obj:90],
+        [ExampleTimerObj obj:110],[ExampleTimerObj obj:100],
+    ];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    [self.view addSubview:self.tableView];
+    [self.tableView registerClass:ExampleTableViewCell.class forCellReuseIdentifier:@"cell"];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.equalTo(self.view);
+        make.height.mas_equalTo(self.view).multipliedBy(0.6);
+    }];
+    
     self.displayLabel = [UILabel new];
     [self.view addSubview:self.displayLabel];
     self.displayLabel.font = [UIFont systemFontOfSize:40];
     self.displayLabel.textColor = [UIColor colorWithHexString:@"#D4666C"];
     [self.displayLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.view);
+        make.top.equalTo(self.tableView.mas_bottom).mas_offset(20);
+        make.centerX.equalTo(self.view);
     }];
     
     self.counter = 0;
     
     self.timer = [[SingleTimer alloc] initWithInterval:1];
-//    [self.timer addTimerObserver:self];
+    [self.timer addTimerObserver:self];
     
     {
         UIButton * button = [UIButton new];
@@ -57,8 +93,8 @@ SubComponentViewDelegate>
         
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(80, 50));
-            make.bottom.equalTo(self.displayLabel.mas_top);
-            make.centerX.equalTo(self.view);
+            make.right.equalTo(self.displayLabel.mas_left);
+            make.centerY.equalTo(self.displayLabel);
         }];
     }
     {
@@ -70,8 +106,8 @@ SubComponentViewDelegate>
         
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(80, 50));
-            make.top.equalTo(self.displayLabel.mas_bottom);
-            make.centerX.equalTo(self.view);
+            make.left.equalTo(self.displayLabel.mas_right);
+            make.centerY.equalTo(self.displayLabel);
         }];
     }
 }
@@ -84,6 +120,18 @@ SubComponentViewDelegate>
     SubComponentView * view = [SubComponentView new];
     view.delegate = self;
     [view showIn:self.view];
+}
+
+#pragma mark - UITableViewDelegate, UITableViewDataSource
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    ExampleTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    [cell setupWith:self.dataSource[indexPath.row]];
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.dataSource.count;
 }
 
 #pragma mark - SubComponentViewDelegate
@@ -104,6 +152,12 @@ SubComponentViewDelegate>
 
 - (void)onTimer{
     self.counter ++;
+    for (ExampleTimerObj * obj in self.dataSource) {
+        obj.counter --;
+    }
+    for (ExampleTableViewCell * cell in [self.tableView visibleCells]) {
+        [cell onTimer];
+    }
 }
 
 - (void)setCounter:(NSInteger)counter{
@@ -171,5 +225,54 @@ SubComponentViewDelegate>
 - (void)onTimer{
     _counter += 1;
     _textLabel.text = [NSString stringWithFormat:@"%ld",(long)_counter];
+}
+@end
+
+@implementation ExampleTableViewCell{
+    UILabel * _counterLabel;
+    NSInteger _index;
+    ExampleTimerObj * _obj;
+}
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        _counterLabel = [UILabel new];
+        _counterLabel.textColor = [UIColor colorWithHexString:@"#6AA97D"];
+        _counterLabel.font = [UIFont systemFontOfSize:30];
+        [self.contentView addSubview:_counterLabel];
+        [_counterLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.contentView).mas_offset(20);
+            make.centerY.equalTo(self.contentView);
+            make.height.mas_equalTo(40);
+        }];
+    }
+    return self;
+}
+
+- (void) setupWith:(ExampleTimerObj *)obj{
+    _obj = obj;
+    [self _setup:obj];
+}
+
+- (void) _setup:(ExampleTimerObj *)obj{
+    if (_obj.counter <= 0) {
+        _counterLabel.text = @"Finished";
+    } else {
+        _counterLabel.text = [NSString stringWithFormat:@"%ld",(long)_obj.counter];
+    }
+}
+
+- (void)onTimer{
+    [self _setup:_obj];
+}
+@end
+
+@implementation ExampleTimerObj
++ (instancetype) obj:(NSInteger)counter{
+    ExampleTimerObj * obj = [ExampleTimerObj new];
+    obj.counter = 120;
+    return obj;;
 }
 @end
