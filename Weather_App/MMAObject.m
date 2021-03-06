@@ -15,6 +15,9 @@
 }
 @end
 
+@implementation MMSubAObject
+@end
+
 @implementation MMOtherObject
 - (id) getAObject{
     return [MMAObject new];

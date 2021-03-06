@@ -1,5 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
+source 'https://github.com/EaseComponent/EaseSpecs.git'
+source 'https://github.com/CocoaPods/Specs.git'
 
 target 'Weather_App' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
@@ -20,9 +22,9 @@ target 'Weather_App' do
   pod 'JLRoutes', '~> 2.1'
   pod 'IGListKit', '~> 4.0.0'
   pod 'MJRefresh', '~> 3.1.15.3'
-  # Pods for Weather_App
-  #pod 'Nama-lite', '6.4.0'
+  pod 'KVOController'
   pod 'MMKV'
   pod 'TransitionKit', '~> 2.0.0'
-  
+  pod 'EaseRefreshProxy'
+  pod 'MLeaksFinder'
 end

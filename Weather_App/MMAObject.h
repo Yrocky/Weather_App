@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface MMAObject : NSObject
-
+@property (nonatomic ,copy) NSString * name;
 - (void) doSomthing:(int)foo;
+@end
+@interface MMSubAObject : MMAObject
+
 @end
 
 @interface MMOtherObject : NSObject

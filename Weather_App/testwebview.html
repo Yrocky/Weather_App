@@ -11,6 +11,7 @@
 <li><a onclick="js_custom_msgHandler();">Custom Message handler</a></li>
 <li><a onclick="js_load_prompt();">Load Prompt</a></li>
 <li><a onclick="js_load_prompt2();">Load Prompt 2</a></li>
+<li><a onclick="js_rn_handler();">React Native Massage</a></li>
 
 </body>
 <script type="text/javascript">
@@ -76,6 +77,10 @@ function getNowFormatDate() {
 function js_custom_msgHandler(){
     window.webkit.messageHandlers.SomeValue.postMessage('Hello rocky~');
 };
+
+function js_rn_handler() {
+    window.webkit.messageHandlers.ReactNativeWebView.postMessage('share');
+}
 
 // 使用拦截弹窗来实现同步通信
 function js_load_prompt(){

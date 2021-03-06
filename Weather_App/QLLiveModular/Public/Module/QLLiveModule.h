@@ -11,6 +11,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, QLLivePureListModuleType) {
+    QLLivePureListModuleReplace,/// 直接替换原有的数据
+    QLLivePureListModuleAppend/// 在原有的数据后追加数据
+};
+
 @class YTKRequest;
 @protocol QLLiveModuleDelegate;
 
@@ -41,8 +46,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) refresh;///< 刷新数据
 - (void) loadMore;///< 加载下一页
 
-- (void) setupEnvironmentWithViewController:(UIViewController *)viewController
-                             collectionView:(UICollectionView *)collectionView;
+- (void) setupViewController:(UIViewController *)viewController
+              collectionView:(UICollectionView *)collectionView;
 @end
 
 @interface QLLiveModule (SubclassingOverride)
@@ -54,14 +59,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface QLLiveCompositeModule : QLLiveModule{
-@protected
-    NSMutableArray<__kindof QLLiveModule *> *_innerModules;
-}
+@interface QLLiveCompositeModule : QLLiveModule
 
 - (void) addModule:(__kindof QLLiveModule *)module;
 - (NSArray<__kindof QLLiveModule *> *) modules;
 
+@end
+
+@interface QLLivePureListModule : QLLiveModule
+
+/// 指明类型，替换和追加
+- (QLLivePureListModuleType) pureListModuleType;
+
+/// 指明comp的类型
+- (Class) pureListComponentClass;
+
+/// 将请求的数据通过该方法过滤，获取comp
+- (__kindof QLLiveComponent *) setupPureComponentWithDatas:(NSArray *)datas;
 @end
 
 @protocol QLLiveModuleDelegate <NSObject>

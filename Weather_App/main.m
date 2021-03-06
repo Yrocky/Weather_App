@@ -11,7 +11,10 @@
 #import "HLLAttributedBuilder.h"
 #import "NSArray+Sugar.h"
 #import "NSNumber+Sugar.h"
-//
+
+//static int static_golbal_val = 10;
+
+
 //void am(NSMutableArray * a){
 ////    char b = 'b';
 //    [a addObject:^{
@@ -69,7 +72,7 @@ int main(int argc, char * argv[]) {
         NSArray * ar = @[date];
         NSMutableArray * muarr = [ar mutableCopy];
         //
-        NSLog(@"compera:%d",[other compare:date]);
+//        NSLog(@"compera:%d",[other compare:date]);
         
         
         NSArray * a =  @[@2,@3,@4,@5,@6,@7];
@@ -77,7 +80,7 @@ int main(int argc, char * argv[]) {
         int i = 0;
         for (NSUInteger index = 0 ; index < 30 ; index ++) {
             
-            NSLog(@"%@",[a subarrayWithRange:NSMakeRange(i * 2, 2)]);
+//            NSLog(@"%@",[a subarrayWithRange:NSMakeRange(i * 2, 2)]);
             i ++;
             
             if (i >= a.count/2){

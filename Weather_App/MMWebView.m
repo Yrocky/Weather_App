@@ -484,7 +484,8 @@ UIScrollViewDelegate
 {
     if (!_webView) {
         WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-        
+        configuration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
+
         // ucc
         MMInternalUserContentController * ucc = [MMInternalUserContentController uccWithHandler:self.messageHandler];
         self.userContentController = ucc;

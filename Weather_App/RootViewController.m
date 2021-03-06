@@ -50,6 +50,8 @@
 #import "FinanceViewController.h"
 #import "XXXRoute.h"
 #import "FaceUViewController.h"
+#import "XXXCycleScrollViewController.h"
+#import "XXXMVVMViewController.h"
 
 #define MMLiveRoute [JLRoutes routesForScheme:@"MMLive"]
 
@@ -66,6 +68,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    NSString * aaa = @"aaa";
     
     self.title = @"Root";
     self.str = @"123";
@@ -91,6 +94,17 @@
         
     }];
     
+    [ANYMethodLog logMethodWithClass:NSArray.class condition:^BOOL(SEL sel) {
+        return sel == @selector(enumerateObjectsWithOptions:usingBlock:);
+    } before:^(id target, SEL sel, NSArray *args, int deep) {
+        NSLog(@"args:%@",args);
+    } after:^(id target, SEL sel, NSArray *args, NSTimeInterval interval, int deep, id retValue) {
+        NSLog(@"args:%@",args);
+    }];
+    
+    [@[@"sdfsdf",@"fsds"] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@"obj:%@",obj);
+    }];
     [self.tableViewModel addSection:({
         
         HSSectionModel * s = [[HSSectionModel alloc] init];
@@ -114,6 +128,102 @@
             }];
         })];
 
+        [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"GCD" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/GCDViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
+        [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"Single Timer" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/SingleTimerViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
+        [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"Diff" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/DiffViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
+        [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"AnyComponent" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/MT_AnyComponentViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
+        [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"Plugin" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/PagePluginViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
+        [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"MVVM" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/XXXMVVMViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
+        [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"Layout Calculator" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/XXXLayoutCalculatorViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
+        [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"cycle scroll" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/XXXCycleScrollViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
         [s addCellModel:({
             [[HSTitleCellModel alloc] initWithTitle:@"home" actionBlock:^(HSTitleCellModel *model) {
                         

@@ -76,7 +76,7 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
 
 - (HLLAlert *) title:(NSString *)titile{
     
-    self.aModel.title = titile;
+    self.aModel.title = [NSString stringWithFormat:@"%@",titile];
     return self;
 }
 
@@ -209,7 +209,7 @@ static NSString * const kAlertActionSheetHandleStyle = @"handleStyle";
 
 - (HLLActionSheet *) title:(NSString *)titile{
     
-    self.aModel.title = titile;
+    self.aModel.title = [NSString stringWithFormat:@"%@",titile];
     return self;
 }
 - (HLLActionSheet *) message:(NSString *)message{

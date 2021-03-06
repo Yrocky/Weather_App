@@ -21,12 +21,18 @@ PODS:
   - Bolts/AppLinks (1.9.1):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.1)
+  - EaseRefreshProxy (0.1.0):
+    - MJRefresh (~> 3.1.15.3)
+  - FBRetainCycleDetector (0.1.4)
   - IGListDiffKit (4.0.0)
   - IGListKit (4.0.0):
     - IGListDiffKit (= 4.0.0)
   - JLRoutes (2.1)
+  - KVOController (1.2.0)
   - Masonry (1.1.0)
   - MJRefresh (3.1.15.7)
+  - MLeaksFinder (1.0.0):
+    - FBRetainCycleDetector
   - MMKV (1.2.1):
     - MMKVCore (~> 1.2.1)
   - MMKVCore (1.2.1)
@@ -42,10 +48,13 @@ DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - AppLord
   - Bolts
+  - EaseRefreshProxy
   - IGListKit (~> 4.0.0)
   - JLRoutes (~> 2.1)
+  - KVOController
   - Masonry (~> 1.1.0)
   - MJRefresh (~> 3.1.15.3)
+  - MLeaksFinder
   - MMKV
   - MMMarkdown (~> 0.5.5)
   - SDWebImage (~> 4.4.7)
@@ -53,6 +62,11 @@ DEPENDENCIES:
   - YTKNetwork (~> 2.0.4)
 
 SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - FBRetainCycleDetector
+    - MLeaksFinder
+  https://github.com/EaseComponent/EaseSpecs.git:
+    - EaseRefreshProxy
   trunk:
     - AFNetworking
     - AppLord
@@ -60,6 +74,7 @@ SPEC REPOS:
     - IGListDiffKit
     - IGListKit
     - JLRoutes
+    - KVOController
     - Masonry
     - MJRefresh
     - MMKV
@@ -73,11 +88,15 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AppLord: b276ec9fbe09639839b66d13ad3cb5835eedb8bb
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  EaseRefreshProxy: fcc1fd22ddb979333f490434544962409cf3b4bb
+  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
   IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
   JLRoutes: d755245322b94227662ea3e43492fdca94e05c5b
+  KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   MMKV: 67253edee25a34edf332f91d73fa94a9e038b971
   MMKVCore: fe398984acac1fa33f92795d1b5fd0a334c944af
   MMMarkdown: 1af97166ce0f6d6e0cb05695665492195d27c3f1
@@ -85,6 +104,6 @@ SPEC CHECKSUMS:
   TransitionKit: c150629869b0eab9d270f914aad2d1a088a8c19d
   YTKNetwork: df8a7a5597bda1664a4efaa7ef871a818a887fe0
 
-PODFILE CHECKSUM: cb35c20e32e6b4c744819f3d191cfa437d7cc813
+PODFILE CHECKSUM: 2db75d4ab57694e94a344a2c10385b9c47894b60
 
 COCOAPODS: 1.9.3

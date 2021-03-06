@@ -144,5 +144,10 @@
     return CGSizeZero;
 }
 
+- (UIEdgeInsets) insetForSupplementaryViewOfKind:(NSString *)elementKind
+                                         atIndex:(NSInteger)index{
+    return UIEdgeInsetsZero;
+}
+
 @end
 

@@ -86,7 +86,8 @@ NSValueFromEventAndMethod(NSString * name, SEL method){
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.eventProxy = [[XXXLivingRoomEventProxy alloc] initWithController:self];
+    self.eventProxy = [[XXXLivingRoomEventProxy alloc]
+                       initWithController:self];
     
     self.oneContentView = [XXXContentView new];
     [self.view addSubview:self.oneContentView];

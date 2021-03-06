@@ -146,7 +146,8 @@ static const UIEdgeInsets WSLDefaultEdgeInset = {10, 10, 10, 10};
             [self.rowWidths addObject:@(self.edgeInsets.left)];
         }
         
-    }else if (self.flowLayoutStyle == WSLWaterFlowVerticalEqualHeight || self.flowLayoutStyle == WSLLineWaterFlow){
+    }else if (self.flowLayoutStyle == WSLWaterFlowVerticalEqualHeight ||
+              self.flowLayoutStyle == WSLLineWaterFlow){
         
         //记录最后一个的内容的横坐标和纵坐标
         self.maxColumnHeight = 0;
@@ -288,7 +289,8 @@ static const UIEdgeInsets WSLDefaultEdgeInset = {10, 10, 10, 10};
         return CGSizeMake(self.maxRowWidth + self.edgeInsets.right , 0);
     }else if(self.flowLayoutStyle == WSLWaterFlowHorizontalGrid){
         
-        return CGSizeMake(self.maxRowWidth + self.edgeInsets.right,self.collectionView.frame.size.height);
+        return CGSizeMake(self.maxRowWidth + self.edgeInsets.right,
+                          self.collectionView.frame.size.height);
     }
     
     return CGSizeMake(0, 0);

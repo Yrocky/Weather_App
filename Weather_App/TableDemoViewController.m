@@ -15,6 +15,7 @@
 #import "MMAssetsCellModel.h"
 #import "MMPickerView.h"
 #import "HLLAlert.h"
+#import "GCDViewController.h"
 
 @interface TableDemoViewController ()
 
@@ -26,6 +27,8 @@
     [super viewDidLoad];
 
     self.title = @"Demo";
+    
+    NSLog(@"引用头文件，可以直接使用:%d", global_val);
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         

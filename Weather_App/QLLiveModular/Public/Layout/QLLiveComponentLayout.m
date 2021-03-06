@@ -120,7 +120,7 @@ typedef NS_ENUM(NSUInteger, QLLiveComponentSemantic) {
 
 - (void) clear{
     [_cacheItemSize removeAllObjects];
-    _cacheItemSize = [NSMutableDictionary new];
+    _cacheItemSize = nil;
 }
 @end
 

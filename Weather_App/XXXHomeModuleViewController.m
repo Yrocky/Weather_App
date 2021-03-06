@@ -14,6 +14,11 @@
 #import "UIColor+Common.h"
 #import "NSArray+Sugar.h"
 #import "WSLWaterFlowLayout.h"
+#import "HLLAlert.h"
+
+@interface YYYYMoveContainerView : UIView
+@property (nonatomic ,strong) UIView * aView;
+@end
 
 @interface YYYHomeModule : QLLiveModule
 
@@ -24,6 +29,8 @@ UICollectionViewDelegate>
 @property (nonatomic ,strong) EaseRefreshProxy * refreshProxy;
 @property (nonatomic ,strong) YYYHomeModule * module;
 @property (nonatomic,strong) UICollectionView *collectionView;
+
+@property (nonatomic ,strong) YYYYMoveContainerView * moveContainerView;
 @end
 
 @implementation XXXHomeModuleViewController
@@ -38,7 +45,6 @@ UICollectionViewDelegate>
                                          collectionViewLayout:({
         [[UICollectionViewFlowLayout alloc] init];
     })];
-    _collectionView.delegate = self;
     _collectionView.backgroundColor = UIColor.whiteColor;
     if (@available(iOS 11.0, *)) {
         _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentScrollableAxes;
@@ -46,8 +52,10 @@ UICollectionViewDelegate>
     [self.view addSubview:self.collectionView];
     
     // 为module设置collectionView
-    [self.module setupEnvironmentWithViewController:self
-                       collectionView:self.collectionView];
+    [self.module setupViewController:self
+                      collectionView:self.collectionView];
+    self.module.dataSource.scrollViewDelegate = self;
+    self.module.dataSource.collectionViewDelegate = self;
     
     self.refreshProxy = [[EaseRefreshProxy alloc] initWithScrollView:self.collectionView];
     [self.refreshProxy setupPageOrigIndex:0 andSize:20];
@@ -74,14 +82,24 @@ UICollectionViewDelegate>
 //        make.width.mas_equalTo(200);
 //        make.bottom.equalTo(self.view);
     }];
+    
+//    self.moveContainerView = [YYYYMoveContainerView new];
+//    [self.view addSubview:self.moveContainerView];
+//    [self.moveContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.equalTo(self.view);
+//        make.centerX.equalTo(self.view);
+//        make.height.mas_equalTo(300);
+//    }];
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"[module] selected at :%@",indexPath);
+//    NSLog(@"[module] selected at :%@",indexPath);
 }
-
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    NSLog(@"did scroll...");
+}
 @end
 
 @interface YYYBaseComponent : QLLiveComponent
@@ -111,7 +129,52 @@ UICollectionViewDelegate>
 @interface YYYFourComponent : YYYThreeComponent<QLLiveComponentLayoutDelegate>
 @end
 
+@interface YYYFiveComponent : YYYThreeComponent<QLLiveComponentLayoutDelegate>
+@end
+@interface YYYSixComponent : YYYThreeComponent<QLLiveComponentLayoutDelegate>
+@end
 static NSDictionary * demoData;
+
+@interface QLLiveModuleGrid : NSObject
+
+// 垂直
++ (instancetype) gridAbsoluteHeight:(CGFloat)height
+                    fractionalWidth:(CGFloat)width;
+// 水平
++ (instancetype) gridAbsoluteWidth:(CGFloat)width
+                  fractionalHeight:(CGFloat)height;
+
+@property (nonatomic ,assign ,readonly) CGFloat width;
+@property (nonatomic ,assign ,readonly) CGFloat height;
+
+@property (nonatomic ,assign ,readonly) BOOL isVerticel;
+
+@end
+
+@implementation QLLiveModuleGrid
+// 垂直
++ (instancetype) gridAbsoluteHeight:(CGFloat)height
+                    fractionalWidth:(CGFloat)width{
+    return [[self alloc] initWithWidth:width height:height isVertical:YES];
+}
+// 水平
++ (instancetype) gridAbsoluteWidth:(CGFloat)width
+                  fractionalHeight:(CGFloat)height{
+    return [[self alloc] initWithWidth:width height:height isVertical:NO];
+}
+
+- (instancetype) initWithWidth:(CGFloat)width height:(CGFloat)height isVertical:(BOOL)isVertical{
+    self = [super init];
+    if (self) {
+        _width = width;
+        _height = height;
+        _isVerticel = isVertical;
+    }
+    return self;
+}
+
+@end
+
 @implementation YYYHomeModule{
 }
 
@@ -127,7 +190,19 @@ static NSDictionary * demoData;
             @"video":@[@"爱奇艺",@"腾讯视频",@"优酷",@"西瓜视频",@"哔哩哔哩"],
             @"number":@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10"],
             @"company":@[@"google",@"facebook",@"youtube",@"amazon",@"apple",@"Microsoft",@"Alphabet",@"IBM"],
-            @"music":@[@"Love of My Life",@"Thank You",@"Yesterday Once More",@"You Are Not Alone",@"Billie Jean",@"Smooth Criminal",@"Earth Song",@"I will always love you",@"black or white"],
+            @"music":@[@"0 Love of My Life",@"1 Thank You",@"2 Yesterday Once More",@"3 You Are Not Alone",@"4 Billie Jean",@"5 Smooth Criminal",@"6 Earth Song",@"7 I will always love you",@"8 black or white"],
+            @"waterFlow":@[
+                    @(170),@(80),@(190),@(100),
+                    @(110),@(200),@(130),
+                    @(40),@(150),@(60),
+            ],
+            @"grid":@[[QLLiveModuleGrid gridAbsoluteHeight:50 fractionalWidth:0.25*3],
+                      [QLLiveModuleGrid gridAbsoluteHeight:100 fractionalWidth:0.25*1],
+                      [QLLiveModuleGrid gridAbsoluteHeight:100 fractionalWidth:0.25*2],
+                      [QLLiveModuleGrid gridAbsoluteHeight:100 fractionalWidth:0.25*1],
+                      [QLLiveModuleGrid gridAbsoluteHeight:150 fractionalWidth:0.25*1],
+                      [QLLiveModuleGrid gridAbsoluteHeight:50 fractionalWidth:0.25*3],
+            ],
         };
     }
     return self;
@@ -161,6 +236,12 @@ static NSDictionary * demoData;
 - (void) setupComponents:(NSDictionary *)data{
     
     [self.dataSource addComponent:({
+        YYYSixComponent * comp = [[YYYSixComponent alloc] initWithTitle:@"grid"];
+        [comp addDatas:[data[@"grid"] mm_randomObjects]];
+        comp;
+    })];
+    return;
+    [self.dataSource addComponent:({
         YYYOneComponent * comp = [YYYOneComponent new];
         comp.arrange = QLLiveComponentArrangeHorizontal;
         comp.layout.itemRatio = [QLLiveComponentItemRatio absoluteValue:40];
@@ -172,7 +253,7 @@ static NSDictionary * demoData;
         [comp addDatas:[data[@"languages"] mm_randomObjects]];
         comp;
     })];
-    
+//
     [self.dataSource addComponent:({
         YYYOneComponent * comp = [YYYOneComponent new];
         comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
@@ -181,7 +262,7 @@ static NSDictionary * demoData;
         comp.layout.distribution = [QLLiveComponentDistribution distributionValue:4];
         comp;
     })];
-    
+//
     [self.dataSource addComponent:({
         YYYOneComponent * comp = [YYYOneComponent new];
         comp.layout.insets = UIEdgeInsetsMake(0, 5, 5, 5);
@@ -194,7 +275,7 @@ static NSDictionary * demoData;
         [comp addDatas:[data[@"weather"] mm_randomObjects]];
         comp;
     })];
-    
+//
     [self.dataSource addComponent:({
         YYYOneComponent * comp = [YYYOneComponent new];
         comp.layout.insets = UIEdgeInsetsMake(0, 5, 0, 5);
@@ -212,7 +293,7 @@ static NSDictionary * demoData;
         [comp addDatas:[data[@"Cocoa"] mm_randomObjects]];
         comp;
     })];
-    
+//return;
     [self.dataSource addComponent:({
         YYYThreeComponent * comp = [[YYYThreeComponent alloc] initWithTitle:@"Word"];
         [comp addDatas:[data[@"word"] mm_randomObjects]];
@@ -256,6 +337,11 @@ static NSDictionary * demoData;
         [comp addDatas:[data[@"company"] mm_randomObjects]];
         comp;
     })];
+    [self.dataSource addComponent:({
+        YYYFiveComponent * comp = [[YYYFiveComponent alloc] initWithTitle:@"waterFlow"];
+        [comp addDatas:[data[@"waterFlow"] mm_randomObjects]];
+        comp;
+    })];
 }
 @end
 
@@ -269,6 +355,8 @@ static NSDictionary * demoData;
     return self;
 }
 - (void)didSelectItemAtIndex:(NSInteger)index{
+    [[[HLLAlertUtil title:[self dataAtIndex:index]]
+      buttons:@[@"sure"]] show];
     NSLog(@"[component] did selected:%@ at:%ld",[self dataAtIndex:index],(long)index);
 }
 @end
@@ -290,9 +378,13 @@ static NSDictionary * demoData;
     
     YYYOneCCell * ccell = [self.dataSource dequeueReusableCellOfClass:YYYOneCCell.class forComponent:self atIndex:index];
     if (self.bSetupCell) {
-        self.bSetupCell(ccell, [self dataAtIndex:index]);
+        self.bSetupCell(ccell, ({
+            [NSString stringWithFormat:@"%d %@",index,[self dataAtIndex:index]];
+        }));
     } else {
-        [ccell setupWithData:[self dataAtIndex:index]];
+        [ccell setupWithData:({
+            [NSString stringWithFormat:@"%d %@",index,[self dataAtIndex:index]];
+        })];
     }
     return ccell;
 }
@@ -338,7 +430,7 @@ static NSDictionary * demoData;
     return self;
 }
 - (void) setupWithData:(NSString *)data{
-    self.oneLabel.text = data;
+    self.oneLabel.text = [NSString stringWithFormat:@"%@",data];
     self.oneLabel.textColor = [UIColor colorWithHexString:@"#FF6A66"];
 }
 @end
@@ -369,7 +461,7 @@ static NSDictionary * demoData;
         }];
         
         [demoMaskImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(0, 20, 0, 20));
+            make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(0, 5, 0, 5));
         }];
     }
     return self;
@@ -397,7 +489,9 @@ static NSDictionary * demoData;
 - (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
     
     YYYTwoCCell * ccell = [self.dataSource dequeueReusableCellOfClass:YYYTwoCCell.class forComponent:self atIndex:index];
-    [ccell setupWithData:[self dataAtIndex:index]];
+    [ccell setupWithData:({
+        [NSString stringWithFormat:@"%d %@",index,[self dataAtIndex:index]];
+    })];
     return ccell;
 }
 
@@ -455,8 +549,8 @@ static NSDictionary * demoData;
         self.layout.insets = UIEdgeInsetsMake(5, 5, 5, 5);
         self.layout.lineSpacing = 5;
         self.layout.interitemSpacing = 5;
-        self.layout.itemRatio = [QLLiveComponentItemRatio itemRatioValue:2.0];
         self.layout.distribution = [QLLiveComponentDistribution distributionValue:2];
+        self.layout.itemRatio = [QLLiveComponentItemRatio itemRatioValue:2.0];
     }
     return self;
 }
@@ -464,7 +558,9 @@ static NSDictionary * demoData;
 - (__kindof UICollectionViewCell *)cellForItemAtIndex:(NSInteger)index{
     
     YYYOneCCell * ccell = [self.dataSource dequeueReusableCellOfClass:YYYOneCCell.class forComponent:self atIndex:index];
-    [ccell setupWithData:[self dataAtIndex:index]];
+    [ccell setupWithData:({
+        [NSString stringWithFormat:@"%d %@",index,[self dataAtIndex:index]];
+    })];
     return ccell;
 }
 
@@ -521,11 +617,11 @@ static NSDictionary * demoData;
 
 @implementation YYYFourComponent
 
-
 - (instancetype) initWithTitle:(NSString *)title{
     self = [super initWithTitle:title];
     if (self) {
         self.layout.customItemSize = self;
+        self.layout.distribution = [QLLiveComponentDistribution distributionValue:3];
     }
     return self;
 }
@@ -545,5 +641,122 @@ static NSDictionary * demoData;
     height = width;
 
     return CGSizeMake(width, height);
+}
+@end
+
+@implementation YYYFiveComponent
+
+- (instancetype) initWithTitle:(NSString *)title{
+    self = [super initWithTitle:title];
+    if (self) {
+        self.layout.customItemSize = self;
+        self.layout.distribution = [QLLiveComponentDistribution distributionValue:2];
+    }
+    return self;
+}
+
+#pragma mark - QLLiveComponentLayoutDelegate
+
+- (CGSize)componentLayoutCustomItemSize:(QLLiveComponentLayout *)layout atIndex:(NSInteger)index{
+    
+    CGFloat width = 0;
+    CGFloat height = 0;
+    // 这里的distribution不推荐使用absolute、fractional
+    if (layout.distribution.isAbsolute) {
+        width = layout.distribution.value;
+    } else if (layout.distribution.isFractional) {
+        width = layout.insetContainerWidth * layout.distribution.value;
+    } else {
+        width = (layout.insetContainerWidth - layout.interitemSpacing * (layout.distribution.value - 1)) / layout.distribution.value;
+    }
+    height = [[self dataAtIndex:index] integerValue];
+    
+    return CGSizeMake(width, height);
+}
+
+@end
+
+@implementation YYYSixComponent
+
+- (instancetype) initWithTitle:(NSString *)title{
+    self = [super initWithTitle:title];
+    if (self) {
+        self.layout.customItemSize = self;
+    }
+    return self;
+}
+
+#pragma mark - QLLiveComponentLayoutDelegate
+
+- (CGSize)componentLayoutCustomItemSize:(QLLiveComponentLayout *)layout atIndex:(NSInteger)index{
+    
+    CGFloat width = 0;
+    CGFloat height = 0;
+    // 这里的distribution不推荐使用absolute、fractional
+    QLLiveModuleGrid * grid = [self dataAtIndex:index];
+    CGFloat itemWidth = (layout.insetContainerWidth - 3 * layout.interitemSpacing) / 4.0;
+    if (grid.isVerticel) {
+        NSInteger count = grid.width / 0.25;
+        width = (count - 1) * layout.interitemSpacing + count * itemWidth;
+        height = grid.height;
+    } else {
+        
+    }
+    
+    return CGSizeMake(width, height);
+}
+@end
+
+@implementation YYYYMoveContainerView{
+    MASConstraint *_centerXConstraint;
+    MASConstraint *_centerYConstraint;
+    
+    CGPoint _translation;
+}
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        self.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.4];
+        
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onMove:)];
+
+        self.aView = [UIView new];
+        self.aView.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.3];
+        self.aView.hidden = YES;
+        [self addSubview:self.aView];
+        [self.aView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(60, 60));
+            make.left.greaterThanOrEqualTo(self);
+            make.right.lessThanOrEqualTo(self);
+            make.top.greaterThanOrEqualTo(self);
+            make.bottom.lessThanOrEqualTo(self);
+            self->_centerXConstraint = make.centerX.equalTo(self).priorityHigh();
+            self->_centerYConstraint = make.centerY.equalTo(self).priorityHigh();
+        }];
+        [self.aView addGestureRecognizer:pan];
+    }
+    return self;
+}
+
+- (void) onMove:(UIPanGestureRecognizer *)gesture{
+    
+    CGPoint translation = [gesture translationInView:self];
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+//        _translation = CGPointZero;
+        _translation = translation;
+    } else if (gesture.state == UIGestureRecognizerStateChanged) {
+        NSLog(@"pan translation:%@",NSStringFromCGPoint(_translation));
+        
+        _centerXConstraint.offset = _translation.x;
+        _centerYConstraint.offset = _translation.y;
+        
+    } else if (gesture.state == UIGestureRecognizerStateCancelled ||
+               gesture.state == UIGestureRecognizerStateCancelled ||
+               gesture.state == UIGestureRecognizerStateEnded) {
+//        _translation = CGPointZero;
+//        _translation = CGPointMake(<#CGFloat x#>, <#CGFloat y#>);
+    }
 }
 @end

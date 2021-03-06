@@ -7,19 +7,25 @@
 //
 
 #import "QLLiveModuleDataSource.h"
+#import "QLLiveModuleDataSource_Private.h"
 #import "QLOrthogonalScrollerEmbeddedScrollView.h"
-#import "NSArray+Sugar.h"
 #import "QLLiveComponent_Private.h"
+#import "QLLiveModuleAdapterProxy.h"
+#import "QLLiveModuleFlowLayout.h"
 
-@interface QLLiveModuleDataSource (){
+#import "NSArray+Sugar.h"
+#import "CHTCollectionViewWaterfallLayout.h"
+
+@interface QLLiveModuleDataSource ()<
+CHTCollectionViewDelegateWaterfallLayout>{
     __weak UICollectionView *_collectionView;
 }
+
+@property (nonatomic, strong) QLLiveModuleAdapterProxy *delegateProxy;
 
 @property (nonatomic, strong) NSMutableSet<NSString *> *registeredCellIdentifiers;
 @property (nonatomic, strong) NSMutableSet<NSString *> *registeredPlaceholdCellIdentifiers;
 @property (nonatomic, strong) NSMutableSet<NSString *> *registeredSupplementaryViewIdentifiers;
-
-@property (nonatomic, weak) id<UICollectionViewDelegate> collectionViewDelegate;
 
 @property (nonatomic ,strong) NSMutableDictionary<NSNumber *, QLOrthogonalScrollerSectionController *> *orthogonalScrollerSectionControllers;
 @end
@@ -55,19 +61,51 @@
         _registeredSupplementaryViewIdentifiers = [NSMutableSet new];
 
         collectionView.dataSource = self;
-        [collectionView.collectionViewLayout invalidateLayout];
+        
+        [collectionView setCollectionViewLayout:({
+            QLLiveModuleFlowLayout.new;
+        }) animated:YES];
+//        [collectionView.collectionViewLayout invalidateLayout];
+        
+        [self _updateCollectionViewDelegate];
     }
-    
-    if (!self.collectionViewDelegate &&
-        collectionView.delegate != self) {
-        self.collectionViewDelegate = collectionView.delegate;
-        collectionView.delegate = self;
+}
+
+- (void)setCollectionViewDelegate:(id<UICollectionViewDelegate>)collectionViewDelegate{
+    if (_collectionViewDelegate != collectionViewDelegate) {
+        _collectionViewDelegate = collectionViewDelegate;
+        [self _createProxyAndUpdateCollectionViewDelegate];
     }
+}
+
+- (void)setScrollViewDelegate:(id<UIScrollViewDelegate>)scrollViewDelegate{
+    if (_scrollViewDelegate != scrollViewDelegate) {
+        _scrollViewDelegate = scrollViewDelegate;
+        [self _createProxyAndUpdateCollectionViewDelegate];
+    }
+}
+
+- (void)_createProxyAndUpdateCollectionViewDelegate {
+    // there is a known bug with accessibility and using an NSProxy as the delegate that will cause EXC_BAD_ACCESS
+    // when voiceover is enabled. it will hold an unsafe ref to the delegate
+    _collectionView.delegate = nil;
+
+    self.delegateProxy = [[QLLiveModuleAdapterProxy alloc]
+                          initWithCollectionViewTarget:_collectionViewDelegate
+                          scrollViewTarget:_scrollViewDelegate
+                          dataSource:self];
+    [self _updateCollectionViewDelegate];
+}
+
+- (void)_updateCollectionViewDelegate {
+    _collectionView.delegate = (id<UICollectionViewDelegate>)self.delegateProxy ?: self;
 }
 
 - (UICollectionView *)collectionView {
     return _collectionView;
 }
+
+#pragma mark - dequeue
 
 - (__kindof UICollectionViewCell *)dequeueReusableCellOfClass:(Class)cellClass forComponent:(__kindof QLLiveComponent *)component atIndex:(NSInteger)index{
 
@@ -147,14 +185,6 @@
     }
     return [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 }
-
-//- (BOOL)respondsToSelector:(SEL)aSelector {
-//    return [self.collectionViewDelegate respondsToSelector:aSelector] || [super respondsToSelector:aSelector];
-//}
-//
-//- (void)forwardInvocation:(NSInvocation *)anInvocation {
-//    [anInvocation invokeWithTarget:self.collectionViewDelegate];
-//}
 
 - (NSArray<__kindof QLLiveComponent *> *) usageHidenWhenMeptyComponents{
     NSArray * tmp;
@@ -306,38 +336,6 @@
 
 @end
 
-#pragma mark - UIScrollViewDelegate
-
-@implementation QLLiveModuleDataSource (UIScrollViewDelegate)
-
-#pragma mark - UIScrollView
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    if ([self canForwardMethodToCollectionViewDelegate:_cmd]) {
-        [self.collectionViewDelegate scrollViewDidEndDecelerating:scrollView];
-    }
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    if ([self canForwardMethodToCollectionViewDelegate:_cmd]) {
-        [self.collectionViewDelegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
-    }
-}
-
-/// 及时停止 不在符合要求的Cell
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if ([self canForwardMethodToCollectionViewDelegate:_cmd]) {
-        [self.collectionViewDelegate scrollViewDidScroll:scrollView];
-    }
-}
-
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
-    if ([self canForwardMethodToCollectionViewDelegate:_cmd]) {
-        [self.collectionViewDelegate scrollViewDidScrollToTop:scrollView];
-    }
-}
-
-@end
-
 #pragma mark - UICollectionViewDataSource
 
 @implementation QLLiveModuleDataSource (UICollectionViewDataSource)
@@ -404,12 +402,29 @@
     return cell;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    __kindof QLLiveComponent * comp = [self usageHidenWhenMeptyComponentAtIndex:indexPath.section];
+    if ([comp.supportedElementKinds containsObject:kind]) {
+        return [comp viewForSupplementaryElementOfKind:kind
+                                               atIndex:indexPath.section];
+    }
+    return nil;
+}
 
+@end
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+@implementation QLLiveModuleDataSource (UICollectionViewDelegateFlowLayout)
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    /// component & layout
     __kindof QLLiveComponent * component = [self usageHidenWhenMeptyComponentAtIndex:indexPath.section];
     CGSize itemSize = [component.layout itemSizeAtIndex:indexPath.item];
     if (component.isOrthogonallyScrolls &&
         ![self targetWasOrthogonalScrollView:collectionView]) {
+        // 内嵌的效果需要将height修改一下，这样就可以完成垂直多个cell的效果了
         itemSize = (CGSize){
             component.layout.insetContainerWidth,
             itemSize.height
@@ -419,18 +434,22 @@
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    /// layout
     return [self usageHidenWhenMeptyComponentAtIndex:section].layout.lineSpacing;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    /// layout
     return [self usageHidenWhenMeptyComponentAtIndex:section].layout.interitemSpacing;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    /// layout
     return [self usageHidenWhenMeptyComponentAtIndex:section].layout.insets;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    /// component
     __kindof QLLiveComponent * comp = [self usageHidenWhenMeptyComponentAtIndex:section];
     if ([comp.supportedElementKinds containsObject:UICollectionElementKindSectionHeader]) {
         return [comp sizeForSupplementaryViewOfKind:({
@@ -441,6 +460,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
+    /// component
     __kindof QLLiveComponent * comp = [self usageHidenWhenMeptyComponentAtIndex:section];
     if ([comp.supportedElementKinds containsObject:UICollectionElementKindSectionFooter]) {
         return [comp sizeForSupplementaryViewOfKind:({
@@ -450,15 +470,50 @@
     return CGSizeZero;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
-    __kindof QLLiveComponent * comp = [self usageHidenWhenMeptyComponentAtIndex:indexPath.section];
-    if ([comp.supportedElementKinds containsObject:kind]) {
-        return [comp viewForSupplementaryElementOfKind:kind
-                                               atIndex:indexPath.section];
+@end
+
+@implementation QLLiveModuleDataSource (CHTCollectionViewDelegateWaterfallLayout)
+
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+//}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout columnCountForSection:(NSInteger)section{
+    __kindof QLLiveComponent * comp = [self usageHidenWhenMeptyComponentAtIndex:section];
+    if (comp.layout.distribution.isFractional ||
+        comp.layout.distribution.isAbsolute) {
+        return 1;
     }
-    return nil;
+    return comp.layout.distribution.value;
 }
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout heightForHeaderInSection:(NSInteger)section{
+    return [self collectionView:collectionView layout:collectionViewLayout referenceSizeForHeaderInSection:section].height;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout heightForFooterInSection:(NSInteger)section{
+    return [self collectionView:collectionView layout:collectionViewLayout referenceSizeForFooterInSection:section].height;
+}
+
+//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+//    return UIEdgeInsetsZero;;
+//}
+
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForHeaderInSection:(NSInteger)section{
+    return UIEdgeInsetsMake(0, 5, 0, 5);;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForFooterInSection:(NSInteger)section{
+    return UIEdgeInsetsMake(0, 5, 0, 5);;
+}
+//
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+//    return 1;;
+//}
+
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumColumnSpacingForSectionAtIndex:(NSInteger)section{
+//    return [self collectionView:collectionView layout:collectionViewLayout minimumLineSpacingForSectionAtIndex:section];
+//}
 
 @end
 

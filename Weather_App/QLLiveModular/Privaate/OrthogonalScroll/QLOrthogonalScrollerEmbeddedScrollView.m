@@ -36,6 +36,10 @@
     }
     return self;
 }
+- (void)prepareForReuse{
+    [super prepareForReuse];
+//    [self.orthogonalScrollView setContentOffset:CGPointZero animated:NO];
+}
 /*
 
  fixme:
@@ -122,11 +126,18 @@ UICollectionViewDelegateFlowLayout>
         [self.registeredCellIdentifiers addObject:reuseIdentifier];
         [self.scrollView registerClass:cellClass forCellWithReuseIdentifier:reuseIdentifier];
     }
-    return [self.scrollView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    return [self.scrollView dequeueReusableCellWithReuseIdentifier:reuseIdentifier
+                                                      forIndexPath:({
+        [NSIndexPath indexPathForItem:indexPath.item inSection:0];
+    })];
 }
 
 - (NSIndexPath *) wrapIndexPath:(NSIndexPath *)indexPath{
     return [NSIndexPath indexPathForItem:indexPath.item inSection:self.sectionIndex];
+}
+
+- (BOOL) canForwardMethodToCollectionViewDelegate:(SEL)sel{
+    return [self.collectionViewDelegate respondsToSelector:sel];
 }
 
 #pragma mark - DataSource
@@ -154,17 +165,23 @@ UICollectionViewDelegateFlowLayout>
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
 
-    return [self.collectionViewDelegate collectionView:collectionView layout:collectionViewLayout sizeForItemAtIndexPath:({
+    return [self.collectionViewDelegate collectionView:collectionView
+                                                layout:collectionViewLayout
+                                sizeForItemAtIndexPath:({
         [self wrapIndexPath:indexPath];
     })];
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return [self.collectionViewDelegate collectionView:collectionView layout:collectionViewLayout minimumLineSpacingForSectionAtIndex:self.sectionIndex];
+    return [self.collectionViewDelegate collectionView:collectionView
+                                                layout:collectionViewLayout
+                   minimumLineSpacingForSectionAtIndex:self.sectionIndex];
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return [self.collectionViewDelegate collectionView:collectionView layout:collectionViewLayout minimumInteritemSpacingForSectionAtIndex:self.sectionIndex];
+    return [self.collectionViewDelegate collectionView:collectionView
+                                                layout:collectionViewLayout
+              minimumInteritemSpacingForSectionAtIndex:self.sectionIndex];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
@@ -180,39 +197,55 @@ UICollectionViewDelegateFlowLayout>
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self.collectionViewDelegate collectionView:collectionView
-                       didSelectItemAtIndexPath:[self wrapIndexPath:indexPath]];
+    if ([self canForwardMethodToCollectionViewDelegate:_cmd]) {
+        [self.collectionViewDelegate collectionView:collectionView
+                           didSelectItemAtIndexPath:[self wrapIndexPath:indexPath]];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self.collectionViewDelegate collectionView:collectionView
-                       didDeselectItemAtIndexPath:[self wrapIndexPath:indexPath]];
+    if ([self canForwardMethodToCollectionViewDelegate:_cmd]) {
+        [self.collectionViewDelegate collectionView:collectionView
+                         didDeselectItemAtIndexPath:[self wrapIndexPath:indexPath]];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self.collectionViewDelegate collectionView:collectionView
-                       didHighlightItemAtIndexPath:[self wrapIndexPath:indexPath]];
+    if ([self canForwardMethodToCollectionViewDelegate:_cmd]) {
+        [self.collectionViewDelegate collectionView:collectionView
+                        didHighlightItemAtIndexPath:[self wrapIndexPath:indexPath]];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self.collectionViewDelegate collectionView:collectionView
-                       didUnhighlightItemAtIndexPath:[self wrapIndexPath:indexPath]];
+    if ([self canForwardMethodToCollectionViewDelegate:_cmd]) {
+        [self.collectionViewDelegate collectionView:collectionView
+                      didUnhighlightItemAtIndexPath:[self wrapIndexPath:indexPath]];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    [self.collectionViewDelegate scrollViewDidEndDecelerating:scrollView];
+    if ([self canForwardMethodToCollectionViewDelegate:_cmd]) {
+        [self.collectionViewDelegate scrollViewDidEndDecelerating:scrollView];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    [self.collectionViewDelegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    if ([self canForwardMethodToCollectionViewDelegate:_cmd]) {
+        [self.collectionViewDelegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self.collectionViewDelegate scrollViewDidScroll:scrollView];
+    if ([self canForwardMethodToCollectionViewDelegate:_cmd]) {
+        [self.collectionViewDelegate scrollViewDidScroll:scrollView];
+    }
 }
 
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
-    [self.collectionViewDelegate scrollViewDidScrollToTop:scrollView];
+    if ([self canForwardMethodToCollectionViewDelegate:_cmd]) {
+        [self.collectionViewDelegate scrollViewDidScrollToTop:scrollView];
+    }
 }
 
 - (void)removeFromSuperview {
