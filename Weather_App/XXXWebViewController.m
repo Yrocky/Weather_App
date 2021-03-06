@@ -39,9 +39,9 @@ MMSharePluginDelegate>
     [self.webView addProgressView];
     [self.webView addDefaultPlugins];
     [self.webView viewWillAppear];///<一定要在 设置`webView.messageHandler.delegate`之后
-    [self.webView setupUrlStirng:@"https://dev.91banban.com/1.html?token=ODQ0NzhfRjU5QkQ2NUY3RURBRkIwODdBODFENERDQTA2QzQ5MTBfMl8zNDlDMEU4NS1CMjBGLTQzQ0QtQjI2Mi01MUZENTI3Q0ZERTZfMTYwNjg5NzU5NF9iYW5iYW4xMjM0NTY=&showtype=0&tt=1606897613.491665&type=ios&os=2&versionCode=275&deviceId=349C0E85-B20F-43CD-B262-51FD527CFDE6&uid=84478&roomid=80560"];
+//    [self.webView setupUrlStirng:@"https://dev.91banban.com/1.html?token=ODQ0NzhfRjU5QkQ2NUY3RURBRkIwODdBODFENERDQTA2QzQ5MTBfMl8zNDlDMEU4NS1CMjBGLTQzQ0QtQjI2Mi01MUZENTI3Q0ZERTZfMTYwNjg5NzU5NF9iYW5iYW4xMjM0NTY=&showtype=0&tt=1606897613.491665&type=ios&os=2&versionCode=275&deviceId=349C0E85-B20F-43CD-B262-51FD527CFDE6&uid=84478&roomid=80560"];
     [self.webView startLoad];
-//    [self.webView loadHTML:@"testwebview"];
+    [self.webView loadHTML:@"testwebview"];
     [self.view addSubview:self.webView];
     
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -57,6 +57,10 @@ MMSharePluginDelegate>
     NSLog(@"onJsMethod exchange");
 }
 
+- (void) onReactNativeWebView:(id)data{
+    NSLog(@"onReactNativeWebView:%@",data);
+}
+
 #pragma mark - MMWebViewDelegate
 
 #pragma mark - MMScriptMessageHandlerDelegate
@@ -65,6 +69,7 @@ MMSharePluginDelegate>
     
     return [NSSet setWithObjects:
             NSValueFromMessageHandler(MMMessageHandlerMake(@"SomeValue", @selector(onSomeValue:))),
+            NSValueFromMessageHandler(MMMessageHandlerMake(@"ReactNativeWebView", @selector(onReactNativeWebView:))),
             NSValueFromMessageHandler(MMMessageHandlerMake(@"JSMethod", @selector(onJsMethod))),
             nil];
 }

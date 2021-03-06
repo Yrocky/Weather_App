@@ -117,6 +117,18 @@
         [s addCellModel:c];
         
         [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"GCD" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/GCDViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+        
+        [s addCellModel:({
             [[HSTitleCellModel alloc] initWithTitle:@"Single Timer" actionBlock:^(HSTitleCellModel *model) {
                         
                 [XXXRoute.core routeURL:[NSURL URLWithString:({

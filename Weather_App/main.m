@@ -11,7 +11,10 @@
 #import "HLLAttributedBuilder.h"
 #import "NSArray+Sugar.h"
 #import "NSNumber+Sugar.h"
-//
+
+//static int static_golbal_val = 10;
+
+
 //void am(NSMutableArray * a){
 ////    char b = 'b';
 //    [a addObject:^{

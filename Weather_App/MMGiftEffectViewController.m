@@ -23,7 +23,7 @@
 @implementation MMGiftEffectViewController
 
 - (void) mm_debugerTool{
-
+    
     NSLog(@"mm_debugerTool");
 }
 
@@ -50,7 +50,8 @@ static inline NSString * mm_replaceInBracket(NSString *str,NSString * full){
     NSString * pattern = mm_replaceInBracket(@"xxx", full);
     
     
-    
+    extern int global_val;
+    NSLog(@"global_val 不引用头文件:%d",global_val);
     
     self.view.backgroundColor = [UIColor whiteColor];
     
