@@ -33,6 +33,8 @@ NSArray * getBlockFromArray(){
     return arr;
 }
 
+void (^global_blk)(void) = ^{ NSLog(@"global block"); };
+
 CFAbsoluteTime StartTime;
 int main(int argc, char * argv[]) {
     @autoreleasepool {
@@ -44,6 +46,8 @@ int main(int argc, char * argv[]) {
         BlockType blk = getBlockFromArray()[0];
         
         blk();
+        
+        NSLog(@"global block:%@",global_blk);
         
         NSDate * date = [NSDate new]; // to
         

@@ -235,6 +235,7 @@
 		7FFAB83E210AC38A00CA6671 /* MMAObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFAB83D210AC38A00CA6671 /* MMAObject.m */; };
 		7FFAB841210AC39500CA6671 /* MMBObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFAB840210AC39500CA6671 /* MMBObject.m */; };
 		D7008DDC1FB180B500BD6EA0 /* MMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7008DDB1FB180B500BD6EA0 /* MMNavigationController.m */; };
+		D701AD3625EFD93500968856 /* BlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D701AD3525EFD93500968856 /* BlockViewController.m */; };
 		D70629021F8B132E00F52FCB /* NSUserDefaults+MM_Common.m in Sources */ = {isa = PBXBuildFile; fileRef = D70629011F8B132E00F52FCB /* NSUserDefaults+MM_Common.m */; };
 		D70629061F8B143D00F52FCB /* MMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D70629051F8B143D00F52FCB /* MMPickerView.m */; };
 		D70629391F8B185100F52FCB /* MMAssetsCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D706290C1F8B185100F52FCB /* MMAssetsCellModel.m */; };
@@ -760,6 +761,8 @@
 		C1DD493FBDDB77E68B89AA1C /* Pods-Weather_App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather_App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weather_App/Pods-Weather_App.release.xcconfig"; sourceTree = "<group>"; };
 		D7008DDA1FB180B500BD6EA0 /* MMNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMNavigationController.h; sourceTree = "<group>"; };
 		D7008DDB1FB180B500BD6EA0 /* MMNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMNavigationController.m; sourceTree = "<group>"; };
+		D701AD3425EFD93500968856 /* BlockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlockViewController.h; sourceTree = "<group>"; };
+		D701AD3525EFD93500968856 /* BlockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlockViewController.m; sourceTree = "<group>"; };
 		D70629001F8B132E00F52FCB /* NSUserDefaults+MM_Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+MM_Common.h"; sourceTree = "<group>"; };
 		D70629011F8B132E00F52FCB /* NSUserDefaults+MM_Common.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+MM_Common.m"; sourceTree = "<group>"; };
 		D70629041F8B143D00F52FCB /* MMPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMPickerView.h; sourceTree = "<group>"; };
@@ -2160,6 +2163,8 @@
 				5CED28FC23B1F96000F314AB /* XXXLiveContentViewController.m */,
 				5CED3F2223B9FFA500F314AB /* XXXKwaiViewController.h */,
 				5CED3F2323B9FFA500F314AB /* XXXKwaiViewController.m */,
+				D701AD3425EFD93500968856 /* BlockViewController.h */,
+				D701AD3525EFD93500968856 /* BlockViewController.m */,
 				5CE8B33522A8C47C002CFA38 /* Login */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
@@ -2591,6 +2596,7 @@
 				7F7BA146208DE3000085E045 /* MMNode.m in Sources */,
 				D7F1F8062070FEA3000478C2 /* HomeBillContentDateView.m in Sources */,
 				7FBCF0CA1F4EE12200E2EEC7 /* HLLAttributedBuilder.m in Sources */,
+				D701AD3625EFD93500968856 /* BlockViewController.m in Sources */,
 				D713B8CE2076033800D388F2 /* BillRemarksExtensionView.m in Sources */,
 				5CE8B33822A8C4A2002CFA38 /* OldLoginViewController.m in Sources */,
 				5C6EA37F2276904700EA3D0F /* XXXCalculator.m in Sources */,

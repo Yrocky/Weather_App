@@ -101,7 +101,19 @@
             [self performSegueWithIdentifier:@"RootToMain" sender:nil];
         }];
         [s addCellModel:c];
-        
+
+        [s addCellModel:({
+            [[HSTitleCellModel alloc] initWithTitle:@"Block" actionBlock:^(HSTitleCellModel *model) {
+                        
+                [XXXRoute.core routeURL:[NSURL URLWithString:({
+                    [NSString stringWithFormat:@"push/BlockViewController"];
+                })] withParameters:@{
+                    @"title":model.title,
+                    @"addNavi" : @(YES)
+                }];
+            }];
+        })];
+
         [s addCellModel:({
             [[HSTitleCellModel alloc] initWithTitle:@"home" actionBlock:^(HSTitleCellModel *model) {
                         
