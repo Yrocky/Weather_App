@@ -148,11 +148,11 @@
 //        _obj.name = @"yyrocky";
 //    });
     
-    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
-    statusBar.backgroundColor = [UIColor orangeColor];
-    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mm_debugerTool)];
-    tapGesture.numberOfTouchesRequired = 2;
-    [statusBar addGestureRecognizer:tapGesture];
+//    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+//    statusBar.backgroundColor = [UIColor orangeColor];
+//    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mm_debugerTool)];
+//    tapGesture.numberOfTouchesRequired = 2;
+//    [statusBar addGestureRecognizer:tapGesture];
     
     ////////////// 创建跑道视图
     self.coreView = [[MMRunwayCoreView alloc] initWithSpeed:1 defaultSpace:30];

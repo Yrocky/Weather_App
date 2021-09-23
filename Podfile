@@ -26,5 +26,5 @@ target 'Weather_App' do
   pod 'MMKV'
   pod 'TransitionKit', '~> 2.0.0'
   pod 'EaseRefreshProxy'
-  pod 'MLeaksFinder'
+  #pod 'MLeaksFinder'
 end

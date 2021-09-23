@@ -2443,10 +2443,8 @@
 				5CED28FC23B1F96000F314AB /* XXXLiveContentViewController.m */,
 				5CED3F2223B9FFA500F314AB /* XXXKwaiViewController.h */,
 				5CED3F2323B9FFA500F314AB /* XXXKwaiViewController.m */,
-<<<<<<< HEAD
 				D701AD3425EFD93500968856 /* BlockViewController.h */,
 				D701AD3525EFD93500968856 /* BlockViewController.m */,
-=======
 				32B12ED9257BB4E000566D11 /* MT_AnyComponentViewController.h */,
 				32B12EDA257BB4E000566D11 /* MT_AnyComponentViewController.m */,
 				32B12F46257D0B2600566D11 /* MT_ComponentHelper.h */,
@@ -2455,7 +2453,6 @@
 				32B12F51257DD0FF00566D11 /* DiffViewController.m */,
 				3281FE7325B52FB700030F29 /* SingleTimerViewController.h */,
 				3281FE7425B52FB700030F29 /* SingleTimerViewController.m */,
->>>>>>> 0fc3bf0d70d93f4aeb2d3018003d9ae1e2191a97
 				5CE8B33522A8C47C002CFA38 /* Login */,
 				D70629081F8B152E00F52FCB /* 自动回复 */,
 			);
@@ -2651,7 +2648,7 @@
 					};
 					7FDC6EC41F46E35A00D94379 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = PF3BSY7RH3;
+						DevelopmentTeam = LL7GM42E2F;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -3286,7 +3283,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = PF3BSY7RH3;
+				DEVELOPMENT_TEAM = LL7GM42E2F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/QQSDK",
