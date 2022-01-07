@@ -125,6 +125,8 @@
 		5CA733FD2399FD8100A75DA9 /* MMKVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA733FC2399FD8100A75DA9 /* MMKVViewController.m */; };
 		5CA73400239A2E3C00A75DA9 /* XXXRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA733FF239A2E3B00A75DA9 /* XXXRoute.m */; };
 		5CBAFA372270557D003A5620 /* FishBoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CBAFA362270557D003A5620 /* FishBoViewController.m */; };
+		5CD88C5126FC559900BA6CDD /* Bridger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD88C5026FC559900BA6CDD /* Bridger.swift */; };
+		5CD88C5326FC55F600BA6CDD /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD88C5226FC55F600BA6CDD /* AlertController.swift */; };
 		5CDF128B22818DF4007FD7A7 /* XXXRPN.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF128A22818DF4007FD7A7 /* XXXRPN.m */; };
 		5CDF128D22819061007FD7A7 /* XXXRPNTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDF128C22819061007FD7A7 /* XXXRPNTest.m */; };
 		5CE42B0D228E867A00C236FC /* ResumeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE42B0C228E867900C236FC /* ResumeViewController.m */; };
@@ -604,6 +606,8 @@
 		5CA73401239A2FF300A75DA9 /* XXXRouteTemplate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXRouteTemplate.h; sourceTree = "<group>"; };
 		5CBAFA352270557D003A5620 /* FishBoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FishBoViewController.h; sourceTree = "<group>"; };
 		5CBAFA362270557D003A5620 /* FishBoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FishBoViewController.m; sourceTree = "<group>"; };
+		5CD88C5026FC559900BA6CDD /* Bridger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bridger.swift; sourceTree = "<group>"; };
+		5CD88C5226FC55F600BA6CDD /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		5CDF128922818DF4007FD7A7 /* XXXRPN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XXXRPN.h; sourceTree = "<group>"; };
 		5CDF128A22818DF4007FD7A7 /* XXXRPN.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXRPN.m; sourceTree = "<group>"; };
 		5CDF128C22819061007FD7A7 /* XXXRPNTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XXXRPNTest.m; sourceTree = "<group>"; };
@@ -2000,6 +2004,8 @@
 				5C4D1E3D230BCB32000829CA /* XXXHomeModule.m */,
 				5C303133227195AF00B882AA /* XXXHTTPProtocol.h */,
 				5C303134227195AF00B882AA /* XXXHTTPProtocol.m */,
+				5CD88C5026FC559900BA6CDD /* Bridger.swift */,
+				5CD88C5226FC55F600BA6CDD /* AlertController.swift */,
 				3281FE7825B5331B00030F29 /* SingleTimer.h */,
 				3281FE7925B5331B00030F29 /* SingleTimer.m */,
 				32B12ED4257BB02E00566D11 /* MT */,
@@ -2942,6 +2948,7 @@
 				D7F1F8092070FEDF000478C2 /* HomeBillContentListView.m in Sources */,
 				D70F5DE31FA81D69007FBD43 /* FDDismissingAnimator.m in Sources */,
 				5C60D521227855D4003AE46C /* lept_json.c in Sources */,
+				5CD88C5126FC559900BA6CDD /* Bridger.swift in Sources */,
 				7FD8CC261F984A3F005DC9FF /* HLLPlaceholderTextView.m in Sources */,
 				32B12F59257DF6AC00566D11 /* MT_Group.m in Sources */,
 				5CE42B0D228E867A00C236FC /* ResumeViewController.m in Sources */,
@@ -2987,6 +2994,7 @@
 				3201173A248F3CE30002F85B /* MMHomeSectionModel.m in Sources */,
 				D70629581F8B19AF00F52FCB /* RootViewController.m in Sources */,
 				5C48AB0F229637C600535980 /* XXXNoticeScrollView.m in Sources */,
+				5CD88C5326FC55F600BA6CDD /* AlertController.swift in Sources */,
 				5C4734F323BAF2A200CF02B8 /* XXXElevator.m in Sources */,
 				5C4734F723BB4CC900CF02B8 /* XXXAudioWaveformConfig.m in Sources */,
 				5C2174612254B30B001443BC /* RoomCycleScrollView.m in Sources */,
@@ -3126,6 +3134,7 @@
 		5C60D508227843F2003AE46C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -3156,6 +3165,7 @@
 		5C60D509227843F2003AE46C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -3309,7 +3319,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Weather_App/Weather_App-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -3321,7 +3331,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N8H7Q699Q8;
+				DEVELOPMENT_TEAM = LL7GM42E2F;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weather_App/ShareSDK/Support/PlatformSDK/QQSDK",
@@ -3344,7 +3354,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Weather_App/Weather_App-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

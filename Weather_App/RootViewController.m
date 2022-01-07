@@ -116,6 +116,10 @@
         }];
         [s addCellModel:c];
 
+        [self add:@"AlertController" vc:@"DemoRHAlertController" with:s];
+        
+        [self add:@"同层渲染" vc:@"DemoRHAlertController" with:s];
+        
         [s addCellModel:({
             [[HSTitleCellModel alloc] initWithTitle:@"Block" actionBlock:^(HSTitleCellModel *model) {
                         
@@ -608,6 +612,21 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mm_didReceiveMemoryWarning) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     
 //    [self addRoutes];
+}
+
+- (void) add:(NSString *)title vc:(NSString *)vc with:(HSSectionModel *)s {
+    
+    [s addCellModel:({
+        [[HSTitleCellModel alloc] initWithTitle:title actionBlock:^(HSTitleCellModel *model) {
+                    
+            [XXXRoute.core routeURL:[NSURL URLWithString:({
+                [NSString stringWithFormat:@"push/%@", vc];
+            })] withParameters:@{
+                @"title":model.title,
+                @"addNavi" : @(YES)
+            }];
+        }];
+    })];
 }
 
 - (void) addRoutes{
